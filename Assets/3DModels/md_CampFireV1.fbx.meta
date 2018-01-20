@@ -1,0 +1,458 @@
+fileFormatVersion: 2
+guid: 07ee720d9027b7d40bfa739ea4918c57
+timeCreated: 1511286731
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: AshedGround
+    100002: BigLog5
+    100004: Floor
+    100006: Logs
+    100008: //RootNode
+    100010: MediumLog10
+    100012: MediumLog4
+    100014: MediumLog5
+    100016: MediumLog7
+    100018: MediumLog8
+    100020: MediumLog9
+    100022: MediumLogs1
+    100024: Rock1
+    100026: Rock10
+    100028: Rock11
+    100030: Rock12
+    100032: Rock13
+    100034: Rock14
+    100036: Rock15
+    100038: Rock16
+    100040: Rock17
+    100042: Rock18
+    100044: Rock19
+    100046: Rock2
+    100048: Rock20
+    100050: Rock21
+    100052: Rock3
+    100054: Rock4
+    100056: Rock5
+    100058: Rock6
+    100060: Rock7
+    100062: Rock8
+    100064: Rock9
+    100066: Rocks
+    100068: SmallLog1
+    100070: SmallLog2
+    100072: SmallLog3
+    100074: SmallLog4
+    100076: SmallLog5
+    100078: SmallLog6
+    100080: SmallLog7
+    100082: SmallLogs
+    100084: TwigTest1NoEnds
+    400000: AshedGround
+    400002: BigLog5
+    400004: Floor
+    400006: Logs
+    400008: //RootNode
+    400010: MediumLog10
+    400012: MediumLog4
+    400014: MediumLog5
+    400016: MediumLog7
+    400018: MediumLog8
+    400020: MediumLog9
+    400022: MediumLogs1
+    400024: Rock1
+    400026: Rock10
+    400028: Rock11
+    400030: Rock12
+    400032: Rock13
+    400034: Rock14
+    400036: Rock15
+    400038: Rock16
+    400040: Rock17
+    400042: Rock18
+    400044: Rock19
+    400046: Rock2
+    400048: Rock20
+    400050: Rock21
+    400052: Rock3
+    400054: Rock4
+    400056: Rock5
+    400058: Rock6
+    400060: Rock7
+    400062: Rock8
+    400064: Rock9
+    400066: Rocks
+    400068: SmallLog1
+    400070: SmallLog2
+    400072: SmallLog3
+    400074: SmallLog4
+    400076: SmallLog5
+    400078: SmallLog6
+    400080: SmallLog7
+    400082: SmallLogs
+    400084: TwigTest1NoEnds
+    2300000: AshedGround
+    2300002: BigLog5
+    2300004: MediumLog10
+    2300006: MediumLog4
+    2300008: MediumLog5
+    2300010: MediumLog7
+    2300012: MediumLog8
+    2300014: MediumLog9
+    2300016: Rock1
+    2300018: Rock10
+    2300020: Rock11
+    2300022: Rock12
+    2300024: Rock13
+    2300026: Rock14
+    2300028: Rock15
+    2300030: Rock16
+    2300032: Rock17
+    2300034: Rock18
+    2300036: Rock19
+    2300038: Rock2
+    2300040: Rock20
+    2300042: Rock21
+    2300044: Rock3
+    2300046: Rock4
+    2300048: Rock5
+    2300050: Rock6
+    2300052: Rock7
+    2300054: Rock8
+    2300056: Rock9
+    2300058: SmallLog1
+    2300060: SmallLog2
+    2300062: SmallLog3
+    2300064: SmallLog4
+    2300066: SmallLog5
+    2300068: SmallLog6
+    2300070: SmallLog7
+    2300072: TwigTest1NoEnds
+    3300000: AshedGround
+    3300002: BigLog5
+    3300004: MediumLog10
+    3300006: MediumLog4
+    3300008: MediumLog5
+    3300010: MediumLog7
+    3300012: MediumLog8
+    3300014: MediumLog9
+    3300016: Rock1
+    3300018: Rock10
+    3300020: Rock11
+    3300022: Rock12
+    3300024: Rock13
+    3300026: Rock14
+    3300028: Rock15
+    3300030: Rock16
+    3300032: Rock17
+    3300034: Rock18
+    3300036: Rock19
+    3300038: Rock2
+    3300040: Rock20
+    3300042: Rock21
+    3300044: Rock3
+    3300046: Rock4
+    3300048: Rock5
+    3300050: Rock6
+    3300052: Rock7
+    3300054: Rock8
+    3300056: Rock9
+    3300058: SmallLog1
+    3300060: SmallLog2
+    3300062: SmallLog3
+    3300064: SmallLog4
+    3300066: SmallLog5
+    3300068: SmallLog6
+    3300070: SmallLog7
+    3300072: TwigTest1NoEnds
+    4300000: AshedGround
+    4300002: SmallLog5
+    4300004: MediumLog5
+    4300006: TwigTest1NoEnds
+    4300008: SmallLog2
+    4300010: SmallLog1
+    4300012: MediumLog4
+    4300014: SmallLog7
+    4300016: SmallLog3
+    4300018: SmallLog6
+    4300020: MediumLog9
+    4300022: MediumLog7
+    4300024: BigLog5
+    4300026: SmallLog4
+    4300028: MediumLog10
+    4300030: MediumLog8
+    4300032: Rock1
+    4300034: Rock2
+    4300036: Rock3
+    4300038: Rock4
+    4300040: Rock5
+    4300042: Rock6
+    4300044: Rock7
+    4300046: Rock8
+    4300048: Rock9
+    4300050: Rock10
+    4300052: Rock11
+    4300054: Rock12
+    4300056: Rock13
+    4300058: Rock14
+    4300060: Rock15
+    4300062: Rock16
+    4300064: Rock17
+    4300066: Rock18
+    4300068: Rock19
+    4300070: Rock20
+    4300072: Rock21
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn10
+    second: {fileID: 2100000, guid: 0e2bbbef0a8055641b815360de0bd637, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn11
+    second: {fileID: 2100000, guid: 0e2bbbef0a8055641b815360de0bd637, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn14
+    second: {fileID: 2100000, guid: 6e315b25dc517544a8483e1ad09cd2ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn15
+    second: {fileID: 2100000, guid: ec45ced98e06c8b4fb8126b4dd8745a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn16
+    second: {fileID: 2100000, guid: 4b377ee077ddd0f4ebad25ba16c640e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn17
+    second: {fileID: 2100000, guid: b5fa89d657ff1e34ba93a3050e7332d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn18
+    second: {fileID: 2100000, guid: c569ffb04642d6246808ab664dda2749, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn19
+    second: {fileID: 2100000, guid: 7912eb79f25f72749974586337ec0d86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn20
+    second: {fileID: 2100000, guid: 7912eb79f25f72749974586337ec0d86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn21
+    second: {fileID: 2100000, guid: 6e315b25dc517544a8483e1ad09cd2ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn22
+    second: {fileID: 2100000, guid: 43bfe1cf0e5fa9344ae9009c96820fb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn23
+    second: {fileID: 2100000, guid: 3125d88274d810643a7d9db9bc9c662f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn24
+    second: {fileID: 2100000, guid: 6e315b25dc517544a8483e1ad09cd2ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn25
+    second: {fileID: 2100000, guid: 0e2bbbef0a8055641b815360de0bd637, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn26
+    second: {fileID: 2100000, guid: c569ffb04642d6246808ab664dda2749, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn27
+    second: {fileID: 2100000, guid: 3aa879789cff1d341a833289ad37823f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn28
+    second: {fileID: 2100000, guid: 4b377ee077ddd0f4ebad25ba16c640e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn35
+    second: {fileID: 2100000, guid: 43bfe1cf0e5fa9344ae9009c96820fb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn6
+    second: {fileID: 2100000, guid: 43bfe1cf0e5fa9344ae9009c96820fb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn7
+    second: {fileID: 2100000, guid: 8a501c67a9351734cbe6d96f5188c6d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn8
+    second: {fileID: 2100000, guid: 44e781dda2c89ac408f346170109d61d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: extralogs_lambert10
+    second: {fileID: 2100000, guid: 0539f4c4757c2b64686fe4d50a914bcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: extralogs_lambert12
+    second: {fileID: 2100000, guid: 561a14d42b76c0f47a14acd97c96ba82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: extralogs_lambert13
+    second: {fileID: 2100000, guid: d1847a2ff78d7fb4b8043cfbbfc65c9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 0539f4c4757c2b64686fe4d50a914bcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert11
+    second: {fileID: 2100000, guid: 3e3e7ffd35c15484582ea1c8944afdf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert12
+    second: {fileID: 2100000, guid: 3e3e7ffd35c15484582ea1c8944afdf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert13
+    second: {fileID: 2100000, guid: 22909809a6ab8774cab5b4ee9a23b86c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert14
+    second: {fileID: 2100000, guid: f740085b1bc3e564fa129e04bbd8bcd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert15
+    second: {fileID: 2100000, guid: f740085b1bc3e564fa129e04bbd8bcd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert19
+    second: {fileID: 2100000, guid: 382434f3e300f5448bd807fa57bfd1bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert20
+    second: {fileID: 2100000, guid: efe36bcde4b432940a9b9b397dc6e240, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert5
+    second: {fileID: 2100000, guid: f740085b1bc3e564fa129e04bbd8bcd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert6
+    second: {fileID: 2100000, guid: f740085b1bc3e564fa129e04bbd8bcd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert9
+    second: {fileID: 2100000, guid: c015aa3bba567b34ab33823af54a98c5, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
