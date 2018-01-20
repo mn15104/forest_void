@@ -4,7 +4,7 @@ Using git with unity
 
 We're using github for unity with git-lfs to manage the project
 
-git-lfs stores large assets remotely on a server and not in git history so the repo should be smaller to clone and assets don't have to be pulled as frequently. The repo should be around 600-700MB now. If that's too big we can remove some more assets.
+git-lfs stores large assets remotely on a server and not in git history so the repo should be smaller to clone and assets don't have to be pulled as frequently. The repo should be around ~120MB with assets of ~500-600MB now. If that's too big we can remove some more assets.
 
 Install [git-lfs](https://git-lfs.github.com/) and [github-for-unity](https://unity.github.com/)
 
