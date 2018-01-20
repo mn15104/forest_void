@@ -99,7 +99,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020099023047810}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4b68f5caab23f1c43b4e1c73e960a882, type: 3}
@@ -285,19 +285,29 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020099023047810}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71535966c793a0740ba444c832f0844d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeIntro: {fileID: 2800000, guid: 4de27e766c12c884e96011270afe1c20, type: 3}
-  daylight: {fileID: 2100000, guid: 3c2476664a0b2ea4fb81a981d970a973, type: 2}
-  voidlight: {fileID: 2100000, guid: ac2eeb98f1b423941b373f537bc56e18, type: 2}
-  daylightAudio: {fileID: 8300000, guid: a2d05ef31fdf50842a380a93e186e82b, type: 3}
-  forestAudio: {fileID: 8300000, guid: 4b68f5caab23f1c43b4e1c73e960a882, type: 3}
-  flicker: {fileID: 8300000, guid: 32e0be58ba7a806469bbcb3f74187a45, type: 3}
+  m_DaylightSkyboxMaterial: {fileID: 0}
+  m_DarknessSkyboxMaterial: {fileID: 0}
+  m_AmbienceDaylight: {fileID: 0}
+  m_AmbienceDarkness: {fileID: 0}
+  m_EnterFarm: {fileID: 0}
+  m_Chase: {fileID: 0}
+  m_EndChase: {fileID: 0}
+  m_EnteringDarkness: {fileID: 0}
   soundTrack:
   - {fileID: 8300000, guid: 4b68f5caab23f1c43b4e1c73e960a882, type: 3}
+  m_Ambience1AudioSrc: {fileID: 0}
+  m_Ambience2AudioSrc: {fileID: 0}
+  m_SFXAudioSrc: {fileID: 0}
+  DaylightProfile: {fileID: 0}
+  DarknessProfile: {fileID: 0}
+  m_DaylightLighting: {r: 0, g: 0, b: 0, a: 0}
+  m_DarknessLighting: {r: 0, g: 0, b: 0, a: 0}
 --- !u!222 &222233114267085890
 CanvasRenderer:
   m_ObjectHideFlags: 1

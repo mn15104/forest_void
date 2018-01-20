@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 4072219529895718}
   - component: {fileID: 54877845421381744}
   - component: {fileID: 135704855401646284}
-  - component: {fileID: 114429490665635018}
+  - component: {fileID: 114827596203344682}
   - component: {fileID: 82098362941962384}
   - component: {fileID: 82166109595123594}
   m_Layer: 0
@@ -4449,7 +4449,7 @@ HingeJoint:
   m_Anchor: {x: -0.004, y: 0.07, z: -0.0072}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 623.92365, y: 74.03522, z: 798.7486}
+  m_ConnectedAnchor: {x: 624.9812, y: 74.03522, z: 801.3831}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -5372,19 +5372,6 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278716440
---- !u!114 &114429490665635018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1899655239962522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c992fffdfc3006544b0c7324244d1f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Banging: {fileID: 82098362941962384}
-  m_Squeaking: {fileID: 82166109595123594}
 --- !u!114 &114443182332440242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5407,6 +5394,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7920a94ea154554481053f9f3211a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventTriggered: 0
+  eventTimer: 0
+  aud: {fileID: 0}
+--- !u!114 &114827596203344682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899655239962522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f33b3a031024da47b934982eb38fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Banging: {fileID: 82098362941962384}
+  m_Squeaking: {fileID: 82166109595123594}
 --- !u!135 &135704855401646284
 SphereCollider:
   m_ObjectHideFlags: 1

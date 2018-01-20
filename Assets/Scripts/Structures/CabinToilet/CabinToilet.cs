@@ -8,7 +8,6 @@ public class CabinToilet : MonoBehaviour {
     GameObject m_Door;
     public AudioSource m_Banging;
     public AudioSource m_Squeaking;
-    public GameObject m_DummyWall;
     Quaternion m_OriginalRotation = new Quaternion();
     Vector3 m_OriginalPosition;
     EventStage eventStage = EventStage.Default;
@@ -35,8 +34,8 @@ public class CabinToilet : MonoBehaviour {
         m_Door = GetComponentInChildren<DoorScript>().gameObject;
         m_OriginalPosition = transform.position;
         m_OriginalRotation = transform.rotation;
-        m_Door.SetActive(false);
 
+       
         foreach (Collider collider in GetComponentsInChildren<Collider>())
         {
             if (!collider.isTrigger)
@@ -49,7 +48,7 @@ public class CabinToilet : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Shake(0.1f, 6f);
+        
         if (eventStage == EventStage.InRadius)
         {
                 if (Vector3.Dot(human.GetComponentInChildren<Camera>().transform.forward, (transform.position - human.GetComponentInChildren<Camera>().transform.position).normalized) > 0)
@@ -90,7 +89,6 @@ public class CabinToilet : MonoBehaviour {
             else
             {
                 GetComponentInChildren<DoorScript>().enabled = true;
-                m_DummyWall.SetActive(false);
                 m_Door.SetActive(true);
                 m_Door.GetComponent<Rigidbody>().freezeRotation = false;
                 m_Door.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -119,8 +117,9 @@ public class CabinToilet : MonoBehaviour {
         Vector3 objectRot = transform.eulerAngles;
         timer += Time.deltaTime;
 
-        objectRot.x += 0.5f * rotationDisplacement * Mathf.Sin(timer * 1000f);
-        objectRot.y += 0.5f * rotationDisplacement * Mathf.Sin(timer * 1000f);
+        objectRot.x += 1f * rotationDisplacement * Mathf.Sin(timer * 100f);
+        objectRot.y += 1f * rotationDisplacement * Mathf.Sin(timer * 100f);
+        objectRot.z += 1f * rotationDisplacement * Mathf.Sin(timer * 100f);
         transform.position = objectPos;
         transform.rotation = Quaternion.Euler(objectRot);
     }
