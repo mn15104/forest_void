@@ -646,6 +646,7 @@ GameObject:
   - component: {fileID: 136630262856914374}
   - component: {fileID: 114322651381604136}
   - component: {fileID: 114929010878569882}
+  - component: {fileID: 65517956651792638}
   m_Layer: 8
   m_Name: Human
   m_TagString: Player 1
@@ -2994,6 +2995,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &65517956651792638
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1382307280244786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51360244, y: 0.28100586, z: 0.43173933}
+  m_Center: {x: -0.0008701682, y: 0.055145264, z: -0.08937949}
 --- !u!81 &81148532149502448
 AudioListener:
   m_ObjectHideFlags: 1
@@ -3251,7 +3264,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382307280244786}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b235179bd2a63d1468dd430670338c55, type: 3}
   m_Controller: {fileID: 9100000, guid: 8ddc298c39861144db7139e6fd3c93dc, type: 2}
   m_CullingMode: 1

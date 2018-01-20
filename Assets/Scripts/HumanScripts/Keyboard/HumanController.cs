@@ -9,9 +9,9 @@ using UnityEditor;
 //Enum with *layer number* as description - used to pass to HumanAudioController.
 public enum CurrentGroundCollision
 {
-    [Description("11")]
+    [Description("8")]
     TERRAIN,
-    [Description("3")]
+    [Description("9")]
     WOOD,
     [Description("0")]
     AIR
@@ -24,9 +24,9 @@ public static class TerrainLayerNumber
         switch (play)
         {
             case CurrentGroundCollision.TERRAIN:
-                return 11;
+                return 8;
             case CurrentGroundCollision.WOOD:
-                return 10;
+                return 9;
             case CurrentGroundCollision.AIR:
                 return 0;
             default:
@@ -416,13 +416,13 @@ public class HumanController : MonoBehaviour
             ladder = collider.gameObject;
         }
         //Detect ground collision of wood material - layer 10
-        if (collider.gameObject.layer == 10 && m_CurrentGroundCollision != CurrentGroundCollision.WOOD)
+        if (collider.gameObject.layer == TerrainLayerNumber.Value(CurrentGroundCollision.WOOD) && m_CurrentGroundCollision != CurrentGroundCollision.WOOD)
         {
             m_CurrentGroundCollision = CurrentGroundCollision.WOOD;
             m_CurrentGroundCollider = collider.gameObject;
         }
         //Detect terrain collision - layer 11
-        else if (collider.gameObject.layer == 11 && m_CurrentGroundCollision != CurrentGroundCollision.TERRAIN)
+        else if (collider.gameObject.layer == TerrainLayerNumber.Value(CurrentGroundCollision.TERRAIN) && m_CurrentGroundCollision != CurrentGroundCollision.TERRAIN)
         {
             m_CurrentGroundCollision = CurrentGroundCollision.TERRAIN;
             m_CurrentGroundCollider = collider.gameObject;
