@@ -12,6 +12,7 @@ public class FireController : MonoBehaviour {
 
     ParticleSystem m_particleSystem;
     Light m_light;
+    float witherTime = 60;
     float fireIntensityMax = 60f;
     float fireSizeMax = 0.2f;
     float lightIntensityMax = 2f;
@@ -53,7 +54,7 @@ public class FireController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if(timeSinceFuelled > 20)
+        if(timeSinceFuelled > witherTime)
         {
             Wither();
         }
