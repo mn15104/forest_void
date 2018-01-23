@@ -10,7 +10,8 @@ public class HumanAudioController : MonoBehaviour {
     enum TerrainType
     {
         GRASS,
-        STONE
+        STONE,
+        FLESH
     }
 
     private Dictionary<int, TerrainType> m_TerrainTypeDictionary = new Dictionary<int, TerrainType>();
@@ -18,8 +19,10 @@ public class HumanAudioController : MonoBehaviour {
     private Terrain m_CurrentTerrain;
     public AudioSource HumanMotion;
     public AudioClip m_GrassRun;
+    public AudioClip m_FleshRun;
     public AudioClip m_StoneRun;
     public AudioClip m_GrassWalk;
+    public AudioClip m_FleshWalk;
     public AudioClip m_StoneWalk;
     public AudioClip m_WoodRun;
     public AudioSource m_Breathing;
@@ -41,6 +44,9 @@ public class HumanAudioController : MonoBehaviour {
         m_TerrainTypeDictionary.Add(6, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(7, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(8, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(9, TerrainType.FLESH);
+        m_TerrainTypeDictionary.Add(10, TerrainType.FLESH);
+        m_TerrainTypeDictionary.Add(11, TerrainType.FLESH);
 
         HumanMotion.clip = m_StoneRun;
         HumanMotion.loop = true;
@@ -124,6 +130,7 @@ public class HumanAudioController : MonoBehaviour {
             return;
         }
         CurrentGroundCollision CurrentGround = m_humanController.GetCurrentGroundCollision();
+        Debug.Log(CurrentGround);
         if (CurrentGround == CurrentGroundCollision.WOOD)
         {
             if (HumanMotion.clip != m_WoodRun)
@@ -154,6 +161,19 @@ public class HumanAudioController : MonoBehaviour {
                         else if (HumanMotion.clip != m_GrassRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
                         {
                             HumanMotion.clip = m_GrassRun;
+                        }
+                    }
+                    break;
+                case TerrainType.FLESH:
+                    if (HumanMotion.clip != m_FleshWalk || HumanMotion.clip != m_FleshRun)
+                    {
+                        if (HumanMotion.clip != m_FleshWalk && (m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
+                        {
+                            HumanMotion.clip = m_FleshWalk;
+                        }
+                        else if (HumanMotion.clip != m_FleshRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                        {
+                            HumanMotion.clip = m_FleshRun;
                         }
                     }
                     break;

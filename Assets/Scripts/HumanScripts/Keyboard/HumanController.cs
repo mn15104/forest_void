@@ -9,9 +9,9 @@ using UnityEditor;
 //Enum with *layer number* as description - used to pass to HumanAudioController.
 public enum CurrentGroundCollision
 {
-    [Description("8")]
+    [Description("11")]
     TERRAIN,
-    [Description("9")]
+    [Description("3")]
     WOOD,
     [Description("0")]
     AIR
@@ -38,9 +38,9 @@ public static class TerrainLayerNumber
 //Enum with current state with *speed* as description - used to determine velocity.
 public enum PlayerMoveState
 {
-    [Description("1.75f")]
+    [Description("1.5f")]
     WALKING,
-    [Description("2.5f")]
+    [Description("2.25f")]
     RUNNING,
     [Description("1.0f")]
     CROUCHING,
@@ -59,11 +59,11 @@ public static class MoveToFloat
             case PlayerMoveState.WALKING:
                 return 1.5f;
             case PlayerMoveState.RUNNING:
-                return 3.25f;
+                return 2.25f;
             case PlayerMoveState.CROUCHING:
                 return 1.0f;
             case PlayerMoveState.JUMPING:
-                return 1.0f;
+                return 0.0f;
             default:
                 return 0f;
         }
@@ -415,14 +415,12 @@ public class HumanController : MonoBehaviour
             m_Ladder = true;
             ladder = collider.gameObject;
         }
-        //Detect ground collision of wood material - layer 10
-        if (collider.gameObject.layer == TerrainLayerNumber.Value(CurrentGroundCollision.WOOD) && m_CurrentGroundCollision != CurrentGroundCollision.WOOD)
+        if (collider.gameObject.layer == 9 && m_CurrentGroundCollision != CurrentGroundCollision.WOOD)
         {
             m_CurrentGroundCollision = CurrentGroundCollision.WOOD;
             m_CurrentGroundCollider = collider.gameObject;
         }
-        //Detect terrain collision - layer 11
-        else if (collider.gameObject.layer == TerrainLayerNumber.Value(CurrentGroundCollision.TERRAIN) && m_CurrentGroundCollision != CurrentGroundCollision.TERRAIN)
+        else if (collider.gameObject.layer == 8 && m_CurrentGroundCollision != CurrentGroundCollision.TERRAIN)
         {
             m_CurrentGroundCollision = CurrentGroundCollision.TERRAIN;
             m_CurrentGroundCollider = collider.gameObject;

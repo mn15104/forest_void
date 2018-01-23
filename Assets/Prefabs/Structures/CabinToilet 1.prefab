@@ -5405,8 +5405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866b032d78b243d44b093cf01f2ced43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Banging: {fileID: 0}
-  m_Squeaking: {fileID: 0}
+  m_Banging: {fileID: 82098362941962384}
+  m_Squeaking: {fileID: 82166109595123594}
 --- !u!135 &135704855401646284
 SphereCollider:
   m_ObjectHideFlags: 1

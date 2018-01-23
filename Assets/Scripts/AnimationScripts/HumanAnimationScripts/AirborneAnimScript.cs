@@ -11,8 +11,7 @@ public class AirborneAnimScript : StateMachineBehaviour {
     {
         Debug.Log("Hi");
         Debug.Log(animator.gameObject);
-        //animator.gameObject.GetComponent<HumanController>().JumpForce();
-        animator.gameObject.GetComponent<HumanVRController>().JumpForce();
+        animator.gameObject.GetComponent<HumanController>().JumpForce();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
