@@ -128,9 +128,9 @@ public class CabinToilet : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.transform.root.GetComponent<HumanController>() && eventStage == EventStage.Default)
+        if ((other.gameObject.transform.root.GetComponent<HumanController>() || other.gameObject.transform.root.GetComponent<HumanVRController>()) && eventStage == EventStage.Default)
         {
-            human = other.gameObject;
+            human = other.gameObject.transform.root.gameObject;
             eventStage = EventStage.InRadius;
         }
     }

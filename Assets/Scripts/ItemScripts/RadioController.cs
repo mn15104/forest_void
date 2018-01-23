@@ -40,7 +40,7 @@ public class RadioController : MonoBehaviour {
             if (Input.GetButtonDown("PickUp"))
             {
                 Debug.Log("picked up");
-                playerInventory.InventoryMapping[ForestItem.Wood] += 1;
+                //playerInventory.InventoryMapping[ForestItem.Wood] += 1;
                 this.gameObject.SetActive(false);
             }
         }

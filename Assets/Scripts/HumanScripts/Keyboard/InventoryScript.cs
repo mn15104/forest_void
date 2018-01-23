@@ -14,20 +14,20 @@ public class InventoryScript : MonoBehaviour, ISerializationCallbackReceiver
 {
     //Lists for serialization so an editor can be produced for the inventory dictionary. Dumb as hell.
     public List<ForestItem> InventoryMappingKeys = new List<ForestItem>();
-    public List<int> InventoryMappingValues = new List<int>();
+    public List<bool> InventoryMappingValues = new List<bool>();
     //Dictionary mapping items to number of said item.
-    public Dictionary<ForestItem, int> InventoryMapping;
+    public Dictionary<ForestItem, bool> InventoryMapping;
 
     public void Start()
     {
        //Initialise an inventory with 0 of all possible items.
        //(Possibly not efficient if we add a lot of items but it is just an enum tbh.)
-        InventoryMapping = new Dictionary<ForestItem, int>();
+        InventoryMapping = new Dictionary<ForestItem, bool>();
         var items = System.Enum.GetValues(typeof(ForestItem));
 
         foreach (ForestItem item in items)
         {
-            InventoryMapping.Add(item, 0);   
+            InventoryMapping.Add(item, false);   
         }
 
         InventoryMappingKeys = InventoryMapping.Keys.ToList();
@@ -49,7 +49,7 @@ public class InventoryScript : MonoBehaviour, ISerializationCallbackReceiver
 
     public void OnAfterDeserialize()
     {
-        InventoryMapping = new Dictionary<ForestItem, int>();
+        InventoryMapping = new Dictionary<ForestItem, bool>();
 
         for (int i = 0; i != Math.Min(InventoryMappingKeys.Count, InventoryMappingValues.Count); i++)
             InventoryMapping.Add(InventoryMappingKeys[i], InventoryMappingValues[i]);
@@ -62,15 +62,14 @@ public class InventoryScript : MonoBehaviour, ISerializationCallbackReceiver
     }
 
 
-    void AddItem(ForestItem item)
+    public void AddItem(ForestItem item)
     {
-        InventoryMapping[item] += 1;
+        InventoryMapping[item] = true;
     }
 
-    void RemoveItem(ForestItem item)
+    public void RemoveItem(ForestItem item)
     {
-        if (InventoryMapping[item] > 0)
-        InventoryMapping[item] -= 1;
+        InventoryMapping[item] = false;
     }
 
 
