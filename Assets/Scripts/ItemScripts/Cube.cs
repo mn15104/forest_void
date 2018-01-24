@@ -13,7 +13,7 @@ public class Cube : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        ItemClass = ForestItem.Wood;	
+        ItemClass = ForestItem.DruidTome;	
 	}
 	
 	// Update is called once per frame
