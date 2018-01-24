@@ -10,16 +10,13 @@ public class TriggerActivate : MonoBehaviour {
 	private Collider myCollider;
 	private Collider triggerCollider;
 
-	// Use this for initialization
-	void Start () {
-		myCollider = GetComponent<Collider>();
-		triggerCollider = trigger.GetComponent<Collider>();
-	}
-
-	// Update is called once per frame
-	void Update () {
-
-	}
+    // Use this for initialization
+    void Start()
+    {
+        myCollider = GetComponent<Collider>();
+        triggerCollider = trigger.GetComponent<Collider>();
+    }
+	
 
 	void OnTriggerEnter(Collider other) {
         Debug.Log("in trigger");    
