@@ -77,7 +77,7 @@ public class HumanVRController : MonoBehaviour
         moveHorizontal = lhand.m_controller.JoystickX;
         moveVertical = lhand.m_controller.JoystickY;
         rotateHorizontal = rhand.m_controller.JoystickX;
-        rotateVertical = rhand.m_controller.JoystickY;
+        //rotateVertical = rhand.m_controller.JoystickY;
 
         m_Forward = Vector3.Scale(transform.forward, new Vector3(1, 0, 1)).normalized;
         m_Right = Vector3.Scale(transform.right, new Vector3(1, 0, 1)).normalized;
@@ -87,7 +87,7 @@ public class HumanVRController : MonoBehaviour
 
         //Create movement & rotation vectors
         Vector3 movement = moveVertical * m_Forward + moveHorizontal * m_Right;
-        Vector3 rotation = new Vector3(rotateHorizontal * m_rotateSpeed, rotateVertical * m_rotateSpeed, 0);
+        Vector3 rotation = new Vector3(rotateHorizontal * m_rotateSpeed, 0, 0);
 
         //If jumping, require raycast detection for ground collision event
         if (m_playerMoveState == PlayerMoveState.JUMPING)

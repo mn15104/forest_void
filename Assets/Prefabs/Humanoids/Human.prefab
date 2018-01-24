@@ -3407,8 +3407,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HumanMotion: {fileID: 82625212954730384}
   m_GrassRun: {fileID: 8300000, guid: 7d8cac319329d224eaca292d7e52a07a, type: 3}
+  m_FleshRun: {fileID: 0}
   m_StoneRun: {fileID: 8300000, guid: ff42943390b0fbc448252d12a4bcbbe4, type: 3}
   m_GrassWalk: {fileID: 8300000, guid: 5b5f6711c4d53c1429672b9566e1fb27, type: 3}
+  m_FleshWalk: {fileID: 0}
   m_StoneWalk: {fileID: 8300000, guid: 2625d9a92c2aef64cb45a59c181a5db7, type: 3}
   m_WoodRun: {fileID: 8300000, guid: c487e899886e2af469c7f0809f549d85, type: 3}
   m_Breathing: {fileID: 82563371645255554}
@@ -3667,7 +3669,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382307280244786}
   m_LocalRotation: {x: -0, y: 0.99753267, z: -0, w: -0.07020376}
-  m_LocalPosition: {x: 0, y: 0, z: 813.25}
+  m_LocalPosition: {x: 0, y: 0, z: 846.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337399597682046}
@@ -3681,6 +3683,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 188.051, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 625.01074, y: 73.45384}
+  m_AnchoredPosition: {x: 642.65, y: 75.39}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
