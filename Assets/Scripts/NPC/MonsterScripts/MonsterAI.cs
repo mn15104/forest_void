@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class MonsterAI : MonoBehaviour {
 
+
+    public AudioSource jumpScareSound;
+    public AudioSource chaseSound;
 	public enum State {HIDDEN, APPEAR, CHASE};
 	public State currentState;
 	public GameObject player;
@@ -37,7 +40,7 @@ public class MonsterAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentState = State.HIDDEN;
+	
         anim = GetComponent<Animator>();
 		agent = GetComponent<NavMeshAgent>();
 		gameOverText.text = "";
@@ -83,20 +86,26 @@ public class MonsterAI : MonoBehaviour {
 	State appear () {
 		transform.Find ("meshes").gameObject.SetActive(true);
 		transform.position = appearPosition;
+        jumpScareSound.enabled = true;
+        jumpScareSound.Play();
 		return State.CHASE;
 	}
 		
+   
+
 	State chase () {
         Debug.Log("chasing");
 		monsterApproach = true; //Screen starts flashing red
-
+		anim.SetTrigger ("StartRunning");
+        StartCoroutine(ChaseMusic());
+       
 		//Chase player
 		pathTimer -= Time.deltaTime;
 		chaseTimer -= Time.deltaTime;
 		if (pathTimer < 0) {
 			agent.SetDestination (player.transform.position);
 			pathTimer = 1;
-			anim.SetTrigger ("StartRunning");
+	
 
 			//Debug.Log (chaseTimer);
 			if (chaseTimer < 0) {
@@ -110,7 +119,7 @@ public class MonsterAI : MonoBehaviour {
 		// GAME OVER
 		float distance = (player.transform.position - transform.position).magnitude;
 		Debug.Log (distance);
-		if (distance < 0.6f) {
+		if (distance < 1f) {
 			monsterApproach = false;
 			caughtByMonster = true;
 			agent.speed = 0;
@@ -122,7 +131,17 @@ public class MonsterAI : MonoBehaviour {
 		return State.CHASE;
 	}
 
-	void GameOver(){
+
+    IEnumerator ChaseMusic()
+    {
+        yield return new WaitForSeconds(jumpScareSound.clip.length);
+        Debug.Log("In chase music");
+        chaseSound.enabled = true;
+        chaseSound.Play();
+    }
+
+
+    void GameOver(){
 		gameOverText.text = "GAME OVER";
 	}
 

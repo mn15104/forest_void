@@ -1040,6 +1040,7 @@ GameObject:
   - component: {fileID: 114827596203344682}
   - component: {fileID: 82098362941962384}
   - component: {fileID: 82166109595123594}
+  - component: {fileID: 208032610282033614}
   m_Layer: 0
   m_Name: CabinToilet 1
   m_TagString: Untagged
@@ -5419,3 +5420,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208032610282033614
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899655239962522}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.08, y: 0.165, z: 0.075}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.03, y: 0, z: 0.05}
+  m_TimeToStationary: 0.5

@@ -32,7 +32,7 @@ public class HumanVRController : MonoBehaviour
     public float m_AnimSpeedMultiplier = 1f;
 
     // Max speed & speed multiplier
-    public const float m_WalkSpeedMultiplier = 1.25f;
+    public const float m_WalkSpeedMultiplier = 2f;
     public const float m_MoveSpeedMultiplier = 2.75f;
     private float m_Speed;
 
