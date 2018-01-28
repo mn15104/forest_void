@@ -5,7 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.PostProcessing;
 
 public class AudioAndLightController : MonoBehaviour {
-    
+
+
+  
+
     //Intro Fade In
     public Texture fadeIntro;
     private Canvas m_Canvas;
@@ -18,8 +21,7 @@ public class AudioAndLightController : MonoBehaviour {
     public AudioClip m_AmbienceDarkness;
     public AudioClip m_Tense;
     public AudioClip m_Chase;
-    public AudioClip m_EndChase;
-    public AudioClip m_EnteringDarkness;
+    public AudioClip m_GameOver;
     public AudioSource m_MainAmbienceAudioSrc;
     public AudioSource m_EventAmbienceAudioSrc;
     public AudioSource m_SFXAudioSrc;
@@ -27,17 +29,18 @@ public class AudioAndLightController : MonoBehaviour {
     private float skyboxRotationRate = 4f;
     //Players
     private HumanController human;
-    private GameEventStage m_GameEventStage;
-    //System
-    private EventController m_EventController;
+    private HumanVRController humanvr;
+    //Monster
+    private MonsterAI.State m_MonsterState;
 
     private void OnEnable()
     {
-        
+        MonsterAI.OnStateChange += MonsterStateChange;
     }
 
     private void OnGUI()
     {
+        //Intro
         if (alpha > 0f)
         {
             GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, alpha);
@@ -47,15 +50,50 @@ public class AudioAndLightController : MonoBehaviour {
             alpha = Mathf.Clamp01(alpha);
         }
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * skyboxRotationRate);
+
+        Texture2D t;
+        Color currentBlendColor;
+        Color toColor;
+
+        if (m_MonsterState == MonsterAI.State.CHASE)
+        {
+            t = new Texture2D(1, 1);
+            t.SetPixel(0, 0, Color.white);
+            currentBlendColor = new Color(1, 0, 0, 0.25f);
+            //Color fromColor = new Color( 1, 0, 0, 1 ); 
+            toColor = new Color(0, 0, 0, 0);
+
+            // Now each GUI draw the texture and blend it in. 
+            currentBlendColor = Color.Lerp(currentBlendColor, toColor, Mathf.PingPong(Time.time, 0.75f));
+            // Set GUI color 
+            GUI.color = currentBlendColor;
+            // Draw fade 
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), t, ScaleMode.StretchToFill);
+        }
+
+        if (m_MonsterState == MonsterAI.State.GAMEOVER)
+        {
+            t = new Texture2D(1, 1);
+            t.SetPixel(0, 0, Color.white);
+            currentBlendColor = new Color(0, 0, 0, 0);
+            //Color fromColor = new Color( 1, 0, 0, 1 ); 
+            toColor = new Color(0, 0, 0, 1);
+
+            // Now each GUI draw the texture and blend it in. 
+            currentBlendColor = Color.Lerp(currentBlendColor, toColor, 1);
+            // Set GUI color 
+            GUI.color = currentBlendColor;
+            // Draw fade 
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), t, ScaleMode.StretchToFill);
+        }
     }
 
   
     // Use this for initialization
     void Start () {
-        m_EventController = FindObjectOfType<EventController>();
         m_Canvas = FindObjectOfType<Canvas>();
         human = FindObjectOfType<HumanController>();
-
+        humanvr = FindObjectOfType<HumanVRController>();
         m_MainAmbienceAudioSrc.volume = 1f;
         m_MainAmbienceAudioSrc.loop = false;
         m_MainAmbienceAudioSrc.enabled = false;
@@ -66,37 +104,66 @@ public class AudioAndLightController : MonoBehaviour {
         m_SFXAudioSrc.loop = false;
         m_SFXAudioSrc.enabled = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void MonsterStateChange(MonsterAI.State monsterStateChange)
+    {
+        if (monsterStateChange == MonsterAI.State.CHASE)
+            TriggerMonsterChase();
+        else if (monsterStateChange == MonsterAI.State.HIDDEN)
+            TriggerMonsterHidden();
+        else if (monsterStateChange == MonsterAI.State.APPEAR)
+            TriggerMonsterAppear();
+        else if (monsterStateChange == MonsterAI.State.GAMEOVER)
+            TriggerMonsterGameOver();
+    }
+
+    // Update is called once per frame
+    void Update () {
         
+    }
+
+    public void TriggerMonsterGameOver()
+    {
+        if (m_MonsterState != MonsterAI.State.GAMEOVER)
+        {
+            m_MainAmbienceAudioSrc.enabled = true;
+            m_MainAmbienceAudioSrc.clip = m_GameOver;
+            m_MainAmbienceAudioSrc.Play();
+            m_MonsterState = MonsterAI.State.GAMEOVER;
+        }
     }
 
     public void TriggerMonsterHidden()
     {
-        if(m_EventAmbienceAudioSrc.clip == m_Chase || m_EventAmbienceAudioSrc.clip == m_Tense)
+        if (m_MonsterState != MonsterAI.State.HIDDEN)
         {
             StartCoroutine(HiddenMusic());
+            m_MonsterState = MonsterAI.State.HIDDEN;
         }
     }
 
     public void TriggerMonsterChase()
     {
-        if (!m_EventAmbienceAudioSrc.clip == m_Chase || !m_EventAmbienceAudioSrc.enabled == true)
+        if (m_MonsterState != MonsterAI.State.CHASE)
         {
             m_SFXAudioSrc.enabled = true;
             m_SFXAudioSrc.clip = m_MonsterScare;
             m_SFXAudioSrc.Play();
             StartCoroutine(ChaseMusic());
+            m_MonsterState = MonsterAI.State.CHASE;
         }
     }
 
     public void TriggerMonsterAppear()
     {
-        m_EventAmbienceAudioSrc.enabled = true;
-        m_EventAmbienceAudioSrc.clip = m_Tense;
-        m_EventAmbienceAudioSrc.Play();
-        StartCoroutine(ChaseMusic());
+        if (m_MonsterState != MonsterAI.State.APPEAR)
+        {
+            m_EventAmbienceAudioSrc.enabled = true;
+            m_EventAmbienceAudioSrc.clip = m_Tense;
+            m_EventAmbienceAudioSrc.Play();
+            StartCoroutine(ChaseMusic());
+            m_MonsterState = MonsterAI.State.APPEAR;
+        }
     }
 
     IEnumerator AppearMusic()

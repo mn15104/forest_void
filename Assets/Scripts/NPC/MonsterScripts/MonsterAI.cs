@@ -11,19 +11,12 @@ public class MonsterAI : MonoBehaviour {
     public static event StateChange OnStateChange;
 
     //Components
-    public AudioSource jumpScareSound;
-    public AudioSource chaseSound;
-	public enum State {HIDDEN, APPEAR, CHASE};
+	public enum State {HIDDEN, APPEAR, CHASE, GAMEOVER};
 	public State currentState;
 	public GameObject player;
 	private Vector3 appearPosition;
 	private Animator anim;
 	private GameObject trigger;
-
-	//GAME OVER
-	public Text gameOverText;
-	private bool monsterApproach;
-	private bool caughtByMonster;
 
 
 	// NavMesh 
@@ -47,11 +40,8 @@ public class MonsterAI : MonoBehaviour {
 	
         anim = GetComponent<Animator>();
 		agent = GetComponent<NavMeshAgent>();
-		gameOverText.text = "";
 		pathTimer = 1;
 		chaseTimer = 10;
-		monsterApproach = false;
-		caughtByMonster = false;
 	}
 	
 	// Update is called once per frame
@@ -66,6 +56,9 @@ public class MonsterAI : MonoBehaviour {
 			nextState = appear ();
 			break;
 		case State.CHASE:
+			nextState = chase ();			
+			break;
+        case State.GAMEOVER:
 			nextState = chase ();			
 			break;
 		default:
@@ -91,14 +84,11 @@ public class MonsterAI : MonoBehaviour {
 	State appear () {
 		transform.Find ("meshes").gameObject.SetActive(true);
 		transform.position = appearPosition;
-        jumpScareSound.enabled = true;
-        jumpScareSound.Play();
 		return State.CHASE;
 	}
 		
 	State chase () {
         Debug.Log("chasing");
-		monsterApproach = true; //Screen starts flashing red
 		anim.SetTrigger ("StartRunning");
        
 		//Chase player
@@ -113,7 +103,6 @@ public class MonsterAI : MonoBehaviour {
 			if (chaseTimer < 0) {
 				anim.SetTrigger ("StopRunning");
 				agent.isStopped = true;
-				monsterApproach = false;
 				return State.HIDDEN;
 			}
 		}
@@ -122,13 +111,9 @@ public class MonsterAI : MonoBehaviour {
 		float distance = (player.transform.position - transform.position).magnitude;
 		Debug.Log (distance);
 		if (distance < 1f) {
-			monsterApproach = false;
-			caughtByMonster = true;
-			agent.speed = 0;
+            agent.speed = 0;
 			anim.SetTrigger ("StopRunning");
-
-			Debug.Log ("Game over");
-			GameOver ();
+            return State.GAMEOVER;
 		}
 		return State.CHASE;
 	}
@@ -136,89 +121,56 @@ public class MonsterAI : MonoBehaviour {
 
 
     void GameOver(){
-		gameOverText.text = "GAME OVER";
+        
 	}
+   
 
-	void OnGUI() { 
-		Texture2D t;
-		Color currentBlendColor;
-		Color toColor;
 
-		if (monsterApproach == true) {
-			t = new Texture2D (1, 1);
-			t.SetPixel (0, 0, Color.white);
-			currentBlendColor = new Color (1, 0, 0, 0.25f); 
-			//Color fromColor = new Color( 1, 0, 0, 1 ); 
-			toColor = new Color (0, 0, 0, 0);
 
-			// Now each GUI draw the texture and blend it in. 
-			currentBlendColor = Color.Lerp (currentBlendColor, toColor, Mathf.PingPong (Time.time, 0.75f)); 
-			// Set GUI color 
-			GUI.color = currentBlendColor;
-			// Draw fade 
-			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), t, ScaleMode.StretchToFill);
-		}
-		if (caughtByMonster == true) {
-			t = new Texture2D (1, 1);
-			t.SetPixel (0, 0, Color.white);
-			currentBlendColor = new Color (0, 0, 0, 0); 
-			//Color fromColor = new Color( 1, 0, 0, 1 ); 
-			toColor = new Color (0, 0, 0, 1);
+    //bool willAppear(){
+    //	//This returns the probabilty of the monster appearing once the trigger point is touched
+    //	//Calculated using the distance and time passed
 
-			// Now each GUI draw the texture and blend it in. 
-			currentBlendColor = Color.Lerp (currentBlendColor, toColor, 1); 
-			// Set GUI color 
-			GUI.color = currentBlendColor;
-			// Draw fade 
-			GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), t, ScaleMode.StretchToFill);
-		}
-	}
-		
+    //	float timeProb = timeFromStart / endTime;
+    //	float distanceFromPlayer = (transform.position - player.transform.position).magnitude;
+    //	float distanceProb = distanceFromPlayer / terrainSize;
 
-	//bool willAppear(){
-	//	//This returns the probabilty of the monster appearing once the trigger point is touched
-	//	//Calculated using the distance and time passed
+    //	float probability = timeProb * distanceProb;
 
-	//	float timeProb = timeFromStart / endTime;
-	//	float distanceFromPlayer = (transform.position - player.transform.position).magnitude;
-	//	float distanceProb = distanceFromPlayer / terrainSize;
+    //	float randomProb = Random.Range (0.0f, 1.0f);
 
-	//	float probability = timeProb * distanceProb;
+    //	if (probability > randomProb) {
+    //		return true;
+    //	} else
+    //		return true;
+    //}
 
-	//	float randomProb = Random.Range (0.0f, 1.0f);
+    //	Vector3 freeRoam(Vector3 origin)
+    //	{
+    //		Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * roamRadius;
+    //
+    //		randomDirection += origin;
+    //
+    //		NavMeshHit navHit;
+    //
+    //		NavMesh.SamplePosition (randomDirection, out navHit, roamRadius, 1);
+    //
+    //		return navHit.position;
 
-	//	if (probability > randomProb) {
-	//		return true;
-	//	} else
-	//		return true;
-	//}
+    //		Vector3 randomDirection = Random.insideUnitSphere * roamRadius;
+    //		randomDirection += transform.position;
+    //		NavMeshHit hit;
+    //		Vector3 finalPosition = Vector3.zero;
+    //		if (NavMesh.SamplePosition(randomDirection, out hit, roamRadius, 1)) {
+    //			finalPosition = hit.position;            
+    //		}
+    //		return finalPosition;
 
-//	Vector3 freeRoam(Vector3 origin)
-//	{
-//		Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * roamRadius;
-//
-//		randomDirection += origin;
-//
-//		NavMeshHit navHit;
-//
-//		NavMesh.SamplePosition (randomDirection, out navHit, roamRadius, 1);
-//
-//		return navHit.position;
+    //	}
 
-//		Vector3 randomDirection = Random.insideUnitSphere * roamRadius;
-//		randomDirection += transform.position;
-//		NavMeshHit hit;
-//		Vector3 finalPosition = Vector3.zero;
-//		if (NavMesh.SamplePosition(randomDirection, out hit, roamRadius, 1)) {
-//			finalPosition = hit.position;            
-//		}
-//		return finalPosition;
-
-//	}
-
-	//bool inRange(Vector3 firstVector, Vector3 secondVector, int threshold){
-	//	float range = (firstVector - secondVector).magnitude;
-	//	if (range < threshold) return true;
-	//	else return false; 
-	//}
+    //bool inRange(Vector3 firstVector, Vector3 secondVector, int threshold){
+    //	float range = (firstVector - secondVector).magnitude;
+    //	if (range < threshold) return true;
+    //	else return false; 
+    //}
 }
