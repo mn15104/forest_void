@@ -100,7 +100,6 @@ public class MonsterAI : MonoBehaviour {
         Debug.Log("chasing");
 		monsterApproach = true; //Screen starts flashing red
 		anim.SetTrigger ("StartRunning");
-        StartCoroutine(ChaseMusic());
        
 		//Chase player
 		pathTimer -= Time.deltaTime;
