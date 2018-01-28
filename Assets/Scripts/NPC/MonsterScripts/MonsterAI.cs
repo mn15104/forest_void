@@ -7,7 +7,10 @@ using UnityEngine.UI;
 
 public class MonsterAI : MonoBehaviour {
 
+    public delegate void StateChange(State monsterState);
+    public static event StateChange OnStateChange;
 
+    //Components
     public AudioSource jumpScareSound;
     public AudioSource chaseSound;
 	public enum State {HIDDEN, APPEAR, CHASE};
@@ -39,6 +42,7 @@ public class MonsterAI : MonoBehaviour {
 
 
 	// Use this for initialization
+
 	void Start () {
 	
         anim = GetComponent<Animator>();
@@ -72,7 +76,8 @@ public class MonsterAI : MonoBehaviour {
 	}
 
 	public void setState(State state){
-		currentState = state;
+        OnStateChange(state);
+        currentState = state;
 	}
 	public void setPostion(Vector3 position){
 		appearPosition = position;
@@ -91,8 +96,6 @@ public class MonsterAI : MonoBehaviour {
 		return State.CHASE;
 	}
 		
-   
-
 	State chase () {
         Debug.Log("chasing");
 		monsterApproach = true; //Screen starts flashing red
@@ -131,14 +134,6 @@ public class MonsterAI : MonoBehaviour {
 		return State.CHASE;
 	}
 
-
-    IEnumerator ChaseMusic()
-    {
-        yield return new WaitForSeconds(jumpScareSound.clip.length);
-        Debug.Log("In chase music");
-        chaseSound.enabled = true;
-        chaseSound.Play();
-    }
 
 
     void GameOver(){

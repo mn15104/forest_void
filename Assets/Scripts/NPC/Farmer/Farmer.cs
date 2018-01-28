@@ -54,7 +54,7 @@ public class Farmer : MonoBehaviour {
     void OnEnable()
     {
         m_CurrentSpeed = m_WalkSpeed;
-        AppleScript_2.OnAlert += InitialiseChase;
+       // AppleScript_2.OnAlert += InitialiseChase;
         m_Shouting.loop = false;
         m_Shouting.enabled = false;
     }
@@ -69,7 +69,7 @@ public class Farmer : MonoBehaviour {
     
     void OnDisable()
     {
-        AppleScript_2.OnAlert -= InitialiseChase;
+        //AppleScript_2.OnAlert -= InitialiseChase;
     }
 
     void Awake()
