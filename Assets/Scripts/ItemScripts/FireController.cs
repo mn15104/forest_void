@@ -11,7 +11,6 @@ public class FireController : MonoBehaviour {
     [Range(0f, 50f)] private float lightSize;
 
     ParticleSystem m_particleSystem;
-    Light m_light;
     float fireIntensityMax = 60f;
     float fireSizeMax = 0.2f;
     float lightIntensityMax = 2f;
@@ -22,7 +21,6 @@ public class FireController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_particleSystem = GetComponentInChildren<ParticleSystem>();
-        m_light = GetComponentInChildren<Light>();
         var em = m_particleSystem.emission;
         em.enabled = true;
         var audio = GetComponents<AudioSource>();
@@ -65,8 +63,6 @@ public class FireController : MonoBehaviour {
         var fireRange = fireSizeMax * normalizer;
         m_fireShape.radius = fireRange;
         //var light
-        m_light.intensity = lightIntensityMax * normalizer;
-        m_light.range = lightSizeMax * normalizer;
         foreach (var aud in fireAuds)
         {
             aud.volume = normalizer;

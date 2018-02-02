@@ -100,6 +100,7 @@ public class Farmer : MonoBehaviour {
         _isLerping = true;
         _timeStartedLerping = Time.time;
     }
+
     void Chase()
     {
         //Rotate

@@ -10,16 +10,7 @@ public class DoorScript : MonoBehaviour {
     Rigidbody body;
     HingeJoint joint;
 
-    public void FV_Glow(bool active)
-    {
-        foreach (Transform child in GetComponents<Transform>())
-        {
-            if (child.gameObject.tag == "HandleGlow")
-            {
-                child.gameObject.SetActive(active);
-            }
-        }
-    }
+
     void OnEnable()
     {
         foreach (Transform child in GetComponents<Transform>())

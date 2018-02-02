@@ -10,115 +10,231 @@ public class MonsterAI : MonoBehaviour {
     public delegate void StateChange(State monsterState);
     public static event StateChange OnStateChange;
 
+
+
     //Components
-	public enum State {HIDDEN, APPEAR, CHASE, GAMEOVER};
-	public State currentState;
-	public GameObject player;
-	private Vector3 appearPosition;
+	public enum State {
+        HIDDEN,
+        APPEAR,
+        APPROACH,
+        CHASE,
+        GAMEOVER
+    };
+
+    public GameObject player;
+    public State currentState;
+    public State debugState;
+    private Vector3 appearPosition;
 	private Animator anim;
 	private GameObject trigger;
-
-
-	// NavMesh 
-	private UnityEngine.AI.NavMeshAgent agent;
-	private float pathTimer;
+    
 	private float chaseTimer;
+    //
+    private float m_WalkSpeed = 1f;
+    private float m_ApproachSpeed = 1.2f;
+    private float m_MinChaseSpeed = 0.3f;
+    private float m_MaxChaseSpeed = 3.5f;
+    private float m_CurrentSpeed = 1f;
+    // 
+    private bool _isLerping = false;
+    private float _timeStartedLerping = 0f;
+    private float timeTakenDuringLerp = 1f;
+    //
+    private Vector3 destination;
+    private bool collisionAhead = false;
 
-//	//Calculating whether the monster will appear or not
-//	private float timeFromStart;
-//	private float endTime;
-//	private float terrainSize;
 
-//	//FreeRoam
-//	public float roamRadius;
-//	public float wanderTimer;
+    private void OnEnable()
+    {
+        MonsterTrigger.OnHumanDetected += humanDetected;
+    }
 
+    private void OnDisable()
+    {
+        MonsterTrigger.OnHumanDetected -= humanDetected;
+    }
 
-	// Use this for initialization
-
-	void Start () {
-	
+    void Start () {
         anim = GetComponent<Animator>();
-		agent = GetComponent<NavMeshAgent>();
-		pathTimer = 1;
 		chaseTimer = 10;
-	}
+        anim.SetBool("Idle", true);
+        appearPosition = transform.position;
+        destination = player.transform.position;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		State nextState;
-		switch (currentState) 
+        UpdateDestination();
+        switch (currentState) 
 		{
 		case State.HIDDEN:
-			nextState = hidden ();
+			hidden ();
 			break;
 		case State.APPEAR:
-			nextState = appear ();
-			break;
+			appear();
+            break;
+        case State.APPROACH:
+                approach();
+            break;
 		case State.CHASE:
-			nextState = chase ();			
+            chase ();			
 			break;
         case State.GAMEOVER:
-			nextState = chase ();			
+            hidden();			
 			break;
 		default:
-			nextState = State.HIDDEN; 
-			break;
+            hidden();
+            break;
 		}
-		currentState = nextState;
-	}
+
+        if (currentState != debugState)
+            setState(debugState);
+        
+    }
+
+    void UpdateDestination()
+    {
+        if (currentState == State.APPROACH || currentState == State.CHASE || currentState == State.APPEAR)
+        {
+            if (!collisionAhead)
+                destination = player.transform.position;
+            else
+            {
+                Vector3 dest = transform.position;
+                Vector3 forward = transform.forward;
+                Vector3 right = transform.right;
+                Vector3 rot = forward + right;
+                destination = transform.position + forward + right;
+            }
+        }
+    }
+    
+    public void NotifyCollisionAhead(bool isCollision)
+    {
+        collisionAhead = isCollision;
+    }
 
 	public void setState(State state){
-        OnStateChange(state);
-        currentState = state;
-	}
-	public void setPostion(Vector3 position){
-		appearPosition = position;
+        if (state != currentState)
+        {
+            OnStateChange(state);
+            switch (state)
+            {
+                case State.HIDDEN:
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Walk", false);
+                    anim.SetBool("Idle", true);
+                    foreach (MeshRenderer mesh in GetComponentsInChildren<MeshRenderer>())
+                        mesh.enabled = false;
+                    break;
+                case State.APPEAR:
+                    foreach (MeshRenderer mesh in GetComponentsInChildren<MeshRenderer>())
+                        mesh.enabled = true;
+                    transform.position = appearPosition;
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Walk", true);
+                    StartCoroutine(DelayChase());
+                    break;
+                case State.APPROACH:
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Walk", true);
+                    m_CurrentSpeed = m_MinChaseSpeed;
+                    break;
+                case State.CHASE:
+                    anim.SetBool("Walk", false);
+                    anim.SetBool("Run", true);
+                    anim.SetFloat("Speed", m_MinChaseSpeed);
+                    _isLerping = true;
+                    _timeStartedLerping = Time.time;
+                    break;
+                case State.GAMEOVER:
+                    anim.SetBool("Idle", true);
+                    anim.SetBool("Walk", false);
+                    anim.SetBool("Run", false);
+                    break;
+                default:
+                    hidden();
+                    break;
+            }
+            currentState = state;
+        }
+    }
+	void setPosition(Vector3 position){
+
 	}
 
-	State hidden () {
-		transform.Find ("meshes").gameObject.SetActive(false);
-		return State.HIDDEN;
-	}
+	void hidden () {
 
-	State appear () {
-		transform.Find ("meshes").gameObject.SetActive(true);
-		transform.position = appearPosition;
-		return State.CHASE;
+    }
+
+	void appear () {
 	}
-		
-	State chase () {
-        Debug.Log("chasing");
-		anim.SetTrigger ("StartRunning");
-       
-		//Chase player
-		pathTimer -= Time.deltaTime;
+    
+    void approach()
+    {
+        var lookPos = destination - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        //Chase
+        anim.SetFloat("Speed", m_CurrentSpeed);
+        Vector3 playerpos = destination;
+        Vector3 planar = new Vector3(1, 0, 1);
+        Ray ray = new Ray(transform.position, transform.forward);
+        Vector3 dir = (playerpos - transform.position).normalized * m_CurrentSpeed;
+        dir.y = 0;
+        transform.GetComponent<Rigidbody>().velocity = dir;
+    }
+
+    IEnumerator DelayChase()
+    {
+        setState(State.APPROACH);
+        yield return new WaitForSeconds(4f);
+        setState(State.CHASE);
+    }
+
+    void chase () {
+        //Rotate
+        var lookPos = destination - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        //Chase
+        float distanceToHuman = Mathf.Sqrt(Mathf.Pow(destination.x - transform.position.x, 2) 
+                                + Mathf.Pow(destination.y - transform.position.y, 2));
+        
 		chaseTimer -= Time.deltaTime;
-		if (pathTimer < 0) {
-			agent.SetDestination (player.transform.position);
-			pathTimer = 1;
-	
+		if (chaseTimer < 0) {
+			setState(State.HIDDEN);
+        }
 
-			//Debug.Log (chaseTimer);
-			if (chaseTimer < 0) {
-				anim.SetTrigger ("StopRunning");
-				agent.isStopped = true;
-				return State.HIDDEN;
-			}
-		}
-
-		// GAME OVER
-		float distance = (player.transform.position - transform.position).magnitude;
-		Debug.Log (distance);
+		// Game Over
+		float distance = (destination - transform.position).magnitude;
 		if (distance < 1f) {
-            agent.speed = 0;
-			anim.SetTrigger ("StopRunning");
-            return State.GAMEOVER;
-		}
-		return State.CHASE;
+            setState(State.GAMEOVER);
+        }
 	}
 
+    void FixedUpdate()
+    {
+        if (_isLerping)
+        {
+            float timeSinceStarted = Time.time - _timeStartedLerping;
+            float percentageComplete = (timeSinceStarted / timeTakenDuringLerp) * 0.5f;
+            m_CurrentSpeed = Mathf.Lerp(m_MinChaseSpeed, m_MaxChaseSpeed, percentageComplete);
+            if (percentageComplete >= 1.0f)
+            {
+                _isLerping = false;
+            }
+        }
+    }
 
+    void humanDetected(Transform detectionTrans)
+    {
+        destination = detectionTrans.position;
+        setState(State.APPEAR);
+        setPosition(detectionTrans.position);
+    }
 
     void GameOver(){
         
