@@ -29,7 +29,7 @@ public class MonsterTrigger : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if(other.tag == player.tag){
             OnHumanDetected(transform);
-			m_Collider.enabled = false;
-		}
+            m_Collider.enabled = false;
+        }
 	}
 }

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class AICollisionDetection : MonoBehaviour {
 
+    public enum CollisionSide
+    {
+        LEFT,
+        RIGHT
+    }
+    public CollisionSide m_CollisionSide;
     MonsterAI m_monsterAI;
     int collisionCount = 0;
 	// Use this for initialization
@@ -15,17 +21,17 @@ public class AICollisionDetection : MonoBehaviour {
 	void Update () {
 		if(collisionCount == 0)
         {
-            m_monsterAI.NotifyCollisionAhead(false);
+            m_monsterAI.NotifyCollisionAhead(m_CollisionSide, false);
         }
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-       if(other.gameObject.GetComponent<HumanVRController>() != null)
+       if(other.gameObject.layer == 13 || other.gameObject.layer == 14)
         {
             if (collisionCount == 0)
             {
-                m_monsterAI.NotifyCollisionAhead(true);
+                m_monsterAI.NotifyCollisionAhead(m_CollisionSide, true);
             }
             collisionCount++;
         }

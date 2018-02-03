@@ -22,27 +22,22 @@ public class MonsterAI : MonoBehaviour {
     };
 
     public GameObject player;
-    public State currentState;
-    public State debugState;
-    private Vector3 appearPosition;
-	private Animator anim;
+    public State currentState = State.HIDDEN;
+    public State debugState = State.HIDDEN;
+    private Animator anim;
 	private GameObject trigger;
     
-	private float chaseTimer;
+	private float chaseTimer = 20f;
     //
     private float m_WalkSpeed = 1f;
-    private float m_ApproachSpeed = 1.2f;
-    private float m_MinChaseSpeed = 0.3f;
-    private float m_MaxChaseSpeed = 3.5f;
+    private float m_MinApproachSpeed = 0.3f;
+    private float m_MaxApproachSpeed = 3.5f;
+    private float m_RunSpeed = 0.5f;
     private float m_CurrentSpeed = 1f;
-    // 
-    private bool _isLerping = false;
-    private float _timeStartedLerping = 0f;
-    private float timeTakenDuringLerp = 1f;
     //
     private Vector3 destination;
-    private bool collisionAhead = false;
-
+    private bool collisionRight;
+    private bool collisionLeft;
 
     private void OnEnable()
     {
@@ -56,9 +51,7 @@ public class MonsterAI : MonoBehaviour {
 
     void Start () {
         anim = GetComponent<Animator>();
-		chaseTimer = 10;
         anim.SetBool("Idle", true);
-        appearPosition = transform.position;
         destination = player.transform.position;
     }
 	
@@ -96,22 +89,21 @@ public class MonsterAI : MonoBehaviour {
     {
         if (currentState == State.APPROACH || currentState == State.CHASE || currentState == State.APPEAR)
         {
-            if (!collisionAhead)
                 destination = player.transform.position;
-            else
-            {
-                Vector3 dest = transform.position;
-                Vector3 forward = transform.forward;
-                Vector3 right = transform.right;
-                Vector3 rot = forward + right;
-                destination = transform.position + forward + right;
-            }
         }
     }
     
-    public void NotifyCollisionAhead(bool isCollision)
+    public void NotifyCollisionAhead(AICollisionDetection.CollisionSide collisionSide, bool isCollision)
     {
-        collisionAhead = isCollision;
+        switch (collisionSide)
+        {
+            case AICollisionDetection.CollisionSide.LEFT:
+                collisionLeft = isCollision;
+                break;
+            case AICollisionDetection.CollisionSide.RIGHT:
+                collisionRight = isCollision;
+                break;
+        }   
     }
 
 	public void setState(State state){
@@ -128,24 +120,23 @@ public class MonsterAI : MonoBehaviour {
                         mesh.enabled = false;
                     break;
                 case State.APPEAR:
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Walk", false);
+                    anim.SetBool("Idle", true);
                     foreach (MeshRenderer mesh in GetComponentsInChildren<MeshRenderer>())
                         mesh.enabled = true;
-                    transform.position = appearPosition;
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("Walk", true);
-                    StartCoroutine(DelayChase());
+                    StartCoroutine(DelayStateChange(State.APPROACH, 3f));
                     break;
                 case State.APPROACH:
                     anim.SetBool("Idle", false);
                     anim.SetBool("Walk", true);
-                    m_CurrentSpeed = m_MinChaseSpeed;
+                    m_CurrentSpeed = m_MinApproachSpeed;
+                    StartCoroutine(DelayStateChange(State.CHASE, 6f));
                     break;
                 case State.CHASE:
                     anim.SetBool("Walk", false);
                     anim.SetBool("Run", true);
-                    anim.SetFloat("Speed", m_MinChaseSpeed);
-                    _isLerping = true;
-                    _timeStartedLerping = Time.time;
+                    anim.SetFloat("Speed", m_RunSpeed);
                     break;
                 case State.GAMEOVER:
                     anim.SetBool("Idle", true);
@@ -156,49 +147,69 @@ public class MonsterAI : MonoBehaviour {
                     hidden();
                     break;
             }
+            debugState = state;
             currentState = state;
         }
     }
-	void setPosition(Vector3 position){
-
-	}
 
 	void hidden () {
 
     }
 
 	void appear () {
+
 	}
     
     void approach()
     {
-        var lookPos = destination - transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        if (collisionLeft || collisionRight)
+        {
+            Vector3 t_rotation = transform.rotation.eulerAngles;
+
+            if (collisionRight)
+                t_rotation.y -= Time.deltaTime * 60;
+            else
+                t_rotation.y += Time.deltaTime * 60;
+
+            transform.rotation = Quaternion.Euler(t_rotation);
+        }
+        else
+        {
+            var lookPos = destination - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        }
         //Chase
+        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_MaxApproachSpeed, Time.deltaTime * 0.1f);
         anim.SetFloat("Speed", m_CurrentSpeed);
-        Vector3 playerpos = destination;
-        Vector3 planar = new Vector3(1, 0, 1);
-        Ray ray = new Ray(transform.position, transform.forward);
-        Vector3 dir = (playerpos - transform.position).normalized * m_CurrentSpeed;
-        dir.y = 0;
-        transform.GetComponent<Rigidbody>().velocity = dir;
     }
 
-    IEnumerator DelayChase()
+    IEnumerator DelayStateChange(State state, float delayTime)
     {
-        setState(State.APPROACH);
-        yield return new WaitForSeconds(4f);
-        setState(State.CHASE);
+        yield return new WaitForSeconds(delayTime);
+        setState(state);
     }
 
     void chase () {
-        //Rotate
-        var lookPos = destination - transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        if (collisionLeft || collisionRight)
+        {
+            Vector3 t_rotation = transform.rotation.eulerAngles;
+
+            if (collisionRight)
+                t_rotation.y -= Time.deltaTime * 60;
+            else
+                t_rotation.y += Time.deltaTime * 60;
+
+            transform.rotation = Quaternion.Euler(t_rotation);
+        }
+        else
+        {
+            var lookPos = destination - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        }
         //Chase
         float distanceToHuman = Mathf.Sqrt(Mathf.Pow(destination.x - transform.position.x, 2) 
                                 + Mathf.Pow(destination.y - transform.position.y, 2));
@@ -206,6 +217,7 @@ public class MonsterAI : MonoBehaviour {
 		chaseTimer -= Time.deltaTime;
 		if (chaseTimer < 0) {
 			setState(State.HIDDEN);
+            chaseTimer = 20f;
         }
 
 		// Game Over
@@ -215,25 +227,10 @@ public class MonsterAI : MonoBehaviour {
         }
 	}
 
-    void FixedUpdate()
-    {
-        if (_isLerping)
-        {
-            float timeSinceStarted = Time.time - _timeStartedLerping;
-            float percentageComplete = (timeSinceStarted / timeTakenDuringLerp) * 0.5f;
-            m_CurrentSpeed = Mathf.Lerp(m_MinChaseSpeed, m_MaxChaseSpeed, percentageComplete);
-            if (percentageComplete >= 1.0f)
-            {
-                _isLerping = false;
-            }
-        }
-    }
-
     void humanDetected(Transform detectionTrans)
     {
         destination = detectionTrans.position;
         setState(State.APPEAR);
-        setPosition(detectionTrans.position);
     }
 
     void GameOver(){
