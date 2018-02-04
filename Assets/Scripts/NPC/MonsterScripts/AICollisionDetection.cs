@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AICollisionSide
+{
+    LEFT,
+    RIGHT,
+    NONE
+}
+
 public class AICollisionDetection : MonoBehaviour {
 
-    public enum CollisionSide
-    {
-        LEFT,
-        RIGHT
-    }
-    public CollisionSide m_CollisionSide;
+
+    public AICollisionSide m_CollisionSide;
     MonsterAI m_monsterAI;
     int collisionCount = 0;
 	// Use this for initialization

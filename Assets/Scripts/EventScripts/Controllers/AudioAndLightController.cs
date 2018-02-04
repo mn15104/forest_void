@@ -31,11 +31,13 @@ public class AudioAndLightController : MonoBehaviour {
     private HumanController human;
     private HumanVRController humanvr;
     //Monster
-    private MonsterAI.State m_MonsterState;
+    private MonsterState m_MonsterState;
+    private MonsterAI m_Monster;
 
     private void OnEnable()
     {
-        MonsterAI.OnStateChange += MonsterStateChange;
+        m_Monster = FindObjectOfType<MonsterAI>();
+        m_Monster.OnMonsterStateChange += MonsterStateChange;
     }
 
     private void OnGUI()
@@ -55,7 +57,7 @@ public class AudioAndLightController : MonoBehaviour {
         Color currentBlendColor;
         Color toColor;
 
-        if (m_MonsterState == MonsterAI.State.CHASE)
+        if (m_MonsterState == MonsterState.CHASE)
         {
             t = new Texture2D(1, 1);
             t.SetPixel(0, 0, Color.white);
@@ -71,7 +73,7 @@ public class AudioAndLightController : MonoBehaviour {
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), t, ScaleMode.StretchToFill);
         }
 
-        if (m_MonsterState == MonsterAI.State.GAMEOVER)
+        if (m_MonsterState == MonsterState.GAMEOVER)
         {
             t = new Texture2D(1, 1);
             t.SetPixel(0, 0, Color.white);
@@ -105,15 +107,15 @@ public class AudioAndLightController : MonoBehaviour {
         m_SFXAudioSrc.enabled = false;
     }
 
-    private void MonsterStateChange(MonsterAI.State monsterStateChange)
+    private void MonsterStateChange(MonsterState monsterStateChange)
     {
-        if (monsterStateChange == MonsterAI.State.CHASE)
+        if (monsterStateChange == MonsterState.CHASE)
             TriggerMonsterChase();
-        else if (monsterStateChange == MonsterAI.State.HIDDEN)
+        else if (monsterStateChange == MonsterState.HIDDEN_MOVING)
             TriggerMonsterHidden();
-        else if (monsterStateChange == MonsterAI.State.APPEAR)
+        else if (monsterStateChange == MonsterState.APPEAR)
             TriggerMonsterAppear();
-        else if (monsterStateChange == MonsterAI.State.GAMEOVER)
+        else if (monsterStateChange == MonsterState.GAMEOVER)
             TriggerMonsterGameOver();
     }
 
@@ -124,45 +126,45 @@ public class AudioAndLightController : MonoBehaviour {
 
     public void TriggerMonsterGameOver()
     {
-        if (m_MonsterState != MonsterAI.State.GAMEOVER)
+        if (m_MonsterState != MonsterState.GAMEOVER)
         {
             m_MainAmbienceAudioSrc.enabled = true;
             m_MainAmbienceAudioSrc.clip = m_GameOver;
             m_MainAmbienceAudioSrc.Play();
-            m_MonsterState = MonsterAI.State.GAMEOVER;
+            m_MonsterState = MonsterState.GAMEOVER;
         }
     }
 
     public void TriggerMonsterHidden()
     {
-        if (m_MonsterState != MonsterAI.State.HIDDEN)
+        if (m_MonsterState != MonsterState.HIDDEN_IDLE && m_MonsterState != MonsterState.HIDDEN_MOVING)
         {
             StartCoroutine(HiddenMusic());
-            m_MonsterState = MonsterAI.State.HIDDEN;
+            m_MonsterState = MonsterState.HIDDEN_MOVING;
         }
     }
 
     public void TriggerMonsterChase()
     {
-        if (m_MonsterState != MonsterAI.State.CHASE)
+        if (m_MonsterState != MonsterState.CHASE)
         {
             m_SFXAudioSrc.enabled = true;
             m_SFXAudioSrc.clip = m_MonsterScare;
             m_SFXAudioSrc.Play();
             StartCoroutine(ChaseMusic());
-            m_MonsterState = MonsterAI.State.CHASE;
+            m_MonsterState = MonsterState.CHASE;
         }
     }
 
     public void TriggerMonsterAppear()
     {
-        if (m_MonsterState != MonsterAI.State.APPEAR)
+        if (m_MonsterState != MonsterState.APPEAR)
         {
             m_EventAmbienceAudioSrc.enabled = true;
             m_EventAmbienceAudioSrc.clip = m_Tense;
             m_EventAmbienceAudioSrc.Play();
             StartCoroutine(ChaseMusic());
-            m_MonsterState = MonsterAI.State.APPEAR;
+            m_MonsterState = MonsterState.APPEAR;
         }
     }
 
