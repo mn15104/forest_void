@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HumanVRRightHand : MonoBehaviour {
-    
+
+    public delegate void HumanLightEmitter(bool on);
+    public static event HumanLightEmitter OnHumanLightEmission;
+
     private Flashlight flashlight;
     private int id = 1;
 
@@ -23,8 +26,15 @@ public class HumanVRRightHand : MonoBehaviour {
         if (SixenseInput.Controllers[id].GetButtonDown(SixenseButtons.TRIGGER))
         {
             flashlight.Switch(gameObject);
+            if (flashlight.m_FlashlightActive)
+            {
+                OnHumanLightEmission(true);
+            }
+            else
+            {
+                OnHumanLightEmission(false);
+            }
         }
     }
-
-  
+    
 }

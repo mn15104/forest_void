@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+public enum TerrainType
+{
+    GRASS,
+    STONE
+}
 
 public class HumanVRAudioController : MonoBehaviour {
 
 
-    enum TerrainType
-    {
-        GRASS,
-        STONE
-    }
+    public delegate void HumanAudioEmitter(float volumeEmitted);
+    public static event HumanAudioEmitter OnHumanAudioEmission;
 
+    
     private Dictionary<int, TerrainType> m_TerrainTypeDictionary = new Dictionary<int, TerrainType>();
     private Dictionary<TerrainType, float> m_TerrainVolumeDictionary = new Dictionary<TerrainType, float>();
     private Terrain m_CurrentTerrain;
@@ -64,7 +67,22 @@ public class HumanVRAudioController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-       
+        if (HumanMotion.isPlaying)
+        {
+            if(m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING || 
+               m_humanVRController.GetPlayerMoveState() == PlayerMoveState.CROUCHING)
+            {
+                OnHumanAudioEmission(0.3f);
+            }
+            else if (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+            {
+                OnHumanAudioEmission(1f);
+            }
+        }
+        else
+        {
+            OnHumanAudioEmission(0);
+        }
     }
 
     // GetTextureMix

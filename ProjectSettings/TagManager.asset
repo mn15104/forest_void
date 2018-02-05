@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OVRCameraRig
   - Player 1
+  - Portrait
   layers:
   - Default
   - TransparentFX
@@ -19,9 +20,9 @@ TagManager:
   - Wood
   - 
   - Interactive
-  - 
-  - 
-  - 
+  - Structure
+  - Rocks
+  - Trees
   - 
   - 
   - 

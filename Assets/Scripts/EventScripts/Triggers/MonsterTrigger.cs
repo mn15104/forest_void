@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class MonsterTrigger : MonoBehaviour {
 
-	public GameObject player;
-	public MonsterAI monster;
-	public Vector3 appearPosition;
+    public delegate void HumanDetected(Transform human);
+    public static event HumanDetected OnHumanDetected;
 
+    public GameObject player;
+	public MonsterAI monster;
+	private Vector3 appearPosition;
 	private Renderer rend;
 	private Collider m_Collider;
 
 	// Use this for initialization
 	void Start () {
-
-		m_Collider = GetComponent<Collider>();
+        appearPosition = transform.position;
+        m_Collider = GetComponent<Collider>();
 		m_Collider.enabled = false;
 	}
 	
@@ -25,12 +27,9 @@ public class MonsterTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(other.tag == player.tag){ 
-			//rend.material.SetColor("_Color", Color.green);
-			//appearPosition = transform.position 
-			monster.setState(MonsterAI.State.APPEAR);
-			monster.setPostion (appearPosition);
-			m_Collider.enabled = false;
-		}
+		if(other.tag == player.tag){
+            OnHumanDetected(transform);
+            m_Collider.enabled = false;
+        }
 	}
 }
