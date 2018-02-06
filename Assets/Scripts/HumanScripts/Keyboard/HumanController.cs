@@ -109,10 +109,12 @@ public class HumanController : MonoBehaviour
     private bool m_Ladder = false;
     private GameObject ladder;
     private Quaternion OriginalRotation;
+    private float maxRunTime = 8f;
+    private float timeRunning = 0f;
 
     void Start()
     {
-        m_playerMoveState = PlayerMoveState.RUNNING;
+        m_playerMoveState = PlayerMoveState.WALKING;
         m_CurrentGroundCollision = CurrentGroundCollision.AIR;
         OriginalRotation = transform.rotation;
         m_Animator = GetComponentInChildren<Animator>();
@@ -177,13 +179,12 @@ public class HumanController : MonoBehaviour
 
     private void Update()
     {
-        if (!m_FallingOver && !m_GetBackUp)
-        {
-            CheckJumpState();
-            CheckClimbState();
-            CheckCrouchState();
-            CheckRunState();
-        }
+        Debug.Log(m_playerMoveState.ToString());
+        CheckJumpState();
+        CheckClimbState();
+        CheckCrouchState();
+        CheckRunState();
+        
     }
 
     void CheckJumpState()
@@ -206,16 +207,31 @@ public class HumanController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.R))
             {
-                if (m_playerMoveState != PlayerMoveState.RUNNING)
+                if (m_playerMoveState != PlayerMoveState.RUNNING && (timeRunning < (maxRunTime) / 2))
                 {
                     m_Animator.SetBool("Running", true);
                     m_playerMoveState = PlayerMoveState.RUNNING;
                 }
             }
-            else 
+            else
             {
                 m_Animator.SetBool("Running", false);
                 m_playerMoveState = PlayerMoveState.WALKING;
+            }
+
+            if (m_playerMoveState == PlayerMoveState.RUNNING)
+            {
+                if (timeRunning < maxRunTime)
+                    timeRunning += Time.deltaTime;
+                else 
+                {
+                    m_Animator.SetBool("Running", false);
+                    m_playerMoveState = PlayerMoveState.WALKING;
+                }
+            }
+            else if (m_playerMoveState != PlayerMoveState.RUNNING && timeRunning > 0f)
+            {
+                timeRunning -= Time.deltaTime;
             }
         }
     }
@@ -442,5 +458,13 @@ public class HumanController : MonoBehaviour
     public Terrain GetCurrentTerrain()
     {
          return m_CurrentTerrain; 
+    }
+    public float GetTimeSpentRunning()
+    {
+        return timeRunning;
+    }
+    public float GetMaxRunTime()
+    {
+        return maxRunTime;
     }
 }

@@ -39,16 +39,6 @@ public class HumanEventManager : MonoBehaviour {
 	//Update is called once per frame
 	void Update () {
         /////////////////////////////////
-        // Interactive Object Glow
-        /////////////////////////////////
-        RaycastHit hit;
-        Ray perspective = new Ray(m_Cam.transform.position, m_Cam.transform.forward);
-        if (Physics.Raycast(perspective, out hit))
-        {
-            OnGlow(hit.collider.gameObject);
-        }
-
-        /////////////////////////////////
         // Interactions
         /////////////////////////////////
         /* Use Held Item */

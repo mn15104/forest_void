@@ -7,6 +7,7 @@ public class HumanVRLeftHand : MonoBehaviour {
 
     public delegate void Interact(GameObject item, GameObject human);
     public static event Interact OnInteract;
+    private HumanVRController m_HumanVRController;
     private int id = 0;
     private GameObject m_ObjectFocus = null;
     private InventoryScript PlayerInventory;
@@ -18,12 +19,17 @@ public class HumanVRLeftHand : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        m_HumanVRController = GetComponentInParent<HumanVRController>();
         PlayerInventory = GetComponentInChildren<InventoryScript>();
     }
 	
 	//Update is called once per frame
 	void Update () {
         if (SixenseInput.Controllers[id].GetButton(SixenseButtons.TRIGGER))
+        {
+            
+        }
+        if (SixenseInput.Controllers[id].GetButton(SixenseButtons.BUMPER))
         {
             if (m_ObjectFocus != null)
             {

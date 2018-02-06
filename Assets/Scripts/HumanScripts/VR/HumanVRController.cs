@@ -50,11 +50,11 @@ public class HumanVRController : MonoBehaviour
     private PlayerMoveState m_playerMoveState;
     private CurrentGroundCollision m_CurrentGroundCollision;
     private GameObject m_CurrentGroundCollider;
-    private bool m_GetBackUp = false;
-    private bool m_FallingOver = false;
     private bool m_Ladder = false;
     private GameObject ladder;
     private Quaternion OriginalRotation;
+    private float maxRunTime = 8f;
+    private float timeRunning = 0f;
 
     void Start()
     {
@@ -88,90 +88,47 @@ public class HumanVRController : MonoBehaviour
         //Create movement & rotation vectors
         Vector3 movement = moveVertical * m_Forward + moveHorizontal * m_Right;
         Vector3 rotation = new Vector3(rotateHorizontal * m_rotateSpeed, 0, 0);
-
-        //If jumping, require raycast detection for ground collision event
-        if (m_playerMoveState == PlayerMoveState.JUMPING)
-        {
-            RaycastHit hitInfo;
-            if (Physics.Raycast(transform.position + new Vector3(0, 1, 0), transform.TransformDirection(Vector3.down), out hitInfo, 2f))
-            {
-                m_Animator.SetBool("Jumping", false);
-                m_playerMoveState = PlayerMoveState.WALKING;
-
-            }
-        }
-
-
+        
         Move(movement, rotation);
-    }
-
-    public void FallOver()
-    {
-        m_Rigidbody.constraints = RigidbodyConstraints.None;
-        m_Animator.SetBool("Fallover", true);
-        m_Rigidbody.AddForceAtPosition(transform.TransformDirection(Vector3.back) * 20, transform.position + new Vector3(0, 0.5f, 0));
-        m_Rigidbody.AddForceAtPosition(transform.TransformDirection(Vector3.forward) * 20, transform.position - new Vector3(0, 0.5f, 0));
-        m_FallingOver = true;
-    }
-
-    public void GetBackUp()
-    {
-        m_Animator.SetBool("Fallover", false);
-        m_FallingOver = false;
-        m_GetBackUp = true;
-    }
-
-    public void JumpForce()
-    {
-        m_Rigidbody.AddForce(0, 2000, 0);
     }
 
     private void Update()
     {
-        if (!m_FallingOver && !m_GetBackUp)
-        {
-            if (SixenseInput.Controllers[0].GetButtonDown(SixenseButtons.TWO)
-                || SixenseInput.Controllers[1].GetButtonDown(SixenseButtons.TWO))
-            {
-                CheckJumpState();
-            }
-            if (SixenseInput.Controllers[0].GetButtonDown(SixenseButtons.ONE)
-               || SixenseInput.Controllers[1].GetButtonDown(SixenseButtons.ONE))
-            {
-                CheckCrouchState();
-            }
-            CheckClimbState();
-            CheckRunState();
-        }
+        CheckClimbState();
+        CheckRunState();
     }
-
-    void CheckJumpState()
-    {
-        if (Input.GetKey(KeyCode.Space) &&
-            m_playerMoveState != PlayerMoveState.JUMPING &&
-            m_playerMoveState != PlayerMoveState.CLIMBING)
-        {
-            m_Animator.SetBool("Crouch", false);
-            m_Animator.SetBool("Jumping", true);
-            m_playerMoveState = PlayerMoveState.JUMPING;
-        }
-    }
-
+  
     void CheckRunState()
     {
-        if (m_playerMoveState != PlayerMoveState.CROUCHING &&
-            m_playerMoveState != PlayerMoveState.JUMPING &&
-            m_playerMoveState != PlayerMoveState.CLIMBING)
+        if (m_playerMoveState != PlayerMoveState.CLIMBING)
         {
-            if (m_playerMoveState != PlayerMoveState.RUNNING && moveVertical > 0.8)
+            if (SixenseInput.Controllers[0].GetButton(SixenseButtons.TRIGGER))
             {
+                if (m_playerMoveState != PlayerMoveState.RUNNING && (timeRunning < (maxRunTime) / 2))
+                {
                     m_Animator.SetBool("Running", true);
                     m_playerMoveState = PlayerMoveState.RUNNING;
+                }
             }
-            else if((m_playerMoveState == PlayerMoveState.RUNNING && moveVertical < 0.7))
+            else if(m_playerMoveState == PlayerMoveState.RUNNING)
             {
                 m_Animator.SetBool("Running", false);
                 m_playerMoveState = PlayerMoveState.WALKING;
+            }
+
+            if (m_playerMoveState == PlayerMoveState.RUNNING)
+            {
+                if (timeRunning < maxRunTime)
+                    timeRunning += Time.deltaTime;
+                else
+                {
+                    m_Animator.SetBool("Running", false);
+                    m_playerMoveState = PlayerMoveState.WALKING;
+                }
+            }
+            else if (m_playerMoveState != PlayerMoveState.RUNNING && timeRunning > 0f)
+            {
+                timeRunning -= Time.deltaTime;
             }
         }
     }
@@ -201,30 +158,7 @@ public class HumanVRController : MonoBehaviour
         }
     }
 
-    void CheckCrouchState()
-    {
-        if ((m_playerMoveState != PlayerMoveState.JUMPING &&
-             m_playerMoveState != PlayerMoveState.CLIMBING))
-        {
-            if (m_playerMoveState == PlayerMoveState.WALKING)
-            {
-                m_Animator.SetBool("Crouch", true);
-                m_playerMoveState = PlayerMoveState.CROUCHING;
-            }
-            else if (m_playerMoveState == PlayerMoveState.CROUCHING)
-            {
-                m_Animator.SetBool("Crouch", false);
-                m_playerMoveState = PlayerMoveState.WALKING;
-            }
-        }
-    }
-
-    IEnumerator DelayGetBackUp()
-    {
-        yield return new WaitForSeconds(1.4f);
-        m_GetBackUp = false;
-    }
-    
+  
 
     public void Move(Vector3 move, Vector3 rotation)
     {
@@ -233,23 +167,7 @@ public class HumanVRController : MonoBehaviour
         float y_frame = m_Rigidbody.velocity.y;
         float z_frame = m_Rigidbody.velocity.z;
 
-        if (m_FallingOver)
-        {
-            // Do nothing
-        }
-        else if (m_GetBackUp)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,
-                                                  OriginalRotation,
-                                                  350 * Time.deltaTime);
-            if (transform.rotation == OriginalRotation)
-            {
-                m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-                StartCoroutine(DelayGetBackUp());
-            }
-        }
-        // Enables up & down climbing movement along y axis
-        else if (m_playerMoveState == PlayerMoveState.CLIMBING && m_Ladder)
+        if (m_playerMoveState == PlayerMoveState.CLIMBING && m_Ladder)
         {
             {
                 m_Rigidbody.velocity = new Vector3(0, 0, 0);
@@ -270,8 +188,8 @@ public class HumanVRController : MonoBehaviour
                 }
             }
         }
-        // Enables walking, running, or crouch-walking
-        else if (m_playerMoveState != PlayerMoveState.JUMPING)
+        // Enables walking or running
+        else 
         {
             //Rotate
             m_TurnAmount = rotation.x;
@@ -298,16 +216,7 @@ public class HumanVRController : MonoBehaviour
 
     void UpdateAnimator(Vector3 move)
     {
-        if (m_playerMoveState == PlayerMoveState.CROUCHING)
-        {
-            float moveSpeed = MoveToFloat.Value(m_playerMoveState) / MoveToFloat.Value(PlayerMoveState.RUNNING);
-            m_Animator.speed = move.magnitude > 0 ? moveSpeed : 1;
-        }
-        else if (m_playerMoveState == PlayerMoveState.JUMPING)
-        {
-            m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
-        }
-        else if (m_playerMoveState == PlayerMoveState.CLIMBING)
+        if (m_playerMoveState == PlayerMoveState.CLIMBING)
         {
             // LEAVE THIS HERE until an animation is put in
         }
@@ -393,5 +302,13 @@ public class HumanVRController : MonoBehaviour
     public Terrain GetCurrentTerrain()
     {
         return m_CurrentTerrain;
+    }
+    public float GetTimeSpentRunning()
+    {
+        return timeRunning;
+    }
+    public float GetMaxRunTime()
+    {
+        return maxRunTime;
     }
 }

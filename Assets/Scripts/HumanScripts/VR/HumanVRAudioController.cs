@@ -30,9 +30,8 @@ public class HumanVRAudioController : MonoBehaviour {
     private Rigidbody m_ParentRigidBody;
     private HumanVRController m_humanVRController;
     private bool m_airborne = false;
-    private float m_timeSpentRunning;
-    private float m_introTimeForBreathing = 10f;
-
+    private float m_introTimeForBreathing;
+    private float m_maxRunTime;
     private void OnEnable()
     {
         m_TerrainTypeDictionary.Add(0, TerrainType.GRASS);
@@ -58,6 +57,8 @@ public class HumanVRAudioController : MonoBehaviour {
         m_Breathing.loop = true;
         m_Breathing.volume = 0;
         m_CurrentTerrain = m_humanVRController.GetCurrentTerrain();
+        m_maxRunTime = m_humanVRController.GetMaxRunTime();
+        m_introTimeForBreathing = m_maxRunTime / 2;
     }
     
     double Normalize3Dto2D(Vector3 vector3)
@@ -202,7 +203,6 @@ public class HumanVRAudioController : MonoBehaviour {
         UpdateHumanMotion();
 
         double horizontalSpeed = Normalize3Dto2D(m_ParentRigidBody.velocity);
-        float maxSpeed = HumanController.m_MoveSpeedMultiplier;
         
         if (HumanMotion.isPlaying && horizontalSpeed < 0.2f)
         {
@@ -217,27 +217,18 @@ public class HumanVRAudioController : MonoBehaviour {
         }
 
         //Breathing
-        if(horizontalSpeed > maxSpeed*0.9)
+        float timeSpentRunning = m_humanVRController.GetTimeSpentRunning();
+        if (timeSpentRunning > m_introTimeForBreathing 
+           && !m_Breathing.isPlaying)
         {
-            m_timeSpentRunning += Time.deltaTime;
-            if(m_timeSpentRunning > m_introTimeForBreathing && !m_Breathing.isPlaying)
-            {
-
-                m_Breathing.enabled = true;
-                m_Breathing.loop = true;
-                m_Breathing.Play();
-            }
+            m_Breathing.enabled = true;
+            m_Breathing.loop = true;
+            m_Breathing.Play();
+            m_Breathing.volume = 0;
         }
         if (m_Breathing.isPlaying)
         {
-            if (horizontalSpeed < maxSpeed * 0.9)
-            {
-                m_timeSpentRunning = 0;
-                m_Breathing.volume -= Time.deltaTime / 8;
-            }
-            else { 
-                m_Breathing.volume += Time.deltaTime / 5;
-            }
+             m_Breathing.volume = ((timeSpentRunning - m_introTimeForBreathing) / m_maxRunTime) * 2;
         }
     }
 
