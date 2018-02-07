@@ -1,40 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEditor;
+using TMPro;
+using System;
 public class PlayButton : MonoBehaviour {
 
     MenuScript menu;
-    public Color mouseOverColor;
-    string hexMouseOverColor;
-    public Color defaultColor;
-    string hexDefaultColor;
-    Renderer renderer;
     GUIStyle style;
-    // Use this for initialization
-
+    public Material m_Mat;
+    public GameObject m_VoidPlayButton;
+    public GameObject m_VoidTitle;
+    public GameObject m_Title;
+    private Color defaultColor = Color.black;
+    private Color glowColor;
     void Start () {
-        
-        hexMouseOverColor = "#" + ColorUtility.ToHtmlStringRGBA(mouseOverColor);
-        hexDefaultColor = "#" + ColorUtility.ToHtmlStringRGBA(defaultColor);
-        style = new GUIStyle();
-        style.richText = true;
-        TextMesh tm = GetComponent<TextMesh>();
-        tm.richText = true;
-
         menu = GetComponentInParent<MenuScript>();
-        renderer = GetComponent<Renderer>();
-        renderer.material.color = defaultColor;
+        string glowCol = "#DB7B00FF";
+        ColorUtility.TryParseHtmlString(glowCol, out glowColor);
+        m_Mat.SetVector("_OutlineColor", new Vector4(defaultColor.r, defaultColor.b, defaultColor.g, defaultColor.a));
+
+        m_VoidPlayButton.SetActive(false);
+        m_VoidTitle.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
+
 	}
 
     private void OnMouseUpAsButton()
     {
         menu.PlayGame();
+        m_VoidPlayButton.SetActive(true);
+        m_VoidTitle.SetActive(true);
+        m_Title.SetActive(false);
+        gameObject.SetActive(false);
     }
+    
     //Not functional yet
     IEnumerator BlipColors()
     {
@@ -55,12 +58,11 @@ public class PlayButton : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-
-        renderer.material.color = mouseOverColor;
+        m_Mat.SetVector("_OutlineColor", new Vector4(glowColor.r, glowColor.b, glowColor.g, glowColor.a));
     }
 
     private void OnMouseExit()
     {
-        renderer.material.color = defaultColor;
+        m_Mat.SetVector("_OutlineColor", new Vector4(defaultColor.r, defaultColor.b, defaultColor.g, defaultColor.a));
     }
 }

@@ -18,6 +18,7 @@ public class MenuScript : MonoBehaviour {
     public AudioSource daylightAudio;
     public AudioSource glitchAudio;
     public AudioSource eveningAudio;
+    public GameObject bridge;
     private Quaternion lookrotation;
     Camera m_Camera;
     Light areaLight;
@@ -47,6 +48,8 @@ public class MenuScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        RenderSettings.skybox = daylightSkybox;
+        RenderSettings.fog = false;
         m_Canvas = FindObjectOfType<Canvas>();
         areaLight = GetComponentInChildren<Light>();
         m_Camera = GetComponentInChildren<Camera>();
@@ -54,7 +57,7 @@ public class MenuScript : MonoBehaviour {
         daylightAudio.loop = true;
         eveningAudio.enabled = false;
         glitchAudio.enabled = false;
-        
+        bridge.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -80,11 +83,13 @@ public class MenuScript : MonoBehaviour {
                 lookrotation = Quaternion.LookRotation(_direction);
 
             m_Camera.transform.rotation = Quaternion.Slerp(m_Camera.transform.rotation, lookrotation, Time.deltaTime*10);
-
+            if(countRotations >= 18 && bridge.activeSelf == false)
+            {
+                bridge.SetActive(true);
+            }
             if (Mathf.Abs((lookrotation.eulerAngles - m_Camera.transform.eulerAngles).magnitude) < 1f && countRotations >= 20)
             {
-                Debug.Log((lookrotation.eulerAngles - m_Camera.transform.eulerAngles).magnitude);
-                   rotationDone = true;
+                rotationDone = true;
             }
             if (rotationDone)
             {
@@ -122,6 +127,7 @@ public class MenuScript : MonoBehaviour {
         m_Camera.gameObject.GetComponent<GlitchEffect>().enabled = true;
         playing = true;
         RenderSettings.skybox = eveningSkybox;
+        RenderSettings.fog = true;
         StartCoroutine(BeginRotate());
     }
 }
