@@ -16,6 +16,8 @@ public class MonsterAudioController : MonoBehaviour
     public AudioClip m_StoneRun;
     public AudioClip m_GrassWalk;
     public AudioClip m_StoneWalk;
+    public AudioClip m_Demigorgon;
+
 
     private void OnEnable()
     {
