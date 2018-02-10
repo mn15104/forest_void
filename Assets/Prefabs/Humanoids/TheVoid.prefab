@@ -2774,6 +2774,7 @@ MonoBehaviour:
   m_StoneRun: {fileID: 8300000, guid: ff42943390b0fbc448252d12a4bcbbe4, type: 3}
   m_GrassWalk: {fileID: 8300000, guid: 5b5f6711c4d53c1429672b9566e1fb27, type: 3}
   m_StoneWalk: {fileID: 8300000, guid: 2625d9a92c2aef64cb45a59c181a5db7, type: 3}
+  m_Demigorgon: {fileID: 0}
 --- !u!114 &114345552926944004
 MonoBehaviour:
   m_ObjectHideFlags: 1
