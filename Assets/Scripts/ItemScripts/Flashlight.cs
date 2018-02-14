@@ -29,12 +29,12 @@ public class Flashlight : MonoBehaviour {
 
     public void Switch(GameObject t)
     {
-        if (m_FlashlightActive && (GetComponentInParent<HumanController>()  || GetComponentInParent<HumanVRController>()))
+        if (m_FlashlightActive && (GetComponentInParent<HumanController>()  || GetComponentInParent<OVRPlayerController>()))
         {
             m_Light.intensity = 0;
             m_FlashlightActive = false;
         }
-        else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || GetComponentInParent<HumanVRController>()))
+        else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || GetComponentInParent<OVRPlayerController>()))
         {
             m_Light.intensity = 40;
             m_FlashlightActive = true;

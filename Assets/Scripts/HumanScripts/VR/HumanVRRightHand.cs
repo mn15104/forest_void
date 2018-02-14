@@ -10,7 +10,7 @@ public class HumanVRRightHand : MonoBehaviour {
 
     private Flashlight flashlight;
     private int id = 1;
-
+    private float timer;
     private void OnEnable()
     {
         flashlight = GetComponentInChildren<Flashlight>();
@@ -18,14 +18,18 @@ public class HumanVRRightHand : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        timer = 0;
     }
 	
 	//Update is called once per frame
 	void Update () {
-        if (SixenseInput.Controllers[id].GetButtonDown(SixenseButtons.TRIGGER))
+        //if (SixenseInput.Controllers[id].GetButtonDown(SixenseButtons.TRIGGER))
+        Debug.Log(timer);
+        Debug.Log(OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger));
+        if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.9 && timer == 0)
         {
             flashlight.Switch(gameObject);
+            timer = 0.3f;
             if (flashlight.m_FlashlightActive)
             {
                 OnHumanLightEmission(true);
@@ -35,6 +39,8 @@ public class HumanVRRightHand : MonoBehaviour {
                 OnHumanLightEmission(false);
             }
         }
+        timer = Mathf.Max(timer - Time.deltaTime, 0);
+
     }
     
 }
