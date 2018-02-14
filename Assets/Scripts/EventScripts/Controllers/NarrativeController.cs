@@ -58,7 +58,7 @@ public class NarrativeController : MonoBehaviour {
 
 
     public void SceneChange()
-    {
+    { 
 
     }
 
