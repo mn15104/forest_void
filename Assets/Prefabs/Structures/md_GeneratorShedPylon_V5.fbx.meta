@@ -1,0 +1,660 @@
+fileFormatVersion: 2
+guid: 37af98dc0da598b43b8e213e1d69d625
+timeCreated: 1518628708
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bottomnurbsSquare1
+    100002: Cables
+    100004: curve1
+    100006: curve2
+    100008: curve4
+    100010: curve5
+    100012: curve6
+    100014: extrudedSurface1
+    100016: extrudedSurface1 1
+    100018: extrudedSurface1 2
+    100020: extrudedSurface2
+    100022: extrudedSurface2 1
+    100024: extrudedSurface2 2
+    100026: extrudedSurface3
+    100028: extrudedSurface3 1
+    100030: extrudedSurface3 2
+    100032: extrudedSurface4
+    100034: extrudedSurface4 1
+    100036: extrudedSurface4 2
+    100038: extrudedSurface5
+    100040: extrudedSurface5 1
+    100042: extrudedSurface5 2
+    100044: extrudedSurface6
+    100046: extrudedSurface7
+    100048: extrudedSurface8
+    100050: extrudedSurface9
+    100052: Generator_Body
+    100054: Grill
+    100056: Handle
+    100058: Handle_Turn
+    100060: KeyHole
+    100062: KeyHole1
+    100064: KeyHole2
+    100066: Keyhole_Construction
+    100068: Keyholes
+    100070: leftnurbsSquare1
+    100072: loftedSurface2
+    100074: loftedSurface2 1
+    100076: loftedSurface2 2
+    100078: loftedSurface2 3
+    100080: loftedSurface2 4
+    100082: loftedSurface2 5
+    100084: loftedSurface2 6
+    100086: loftedSurface2 7
+    100088: loftedSurface2 8
+    100090: loftedSurface2 9
+    100092: loftedSurface4
+    100094: loftedSurface4 1
+    100096: loftedSurface4 2
+    100098: loftedSurface5
+    100100: loftedSurface6
+    100102: loftedSurface7
+    100104: Main_Body
+    100106: //RootNode
+    100108: nurbsCircle40
+    100110: nurbsCircle41
+    100112: nurbsCircle42
+    100114: nurbsCircle43
+    100116: nurbsCircle44
+    100118: pCube10
+    100120: pCube11
+    100122: pCube12
+    100124: pCube14
+    100126: pCube15
+    100128: pCube16
+    100130: pCube2
+    100132: pCube2 1
+    100134: pCube2 2
+    100136: pCube2 3
+    100138: pCube2 4
+    100140: pCube2 5
+    100142: pCube2 6
+    100144: pCube2 7
+    100146: pCube2 8
+    100148: pCube2 9
+    100150: pCube21
+    100152: pCube22
+    100154: pCube23
+    100156: pCube24
+    100158: pCube26
+    100160: pCube27
+    100162: pCube28
+    100164: pCube29
+    100166: pCube3
+    100168: pCube3 1
+    100170: pCube3 2
+    100172: pCube3 3
+    100174: pCube3 4
+    100176: pCube3 5
+    100178: pCube3 6
+    100180: pCube3 7
+    100182: pCube3 8
+    100184: pCube3 9
+    100186: pCube30
+    100188: pCube31
+    100190: pCube32
+    100192: pCube33
+    100194: pCube34
+    100196: pCube35
+    100198: pCube36
+    100200: pCube37
+    100202: pCube38
+    100204: pCube39
+    100206: pCube4
+    100208: pCube40
+    100210: pCube41
+    100212: pCube42
+    100214: pCube6
+    100216: pCube7
+    100218: pCube8
+    100220: pCube9
+    100222: pCylinder1
+    100224: pCylinder3
+    100226: pCylinder4
+    100228: pCylinder5
+    100230: pCylinder6
+    100232: pTorus1
+    100234: pTorus2
+    100236: pTorus3
+    100238: Pylon
+    100240: rightnurbsSquare1
+    100242: Shed
+    100244: Top_Piece
+    100246: Top_Piece1
+    100248: Top_Piece2
+    100250: Top_Piece3
+    100252: Top_Piece4
+    100254: Top_Piece5
+    100256: Top_Piece6
+    100258: Top_Piece7
+    100260: Top_Piece8
+    100262: Top_Piece9
+    100264: Top_Pieces
+    100266: topnurbsSquare1
+    100268: Wire_Bases
+    100270: Wire_Construction
+    100272: Wire_Supports
+    100274: Wires
+    400000: bottomnurbsSquare1
+    400002: Cables
+    400004: curve1
+    400006: curve2
+    400008: curve4
+    400010: curve5
+    400012: curve6
+    400014: extrudedSurface1
+    400016: extrudedSurface1 1
+    400018: extrudedSurface1 2
+    400020: extrudedSurface2
+    400022: extrudedSurface2 1
+    400024: extrudedSurface2 2
+    400026: extrudedSurface3
+    400028: extrudedSurface3 1
+    400030: extrudedSurface3 2
+    400032: extrudedSurface4
+    400034: extrudedSurface4 1
+    400036: extrudedSurface4 2
+    400038: extrudedSurface5
+    400040: extrudedSurface5 1
+    400042: extrudedSurface5 2
+    400044: extrudedSurface6
+    400046: extrudedSurface7
+    400048: extrudedSurface8
+    400050: extrudedSurface9
+    400052: Generator_Body
+    400054: Grill
+    400056: Handle
+    400058: Handle_Turn
+    400060: KeyHole
+    400062: KeyHole1
+    400064: KeyHole2
+    400066: Keyhole_Construction
+    400068: Keyholes
+    400070: leftnurbsSquare1
+    400072: loftedSurface2
+    400074: loftedSurface2 1
+    400076: loftedSurface2 2
+    400078: loftedSurface2 3
+    400080: loftedSurface2 4
+    400082: loftedSurface2 5
+    400084: loftedSurface2 6
+    400086: loftedSurface2 7
+    400088: loftedSurface2 8
+    400090: loftedSurface2 9
+    400092: loftedSurface4
+    400094: loftedSurface4 1
+    400096: loftedSurface4 2
+    400098: loftedSurface5
+    400100: loftedSurface6
+    400102: loftedSurface7
+    400104: Main_Body
+    400106: //RootNode
+    400108: nurbsCircle40
+    400110: nurbsCircle41
+    400112: nurbsCircle42
+    400114: nurbsCircle43
+    400116: nurbsCircle44
+    400118: pCube10
+    400120: pCube11
+    400122: pCube12
+    400124: pCube14
+    400126: pCube15
+    400128: pCube16
+    400130: pCube2
+    400132: pCube2 1
+    400134: pCube2 2
+    400136: pCube2 3
+    400138: pCube2 4
+    400140: pCube2 5
+    400142: pCube2 6
+    400144: pCube2 7
+    400146: pCube2 8
+    400148: pCube2 9
+    400150: pCube21
+    400152: pCube22
+    400154: pCube23
+    400156: pCube24
+    400158: pCube26
+    400160: pCube27
+    400162: pCube28
+    400164: pCube29
+    400166: pCube3
+    400168: pCube3 1
+    400170: pCube3 2
+    400172: pCube3 3
+    400174: pCube3 4
+    400176: pCube3 5
+    400178: pCube3 6
+    400180: pCube3 7
+    400182: pCube3 8
+    400184: pCube3 9
+    400186: pCube30
+    400188: pCube31
+    400190: pCube32
+    400192: pCube33
+    400194: pCube34
+    400196: pCube35
+    400198: pCube36
+    400200: pCube37
+    400202: pCube38
+    400204: pCube39
+    400206: pCube4
+    400208: pCube40
+    400210: pCube41
+    400212: pCube42
+    400214: pCube6
+    400216: pCube7
+    400218: pCube8
+    400220: pCube9
+    400222: pCylinder1
+    400224: pCylinder3
+    400226: pCylinder4
+    400228: pCylinder5
+    400230: pCylinder6
+    400232: pTorus1
+    400234: pTorus2
+    400236: pTorus3
+    400238: Pylon
+    400240: rightnurbsSquare1
+    400242: Shed
+    400244: Top_Piece
+    400246: Top_Piece1
+    400248: Top_Piece2
+    400250: Top_Piece3
+    400252: Top_Piece4
+    400254: Top_Piece5
+    400256: Top_Piece6
+    400258: Top_Piece7
+    400260: Top_Piece8
+    400262: Top_Piece9
+    400264: Top_Pieces
+    400266: topnurbsSquare1
+    400268: Wire_Bases
+    400270: Wire_Construction
+    400272: Wire_Supports
+    400274: Wires
+    2100000: lambert1
+    2100002: lambert2
+    2300000: extrudedSurface1
+    2300002: extrudedSurface1 1
+    2300004: extrudedSurface1 2
+    2300006: extrudedSurface2
+    2300008: extrudedSurface2 1
+    2300010: extrudedSurface2 2
+    2300012: extrudedSurface3
+    2300014: extrudedSurface3 1
+    2300016: extrudedSurface3 2
+    2300018: extrudedSurface4
+    2300020: extrudedSurface4 1
+    2300022: extrudedSurface4 2
+    2300024: extrudedSurface5
+    2300026: extrudedSurface5 1
+    2300028: extrudedSurface5 2
+    2300030: extrudedSurface6
+    2300032: extrudedSurface7
+    2300034: extrudedSurface8
+    2300036: extrudedSurface9
+    2300038: Grill
+    2300040: Handle_Turn
+    2300042: loftedSurface2
+    2300044: loftedSurface2 1
+    2300046: loftedSurface2 2
+    2300048: loftedSurface2 3
+    2300050: loftedSurface2 4
+    2300052: loftedSurface2 5
+    2300054: loftedSurface2 6
+    2300056: loftedSurface2 7
+    2300058: loftedSurface2 8
+    2300060: loftedSurface2 9
+    2300062: loftedSurface4
+    2300064: loftedSurface4 1
+    2300066: loftedSurface4 2
+    2300068: loftedSurface5
+    2300070: loftedSurface6
+    2300072: loftedSurface7
+    2300074: Main_Body
+    2300076: pCube10
+    2300078: pCube11
+    2300080: pCube12
+    2300082: pCube14
+    2300084: pCube15
+    2300086: pCube16
+    2300088: pCube2
+    2300090: pCube2 1
+    2300092: pCube2 2
+    2300094: pCube2 3
+    2300096: pCube2 4
+    2300098: pCube2 5
+    2300100: pCube2 6
+    2300102: pCube2 7
+    2300104: pCube2 8
+    2300106: pCube2 9
+    2300108: pCube21
+    2300110: pCube22
+    2300112: pCube23
+    2300114: pCube24
+    2300116: pCube26
+    2300118: pCube27
+    2300120: pCube28
+    2300122: pCube29
+    2300124: pCube3
+    2300126: pCube3 1
+    2300128: pCube3 2
+    2300130: pCube3 3
+    2300132: pCube3 4
+    2300134: pCube3 5
+    2300136: pCube3 6
+    2300138: pCube3 7
+    2300140: pCube3 8
+    2300142: pCube3 9
+    2300144: pCube30
+    2300146: pCube31
+    2300148: pCube32
+    2300150: pCube33
+    2300152: pCube34
+    2300154: pCube35
+    2300156: pCube36
+    2300158: pCube37
+    2300160: pCube38
+    2300162: pCube39
+    2300164: pCube4
+    2300166: pCube40
+    2300168: pCube41
+    2300170: pCube42
+    2300172: pCube6
+    2300174: pCube7
+    2300176: pCube8
+    2300178: pCube9
+    2300180: pCylinder1
+    2300182: pCylinder3
+    2300184: pCylinder4
+    2300186: pCylinder5
+    2300188: pCylinder6
+    2300190: pTorus1
+    2300192: pTorus2
+    2300194: pTorus3
+    3300000: extrudedSurface1
+    3300002: extrudedSurface1 1
+    3300004: extrudedSurface1 2
+    3300006: extrudedSurface2
+    3300008: extrudedSurface2 1
+    3300010: extrudedSurface2 2
+    3300012: extrudedSurface3
+    3300014: extrudedSurface3 1
+    3300016: extrudedSurface3 2
+    3300018: extrudedSurface4
+    3300020: extrudedSurface4 1
+    3300022: extrudedSurface4 2
+    3300024: extrudedSurface5
+    3300026: extrudedSurface5 1
+    3300028: extrudedSurface5 2
+    3300030: extrudedSurface6
+    3300032: extrudedSurface7
+    3300034: extrudedSurface8
+    3300036: extrudedSurface9
+    3300038: Grill
+    3300040: Handle_Turn
+    3300042: loftedSurface2
+    3300044: loftedSurface2 1
+    3300046: loftedSurface2 2
+    3300048: loftedSurface2 3
+    3300050: loftedSurface2 4
+    3300052: loftedSurface2 5
+    3300054: loftedSurface2 6
+    3300056: loftedSurface2 7
+    3300058: loftedSurface2 8
+    3300060: loftedSurface2 9
+    3300062: loftedSurface4
+    3300064: loftedSurface4 1
+    3300066: loftedSurface4 2
+    3300068: loftedSurface5
+    3300070: loftedSurface6
+    3300072: loftedSurface7
+    3300074: Main_Body
+    3300076: pCube10
+    3300078: pCube11
+    3300080: pCube12
+    3300082: pCube14
+    3300084: pCube15
+    3300086: pCube16
+    3300088: pCube2
+    3300090: pCube2 1
+    3300092: pCube2 2
+    3300094: pCube2 3
+    3300096: pCube2 4
+    3300098: pCube2 5
+    3300100: pCube2 6
+    3300102: pCube2 7
+    3300104: pCube2 8
+    3300106: pCube2 9
+    3300108: pCube21
+    3300110: pCube22
+    3300112: pCube23
+    3300114: pCube24
+    3300116: pCube26
+    3300118: pCube27
+    3300120: pCube28
+    3300122: pCube29
+    3300124: pCube3
+    3300126: pCube3 1
+    3300128: pCube3 2
+    3300130: pCube3 3
+    3300132: pCube3 4
+    3300134: pCube3 5
+    3300136: pCube3 6
+    3300138: pCube3 7
+    3300140: pCube3 8
+    3300142: pCube3 9
+    3300144: pCube30
+    3300146: pCube31
+    3300148: pCube32
+    3300150: pCube33
+    3300152: pCube34
+    3300154: pCube35
+    3300156: pCube36
+    3300158: pCube37
+    3300160: pCube38
+    3300162: pCube39
+    3300164: pCube4
+    3300166: pCube40
+    3300168: pCube41
+    3300170: pCube42
+    3300172: pCube6
+    3300174: pCube7
+    3300176: pCube8
+    3300178: pCube9
+    3300180: pCylinder1
+    3300182: pCylinder3
+    3300184: pCylinder4
+    3300186: pCylinder5
+    3300188: pCylinder6
+    3300190: pTorus1
+    3300192: pTorus2
+    3300194: pTorus3
+    4300000: pCube28
+    4300002: pCube30
+    4300004: pCube27
+    4300006: pCube29
+    4300008: loftedSurface5
+    4300010: loftedSurface7
+    4300012: pCylinder3
+    4300014: pCylinder6
+    4300016: extrudedSurface6
+    4300018: extrudedSurface7
+    4300020: loftedSurface6
+    4300022: extrudedSurface8
+    4300024: extrudedSurface9
+    4300026: pTorus3
+    4300028: pCylinder5
+    4300030: pCylinder4
+    4300032: pTorus2
+    4300034: pTorus1
+    4300036: pCube31
+    4300038: pCube32
+    4300040: pCube33
+    4300042: pCube34
+    4300044: pCube35
+    4300046: pCube36
+    4300048: pCube37
+    4300050: pCube38
+    4300052: pCube39
+    4300054: pCube40
+    4300056: pCube41
+    4300058: pCube42
+    4300060: Main_Body
+    4300062: Handle_Turn
+    4300064: pCylinder1
+    4300066: pCube7
+    4300068: pCube4
+    4300070: pCube6
+    4300072: pCube8
+    4300074: pCube9
+    4300076: pCube3
+    4300078: loftedSurface2
+    4300080: pCube2
+    4300082: pCube3
+    4300084: loftedSurface2
+    4300086: pCube2
+    4300088: pCube3
+    4300090: loftedSurface2
+    4300092: pCube2
+    4300094: pCube3
+    4300096: loftedSurface2
+    4300098: pCube2
+    4300100: pCube3
+    4300102: loftedSurface2
+    4300104: pCube2
+    4300106: pCube3
+    4300108: loftedSurface2
+    4300110: pCube2
+    4300112: pCube3
+    4300114: loftedSurface2
+    4300116: pCube2
+    4300118: pCube3
+    4300120: loftedSurface2
+    4300122: pCube2
+    4300124: pCube3
+    4300126: loftedSurface2
+    4300128: pCube2
+    4300130: pCube3
+    4300132: loftedSurface2
+    4300134: pCube2
+    4300136: pCube10
+    4300138: pCube11
+    4300140: pCube12
+    4300142: pCube14
+    4300144: pCube15
+    4300146: pCube16
+    4300148: pCube21
+    4300150: pCube22
+    4300152: pCube23
+    4300154: pCube24
+    4300156: pCube26
+    4300158: Grill
+    4300160: extrudedSurface1
+    4300162: extrudedSurface2
+    4300164: extrudedSurface3
+    4300166: extrudedSurface4
+    4300168: extrudedSurface5
+    4300170: loftedSurface4
+    4300172: extrudedSurface1
+    4300174: extrudedSurface2
+    4300176: extrudedSurface3
+    4300178: extrudedSurface4
+    4300180: extrudedSurface5
+    4300182: loftedSurface4
+    4300184: extrudedSurface1
+    4300186: extrudedSurface2
+    4300188: extrudedSurface3
+    4300190: extrudedSurface4
+    4300192: extrudedSurface5
+    4300194: loftedSurface4
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
