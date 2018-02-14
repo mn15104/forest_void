@@ -36,7 +36,7 @@ public class Flashlight : MonoBehaviour {
         }
         else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || GetComponentInParent<OVRPlayerController>()))
         {
-            m_Light.intensity = 40;
+            m_Light.intensity = 16;
             m_FlashlightActive = true;
         }
     }
