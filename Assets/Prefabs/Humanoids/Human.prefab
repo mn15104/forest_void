@@ -3394,6 +3394,7 @@ MonoBehaviour:
   useRotationTracking: 1
   useIPDInPositionTracking: 1
   resetTrackerOnLoad: 0
+  AllowRecenter: 1
 --- !u!114 &114639592078097212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3425,6 +3426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c6542548ce3e842b3dcbcbf5093691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FlashlightActive: 0
 --- !u!114 &114887808692876550
 MonoBehaviour:
   m_ObjectHideFlags: 1
