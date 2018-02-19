@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - OVRCameraRig
-  - Player 1
-  - Portrait
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - Terrain
-  - Wood
+  - Ethan
+  - MazeWalls
+  - MazeTurret
+  - MazeTurretBullet
+  - Bg
+  - FPSWeapon
   - 
-  - Interactive
-  - Structure
-  - Rocks
-  - Trees
   - 
   - 
   - 
@@ -43,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GUI
+    uniqueID: 2379361113
     locked: 0
