@@ -8,6 +8,7 @@ public enum MonsterState
 {
     HIDDEN_IDLE,
     HIDDEN_MOVING,
+    FOLLOW,
     APPEAR,
     APPROACH,
     CHASE,
@@ -139,6 +140,8 @@ public class MonsterAI : MonoBehaviour {
                     m_CurrentSpeed = m_HiddenMovingSpeed;
                     StartCoroutine(DelayStateChange(MonsterState.HIDDEN_IDLE, 8f));
                     break;
+                case MonsterState.FOLLOW:
+                    break;
                 case MonsterState.APPEAR:
                     anim.SetBool("Run", false);
                     anim.SetBool("Walk", false);
@@ -257,7 +260,7 @@ public class MonsterAI : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, destinationRotation, Time.deltaTime * 2);
         }
     }
-
+    
 	void appear () {
 
 	}
@@ -389,25 +392,26 @@ public class MonsterAI : MonoBehaviour {
 
     void HumanSoundDetected(float soundHeard)
     {
-        //Vector3 xyz_distance = player.transform.position - transform.position;
-        //Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
-        //float distance = xz_distance.magnitude;
+        Vector3 xyz_distance = player.transform.position - transform.position;
+        Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
+        float distance = xz_distance.magnitude;
 
-        //soundDetectionPercentage = soundHeard * (distance / maxDetectionRange);
+        soundDetectionPercentage = soundHeard * (distance / maxDetectionRange);
     }
 
     void HumanLightDetected(bool on)
     {
-        //Vector3 xyz_distance = player.transform.position - transform.position;
-        //Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
-        //float distance = xz_distance.magnitude;
-        //if (on) {
-        //    lightDetectionPercentage = (distance / maxDetectionRange);
-        //}
-        //else
-        //{
-        //    lightDetectionPercentage = 0f;
-        //}
+        Vector3 xyz_distance = player.transform.position - transform.position;
+        Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
+        float distance = xz_distance.magnitude;
+        if (on)
+        {
+            lightDetectionPercentage = (distance / maxDetectionRange);
+        }
+        else
+        {
+            lightDetectionPercentage = 0f;
+        }
     }
     
     public MonsterState GetMonsterState()
