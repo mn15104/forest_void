@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+
 
 public class Heartbeat : MonoBehaviour
 {
@@ -21,12 +23,33 @@ public class Heartbeat : MonoBehaviour
         m_HeartbeatAudioSrc.Stop();
         m_HeartbeatAudioSrc.playOnAwake = false;
         m_HeartbeatAudioSrc.loop = false;
-
         StartCoroutine(HeartbeatCoroutine());
+        StartCoroutine(getHeartRate());
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    IEnumerator getHeartRate()
+    {
+        Debug.Log("Doing Something");
+        using (UnityWebRequest webaddress = UnityWebRequest.Get("172.23.184.234:5005"))
+        {
+            yield return webaddress.SendWebRequest();
+
+            if (webaddress.isNetworkError || webaddress.isHttpError)
+            {
+                Debug.Log("Get Request Error");
+            }
+            else
+            {
+                Debug.Log("Data Receieved");
+                byte[] results = webaddress.downloadHandler.data;
+                Debug.Log(results);
+            }
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update () {
 	}
 
     IEnumerator HeartbeatCoroutine()
@@ -42,7 +65,6 @@ public class Heartbeat : MonoBehaviour
             if (((60/m_Heartbeat) - clipTimeA) <= 0)
             {
                 delayTimeA = m_BaseHeartrate;
-                Debug.Log("fuck");
             }
             else
             {
@@ -59,7 +81,6 @@ public class Heartbeat : MonoBehaviour
             if (((60/m_Heartbeat) - clipTimeB) <= 0)
             {
                 delayTimeB = m_BaseHeartrate;
-                Debug.Log("Fuck");
             }
             else
             {

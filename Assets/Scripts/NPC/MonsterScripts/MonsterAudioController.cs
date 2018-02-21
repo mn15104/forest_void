@@ -154,7 +154,7 @@ public class MonsterAudioController : MonoBehaviour
             Mathf.Abs(m_Monster.transform.position.x - m_Monster.player.transform.position.x));
         if ( dist  > 0)
         {
-            Debug.Log(dist);
+            //Debug.Log(dist);
         }
     }
 
