@@ -24,8 +24,6 @@ public class HumanVRRightHand : MonoBehaviour {
 	//Update is called once per frame
 	void Update () {
         //if (SixenseInput.Controllers[id].GetButtonDown(SixenseButtons.TRIGGER))
-        Debug.Log(timer);
-        Debug.Log(OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger));
         if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.9 && timer == 0)
         {
             flashlight.Switch(gameObject);

@@ -780,7 +780,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.40856934
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -1043,9 +1043,9 @@ MonoBehaviour:
   virtualGreenScreenApplyDepthCulling: 0
   virtualGreenScreenDepthTolerance: 0.2
   _trackingOriginType: 0
-  usePositionTracking: 0
+  usePositionTracking: 1
   useRotationTracking: 1
-  useIPDInPositionTracking: 1
+  useIPDInPositionTracking: 0
   resetTrackerOnLoad: 0
   AllowRecenter: 1
 --- !u!114 &114489089173641538

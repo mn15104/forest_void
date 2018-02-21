@@ -124,7 +124,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-	void FixedUpdate()
+	protected virtual void FixedUpdate()
 	{
 		if (operatingWithoutOVRCameraRig)
 			OnUpdatedAnchors();
@@ -133,7 +133,7 @@ public class OVRGrabber : MonoBehaviour
     // Hands follow the touch anchors by calling MovePosition each frame to reach the anchor.
     // This is done instead of parenting to achieve workable physics. If you don't require physics on 
     // your hands or held objects, you may wish to switch to parenting.
-    void OnUpdatedAnchors()
+    protected virtual void OnUpdatedAnchors()
     {
         Vector3 handPos = OVRInput.GetLocalControllerPosition(m_controller);
         Quaternion handRot = OVRInput.GetLocalControllerRotation(m_controller);
@@ -199,7 +199,8 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-    protected void CheckForGrabOrRelease(float prevFlex)
+    // Not normally virtual
+    protected virtual void CheckForGrabOrRelease(float prevFlex)
     {
         if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))
         {
