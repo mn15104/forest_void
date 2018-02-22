@@ -105,11 +105,12 @@ public class RetreiveKey : OVRGrabber
     void KeyAppear()
     {
         key.transform.position = transform.position;
+        key.transform.Rotate(new Vector3(0,0,0)); 
     }
 
     bool CheckHandInPocket()
     {
-        Debug.Log(headTransform.position.z - transform.position.z);
+        //Debug.Log(headTransform.position.z - transform.position.z);
         float xDiff = headTransform.position.x - transform.position.x;
         float zDiff = headTransform.position.z - transform.position.z;
         //FOR SITTING DOWN
