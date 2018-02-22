@@ -1518,7 +1518,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033277563816748}
   m_LocalRotation: {x: -0, y: 0.51699054, z: -0, w: 0.8559911}
-  m_LocalPosition: {x: 592.64044, y: 73.99817, z: 853.4771}
+  m_LocalPosition: {x: 596.83, y: 73.99817, z: 845.51}
   m_LocalScale: {x: 1.2999998, y: 1.3, z: 1.2999998}
   m_Children:
   - {fileID: 4816934750583508}
@@ -2405,7 +2405,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1016275388782986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.38, z: 0.392}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4136890921465702}
@@ -2587,7 +2587,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 10
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2628,7 +2628,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.5277778
+      value: 0.9916667
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2667,8 +2667,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 10
+  MinDistance: 5
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2709,7 +2709,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.49166667
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2765,7 +2765,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1016275388782986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db0011d4374e2f42878dbf433e8ffa0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0582824e7c9b1d24abd54d15f65bf2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MonsterSFXAudioSrc: {fileID: 82783407643745700}
@@ -2775,6 +2775,9 @@ MonoBehaviour:
   m_GrassWalk: {fileID: 8300000, guid: 5b5f6711c4d53c1429672b9566e1fb27, type: 3}
   m_StoneWalk: {fileID: 8300000, guid: 2625d9a92c2aef64cb45a59c181a5db7, type: 3}
   m_Demigorgon: {fileID: 0}
+  m_Appear: {fileID: 8300000, guid: accd801219b294d4690061604055c453, type: 3}
+  m_Approach: {fileID: 8300000, guid: c0dcfc26482d341c68de7a0c0f36fce7, type: 3}
+  m_Chase: {fileID: 8300000, guid: b46db3d5a603e4b7093e9e6316970f51, type: 3}
 --- !u!114 &114345552926944004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2795,14 +2798,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033277563816748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf295a820b4d1406c833acba32cdc355, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ee2bbcee35cacb4990b64c17464aa8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   currentState: 0
   debugState: 0
-  head: {fileID: 1254156211186862}
-  soundDetectionPercentage: 0
+  soundDetectionPercentage: 0.5
   lightDetectionPercentage: 0.5
 --- !u!136 &136682902602313994
 CapsuleCollider:

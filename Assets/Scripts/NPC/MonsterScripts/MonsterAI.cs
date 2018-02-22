@@ -8,6 +8,7 @@ public enum MonsterState
 {
     HIDDEN_IDLE,
     HIDDEN_MOVING,
+    FOLLOW,
     APPEAR,
     APPROACH,
     CHASE,
@@ -26,7 +27,6 @@ public class MonsterAI : MonoBehaviour {
     public GameObject player;
     public MonsterState currentState = MonsterState.HIDDEN_IDLE;
     public MonsterState debugState = MonsterState.HIDDEN_IDLE;
-    public GameObject head;
     private Animator anim;
 	private GameObject trigger;
 	private float chaseTimer = 20f;
@@ -47,8 +47,9 @@ public class MonsterAI : MonoBehaviour {
     public float soundDetectionPercentage = 0;
     public float lightDetectionPercentage = 0;
     private Quaternion destinationRotation;
-    float maxDetectionRange = 165;
-    private bool isHidden = true;
+    private float distanceToHuman;
+    private float maxDetectionRange = 165;
+    private bool isHidden = false;
 
     private void OnEnable()
     {
@@ -74,6 +75,8 @@ public class MonsterAI : MonoBehaviour {
      
 	// Update is called once per frame
 	void Update () {
+        distanceToHuman = Mathf.Sqrt(Mathf.Pow(destinationPosition.x - transform.position.x, 2)
+                                   + Mathf.Pow(destinationPosition.y - transform.position.y, 2));
         switch (currentState) 
 		{
         case MonsterState.HIDDEN_IDLE:
@@ -82,7 +85,10 @@ public class MonsterAI : MonoBehaviour {
         case MonsterState.HIDDEN_MOVING:
             hidden_walking();
 			break;
-		case MonsterState.APPEAR:
+        case MonsterState.FOLLOW:
+            follow();
+            break;
+        case MonsterState.APPEAR:
 			appear();
             break;
         case MonsterState.APPROACH:
@@ -101,8 +107,10 @@ public class MonsterAI : MonoBehaviour {
 
         if (currentState != debugState)
             SetState(debugState);
-        
     }
+
+
+
 
     public void SetState(MonsterState state)
     {
@@ -139,6 +147,13 @@ public class MonsterAI : MonoBehaviour {
                     m_CurrentSpeed = m_HiddenMovingSpeed;
                     StartCoroutine(DelayStateChange(MonsterState.HIDDEN_IDLE, 8f));
                     break;
+                case MonsterState.FOLLOW:
+                    StopAllCoroutines();
+                    anim.SetBool("Run", false);
+                    anim.SetBool("Idle", true);
+                    anim.SetBool("Walk", false);
+                    StartCoroutine(UpdateChaseDestination());
+                    break;
                 case MonsterState.APPEAR:
                     anim.SetBool("Run", false);
                     anim.SetBool("Walk", false);
@@ -154,21 +169,19 @@ public class MonsterAI : MonoBehaviour {
                     StartCoroutine(DelayStateChange(MonsterState.APPROACH, 3f));
                     break;
                 case MonsterState.APPROACH:
-                    isHidden = false;
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("Walk", true);
-                    anim.SetFloat("Speed", m_MinApproachSpeed);
                     if (isHidden)
                     {
                         isHidden = false;
                         StopAllCoroutines();
                         StartCoroutine(UpdateChaseDestination());
                     }
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Walk", true);
+                    anim.SetFloat("Speed", m_MinApproachSpeed);
                     m_CurrentSpeed = m_MinApproachSpeed;
                     StartCoroutine(DelayStateChange(MonsterState.CHASE, 6f));
                     break;
                 case MonsterState.CHASE:
-                    isHidden = false;
                     anim.SetBool("Walk", false);
                     anim.SetBool("Run", true);
                     anim.SetFloat("Speed", m_RunSpeed);
@@ -207,20 +220,20 @@ public class MonsterAI : MonoBehaviour {
     {
         while (true)
         {
-            float detectionRate = Mathf.Min(soundDetectionPercentage + lightDetectionPercentage, 1);
+            float detectionRate = (soundDetectionPercentage + lightDetectionPercentage)/2;
             Vector3 directionToPlayer = player.transform.position - transform.position;
-            directionToPlayer.y = 0;
             Vector3 rot = Quaternion.LookRotation(directionToPlayer).eulerAngles;
             if (detectionRate == 0)
             {
-                rot.y = 100 * NextGaussianFloat() * (1 / detectionRate) + rot.y;
+                rot.y += 100 * NextGaussianFloat() * (1 / detectionRate);
             }
             else
             {
-                rot.y = 30 * NextGaussianFloat() * (1 / detectionRate) + rot.y;
+                rot.y += 30 * NextGaussianFloat() * (1.5f / detectionRate);
             }
+          
             destinationRotation = Quaternion.Euler(rot);
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(3);
         }
     }
 
@@ -230,6 +243,46 @@ public class MonsterAI : MonoBehaviour {
         {
             destinationPosition = player.transform.position;
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    void follow()
+    {
+        if (firstCollision != AICollisionSide.NONE)
+        {
+            Vector3 t_rotation = transform.rotation.eulerAngles;
+            if (firstCollision == AICollisionSide.RIGHT)
+            {
+                t_rotation.y -= Time.deltaTime * 60;
+            }
+            else
+            {
+                t_rotation.y += Time.deltaTime * 60;
+            }
+
+            transform.rotation = Quaternion.Euler(t_rotation);
+        }
+        else
+        {
+            var lookPos = destinationPosition - transform.position;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        }
+        float distanceToHuman = Mathf.Sqrt(Mathf.Pow(destinationPosition.x - transform.position.x, 2)
+                                         + Mathf.Pow(destinationPosition.y - transform.position.y, 2));
+
+        if (distanceToHuman > 8 && !anim.GetBool("Walk"))
+        {
+            m_CurrentSpeed = m_HiddenMovingSpeed;
+            anim.SetBool("Run", false);
+            anim.SetBool("Walk", true);
+            anim.SetBool("Idle", false);
+            anim.SetFloat("Speed", m_CurrentSpeed);
+        }
+        else if (anim.GetBool("Walk")) { 
+            anim.SetBool("Run", false);
+            anim.SetBool("Idle", true);
+            anim.SetBool("Walk", false);
         }
     }
 
@@ -257,7 +310,7 @@ public class MonsterAI : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, destinationRotation, Time.deltaTime * 2);
         }
     }
-
+    
 	void appear () {
 
 	}
@@ -281,7 +334,6 @@ public class MonsterAI : MonoBehaviour {
         else
         {
             var lookPos = destinationPosition - transform.position;
-            lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
         }
@@ -308,7 +360,6 @@ public class MonsterAI : MonoBehaviour {
         else
         {
             var lookPos = destinationPosition - transform.position;
-            lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
         }
@@ -373,14 +424,7 @@ public class MonsterAI : MonoBehaviour {
                 break;
         }
     }
-
-    void RotateHead()
-    {
-
-            head.transform.Rotate(new Vector3(0, 1, 0), Time.deltaTime * 10f);
-        
-    }
-
+    
     void HumanDetected(Transform detectionTrans)
     {
         destinationPosition = detectionTrans.position;
@@ -389,25 +433,26 @@ public class MonsterAI : MonoBehaviour {
 
     void HumanSoundDetected(float soundHeard)
     {
-        //Vector3 xyz_distance = player.transform.position - transform.position;
-        //Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
-        //float distance = xz_distance.magnitude;
+        Vector3 xyz_distance = player.transform.position - transform.position;
+        Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
+        float distance = xz_distance.magnitude;
 
-        //soundDetectionPercentage = soundHeard * (distance / maxDetectionRange);
+        soundDetectionPercentage = soundHeard * (distance / maxDetectionRange);
     }
 
     void HumanLightDetected(bool on)
     {
-        //Vector3 xyz_distance = player.transform.position - transform.position;
-        //Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
-        //float distance = xz_distance.magnitude;
-        //if (on) {
-        //    lightDetectionPercentage = (distance / maxDetectionRange);
-        //}
-        //else
-        //{
-        //    lightDetectionPercentage = 0f;
-        //}
+        Vector3 xyz_distance = player.transform.position - transform.position;
+        Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
+        float distance = xz_distance.magnitude;
+        if (on)
+        {
+            lightDetectionPercentage = (distance / maxDetectionRange);
+        }
+        else
+        {
+            lightDetectionPercentage = 0f;
+        }
     }
     
     public MonsterState GetMonsterState()

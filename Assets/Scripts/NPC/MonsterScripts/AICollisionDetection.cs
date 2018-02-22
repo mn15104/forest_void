@@ -30,7 +30,7 @@ public class AICollisionDetection : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-       if(other.gameObject.layer == 13 || other.gameObject.layer == 14)
+       if(other.gameObject.layer >= 13 && other.gameObject.layer <= 15)
         {
             if (collisionCount == 0)
             {

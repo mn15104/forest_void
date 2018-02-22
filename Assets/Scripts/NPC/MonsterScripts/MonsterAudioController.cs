@@ -17,6 +17,9 @@ public class MonsterAudioController : MonoBehaviour
     public AudioClip m_GrassWalk;
     public AudioClip m_StoneWalk;
     public AudioClip m_Demigorgon;
+    public AudioClip m_Appear;
+    public AudioClip m_Approach;
+    public AudioClip m_Chase;
 
 
     private void OnEnable()
@@ -30,16 +33,25 @@ public class MonsterAudioController : MonoBehaviour
         m_TerrainTypeDictionary.Add(6, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(7, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(8, TerrainType.STONE);
-        m_TerrainTypeDictionary.Add(9, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(9, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(10, TerrainType.GRASS);
+        m_TerrainTypeDictionary.Add(11, TerrainType.GRASS);
+        m_TerrainTypeDictionary.Add(12, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(13, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(14, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(15, TerrainType.GRASS);
+
         m_StateVolumeDictionary.Add(MonsterState.HIDDEN_IDLE, 0f);
-        m_StateVolumeDictionary.Add(MonsterState.HIDDEN_MOVING, 0.5f);
+        m_StateVolumeDictionary.Add(MonsterState.HIDDEN_MOVING, 1f);
         m_StateVolumeDictionary.Add(MonsterState.APPEAR, 0f);
-        m_StateVolumeDictionary.Add(MonsterState.APPROACH, 0.8f);
+        m_StateVolumeDictionary.Add(MonsterState.APPROACH, 1f);
         m_StateVolumeDictionary.Add(MonsterState.CHASE, 1f);
         m_StateVolumeDictionary.Add(MonsterState.GAMEOVER, 0f);
         MonsterMotionAudioSrc.clip = m_StoneRun;
         MonsterMotionAudioSrc.loop = true;
+        MonsterSFXAudioSrc.loop = false;
+        MonsterSFXAudioSrc.clip = null;
+        MonsterSFXAudioSrc.Stop();
     }
 
     // Use this for initialization
@@ -93,11 +105,47 @@ public class MonsterAudioController : MonoBehaviour
         }
         
     }
+
+    void UpdateMonsterAudioState()
+    {
+        switch (m_MonsterState)
+        {
+            case MonsterState.APPEAR:
+                if (MonsterSFXAudioSrc.clip != m_Appear)
+                {
+                    MonsterSFXAudioSrc.clip = (m_Appear);
+                    MonsterSFXAudioSrc.Play();
+                }
+                break;
+            case MonsterState.APPROACH:
+                if (MonsterSFXAudioSrc.clip != m_Approach)
+                {
+                    MonsterSFXAudioSrc.clip = (m_Approach);
+                    MonsterSFXAudioSrc.Play();
+                }
+                break;
+            case MonsterState.CHASE:
+                if (MonsterSFXAudioSrc.clip != m_Chase)
+                {
+                    MonsterSFXAudioSrc.clip = (m_Chase);
+                    MonsterSFXAudioSrc.Play();
+                }
+                break;
+            case MonsterState.HIDDEN_IDLE:
+                break;
+            case MonsterState.HIDDEN_MOVING:
+                break;
+        }
+    }
+
+
     // Update is called once per frame
     void Update()
     {
         m_MonsterState = m_Monster.GetMonsterState();
+        ////////////////////////////////////////////////////////////////////////////////////////
         UpdateMonsterMotion();
+        UpdateMonsterAudioState();
         float monsterSpeed = m_Monster.GetMonsterSpeed(); 
         if (MonsterMotionAudioSrc.clip != null)
         {
@@ -108,6 +156,9 @@ public class MonsterAudioController : MonoBehaviour
                 MonsterMotionAudioSrc.volume = m_StateVolumeDictionary[m_MonsterState];
             }
         }
+        float dist = (Mathf.Abs(m_Monster.transform.position.z - m_Monster.player.transform.position.z) +
+            Mathf.Abs(m_Monster.transform.position.x - m_Monster.player.transform.position.x));
+   
     }
 
     float[] GetTextureMix(Vector3 worldPos)
