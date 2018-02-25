@@ -199,7 +199,6 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-    // Not normally virtual
     protected virtual void CheckForGrabOrRelease(float prevFlex)
     {
         if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))

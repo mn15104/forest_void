@@ -6,17 +6,14 @@ public class KeyGrabbable : OVRGrabbable {
 
     // Use this for initialization
     public GameObject target;
-    public GameObject area;
     public float speed;
-    private bool grabEnded = false;
+    private bool hasBeenInserted = false;
 
-    void Start () {
-        base.Start();
-    }
+
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
-        grabEnded = false; 
+        transform.GetComponent<Collider>().enabled = true;
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -30,16 +27,59 @@ public class KeyGrabbable : OVRGrabbable {
         rb.angularVelocity = new Vector3(0, 0, 0);
         m_grabbedBy = null;
         m_grabbedCollider = null;
-        grabEnded = true;
+        checkInserted(); 
     }
 
-    // Update is called once per frame
-    void Update () {
-        if (grabEnded && area.GetComponent<Collider>().bounds.Contains(transform.position))
+    public void checkInserted()
+    {
+        //Need to check if verticle
+        if (target.GetComponent<Collider>().bounds.Intersects(transform.GetComponent<Collider>().bounds))
+        {
+            hasBeenInserted = true;
+            transform.GetComponent<Rigidbody>().useGravity = false;
+        }
+        transform.GetComponent<Collider>().enabled = false;
+    }
+
+    private IEnumerator InsertionAnimation()
+    {
+        Vector3 finalKeyPosition = new Vector3(target.transform.position.x - 0.025f, target.transform.position.y , target.transform.position.z); 
+        while (transform.position != finalKeyPosition)
         {
             float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+            transform.position = Vector3.MoveTowards(transform.position, finalKeyPosition, step);
+            yield return 1;
+
         }
-        
-	}
+        //Wait to do rotation
+        yield return new WaitForSeconds(0.5f);
+
+        Quaternion startingRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(-180,0,0);
+        float originalRotationTime = 0.3f;
+        float currentTime = 0;
+        while(currentTime < originalRotationTime)
+        {
+            currentTime += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(startingRotation, targetRotation, currentTime/originalRotationTime);
+            yield return new WaitForEndOfFrame();
+        }
+     
+   
+    }
+
+    void Update () {
+  
+        if (hasBeenInserted)
+        {
+            //Animate insertion;
+            StartCoroutine(InsertionAnimation());
+            hasBeenInserted = false;
+        }
+
+    }
+
+
+
+
 }
