@@ -69,8 +69,13 @@ public class MonsterAI : MonoBehaviour {
         anim = GetComponent<Animator>();
         anim.SetBool("Idle", true);
         destinationPosition = player.transform.position;
+        Invoke("DebugInvokeInit", 2);
     }
 
+    void DebugInvokeInit()
+    {
+        SetState(MonsterState.HIDDEN_MOVING);
+    }
      
 	// Update is called once per frame
 	void Update () {
