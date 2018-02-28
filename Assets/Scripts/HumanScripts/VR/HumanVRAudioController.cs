@@ -6,7 +6,10 @@ using UnityEngine;
 public enum TerrainType
 {
     GRASS,
-    STONE
+    STONE,
+    MUD,
+    GRAVEL,
+    WOOD
 }
 
 public class HumanVRAudioController : MonoBehaviour {
@@ -24,6 +27,10 @@ public class HumanVRAudioController : MonoBehaviour {
     public AudioClip m_StoneRun;
     public AudioClip m_GrassWalk;
     public AudioClip m_StoneWalk;
+    public AudioClip m_GravelWalk;
+    public AudioClip m_GravelRun;
+    public AudioClip m_MudWalk;
+    public AudioClip m_MudRun;
     public AudioClip m_WoodRun;
     public AudioSource m_Breathing;
     private Transform m_Transform;
@@ -42,7 +49,14 @@ public class HumanVRAudioController : MonoBehaviour {
         m_TerrainTypeDictionary.Add(5, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(6, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(7, TerrainType.STONE);
-        m_TerrainTypeDictionary.Add(8, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(8, TerrainType.GRAVEL);
+        m_TerrainTypeDictionary.Add(9, TerrainType.MUD);
+        m_TerrainTypeDictionary.Add(10, TerrainType.GRASS);
+        m_TerrainTypeDictionary.Add(11, TerrainType.GRASS);
+        m_TerrainTypeDictionary.Add(12, TerrainType.GRAVEL);
+        m_TerrainTypeDictionary.Add(13, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(14, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(15, TerrainType.GRASS);
 
         HumanMotion.clip = m_StoneRun;
         HumanMotion.loop = true;
