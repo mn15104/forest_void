@@ -7,9 +7,14 @@ public class KeyGrabbable : OVRGrabbable {
     // Use this for initialization
     public GameObject target;
     public float speed;
+    public GameObject human;
     private bool hasBeenInserted = false;
+    
 
-
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
@@ -64,14 +69,13 @@ public class KeyGrabbable : OVRGrabbable {
             transform.rotation = Quaternion.Slerp(startingRotation, targetRotation, currentTime/originalRotationTime);
             yield return new WaitForEndOfFrame();
         }
-     
-   
     }
 
     void Update () {
   
         if (hasBeenInserted)
         {
+            human.GetComponent<Inventory>().removeKeyFromInventory(gameObject);
             //Animate insertion;
             StartCoroutine(InsertionAnimation());
             hasBeenInserted = false;

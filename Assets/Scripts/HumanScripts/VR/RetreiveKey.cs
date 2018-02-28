@@ -4,9 +4,18 @@ using UnityEngine;
 public class RetreiveKey : OVRGrabber 
 {
 
-    public GameObject key;
-    public Transform headTransform;
     
+    public Transform headTransform;
+
+    private GameObject human;
+    private GameObject key;
+
+    protected override void Start()
+    {
+        base.Start();
+        human = transform.root.gameObject;
+    }
+
     protected override void FixedUpdate()
     {
         if (operatingWithoutOVRCameraRig)
@@ -42,20 +51,21 @@ public class RetreiveKey : OVRGrabber
     
     }
 
-
     protected override void CheckForGrabOrRelease(float prevFlex)
     {
-        if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin) && CheckHandInPocket())
+        if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))
         {
-            Debug.Log(transform.position);
-            KeyAppear();
-            OVRGrabbable grabbable = key.GetComponent<OVRGrabbable>() ?? key.GetComponentInParent<OVRGrabbable>();
-            if (grabbable == null) return;
+            if (CheckHandInPocket() && human.GetComponent<Inventory>().inventorySize() > 0)
+            {
+                KeyAppear();
+                OVRGrabbable grabbable = key.GetComponent<OVRGrabbable>() ?? key.GetComponentInParent<OVRGrabbable>();
+                if (grabbable == null) return;
 
-            // Add the grabbable
-            int refCount = 0;
-            m_grabCandidates.TryGetValue(grabbable, out refCount);
-            m_grabCandidates[grabbable] = refCount + 1;
+                // Add the grabbable
+                int refCount = 0;
+                m_grabCandidates.TryGetValue(grabbable, out refCount);
+                m_grabCandidates[grabbable] = refCount + 1;
+            }
 
             base.GrabBegin();
         }
@@ -69,9 +79,13 @@ public class RetreiveKey : OVRGrabber
     void KeyAppear()
     {
         GetComponent<OculusHaptics>().Vibrate(VibrationForce.Hard);
+        key = human.GetComponent<Inventory>().peekInventory();
         key.transform.position = transform.position;
         key.transform.rotation = m_lastRot;
         key.transform.Rotate(new Vector3(90, 90, 0));
+       
+
+        
     }
 
     bool CheckHandInPocket()

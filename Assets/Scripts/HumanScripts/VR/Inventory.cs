@@ -7,14 +7,24 @@ public class Inventory : MonoBehaviour {
     public List<GameObject> keys;
 
 
-    void addKeyToInventory(GameObject key)
+    public void addKeyToInventory(GameObject key)
     {
         keys.Add(key);
     }
 
-    void removeKeyFromInventory(GameObject key)
+    public void removeKeyFromInventory(GameObject key)
     {
         keys.Remove(key);
+    }
+
+    public GameObject peekInventory()
+    {
+        return keys[0];
+    }
+
+    public int inventorySize()
+    {
+        return keys.Count;
     }
 
 }
