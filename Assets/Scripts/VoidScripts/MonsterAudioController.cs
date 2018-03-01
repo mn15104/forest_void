@@ -28,6 +28,18 @@ public class MonsterAudioController : MonoBehaviour
 
     private void OnEnable()
     {
+        MonsterMotionAudioSrc.Stop();
+        MonsterSFXAudioSrc.Stop();
+        MonsterMotionAudioSrc.clip = m_StoneRun;
+        MonsterMotionAudioSrc.loop = true;
+        MonsterSFXAudioSrc.clip = null;
+        MonsterSFXAudioSrc.loop = false;
+        
+    }
+
+    // Use this for initialization
+    void Start()
+    {
         m_TerrainTypeDictionary.Add(0, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(1, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(2, TerrainType.STONE);
@@ -44,23 +56,13 @@ public class MonsterAudioController : MonoBehaviour
         m_TerrainTypeDictionary.Add(13, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(14, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(15, TerrainType.GRASS);
-
         m_StateVolumeDictionary.Add(MonsterState.HIDDEN_IDLE, 0f);
         m_StateVolumeDictionary.Add(MonsterState.HIDDEN_MOVING, 1f);
+        m_StateVolumeDictionary.Add(MonsterState.FOLLOW, 1f);
         m_StateVolumeDictionary.Add(MonsterState.APPEAR, 0f);
         m_StateVolumeDictionary.Add(MonsterState.APPROACH, 1f);
         m_StateVolumeDictionary.Add(MonsterState.CHASE, 1f);
         m_StateVolumeDictionary.Add(MonsterState.GAMEOVER, 0f);
-        MonsterMotionAudioSrc.clip = m_StoneRun;
-        MonsterMotionAudioSrc.loop = true;
-        MonsterSFXAudioSrc.loop = false;
-        MonsterSFXAudioSrc.clip = null;
-        MonsterSFXAudioSrc.Stop();
-    }
-
-    // Use this for initialization
-    void Start()
-    {
         m_Monster = GetComponentInParent<MonsterAI>();
         m_MonsterState = m_Monster.GetMonsterState();
     }
@@ -158,6 +160,12 @@ public class MonsterAudioController : MonoBehaviour
         switch (m_MonsterState)
         {
             case MonsterState.HIDDEN_IDLE:
+                if (!m_Hidden)
+                {
+                    StartCoroutine(alarmingNoises());
+                    m_Hidden = true;
+                }
+                break;
             case MonsterState.HIDDEN_MOVING:
                 if (!m_Hidden)
                 {

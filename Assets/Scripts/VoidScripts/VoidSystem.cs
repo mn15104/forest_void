@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VoidSystem : MonoBehaviour {
-    public MonsterAI m_ForestVoid;
-    public MonsterAICrypt m_CryptVoid;
+    public GameObject m_ForestVoid;
+    public GameObject m_CryptVoid;
 
     public  bool m_VoidSetActive  = false;
     private bool m_VoidEnabled = false;
@@ -12,9 +12,9 @@ public class VoidSystem : MonoBehaviour {
 
     void Start () {
         if (m_ForestVoid)
-            m_ForestVoid.gameObject.SetActive(false);
+            m_ForestVoid.SetActive(false);
         if (m_CryptVoid)
-            m_CryptVoid.gameObject.SetActive(false);
+            m_CryptVoid.SetActive(false);
 
         Invoke("SetVoidActive", m_DelayTimeToActive);
     }
@@ -39,9 +39,9 @@ public class VoidSystem : MonoBehaviour {
         {
             m_VoidEnabled = true;
             if (m_ForestVoid)
-                m_ForestVoid.gameObject.SetActive(true);
+                m_ForestVoid.SetActive(true);
             if (m_CryptVoid)
-                m_CryptVoid.gameObject.SetActive(true);
+                m_CryptVoid.SetActive(true);
         }
     }
     void SetVoidInactive()
@@ -50,9 +50,9 @@ public class VoidSystem : MonoBehaviour {
         {
             m_VoidEnabled = false;
             if (m_ForestVoid)
-                m_ForestVoid.gameObject.SetActive(false);
+                m_ForestVoid.SetActive(false);
             if (m_CryptVoid)
-                m_CryptVoid.gameObject.SetActive(false);
+                m_CryptVoid.SetActive(false);
         }
     }
 }

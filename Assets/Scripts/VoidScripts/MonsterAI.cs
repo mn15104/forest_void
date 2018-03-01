@@ -56,6 +56,15 @@ public class MonsterAI : MonoBehaviour {
         HumanVRRightHand.OnHumanLightEmission += HumanLightDetected;
         HumanVRAudioController.OnHumanAudioEmission += HumanSoundDetected;
         MonsterTrigger.OnHumanDetected += HumanDetected;
+        anim = GetComponent<Animator>();
+        destinationPosition = player.transform.position;
+        anim.SetBool("Run", false);
+        anim.SetBool("Walk", false);
+        anim.SetBool("Idle", true);
+        anim.SetFloat("Speed", m_HiddenIdleSpeed);
+        StartCoroutine(UpdateHiddenDestination());
+        m_CurrentSpeed = m_HiddenIdleSpeed;
+        StartCoroutine(DelayStateChange(MonsterState.HIDDEN_MOVING, 2f));
     }
 
     private void OnDisable()
@@ -66,10 +75,7 @@ public class MonsterAI : MonoBehaviour {
     }
 
     void Start () {
-        anim = GetComponent<Animator>();
-        anim.SetBool("Idle", true);
-        destinationPosition = player.transform.position;
-        Invoke("DebugInvokeInit", 2);
+        
     }
 
     void DebugInvokeInit()
