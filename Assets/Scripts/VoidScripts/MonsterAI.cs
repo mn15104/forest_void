@@ -45,14 +45,13 @@ public class MonsterAI : MonoBehaviour {
     private bool collisionLeft;
     private AICollisionSide firstCollision = AICollisionSide.NONE;
     // Used while hidden
-    public float soundDetectionPercentage = 0;
-    public float lightDetectionPercentage = 0;
+    private float soundDetectionPercentage = 0.2f;
+    private float lightDetectionPercentage = 0.2f;
     private Quaternion destinationRotation;
     private float distanceToHuman;
     private float distanceToHuman_FollowTrigger = 15;
-    private float distanceToHuman_AppearTrigger = 5;
+    private float distanceToHuman_AppearTrigger = 7;
     private float maxDetectionRange = 165;
-    private bool isHidden = false;
 
     private void OnEnable()
     {
@@ -135,53 +134,41 @@ public class MonsterAI : MonoBehaviour {
             switch (state)
             {
                 case MonsterState.HIDDEN_IDLE:
+                    StopAllCoroutines();
+                    StartCoroutine(UpdateHiddenDestination());
                     anim.SetBool("Run", false);
                     anim.SetBool("Walk", false);
                     anim.SetBool("Idle", true);
                     anim.SetFloat("Speed", m_HiddenIdleSpeed);
-                    if (!isHidden)
-                    {
-                        isHidden = true;
-                        StopAllCoroutines();
-                        StartCoroutine(UpdateHiddenDestination());
-                    }
                     m_CurrentSpeed = m_HiddenIdleSpeed;
                     StartCoroutine(DelayStateChange(MonsterState.HIDDEN_MOVING, 2f));
                     break;
                 case MonsterState.HIDDEN_MOVING:
+                    StopAllCoroutines();
+                    StartCoroutine(UpdateHiddenDestination());
                     anim.SetBool("Run", false);
                     anim.SetBool("Walk", true);
                     anim.SetBool("Idle", false);
                     anim.SetFloat("Speed", m_HiddenMovingSpeed);
-                    if (!isHidden)
-                    {
-                        isHidden = true;
-                        StopAllCoroutines();
-                        StartCoroutine(UpdateHiddenDestination());
-                    }
                     m_CurrentSpeed = m_HiddenMovingSpeed;
                     StartCoroutine(DelayStateChange(MonsterState.HIDDEN_IDLE, 8f));
                     break;
                 case MonsterState.FOLLOW:
                     StopAllCoroutines();
+                    StartCoroutine(UpdateChaseDestination());
                     anim.SetBool("Run", false);
                     anim.SetBool("Idle", false);
                     anim.SetBool("Walk", true);
                     anim.SetFloat("Speed", m_FollowSpeed);
                     m_CurrentSpeed = m_FollowSpeed;
-                    StartCoroutine(UpdateChaseDestination());
                     break;
                 case MonsterState.APPEAR:
+                    StopAllCoroutines();
+                    StartCoroutine(UpdateChaseDestination());
                     anim.SetBool("Run", false);
                     anim.SetBool("Walk", false);
                     anim.SetBool("Idle", true);
                     anim.SetFloat("Speed", m_AppearSpeed);
-                    if (isHidden)
-                    {
-                        isHidden = false;
-                        StopAllCoroutines();
-                        StartCoroutine(UpdateChaseDestination());
-                    }
                     m_CurrentSpeed = m_AppearSpeed;
                     /*INVOKE A MECHANIC UPON APPEARING*/
                     Invoke("TeleportVoidBehindHuman", 2f);
@@ -189,12 +176,8 @@ public class MonsterAI : MonoBehaviour {
                     /*--------------------------------*/
                     break;
                 case MonsterState.APPROACH:
-                    if (isHidden)
-                    {
-                        isHidden = false;
-                        StopAllCoroutines();
-                        StartCoroutine(UpdateChaseDestination());
-                    }
+                    StopAllCoroutines();
+                    StartCoroutine(UpdateChaseDestination());
                     anim.SetBool("Idle", false);
                     anim.SetBool("Walk", true);
                     anim.SetFloat("Speed", m_MinApproachSpeed);
@@ -202,20 +185,15 @@ public class MonsterAI : MonoBehaviour {
                     StartCoroutine(DelayStateChange(MonsterState.CHASE, 4f));
                     break;
                 case MonsterState.CHASE:
+                    StopAllCoroutines();
+                    StartCoroutine(UpdateChaseDestination());
                     anim.SetBool("Walk", false);
                     anim.SetBool("Run", true);
                     anim.SetFloat("Speed", m_RunSpeed);
-                    if (isHidden)
-                    {
-                        isHidden = false;
-                        StopAllCoroutines();
-                        StartCoroutine(UpdateChaseDestination());
-                    }
                     m_CurrentSpeed = m_RunSpeed;
                     break;
                 case MonsterState.GAMEOVER:
                     StopAllCoroutines();
-                    isHidden = false;
                     anim.SetBool("Idle", true);
                     anim.SetBool("Walk", false);
                     anim.SetBool("Run", false);
@@ -248,7 +226,6 @@ public class MonsterAI : MonoBehaviour {
         var checkResult = Physics.OverlapSphere(voidPos, 0.5f, mask);
         Vector3 voidPosAttempt = voidPos;
         while (checkResult.Length == 0 && giveUpCounter < 5){
-            Debug.Log("Attempt " + giveUpCounter);
             voidPosAttempt = voidPos;
             voidPosAttempt.x += Random.Range(-1f, 2f);
             voidPosAttempt.z += Random.Range(-1f, 2f);
@@ -335,7 +312,7 @@ public class MonsterAI : MonoBehaviour {
         }
         else
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, destinationRotation, Time.deltaTime * 2);
+            transform.rotation = Quaternion.Slerp(transform.rotation, destinationRotation, Time.deltaTime * 1.2f);
         }
     }
 
@@ -346,11 +323,11 @@ public class MonsterAI : MonoBehaviour {
             Vector3 t_rotation = transform.rotation.eulerAngles;
             if (firstCollision == AICollisionSide.RIGHT)
             {
-                t_rotation.y -= Time.deltaTime * 60;
+                t_rotation.y -= Time.deltaTime * 100;
             }
             else
             {
-                t_rotation.y += Time.deltaTime * 60;
+                t_rotation.y += Time.deltaTime * 100;
             }
 
             transform.rotation = Quaternion.Euler(t_rotation);
@@ -359,10 +336,9 @@ public class MonsterAI : MonoBehaviour {
         {
             var lookPos = destinationPosition - transform.position;
             var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1.2f);
         }
-
-        Debug.Log(distanceToHuman + " : " + anim.GetBool("Walk"));
+        
         if (distanceToHuman > distanceToHuman_AppearTrigger && !anim.GetBool("Walk"))
         {
             m_CurrentSpeed = m_HiddenMovingSpeed;
@@ -390,11 +366,11 @@ public class MonsterAI : MonoBehaviour {
             Vector3 t_rotation = transform.rotation.eulerAngles;
             if (firstCollision == AICollisionSide.RIGHT)
             {
-                t_rotation.y -= Time.deltaTime * 60;
+                t_rotation.y -= Time.deltaTime * 100;
             }
             else
             {
-                t_rotation.y += Time.deltaTime * 60;
+                t_rotation.y += Time.deltaTime * 100;
             }
             
             transform.rotation = Quaternion.Euler(t_rotation);
@@ -403,7 +379,7 @@ public class MonsterAI : MonoBehaviour {
         {
             var lookPos = destinationPosition - transform.position;
             var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1.2f);
         }
       
         m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_MaxApproachSpeed, Time.deltaTime * 0.1f);
@@ -429,7 +405,7 @@ public class MonsterAI : MonoBehaviour {
         {
             var lookPos = destinationPosition - transform.position;
             var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1.5f);
         }
         //Chase
         float distanceToHuman = Mathf.Sqrt(Mathf.Pow(destinationPosition.x - transform.position.x, 2) 

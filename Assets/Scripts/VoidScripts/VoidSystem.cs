@@ -22,6 +22,8 @@ public class VoidSystem : MonoBehaviour {
             m_CryptVoid.SetActive(false);
 
         Invoke("SetVoidActive", m_DelayTimeToActive);
+
+       
     }
 	
 	
@@ -42,6 +44,7 @@ public class VoidSystem : MonoBehaviour {
     {
         if (!m_VoidEnabled)
         {
+            m_VoidSetActive = true;
             m_VoidEnabled = true;
             if (m_ForestVoid)
                 m_ForestVoid.SetActive(true);
@@ -53,6 +56,7 @@ public class VoidSystem : MonoBehaviour {
     {
         if (m_VoidEnabled)
         {
+            m_VoidSetActive = false;
             m_VoidEnabled = false;
             if (m_ForestVoid)
                 m_ForestVoid.SetActive(false);
@@ -78,6 +82,9 @@ public class VoidSystem : MonoBehaviour {
             case MonsterState.CHASE:
                 break;
             case MonsterState.GAMEOVER:
+                float new_x = Random.Range(870, 786);
+                float new_z = Random.Range(535, 598);
+                m_ForestVoid.transform.position = new Vector3(new_x, m_ForestVoid.transform.position.y , new_z);
                 SetVoidInactive();
                 break;
             default:
