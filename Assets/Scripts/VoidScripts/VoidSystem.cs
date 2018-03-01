@@ -10,6 +10,11 @@ public class VoidSystem : MonoBehaviour {
     private bool m_VoidEnabled = false;
     private float m_DelayTimeToActive = 90f;
 
+    private void OnEnable()
+    {
+        m_ForestVoid.GetComponent<MonsterAI>().OnMonsterStateChange += NotifyStateChange;
+    }
+
     void Start () {
         if (m_ForestVoid)
             m_ForestVoid.SetActive(false);
@@ -53,6 +58,30 @@ public class VoidSystem : MonoBehaviour {
                 m_ForestVoid.SetActive(false);
             if (m_CryptVoid)
                 m_CryptVoid.SetActive(false);
+        }
+    }
+
+    void NotifyStateChange(MonsterState state)
+    {
+        switch (state)
+        {
+            case MonsterState.HIDDEN_IDLE:
+                break;
+            case MonsterState.HIDDEN_MOVING:
+                break;
+            case MonsterState.FOLLOW:
+                break;
+            case MonsterState.APPEAR:
+                break;
+            case MonsterState.APPROACH:
+                break;
+            case MonsterState.CHASE:
+                break;
+            case MonsterState.GAMEOVER:
+                SetVoidInactive();
+                break;
+            default:
+                break;
         }
     }
 }
