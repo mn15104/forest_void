@@ -13,11 +13,21 @@ public class AICollisionDetection : MonoBehaviour {
 
 
     public AICollisionSide m_CollisionSide;
-    MonsterAI m_monsterAI;
-    int collisionCount = 0;
-	// Use this for initialization
-	void Start () {
+    private MonsterAI m_monsterAI;
+    private int collisionCount;
+    // Use this for initialization
+    private void OnEnable()
+    {
         m_monsterAI = GetComponentInParent<MonsterAI>();
+        collisionCount = 0;
+    }
+    private void OnDisable()
+    {
+        collisionCount = 0;
+    }
+
+    void Start () {
+
     }
 	
 	// Update is called once per frame
@@ -41,6 +51,7 @@ public class AICollisionDetection : MonoBehaviour {
     }
     private void OnTriggerExit()
     {
-        collisionCount--;
+        if(collisionCount > 0)
+            collisionCount--;
     }
 }

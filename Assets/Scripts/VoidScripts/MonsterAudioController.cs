@@ -28,13 +28,21 @@ public class MonsterAudioController : MonoBehaviour
 
     private void OnEnable()
     {
+        
         MonsterMotionAudioSrc.Stop();
         MonsterSFXAudioSrc.Stop();
         MonsterMotionAudioSrc.clip = m_StoneRun;
         MonsterMotionAudioSrc.loop = true;
         MonsterSFXAudioSrc.clip = null;
         MonsterSFXAudioSrc.loop = false;
-        
+        m_Monster = GetComponentInParent<MonsterAI>();
+        m_MonsterState = m_Monster.GetMonsterState();
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        m_Hidden = false;
     }
 
     // Use this for initialization
@@ -63,8 +71,6 @@ public class MonsterAudioController : MonoBehaviour
         m_StateVolumeDictionary.Add(MonsterState.APPROACH, 1f);
         m_StateVolumeDictionary.Add(MonsterState.CHASE, 1f);
         m_StateVolumeDictionary.Add(MonsterState.GAMEOVER, 0f);
-        m_Monster = GetComponentInParent<MonsterAI>();
-        m_MonsterState = m_Monster.GetMonsterState();
     }
     private void UpdateMonsterMotion()
     {
@@ -227,9 +233,9 @@ public class MonsterAudioController : MonoBehaviour
             }
         }
         ///////////////////////////////////////////////////////////////////////////////////////////
-        float dist = (Mathf.Abs(m_Monster.transform.position.z - m_Monster.player.transform.position.z) +
-            Mathf.Abs(m_Monster.transform.position.x - m_Monster.player.transform.position.x));
-   
+        float dist = Mathf.Sqrt(Mathf.Pow(m_Monster.player.transform.position.x - transform.position.x, 2)
+                                + Mathf.Pow(m_Monster.player.transform.position.z - transform.position.z, 2));
+
     }
 
     float[] GetTextureMix(Vector3 worldPos)

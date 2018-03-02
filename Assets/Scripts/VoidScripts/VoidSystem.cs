@@ -5,8 +5,9 @@ using UnityEngine;
 public class VoidSystem : MonoBehaviour {
     public GameObject m_ForestVoid;
     public GameObject m_CryptVoid;
-
+    public GameObject m_SpawnpointsHolder;
     public  bool m_VoidSetActive  = false;
+    private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private bool m_VoidEnabled = false;
     private float m_DelayTimeToActive = 90f;
 
@@ -20,7 +21,10 @@ public class VoidSystem : MonoBehaviour {
             m_ForestVoid.SetActive(false);
         if (m_CryptVoid)
             m_CryptVoid.SetActive(false);
-
+        foreach(Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
+        {
+            m_SpawnPositions.Add(trans.position);
+        }
         Invoke("SetVoidActive", m_DelayTimeToActive);
 
        
@@ -82,10 +86,9 @@ public class VoidSystem : MonoBehaviour {
             case MonsterState.CHASE:
                 break;
             case MonsterState.GAMEOVER:
-                float new_x = Random.Range(870, 786);
-                float new_z = Random.Range(535, 598);
-                m_ForestVoid.transform.position = new Vector3(new_x, m_ForestVoid.transform.position.y , new_z);
                 SetVoidInactive();
+                int nextSpawn = Random.Range(0, m_SpawnPositions.Count);
+                m_ForestVoid.transform.position = m_SpawnPositions[nextSpawn];
                 break;
             default:
                 break;

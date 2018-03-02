@@ -1517,8 +1517,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033277563816748}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.20630816, z: -0, w: 0.97848713}
+  m_LocalPosition: {x: 8.921925, y: 0, z: 42.870705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4816934750583508}
@@ -2165,7 +2165,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1597030526436626}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2587,7 +2587,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 10
+  MaxDistance: 11
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2603,68 +2603,74 @@ AudioSource:
       outSlope: -3.3789873
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.036378514
-      value: 0.9984217
+      time: 0.0212546
+      value: 1.0031406
+      inSlope: 0.1642108
+      outSlope: 0.1642108
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.20136704
+      value: 1.0007753
       inSlope: 0.46104193
       outSlope: 0.46104193
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.093132734
-      value: 1.0053501
+      time: 0.2757423
+      value: 0.93710136
       inSlope: 0.052452087
       outSlope: 0.052452087
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.21454282
-      value: 0.99646854
+      time: 0.35069698
+      value: 0.80113316
       inSlope: 0.10788441
       outSlope: 0.10788441
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.32774293
-      value: 0.8872164
+      time: 0.41104066
+      value: 0.6565798
       inSlope: -1.1470914
       outSlope: -1.1470914
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.42125872
-      value: 0.6972656
+      time: 0.45809343
+      value: 0.52311707
       inSlope: -2.2508998
       outSlope: -2.2508998
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5443893
-      value: 0.43340957
+      time: 0.5363937
+      value: 0.37692153
       inSlope: -0.7978082
       outSlope: -0.7978082
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.6756563
-      value: 0.18766415
+      time: 0.6324129
+      value: 0.2912103
       inSlope: -0.9411599
       outSlope: -0.9411599
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.7640416
-      value: 0.104758695
+      time: 0.7416112
+      value: 0.18242593
       inSlope: -1.5195087
       outSlope: -1.5195087
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.8836544
-      value: 0.008525848
+      time: 0.8403805
+      value: 0.10502243
       inSlope: -0.5226955
       outSlope: -0.5226955
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.9159241
-      value: 0.008525848
+      time: 0.917511
+      value: 0.06266403
       inSlope: -0.2576118
       outSlope: -0.2576118
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.9971021
-      value: 0.008525848
+      time: 0.97305423
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2728,7 +2734,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 10
+  MaxDistance: 12
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2780,20 +2786,32 @@ AudioSource:
       outSlope: -1.6829371
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.6966686
-      value: 0.27397725
+      time: 0.6675396
+      value: 0.2525539
       inSlope: -1.3975799
       outSlope: -1.3975799
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.7687998
-      value: 0.16312043
+      time: 0.7202463
+      value: 0.16669099
       inSlope: -2.0385294
       outSlope: -2.0385294
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.95651305
-      value: 0
+      time: 0.80355895
+      value: 0.1071167
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.89715815
+      value: 0.06427002
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0.01071167
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2918,8 +2936,6 @@ MonoBehaviour:
   player: {fileID: 0}
   currentState: 0
   debugState: 0
-  soundDetectionPercentage: 0.5
-  lightDetectionPercentage: 0.5
 --- !u!136 &136682902602313994
 CapsuleCollider:
   m_ObjectHideFlags: 1
