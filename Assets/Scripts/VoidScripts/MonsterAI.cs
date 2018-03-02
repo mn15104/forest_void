@@ -29,7 +29,7 @@ public class MonsterAI : MonoBehaviour {
     public MonsterState debugState;
     private Animator anim;
 	private GameObject trigger;
-	private float chaseTimer = 20f;
+	private float chaseTimer = 10f;
     //
     private const float m_HiddenIdleSpeed = 0f;
     private const float m_HiddenMovingSpeed = 1.0f;
@@ -86,7 +86,7 @@ public class MonsterAI : MonoBehaviour {
         m_CurrentSpeed = m_HiddenIdleSpeed;
         soundDetectionPercentage = 0.2f;
         lightDetectionPercentage = 0.2f;
-        chaseTimer = 20f;
+        chaseTimer = 10f;
         distanceToHuman = Mathf.Infinity;
         collisionRight = false;
         collisionLeft = false;

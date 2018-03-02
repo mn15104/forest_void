@@ -11,6 +11,9 @@ public class VoidSystem : MonoBehaviour {
     private bool m_VoidEnabled = false;
     private float m_DelayTimeToActive = 90f;
 
+
+    private float gameTimer = 0f;
+ 
     private void OnEnable()
     {
         m_ForestVoid.GetComponent<MonsterAI>().OnMonsterStateChange += NotifyStateChange;
@@ -26,8 +29,7 @@ public class VoidSystem : MonoBehaviour {
             m_SpawnPositions.Add(trans.position);
         }
         Invoke("SetVoidActive", m_DelayTimeToActive);
-
-       
+        
     }
 	
 	
@@ -51,7 +53,10 @@ public class VoidSystem : MonoBehaviour {
             m_VoidSetActive = true;
             m_VoidEnabled = true;
             if (m_ForestVoid)
+            {
+                m_ForestVoid.transform.position = GetFurthestSpawnPoint();
                 m_ForestVoid.SetActive(true);
+            }
             if (m_CryptVoid)
                 m_CryptVoid.SetActive(true);
         }
@@ -87,11 +92,24 @@ public class VoidSystem : MonoBehaviour {
                 break;
             case MonsterState.GAMEOVER:
                 SetVoidInactive();
-                int nextSpawn = Random.Range(0, m_SpawnPositions.Count);
-                m_ForestVoid.transform.position = m_SpawnPositions[nextSpawn];
                 break;
             default:
                 break;
         }
+    }
+
+
+    Vector3 GetFurthestSpawnPoint()
+    {
+        Vector3 playerPos = m_ForestVoid.GetComponent<MonsterAI>().player.transform.position;
+        Vector3 furthestSpawnPoint = m_SpawnPositions[0];
+        foreach(Vector3 pos in m_SpawnPositions)
+        {
+            if((pos - playerPos).magnitude > (furthestSpawnPoint - playerPos).magnitude)
+            {
+                furthestSpawnPoint = pos;
+            }
+        }
+        return furthestSpawnPoint;
     }
 }
