@@ -9,14 +9,21 @@ public class VoidSystem : MonoBehaviour {
     public  bool m_VoidSetActive  = false;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private bool m_VoidEnabled = false;
+
     private float m_DelayTimeToActive = 90f;
-
-
+    private List<float> m_AppearTimes = new List<float>();
     private float gameTimer = 0f;
  
     private void OnEnable()
     {
         m_ForestVoid.GetComponent<MonsterAI>().OnMonsterStateChange += NotifyStateChange;
+        m_AppearTimes.Add(90);
+        m_AppearTimes.Add(200);
+        m_AppearTimes.Add(300);
+        m_AppearTimes.Add(380);
+        m_AppearTimes.Add(470);
+        m_AppearTimes.Add(530);
+        m_AppearTimes.Add(580);
     }
 
     void Start () {

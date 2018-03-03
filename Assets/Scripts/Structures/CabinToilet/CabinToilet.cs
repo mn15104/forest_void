@@ -6,6 +6,7 @@ public class CabinToilet : MonoBehaviour {
 
     GameObject human;
     GameObject m_Door;
+    public GameObject m_FrontWall;
     public AudioSource m_Banging;
     public AudioSource m_Squeaking;
     Quaternion m_OriginalRotation = new Quaternion();
@@ -32,17 +33,11 @@ public class CabinToilet : MonoBehaviour {
         m_Squeaking.Stop();
         m_Squeaking.loop = false;
         m_Door = GetComponentInChildren<DoorScript>().gameObject;
+        m_Door.SetActive(false);
         m_OriginalPosition = transform.position;
         m_OriginalRotation = transform.rotation;
 
-       
-        foreach (Collider collider in GetComponentsInChildren<Collider>())
-        {
-            if (!collider.isTrigger)
-            {
-                collider.enabled = false;
-            }
-        }
+     
 
     }
 
@@ -55,6 +50,7 @@ public class CabinToilet : MonoBehaviour {
                 {
                     eventStage = EventStage.LookedAtFrontWall;
                 }
+            Debug.Log("1");
         }
         if (eventStage == EventStage.LookedAtFrontWall)
         {
@@ -62,23 +58,32 @@ public class CabinToilet : MonoBehaviour {
                 {
                     eventStage = EventStage.TurnedAwayBriefly;
                 }
+            Debug.Log("2");
         }
         if (eventStage == EventStage.TurnedAwayBriefly)
         {
             if (turnedAwayMargin > 2f)
             {
+                foreach (Collider collider in GetComponentsInChildren<Collider>())
+                {
+                    if (!collider.isTrigger)
+                    {
+                        collider.enabled = false;
+                    }
+                }
                 eventStage = EventStage.TurnedAway;
                 m_Banging.Play();
             }
             else
             {
                 turnedAwayMargin += Time.deltaTime;
-                    if (Vector3.Dot(human.GetComponentInChildren<Camera>().transform.forward, (transform.position - human.GetComponentInChildren<Camera>().transform.position).normalized) > 0)
-                    {
-                        turnedAwayMargin = 0f;
-                        eventStage = EventStage.LookedAtFrontWall;
-                    }
+                if (Vector3.Dot(human.GetComponentInChildren<Camera>().transform.forward, (transform.position - human.GetComponentInChildren<Camera>().transform.position).normalized) > 0)
+                {
+                    turnedAwayMargin = 0f;
+                    eventStage = EventStage.LookedAtFrontWall;
+                }
             }
+            Debug.Log("3");
         }
         if(eventStage == EventStage.TurnedAway)
         {
@@ -88,10 +93,11 @@ public class CabinToilet : MonoBehaviour {
             }
             else
             {
-                GetComponentInChildren<DoorScript>().enabled = true;
+                transform.position = m_OriginalPosition;
+                transform.rotation = m_OriginalRotation;
+                m_FrontWall.SetActive(false);
                 m_Door.SetActive(true);
-                m_Door.GetComponent<Rigidbody>().freezeRotation = false;
-                m_Door.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                GetComponentInChildren<DoorScript>().enabled = true;
 
                 foreach (Collider collider in GetComponentsInChildren<Collider>())
                 {
@@ -100,11 +106,11 @@ public class CabinToilet : MonoBehaviour {
                         collider.enabled = true;
                     }
                 }
-                transform.position = m_OriginalPosition;
-                transform.rotation = m_OriginalRotation;
+                
                 m_Squeaking.Play();
                 eventStage = EventStage.Complete;
             }
+            Debug.Log("4");
         }
     }
 

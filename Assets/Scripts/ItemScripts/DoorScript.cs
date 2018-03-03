@@ -42,13 +42,7 @@ public class DoorScript : MonoBehaviour {
         //body.AddForce(-transform.forward, ForceMode.VelocityChange);
     }
 
-    public void SwingDoorOpen()
-    {
-        body.mass = 1;
-        body.AddForceAtPosition(transform.forward*2, new Vector3(-4, 0, 0));
-        //body.AddForce(-transform.forward, ForceMode.VelocityChange);
-    }
-
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<HumanController>())
