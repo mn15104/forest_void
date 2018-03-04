@@ -27,7 +27,7 @@ MonoBehaviour:
   fog:
     m_Enabled: 0
     m_Settings:
-      excludeSkybox: 1
+      excludeSkybox: 0
   antialiasing:
     m_Enabled: 0
     m_Settings:
@@ -40,10 +40,10 @@ MonoBehaviour:
         stationaryBlending: 0.95
         motionBlending: 0.85
   ambientOcclusion:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      intensity: 1
-      radius: 0.3
+      intensity: 1.24
+      radius: 0.2
       sampleCount: 10
       downsampling: 1
       forceForwardCompatibility: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       tonemapping:
         tonemapper: 2
@@ -149,12 +149,12 @@ MonoBehaviour:
             - serializedVersion: 2
               time: 0
               value: 0
-              inSlope: 1
+              inSlope: 0
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.014164306
-              value: 0.114457846
+              time: 0.32472324
+              value: 0.26984125
               inSlope: 1
               outSlope: 1
               tangentMode: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
               time: 1
               value: 1
               inSlope: 1
-              outSlope: 1
+              outSlope: 0
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
@@ -177,12 +177,12 @@ MonoBehaviour:
             - serializedVersion: 2
               time: 0
               value: 0
-              inSlope: 1
+              inSlope: 0
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.50708216
-              value: 0.50708216
+              time: 0.15129152
+              value: 0.1825397
               inSlope: 1
               outSlope: 1
               tangentMode: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
               time: 1
               value: 1
               inSlope: 1
-              outSlope: 1
+              outSlope: 0
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
@@ -301,16 +301,16 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.46
-      size: 1.71
+      intensity: 0.2855712
+      size: 0.2850779
       luminanceContribution: 0.5
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.28676468, g: 0.061148357, b: 0.061148357, a: 1}
+      color: {r: 0.18382353, g: 0.018923007, b: 0.018923007, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.586
+      intensity: 0.2855712
       smoothness: 0.215
       roundness: 1
       mask: {fileID: 0}

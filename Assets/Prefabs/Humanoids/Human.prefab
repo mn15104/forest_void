@@ -1349,7 +1349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4618512539919072}
   - component: {fileID: 20977477379341902}
-  - component: {fileID: 114904453161131878}
+  - component: {fileID: 114005395502863984}
   - component: {fileID: 114190305806908088}
   - component: {fileID: 114203682614928200}
   m_Layer: 8
@@ -2150,7 +2150,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143188469967458}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3312,6 +3312,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114005395502863984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886106476796390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9c7b8a809a5364bb70f6060fcf389d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishEyeShader: {fileID: 0}
+  effectsOn: 1
 --- !u!114 &114042928277560636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3336,9 +3349,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 1267041dcf94b544584e9bf3063c9206, type: 3}
   displacementMap: {fileID: 2800000, guid: 8ef0997c92d26cd4287885cbd899df80, type: 3}
-  intensity: 0.925
-  flipIntensity: 0.259
-  colorIntensity: 0
+  intensity: 0
+  flipIntensity: 0.458
+  colorIntensity: 0.014
 --- !u!114 &114203682614928200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3470,20 +3483,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryMappingKeys: 
   InventoryMappingValues: 
---- !u!114 &114904453161131878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1886106476796390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4739c22ef73ad62488fe344c8fe9addd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strengthX: 0.604
-  strengthY: 0.595
-  fishEyeShader: {fileID: 4800000, guid: 61572e443c4879f49b377df947fa172d, type: 3}
 --- !u!114 &114929010878569882
 MonoBehaviour:
   m_ObjectHideFlags: 1
