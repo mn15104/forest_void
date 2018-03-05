@@ -50,7 +50,6 @@ public class CabinToilet : MonoBehaviour {
                 {
                     eventStage = EventStage.LookedAtFrontWall;
                 }
-            Debug.Log("1");
         }
         if (eventStage == EventStage.LookedAtFrontWall)
         {
@@ -58,7 +57,6 @@ public class CabinToilet : MonoBehaviour {
                 {
                     eventStage = EventStage.TurnedAwayBriefly;
                 }
-            Debug.Log("2");
         }
         if (eventStage == EventStage.TurnedAwayBriefly)
         {
@@ -83,7 +81,6 @@ public class CabinToilet : MonoBehaviour {
                     eventStage = EventStage.LookedAtFrontWall;
                 }
             }
-            Debug.Log("3");
         }
         if(eventStage == EventStage.TurnedAway)
         {
@@ -110,7 +107,6 @@ public class CabinToilet : MonoBehaviour {
                 m_Squeaking.Play();
                 eventStage = EventStage.Complete;
             }
-            Debug.Log("4");
         }
     }
 

@@ -179,7 +179,6 @@ public class HumanController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(m_playerMoveState.ToString());
         CheckJumpState();
         CheckClimbState();
         CheckCrouchState();
