@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.PostProcessing;
 public class VRCameraScript : MonoBehaviour {
+
     public Shader fishEyeShader;
-    
-    
     private PostProcessingProfile m_PostProcessProfile;
     private GlitchEffect m_GlitchEffect;
     public GameObject m_Monster;
