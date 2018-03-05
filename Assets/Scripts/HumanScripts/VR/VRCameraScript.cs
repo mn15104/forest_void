@@ -43,8 +43,7 @@ public class VRCameraScript : MonoBehaviour {
 
     
     void Start () {
-        //UNCOMMENT THIS TO USE THE ACTUAL MONSTER
-        //m_Monster = FindObjectOfType<MonsterAI>().gameObject;
+        
 
         m_Camera = GetComponent<Camera>();
         m_PostProcessProfile = gameObject.GetComponent<PostProcessingBehaviour>().profile;
@@ -71,6 +70,9 @@ public class VRCameraScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_Camera);
+        if (!m_Monster) {
+            m_Monster = FindObjectOfType<MonsterAI>().gameObject;
+        }
         if (m_Monster)
         {
             distanceToMonster = (m_Monster.transform.position - transform.position).magnitude;
@@ -93,9 +95,8 @@ public class VRCameraScript : MonoBehaviour {
             {
                 effectsOn = false;
             }
+            UpdateEffects();
         }
-        
-        UpdateEffects();
     }
 
     void UpdateEffects()

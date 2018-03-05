@@ -5880,7 +5880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155196317229852448a8f3924a3babd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ForestVoid: {fileID: 1706736773194588}
+  m_ForestVoid: {fileID: 0}
   m_CryptVoid: {fileID: 0}
   m_SpawnpointsHolder: {fileID: 1787675764598556}
   m_VoidSetActive: 1
