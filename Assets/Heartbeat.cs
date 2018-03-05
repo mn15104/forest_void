@@ -30,19 +30,25 @@ public class Heartbeat : MonoBehaviour
     IEnumerator getHeartRate()
     {
         Debug.Log("Doing Something");
-        using (UnityWebRequest webaddress = UnityWebRequest.Get("172.23.184.234:5005"))
+        while (true)
         {
-            yield return webaddress.SendWebRequest();
+            yield return new WaitForSeconds(1);
+            using (UnityWebRequest webaddress = UnityWebRequest.Get("http://192.168.0.101:5005"))
+            {
+                yield return webaddress.SendWebRequest();
 
-            if (webaddress.isNetworkError || webaddress.isHttpError)
-            {
-                Debug.Log("Get Request Error");
-            }
-            else
-            {
-                Debug.Log("Data Receieved");
-                byte[] results = webaddress.downloadHandler.data;
-                Debug.Log(results);
+                if (webaddress.isNetworkError || webaddress.isHttpError)
+                {
+                    Debug.Log("Get Request Error");
+                }
+                else
+                {
+                    Debug.Log("Data Receieved");
+                    byte[] results = webaddress.downloadHandler.data;
+                    Debug.Log("Printing data");
+                    m_Heartbeat = float.Parse((System.Text.Encoding.UTF8.GetString(results)));
+                    Debug.Log("Heartbeat is: " + m_Heartbeat);
+                }
             }
         }
     }
@@ -50,6 +56,7 @@ public class Heartbeat : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
+
 	}
 
     IEnumerator HeartbeatCoroutine()

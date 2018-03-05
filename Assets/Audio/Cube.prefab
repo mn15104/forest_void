@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1415127858838260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 613.5077, y: 71.42544, z: 833.1618}
+  m_LocalPosition: {x: 581.989, y: 74.49817, z: 812.0721}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -189,4 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Heartbeat: 0
+  m_BeatA: {fileID: 8300000, guid: 588ff79024415364ebe02c97f0761301, type: 3}
+  m_BeatB: {fileID: 8300000, guid: 1ad70c6b480ddaa4498b00bc6489016f, type: 3}
   m_HeartbeatAudioSrc: {fileID: 82950247419115594}
