@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEditor;
 
 public class MonsterAudioController : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class MonsterAudioController : MonoBehaviour
     private Terrain m_CurrentTerrain;
     private MonsterAI m_Monster;
     private MonsterState m_MonsterState;
-    private bool m_Hidden = false;
+    private float m_MonsterSpeed;
     public AudioSource MonsterSFXAudioSrc;
     public AudioSource MonsterMotionAudioSrc;
     public AudioClip m_GrassRun;
@@ -24,8 +25,10 @@ public class MonsterAudioController : MonoBehaviour
     public AudioClip m_Appear;
     public AudioClip m_Approach;
     public AudioClip m_Chase;
-    public AudioClip[] m_AlarmingNoises;
-
+    public AudioClip m_BreathingFront;
+    public AudioClip m_BreathingBehind;
+    public AudioClip m_GasLoop;
+    private Camera m_PlayerCamera;
     private void OnEnable()
     {
         
@@ -34,15 +37,14 @@ public class MonsterAudioController : MonoBehaviour
         MonsterMotionAudioSrc.clip = m_StoneRun;
         MonsterMotionAudioSrc.loop = true;
         MonsterSFXAudioSrc.clip = null;
-        MonsterSFXAudioSrc.loop = false;
+        MonsterSFXAudioSrc.loop = true;
         m_Monster = GetComponentInParent<MonsterAI>();
+        m_PlayerCamera = m_Monster.player.GetComponent<Camera>();
         m_MonsterState = m_Monster.GetMonsterState();
     }
 
     private void OnDisable()
     {
-        StopAllCoroutines();
-        m_Hidden = false;
     }
 
     // Use this for initialization
@@ -65,11 +67,11 @@ public class MonsterAudioController : MonoBehaviour
         m_TerrainTypeDictionary.Add(14, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(15, TerrainType.GRASS);
         m_StateVolumeDictionary.Add(MonsterState.HIDDEN_IDLE, 0f);
-        m_StateVolumeDictionary.Add(MonsterState.HIDDEN_MOVING, 1f);
-        m_StateVolumeDictionary.Add(MonsterState.FOLLOW, 1f);
+        m_StateVolumeDictionary.Add(MonsterState.HIDDEN_MOVING, 0.4f);
+        m_StateVolumeDictionary.Add(MonsterState.FOLLOW, 0.4f);
         m_StateVolumeDictionary.Add(MonsterState.APPEAR, 0f);
-        m_StateVolumeDictionary.Add(MonsterState.APPROACH, 1f);
-        m_StateVolumeDictionary.Add(MonsterState.CHASE, 1f);
+        m_StateVolumeDictionary.Add(MonsterState.APPROACH, 0.6f);
+        m_StateVolumeDictionary.Add(MonsterState.CHASE, 0.8f);
         m_StateVolumeDictionary.Add(MonsterState.GAMEOVER, 0f);
     }
     private void UpdateMonsterMotion()
@@ -149,62 +151,80 @@ public class MonsterAudioController : MonoBehaviour
         }
         
     }
-    IEnumerator alarmingNoises()
-    {
-        while (true)
-        {
-            yield return new WaitUntil(() => !MonsterSFXAudioSrc.isPlaying);
-            yield return new WaitForSeconds(UnityEngine.Random.Range(4, 15));
-            int nextSoundIndex = UnityEngine.Random.Range(0, m_AlarmingNoises.Length);
-            MonsterSFXAudioSrc.clip = m_AlarmingNoises[nextSoundIndex];
-            MonsterSFXAudioSrc.Play();
-            
-        }
-    }
     void UpdateMonsterAudioState()
     {
         switch (m_MonsterState)
         {
             case MonsterState.HIDDEN_IDLE:
-                if (!m_Hidden)
+                if (MonsterSFXAudioSrc.clip != m_GasLoop)
                 {
-                    StartCoroutine(alarmingNoises());
-                    m_Hidden = true;
+                    MonsterSFXAudioSrc.clip = (m_GasLoop);
+                    MonsterSFXAudioSrc.Play();
                 }
                 break;
             case MonsterState.HIDDEN_MOVING:
-                if (!m_Hidden)
+                if (MonsterSFXAudioSrc.clip != m_GasLoop)
                 {
-                    StartCoroutine(alarmingNoises());
-                    m_Hidden = true;
+                    MonsterSFXAudioSrc.clip = (m_GasLoop);
+                    MonsterSFXAudioSrc.Play();
                 }
                 break;
             case MonsterState.FOLLOW:
-                m_Hidden = false;
+                if (MonsterSFXAudioSrc.clip != m_BreathingBehind)
+                {
+                    MonsterSFXAudioSrc.clip = (m_BreathingBehind);
+                    MonsterSFXAudioSrc.Play();
+                }
                 break;
             case MonsterState.APPEAR:
-                m_Hidden = false;
-                StopAllCoroutines();
-                if (MonsterSFXAudioSrc.clip != m_Appear)
                 {
-                    MonsterSFXAudioSrc.clip = (m_Appear);
-                    MonsterSFXAudioSrc.Play();
+                    if (m_PlayerCamera)
+                    {
+                        Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_PlayerCamera);
+                        if (MonsterSFXAudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                        {
+                            MonsterSFXAudioSrc.clip = (m_BreathingFront);
+                            MonsterSFXAudioSrc.Play();
+                        }
+                        else if (MonsterSFXAudioSrc.clip != m_BreathingBehind)
+                        {
+                            MonsterSFXAudioSrc.clip = (m_BreathingBehind);
+                            MonsterSFXAudioSrc.Play();
+                        }
+                    }
+                    else
+                    {
+                        if (MonsterSFXAudioSrc.clip != m_BreathingFront)
+                        {
+                            MonsterSFXAudioSrc.clip = (m_BreathingFront);
+                            MonsterSFXAudioSrc.Play();
+                        }
+                    }
                 }
                 break;
+                
             case MonsterState.APPROACH:
-                m_Hidden = false;
-                StopAllCoroutines();
-                if (MonsterSFXAudioSrc.clip != m_Approach)
                 {
-                    MonsterSFXAudioSrc.clip = (m_Approach);
-                    MonsterSFXAudioSrc.Play();
+                    StopAllCoroutines();
+                    Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_Monster.player.GetComponent<Camera>());
+                    if (MonsterSFXAudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                    {
+                        MonsterSFXAudioSrc.clip = (m_BreathingFront);
+                        MonsterSFXAudioSrc.Play();
+                    }
+                    else if (MonsterSFXAudioSrc.clip != m_BreathingBehind)
+                    {
+                        MonsterSFXAudioSrc.clip = (m_BreathingBehind);
+                        MonsterSFXAudioSrc.Play();
+                    }
                 }
                 break;
+                
             case MonsterState.CHASE:
-                m_Hidden = false;
                 StopAllCoroutines();
                 if (MonsterSFXAudioSrc.clip != m_Chase)
                 {
+                    MonsterSFXAudioSrc.loop = false;
                     MonsterSFXAudioSrc.clip = (m_Chase);
                     MonsterSFXAudioSrc.Play();
                 }
@@ -218,6 +238,9 @@ public class MonsterAudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 vel = m_Monster.GetComponent<Rigidbody>().velocity ;
+        m_MonsterSpeed = new Vector2(vel.x, vel.z).magnitude;
+        
         m_MonsterState = m_Monster.GetMonsterState();
         ////////////////////////////////////////////////////////////////////////////////////////
         UpdateMonsterMotion();
@@ -227,7 +250,9 @@ public class MonsterAudioController : MonoBehaviour
         {
             if (!MonsterMotionAudioSrc.isPlaying)
                 MonsterMotionAudioSrc.Play();
-            if(m_StateVolumeDictionary[m_MonsterState] != MonsterMotionAudioSrc.volume)
+            if (m_MonsterSpeed < 0.1f)
+                MonsterMotionAudioSrc.volume = 0;
+            else if (m_StateVolumeDictionary[m_MonsterState] != MonsterMotionAudioSrc.volume)
             {
                 MonsterMotionAudioSrc.volume = m_StateVolumeDictionary[m_MonsterState];
             }

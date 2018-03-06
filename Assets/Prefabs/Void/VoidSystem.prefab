@@ -3935,7 +3935,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219660164934384}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4417,7 +4417,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706736773194588}
   m_LocalRotation: {x: 0.043382585, y: -0.82491237, z: -0.06348636, w: -0.56000626}
-  m_LocalPosition: {x: 12.14, y: -0.14, z: 49.05}
+  m_LocalPosition: {x: 27.99, y: 1.15, z: 66.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4988200541210056}
@@ -5385,7 +5385,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 623008be4fe6b38499ec41bc34fbd88a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.519
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5394,7 +5394,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 12
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -5404,74 +5404,38 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.26231384
-      value: 1
+      time: 0.08638382
+      value: 0.9227295
       inSlope: -2.0008
       outSlope: -2.0008
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.30096364
-      value: 0.96708703
-      inSlope: -1.4448166
-      outSlope: -1.4448166
+      time: 0.20626932
+      value: 0.8347461
+      inSlope: -0.07212162
+      outSlope: -0.07212162
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.33311254
-      value: 0.9116371
-      inSlope: -0.62167645
-      outSlope: -0.62167645
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.36715198
-      value: 0.8151835
-      inSlope: -1.9055605
-      outSlope: -1.9055605
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.43072346
-      value: 0.69215256
-      inSlope: -2.5343895
-      outSlope: -2.5343895
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.5101471
-      value: 0.54263306
+      time: 0.30643463
+      value: 0.7744522
       inSlope: -0.5002
       outSlope: -0.5002
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5888551
-      value: 0.40617657
-      inSlope: -1.6829371
-      outSlope: -1.6829371
+      time: 0.3842919
+      value: 0.6443598
+      inSlope: -1.4448166
+      outSlope: -1.4448166
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.6675396
-      value: 0.2525539
+      time: 0.6088848
+      value: 0.26618
       inSlope: -1.3975799
       outSlope: -1.3975799
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.7202463
-      value: 0.16669099
-      inSlope: -2.0385294
-      outSlope: -2.0385294
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.80355895
-      value: 0.1071167
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.89715815
-      value: 0.06427002
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
       time: 1
-      value: 0.01071167
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5495,7 +5459,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
+      value: 0.86388886
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5535,7 +5499,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 11
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -5564,55 +5528,55 @@ AudioSource:
       tangentMode: 0
     - serializedVersion: 2
       time: 0.2757423
-      value: 0.93710136
+      value: 0.99619484
       inSlope: 0.052452087
       outSlope: 0.052452087
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.35069698
-      value: 0.80113316
+      time: 0.3753857
+      value: 0.9920435
       inSlope: 0.10788441
       outSlope: 0.10788441
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.41104066
-      value: 0.6565798
+      time: 0.5128931
+      value: 0.9474886
       inSlope: -1.1470914
       outSlope: -1.1470914
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.45809343
-      value: 0.52311707
+      time: 0.606241
+      value: 0.8503876
       inSlope: -2.2508998
       outSlope: -2.2508998
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5363937
-      value: 0.37692153
+      time: 0.65985256
+      value: 0.74510086
       inSlope: -0.7978082
       outSlope: -0.7978082
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.6324129
-      value: 0.2912103
+      time: 0.72192097
+      value: 0.66393673
       inSlope: -0.9411599
       outSlope: -0.9411599
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.7416112
-      value: 0.18242593
+      time: 0.76013535
+      value: 0.5460581
       inSlope: -1.5195087
       outSlope: -1.5195087
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.8403805
-      value: 0.10502243
+      time: 0.87431604
+      value: 0.32773972
       inSlope: -0.5226955
       outSlope: -0.5226955
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.917511
-      value: 0.06266403
+      time: 0.93911743
+      value: 0.17176437
       inSlope: -0.2576118
       outSlope: -0.2576118
       tangentMode: 0
@@ -5984,9 +5948,9 @@ MonoBehaviour:
   m_Appear: {fileID: 8300000, guid: accd801219b294d4690061604055c453, type: 3}
   m_Approach: {fileID: 8300000, guid: c0dcfc26482d341c68de7a0c0f36fce7, type: 3}
   m_Chase: {fileID: 8300000, guid: b46db3d5a603e4b7093e9e6316970f51, type: 3}
-  m_AlarmingNoises:
-  - {fileID: 8300000, guid: 37a32500daf20d64882ee2db0381a8af, type: 3}
-  - {fileID: 8300000, guid: 922e4e1f27db3804e84ba026693d6358, type: 3}
+  m_BreathingFront: {fileID: 8300000, guid: f216dfa483e56624586fc43b373654e7, type: 3}
+  m_BreathingBehind: {fileID: 8300000, guid: b77d8af86a104124aa9c9dfbc7645a9d, type: 3}
+  m_GasLoop: {fileID: 8300000, guid: 5b9105783f881be4280f5bd170821020, type: 3}
 --- !u!135 &135040609126185778
 SphereCollider:
   m_ObjectHideFlags: 1

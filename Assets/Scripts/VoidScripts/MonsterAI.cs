@@ -78,11 +78,9 @@ public class MonsterAI : MonoBehaviour {
 
     private void OnDisable()
     {
-        StopAllCoroutines();
         HumanVRRightHand.OnHumanLightEmission -= HumanLightDetected;
         HumanVRAudioController.OnHumanAudioEmission -= HumanSoundDetected;
         MonsterTrigger.OnHumanDetected -= HumanDetected;
-        destinationPosition = player.transform.position;
         m_CurrentSpeed = m_HiddenIdleSpeed;
         soundDetectionPercentage = 0.2f;
         lightDetectionPercentage = 0.2f;
@@ -104,7 +102,6 @@ public class MonsterAI : MonoBehaviour {
                                    + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         if (currentState != debugState)
             SetState(debugState);
-        Debug.Log(transform.position);
         /*EXECUTE STATE ACTION*/
         switch (currentState) 
 		{
