@@ -2608,7 +2608,7 @@ GameObject:
   - component: {fileID: 95531089105753640}
   - component: {fileID: 208861229003388236}
   m_Layer: 15
-  m_Name: AbandonedHouseV2.5
+  m_Name: AbandonedHouseV2.5 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

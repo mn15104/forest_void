@@ -216,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485082673216744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.8, y: -6.9000015, z: 22.1}
+  m_LocalPosition: {x: 19.27, y: -6.9000015, z: 21.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4775312497182646}
@@ -1077,8 +1077,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 12.601196
+  MinDistance: 5.657593
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -1177,4 +1177,9 @@ MonoBehaviour:
   m_WindBackground: {fileID: 82009513834690440}
   m_Chase: {fileID: 8300000, guid: fd0c3bef2f5b0344a8d780f7dbf847f4, type: 3}
   m_GameOver: {fileID: 0}
+  m_BridgeAmbience: {fileID: 82681493977849966}
+  m_CaravanAmbience: {fileID: 82178751973758442}
+  m_SiteAmbience: {fileID: 82854280968558364}
+  m_HouseAmbience: {fileID: 82523264980064898}
+  m_ChapelAmbience: {fileID: 82891991243431374}
   m_SFXAudioSrc: {fileID: 0}
