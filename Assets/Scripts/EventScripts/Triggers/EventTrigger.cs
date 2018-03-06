@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerUI : MonoBehaviour {
+public class EventTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,9 +13,4 @@ public class TriggerUI : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
 }

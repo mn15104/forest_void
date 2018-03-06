@@ -104,7 +104,7 @@ public class MonsterAI : MonoBehaviour {
                                    + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         if (currentState != debugState)
             SetState(debugState);
-        Debug.Log(transform.position);
+        //Debug.Log(transform.position);
         /*EXECUTE STATE ACTION*/
         switch (currentState) 
 		{
