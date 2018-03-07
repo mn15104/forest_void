@@ -49,7 +49,7 @@ public class TriggerController : MonoBehaviour {
                 break;
         }
         enableTrigger.SetActive(true);
-        disableTrigger.SetActive(false);
+        disableTrigger.GetComponent<Collider>().enabled = false;
         Debug.Log("Event trigger " + enableTrigger + " enabled");
         Debug.Log("Event trigger " + disableTrigger + " disabled");
     }

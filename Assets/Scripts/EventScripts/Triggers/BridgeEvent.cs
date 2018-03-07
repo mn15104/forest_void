@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BridgeEvent : EventTrigger {
 
-
-    public AudioClip m_audio;
+    private AudioSource m_audio;
     TriggerController m_TriggerController;
 
     void Start()
     {
+        m_audio = GetComponent<AudioSource>();
         m_TriggerController = FindObjectOfType<TriggerController>();
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -19,8 +20,9 @@ public class BridgeEvent : EventTrigger {
         if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
             Debug.Log("I should go to the house");
-            AudioSource.PlayClipAtPoint(m_audio, transform.position);
-            m_TriggerController.EnableTrigger(TriggerController.Triggers.HOUSE);
+            //AudioSource.PlayClipAtPoint(m_audio, transform.position);
+            m_audio.Play();
+           m_TriggerController.EnableTrigger(TriggerController.Triggers.HOUSE);
         }
     }
 }
