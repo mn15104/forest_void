@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class VoidSystem : MonoBehaviour {
     public GameObject m_ForestVoid;
-    public GameObject m_CryptVoid;
+    private GameObject m_CryptVoid;
     public GameObject m_SpawnpointsHolder;
-    public  bool m_VoidSetActive  = false;
+    public bool m_VoidSetActive = false;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private bool m_VoidEnabled = false;
-
-    private float m_DelayTimeToActive = 90f;
-    private List<float> m_AppearTimes = new List<float>();
     private float gameTimer = 0f;
- 
+    private float[] m_DelayTimeToActive = { 100f, 180f, 270f };
+    public MonsterAppear nextAppear = MonsterAppear.STAGE1;
+    
+
     private void OnEnable()
     {
         m_ForestVoid.GetComponent<MonsterAI>().OnMonsterStateChange += NotifyStateChange;
-        m_AppearTimes.Add(90);
-        m_AppearTimes.Add(200);
-        m_AppearTimes.Add(300);
-        m_AppearTimes.Add(380);
-        m_AppearTimes.Add(470);
-        m_AppearTimes.Add(530);
-        m_AppearTimes.Add(580);
+       
     }
 
     void Start () {
@@ -35,13 +29,14 @@ public class VoidSystem : MonoBehaviour {
         {
             m_SpawnPositions.Add(trans.position);
         }
-        Invoke("SetVoidActive", m_DelayTimeToActive);
+        Invoke("SetVoidActive", m_DelayTimeToActive[(int) MonsterAppear.STAGE1]);
         
     }
-	
-	
-	void Update () {
-		if(m_VoidSetActive && !m_VoidEnabled)
+
+
+    void Update()
+    {
+        if (m_VoidSetActive && !m_VoidEnabled)
         {
             CancelInvoke();
             SetVoidActive();
@@ -49,12 +44,21 @@ public class VoidSystem : MonoBehaviour {
         if (!m_VoidSetActive && m_VoidEnabled)
         {
             SetVoidInactive();
-            Invoke("SetVoidActive", m_DelayTimeToActive);
+            Invoke("SetVoidActive", m_DelayTimeToActive[(int)nextAppear]);
+        }
+
+        if (nextAppear != MonsterAppear.NONE)
+        {
+            m_ForestVoid.GetComponent<MonsterAI>().SetAppear(nextAppear);
         }
     }
 
-    void SetVoidActive()
+    public void SetVoidActive(Vector3 position = new Vector3())
     {
+        if (position == new Vector3())
+        {
+            position = m_SpawnPositions[0];
+        }
         if (!m_VoidEnabled)
         {
             m_VoidSetActive = true;
@@ -63,12 +67,27 @@ public class VoidSystem : MonoBehaviour {
             {
                 m_ForestVoid.transform.position = GetFurthestSpawnPoint();
                 m_ForestVoid.SetActive(true);
+                if (nextAppear == MonsterAppear.STAGE1)
+                    nextAppear = MonsterAppear.STAGE2;
+                else if (nextAppear == MonsterAppear.STAGE2)
+                    nextAppear = MonsterAppear.STAGE3;
+                else if (nextAppear == MonsterAppear.STAGE3)
+                    nextAppear = MonsterAppear.STAGE1;
             }
             if (m_CryptVoid)
                 m_CryptVoid.SetActive(true);
         }
     }
-    void SetVoidInactive()
+    void SetVoidAppearBehaviour()
+    {
+
+        if (m_VoidEnabled && m_ForestVoid)
+        {
+            m_ForestVoid.GetComponent<MonsterAI>().SetAppear(nextAppear);
+        }
+        
+    }
+    public void SetVoidInactive()
     {
         if (m_VoidEnabled)
         {

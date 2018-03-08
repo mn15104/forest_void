@@ -15,6 +15,14 @@ public enum MonsterState
     GAMEOVER
 };
 
+public enum MonsterAppear
+{
+    NONE = -1,
+    STAGE1 = 0,
+    STAGE2 = 1,
+    STAGE3 = 2
+}
+
 public class MonsterAI : MonoBehaviour {
 
     public delegate void MonsterStateChange(MonsterState monsterState);
@@ -27,6 +35,7 @@ public class MonsterAI : MonoBehaviour {
     public GameObject player;
     private MonsterState currentState;
     public MonsterState debugState;
+    private MonsterAppear currentAppear = MonsterAppear.NONE;
     private Animator anim;
 	private GameObject trigger;
 	private float chaseTimer = 10f;
@@ -93,16 +102,46 @@ public class MonsterAI : MonoBehaviour {
     void Start () {
         
     }
-    
 
-
-	void Update () {
+    public void SetAppear(MonsterAppear appear)
+    {
+        currentAppear = appear;
+        switch (appear)
+        {
+            case MonsterAppear.STAGE1:
+                Enter_AppearIdleBehaviour();
+                break;
+            case MonsterAppear.STAGE2:
+                //////////////////
+                break;
+            case MonsterAppear.STAGE3:
+                //////////////////
+                break;
+        }
+    }
+    void Enter_AppearIdleBehaviour()
+    {
+        anim.SetLayerWeight(anim.GetLayerIndex("Legs"), 0);
+        anim.SetLayerWeight(anim.GetLayerIndex("Chest"), 0);
+        anim.SetLayerWeight(anim.GetLayerIndex("WalkThenTurn"), 1);
+        anim.SetBool("WalkThenTurn", true);
+    }
+    public void Exit_AppearIdleBehaviour()
+    {
+        anim.SetLayerWeight(anim.GetLayerIndex("Legs"), 1);
+        anim.SetLayerWeight(anim.GetLayerIndex("Chest"), 1);
+        anim.SetLayerWeight(anim.GetLayerIndex("WalkThenTurn"), 0);
+        anim.SetBool("WalkThenTurn", false);
+        currentAppear = (MonsterAppear.NONE);
+    }
+    void Update () {
         /*UPDATE STATE VARIABLES*/
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                    + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         if (currentState != debugState)
             SetState(debugState);
         /*EXECUTE STATE ACTION*/
+        if(currentAppear == MonsterAppear.NONE)
         switch (currentState) 
 		{
         case MonsterState.HIDDEN_IDLE:
@@ -134,7 +173,7 @@ public class MonsterAI : MonoBehaviour {
     
     public void SetState(MonsterState state)
     {
-        if (state != currentState)
+        if (currentAppear == MonsterAppear.NONE && state != currentState)
         {
             debugState = state;
             currentState = state;
@@ -442,6 +481,13 @@ public class MonsterAI : MonoBehaviour {
     {
 
     }
+
+    void Appear_Idle()
+    {
+
+    }
+
+
 
     public void NotifyCollisionAhead(AICollisionSide collisionSide, bool isCollision)
     {
