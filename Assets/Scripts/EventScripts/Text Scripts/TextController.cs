@@ -6,37 +6,64 @@ using UnityEngine.UI;
 
 public class TextController : MonoBehaviour {
 
+    public enum TextTypeEnum { INTERACTABLE, NARRATIVE };
+    public TextTypeEnum textType;
     public float amplitude;
-    public float speed;
+    public float floatSpeed;
     public GameObject ViewCone;
+
     private float t;
     private bool FadingIn;
     private Text text;
+    private Color initialColor;
+    private Color endColor;
 
-	// Use this for initialization
-	void Start () {
+
+    void Start () {
         amplitude = 0.0007f;
-        speed = 3f;
+        floatSpeed = 3f;
         text = gameObject.GetComponent<Text>();
-        text.color = new Color(1, 1, 1, 0);
+        Initialise();
+        //text.color = new Color(1, 1, 1, 0);
     }
 
-    // Update is called once per frame
+    // TODO: Change cone size depending on text type
+    void Initialise()
+    {
+        switch (textType)
+        {
+            case TextTypeEnum.INTERACTABLE:
+                // white to yellow
+                text.color = new Color(1, 1, 1, 1);
+                initialColor = text.color;
+                endColor = Color.yellow;
+                break;
+            case TextTypeEnum.NARRATIVE:
+                // transparent to white
+                text.color = new Color(1, 1, 1, 0);
+                initialColor = text.color;
+                endColor = new Color(1, 1, 1, 1);
+                break;
+            default:
+                text.color = new Color(1, 1, 1, 0);
+                break;
+        }
+    }
+    
     void Update () {
         var y0 = transform.position.y;
-        transform.position = new Vector3(transform.position.x, y0 + amplitude * Mathf.Sin(speed * Time.time), transform.position.z);
-        //transform.position.Set(transform.position.x, y0 + amplitude * Mathf.Sin(speed * Time.time), transform.position.z);
- 
+        transform.position = new Vector3(transform.position.x, y0 + amplitude * Mathf.Sin(floatSpeed * Time.time), transform.position.z);
     }
 
+    // Still a bit off when fading in and out lots of times
     IEnumerator FadeIn()
     {
         Debug.Log("Fading");
         FadingIn = true;
         float timeToStart = Time.time;
-        while (text.color != new Color(1, 1, 1, 1))
+        while (text.color != endColor)
         {
-            text.color = Color.Lerp(text.color, new Color(1, 1, 1, 1), (Time.time - timeToStart) * 0.05f);
+            text.color = Color.Lerp(text.color, endColor, (Time.time - timeToStart));
             yield return null;
         }
         Debug.Log("Changed Colour");
@@ -50,9 +77,9 @@ public class TextController : MonoBehaviour {
             Debug.Log("Waiting for fade in to finish");
         }
         float timeToStart = Time.time;
-        while (text.color != new Color(1, 1, 1, 0))
+        while (text.color != initialColor)
         {
-            text.color = Color.Lerp(text.color, new Color(1, 1, 1, 0), (Time.time - timeToStart) * 0.05f);
+            text.color = Color.Lerp(text.color, initialColor, (Time.time - timeToStart));
             yield return null;
         }
         Debug.Log("Back to transparent");

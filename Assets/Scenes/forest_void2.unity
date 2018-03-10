@@ -704,6 +704,11 @@ Prefab:
       propertyPath: m_Size.x
       value: 848.673
       objectReference: {fileID: 0}
+    - target: {fileID: 114533459973656448, guid: 8fec7bad52d27704fb4e6489108c33c1,
+        type: 2}
+      propertyPath: ViewCone
+      value: 
+      objectReference: {fileID: 441154864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fec7bad52d27704fb4e6489108c33c1, type: 2}
   m_IsPrefabParent: 0
@@ -1413,6 +1418,11 @@ Prefab:
       propertyPath: successorTrigger
       value: 
       objectReference: {fileID: 1896653131}
+    - target: {fileID: 114559961835884294, guid: a7ab8c531c45a42bd84015ed4cfbc74e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114963208048714598, guid: a7ab8c531c45a42bd84015ed4cfbc74e, type: 2}
     - {fileID: 114707478652575056, guid: a7ab8c531c45a42bd84015ed4cfbc74e, type: 2}

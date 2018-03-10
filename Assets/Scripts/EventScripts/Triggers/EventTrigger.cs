@@ -5,7 +5,7 @@ using UnityEngine;
 public class EventTrigger : MonoBehaviour {
 
     public GameObject successorTrigger;
-    public TriggerController m_TriggerController;
+    protected TriggerController m_TriggerController;
 
     public virtual void Start()
     {
@@ -21,12 +21,6 @@ public class EventTrigger : MonoBehaviour {
             m_TriggerController.EnableTrigger();
         }
     }
-
-    private void OnEnable()
-    {
-        Debug.Log("Enabled " + gameObject);
-    }
-
 
     public void TriggerAction()
     {
