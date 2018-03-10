@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* THIS CLASS IS NOT USED ANYWHERE. CAN'T GET DELEGATES WORKING WITH COROUTINES. ALSO THE CLASS NAME IS NOT VERY CLEAR */ 
+
 public class EventManager : MonoBehaviour {
 
 	public delegate void TextAction();

@@ -14,8 +14,6 @@ public class TriggerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
-        //Grab an instance of each event trigger, can't "find" it later
         bridgeTrigger = FindObjectOfType<BridgeEvent>().gameObject;
 
         //Disable all triggers except bridge trigger

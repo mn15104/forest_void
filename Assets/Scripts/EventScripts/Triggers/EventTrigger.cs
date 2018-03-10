@@ -5,11 +5,28 @@ using UnityEngine;
 public class EventTrigger : MonoBehaviour {
 
     public GameObject successorTrigger;
+    public TriggerController m_TriggerController;
+
+    public virtual void Start()
+    {
+        m_TriggerController = FindObjectOfType<TriggerController>();
+    }
+
+    public virtual void OnTriggerEnter(Collider other)
+    {
+        // Only if the player collider hits the trigger
+        if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
+        {
+            TriggerController.OnTriggerActivate += TriggerAction;
+            m_TriggerController.EnableTrigger();
+        }
+    }
 
     private void OnEnable()
     {
         Debug.Log("Enabled " + gameObject);
     }
+
 
     public void TriggerAction()
     {

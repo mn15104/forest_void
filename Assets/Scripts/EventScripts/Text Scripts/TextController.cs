@@ -36,7 +36,7 @@ public class TextController : MonoBehaviour {
         float timeToStart = Time.time;
         while (text.color != new Color(1, 1, 1, 1))
         {
-            text.color = Color.Lerp(text.color, new Color(1, 1, 1, 1), (Time.time - timeToStart) * 0.005f);
+            text.color = Color.Lerp(text.color, new Color(1, 1, 1, 1), (Time.time - timeToStart) * 0.05f);
             yield return null;
         }
         Debug.Log("Changed Colour");
@@ -52,7 +52,7 @@ public class TextController : MonoBehaviour {
         float timeToStart = Time.time;
         while (text.color != new Color(1, 1, 1, 0))
         {
-            text.color = Color.Lerp(text.color, new Color(1, 1, 1, 0), (Time.time - timeToStart) * 0.005f);
+            text.color = Color.Lerp(text.color, new Color(1, 1, 1, 0), (Time.time - timeToStart) * 0.05f);
             yield return null;
         }
         Debug.Log("Back to transparent");
