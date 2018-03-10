@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HouseEvent : EventTrigger {
-
-    public AudioClip m_audio;
+    
     TriggerController m_TriggerController;
 
     private void Start()
@@ -17,9 +16,8 @@ public class HouseEvent : EventTrigger {
         // Only if the player collider hits the trigger
         if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            Debug.Log("I should look at the generator");
-            AudioSource.PlayClipAtPoint(m_audio, transform.position);
-            m_TriggerController.EnableTrigger(TriggerController.Triggers.GENERATOR);
+            TriggerController.OnTriggerActivate += TriggerAction;
+            m_TriggerController.EnableTrigger();
         }
     }
 

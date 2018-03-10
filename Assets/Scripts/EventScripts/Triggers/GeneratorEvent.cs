@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GeneratorEvent : EventTrigger {
-
-    public AudioClip m_audio;
+    
     TriggerController m_TriggerController;
 
     private void Start()
@@ -17,9 +16,9 @@ public class GeneratorEvent : EventTrigger {
         // Only if the player collider hits the trigger
         if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            Debug.Log("I need the keys");
-            AudioSource.PlayClipAtPoint(m_audio, transform.position);
-            m_TriggerController.EnableKeyEvents();
+            TriggerController.OnTriggerActivate += TriggerAction;
+            m_TriggerController.EnableTrigger();
         }
     }
+
 }
