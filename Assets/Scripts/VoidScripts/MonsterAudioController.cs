@@ -175,6 +175,7 @@ public class MonsterAudioController : MonoBehaviour
                 }
                 break;
             case MonsterState.FOLLOW:
+                MonsterSFX2AudioSrc.clip = null;
                 if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
                 {
                     MonsterSFX1AudioSrc.clip = (m_BreathingBehind);

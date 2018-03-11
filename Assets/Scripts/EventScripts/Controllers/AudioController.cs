@@ -85,6 +85,7 @@ public class AudioController : MonoBehaviour {
             foreach (AudioSource aud in GetComponentsInChildren<AudioSource>())
             {
                 aud.enabled = true;
+                aud.Play();
             }
         }
         if (monsterStateChange == MonsterState.CHASE)
