@@ -28,7 +28,7 @@ public class VRCameraScript : MonoBehaviour {
     private const string m_PPP_VignetteFixedColor = "#2F0505";
 
     private const float m_GlitchMaxIntensity = 1f;
-    private const float m_GlitchMaxFlipIntensity = 0.35f;
+    private const float m_GlitchMaxFlipIntensity = 0.45f;
     private const float m_GlitchFixedColorIntensity = 0f;
 
     private const float m_FisheyeMax_X = 1f;
@@ -144,8 +144,8 @@ public class VRCameraScript : MonoBehaviour {
         float maskedRateOfChangeFlip = Time.deltaTime * 2f * rateOfChange;
         if (!isLookingAtMonster)
         {
-            maskedRateOfChangeIntensity = maskedRateOfChangeIntensity * 0.6f + Time.deltaTime * 8f;
-            maskedRateOfChangeFlip = maskedRateOfChangeFlip * 0.6f + Time.deltaTime * 4f;
+            maskedRateOfChangeIntensity = maskedRateOfChangeIntensity * 0.8f + Time.deltaTime * 8f;
+            maskedRateOfChangeFlip = maskedRateOfChangeFlip * 0.8f + Time.deltaTime * 4f;
             upperBoundIntensity *= 0.8f;
             upperBoundFlip *= 0.8f;
         }

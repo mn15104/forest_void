@@ -157,7 +157,6 @@ public class HumanVRAudioController : MonoBehaviour {
             return;
         }
         CurrentGroundCollision CurrentGround = m_humanVRController.GetCurrentGroundCollision();
-        Debug.Log(CurrentGround);
         if (CurrentGround == CurrentGroundCollision.WOOD)
         {
             if (HumanMotion.clip != m_WoodRun)

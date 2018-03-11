@@ -51,17 +51,7 @@ public class AudioController : MonoBehaviour {
 
     private void OnEnable()
     {
-        AudioEvent[] events;
-        var type = typeof(AudioEvent);
-        var types = AppDomain.CurrentDomain.GetAssemblies()
-                        .Where(x => x.FullName.StartsWith("YourNamespace"))
-                        .SelectMany(x => x.GetTypes())
-                        .Where(x => x.IsClass && type.IsAssignableFrom(x));
-
-        foreach (Type t in types)
-        {
-           
-        }
+        
         //foreach (){ 
         //{
 
@@ -90,14 +80,21 @@ public class AudioController : MonoBehaviour {
 
     private void MonsterStateChange(MonsterState monsterStateChange)
     {
-        //if (monsterStateChange == MonsterState.CHASE)
-        //    TriggerMonsterChase();
-        //else if (monsterStateChange == MonsterState.HIDDEN_MOVING)
-        //    TriggerMonsterHidden();
-        //else if (monsterStateChange == MonsterState.APPEAR)
-        //    TriggerMonsterAppear();
-        //else if (monsterStateChange == MonsterState.GAMEOVER)
-        //    TriggerMonsterGameOver();
+        if(monsterStateChange != MonsterState.APPEAR && m_BridgeAmbience.enabled == false)
+        {
+            foreach (AudioSource aud in GetComponentsInChildren<AudioSource>())
+            {
+                aud.enabled = true;
+            }
+        }
+        if (monsterStateChange == MonsterState.CHASE)
+            TriggerMonsterChase();
+        else if (monsterStateChange == MonsterState.HIDDEN_MOVING)
+            TriggerMonsterHidden();
+        else if (monsterStateChange == MonsterState.APPEAR)
+            TriggerMonsterAppear();
+        else if (monsterStateChange == MonsterState.GAMEOVER)
+            TriggerMonsterGameOver();
     }
 
     
@@ -136,6 +133,10 @@ public class AudioController : MonoBehaviour {
 
     public void TriggerMonsterAppear()
     {
+        foreach(AudioSource aud in GetComponentsInChildren<AudioSource>())
+        {
+            aud.enabled = false;
+        }
         //if (m_MonsterState != MonsterState.APPEAR)
         //{
         //    //m_EventAmbienceAudioSrc.enabled = true;

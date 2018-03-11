@@ -12,7 +12,8 @@ public class MonsterAudioController : MonoBehaviour
     private MonsterAI m_Monster;
     private MonsterState m_MonsterState;
     private float m_MonsterSpeed;
-    public AudioSource MonsterSFXAudioSrc;
+    public AudioSource MonsterSFX1AudioSrc;
+    public AudioSource MonsterSFX2AudioSrc;
     public AudioSource MonsterMotionAudioSrc;
     public AudioClip m_GrassRun;
     public AudioClip m_StoneRun;
@@ -28,18 +29,22 @@ public class MonsterAudioController : MonoBehaviour
     public AudioClip m_BreathingFront;
     public AudioClip m_BreathingBehind;
     public AudioClip m_GasLoop;
+    public AudioClip m_Jumpscare;
     private Camera m_PlayerCamera;
     private void OnEnable()
     {
         
         MonsterMotionAudioSrc.Stop();
-        MonsterSFXAudioSrc.Stop();
+        MonsterSFX1AudioSrc.Stop();
+        MonsterSFX2AudioSrc.Stop();
         MonsterMotionAudioSrc.clip = m_StoneRun;
         MonsterMotionAudioSrc.loop = true;
-        MonsterSFXAudioSrc.clip = null;
-        MonsterSFXAudioSrc.loop = true;
+        MonsterSFX1AudioSrc.clip = null;
+        MonsterSFX1AudioSrc.loop = true;
+        MonsterSFX2AudioSrc.clip = null;
+        MonsterSFX2AudioSrc.loop = false;
         m_Monster = GetComponentInParent<MonsterAI>();
-        m_PlayerCamera = m_Monster.player.GetComponent<Camera>();
+        m_PlayerCamera = m_Monster.player.GetComponentInChildren<Camera>();
         m_MonsterState = m_Monster.GetMonsterState();
     }
 
@@ -156,24 +161,24 @@ public class MonsterAudioController : MonoBehaviour
         switch (m_MonsterState)
         {
             case MonsterState.HIDDEN_IDLE:
-                if (MonsterSFXAudioSrc.clip != m_GasLoop)
+                if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                 {
-                    MonsterSFXAudioSrc.clip = (m_GasLoop);
-                    MonsterSFXAudioSrc.Play();
+                    MonsterSFX1AudioSrc.clip = (m_GasLoop);
+                    MonsterSFX1AudioSrc.Play();
                 }
                 break;
             case MonsterState.HIDDEN_MOVING:
-                if (MonsterSFXAudioSrc.clip != m_GasLoop)
+                if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                 {
-                    MonsterSFXAudioSrc.clip = (m_GasLoop);
-                    MonsterSFXAudioSrc.Play();
+                    MonsterSFX1AudioSrc.clip = (m_GasLoop);
+                    MonsterSFX1AudioSrc.Play();
                 }
                 break;
             case MonsterState.FOLLOW:
-                if (MonsterSFXAudioSrc.clip != m_BreathingBehind)
+                if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
                 {
-                    MonsterSFXAudioSrc.clip = (m_BreathingBehind);
-                    MonsterSFXAudioSrc.Play();
+                    MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
+                    MonsterSFX1AudioSrc.Play();
                 }
                 break;
             case MonsterState.APPEAR:
@@ -181,23 +186,28 @@ public class MonsterAudioController : MonoBehaviour
                     if (m_PlayerCamera)
                     {
                         Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_PlayerCamera);
-                        if (MonsterSFXAudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                        if (MonsterSFX2AudioSrc.clip != m_Jumpscare && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
                         {
-                            MonsterSFXAudioSrc.clip = (m_BreathingFront);
-                            MonsterSFXAudioSrc.Play();
+                            MonsterSFX2AudioSrc.clip = m_Jumpscare;
+                            MonsterSFX2AudioSrc.Play();
                         }
-                        else if (MonsterSFXAudioSrc.clip != m_BreathingBehind)
+                        if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
                         {
-                            MonsterSFXAudioSrc.clip = (m_BreathingBehind);
-                            MonsterSFXAudioSrc.Play();
+                            MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                            MonsterSFX1AudioSrc.Play();
+                        }
+                        else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
+                        {
+                            MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
+                            MonsterSFX1AudioSrc.Play();
                         }
                     }
                     else
                     {
-                        if (MonsterSFXAudioSrc.clip != m_BreathingFront)
+                        if (MonsterSFX1AudioSrc.clip != m_BreathingFront)
                         {
-                            MonsterSFXAudioSrc.clip = (m_BreathingFront);
-                            MonsterSFXAudioSrc.Play();
+                            MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                            MonsterSFX1AudioSrc.Play();
                         }
                     }
                 }
@@ -206,27 +216,29 @@ public class MonsterAudioController : MonoBehaviour
             case MonsterState.APPROACH:
                 {
                     StopAllCoroutines();
-                    Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_Monster.player.GetComponent<Camera>());
-                    if (MonsterSFXAudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                    MonsterSFX2AudioSrc.clip = null;
+                    Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_Monster.player.GetComponentInChildren<Camera>());
+                    if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
                     {
-                        MonsterSFXAudioSrc.clip = (m_BreathingFront);
-                        MonsterSFXAudioSrc.Play();
+                        MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                        MonsterSFX1AudioSrc.Play();
                     }
-                    else if (MonsterSFXAudioSrc.clip != m_BreathingBehind)
+                    else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
                     {
-                        MonsterSFXAudioSrc.clip = (m_BreathingBehind);
-                        MonsterSFXAudioSrc.Play();
+                        MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
+                        MonsterSFX1AudioSrc.Play();
                     }
                 }
                 break;
                 
             case MonsterState.CHASE:
                 StopAllCoroutines();
-                if (MonsterSFXAudioSrc.clip != m_Chase)
+                MonsterSFX2AudioSrc.clip = null;
+                if (MonsterSFX1AudioSrc.clip != m_Chase)
                 {
-                    MonsterSFXAudioSrc.loop = false;
-                    MonsterSFXAudioSrc.clip = (m_Chase);
-                    MonsterSFXAudioSrc.Play();
+                    MonsterSFX1AudioSrc.loop = false;
+                    MonsterSFX1AudioSrc.clip = (m_Chase);
+                    MonsterSFX1AudioSrc.Play();
                 }
                 break;
             default:

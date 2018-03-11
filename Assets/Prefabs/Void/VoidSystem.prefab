@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 114966332158383864}
   - component: {fileID: 82122183654408798}
   - component: {fileID: 82221132161959534}
+  - component: {fileID: 82050711093277316}
   m_Layer: 0
   m_Name: VoidAudioController
   m_TagString: Untagged
@@ -3619,8 +3620,8 @@ Transform:
   m_LocalScale: {x: 1.2999998, y: 1.3, z: 1.2999998}
   m_Children:
   - {fileID: 4683752754310506}
-  - {fileID: 4843638001319348}
   - {fileID: 4637480732793076}
+  - {fileID: 4843638001319348}
   - {fileID: 4189523903533580}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3935,7 +3936,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219660164934384}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4416,8 +4417,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706736773194588}
-  m_LocalRotation: {x: 0.043382585, y: -0.82491237, z: -0.06348636, w: -0.56000626}
-  m_LocalPosition: {x: 24.63, y: 0.77, z: 64.77}
+  m_LocalRotation: {x: 0.059835248, y: -0.49263072, z: 0.04829401, w: 0.86683476}
+  m_LocalPosition: {x: 32.22723, y: 0.5014097, z: 57.970615}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4988200541210056}
@@ -4427,8 +4428,8 @@ Transform:
   - {fileID: 4000912697715904}
   - {fileID: 4140680849784486}
   m_Father: {fileID: 4263344459438322}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 62.261, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 8.703, y: 300.889, z: 1.4360001}
 --- !u!4 &4650051833728194
 Transform:
   m_ObjectHideFlags: 1
@@ -4978,7 +4979,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166937010934756}
   m_LocalRotation: {x: -0, y: -0.71017694, z: -0, w: -0.70402324}
-  m_LocalPosition: {x: 6.1000648, y: -2.1560023, z: 96.751045}
+  m_LocalPosition: {x: 6.095, y: -3.325, z: 96.143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4229873923922630}
@@ -4988,7 +4989,7 @@ Transform:
   - {fileID: 4995324401119216}
   - {fileID: 4127060997956720}
   m_Father: {fileID: 4263344459438322}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -245.689, z: 0}
 --- !u!4 &4869944712366344
 Transform:
@@ -5373,6 +5374,117 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252268114388284}
   m_Enabled: 1
+--- !u!82 &82050711093277316
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056264692360210}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243101899237142048, guid: c6cedd23cfd050d468f8d3a187325b5a,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.05
+      value: 1
+      inSlope: -0.29031113
+      outSlope: -0.29031113
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.25378188
+      value: 0.99028015
+      inSlope: -0.14968362
+      outSlope: -0.14968362
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.38533998
+      value: 1.0020945
+      inSlope: -0.47202107
+      outSlope: -0.47202107
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.6090576
+      value: 0.98994446
+      inSlope: -0.16672252
+      outSlope: -0.16672252
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.77522886
+      value: 0.99658966
+      inSlope: 0.083581045
+      outSlope: 0.083581045
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.92609864
+      value: 0.993103
+      inSlope: -0.07815612
+      outSlope: -0.07815612
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.9784851
+      value: 0
+      inSlope: -0.05001994
+      outSlope: -0.05001994
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!82 &82122183654408798
 AudioSource:
   m_ObjectHideFlags: 1
@@ -5404,46 +5516,34 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.08638382
-      value: 0.98770905
+      time: 0.16185379
+      value: 0.9969902
       inSlope: 0.14874618
       outSlope: 0.14874618
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.20312601
-      value: 0.98326755
-      inSlope: -0.07212162
-      outSlope: -0.07212162
+      time: 0.31900024
+      value: 0.5377426
+      inSlope: -1.3455454
+      outSlope: -1.3455454
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.2812729
-      value: 0.9044037
-      inSlope: -0.5002
-      outSlope: -0.5002
+      time: 0.40629506
+      value: 0.3148234
+      inSlope: -2.8698785
+      outSlope: -2.8698785
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.39686513
-      value: 0.8346522
-      inSlope: -2.0808313
-      outSlope: -2.0808313
+      time: 0.5994549
+      value: 0.131567
+      inSlope: -0.5082829
+      outSlope: -0.5082829
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5022492
-      value: 0.6703887
-      inSlope: -2.3731234
-      outSlope: -2.3731234
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.6874981
-      value: 0.44254112
-      inSlope: -1.3975799
-      outSlope: -1.3975799
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.78739727
-      value: 0.23533815
-      inSlope: -3.0881166
-      outSlope: -3.0881166
+      time: 0.79681194
+      value: 0.049684465
+      inSlope: -0.34939292
+      outSlope: -0.34939292
       tangentMode: 0
     - serializedVersion: 2
       time: 1
@@ -5511,7 +5611,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 4
-  MaxDistance: 20
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -5521,56 +5621,44 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.019093335
-      value: 0.9987509
-      inSlope: -3.3789873
-      outSlope: -3.3789873
+      time: 0.009159863
+      value: 1.0965292
+      inSlope: 0.35996073
+      outSlope: 0.35996073
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.0212546
-      value: 1.0031406
-      inSlope: 0.1642108
-      outSlope: 0.1642108
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.12241487
-      value: 1.0018475
+      time: 0.1124814
+      value: 1.1
       inSlope: -0.1001358
       outSlope: -0.1001358
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.25083536
-      value: 0.93456215
-      inSlope: -1.2433529
-      outSlope: -1.2433529
+      time: 0.24753946
+      value: 1.0922427
+      inSlope: -0.12238174
+      outSlope: -0.12238174
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.2757423
-      value: 0.78733253
-      inSlope: 0.052452087
-      outSlope: 0.052452087
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.36343098
-      value: 0.5850259
+      time: 0.3407793
+      value: 0.7229043
       inSlope: -0.9411599
       outSlope: -0.9411599
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.44899917
-      value: 0.38624573
+      time: 0.40183425
+      value: 0.32125854
       inSlope: -1.5171267
       outSlope: -1.5171267
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.58521974
-      value: 0.19095403
-      inSlope: -1.1470914
-      outSlope: -1.1470914
+      time: 0.6040796
+      value: 0.24200994
+      inSlope: -0.26180133
+      outSlope: -0.26180133
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.74728394
-      value: 0.097515106
+      time: 0.80389404
+      value: 0.13927841
       inSlope: -0.17965215
       outSlope: -0.17965215
       tangentMode: 0
@@ -5839,7 +5927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ForestVoid: {fileID: 1706736773194588}
-  m_CryptVoid: {fileID: 0}
   m_SpawnpointsHolder: {fileID: 1787675764598556}
   m_VoidSetActive: 1
 --- !u!114 &114432560339521982
@@ -5929,9 +6016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0582824e7c9b1d24abd54d15f65bf2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterSFXAudioSrc: {fileID: 82221132161959534}
+  MonsterSFX1AudioSrc: {fileID: 82221132161959534}
+  MonsterSFX2AudioSrc: {fileID: 82050711093277316}
   MonsterMotionAudioSrc: {fileID: 82122183654408798}
-  m_GrassRun: {fileID: 8300000, guid: 7d8cac319329d224eaca292d7e52a07a, type: 3}
+  m_GrassRun: {fileID: 8300000, guid: 8b2fd0afa40a1c04797fe0049f9dd88c, type: 3}
   m_StoneRun: {fileID: 8300000, guid: ff42943390b0fbc448252d12a4bcbbe4, type: 3}
   m_GrassWalk: {fileID: 8300000, guid: 5b5f6711c4d53c1429672b9566e1fb27, type: 3}
   m_StoneWalk: {fileID: 8300000, guid: 2625d9a92c2aef64cb45a59c181a5db7, type: 3}
@@ -5945,6 +6033,7 @@ MonoBehaviour:
   m_BreathingFront: {fileID: 8300000, guid: f216dfa483e56624586fc43b373654e7, type: 3}
   m_BreathingBehind: {fileID: 8300000, guid: b77d8af86a104124aa9c9dfbc7645a9d, type: 3}
   m_GasLoop: {fileID: 8300000, guid: 5b9105783f881be4280f5bd170821020, type: 3}
+  m_Jumpscare: {fileID: 8300000, guid: 6a43aae4923c37a41bce220a9465c784, type: 3}
 --- !u!135 &135040609126185778
 SphereCollider:
   m_ObjectHideFlags: 1

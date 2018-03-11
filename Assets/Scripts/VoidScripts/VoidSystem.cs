@@ -11,7 +11,7 @@ public class VoidSystem : MonoBehaviour {
     private bool m_VoidEnabled = false;
     private float gameTimer = 0f;
     private float[] m_DelayTimeToActive = { 100f, 180f, 270f };
-    public MonsterAppear nextAppear = MonsterAppear.STAGE1;
+    private MonsterAppear nextAppear = MonsterAppear.STAGE1;
     
 
     private void OnEnable()
@@ -29,8 +29,6 @@ public class VoidSystem : MonoBehaviour {
         {
             m_SpawnPositions.Add(trans.position);
         }
-        Invoke("SetVoidActive", m_DelayTimeToActive[(int) MonsterAppear.STAGE1]);
-        
     }
 
 
@@ -46,11 +44,7 @@ public class VoidSystem : MonoBehaviour {
             SetVoidInactive();
             Invoke("SetVoidActive", m_DelayTimeToActive[(int)nextAppear]);
         }
-
-        if (nextAppear != MonsterAppear.NONE)
-        {
-            m_ForestVoid.GetComponent<MonsterAI>().SetAppear(nextAppear);
-        }
+      
     }
 
     public void SetVoidActive(Vector3 position = new Vector3())
@@ -77,15 +71,6 @@ public class VoidSystem : MonoBehaviour {
             if (m_CryptVoid)
                 m_CryptVoid.SetActive(true);
         }
-    }
-    void SetVoidAppearBehaviour()
-    {
-
-        if (m_VoidEnabled && m_ForestVoid)
-        {
-            m_ForestVoid.GetComponent<MonsterAI>().SetAppear(nextAppear);
-        }
-        
     }
     public void SetVoidInactive()
     {

@@ -35,7 +35,7 @@ public class MonsterAI : MonoBehaviour {
     public GameObject player;
     private MonsterState currentState;
     public MonsterState debugState;
-    private MonsterAppear currentAppear = MonsterAppear.NONE;
+    private MonsterAppear currentAppear = MonsterAppear.STAGE1;
     private Animator anim;
 	private GameObject trigger;
 	private float chaseTimer = 10f;
@@ -105,19 +105,19 @@ public class MonsterAI : MonoBehaviour {
 
     public void SetAppear(MonsterAppear appear)
     {
-        currentAppear = appear;
-        switch (appear)
-        {
-            case MonsterAppear.STAGE1:
-                Enter_AppearIdleBehaviour();
-                break;
-            case MonsterAppear.STAGE2:
-                //////////////////
-                break;
-            case MonsterAppear.STAGE3:
-                //////////////////
-                break;
-        }
+        //currentAppear = appear;
+        //switch (appear)
+        //{
+        //    case MonsterAppear.STAGE1:
+        //        Enter_AppearIdleBehaviour();
+        //        break;
+        //    case MonsterAppear.STAGE2:
+        //        //////////////////
+        //        break;
+        //    case MonsterAppear.STAGE3:
+        //        //////////////////
+        //        break;
+        //}
     }
     void Enter_AppearIdleBehaviour()
     {
@@ -141,7 +141,7 @@ public class MonsterAI : MonoBehaviour {
         if (currentState != debugState)
             SetState(debugState);
         /*EXECUTE STATE ACTION*/
-        if(currentAppear == MonsterAppear.NONE)
+        //if(currentAppear == MonsterAppear.NONE)
         switch (currentState) 
 		{
         case MonsterState.HIDDEN_IDLE:
@@ -173,11 +173,8 @@ public class MonsterAI : MonoBehaviour {
     
     public void SetState(MonsterState state)
     {
-        if (currentAppear == MonsterAppear.NONE && state != currentState)
+        if (/*currentAppear == MonsterAppear.NONE && */state != currentState)
         {
-            debugState = state;
-            currentState = state;
-            OnMonsterStateChange(state);
             switch (state)
             {
                 case MonsterState.HIDDEN_IDLE:
@@ -212,6 +209,7 @@ public class MonsterAI : MonoBehaviour {
                 case MonsterState.APPEAR:
                     StopAllCoroutines();
                     StartCoroutine(UpdateChaseDestination());
+                    AppearBehaviour(currentAppear);
                     follow_finished = false;                  // Reset follow bool
                     anim.SetBool("Run", false);
                     anim.SetBool("Walk", false);
@@ -219,8 +217,6 @@ public class MonsterAI : MonoBehaviour {
                     anim.SetFloat("Speed", m_AppearSpeed);
                     m_CurrentSpeed = m_AppearSpeed;
                     /*INVOKE A MECHANIC UPON APPEARING*/
-                    Invoke("TeleportVoidBehindHuman", 2f);
-                    StartCoroutine(DelayStateChange(MonsterState.APPROACH, 5f));
                     /*--------------------------------*/
                     break;
                 case MonsterState.APPROACH:
@@ -251,12 +247,31 @@ public class MonsterAI : MonoBehaviour {
                     hidden_idle();
                     break;
             }
-           
+
+            debugState = state;
+            currentState = state;
+            OnMonsterStateChange(state);
         }
     }
-  
+
+    void AppearBehaviour(MonsterAppear appearType)
+    {
+        switch (appearType)
+        {
+            case MonsterAppear.NONE:
+                break;
+            case MonsterAppear.STAGE1:
+                TeleportVoidBehindHuman(4);
+                break;
+            case MonsterAppear.STAGE2:
+                break;
+            case MonsterAppear.STAGE3:
+                break;
+        }
+    }
+
     /* DIFFERENT VOID MECHANICS UPON THE VOID SEEING HUMAN/HUMAN SEEING IT */
-    void TeleportVoidBehindHuman()
+    void TeleportVoidBehindHuman(float dist = 10)
     {
         Vector3 humanPos = player.transform.position;
         Vector3 humanFacingDir = player.transform.forward;
@@ -267,28 +282,33 @@ public class MonsterAI : MonoBehaviour {
                 humanFacingDir = cam.transform.forward;
             }
         }
-        Vector3 voidPos = humanPos - 10 * humanFacingDir;
+        Vector3 voidPos = humanPos - dist * humanFacingDir;
 
         int mask = LayerMask.GetMask("Trees", "Rocks", "Structures");
         int giveUpCounter = 0;
         var checkResult = Physics.OverlapSphere(voidPos, 0.5f, mask);
         Vector3 voidPosAttempt = voidPos;
-        while (checkResult.Length == 0 && giveUpCounter < 5){
+        while (checkResult.Length == 0 && giveUpCounter < 20){
             voidPosAttempt = voidPos;
             voidPosAttempt.x += Random.Range(-1f, 2f);
             voidPosAttempt.z += Random.Range(-1f, 2f);
             giveUpCounter++;
             checkResult = Physics.OverlapSphere(voidPosAttempt, 0.5f, mask);
         }
-        if(giveUpCounter >= 5)
+        if(giveUpCounter >= 20)
         {
+            Vector3 dirToPlayer = player.transform.position - transform.position;
+            transform.position = transform.position - dist*voidPosAttempt;
+            Quaternion rotat = Quaternion.LookRotation(dirToPlayer);
+            transform.rotation = rotat;
+            Debug.Log("returning fail");
             return;
         }
-        
         transform.position = voidPosAttempt;
         Vector3 directionToPlayer = player.transform.position - transform.position;
         Quaternion rot = Quaternion.LookRotation(directionToPlayer);
         transform.rotation = rot;
+        Debug.Log("success");
     }
     /*------------------------------------------------------------------------*/
 
@@ -296,6 +316,8 @@ public class MonsterAI : MonoBehaviour {
     {
         yield return new WaitForSeconds(delayTime);
         SetState(state);
+        if (playerLookingAtMonster)
+            playerLookingAtMonster = false;
     }
 
     IEnumerator UpdateHiddenDestination()
@@ -406,10 +428,23 @@ public class MonsterAI : MonoBehaviour {
             }
         }
     }
-    
-	void appear () {
-
-	}
+    bool playerLookingAtMonster = false;
+    void appear () {
+        if (!playerLookingAtMonster)
+        {
+            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(player.GetComponentInChildren<Camera>());
+            playerLookingAtMonster = GeometryUtility.TestPlanesAABB(planes, GetComponent<Collider>().bounds);
+            if (playerLookingAtMonster)
+            {
+                
+                StartCoroutine(DelayStateChange(MonsterState.APPROACH, 5f));
+            }
+            else if ((player.transform.position - transform.position).magnitude > 5f)
+            {
+                TeleportVoidBehindHuman(4);
+            }
+        }
+    }
     
     void approach()
     {
