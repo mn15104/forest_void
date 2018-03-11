@@ -9,6 +9,7 @@ public class BridgeEvent : EventTrigger {
     public override void Start()
     {
         m_audio = GetComponent<AudioSource>();
+        m_TriggerController = FindObjectOfType<TriggerController>();
 
     }
 

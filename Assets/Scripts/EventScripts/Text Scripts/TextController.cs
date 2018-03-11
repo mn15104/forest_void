@@ -10,24 +10,28 @@ public class TextController : MonoBehaviour {
     public TextTypeEnum textType;
     public float amplitude;
     public float floatSpeed;
-    public GameObject ViewCone;
+
+    // View cones - might not need both actually...
+    public GameObject interactableViewCone;
+    public GameObject narrativeViewCone;
 
     private float t;
     private bool FadingIn;
     private Text text;
     private Color initialColor;
     private Color endColor;
+    private GameObject ViewCone;
 
 
     void Start () {
         amplitude = 0.0007f;
         floatSpeed = 3f;
         text = gameObject.GetComponent<Text>();
-        Initialise();
-        //text.color = new Color(1, 1, 1, 0);
-    }
+        interactableViewCone.transform.localScale = narrativeViewCone.transform.localScale * 0.5f;
 
-    // TODO: Change cone size depending on text type
+        Initialise();
+    }
+    
     void Initialise()
     {
         switch (textType)
@@ -37,15 +41,20 @@ public class TextController : MonoBehaviour {
                 text.color = new Color(1, 1, 1, 1);
                 initialColor = text.color;
                 endColor = Color.yellow;
+                //Cone size
+                ViewCone = interactableViewCone;
                 break;
             case TextTypeEnum.NARRATIVE:
                 // transparent to white
                 text.color = new Color(1, 1, 1, 0);
                 initialColor = text.color;
                 endColor = new Color(1, 1, 1, 1);
+                //Cone size
+                ViewCone = narrativeViewCone;
                 break;
             default:
                 text.color = new Color(1, 1, 1, 0);
+                ViewCone = narrativeViewCone;
                 break;
         }
     }
