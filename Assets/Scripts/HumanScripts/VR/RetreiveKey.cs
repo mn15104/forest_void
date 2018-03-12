@@ -106,6 +106,22 @@ public class RetreiveKey : OVRGrabber
         }
     }
 
+
+    void OnTriggerEnter(Collider otherCollider)
+    {
+   
+        
+        OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
+        if (grabbable == null) return;
+
+        GetComponent<OculusHaptics>().Vibrate(VibrationForce.Hard);
+
+        // Add the grabbable
+        int refCount = 0;
+        m_grabCandidates.TryGetValue(grabbable, out refCount);
+        m_grabCandidates[grabbable] = refCount + 1;
+    }
+
     protected override void GrabBegin()
     {
   
