@@ -20,8 +20,10 @@ public class Flashlight : MonoBehaviour {
     void Start () {
         m_Light = GetComponentInChildren<Light>();
         m_Light.intensity = 0;
-	}
-	
+        m_Light.gameObject.SetActive(false);
+
+    }
+
     public void FV_Rotate(Vector3 rotation, float angle)
     {
         transform.Rotate(rotation, angle);
@@ -33,11 +35,14 @@ public class Flashlight : MonoBehaviour {
         {
             m_Light.intensity = 0;
             m_FlashlightActive = false;
+            m_Light.gameObject.SetActive(false);
         }
         else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || GetComponentInParent<OVRPlayerController>()))
         {
             m_Light.intensity = 16;
             m_FlashlightActive = true;
+            m_Light.gameObject.SetActive(true);
+
         }
     }
     
