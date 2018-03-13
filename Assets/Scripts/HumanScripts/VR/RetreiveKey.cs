@@ -97,12 +97,14 @@ public class RetreiveKey : OVRGrabber
     private IEnumerator AddKeyToInventory(OVRGrabbable m_grabbedObj)
     {
      
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         if (m_grabbedObj != null)
         {
+
+            m_grabbedObj.gameObject.SetActive(false);
             GrabbableRelease(Vector3.zero, Vector3.zero);
             human.GetComponent<Inventory>().addKeyToInventory(m_grabbedObj.gameObject);
-            m_grabbedObj.gameObject.SetActive(false);
+            
         }
     }
 

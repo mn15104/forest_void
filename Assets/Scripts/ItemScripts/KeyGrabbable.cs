@@ -14,6 +14,8 @@ public class KeyGrabbable : OVRGrabbable {
     protected override void Start()
     {
         base.Start();
+        human = GameObject.FindGameObjectWithTag("Player");
+        speed = 0.7f;
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
