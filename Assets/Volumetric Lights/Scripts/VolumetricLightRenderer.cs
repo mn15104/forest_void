@@ -62,11 +62,11 @@ public class VolumetricLightRenderer : MonoBehaviour
 
     private RenderTexture _halfDepthBuffer;
     private RenderTexture _quarterDepthBuffer;
-    private VolumtericResolution _currentResolution = VolumtericResolution.Full;
+    private VolumtericResolution _currentResolution = VolumtericResolution.Half;
     private Texture2D _ditheringTexture;
     private Texture3D _noiseTexture;
 
-    public VolumtericResolution Resolution = VolumtericResolution.Full;
+    public VolumtericResolution Resolution = VolumtericResolution.Half;
     public Texture DefaultSpotCookie;
 
     public CommandBuffer GlobalCommandBuffer { get { return _preLightPass; } }
@@ -269,10 +269,19 @@ public class VolumetricLightRenderer : MonoBehaviour
     /// </summary>
     public void OnPreRender()
     {
-        // use very low value for near clip plane to simplify cone/frustum intersection 
-        Matrix4x4 proj = Matrix4x4.Perspective(_camera.fieldOfView, _camera.aspect, 0.01f, _camera.farClipPlane);
-        proj = GL.GetGPUProjectionMatrix(proj, true);
 
+        // use very low value for near clip plane to simplify cone/frustum intersection
+        Matrix4x4 proj = Matrix4x4.Perspective(_camera.fieldOfView, _camera.aspect, 0.01f, _camera.farClipPlane);
+
+#if UNITY_2017_2_OR_NEWER
+        if (UnityEngine.XR.XRSettings.enabled)
+        {
+            // when using VR override the used projection matrix
+            proj = Camera.current.projectionMatrix;
+        }
+#endif
+
+        proj = GL.GetGPUProjectionMatrix(proj, true);
         _viewProj = proj * _camera.worldToCameraMatrix;
 
         _preLightPass.Clear();
@@ -404,6 +413,7 @@ public class VolumetricLightRenderer : MonoBehaviour
         uint pitch = BitConverter.ToUInt32(data.bytes, 20);
         uint depth = BitConverter.ToUInt32(data.bytes, 24);
         uint formatFlags = BitConverter.ToUInt32(data.bytes, 20 * 4);
+        //uint fourCC = BitConverter.ToUInt32(data.bytes, 21 * 4);
         uint bitdepth = BitConverter.ToUInt32(data.bytes, 22 * 4);
         if (bitdepth == 0)
             bitdepth = pitch / width * 8;
