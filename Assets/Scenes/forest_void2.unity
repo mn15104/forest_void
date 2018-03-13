@@ -265,7 +265,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 2
@@ -537,8 +537,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 2
+    height: 2
   near clip plane: 0.1
   far clip plane: 30
   field of view: 90
@@ -548,7 +548,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -1229,7 +1229,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1cec7e442949718499ea34a4e37ba8fb, type: 3}
       propertyPath: m_Name
-      value: NarrativeConeColliderHuman
+      value: NarrativeConeCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cec7e442949718499ea34a4e37ba8fb, type: 3}
@@ -2096,7 +2096,7 @@ AudioListener:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 859951358}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!4 &859951365
 Transform:
   m_ObjectHideFlags: 0
@@ -2260,25 +2260,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4393093483465170, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.5326752
+      value: 0.53267515
       objectReference: {fileID: 0}
     - target: {fileID: 4393093483465170, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.070340455
+      value: 0.07034045
       objectReference: {fileID: 0}
     - target: {fileID: 4393093483465170, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.83613276
+      value: 0.83613265
       objectReference: {fileID: 0}
     - target: {fileID: 4393093483465170, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.110415146
+      value: -0.11041513
       objectReference: {fileID: 0}
     - target: {fileID: 114432560339521982, guid: 07c6790ed08b06b418bd6ef87aca5c6a,
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1900783128}
+      objectReference: {fileID: 340192777}
     - target: {fileID: 82221132161959534, guid: 07c6790ed08b06b418bd6ef87aca5c6a,
         type: 2}
       propertyPath: MaxDistance
@@ -2551,7 +2551,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1501347471926804, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637480732793076, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637480732793076, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 24.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
@@ -2915,7 +2923,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 1
@@ -3473,12 +3481,17 @@ Prefab:
         type: 2}
       propertyPath: interactableViewCone
       value: 
-      objectReference: {fileID: 1750837643}
+      objectReference: {fileID: 0}
     - target: {fileID: 114533459973656448, guid: 8fec7bad52d27704fb4e6489108c33c1,
         type: 2}
       propertyPath: narrativeViewCone
       value: 
-      objectReference: {fileID: 1594517243}
+      objectReference: {fileID: 0}
+    - target: {fileID: 114533459973656448, guid: 8fec7bad52d27704fb4e6489108c33c1,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1594047285}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fec7bad52d27704fb4e6489108c33c1, type: 2}
   m_IsPrefabParent: 0
@@ -3555,7 +3568,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1cec7e442949718499ea34a4e37ba8fb, type: 3}
       propertyPath: m_Name
-      value: InteractableConeColliderHuman
+      value: InteractableConeCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cec7e442949718499ea34a4e37ba8fb, type: 3}
@@ -3726,6 +3739,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf15caae1ad55474a8d35f93d5493a9d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1594047285 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1382307280244786, guid: cf15caae1ad55474a8d35f93d5493a9d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1594047284}
 --- !u!1001 &1594517241
 Prefab:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class TextController : MonoBehaviour {
     // View cones - might not need both actually...
     public GameObject interactableViewCone;
     public GameObject narrativeViewCone;
+    //public GameObject player;
 
     private float t;
     private bool FadingIn;
@@ -25,6 +26,8 @@ public class TextController : MonoBehaviour {
 
 
     void Start () {
+        //narrativeViewCone = player.transform.Find("NarrativeConeCollider").gameObject;
+        //interactableViewCone = player.transform.Find("InteractableConeCollider").gameObject;
         amplitude = 0.0007f;
         floatSpeed = 3f;
         text = gameObject.GetComponent<Text>();
