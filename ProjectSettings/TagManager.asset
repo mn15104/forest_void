@@ -6,6 +6,8 @@ TagManager:
   tags:
   - OVRCameraRig
   - Flashlight
+  - InteractableConeCollider
+  - NarrativeConeCollider
   layers:
   - Default
   - TransparentFX
