@@ -97,7 +97,7 @@ public class RetreiveKey : OVRGrabber
     private IEnumerator AddKeyToInventory(OVRGrabbable m_grabbedObj)
     {
      
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10f);
         if (m_grabbedObj != null)
         {
 
