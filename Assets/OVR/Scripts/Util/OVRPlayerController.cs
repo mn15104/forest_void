@@ -135,10 +135,12 @@ public class OVRPlayerController : MonoBehaviour
 	public bool EnableRotation = true;
 
 
-    public float RunningEnergyTime = 10;
+    public float RunningEnergy = 10;
+    private float CurrentRunningEnergy;
+    public bool stamina = false;
 
 
-	protected CharacterController Controller = null;
+    protected CharacterController Controller = null;
 	protected OVRCameraRig CameraRig = null;
 
 	private float MoveScale = 1.0f;
@@ -162,6 +164,7 @@ public class OVRPlayerController : MonoBehaviour
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
+        CurrentRunningEnergy = RunningEnergy;
 	}
 
 	void Awake()
@@ -370,15 +373,25 @@ public class OVRPlayerController : MonoBehaviour
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
             moveInfluence *= 1.0f;
-            if(RunningEnergyTime > 0 & OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0)
+            
+            if (CurrentRunningEnergy >= 10)
+            {
+                stamina = true;
+            }
+            if(CurrentRunningEnergy <= 0)
+            {
+                stamina = false;
+            }
+
+            if (CurrentRunningEnergy > 0 & OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0 & stamina)
             {
                 moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
-                RunningEnergyTime = Mathf.Max(-5, RunningEnergyTime - Time.deltaTime*5);
+                CurrentRunningEnergy = Mathf.Max(0, CurrentRunningEnergy - Time.deltaTime*2);
             }
             else
             {
-                RunningEnergyTime += Time.deltaTime;
-                RunningEnergyTime = Mathf.Min(10, RunningEnergyTime + Time.deltaTime );
+                CurrentRunningEnergy += Time.deltaTime;
+                CurrentRunningEnergy = Mathf.Min(10, CurrentRunningEnergy + (Time.deltaTime /10) );
             }
                 //+ OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
 #endif
