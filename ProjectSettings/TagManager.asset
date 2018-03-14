@@ -8,6 +8,7 @@ TagManager:
   - Flashlight
   - InteractableConeCollider
   - NarrativeConeCollider
+  - HandCollider
   layers:
   - Default
   - TransparentFX
