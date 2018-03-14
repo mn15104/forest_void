@@ -10,14 +10,13 @@ public class VoidSystem : MonoBehaviour {
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private bool m_VoidEnabled = false;
     private float gameTimer = 0f;
-    private float[] m_DelayTimeToActive = { 100f, 180f, 270f };
+    private float[] m_DelayTimeToActive = { 20f, 100f, 200f };
     private MonsterAppear nextAppear = MonsterAppear.STAGE1;
-    
+    private MonsterState m_MonsterState = MonsterState.HIDDEN_IDLE;
 
     private void OnEnable()
     {
         m_ForestVoid.GetComponent<MonsterAI>().OnMonsterStateChange += NotifyStateChange;
-       
     }
 
     void Start () {
@@ -44,7 +43,6 @@ public class VoidSystem : MonoBehaviour {
             SetVoidInactive();
             Invoke("SetVoidActive", m_DelayTimeToActive[(int)nextAppear]);
         }
-      
     }
 
     public void SetVoidActive(Vector3 position = new Vector3())
@@ -90,6 +88,10 @@ public class VoidSystem : MonoBehaviour {
         switch (state)
         {
             case MonsterState.HIDDEN_IDLE:
+                if(m_MonsterState == MonsterState.CHASE)
+                {
+                    m_ForestVoid.transform.position = GetFurthestSpawnPoint();
+                }
                 break;
             case MonsterState.HIDDEN_MOVING:
                 break;
@@ -102,11 +104,11 @@ public class VoidSystem : MonoBehaviour {
             case MonsterState.CHASE:
                 break;
             case MonsterState.GAMEOVER:
-                SetVoidInactive();
                 break;
             default:
                 break;
         }
+        m_MonsterState = state;
     }
 
 

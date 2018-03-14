@@ -109,15 +109,15 @@ MonoBehaviour:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.018
-        neutralWhiteIn: 14.8
-        neutralBlackOut: 0
-        neutralWhiteOut: 10
-        neutralWhiteLevel: 5.3
+        neutralBlackIn: 0.022
+        neutralWhiteIn: 10.2
+        neutralBlackOut: -0.015
+        neutralWhiteOut: 10.35
+        neutralWhiteLevel: 12.5
         neutralWhiteClip: 10
       basic:
         postExposure: 0
@@ -153,12 +153,6 @@ MonoBehaviour:
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
-              time: 0.32472324
-              value: 0.26984125
-              inSlope: 1
-              outSlope: 1
-              tangentMode: 0
-            - serializedVersion: 2
               time: 1
               value: 1
               inSlope: 1
@@ -178,12 +172,6 @@ MonoBehaviour:
               time: 0
               value: 0
               inSlope: 0
-              outSlope: 1
-              tangentMode: 0
-            - serializedVersion: 2
-              time: 0.15129152
-              value: 0.1825397
-              inSlope: 1
               outSlope: 1
               tangentMode: 0
             - serializedVersion: 2
@@ -301,8 +289,8 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       colored: 0
-      intensity: 0
-      size: 0
+      intensity: 0.059
+      size: 1.6362987
       luminanceContribution: 0.5
   vignette:
     m_Enabled: 1
@@ -310,7 +298,7 @@ MonoBehaviour:
       mode: 0
       color: {r: 0.18382353, g: 0.018923007, b: 0.018923007, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.00009584277
+      intensity: 0.4243944
       smoothness: 0.215
       roundness: 1
       mask: {fileID: 0}

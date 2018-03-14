@@ -40,12 +40,16 @@ public class VRCameraScript : MonoBehaviour {
     private float rateOfChange = 0f;
     Plane[] cameraPlanes;
 
-    
+    private GrainModel.Settings originalGrainSettings;
+    private VignetteModel.Settings originalVignetteSettings;
+    private ColorGradingModel.Settings originalColorGradSettings;
     void Start () {
-        
-
         m_Camera = GetComponent<Camera>();
         m_PostProcessProfile = gameObject.GetComponent<PostProcessingBehaviour>().profile;
+        originalGrainSettings = m_PostProcessProfile.grain.settings;
+        originalVignetteSettings = m_PostProcessProfile.vignette.settings;
+        originalColorGradSettings = m_PostProcessProfile.colorGrading.settings;
+
         m_Fisheye = gameObject.AddComponent<Fisheye>();
         m_Fisheye.fishEyeShader = fishEyeShader;
         m_GlitchEffect = gameObject.GetComponent<GlitchEffect>();
@@ -65,9 +69,15 @@ public class VRCameraScript : MonoBehaviour {
         m_GlitchEffect.flipIntensity = 0f;
         m_GlitchEffect.colorIntensity = 0f;
     }
-	
-	// Update is called once per frame
-	void Update () {
+    private void OnDestroy()
+    {
+        m_PostProcessProfile.grain.settings = originalGrainSettings;
+        m_PostProcessProfile.vignette.settings = originalVignetteSettings;
+        m_PostProcessProfile.colorGrading.settings = originalColorGradSettings;
+    }
+
+    // Update is called once per frame
+    void Update () {
         cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_Camera);
         if (!m_Monster) {
             m_Monster = FindObjectOfType<MonsterAI>().gameObject;
@@ -100,27 +110,40 @@ public class VRCameraScript : MonoBehaviour {
 
     void UpdateEffects()
     {
-        rateOfChange = Mathf.Clamp(timeLookedAtMonster, 1, 5);
-        if (!effectsOn ) {
-            UpdateVignette(0f);
-            UpdateGrain(0f, 0f);
-            UpdateFisheye(0f, 0f);
-            UpdateGlitch(0f, 0f);
+        if (m_Monster.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.GAMEOVER)
+        {
+            ColorGradingModel.Settings colgradmod = m_PostProcessProfile.colorGrading.settings;
+            colgradmod.tonemapping.neutralBlackIn = -0.1f;
+            colgradmod.tonemapping.neutralBlackOut = -0.09f;
+            colgradmod.tonemapping.neutralWhiteIn = 0;
+            colgradmod.tonemapping.neutralWhiteOut = 0f;
+            m_PostProcessProfile.colorGrading.settings = colgradmod;
         }
-        else{
-            ////////////////////////VIGNETTE//////////////////////////
-            UpdateVignette(m_PPP_VignetteMaxIntensity);
+        else
+        {
+            rateOfChange = Mathf.Clamp(timeLookedAtMonster, 1, 5);
+            if (!effectsOn)
+            {
+                UpdateVignette(0f);
+                UpdateGrain(0f, 0f);
+                UpdateFisheye(0f, 0f);
+                UpdateGlitch(0f, 0f);
+            }
+            else
+            {
+                ////////////////////////VIGNETTE//////////////////////////
+                UpdateVignette(m_PPP_VignetteMaxIntensity);
 
-            //////////////////////////GRAIN///////////////////////////
-            UpdateGrain(m_PPP_GrainMaxIntensity, m_PPP_GrainMaxSize);
+                //////////////////////////GRAIN///////////////////////////
+                UpdateGrain(m_PPP_GrainMaxIntensity, m_PPP_GrainMaxSize);
 
-            /////////////////////////FISHEYE//////////////////////////
-            UpdateFisheye(m_FisheyeMax_X, m_FisheyeMax_Y);
+                /////////////////////////FISHEYE//////////////////////////
+                UpdateFisheye(m_FisheyeMax_X, m_FisheyeMax_Y);
 
-            /////////////////////////GLITCH///////////////////////////
-            UpdateGlitch(m_GlitchMaxIntensity, m_GlitchMaxFlipIntensity);
+                /////////////////////////GLITCH///////////////////////////
+                UpdateGlitch(m_GlitchMaxIntensity, m_GlitchMaxFlipIntensity);
+            }
         }
-
     }
 
     void UpdateVignette(float intensityDestination)
