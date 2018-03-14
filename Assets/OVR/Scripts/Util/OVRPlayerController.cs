@@ -134,6 +134,10 @@ public class OVRPlayerController : MonoBehaviour
 	/// </summary>
 	public bool EnableRotation = true;
 
+
+    public float RunningEnergyTime = 10;
+
+
 	protected CharacterController Controller = null;
 	protected OVRCameraRig CameraRig = null;
 
@@ -365,7 +369,18 @@ public class OVRPlayerController : MonoBehaviour
 			moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
-			moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+            moveInfluence *= 1.0f;
+            if(RunningEnergyTime > 0 & OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0)
+            {
+                moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
+                RunningEnergyTime = Mathf.Max(-5, RunningEnergyTime - Time.deltaTime*5);
+            }
+            else
+            {
+                RunningEnergyTime += Time.deltaTime;
+                RunningEnergyTime = Mathf.Min(10, RunningEnergyTime + Time.deltaTime );
+            }
+                //+ OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
 #endif
 
 			Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
