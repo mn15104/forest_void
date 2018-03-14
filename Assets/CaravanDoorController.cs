@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DoorState { Opening, Closing, Static };
 
 
 public class CaravanDoorController : MonoBehaviour
 {
 
-    public enum DoorState { Opening, Closing, Static };
 
     public float smooth;
     public float x;
