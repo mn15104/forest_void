@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 5d2bab81ad2a69a448b688b3ecb8eb17
-timeCreated: 1521042027
-licenseType: Pro
+timeCreated: 1521083122
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -807,14 +807,6 @@ ModelImporter:
         modified: 0
     - boneName: Character1_RightHandPinky3
       humanName: Right Little Distal
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Character1_Spine2
-      humanName: UpperChest
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
