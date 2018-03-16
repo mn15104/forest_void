@@ -14,11 +14,18 @@ public class AICollisionDetection : MonoBehaviour {
 
     public AICollisionSide m_CollisionSide;
     private MonsterAI m_monsterAI;
+    private MonsterAIPassive m_monsterAIPassive;
     private int collisionCount;
+    private bool passive = false;
     // Use this for initialization
     private void OnEnable()
     {
         m_monsterAI = GetComponentInParent<MonsterAI>();
+        if (!m_monsterAI)
+        {
+            m_monsterAIPassive = GetComponentInParent<MonsterAIPassive>();
+            passive = true;
+        }
         collisionCount = 0;
     }
     private void OnDisable()
@@ -34,7 +41,10 @@ public class AICollisionDetection : MonoBehaviour {
 	void Update () {
 		if(collisionCount == 0)
         {
-            m_monsterAI.NotifyCollisionAhead(m_CollisionSide, false);
+            if(!passive)
+                m_monsterAI.NotifyCollisionAhead(m_CollisionSide, false);
+            else 
+                m_monsterAIPassive.NotifyCollisionAhead(m_CollisionSide, false);
         }
 	}
 
@@ -44,7 +54,10 @@ public class AICollisionDetection : MonoBehaviour {
         {
             if (collisionCount == 0)
             {
-                m_monsterAI.NotifyCollisionAhead(m_CollisionSide, true);
+                if (!passive)
+                    m_monsterAI.NotifyCollisionAhead(m_CollisionSide, true);
+                else
+                    m_monsterAIPassive.NotifyCollisionAhead(m_CollisionSide, true);
             }
             collisionCount++;
         }

@@ -211,7 +211,7 @@ public class MonsterAI : MonoBehaviour {
                     StopAllCoroutines();
                     StartCoroutine(UpdateChaseDestination());
                     InitialiseCurrentAppearBehaviour(currentAppear);           // CALL APPEAR BEHAVIOUR TYPE
-                    follow_finished = false;                  // Reset follow bool
+                    follow_finished = false;                                   // Reset follow bool
                     anim.SetBool("Run", false);
                     anim.SetBool("Walk", false);
                     anim.SetBool("Idle", true);
