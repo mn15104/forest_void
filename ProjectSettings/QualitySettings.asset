@@ -36,7 +36,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Fastest
-    pixelLightCount: 32
+    pixelLightCount: 64
     shadows: 0
     shadowResolution: 0
     shadowProjection: 1

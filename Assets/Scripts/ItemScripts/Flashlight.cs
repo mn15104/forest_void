@@ -39,7 +39,7 @@ public class Flashlight : MonoBehaviour {
         }
         else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || GetComponentInParent<OVRPlayerController>()))
         {
-            m_Light.intensity = 16;
+            m_Light.intensity = 3;
             m_FlashlightActive = true;
             m_Light.gameObject.SetActive(true);
 
