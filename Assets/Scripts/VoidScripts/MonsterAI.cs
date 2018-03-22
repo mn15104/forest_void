@@ -18,9 +18,11 @@ public enum MonsterState
 public enum MonsterAppear
 {
     NONE = -1,
-    STAGE1 = 0,
-    STAGE2 = 1,
-    STAGE3 = 2
+    STAGE1 = 1,
+    STAGE2 = 2,
+    STAGE3 = 3,
+    STAGE4 = 4,
+    STAGE5 = 5
 }
 
 public class MonsterAI : MonoBehaviour {
@@ -49,6 +51,7 @@ public class MonsterAI : MonoBehaviour {
     private const float m_RunSpeed = 0.35f;
     private float m_CurrentSpeed = 1f;
     //
+    private Quaternion destinationRotation;
     private Vector3 destinationPosition;
     private bool collisionRight;
     private bool collisionLeft;
@@ -56,12 +59,13 @@ public class MonsterAI : MonoBehaviour {
     // 
     public float soundDetectionPercentage = 0.2f;
     public float lightDetectionPercentage = 0.2f;
-    private Quaternion destinationRotation;
+    //
     private float distanceToHuman;
     private float distanceToHuman_FollowTrigger = 12;
     private float distanceToHuman_AppearTrigger = 6;
     private const float maxDetectionRange = 165;
     private bool follow_finished;
+    private bool humanTorchOn;
 
     private void OnEnable()
     {
@@ -122,21 +126,7 @@ public class MonsterAI : MonoBehaviour {
     {
 
     }
-    void Enter_AppearIdleBehaviour()
-    {
-        anim.SetLayerWeight(anim.GetLayerIndex("Legs"), 0);
-        anim.SetLayerWeight(anim.GetLayerIndex("Chest"), 0);
-        anim.SetLayerWeight(anim.GetLayerIndex("WalkThenTurn"), 1);
-        anim.SetBool("WalkThenTurn", true);
-    }
-    public void Exit_AppearIdleBehaviour()
-    {
-        anim.SetLayerWeight(anim.GetLayerIndex("Legs"), 1);
-        anim.SetLayerWeight(anim.GetLayerIndex("Chest"), 1);
-        anim.SetLayerWeight(anim.GetLayerIndex("WalkThenTurn"), 0);
-        anim.SetBool("WalkThenTurn", false);
-        currentAppear = (MonsterAppear.NONE);
-    }
+   
     void Update () {
         /*UPDATE STATE VARIABLES*/
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
@@ -275,7 +265,10 @@ public class MonsterAI : MonoBehaviour {
     }
     void Stage1()
     {
-        TeleportVoidBehindHuman(4f);
+        if(player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
+            player.GetComponentInChildren<Flashlight>().Switch(gameObject);
+        RenderSettings.fogMode = FogMode.ExponentialSquared;
+        RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
     }
     void Stage2()
     {
@@ -286,57 +279,7 @@ public class MonsterAI : MonoBehaviour {
         GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         TeleportVoidBehindHuman(1f);
     }
-
-    /* DIFFERENT VOID MECHANICS UPON THE VOID SEEING HUMAN/HUMAN SEEING IT */
-    /// STAGE ONE ////
-    void TeleportVoidBehindHuman(float dist = 10)
-    {
-        float orig_y = transform.position.y;
-        Vector3 humanPos = player.transform.position;
-        Vector3 humanFacingDir = player.transform.forward;
-        foreach (Camera cam in player.GetComponentsInChildren<Camera>())
-        {
-            if (cam.isActiveAndEnabled)
-            {
-                humanFacingDir = cam.transform.forward;
-            }
-        }
-        Vector3 voidPos = humanPos - dist * humanFacingDir;
-        voidPos.y = orig_y;
-        int mask = LayerMask.GetMask("Trees", "Rocks", "Structures");
-        int giveUpCounter = 0;
-        var checkResult = Physics.OverlapSphere(voidPos, 0.5f, mask);
-        Vector3 voidPosAttempt = voidPos;
-        while (checkResult.Length == 0 && giveUpCounter < 20)
-        {
-            voidPosAttempt = voidPos;
-            voidPosAttempt.x += Random.Range(-1f, 2f);
-            voidPosAttempt.z += Random.Range(-1f, 2f);
-            giveUpCounter++;
-            checkResult = Physics.OverlapSphere(voidPosAttempt, 0.5f, mask);
-        }
-        if (giveUpCounter >= 20)
-        {
-            Vector3 lastAttempt = player.transform.position - dist * player.transform.forward;
-            lastAttempt.y = orig_y;
-            transform.position = lastAttempt;
-            Quaternion rotat = Quaternion.LookRotation(player.transform.forward);
-            rotat.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, rotat.eulerAngles.y, transform.rotation.eulerAngles.z);
-            transform.rotation = rotat;
-            return;
-        }
-        transform.position = voidPosAttempt;
-        Quaternion rot = Quaternion.LookRotation(player.transform.forward);
-        rot.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, rot.eulerAngles.y, transform.rotation.eulerAngles.z);
-        transform.rotation = rot;
-    }
-    /// STAGE THREE ///
-    void JumpscareBehindHuman()
-    {
-        GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-        TeleportVoidBehindHuman(1f);
-        stage3_invokeFinished = true;
-    }
+    
     void NextAppearStage()
     {
         switch (currentAppear)
@@ -494,11 +437,62 @@ public class MonsterAI : MonoBehaviour {
         }
     }
 
+    bool stage1_playerTorchOn1 = false;
+    bool stage1_playerTorchOff = false;
+    bool stage1_coroutinefinished = false;
+    bool stage1_playerTorchOn2 = false;
+    void appear () {
+        if(currentAppear == MonsterAppear.STAGE1)
+        {
+            if (!stage1_playerTorchOn1)
+            {
+                if(player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
+                {
+                    stage1_playerTorchOn1 = true;
+                }
+            }
+            else if (!stage1_playerTorchOff)
+            {
+                if (stage1_coroutinefinished)
+                {
+                    stage1_playerTorchOff = true;
+                }
+            }
+            else if (!stage1_playerTorchOn2)
+            {
+                if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
+                {
+                    SetState(MonsterState.HIDDEN_IDLE);
+                    currentAppear = MonsterAppear.STAGE2;
+                    RenderSettings.fogMode = FogMode.Exponential;
+                    RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
+                    stage1_playerTorchOn2 = true;
+                    gameObject.SetActive(false);
+                }
+            }
+        }  
+    }
+    IEnumerator Stage1Appear()
+    {
+        TeleportVoidBehindHuman(-10f);
+        StartCoroutine(DelayStateChange(MonsterState.APPROACH, 5f));
+        RenderSettings.fogMode = FogMode.Exponential;
+        RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
+        yield return new WaitForSeconds(0.4f);
+        if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
+        {
+            player.GetComponentInChildren<Flashlight>().Switch(gameObject);
+        }
+        RenderSettings.fogMode = FogMode.ExponentialSquared;
+        RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
+        stage1_coroutinefinished = true;
+    }
     bool stage1_playerLookingAtMonster = false;
     bool stage2_coroutineCalled = false;
     bool stage3_invokeCalled = false;
     bool stage3_invokeFinished = false;
-    void appear () {
+    void old_appear()
+    {
         if (currentAppear == MonsterAppear.STAGE1 && !stage1_playerLookingAtMonster)
         {
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(player.GetComponentInChildren<Camera>());
@@ -521,12 +515,12 @@ public class MonsterAI : MonoBehaviour {
                 TeleportVoidBehindHuman(4);
             }
         }
-        else if(currentAppear == MonsterAppear.STAGE2 && !stage2_coroutineCalled)
+        else if (currentAppear == MonsterAppear.STAGE2 && !stage2_coroutineCalled)
         {
-            StartCoroutine(DelayStateChange(MonsterState.APPROACH,2f));
+            StartCoroutine(DelayStateChange(MonsterState.APPROACH, 2f));
             stage2_coroutineCalled = true;
         }
-        else if(currentAppear == MonsterAppear.STAGE3 && !stage3_invokeCalled)
+        else if (currentAppear == MonsterAppear.STAGE3 && !stage3_invokeCalled)
         {
             Invoke("JumpscareBehindHuman", 8f);
             stage3_invokeCalled = true;
@@ -690,14 +684,65 @@ public class MonsterAI : MonoBehaviour {
         float distance = xz_distance.magnitude;
         if (on)
         {
+            humanTorchOn = true;
             lightDetectionPercentage = (distance / maxDetectionRange);
         }
         else
         {
+            humanTorchOn = false;
             lightDetectionPercentage = 0f;
         }
     }
-    
+    /* DIFFERENT VOID MECHANICS UPON THE VOID SEEING HUMAN/HUMAN SEEING IT */
+    /// STAGE ONE ////
+    void TeleportVoidBehindHuman(float dist = 10)
+    {
+        float orig_y = transform.position.y;
+        Vector3 humanPos = player.transform.position;
+        Vector3 humanFacingDir = player.transform.forward;
+        foreach (Camera cam in player.GetComponentsInChildren<Camera>())
+        {
+            if (cam.isActiveAndEnabled)
+            {
+                humanFacingDir = cam.transform.forward;
+            }
+        }
+        Vector3 voidPos = humanPos - dist * humanFacingDir;
+        voidPos.y = orig_y;
+        int mask = LayerMask.GetMask("Trees", "Rocks", "Structures");
+        int giveUpCounter = 0;
+        var checkResult = Physics.OverlapSphere(voidPos, 0.5f, mask);
+        Vector3 voidPosAttempt = voidPos;
+        while (checkResult.Length == 0 && giveUpCounter < 20)
+        {
+            voidPosAttempt = voidPos;
+            voidPosAttempt.x += Random.Range(-1f, 2f);
+            voidPosAttempt.z += Random.Range(-1f, 2f);
+            giveUpCounter++;
+            checkResult = Physics.OverlapSphere(voidPosAttempt, 0.5f, mask);
+        }
+        if (giveUpCounter >= 20)
+        {
+            Vector3 lastAttempt = player.transform.position - dist * player.transform.forward;
+            lastAttempt.y = orig_y;
+            transform.position = lastAttempt;
+            Quaternion rotat = Quaternion.LookRotation(player.transform.forward);
+            rotat.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, rotat.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = rotat;
+            return;
+        }
+        transform.position = voidPosAttempt;
+        Quaternion rot = Quaternion.LookRotation(player.transform.forward);
+        rot.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, rot.eulerAngles.y, transform.rotation.eulerAngles.z);
+        transform.rotation = rot;
+    }
+    /// STAGE THREE ///
+    void JumpscareBehindHuman()
+    {
+        GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        TeleportVoidBehindHuman(1f);
+        stage3_invokeFinished = true;
+    }
     public MonsterState GetMonsterState()
     {
         return currentState;

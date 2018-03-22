@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flashlight : MonoBehaviour {
 
     private Light m_Light;
-    public bool m_FlashlightActive = false;
+    public bool m_FlashlightActive = true;
 
     void OnEnable()
     {
