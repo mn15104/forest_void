@@ -27,8 +27,6 @@ public class TextController : MonoBehaviour {
 
 
 
-
-
     void Start () {
         interactableViewCone = GameObject.FindWithTag("InteractableConeCollider");
         narrativeViewCone = GameObject.FindWithTag("NarrativeConeCollider");
@@ -40,7 +38,7 @@ public class TextController : MonoBehaviour {
 
         Initialise();
     }
-    
+
     // Interactable text does not fade out to transparent after going yellow
     void Initialise()
     {
@@ -128,14 +126,14 @@ public class TextController : MonoBehaviour {
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public void ShowText(GameObject other)
     {
-        if (other.gameObject == narrativeViewCone)
+        if (other == narrativeViewCone)
         {
             Debug.Log("Fading In");
             StartCoroutine("FadeIn");
         }
-        else if (textType == TextTypeEnum.INTERACTABLE && other.gameObject == interactableViewCone)
+        else if (textType == TextTypeEnum.INTERACTABLE && other == interactableViewCone)
         {
             Debug.Log("This is a thing");
             StopCoroutine("FadeIn");
@@ -143,17 +141,18 @@ public class TextController : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void HideText(GameObject other)
     {
-        if (textType == TextTypeEnum.INTERACTABLE && other.gameObject == interactableViewCone)
+        if(textType == TextTypeEnum.INTERACTABLE && other == interactableViewCone)
         {
             StopCoroutine("ChangeColourIn");
             StartCoroutine("ChangeColorOut");
         }
-        else if (other.gameObject == narrativeViewCone)
+        else if (other == narrativeViewCone)
         {
             StopCoroutine("FadeIn");
             StartCoroutine("FadeOut");
         }
     }
+
 }
