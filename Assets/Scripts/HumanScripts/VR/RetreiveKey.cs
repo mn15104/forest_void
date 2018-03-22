@@ -7,6 +7,7 @@ public class RetreiveKey : OVRGrabber
     public Transform headTransform;
     private GameObject human;
     private GameObject key;
+    private EventManager eventManager;
     public bool inGeneratorZone = false;
   
 
@@ -15,8 +16,30 @@ public class RetreiveKey : OVRGrabber
     {
         base.Awake();
         human = transform.root.gameObject;
-       
+        eventManager = FindObjectOfType<EventManager>();
     }
+
+    private void OnEnable()
+    {
+        eventManager.GeneratorZoneTriggerEvent.TriggerEnterEvent += GeneratorZoneOn;
+        eventManager.GeneratorZoneTriggerEvent.TriggerExitEvent += GeneratorZoneOff;
+    }
+
+    private void OnDisable()
+    {
+        eventManager.GeneratorZoneTriggerEvent.TriggerEnterEvent -= GeneratorZoneOn;
+        eventManager.GeneratorZoneTriggerEvent.TriggerExitEvent -= GeneratorZoneOff;
+    }
+
+    public void GeneratorZoneOn(GameObject colliderGameObject)
+    {
+        inGeneratorZone = true;
+    }
+
+    public void GeneratorZoneOff(GameObject colliderGameObject)
+    {
+        inGeneratorZone = false;
+    } 
 
     protected override void FixedUpdate()
     {

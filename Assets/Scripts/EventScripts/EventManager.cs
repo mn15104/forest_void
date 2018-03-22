@@ -10,16 +10,22 @@ public class EventManager : MonoBehaviour {
     {
         Stage0,Stage1,Stage2,Stage3,GameOverStage 
     }
+    public float[] StageTimes = { 0f, 120f, 600f, 720f };
+
+
+    public float GameTimerSeconds = 0f; 
 
     public TriggerEvent FenceTextTriggerEvent;
     public TriggerEvent BridgeCrossedEvent;
     public TriggerEvent ChapelTriggerEvent;
     public TriggerEvent CaravanTriggerEvent;
+    public TriggerEvent GeneratorZoneTriggerEvent;
+    public TriggerEvent StructureZoneTriggerEvent;
 
     public Stage currentStage; 
     public GameObject player;
     public GameObject monster;
-
+    
    
     public void Awake()
     {
@@ -27,8 +33,21 @@ public class EventManager : MonoBehaviour {
         BridgeCrossedEvent = new TriggerEvent();
         ChapelTriggerEvent = new TriggerEvent();
         CaravanTriggerEvent = new TriggerEvent();
+        GeneratorZoneTriggerEvent = new TriggerEvent();
+        StructureZoneTriggerEvent = new TriggerEvent();
+
+
         currentStage = Stage.Stage0;
         Debug.Log(getCurrentKeyCount());
+
+        EventManagerSubscriptions();
+    }
+
+
+    void EventManagerSubscriptions()
+    {
+        StructureZoneTriggerEvent.TriggerEnterEvent += DeactivateMonster;
+        StructureZoneTriggerEvent.TriggerExitEvent += ActivateMonster;
     }
 
     public float getPlayerHeartrate()
@@ -44,10 +63,50 @@ public class EventManager : MonoBehaviour {
     public int getCurrentKeyCount()
     {
         return player.GetComponent<Inventory>().keys.Count;
+        
+    }
+
+    void UpdateStage()
+    {
+        switch (currentStage)
+        {
+            case Stage.Stage0:
+                if (GameTimerSeconds > StageTimes[1])
+                {
+                    currentStage = Stage.Stage1;
+                }
+                break;
+            case Stage.Stage1:
+                if (GameTimerSeconds > StageTimes[2])
+                {
+                    currentStage = Stage.Stage2;
+                }
+                break;
+            case Stage.Stage2:
+                if (GameTimerSeconds > StageTimes[3])
+                {
+                    currentStage = Stage.Stage3;
+                }
+                break;
+        }
     }
 
 
+    void Update()
+    {
+        GameTimerSeconds += Time.deltaTime;
+        UpdateStage();
+    }
 
 
+    void DeactivateMonster(GameObject colliderObject)
+    {
+        Debug.Log("Deactivate Monster ");
+    }
+
+    void ActivateMonster(GameObject colliderObject)
+    {
+
+    }
 
 }

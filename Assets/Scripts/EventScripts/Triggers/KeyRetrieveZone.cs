@@ -5,17 +5,18 @@ using UnityEngine;
 public class KeyRetrieveZone : MonoBehaviour {
 
     // Use this for initialization
-    public GameObject lHandAnchor;
+    private EventManager eventManager; 
 
     void Awake () {
         //lHandAnchor = GameObject.Find("OVRHuman/OPRCameraRig/TrackingSpace/LeftHandAnchor");
+        eventManager = FindObjectOfType<EventManager>();
 	}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            lHandAnchor.GetComponent<RetreiveKey>().inGeneratorZone = true;
+            eventManager.GeneratorZoneTriggerEvent.TriggerEnter(other);
             Debug.Log("Entered generator area");
         }
    
@@ -23,15 +24,10 @@ public class KeyRetrieveZone : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            lHandAnchor.GetComponent<RetreiveKey>().inGeneratorZone = false;
+        if (other.gameObject.CompareTag("Player")) { 
+        
+            eventManager.GeneratorZoneTriggerEvent.TriggerExit(other);
             Debug.Log("Outside generator area");
         }
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
