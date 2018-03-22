@@ -5,11 +5,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
     public List<GameObject> keys;
+    private EventManager eventManager;
 
 
     public void addKeyToInventory(GameObject key)
     {
         keys.Add(key);
+
     }
 
     public void removeKeyFromInventory(GameObject key)

@@ -9,23 +9,22 @@ public class EventManager : MonoBehaviour {
     public TriggerEvent FenceTextTriggerEvent;
     public TriggerEvent BridgeCrossedEvent;
     public TriggerEvent ChapelTriggerEvent;
-
-    //public static event Events ChapelEvents;
-    //public static event Events CaravanEvents;
+    public TriggerEvent CaravanTriggerEvent;
 
     public GameObject player;
+    public GameObject monster;
+
+
 
     public void Awake()
     {
         FenceTextTriggerEvent = new TriggerEvent();
         BridgeCrossedEvent = new TriggerEvent();
         ChapelTriggerEvent = new TriggerEvent();
+        CaravanTriggerEvent = new TriggerEvent();
     }
 
-    public void Start()
-    {
-        Debug.Log(ChapelTriggerEvent);
-    }
+ 
 
   
 

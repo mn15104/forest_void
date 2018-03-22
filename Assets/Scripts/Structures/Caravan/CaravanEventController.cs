@@ -29,12 +29,28 @@ public class CaravanEventController : MonoBehaviour {
     public float monsterMinY;
     public float monsterMinZ;
 
+    private EventManager eventManager;
+    private TriggerEvent trigger;
+
+    private void Awake()
+    {
+        eventManager = FindObjectOfType<EventManager>();
+        trigger = eventManager.CaravanTriggerEvent;
+    }
+
     // Use this for initialization
     void Start () {
         monster.SetActive(false);
         MonsterAppeared = false;
+        trigger.TriggerEnterEvent += ActivateCaravanEvents;
+
     }
-	
+
+    private void OnDisable()
+    {
+        trigger.TriggerEnterEvent -= ActivateCaravanEvents;
+    }
+
     void monsterAppear(float distance)
     {
         var cameraForward = human.GetComponentInChildren<Camera>().transform.forward;
@@ -208,23 +224,25 @@ public class CaravanEventController : MonoBehaviour {
 
     }
 
-        private void OnTriggerEnter(Collider other)
+    void ActivateCaravanEvents(GameObject colliderGameObject)
     {
+        lightval = light.f_Light.color;
+        light.f_Light.color = Color.red;
+        TriggerTriggered = true;
+        StartCoroutine("DoorEvent");
 
-        if(other.gameObject == human && TriggerTriggered == false)
+        StartCoroutine("AudioEvent");
+        //eventClip.Play();
+        StartCoroutine("LightChange");
+        //StartCoroutine("monsterAppear");
+        //StartCoroutine("playAudio");#
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == human && TriggerTriggered == false)
         {
-            lightval = light.f_Light.color;
-            light.f_Light.color = Color.red;
-            TriggerTriggered = true;
-            StartCoroutine("DoorEvent");
-
-            StartCoroutine("AudioEvent");
-            //eventClip.Play();
-            StartCoroutine("LightChange");
-            //StartCoroutine("monsterAppear");
-            //StartCoroutine("playAudio");#
-
-
+            trigger.TriggerEnter(other);
         }
     }
 }
