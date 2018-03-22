@@ -17,12 +17,20 @@ public class ChapelDoorEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        trigger.TriggerEnter(other.gameObject);
+        if (other.gameObject == eventManager.player)
+        {
+            Debug.Log("Trigger entered at chapel door");
+            trigger.TriggerEnter(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        trigger.TriggerExit(other.gameObject);
+        if (other.gameObject == eventManager.player)
+        {
+            Debug.Log("Trigger entered at chapel door");
+            trigger.TriggerExit(other.gameObject);
+        }
 
     }
 }

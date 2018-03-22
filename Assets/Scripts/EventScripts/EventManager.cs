@@ -109,8 +109,7 @@ public class EventManager : MonoBehaviour {
     {
         GameTimerSeconds += Time.deltaTime;
         UpdateStage();
-        Debug.Log(currentLocation);
-        Debug.Log(currentStage);
+  
     }
 
 

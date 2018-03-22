@@ -23,6 +23,7 @@ public class HandCollider : MonoBehaviour {
 
     void EnableHandCollider(GameObject gameObject)
     {
+        
         handSphereCollider.enabled = true;
     }
 
