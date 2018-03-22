@@ -10,6 +10,8 @@ public class Heartbeat : MonoBehaviour
     public AudioClip m_BeatA;
     public AudioClip m_BeatB;
     public AudioSource m_HeartbeatAudioSrc;
+    public float maxHeartRate;
+
     private float clipTimeA;
     private float clipTimeB;
     private int m_BaseHeartrate = 140;
@@ -33,7 +35,7 @@ public class Heartbeat : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            using (UnityWebRequest webaddress = UnityWebRequest.Get("http://192.168.1.5:5000"))
+            using (UnityWebRequest webaddress = UnityWebRequest.Get("http://192.168.1.3:5000"))
             {
                 yield return webaddress.SendWebRequest();
 
@@ -56,7 +58,7 @@ public class Heartbeat : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-
+       // maxHeartRate = Mathf.Max(maxHeartRate, Heartbeat);
 	}
 
     IEnumerator HeartbeatCoroutine()

@@ -14,17 +14,21 @@ public class VoidSystem : MonoBehaviour {
     private MonsterAppear nextAppear = MonsterAppear.STAGE1;
     private MonsterState m_MonsterState = MonsterState.HIDDEN_IDLE;
 
+    public bool voidDelay = false;
+
     private void OnEnable()
     {
         m_ForestVoid.GetComponent<MonsterAI>().OnMonsterStateChange += NotifyStateChange;
     }
 
     void Start () {
+        
         if (m_ForestVoid)
             m_ForestVoid.SetActive(false);
         if (m_CryptVoid)
             m_CryptVoid.SetActive(false);
-        foreach(Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
+        Invoke("delayVoid", 120);
+        foreach (Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
         {
             m_SpawnPositions.Add(trans.position);
         }
@@ -33,8 +37,9 @@ public class VoidSystem : MonoBehaviour {
 
     void Update()
     {
-        if (m_VoidSetActive && !m_VoidEnabled)
+        if (m_VoidSetActive && !m_VoidEnabled && voidDelay)
         {
+            Debug.Log("Setting active");
             CancelInvoke();
             SetVoidActive();
         }
@@ -124,5 +129,12 @@ public class VoidSystem : MonoBehaviour {
             }
         }
         return furthestSpawnPoint;
+    }
+
+    void delayVoid()
+    {
+        Debug.Log("Void Delay");
+        voidDelay = true;
+        //m_ForestVoid.SetActive(true);
     }
 }

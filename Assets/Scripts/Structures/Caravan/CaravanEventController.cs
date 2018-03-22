@@ -47,7 +47,7 @@ public class CaravanEventController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(human.GetComponentInChildren<Camera>().transform.forward);
+        //Debug.Log(human.GetComponentInChildren<Camera>().transform.forward);
 
 	}
 
@@ -115,10 +115,9 @@ public class CaravanEventController : MonoBehaviour {
         monster.SetActive(false);
         light.enabled = true;
 
-    
         print("Starting Monster Flicker");
         //yield return new WaitForSeconds(1.8f);
-        yield return new WaitForSeconds(22.1f);
+        yield return new WaitForSeconds(22f);
 
         //Light Off 1
         print("Light Off");
