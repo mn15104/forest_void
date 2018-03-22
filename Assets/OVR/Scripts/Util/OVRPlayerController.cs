@@ -136,8 +136,9 @@ public class OVRPlayerController : MonoBehaviour
 
 
     public float RunningEnergy = 10;
-    private float CurrentRunningEnergy;
+    public float CurrentRunningEnergy;
     public bool stamina = false;
+    public float moveInfluence;
 
 
     protected CharacterController Controller = null;
@@ -347,7 +348,7 @@ public class OVRPlayerController : MonoBehaviour
 			MoveScale *= SimulationRate * Time.deltaTime;
 
 			// Compute this for key movement
-			float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
+			moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 			// Run!
 			if (dpad_move || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
