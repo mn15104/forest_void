@@ -33,7 +33,7 @@ public class BridgeEvent : MonoBehaviour
     {
         if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            eventManager.BridgeCrossedEvent.TriggerEnter(other);
+            eventManager.BridgeCrossedEvent.TriggerEnter(other.gameObject);
            
         }
     }

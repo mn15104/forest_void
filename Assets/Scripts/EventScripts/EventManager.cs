@@ -10,44 +10,57 @@ public class EventManager : MonoBehaviour {
     {
         Stage0,Stage1,Stage2,Stage3,GameOverStage 
     }
+   
+ public enum Location
+    {
+        Chapel,Forest,Crypt,ToolShed, Caravan, Generator
+    }
+
+
     public float[] StageTimes = { 0f, 120f, 600f, 720f };
 
 
     public float GameTimerSeconds = 0f; 
 
-    public TriggerEvent FenceTextTriggerEvent;
+    public TriggerEvent TextTriggerEvent;
     public TriggerEvent BridgeCrossedEvent;
-    public TriggerEvent ChapelTriggerEvent;
+    public TriggerEvent ChapelBackDoorHandEvent;
     public TriggerEvent CaravanTriggerEvent;
     public TriggerEvent GeneratorZoneTriggerEvent;
     public TriggerEvent StructureZoneTriggerEvent;
 
-    public Stage currentStage; 
+    public Stage currentStage;
+    public Location currentLocation;
     public GameObject player;
     public GameObject monster;
     
    
     public void Awake()
     {
-        FenceTextTriggerEvent = new TriggerEvent();
+     
         BridgeCrossedEvent = new TriggerEvent();
-        ChapelTriggerEvent = new TriggerEvent();
+        ChapelBackDoorHandEvent = new TriggerEvent();
         CaravanTriggerEvent = new TriggerEvent();
         GeneratorZoneTriggerEvent = new TriggerEvent();
+        TextTriggerEvent = new TriggerEvent(); 
+
+
         StructureZoneTriggerEvent = new TriggerEvent();
 
 
         currentStage = Stage.Stage0;
+        currentLocation = Location.Forest;
         Debug.Log(getCurrentKeyCount());
 
         EventManagerSubscriptions();
     }
 
-
     void EventManagerSubscriptions()
     {
         StructureZoneTriggerEvent.TriggerEnterEvent += DeactivateMonster;
+        StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
         StructureZoneTriggerEvent.TriggerExitEvent += ActivateMonster;
+        StructureZoneTriggerEvent.TriggerExitEvent += SetForestLocation;
     }
 
     public float getPlayerHeartrate()
@@ -96,6 +109,8 @@ public class EventManager : MonoBehaviour {
     {
         GameTimerSeconds += Time.deltaTime;
         UpdateStage();
+        Debug.Log(currentLocation);
+        Debug.Log(currentStage);
     }
 
 
@@ -108,5 +123,17 @@ public class EventManager : MonoBehaviour {
     {
 
     }
+
+    void SetStructureLocation(GameObject gameObject)
+    {
+        currentLocation = gameObject.GetComponent<StructureZone>().location;
+
+    } 
+
+    void SetForestLocation(GameObject gameObject)
+    {
+        currentLocation = Location.Forest;
+    }
+
 
 }

@@ -16,8 +16,8 @@ public class HandCollider : MonoBehaviour {
 
     private void Start()
     {
-        eventManager.ChapelTriggerEvent.TriggerEnterEvent += EnableHandCollider;
-        eventManager.ChapelTriggerEvent.TriggerExitEvent += DisableHandCollider;
+        eventManager.ChapelBackDoorHandEvent.TriggerEnterEvent += EnableHandCollider;
+        eventManager.ChapelBackDoorHandEvent.TriggerExitEvent += DisableHandCollider;
     }
 
 

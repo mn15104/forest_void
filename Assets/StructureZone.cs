@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class StructureZone : MonoBehaviour {
 
-    private EventManager eventManager;
+    public EventManager.Location location;
+
+
+    private EventManager eventManager;  
 
     public void Awake()
     {
@@ -21,8 +24,7 @@ public class StructureZone : MonoBehaviour {
     {
         if (other == eventManager.player.GetComponent<Collider>())
         {
-            eventManager.StructureZoneTriggerEvent.TriggerEnter(other);
-
+            eventManager.StructureZoneTriggerEvent.TriggerEnter(gameObject);
         }
     }
 
@@ -30,7 +32,7 @@ public class StructureZone : MonoBehaviour {
     {
         if (other == eventManager.player.GetComponent<Collider>())
         {
-            eventManager.StructureZoneTriggerEvent.TriggerExit(other);
+            eventManager.StructureZoneTriggerEvent.TriggerExit(gameObject);
 
         }
     }

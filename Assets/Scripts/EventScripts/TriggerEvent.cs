@@ -11,13 +11,13 @@ public class TriggerEvent : ScriptableObject {
 
 
 
-    public void TriggerEnter(Collider trigger)
+    public void TriggerEnter(GameObject gameObject)
     {
-        TriggerEnterEvent(trigger.gameObject);
+        TriggerEnterEvent(gameObject);
     }
-    public void TriggerExit(Collider trigger)
+    public void TriggerExit(GameObject gameObject)
     {
-        TriggerExitEvent(trigger.gameObject);
+        TriggerExitEvent(gameObject);
     }
 
 }

@@ -242,7 +242,7 @@ public class CaravanEventController : MonoBehaviour {
     {
         if (other.gameObject == human && TriggerTriggered == false)
         {
-            trigger.TriggerEnter(other);
+            trigger.TriggerEnter(other.gameObject);
         }
     }
 }

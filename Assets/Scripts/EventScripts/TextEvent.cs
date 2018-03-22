@@ -13,6 +13,7 @@ public class TextEvent : MonoBehaviour {
     {
         textController = GetComponent<TextController>();
         eventManager = FindObjectOfType<EventManager>();
+        trigger = eventManager.TextTriggerEvent;
     }
 
     public virtual void OnEnable()
@@ -34,12 +35,12 @@ public class TextEvent : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        trigger.TriggerEnter(other);
+        trigger.TriggerEnter(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        trigger.TriggerExit(other);
+        trigger.TriggerExit(other.gameObject);
 
     }
 }

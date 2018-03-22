@@ -16,7 +16,7 @@ public class KeyRetrieveZone : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            eventManager.GeneratorZoneTriggerEvent.TriggerEnter(other);
+            eventManager.GeneratorZoneTriggerEvent.TriggerEnter(other.gameObject);
             Debug.Log("Entered generator area");
         }
    
@@ -26,7 +26,7 @@ public class KeyRetrieveZone : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player")) { 
         
-            eventManager.GeneratorZoneTriggerEvent.TriggerExit(other);
+            eventManager.GeneratorZoneTriggerEvent.TriggerExit(other.gameObject);
             Debug.Log("Outside generator area");
         }
     }
