@@ -10,7 +10,9 @@ public class TextController : MonoBehaviour {
     public TextTypeEnum textType;
     public float amplitude;
     public float floatSpeed;
-    
+    public GameObject key;
+
+
     private GameObject interactableViewCone;
     private GameObject narrativeViewCone;
 
@@ -21,6 +23,10 @@ public class TextController : MonoBehaviour {
     private Color fadeOutColor;
     private Color fadeInColor;
     private Color interactColor;
+    private bool keyCollected = false;
+
+
+
 
 
     void Start () {
@@ -50,6 +56,11 @@ public class TextController : MonoBehaviour {
     void Update () {
         var y0 = transform.position.y;
         transform.position = new Vector3(transform.position.x, y0 + amplitude * Mathf.Sin(floatSpeed * Time.time), transform.position.z);
+        if (key != null && !key.activeSelf && !keyCollected)
+        {
+            text.text = "Key Collected";
+            keyCollected = true;
+        }
     }
 
     IEnumerator ChangeColorIn()

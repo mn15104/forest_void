@@ -9,7 +9,7 @@ public class CryptTorchTrigger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		flashlight = gameObject.GetComponentInChildren<Light>().gameObject;
+		//flashlight = gameObject.GetComponentInChildren<Light>().gameObject;
 	}
 	
 	// Update is called once per frame

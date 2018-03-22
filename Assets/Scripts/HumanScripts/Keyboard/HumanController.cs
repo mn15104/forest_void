@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 
 //Enum with *layer number* as description - used to pass to HumanAudioController.

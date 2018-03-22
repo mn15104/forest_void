@@ -9,6 +9,7 @@ public class KeyGrabbable : OVRGrabbable {
     public float speed;
     public GameObject human;
     private bool hasBeenInserted = false;
+    public GameObject light;
     
 
     protected override void Start()
@@ -16,6 +17,7 @@ public class KeyGrabbable : OVRGrabbable {
         base.Start();
         human = GameObject.FindGameObjectWithTag("Player");
         speed = 0.7f;
+        light.GetComponent<Light>().enabled = false;
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
@@ -79,8 +81,10 @@ public class KeyGrabbable : OVRGrabbable {
         {
             human.GetComponent<Inventory>().removeKeyFromInventory(gameObject);
             //Animate insertion;
+            light.GetComponent<Light>().enabled = true;
             StartCoroutine(InsertionAnimation());
             hasBeenInserted = false;
+
         }
 
     }

@@ -8,11 +8,14 @@ public class RetreiveKey : OVRGrabber
     private GameObject human;
     private GameObject key;
     public bool inGeneratorZone = false;
+  
+
 
     protected override void Awake()
     {
         base.Awake();
         human = transform.root.gameObject;
+       
     }
 
     protected override void FixedUpdate()
@@ -96,8 +99,8 @@ public class RetreiveKey : OVRGrabber
 
     private IEnumerator AddKeyToInventory(OVRGrabbable m_grabbedObj)
     {
-     
-        yield return new WaitForSeconds(1f);
+        
+        yield return new WaitForSeconds(0.5f);
         if (m_grabbedObj != null)
         {
 
@@ -105,7 +108,9 @@ public class RetreiveKey : OVRGrabber
             GrabbableRelease(Vector3.zero, Vector3.zero);
             human.GetComponent<Inventory>().addKeyToInventory(m_grabbedObj.gameObject);
             
+
         }
+      
     }
 
     protected override void GrabBegin()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlickeringLight : MonoBehaviour
 {
 
-    private Light f_Light;
+    public Light f_Light;
     private float currentTimer;
     public float maxTimer;
     public float maxTimeDiff;
