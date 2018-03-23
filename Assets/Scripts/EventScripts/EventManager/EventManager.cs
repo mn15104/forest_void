@@ -40,8 +40,8 @@ public class EventManager : MonoBehaviour {
     public GameObject player;
     public GameObject monster;
 
-    private float startNotifyingHeartRate = 2;
-    private float NotifyHeartRateInterval = 10;
+    private float startNotifyingHeartRate = 20;
+    private float NotifyHeartRateInterval = 3;
     
    
     public void Awake()
@@ -68,7 +68,7 @@ public class EventManager : MonoBehaviour {
 
     public void Start()
     {
-        //E.G Notify heart rate to all listeners, after 30sec -> every 10 sec
+        //E.G Notify heart rate to all listeners, after 20sec -> every 3 sec
         InvokeRepeating("PassHeartRate", startNotifyingHeartRate, NotifyHeartRateInterval); 
     }
 
