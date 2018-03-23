@@ -9,8 +9,6 @@ public class NotifyEvent<T> {
 
 	public void Notify(T info)
     {
-        Debug.Log("Notify");
-        Debug.Log(info);
         NotifyEventOccurred(info);
     }
 }

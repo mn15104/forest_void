@@ -53,6 +53,6 @@ public class OpenDoor : MonoBehaviour {
             this.motor.targetVelocity = 0;
             this.motor.force = 0;
         }
-        Debug.Log(doorOpenTimer);
+
 	}
 }
