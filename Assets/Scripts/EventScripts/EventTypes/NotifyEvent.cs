@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotifyEvent<T,S> : ScriptableObject {
+public class NotifyEvent<T> : ScriptableObject {
 
 
 
-    public delegate void GenEvent<K,J>(K info, J type);
-    public event GenEvent<T,S> notifyEvent;
+    public delegate void GenEvent<K>(K info);
+    public event GenEvent<T> notifyEvent;
 
-	public void Notify(T info, S type)
+	public void Notify(T info)
     {
         notifyEvent(info, type);
     }

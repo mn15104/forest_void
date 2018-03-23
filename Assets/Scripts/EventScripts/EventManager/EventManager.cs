@@ -31,10 +31,10 @@ public class EventManager : MonoBehaviour {
     public TriggerEvent GeneratorZoneTriggerEvent;
     public TriggerEvent StructureZoneTriggerEvent;
 
-    public NotifyEvent<float, NotifyType> NotifyHeartRate;
-    public NotifyEvent<Stage, NotifyType> NotifyStage;
-    public NotifyEvent<Location,NotifyType> NotifyLocation;
-    public NotifyEvent<bool, NotifyType> NotifyNoRun;
+    public NotifyEvent<float> NotifyHeartRate;
+    public NotifyEvent<Stage> NotifyStage;
+    public NotifyEvent<Location> NotifyLocation;
+    public NotifyEvent<bool> NotifyNoRun;
 
     private Stage currentStage;
     private Location currentLocation;
@@ -56,9 +56,9 @@ public class EventManager : MonoBehaviour {
         TextTriggerEvent = new TriggerEvent();
         StructureZoneTriggerEvent = new TriggerEvent();
 
-        NotifyHeartRate = new NotifyEvent<float,NotifyType>();
-        NotifyStage = new NotifyEvent<Stage,NotifyType>();
-        NotifyLocation = new NotifyEvent<Location, NotifyType>();
+        NotifyHeartRate = new NotifyEvent<float>();
+        NotifyStage = new NotifyEvent<Stage>();
+        NotifyLocation = new NotifyEvent<Location>();
 
         currentStage = Stage.Stage0;
         currentLocation = Location.Forest;
@@ -104,21 +104,21 @@ public class EventManager : MonoBehaviour {
                 if (GameTimerSeconds > StageTimes[1])
                 {
                     currentStage = Stage.Stage1;
-                    NotifyStage.Notify(currentStage, NotifyType.Stage);
+                    NotifyStage.Notify(currentStage);
                 }
                 break;
             case Stage.Stage1:
                 if (GameTimerSeconds > StageTimes[2])
                 {
                     currentStage = Stage.Stage2;
-                    NotifyStage.Notify(currentStage, NotifyType.Stage);
+                    NotifyStage.Notify(currentStage);
                 }
                 break;
             case Stage.Stage2:
                 if (GameTimerSeconds > StageTimes[3])
                 {
                     currentStage = Stage.Stage3;
-                    NotifyStage.Notify(currentStage, NotifyType.Stage);
+                    NotifyStage.Notify(currentStage);
                 }
                 break;
         }
@@ -127,7 +127,7 @@ public class EventManager : MonoBehaviour {
     void PassHeartRate()
     {
         float currentHeartRate = getPlayerHeartrate();
-        NotifyHeartRate.Notify(currentHeartRate, NotifyType.HeartRate);
+        NotifyHeartRate.Notify(currentHeartRate);
     }
 
 

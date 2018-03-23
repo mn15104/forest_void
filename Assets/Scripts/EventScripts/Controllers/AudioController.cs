@@ -58,9 +58,7 @@ public class AudioController : MonoBehaviour {
             m_Monster.OnMonsterStateChange += MonsterStateChange;
     }
 
-    
-  
-
+   
     void Start () {
         human = FindObjectOfType<HumanController>();
         humanvr = FindObjectOfType<HumanVRController>();
