@@ -11,16 +11,14 @@ public class EventManager : MonoBehaviour {
         Stage0,Stage1,Stage2,Stage3,GameOverStage 
     }
    
- public enum Location
+    public enum Location
     {
         Chapel,Forest,Crypt,ToolShed, Caravan, Generator
     }
 
 
-    public float[] StageTimes = { 0f, 120f, 600f, 720f };
-
-
-    public float GameTimerSeconds = 0f; 
+    private float[] StageTimes = { 0f, 120f, 600f, 720f };
+    private float GameTimerSeconds = 0f; 
 
     public TriggerEvent TextTriggerEvent;
     public TriggerEvent BridgeCrossedEvent;
@@ -29,10 +27,13 @@ public class EventManager : MonoBehaviour {
     public TriggerEvent GeneratorZoneTriggerEvent;
     public TriggerEvent StructureZoneTriggerEvent;
 
-    public Stage currentStage;
-    public Location currentLocation;
-    public GameObject player;
-    public GameObject monster;
+
+
+    private Stage currentStage;
+    private Location currentLocation;
+
+    private GameObject player;
+    private GameObject monster;
     
    
     public void Awake()
@@ -42,16 +43,14 @@ public class EventManager : MonoBehaviour {
         ChapelBackDoorHandEvent = new TriggerEvent();
         CaravanTriggerEvent = new TriggerEvent();
         GeneratorZoneTriggerEvent = new TriggerEvent();
-        TextTriggerEvent = new TriggerEvent(); 
-
-
+        TextTriggerEvent = new TriggerEvent();
         StructureZoneTriggerEvent = new TriggerEvent();
+
 
 
         currentStage = Stage.Stage0;
         currentLocation = Location.Forest;
-        Debug.Log(getCurrentKeyCount());
-
+    
         EventManagerSubscriptions();
     }
 
