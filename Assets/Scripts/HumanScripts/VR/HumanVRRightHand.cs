@@ -52,7 +52,6 @@ public class HumanVRRightHand : MonoBehaviour
             heldDown = true;
             quickPress = false;
         }
-        // Debug.Log("timer" + timer);
 
 
         if (heldDown && OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) < 0.3)
