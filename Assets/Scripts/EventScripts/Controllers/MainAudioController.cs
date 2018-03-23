@@ -13,6 +13,7 @@ public class MainAudioController : MonoBehaviour {
         eventManager.NotifyLocation.NotifyEventOccurred += StructureAudio;
         eventManager.NotifyStage.NotifyEventOccurred += StageAudio;
         eventManager.NotifyHeartRate.NotifyEventOccurred += HeartRateAudio;
+        eventManager.NotifyTorchPressed.NotifyEventOccurred += TorchPressAudio;
         //eventManager.BridgeCrossedEvent.TriggerEnterEvent += BridgeTriggerAudio; 
 
     }
@@ -87,6 +88,11 @@ public class MainAudioController : MonoBehaviour {
                 //Stage 3 Audio
                 break;
         }
+    }
+
+    void TorchPressAudio(bool redundant)
+    {
+        Debug.Log("Event: TorchPress");
     }
 
 

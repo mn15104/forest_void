@@ -135,7 +135,8 @@ public class OVRPlayerController : MonoBehaviour
 	public bool EnableRotation = true;
 
     private EventManager eventManager;
-    public float RunningEnergy = 10;
+    public float HighestRunningEnergy = 10;
+    public float LowestRunningEnergy = 5;
     public float CurrentRunningEnergy;
     public bool stamina = false;
     public float moveInfluence;
@@ -165,7 +166,7 @@ public class OVRPlayerController : MonoBehaviour
 		var p = CameraRig.transform.localPosition;
 		p.z = OVRManager.profile.eyeDepth;
 		CameraRig.transform.localPosition = p;
-        CurrentRunningEnergy = RunningEnergy;
+        CurrentRunningEnergy = HighestRunningEnergy;
 	}
 
 	void Awake()
@@ -376,7 +377,7 @@ public class OVRPlayerController : MonoBehaviour
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
             moveInfluence *= 1.0f;
             
-            if (CurrentRunningEnergy >= 10)
+            if (CurrentRunningEnergy >= LowestRunningEnergy)
             {
                 if(stamina == false)
                 {

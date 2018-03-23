@@ -32,11 +32,11 @@ public class Flashlight : MonoBehaviour {
 
     void CryptTorchLight(EventManager.Location currentLocation)
     {
-        if(currentLocation == EventManager.Location.Crypt)
+        if(currentLocation == EventManager.Location.Crypt && m_FlashlightActive)
         {
             m_Light.intensity = 0;
         }
-        else
+        else if (m_FlashlightActive)
         {
             m_Light.intensity = 4;
         }
@@ -62,9 +62,4 @@ public class Flashlight : MonoBehaviour {
         }
     }
     
-
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

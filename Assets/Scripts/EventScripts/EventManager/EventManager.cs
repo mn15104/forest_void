@@ -30,10 +30,9 @@ public class EventManager : MonoBehaviour {
     public NotifyEvent<Stage> NotifyStage;
     public NotifyEvent<Location> NotifyLocation;
     public NotifyEvent<bool> NotifyRunStamina;
+    public NotifyEvent<bool> NotifyTorchPressed;
 
-    public TestingTrial<bool> test;
-
-
+ 
     private Stage currentStage;
     private Location currentLocation;
 
@@ -51,8 +50,8 @@ public class EventManager : MonoBehaviour {
         NotifyStage = new NotifyEvent<Stage>();
         NotifyLocation = new NotifyEvent<Location>();
         NotifyRunStamina = new NotifyEvent<bool>();
+        NotifyTorchPressed = new NotifyEvent<bool>();
 
- 
         BridgeCrossedEvent = new TriggerEvent();
         ChapelBackDoorHandEvent = new TriggerEvent();
         CaravanTriggerEvent = new TriggerEvent();
