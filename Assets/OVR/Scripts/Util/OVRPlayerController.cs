@@ -170,6 +170,7 @@ public class OVRPlayerController : MonoBehaviour
 
 	void Awake()
 	{
+        eventManager = FindObjectOfType<EventManager>();
 		Controller = gameObject.GetComponent<CharacterController>();
 
 		if(Controller == null)
@@ -377,14 +378,22 @@ public class OVRPlayerController : MonoBehaviour
             
             if (CurrentRunningEnergy >= 10)
             {
-                stamina = true;
-                eventManager.NotifyRunStamina.Notify(stamina);
+                if(stamina == false)
+                {
+                    stamina = true;
+                    eventManager.NotifyRunStamina.Notify(stamina);
+                }
+              
+                
 
             }
             if(CurrentRunningEnergy <= 0)
             {
-                stamina = false;
-                eventManager.NotifyRunStamina.Notify(stamina);
+                if(stamina == true)
+                {
+                    stamina = false;
+                    eventManager.NotifyRunStamina.Notify(stamina);
+                }
             }
 
             if (CurrentRunningEnergy > 0 & OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0 & stamina)

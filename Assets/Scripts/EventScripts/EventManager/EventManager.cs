@@ -16,11 +16,6 @@ public class EventManager : MonoBehaviour {
         Chapel,Forest,Crypt,ToolShed, Caravan, Generator
     }
 
-    public enum NotifyType
-    {
-        HeartRate, Location, Stage, Running
-    }
-
     private float[] StageTimes = { 0f, 120f, 600f, 720f };
     private float GameTimerSeconds = 0f; 
 
@@ -36,19 +31,31 @@ public class EventManager : MonoBehaviour {
     public NotifyEvent<Location> NotifyLocation;
     public NotifyEvent<bool> NotifyRunStamina;
 
+    public TestingTrial<bool> test;
+
+
     private Stage currentStage;
     private Location currentLocation;
 
     public GameObject player;
     public GameObject monster;
 
-    private float startNotifyingHeartRate = 30;
+    private float startNotifyingHeartRate = 2;
     private float NotifyHeartRateInterval = 10;
     
    
     public void Awake()
     {
-     
+       
+        NotifyHeartRate = new NotifyEvent<float>();
+        NotifyStage = new NotifyEvent<Stage>();
+        NotifyLocation = new NotifyEvent<Location>();
+        NotifyRunStamina = new NotifyEvent<bool>();
+
+        Debug.Log(NotifyHeartRate);
+        Debug.Log(NotifyStage);
+
+
         BridgeCrossedEvent = new TriggerEvent();
         ChapelBackDoorHandEvent = new TriggerEvent();
         CaravanTriggerEvent = new TriggerEvent();
@@ -56,12 +63,10 @@ public class EventManager : MonoBehaviour {
         TextTriggerEvent = new TriggerEvent();
         StructureZoneTriggerEvent = new TriggerEvent();
 
-        NotifyHeartRate = new NotifyEvent<float>();
-        NotifyStage = new NotifyEvent<Stage>();
-        NotifyLocation = new NotifyEvent<Location>();
-        NotifyRunStamina = new NotifyEvent<bool>();
+     
 
-    currentStage = Stage.Stage0;
+
+        currentStage = Stage.Stage0;
         currentLocation = Location.Forest;
     
         EventManagerSubscriptions();
@@ -75,20 +80,13 @@ public class EventManager : MonoBehaviour {
 
     void EventManagerSubscriptions()
     {
-        StructureZoneTriggerEvent.TriggerEnterEvent += DeactivateMonster;
         StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
-        StructureZoneTriggerEvent.TriggerExitEvent += ActivateMonster;
         StructureZoneTriggerEvent.TriggerExitEvent += SetForestLocation;
     }
 
     public float getPlayerHeartrate()
     {
         return player.GetComponentInChildren<Heartbeat>().m_Heartbeat;
-    }
-
-    public bool getIsPlayerRunning()
-    {
-        return player.GetComponent<OVRPlayerController>().CurrentRunningEnergy < 10;
     }
 
     public int getCurrentKeyCount()
@@ -128,6 +126,7 @@ public class EventManager : MonoBehaviour {
     void PassHeartRate()
     {
         float currentHeartRate = getPlayerHeartrate();
+        Debug.Log(NotifyHeartRate);
         NotifyHeartRate.Notify(currentHeartRate);
     }
 
@@ -138,17 +137,6 @@ public class EventManager : MonoBehaviour {
         UpdateStage();
     }
 
-
-    void DeactivateMonster(GameObject colliderObject)
-    {
-        //This is written inside the monster 
-        Debug.Log("Deactivate Monster ");
-    }
-
-    void ActivateMonster(GameObject colliderObject)
-    {
-        //This is written inside monster
-    }
 
     void SetStructureLocation(GameObject gameObject)
     {

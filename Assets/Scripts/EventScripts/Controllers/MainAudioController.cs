@@ -9,10 +9,10 @@ public class MainAudioController : MonoBehaviour {
 
     private void Awake()
     {
-        eventManager.NotifyRunStamina.notifyEvent += RunAudio;
-        eventManager.NotifyLocation.notifyEvent += StructureAudio;
-        eventManager.NotifyStage.notifyEvent += StageAudio;
-        eventManager.NotifyHeartRate.notifyEvent += HeartRateAudio;
+        eventManager.NotifyRunStamina.NotifyEventOccurred += RunAudio;
+        eventManager.NotifyLocation.NotifyEventOccurred += StructureAudio;
+        eventManager.NotifyStage.NotifyEventOccurred += StageAudio;
+        eventManager.NotifyHeartRate.NotifyEventOccurred += HeartRateAudio;
         //eventManager.BridgeCrossedEvent.TriggerEnterEvent += BridgeTriggerAudio; 
 
     }
@@ -23,11 +23,13 @@ public class MainAudioController : MonoBehaviour {
         if (runStamina)
         {
             //Means is able to run again - not exhausted audio
+            Debug.Log("Event: Stamina=True");
             
         }
         else
         {
             //No running left Audio - panting
+            Debug.Log("Event: Stamina=False");
         }
     }
 
@@ -37,20 +39,26 @@ public class MainAudioController : MonoBehaviour {
         {
             case EventManager.Location.Caravan:
                 //Caravan Audio
+                Debug.Log("Event: Location=Caravan");
                 break;
             case EventManager.Location.Chapel:
+                Debug.Log("Event: Location=Chapel");
                 //Chapel Audio
                 break;
             case EventManager.Location.Crypt:
+                Debug.Log("Event: Location=Crypt");
                 //Crypt Audio
                 break;
             case EventManager.Location.Forest:
+                Debug.Log("Event: Location=Forest");
                 //Forest Audio
                 break;
             case EventManager.Location.Generator:
+                Debug.Log("Event: Location=Generator");
                 //Generator Audio
                 break;
             case EventManager.Location.ToolShed:
+                Debug.Log("Event: Location=Toolshed");
                 //Toolshed Audio
                 break;
 
@@ -63,15 +71,19 @@ public class MainAudioController : MonoBehaviour {
         switch (stage)
         {
             case EventManager.Stage.Stage0:
+                Debug.Log("Event: Stage=Stage0");
                 //Initial Audio
                 break;
             case EventManager.Stage.Stage1:
+                Debug.Log("Event: Stage=Stage1");
                 //Stage 1 Audio
                 break;
             case EventManager.Stage.Stage2:
+                Debug.Log("Event: Stage=Stage2");
                 //Stage 2 Audio
                 break;
             case EventManager.Stage.Stage3:
+                Debug.Log("Event: Stage=Stage3");
                 //Stage 3 Audio
                 break;
         }

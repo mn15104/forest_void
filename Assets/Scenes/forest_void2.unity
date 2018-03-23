@@ -2925,6 +2925,22 @@ Transform:
   m_Father: {fileID: 1783620281}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &124936100 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1979160081958022, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+    type: 2}
+  m_PrefabInternal: {fileID: 902521197}
+--- !u!114 &124936101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124936100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692b5001236dc14ba2f126d3b1478de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &126104067
 Prefab:
   m_ObjectHideFlags: 0
@@ -11206,20 +11222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6dab8aa98c8b994db49cb39d432f91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageTimes:
-  - 0
-  - 120
-  - 600
-  - 720
-  GameTimerSeconds: 0
-  TextTriggerEvent: {fileID: 0}
-  BridgeCrossedEvent: {fileID: 0}
-  ChapelBackDoorHandEvent: {fileID: 0}
-  CaravanTriggerEvent: {fileID: 0}
-  GeneratorZoneTriggerEvent: {fileID: 0}
-  StructureZoneTriggerEvent: {fileID: 0}
-  currentStage: 0
-  currentLocation: 0
   player: {fileID: 281349902}
   monster: {fileID: 0}
 --- !u!4 &567885020
@@ -19162,6 +19164,26 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_UseSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_UseMotor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Limits.min
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Limits.max
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6e6fd2921fb5ce4f87759c61d121c6c, type: 2}
