@@ -114,7 +114,7 @@ public class TextController : MonoBehaviour {
         while (FadingIn)
         {
             yield return null;
-            Debug.Log("Waiting for fade in to finish");
+            //Debug.Log("Waiting for fade in to finish");
         }
         float timeToStart = Time.time;
         while (text.color != fadeOutColor)

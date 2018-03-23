@@ -6049,7 +6049,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 281349902}
   m_LocalRotation: {x: -0, y: 0.5364636, z: -0, w: 0.8439235}
-  m_LocalPosition: {x: 548.95, y: 75.579, z: 850.11}
+  m_LocalPosition: {x: 604.877, y: 75.579, z: 839.393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1004765391}
@@ -11206,20 +11206,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6dab8aa98c8b994db49cb39d432f91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageTimes:
-  - 0
-  - 120
-  - 600
-  - 720
-  GameTimerSeconds: 0
   TextTriggerEvent: {fileID: 0}
   BridgeCrossedEvent: {fileID: 0}
   ChapelBackDoorHandEvent: {fileID: 0}
   CaravanTriggerEvent: {fileID: 0}
   GeneratorZoneTriggerEvent: {fileID: 0}
   StructureZoneTriggerEvent: {fileID: 0}
-  currentStage: 0
-  currentLocation: 0
   player: {fileID: 281349902}
   monster: {fileID: 0}
 --- !u!4 &567885020
@@ -19163,6 +19155,46 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Spring.spring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Limits.max
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Limits.min
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_UseSpring
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Limits.bounciness
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Motor.targetVelocity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_Limits.bounceMinVelocity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59553672170321116, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+        type: 2}
+      propertyPath: m_UseMotor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6e6fd2921fb5ce4f87759c61d121c6c, type: 2}
   m_IsPrefabParent: 0
@@ -21429,7 +21461,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1005745281}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -29541,6 +29573,22 @@ Transform:
   m_Father: {fileID: 1078159864}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1404817363 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1979160081958022, guid: c6e6fd2921fb5ce4f87759c61d121c6c,
+    type: 2}
+  m_PrefabInternal: {fileID: 902521197}
+--- !u!114 &1404817371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1404817363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc77b5dadf3c644289de60ceadac879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1406739549
 GameObject:
   m_ObjectHideFlags: 0
@@ -40141,6 +40189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2387fe3d89d924943a54b3089eab42bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_audio: {fileID: 0}
+  eventManager: {fileID: 0}
 --- !u!23 &1957440850
 MeshRenderer:
   m_ObjectHideFlags: 0
