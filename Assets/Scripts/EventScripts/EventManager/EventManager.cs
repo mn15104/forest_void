@@ -32,8 +32,8 @@ public class EventManager : MonoBehaviour {
     private Stage currentStage;
     private Location currentLocation;
 
-    private GameObject player;
-    private GameObject monster;
+    public GameObject player;
+    public GameObject monster;
     
    
     public void Awake()
