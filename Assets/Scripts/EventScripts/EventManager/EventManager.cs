@@ -52,19 +52,13 @@ public class EventManager : MonoBehaviour {
         NotifyLocation = new NotifyEvent<Location>();
         NotifyRunStamina = new NotifyEvent<bool>();
 
-        Debug.Log(NotifyHeartRate);
-        Debug.Log(NotifyStage);
-
-
+ 
         BridgeCrossedEvent = new TriggerEvent();
         ChapelBackDoorHandEvent = new TriggerEvent();
         CaravanTriggerEvent = new TriggerEvent();
         GeneratorZoneTriggerEvent = new TriggerEvent();
         TextTriggerEvent = new TriggerEvent();
         StructureZoneTriggerEvent = new TriggerEvent();
-
-     
-
 
         currentStage = Stage.Stage0;
         currentLocation = Location.Forest;
@@ -126,7 +120,6 @@ public class EventManager : MonoBehaviour {
     void PassHeartRate()
     {
         float currentHeartRate = getPlayerHeartrate();
-        Debug.Log(NotifyHeartRate);
         NotifyHeartRate.Notify(currentHeartRate);
     }
 

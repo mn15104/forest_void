@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MainAudioController : MonoBehaviour {
 
-    EventManager eventManager = FindObjectOfType<EventManager>();
-
+    private EventManager eventManager;
 
     private void Awake()
     {
+        eventManager = FindObjectOfType<EventManager>();
         eventManager.NotifyRunStamina.NotifyEventOccurred += RunAudio;
         eventManager.NotifyLocation.NotifyEventOccurred += StructureAudio;
         eventManager.NotifyStage.NotifyEventOccurred += StageAudio;
@@ -92,6 +92,7 @@ public class MainAudioController : MonoBehaviour {
 
     void HeartRateAudio(float heartRate)
     {
+        Debug.Log("Event: HeartRate=" + heartRate);
         //Heart Rate is send in - notifyed based on variable set in eventManager 
         //Currrently set to start notifying after 30sec, every 10sec
     }
