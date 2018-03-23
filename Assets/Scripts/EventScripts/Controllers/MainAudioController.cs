@@ -90,9 +90,22 @@ public class MainAudioController : MonoBehaviour {
         }
     }
 
-    void TorchPressAudio(bool redundant)
+    void TorchPressAudio(bool lightvalue)
     {
-        Debug.Log("Event: TorchPress");
+        //LIGHTPressAudio
+        if (lightvalue)
+        {
+   
+            Debug.Log("Event: TorchPress");
+            Debug.Log("Event: LightOn");
+        }
+        else
+        {
+
+            Debug.Log("Event: TorchPress");
+            Debug.Log("Event: LightOff");
+        }
+       
     }
 
 

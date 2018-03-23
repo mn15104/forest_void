@@ -38,13 +38,9 @@ public class HumanVRRightHand : MonoBehaviour
     {
         if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.9 && timer == 0 && !heldDown)
         {
-            //if(not being held down)
-            //Should make noise
-            eventManager.NotifyTorchPressed.Notify(true);
-
+          
             flashlight.Switch(gameObject);
             quickPress = true;
-
             // if it is being held down then just keep it on until let go
             timer = 0.3f;
             if (flashlight.m_FlashlightActive)
@@ -63,15 +59,19 @@ public class HumanVRRightHand : MonoBehaviour
             heldDown = true;
             quickPress = false;
         }
-
-
         if (heldDown && OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) < 0.3)
         {
             if (flashlight.GetComponentInChildren<Light>().intensity > 0)
             {
                 flashlight.Switch(gameObject);
-                //Should make noise
-                eventManager.NotifyTorchPressed.Notify(true);
+                if (flashlight.m_FlashlightActive)
+                {
+                    OnHumanLightEmission(true);
+                }
+                else
+                {
+                    OnHumanLightEmission(false);
+                }
             }
             heldDown = false;
             Debug.Log("helddown" + heldDown);

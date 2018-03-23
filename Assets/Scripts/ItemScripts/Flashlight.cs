@@ -6,7 +6,9 @@ public class Flashlight : MonoBehaviour {
 
     private Light m_Light;
     private EventManager eventManager;
-    public bool m_FlashlightActive = false;
+    public  bool m_FlashlightActive = false;
+    private bool m_FlashLightActiveBeforeCrypt = false;
+    private bool insideCrypt = false;
 
     private void Awake()
     {
@@ -16,12 +18,14 @@ public class Flashlight : MonoBehaviour {
     void OnEnable()
     {
         HumanEventManager.OnUseItem += Switch;
-        eventManager.NotifyLocation.NotifyEventOccurred += CryptTorchLight;
+        eventManager.StructureZoneTriggerEvent.TriggerEnterEvent += CryptTorchLightOff;
+        eventManager.StructureZoneTriggerEvent.TriggerExitEvent += CryptTorchLightOn;
     }
     void OnDisable()
     {
         HumanEventManager.OnUseItem -= Switch;
-        eventManager.NotifyLocation.NotifyEventOccurred -= CryptTorchLight;
+        eventManager.StructureZoneTriggerEvent.TriggerEnterEvent -= CryptTorchLightOff;
+        eventManager.StructureZoneTriggerEvent.TriggerExitEvent -= CryptTorchLightOn;
     }
 
     // Use this for initialization
@@ -30,16 +34,32 @@ public class Flashlight : MonoBehaviour {
         m_Light.intensity = 0;
 	}
 
-    void CryptTorchLight(EventManager.Location currentLocation)
+    void CryptTorchLightOff(GameObject gameObject)
     {
-        if(currentLocation == EventManager.Location.Crypt && m_FlashlightActive)
+        if(gameObject.GetComponent<StructureZone>().location == EventManager.Location.Crypt)
         {
-            m_Light.intensity = 0;
+            if (m_FlashlightActive)
+            {
+                m_FlashLightActiveBeforeCrypt = true;
+                Switch(gameObject);
+
+            }
+            insideCrypt = true;
         }
-        else if (m_FlashlightActive)
+    }
+
+    void CryptTorchLightOn(GameObject gameObject)
+    {
+        if (gameObject.GetComponent<StructureZone>().location != EventManager.Location.Forest)
         {
-            m_Light.intensity = 4;
+            insideCrypt = false;
+            if (m_FlashLightActiveBeforeCrypt)
+            {
+                Switch(gameObject);
+            }
+           
         }
+       
     }
 
 	
@@ -50,15 +70,24 @@ public class Flashlight : MonoBehaviour {
 
     public void Switch(GameObject t)
     {
-        if (m_FlashlightActive && (GetComponentInParent<HumanController>()  || GetComponentInParent<OVRPlayerController>()))
+        if (!insideCrypt)
         {
-            m_Light.intensity = 0;
-            m_FlashlightActive = false;
+            if (m_FlashlightActive && (GetComponentInParent<HumanController>() || true))
+            {
+                m_Light.intensity = 0;
+                m_FlashlightActive = false;
+                eventManager.NotifyTorchPressed.Notify(false);
+            }
+            else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || true))
+            {
+                m_Light.intensity = 4;
+                m_FlashlightActive = true;
+                eventManager.NotifyTorchPressed.Notify(true);
+            }
         }
-        else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || GetComponentInParent<OVRPlayerController>()))
+        else
         {
-            m_Light.intensity = 4;
-            m_FlashlightActive = true;
+            eventManager.NotifyTorchPressed.Notify(false);
         }
     }
     
