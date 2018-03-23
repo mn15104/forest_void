@@ -16,6 +16,10 @@ public class EventManager : MonoBehaviour {
         Chapel,Forest,Crypt,ToolShed, Caravan, Generator
     }
 
+    public enum NotifyType
+    {
+        HeartRate, Location, Stage, Running
+    }
 
     private float[] StageTimes = { 0f, 120f, 600f, 720f };
     private float GameTimerSeconds = 0f; 
@@ -27,13 +31,19 @@ public class EventManager : MonoBehaviour {
     public TriggerEvent GeneratorZoneTriggerEvent;
     public TriggerEvent StructureZoneTriggerEvent;
 
-
+    public NotifyEvent<float, NotifyType> NotifyHeartRate;
+    public NotifyEvent<Stage, NotifyType> NotifyStage;
+    public NotifyEvent<Location,NotifyType> NotifyLocation;
+    public NotifyEvent<bool, NotifyType> NotifyNoRun;
 
     private Stage currentStage;
     private Location currentLocation;
 
     public GameObject player;
     public GameObject monster;
+
+    private float startNotifyingHeartRate = 30;
+    private float NotifyHeartRateInterval = 10;
     
    
     public void Awake()
@@ -46,12 +56,20 @@ public class EventManager : MonoBehaviour {
         TextTriggerEvent = new TriggerEvent();
         StructureZoneTriggerEvent = new TriggerEvent();
 
-
+        NotifyHeartRate = new NotifyEvent<float,NotifyType>();
+        NotifyStage = new NotifyEvent<Stage,NotifyType>();
+        NotifyLocation = new NotifyEvent<Location, NotifyType>();
 
         currentStage = Stage.Stage0;
         currentLocation = Location.Forest;
     
         EventManagerSubscriptions();
+    }
+
+    public void Start()
+    {
+        //E.G Notify heart rate to all listeners, after 30sec -> every 10 sec
+        InvokeRepeating("PassHeartRate", startNotifyingHeartRate, NotifyHeartRateInterval); 
     }
 
     void EventManagerSubscriptions()
@@ -86,21 +104,30 @@ public class EventManager : MonoBehaviour {
                 if (GameTimerSeconds > StageTimes[1])
                 {
                     currentStage = Stage.Stage1;
+                    NotifyStage.Notify(currentStage, NotifyType.Stage);
                 }
                 break;
             case Stage.Stage1:
                 if (GameTimerSeconds > StageTimes[2])
                 {
                     currentStage = Stage.Stage2;
+                    NotifyStage.Notify(currentStage, NotifyType.Stage);
                 }
                 break;
             case Stage.Stage2:
                 if (GameTimerSeconds > StageTimes[3])
                 {
                     currentStage = Stage.Stage3;
+                    NotifyStage.Notify(currentStage, NotifyType.Stage);
                 }
                 break;
         }
+    }
+
+    void PassHeartRate()
+    {
+        float currentHeartRate = getPlayerHeartrate();
+        NotifyHeartRate.Notify(currentHeartRate, NotifyType.HeartRate);
     }
 
 
@@ -108,29 +135,30 @@ public class EventManager : MonoBehaviour {
     {
         GameTimerSeconds += Time.deltaTime;
         UpdateStage();
-  
     }
 
 
     void DeactivateMonster(GameObject colliderObject)
     {
+        //This is written inside the monster 
         Debug.Log("Deactivate Monster ");
     }
 
     void ActivateMonster(GameObject colliderObject)
     {
-
+        //This is written inside monster
     }
 
     void SetStructureLocation(GameObject gameObject)
     {
         currentLocation = gameObject.GetComponent<StructureZone>().location;
-
+        NotifyLocation.Notify(currentLocation, NotifyType.Location);
     } 
 
     void SetForestLocation(GameObject gameObject)
     {
         currentLocation = Location.Forest;
+        NotifyLocation.Notify(currentLocation, NotifyType.Location);
     }
 
 

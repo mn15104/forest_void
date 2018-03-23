@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotifyEvent<T> : ScriptableObject {
+public class NotifyEvent<T,S> : ScriptableObject {
 
-    public delegate void GenEvent<T>(T info);
-    public event GenEvent<T> notifyEvent;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public delegate void GenEvent<K,J>(K info, J type);
+    public event GenEvent<T,S> notifyEvent;
+
+	public void Notify(T info, S type)
+    {
+        notifyEvent(info, type);
+    }
 }
