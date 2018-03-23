@@ -11,6 +11,6 @@ public class NotifyEvent<T> : ScriptableObject {
 
 	public void Notify(T info)
     {
-        notifyEvent(info, type);
+        notifyEvent(info);
     }
 }

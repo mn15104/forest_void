@@ -134,7 +134,7 @@ public class OVRPlayerController : MonoBehaviour
 	/// </summary>
 	public bool EnableRotation = true;
 
-
+    private EventManager eventManager;
     public float RunningEnergy = 10;
     public float CurrentRunningEnergy;
     public bool stamina = false;
@@ -378,10 +378,13 @@ public class OVRPlayerController : MonoBehaviour
             if (CurrentRunningEnergy >= 10)
             {
                 stamina = true;
+                eventManager.NotifyRunStamina.Notify(stamina);
+
             }
             if(CurrentRunningEnergy <= 0)
             {
                 stamina = false;
+                eventManager.NotifyRunStamina.Notify(stamina);
             }
 
             if (CurrentRunningEnergy > 0 & OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0 & stamina)

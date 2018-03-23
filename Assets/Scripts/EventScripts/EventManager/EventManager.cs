@@ -34,7 +34,7 @@ public class EventManager : MonoBehaviour {
     public NotifyEvent<float> NotifyHeartRate;
     public NotifyEvent<Stage> NotifyStage;
     public NotifyEvent<Location> NotifyLocation;
-    public NotifyEvent<bool> NotifyNoRun;
+    public NotifyEvent<bool> NotifyRunStamina;
 
     private Stage currentStage;
     private Location currentLocation;
@@ -59,8 +59,9 @@ public class EventManager : MonoBehaviour {
         NotifyHeartRate = new NotifyEvent<float>();
         NotifyStage = new NotifyEvent<Stage>();
         NotifyLocation = new NotifyEvent<Location>();
+        NotifyRunStamina = new NotifyEvent<bool>();
 
-        currentStage = Stage.Stage0;
+    currentStage = Stage.Stage0;
         currentLocation = Location.Forest;
     
         EventManagerSubscriptions();
@@ -152,13 +153,13 @@ public class EventManager : MonoBehaviour {
     void SetStructureLocation(GameObject gameObject)
     {
         currentLocation = gameObject.GetComponent<StructureZone>().location;
-        NotifyLocation.Notify(currentLocation, NotifyType.Location);
+        NotifyLocation.Notify(currentLocation);
     } 
 
     void SetForestLocation(GameObject gameObject)
     {
         currentLocation = Location.Forest;
-        NotifyLocation.Notify(currentLocation, NotifyType.Location);
+        NotifyLocation.Notify(currentLocation);
     }
 
 

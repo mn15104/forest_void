@@ -9,22 +9,25 @@ public class MainAudioController : MonoBehaviour {
 
     private void Awake()
     {
-        eventManager.NotifyNoRun.notifyEvent += RunAudio;
+        eventManager.NotifyRunStamina.notifyEvent += RunAudio;
         eventManager.NotifyLocation.notifyEvent += StructureAudio;
         eventManager.NotifyStage.notifyEvent += StageAudio;
         eventManager.NotifyHeartRate.notifyEvent += HeartRateAudio;
+        //eventManager.BridgeCrossedEvent.TriggerEnterEvent += BridgeTriggerAudio; 
+
     }
 
 
-    void RunAudio(bool running)
+    void RunAudio(bool runStamina)
     {
-        if (running)
+        if (runStamina)
         {
-            //Running available Audio
+            //Means is able to run again - not exhausted audio
+            
         }
         else
         {
-            //No running left Audio
+            //No running left Audio - panting
         }
     }
 
@@ -80,5 +83,19 @@ public class MainAudioController : MonoBehaviour {
         //Heart Rate is send in - notifyed based on variable set in eventManager 
         //Currrently set to start notifying after 30sec, every 10sec
     }
+
+
+
+    //If you want to also control audio for triggerevents(e.g BridgeTrigger(voice recording), CaravanTrigger(enter door), TextAppear etc
+    //Do this e.g BridgeTrigger: uncomment is awake subscription to this event
+     
+    void BridgeTriggerAudio(GameObject colliderObject)
+    {
+        //Audio for bridge would go in here. Currently the audio is attached to the trigger itself. Found in the scene -> EventTriggers -> BridgeTrigger
+        //Putting audio is here with run when trigger has been entered
+ 
+    }
+
+
 
 }
