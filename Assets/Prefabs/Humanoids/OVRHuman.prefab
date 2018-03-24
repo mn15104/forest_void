@@ -163,7 +163,6 @@ GameObject:
   - component: {fileID: 114336358018337718}
   - component: {fileID: 54424608617857364}
   - component: {fileID: 114027730014582014}
-  - component: {fileID: 114789877153136944}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -330,6 +329,7 @@ GameObject:
   - component: {fileID: 135144844656057390}
   - component: {fileID: 23432179277512216}
   - component: {fileID: 54222668476633768}
+  - component: {fileID: 114398002241408302}
   m_Layer: 0
   m_Name: HandCollider
   m_TagString: HandCollider
@@ -443,7 +443,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897032818956822}
   m_LocalRotation: {x: -0, y: 0.5364636, z: -0, w: 0.8439235}
-  m_LocalPosition: {x: 560.15, y: 75.579, z: 839.5}
+  m_LocalPosition: {x: 609.4, y: 75.579, z: 833.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4008786083535134}
@@ -1486,6 +1486,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53b07ad62d980a4da9fffff0b05fd2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114398002241408302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768838063792310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9dfe4a57e299b44d98ba9bda1fb277f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114407180495442826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1627,19 +1638,11 @@ MonoBehaviour:
   useProfileData: 1
   EnableLinearMovement: 1
   EnableRotation: 1
-  RunningEnergy: 10
+  HighestRunningEnergy: 10
+  LowestRunningEnergy: 5
+  CurrentRunningEnergy: 0
   stamina: 0
---- !u!114 &114789877153136944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1396864240632856}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  moveInfluence: 0
 --- !u!114 &114819264095484956
 MonoBehaviour:
   m_ObjectHideFlags: 1
