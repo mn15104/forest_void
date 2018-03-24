@@ -6,109 +6,129 @@ public class VoidSystem : MonoBehaviour {
     public GameObject m_ForestVoid;
     private GameObject m_CryptVoid;
     public GameObject m_SpawnpointsHolder;
-    public bool m_VoidSetActive = false;
+    private bool monsterAppeared = false;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
-    private bool m_VoidEnabled = false;
     private float gameTimer = 0f;
-    private float[] m_DelayTimeToActive = { 20f, 100f, 200f };
-    private MonsterAppear nextAppear = MonsterAppear.STAGE1;
+    private float[] m_DelayTimeToActive = { 120f, 210f, 330f };
+    private MonsterAppear m_MonsterAppear = MonsterAppear.STAGE1;
     private MonsterState m_MonsterState = MonsterState.HIDDEN_IDLE;
+    
 
     private void OnEnable()
     {
-        m_ForestVoid.GetComponent<MonsterAI>().OnMonsterStateChange += NotifyStateChange;
+
     }
 
     void Start () {
         if (m_ForestVoid)
             m_ForestVoid.SetActive(false);
-        if (m_CryptVoid)
-            m_CryptVoid.SetActive(false);
-        foreach(Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
-        {
-            m_SpawnPositions.Add(trans.position);
-        }
-    }
 
+        foreach(Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
+            m_SpawnPositions.Add(trans.position);
+        
+    }
 
     void Update()
     {
-        if (m_VoidSetActive && !m_VoidEnabled)
+        gameTimer += Time.deltaTime;
+        switch (m_MonsterAppear)
         {
-            CancelInvoke();
-            SetVoidActive();
+            case MonsterAppear.STAGE1:
+                UpdateStage1();
+                break;
+            case MonsterAppear.STAGE2:
+                UpdateStage2();
+                break;
+            case MonsterAppear.STAGE3:
+                UpdateStage3();
+                break;
+            default:
+                break;
         }
-        if (!m_VoidSetActive && m_VoidEnabled)
+    }
+
+    void UpdateStage1()
+    {
+        if(!m_ForestVoid.activeSelf && gameTimer > 120f)
         {
+            m_ForestVoid.SetActive(true);
+        }
+        if(!monsterAppeared && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.APPEAR)
+        {
+            monsterAppeared = true;
+        }
+        if(!monsterAppeared && gameTimer > 210f)
+        {
+            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
+            monsterAppeared = true;
+            m_MonsterAppear = MonsterAppear.STAGE2;
+        }
+        if(monsterAppeared && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.HIDDEN_IDLE)
+        {
+            monsterAppeared = false;
             SetVoidInactive();
-            Invoke("SetVoidActive", m_DelayTimeToActive[(int)nextAppear]);
+        }
+    }
+    void UpdateStage2()
+    {
+        if (!m_ForestVoid.activeSelf && gameTimer > 210f)
+        {
+            m_ForestVoid.SetActive(true);
+        }
+        if (!monsterAppeared && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.APPEAR)
+        {
+            monsterAppeared = true;
+        }
+        if (!monsterAppeared && gameTimer > 330f)
+        {
+            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
+            monsterAppeared = true;
+        }
+        if (monsterAppeared && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.HIDDEN_IDLE)
+        {
+            monsterAppeared = false;
+            SetVoidInactive();
+            m_MonsterAppear = MonsterAppear.STAGE3;
+        }
+    }
+    void UpdateStage3()
+    {
+        if (!m_ForestVoid.activeSelf && gameTimer > 330f)
+        {
+            m_ForestVoid.SetActive(true);
+        }
+        if (!monsterAppeared && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.APPEAR)
+        {
+            monsterAppeared = true;
+        }
+        if (!monsterAppeared && gameTimer > 470f)
+        {
+            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
+            monsterAppeared = true;
+        }
+        if (monsterAppeared && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.HIDDEN_IDLE)
+        {
+            monsterAppeared = false;
+            SetVoidInactive();
+            m_MonsterAppear = MonsterAppear.NONE;
         }
     }
 
     public void SetVoidActive(Vector3 position = new Vector3())
     {
-        if (position == new Vector3())
+
+        if (m_ForestVoid)
         {
-            position = m_SpawnPositions[0];
-        }
-        if (!m_VoidEnabled)
-        {
-            m_VoidSetActive = true;
-            m_VoidEnabled = true;
-            if (m_ForestVoid)
-            {
-                m_ForestVoid.transform.position = GetFurthestSpawnPoint();
-                m_ForestVoid.SetActive(true);
-                if (nextAppear == MonsterAppear.STAGE1)
-                    nextAppear = MonsterAppear.STAGE2;
-                else if (nextAppear == MonsterAppear.STAGE2)
-                    nextAppear = MonsterAppear.STAGE3;
-                else if (nextAppear == MonsterAppear.STAGE3)
-                    nextAppear = MonsterAppear.STAGE1;
-            }
-            if (m_CryptVoid)
-                m_CryptVoid.SetActive(true);
-        }
-    }
-    public void SetVoidInactive()
-    {
-        if (m_VoidEnabled)
-        {
-            m_VoidSetActive = false;
-            m_VoidEnabled = false;
-            if (m_ForestVoid)
-                m_ForestVoid.SetActive(false);
-            if (m_CryptVoid)
-                m_CryptVoid.SetActive(false);
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
+            m_ForestVoid.SetActive(true);
         }
     }
 
-    void NotifyStateChange(MonsterState state)
+    public void SetVoidInactive()
     {
-        switch (state)
-        {
-            case MonsterState.HIDDEN_IDLE:
-                if(m_MonsterState == MonsterState.CHASE)
-                {
-                    m_ForestVoid.transform.position = GetFurthestSpawnPoint();
-                }
-                break;
-            case MonsterState.HIDDEN_MOVING:
-                break;
-            case MonsterState.FOLLOW:
-                break;
-            case MonsterState.APPEAR:
-                break;
-            case MonsterState.APPROACH:
-                break;
-            case MonsterState.CHASE:
-                break;
-            case MonsterState.GAMEOVER:
-                break;
-            default:
-                break;
-        }
-        m_MonsterState = state;
+        if (m_ForestVoid)
+            m_ForestVoid.SetActive(false);
+        
     }
 
 
