@@ -32,7 +32,7 @@ public class EventManager : MonoBehaviour {
     public NotifyEvent<bool> NotifyRunStamina;
     public NotifyEvent<bool> NotifyTorchPressed;
 
- 
+
     private Stage currentStage;
     private Location currentLocation;
 

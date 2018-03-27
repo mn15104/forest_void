@@ -1,0 +1,331 @@
+fileFormatVersion: 2
+guid: 346a905416fb0464f987e0f56b2911ff
+timeCreated: 1512884701
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: CellarEntrance
+    100002: CellarEntranceCeiling
+    100004: CellarEntranceLeft
+    100006: CellarEntranceRight
+    100008: CellarEntranceTop
+    100010: CellarEntranceWallLeft
+    100012: CellarStep1
+    100014: CellarStep10
+    100016: CellarStep11
+    100018: CellarStep12
+    100020: CellarStep2
+    100022: CellarStep3
+    100024: CellarStep4
+    100026: CellarStep5
+    100028: CellarStep6
+    100030: CellarStep7
+    100032: CellarStep8
+    100034: CellarStep9
+    100036: CellarSteps
+    100038: HouseFloor
+    100040: HouseFloorFill
+    100042: HouseFloorMain
+    100044: HouseFloorMain1
+    100046: HouseRoof
+    100048: HouseRoofFillBack
+    100050: HouseRoofFillFront
+    100052: HouseRoofLeft
+    100054: HouseRoofRight
+    100056: HouseRoomBeam
+    100058: HouseWallBack
+    100060: HouseWallFront
+    100062: HouseWallFront 1
+    100064: HouseWallFront1
+    100066: HouseWallFront2
+    100068: HouseWallFront3
+    100070: HouseWallLeft
+    100072: HouseWallRight
+    100074: HouseWalls
+    100076: //RootNode
+    100078: ShedWallBack
+    100080: ShedWallBack1
+    100082: ShedWallBack2
+    100084: ShedWallBack3
+    100086: ShedWallBack4
+    100088: ShedWallBack5
+    100090: ShedWallBack6
+    100092: ShedWallFront
+    100094: ShedWallFront 1
+    100096: ShedWallFront1
+    100098: ShedWallFront2
+    100100: ShedWallFront3
+    100102: ShedWallRight
+    100104: ShedWalls
+    400000: CellarEntrance
+    400002: CellarEntranceCeiling
+    400004: CellarEntranceLeft
+    400006: CellarEntranceRight
+    400008: CellarEntranceTop
+    400010: CellarEntranceWallLeft
+    400012: CellarStep1
+    400014: CellarStep10
+    400016: CellarStep11
+    400018: CellarStep12
+    400020: CellarStep2
+    400022: CellarStep3
+    400024: CellarStep4
+    400026: CellarStep5
+    400028: CellarStep6
+    400030: CellarStep7
+    400032: CellarStep8
+    400034: CellarStep9
+    400036: CellarSteps
+    400038: HouseFloor
+    400040: HouseFloorFill
+    400042: HouseFloorMain
+    400044: HouseFloorMain1
+    400046: HouseRoof
+    400048: HouseRoofFillBack
+    400050: HouseRoofFillFront
+    400052: HouseRoofLeft
+    400054: HouseRoofRight
+    400056: HouseRoomBeam
+    400058: HouseWallBack
+    400060: HouseWallFront
+    400062: HouseWallFront 1
+    400064: HouseWallFront1
+    400066: HouseWallFront2
+    400068: HouseWallFront3
+    400070: HouseWallLeft
+    400072: HouseWallRight
+    400074: HouseWalls
+    400076: //RootNode
+    400078: ShedWallBack
+    400080: ShedWallBack1
+    400082: ShedWallBack2
+    400084: ShedWallBack3
+    400086: ShedWallBack4
+    400088: ShedWallBack5
+    400090: ShedWallBack6
+    400092: ShedWallFront
+    400094: ShedWallFront 1
+    400096: ShedWallFront1
+    400098: ShedWallFront2
+    400100: ShedWallFront3
+    400102: ShedWallRight
+    400104: ShedWalls
+    2300000: CellarEntranceCeiling
+    2300002: CellarEntranceLeft
+    2300004: CellarEntranceRight
+    2300006: CellarEntranceTop
+    2300008: CellarEntranceWallLeft
+    2300010: CellarStep1
+    2300012: CellarStep10
+    2300014: CellarStep11
+    2300016: CellarStep12
+    2300018: CellarStep2
+    2300020: CellarStep3
+    2300022: CellarStep4
+    2300024: CellarStep5
+    2300026: CellarStep6
+    2300028: CellarStep7
+    2300030: CellarStep8
+    2300032: CellarStep9
+    2300034: HouseFloorFill
+    2300036: HouseFloorMain
+    2300038: HouseFloorMain1
+    2300040: HouseRoofFillBack
+    2300042: HouseRoofFillFront
+    2300044: HouseRoofLeft
+    2300046: HouseRoofRight
+    2300048: HouseRoomBeam
+    2300050: HouseWallBack
+    2300052: HouseWallFront 1
+    2300054: HouseWallFront1
+    2300056: HouseWallFront2
+    2300058: HouseWallFront3
+    2300060: HouseWallLeft
+    2300062: HouseWallRight
+    2300064: ShedWallBack
+    2300066: ShedWallBack1
+    2300068: ShedWallBack2
+    2300070: ShedWallBack3
+    2300072: ShedWallBack4
+    2300074: ShedWallBack5
+    2300076: ShedWallBack6
+    2300078: ShedWallFront 1
+    2300080: ShedWallFront1
+    2300082: ShedWallFront2
+    2300084: ShedWallFront3
+    2300086: ShedWallRight
+    3300000: CellarEntranceCeiling
+    3300002: CellarEntranceLeft
+    3300004: CellarEntranceRight
+    3300006: CellarEntranceTop
+    3300008: CellarEntranceWallLeft
+    3300010: CellarStep1
+    3300012: CellarStep10
+    3300014: CellarStep11
+    3300016: CellarStep12
+    3300018: CellarStep2
+    3300020: CellarStep3
+    3300022: CellarStep4
+    3300024: CellarStep5
+    3300026: CellarStep6
+    3300028: CellarStep7
+    3300030: CellarStep8
+    3300032: CellarStep9
+    3300034: HouseFloorFill
+    3300036: HouseFloorMain
+    3300038: HouseFloorMain1
+    3300040: HouseRoofFillBack
+    3300042: HouseRoofFillFront
+    3300044: HouseRoofLeft
+    3300046: HouseRoofRight
+    3300048: HouseRoomBeam
+    3300050: HouseWallBack
+    3300052: HouseWallFront 1
+    3300054: HouseWallFront1
+    3300056: HouseWallFront2
+    3300058: HouseWallFront3
+    3300060: HouseWallLeft
+    3300062: HouseWallRight
+    3300064: ShedWallBack
+    3300066: ShedWallBack1
+    3300068: ShedWallBack2
+    3300070: ShedWallBack3
+    3300072: ShedWallBack4
+    3300074: ShedWallBack5
+    3300076: ShedWallBack6
+    3300078: ShedWallFront 1
+    3300080: ShedWallFront1
+    3300082: ShedWallFront2
+    3300084: ShedWallFront3
+    3300086: ShedWallRight
+    4300000: CellarStep1
+    4300002: HouseWallLeft
+    4300004: HouseWallRight
+    4300006: HouseWallBack
+    4300008: HouseWallFront
+    4300010: HouseWallFront1
+    4300012: HouseWallFront2
+    4300014: HouseWallFront3
+    4300016: ShedWallRight
+    4300018: ShedWallBack
+    4300020: ShedWallFront1
+    4300022: ShedWallFront2
+    4300024: ShedWallFront3
+    4300026: ShedWallFront
+    4300028: ShedWallBack1
+    4300030: ShedWallBack2
+    4300032: ShedWallBack3
+    4300034: ShedWallBack4
+    4300036: ShedWallBack5
+    4300038: ShedWallBack6
+    4300040: HouseRoofLeft
+    4300042: HouseRoofRight
+    4300044: HouseRoomBeam
+    4300046: HouseRoofFillBack
+    4300048: HouseRoofFillFront
+    4300050: CellarEntranceWallLeft
+    4300052: CellarEntranceCeiling
+    4300054: CellarEntranceLeft
+    4300056: CellarEntranceTop
+    4300058: CellarEntranceRight
+    4300060: HouseFloorMain
+    4300062: HouseFloorFill
+    4300064: HouseFloorMain1
+    4300066: CellarStep2
+    4300068: CellarStep3
+    4300070: CellarStep4
+    4300072: CellarStep5
+    4300074: CellarStep6
+    4300076: CellarStep7
+    4300078: CellarStep8
+    4300080: CellarStep9
+    4300082: CellarStep10
+    4300084: CellarStep11
+    4300086: CellarStep12
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 1cabf287f97532f46a2dd6ce41438ebf, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

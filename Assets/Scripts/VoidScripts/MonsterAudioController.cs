@@ -184,50 +184,50 @@ public class MonsterAudioController : MonoBehaviour
                 break;
             case MonsterState.APPEAR:
                 {
-                    if (m_Monster.currentAppear == MonsterAppear.STAGE1 || m_Monster.currentAppear == MonsterAppear.NONE)
-                    {
-                        if (m_PlayerCamera)
-                        {
-                            Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_PlayerCamera);
-                            if (MonsterSFX2AudioSrc.clip != m_Jumpscare && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
-                            {
-                                Vector3 dirToMonster = (m_Monster.transform.position - m_Monster.player.transform.position).normalized;
-                                float angleBetween = Vector3.Angle(dirToMonster, m_Monster.player.transform.forward);
-                                if (angleBetween < m_PlayerCamera.fieldOfView / 1.35f)
-                                {
-                                    MonsterSFX2AudioSrc.clip = m_Jumpscare;
-                                    MonsterSFX2AudioSrc.Play();
-                                }
-                            }
-                            if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
-                            {
-                                MonsterSFX1AudioSrc.clip = (m_BreathingFront);
-                                MonsterSFX1AudioSrc.Play();
-                            }
-                            else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
-                            {
-                                MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
-                                MonsterSFX1AudioSrc.Play();
-                            }
-                        }
-                        else
-                        {
-                            if (MonsterSFX1AudioSrc.clip != m_BreathingFront)
-                            {
-                                MonsterSFX1AudioSrc.clip = (m_BreathingFront);
-                                MonsterSFX1AudioSrc.Play();
-                            }
-                        }
-                    }
-                    else if (m_Monster.currentAppear == MonsterAppear.STAGE2)
-                    {
-                        if (MonsterSFX1AudioSrc.clip != m_Chase)
-                        {
-                            MonsterSFX1AudioSrc.loop = false;
-                            MonsterSFX1AudioSrc.clip = (m_Chase);
-                            MonsterSFX1AudioSrc.Play();
-                        }
-                    }
+                    //if (m_Monster.currentAppear == MonsterAppear.STAGE1 || m_Monster.currentAppear == MonsterAppear.NONE)
+                    //{
+                    //    if (m_PlayerCamera)
+                    //    {
+                    //        Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_PlayerCamera);
+                    //        if (MonsterSFX2AudioSrc.clip != m_Jumpscare && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                    //        {
+                    //            Vector3 dirToMonster = (m_Monster.transform.position - m_Monster.player.transform.position).normalized;
+                    //            float angleBetween = Vector3.Angle(dirToMonster, m_Monster.player.transform.forward);
+                    //            if (angleBetween < m_PlayerCamera.fieldOfView / 1.35f)
+                    //            {
+                    //                MonsterSFX2AudioSrc.clip = m_Jumpscare;
+                    //                MonsterSFX2AudioSrc.Play();
+                    //            }
+                    //        }
+                    //        if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                    //        {
+                    //            MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                    //            MonsterSFX1AudioSrc.Play();
+                    //        }
+                    //        else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
+                    //        {
+                    //            MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
+                    //            MonsterSFX1AudioSrc.Play();
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        if (MonsterSFX1AudioSrc.clip != m_BreathingFront)
+                    //        {
+                    //            MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                    //            MonsterSFX1AudioSrc.Play();
+                    //        }
+                    //    }
+                    //}
+                    //else if (m_Monster.currentAppear == MonsterAppear.STAGE2)
+                    //{
+                    //    if (MonsterSFX1AudioSrc.clip != m_Chase)
+                    //    {
+                    //        MonsterSFX1AudioSrc.loop = false;
+                    //        MonsterSFX1AudioSrc.clip = (m_Chase);
+                    //        MonsterSFX1AudioSrc.Play();
+                    //    }
+                    //}
                 }
                 break;
             case MonsterState.APPROACH:

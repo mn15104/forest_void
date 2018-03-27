@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 3d88e16a9b45a5a45b39804754bc52e4
+timeCreated: 1516816051
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Branch1
+    100002: Branch2
+    100004: Branch3
+    100006: //RootNode
+    100008: New_Rope
+    100010: nurbsToPoly1
+    100012: nurbsToPoly2
+    100014: nurbsToPoly4
+    100016: nurbsToPoly5
+    100018: nurbsToPoly6
+    100020: nurbsToPoly7
+    100022: pCylinder1
+    100024: Tree1
+    100026: Tree:loftedSurface1
+    100028: Tree:loftedSurface2
+    100030: Tree:nurbsCircle10
+    100032: Tree:nurbsCircle11
+    100034: Tree:nurbsCircle12
+    100036: Tree:nurbsCircle2
+    100038: Tree:nurbsCircle3
+    100040: Tree:nurbsCircle4
+    100042: Tree:nurbsCircle5
+    100044: Tree:nurbsCircle6
+    100046: Tree:nurbsCircle7
+    100048: Tree:nurbsCircle8
+    100050: Tree:nurbsCircle9
+    100052: Tree_Construction
+    100054: Tree_with_Branches
+    100056: Tyre
+    100058: Tyre 1
+    100060: Tyre1
+    400000: Branch1
+    400002: Branch2
+    400004: Branch3
+    400006: //RootNode
+    400008: New_Rope
+    400010: nurbsToPoly1
+    400012: nurbsToPoly2
+    400014: nurbsToPoly4
+    400016: nurbsToPoly5
+    400018: nurbsToPoly6
+    400020: nurbsToPoly7
+    400022: pCylinder1
+    400024: Tree1
+    400026: Tree:loftedSurface1
+    400028: Tree:loftedSurface2
+    400030: Tree:nurbsCircle10
+    400032: Tree:nurbsCircle11
+    400034: Tree:nurbsCircle12
+    400036: Tree:nurbsCircle2
+    400038: Tree:nurbsCircle3
+    400040: Tree:nurbsCircle4
+    400042: Tree:nurbsCircle5
+    400044: Tree:nurbsCircle6
+    400046: Tree:nurbsCircle7
+    400048: Tree:nurbsCircle8
+    400050: Tree:nurbsCircle9
+    400052: Tree_Construction
+    400054: Tree_with_Branches
+    400056: Tyre
+    400058: Tyre 1
+    400060: Tyre1
+    2100000: TreeLambert
+    2100002: Branch_Lambert2
+    2100004: TyreLambert
+    2100006: RopeLambert
+    2300000: Branch1
+    2300002: Branch2
+    2300004: Branch3
+    2300006: nurbsToPoly1
+    2300008: nurbsToPoly2
+    2300010: nurbsToPoly4
+    2300012: nurbsToPoly5
+    2300014: nurbsToPoly6
+    2300016: nurbsToPoly7
+    2300018: pCylinder1
+    2300020: Tree:loftedSurface2
+    2300022: Tyre1
+    3300000: Branch1
+    3300002: Branch2
+    3300004: Branch3
+    3300006: nurbsToPoly1
+    3300008: nurbsToPoly2
+    3300010: nurbsToPoly4
+    3300012: nurbsToPoly5
+    3300014: nurbsToPoly6
+    3300016: nurbsToPoly7
+    3300018: pCylinder1
+    3300020: Tree:loftedSurface2
+    3300022: Tyre1
+    4300000: Tree:loftedSurface2
+    4300002: Branch1
+    4300004: Branch2
+    4300006: Branch3
+    4300008: Tyre1
+    4300010: pCylinder1
+    4300012: nurbsToPoly7
+    4300014: nurbsToPoly6
+    4300016: nurbsToPoly5
+    4300018: nurbsToPoly4
+    4300020: nurbsToPoly2
+    4300022: nurbsToPoly1
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

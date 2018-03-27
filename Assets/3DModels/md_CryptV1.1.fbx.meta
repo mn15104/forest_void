@@ -1,0 +1,1444 @@
+fileFormatVersion: 2
+guid: cd3f17f755f10fa45b5fed3693b4930a
+timeCreated: 1518631629
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: CrpytEntrance
+    100002: CryptBackWall
+    100004: CryptBelow
+    100006: CryptCeiling
+    100008: CryptDimensions
+    100010: CryptFloor
+    100012: CryptFrontWall
+    100014: CryptLeftWall
+    100016: CryptMazeWall1
+    100018: CryptMazeWall10
+    100020: CryptMazeWall11
+    100022: CryptMazeWall12
+    100024: CryptMazeWall13
+    100026: CryptMazeWall14
+    100028: CryptMazeWall15
+    100030: CryptMazeWall16
+    100032: CryptMazeWall17
+    100034: CryptMazeWall2
+    100036: CryptMazeWall3
+    100038: CryptMazeWall4
+    100040: CryptMazeWall5
+    100042: CryptMazeWall6
+    100044: CryptMazeWall7
+    100046: CryptMazeWall8
+    100048: CryptMazeWall9
+    100050: CryptMazeWalls
+    100052: CryptPillar1
+    100054: CryptPillar10
+    100056: CryptPillar11
+    100058: CryptPillar12
+    100060: CryptPillar13
+    100062: CryptPillar14
+    100064: CryptPillar15
+    100066: CryptPillar16
+    100068: CryptPillar17
+    100070: CryptPillar18
+    100072: CryptPillar19
+    100074: CryptPillar2
+    100076: CryptPillar20
+    100078: CryptPillar21
+    100080: CryptPillar22
+    100082: CryptPillar23
+    100084: CryptPillar24
+    100086: CryptPillar25
+    100088: CryptPillar26
+    100090: CryptPillar27
+    100092: CryptPillar28
+    100094: CryptPillar29
+    100096: CryptPillar3
+    100098: CryptPillar30
+    100100: CryptPillar31
+    100102: CryptPillar32
+    100104: CryptPillar33
+    100106: CryptPillar34
+    100108: CryptPillar35
+    100110: CryptPillar36
+    100112: CryptPillar4
+    100114: CryptPillar5
+    100116: CryptPillar6
+    100118: CryptPillar7
+    100120: CryptPillar8
+    100122: CryptPillar9
+    100124: CryptPillars
+    100126: CryptRightWall
+    100128: CurveDiag1
+    100130: CurveDiag10
+    100132: CurveDiag11
+    100134: CurveDiag12
+    100136: CurveDiag13
+    100138: CurveDiag14
+    100140: CurveDiag15
+    100142: CurveDiag16
+    100144: CurveDiag17
+    100146: CurveDiag18
+    100148: CurveDiag19
+    100150: CurveDiag2
+    100152: CurveDiag20
+    100154: CurveDiag21
+    100156: CurveDiag22
+    100158: CurveDiag23
+    100160: CurveDiag24
+    100162: CurveDiag25
+    100164: CurveDiag26
+    100166: CurveDiag27
+    100168: CurveDiag28
+    100170: CurveDiag29
+    100172: CurveDiag3
+    100174: CurveDiag30
+    100176: CurveDiag31
+    100178: CurveDiag32
+    100180: CurveDiag33
+    100182: CurveDiag34
+    100184: CurveDiag35
+    100186: CurveDiag36
+    100188: CurveDiag37
+    100190: CurveDiag38
+    100192: CurveDiag39
+    100194: CurveDiag4
+    100196: CurveDiag40
+    100198: CurveDiag5
+    100200: CurveDiag6
+    100202: CurveDiag7
+    100204: CurveDiag8
+    100206: CurveDiag9
+    100208: CurveOrth1
+    100210: CurveOrth10
+    100212: CurveOrth11
+    100214: CurveOrth12
+    100216: CurveOrth13
+    100218: CurveOrth14
+    100220: CurveOrth15
+    100222: CurveOrth16
+    100224: CurveOrth17
+    100226: CurveOrth18
+    100228: CurveOrth19
+    100230: CurveOrth2
+    100232: CurveOrth20
+    100234: CurveOrth21
+    100236: CurveOrth22
+    100238: CurveOrth23
+    100240: CurveOrth24
+    100242: CurveOrth25
+    100244: CurveOrth26
+    100246: CurveOrth27
+    100248: CurveOrth28
+    100250: CurveOrth29
+    100252: CurveOrth3
+    100254: CurveOrth30
+    100256: CurveOrth31
+    100258: CurveOrth32
+    100260: CurveOrth33
+    100262: CurveOrth34
+    100264: CurveOrth35
+    100266: CurveOrth36
+    100268: CurveOrth37
+    100270: CurveOrth38
+    100272: CurveOrth39
+    100274: CurveOrth4
+    100276: CurveOrth40
+    100278: CurveOrth41
+    100280: CurveOrth42
+    100282: CurveOrth43
+    100284: CurveOrth44
+    100286: CurveOrth45
+    100288: CurveOrth46
+    100290: CurveOrth47
+    100292: CurveOrth48
+    100294: CurveOrth49
+    100296: CurveOrth5
+    100298: CurveOrth50
+    100300: CurveOrth6
+    100302: CurveOrth7
+    100304: CurveOrth8
+    100306: CurveOrth9
+    100308: Entrance
+    100310: extrudedSurface1
+    100312: extrudedSurface2
+    100314: extrudedSurface3
+    100316: extrudedSurface4
+    100318: extrudedSurface6
+    100320: extrudedSurface7
+    100322: extrudedSurface8
+    100324: extrudedSurface9
+    100326: FatCurvedWalls
+    100328: loftedSurface1
+    100330: loftedSurface1 1
+    100332: loftedSurface10
+    100334: loftedSurface100
+    100336: loftedSurface11
+    100338: loftedSurface12
+    100340: loftedSurface13
+    100342: loftedSurface14
+    100344: loftedSurface15
+    100346: loftedSurface16
+    100348: loftedSurface17
+    100350: loftedSurface18
+    100352: loftedSurface19
+    100354: loftedSurface2
+    100356: loftedSurface2 1
+    100358: loftedSurface20
+    100360: loftedSurface21
+    100362: loftedSurface22
+    100364: loftedSurface23
+    100366: loftedSurface24
+    100368: loftedSurface25
+    100370: loftedSurface26
+    100372: loftedSurface27
+    100374: loftedSurface28
+    100376: loftedSurface29
+    100378: loftedSurface3
+    100380: loftedSurface3 1
+    100382: loftedSurface30
+    100384: loftedSurface31
+    100386: loftedSurface32
+    100388: loftedSurface33
+    100390: loftedSurface34
+    100392: loftedSurface35
+    100394: loftedSurface36
+    100396: loftedSurface37
+    100398: loftedSurface38
+    100400: loftedSurface39
+    100402: loftedSurface4
+    100404: loftedSurface4 1
+    100406: loftedSurface40
+    100408: loftedSurface41
+    100410: loftedSurface42
+    100412: loftedSurface43
+    100414: loftedSurface44
+    100416: loftedSurface45
+    100418: loftedSurface46
+    100420: loftedSurface47
+    100422: loftedSurface48
+    100424: loftedSurface49
+    100426: loftedSurface5
+    100428: loftedSurface5 1
+    100430: loftedSurface50
+    100432: loftedSurface51
+    100434: loftedSurface52
+    100436: loftedSurface53
+    100438: loftedSurface54
+    100440: loftedSurface55
+    100442: loftedSurface56
+    100444: loftedSurface57
+    100446: loftedSurface58
+    100448: loftedSurface59
+    100450: loftedSurface60
+    100452: loftedSurface61
+    100454: loftedSurface62
+    100456: loftedSurface63
+    100458: loftedSurface64
+    100460: loftedSurface65
+    100462: loftedSurface66
+    100464: loftedSurface67
+    100466: loftedSurface68
+    100468: loftedSurface69
+    100470: loftedSurface70
+    100472: loftedSurface71
+    100474: loftedSurface72
+    100476: loftedSurface73
+    100478: loftedSurface74
+    100480: loftedSurface75
+    100482: loftedSurface76
+    100484: loftedSurface77
+    100486: loftedSurface78
+    100488: loftedSurface79
+    100490: loftedSurface8
+    100492: loftedSurface80
+    100494: loftedSurface81
+    100496: loftedSurface82
+    100498: loftedSurface83
+    100500: loftedSurface84
+    100502: loftedSurface85
+    100504: loftedSurface86
+    100506: loftedSurface87
+    100508: loftedSurface88
+    100510: loftedSurface89
+    100512: loftedSurface9
+    100514: loftedSurface90
+    100516: loftedSurface91
+    100518: loftedSurface92
+    100520: loftedSurface93
+    100522: loftedSurface95
+    100524: loftedSurface96
+    100526: loftedSurface97
+    100528: loftedSurface98
+    100530: loftedSurface99
+    100532: //RootNode
+    100534: pCube10
+    100536: pCube15
+    100538: pCube17
+    100540: pCube17 1
+    100542: pCube18
+    100544: pCube2
+    100546: pCube2 1
+    100548: pCube20
+    100550: pCube3
+    100552: pCube3 1
+    100554: pCube4
+    100556: pCube4 1
+    100558: pCube5
+    100560: pCube5 1
+    100562: pCube6
+    100564: pCube6 1
+    100566: pCube7
+    100568: pCube7 1
+    100570: pCube7 10
+    100572: pCube7 11
+    100574: pCube7 2
+    100576: pCube7 3
+    100578: pCube7 4
+    100580: pCube7 5
+    100582: pCube7 6
+    100584: pCube7 7
+    100586: pCube7 8
+    100588: pCube7 9
+    100590: pCube8
+    100592: pCube8 1
+    100594: pCube8 10
+    100596: pCube8 11
+    100598: pCube8 2
+    100600: pCube8 3
+    100602: pCube8 4
+    100604: pCube8 5
+    100606: pCube8 6
+    100608: pCube8 7
+    100610: pCube8 8
+    100612: pCube8 9
+    100614: pCube9
+    100616: pCube9 1
+    100618: pCube9 10
+    100620: pCube9 11
+    100622: pCube9 2
+    100624: pCube9 3
+    100626: pCube9 4
+    100628: pCube9 5
+    100630: pCube9 6
+    100632: pCube9 7
+    100634: pCube9 8
+    100636: pCube9 9
+    100638: RomanNumerals
+    100640: RoofLeft
+    100642: RoofRight
+    100644: SidePillarLeft
+    100646: SidePillarRight
+    100648: TopOrnament
+    100650: TopWallTriangle
+    100652: TopWallTriangle 1
+    100654: Triangle
+    100656: Triangle1
+    100658: Triangle10
+    100660: Triangle11
+    100662: Triangle12
+    100664: Triangle13
+    100666: Triangle2
+    100668: Triangle3
+    100670: Triangle4
+    100672: Triangle5
+    100674: Triangle6
+    100676: Triangle7
+    100678: Triangle8
+    100680: Triangle9
+    100682: TriangleLeft
+    100684: TriangleRight
+    400000: CrpytEntrance
+    400002: CryptBackWall
+    400004: CryptBelow
+    400006: CryptCeiling
+    400008: CryptDimensions
+    400010: CryptFloor
+    400012: CryptFrontWall
+    400014: CryptLeftWall
+    400016: CryptMazeWall1
+    400018: CryptMazeWall10
+    400020: CryptMazeWall11
+    400022: CryptMazeWall12
+    400024: CryptMazeWall13
+    400026: CryptMazeWall14
+    400028: CryptMazeWall15
+    400030: CryptMazeWall16
+    400032: CryptMazeWall17
+    400034: CryptMazeWall2
+    400036: CryptMazeWall3
+    400038: CryptMazeWall4
+    400040: CryptMazeWall5
+    400042: CryptMazeWall6
+    400044: CryptMazeWall7
+    400046: CryptMazeWall8
+    400048: CryptMazeWall9
+    400050: CryptMazeWalls
+    400052: CryptPillar1
+    400054: CryptPillar10
+    400056: CryptPillar11
+    400058: CryptPillar12
+    400060: CryptPillar13
+    400062: CryptPillar14
+    400064: CryptPillar15
+    400066: CryptPillar16
+    400068: CryptPillar17
+    400070: CryptPillar18
+    400072: CryptPillar19
+    400074: CryptPillar2
+    400076: CryptPillar20
+    400078: CryptPillar21
+    400080: CryptPillar22
+    400082: CryptPillar23
+    400084: CryptPillar24
+    400086: CryptPillar25
+    400088: CryptPillar26
+    400090: CryptPillar27
+    400092: CryptPillar28
+    400094: CryptPillar29
+    400096: CryptPillar3
+    400098: CryptPillar30
+    400100: CryptPillar31
+    400102: CryptPillar32
+    400104: CryptPillar33
+    400106: CryptPillar34
+    400108: CryptPillar35
+    400110: CryptPillar36
+    400112: CryptPillar4
+    400114: CryptPillar5
+    400116: CryptPillar6
+    400118: CryptPillar7
+    400120: CryptPillar8
+    400122: CryptPillar9
+    400124: CryptPillars
+    400126: CryptRightWall
+    400128: CurveDiag1
+    400130: CurveDiag10
+    400132: CurveDiag11
+    400134: CurveDiag12
+    400136: CurveDiag13
+    400138: CurveDiag14
+    400140: CurveDiag15
+    400142: CurveDiag16
+    400144: CurveDiag17
+    400146: CurveDiag18
+    400148: CurveDiag19
+    400150: CurveDiag2
+    400152: CurveDiag20
+    400154: CurveDiag21
+    400156: CurveDiag22
+    400158: CurveDiag23
+    400160: CurveDiag24
+    400162: CurveDiag25
+    400164: CurveDiag26
+    400166: CurveDiag27
+    400168: CurveDiag28
+    400170: CurveDiag29
+    400172: CurveDiag3
+    400174: CurveDiag30
+    400176: CurveDiag31
+    400178: CurveDiag32
+    400180: CurveDiag33
+    400182: CurveDiag34
+    400184: CurveDiag35
+    400186: CurveDiag36
+    400188: CurveDiag37
+    400190: CurveDiag38
+    400192: CurveDiag39
+    400194: CurveDiag4
+    400196: CurveDiag40
+    400198: CurveDiag5
+    400200: CurveDiag6
+    400202: CurveDiag7
+    400204: CurveDiag8
+    400206: CurveDiag9
+    400208: CurveOrth1
+    400210: CurveOrth10
+    400212: CurveOrth11
+    400214: CurveOrth12
+    400216: CurveOrth13
+    400218: CurveOrth14
+    400220: CurveOrth15
+    400222: CurveOrth16
+    400224: CurveOrth17
+    400226: CurveOrth18
+    400228: CurveOrth19
+    400230: CurveOrth2
+    400232: CurveOrth20
+    400234: CurveOrth21
+    400236: CurveOrth22
+    400238: CurveOrth23
+    400240: CurveOrth24
+    400242: CurveOrth25
+    400244: CurveOrth26
+    400246: CurveOrth27
+    400248: CurveOrth28
+    400250: CurveOrth29
+    400252: CurveOrth3
+    400254: CurveOrth30
+    400256: CurveOrth31
+    400258: CurveOrth32
+    400260: CurveOrth33
+    400262: CurveOrth34
+    400264: CurveOrth35
+    400266: CurveOrth36
+    400268: CurveOrth37
+    400270: CurveOrth38
+    400272: CurveOrth39
+    400274: CurveOrth4
+    400276: CurveOrth40
+    400278: CurveOrth41
+    400280: CurveOrth42
+    400282: CurveOrth43
+    400284: CurveOrth44
+    400286: CurveOrth45
+    400288: CurveOrth46
+    400290: CurveOrth47
+    400292: CurveOrth48
+    400294: CurveOrth49
+    400296: CurveOrth5
+    400298: CurveOrth50
+    400300: CurveOrth6
+    400302: CurveOrth7
+    400304: CurveOrth8
+    400306: CurveOrth9
+    400308: Entrance
+    400310: extrudedSurface1
+    400312: extrudedSurface2
+    400314: extrudedSurface3
+    400316: extrudedSurface4
+    400318: extrudedSurface6
+    400320: extrudedSurface7
+    400322: extrudedSurface8
+    400324: extrudedSurface9
+    400326: FatCurvedWalls
+    400328: loftedSurface1
+    400330: loftedSurface1 1
+    400332: loftedSurface10
+    400334: loftedSurface100
+    400336: loftedSurface11
+    400338: loftedSurface12
+    400340: loftedSurface13
+    400342: loftedSurface14
+    400344: loftedSurface15
+    400346: loftedSurface16
+    400348: loftedSurface17
+    400350: loftedSurface18
+    400352: loftedSurface19
+    400354: loftedSurface2
+    400356: loftedSurface2 1
+    400358: loftedSurface20
+    400360: loftedSurface21
+    400362: loftedSurface22
+    400364: loftedSurface23
+    400366: loftedSurface24
+    400368: loftedSurface25
+    400370: loftedSurface26
+    400372: loftedSurface27
+    400374: loftedSurface28
+    400376: loftedSurface29
+    400378: loftedSurface3
+    400380: loftedSurface3 1
+    400382: loftedSurface30
+    400384: loftedSurface31
+    400386: loftedSurface32
+    400388: loftedSurface33
+    400390: loftedSurface34
+    400392: loftedSurface35
+    400394: loftedSurface36
+    400396: loftedSurface37
+    400398: loftedSurface38
+    400400: loftedSurface39
+    400402: loftedSurface4
+    400404: loftedSurface4 1
+    400406: loftedSurface40
+    400408: loftedSurface41
+    400410: loftedSurface42
+    400412: loftedSurface43
+    400414: loftedSurface44
+    400416: loftedSurface45
+    400418: loftedSurface46
+    400420: loftedSurface47
+    400422: loftedSurface48
+    400424: loftedSurface49
+    400426: loftedSurface5
+    400428: loftedSurface5 1
+    400430: loftedSurface50
+    400432: loftedSurface51
+    400434: loftedSurface52
+    400436: loftedSurface53
+    400438: loftedSurface54
+    400440: loftedSurface55
+    400442: loftedSurface56
+    400444: loftedSurface57
+    400446: loftedSurface58
+    400448: loftedSurface59
+    400450: loftedSurface60
+    400452: loftedSurface61
+    400454: loftedSurface62
+    400456: loftedSurface63
+    400458: loftedSurface64
+    400460: loftedSurface65
+    400462: loftedSurface66
+    400464: loftedSurface67
+    400466: loftedSurface68
+    400468: loftedSurface69
+    400470: loftedSurface70
+    400472: loftedSurface71
+    400474: loftedSurface72
+    400476: loftedSurface73
+    400478: loftedSurface74
+    400480: loftedSurface75
+    400482: loftedSurface76
+    400484: loftedSurface77
+    400486: loftedSurface78
+    400488: loftedSurface79
+    400490: loftedSurface8
+    400492: loftedSurface80
+    400494: loftedSurface81
+    400496: loftedSurface82
+    400498: loftedSurface83
+    400500: loftedSurface84
+    400502: loftedSurface85
+    400504: loftedSurface86
+    400506: loftedSurface87
+    400508: loftedSurface88
+    400510: loftedSurface89
+    400512: loftedSurface9
+    400514: loftedSurface90
+    400516: loftedSurface91
+    400518: loftedSurface92
+    400520: loftedSurface93
+    400522: loftedSurface95
+    400524: loftedSurface96
+    400526: loftedSurface97
+    400528: loftedSurface98
+    400530: loftedSurface99
+    400532: //RootNode
+    400534: pCube10
+    400536: pCube15
+    400538: pCube17
+    400540: pCube17 1
+    400542: pCube18
+    400544: pCube2
+    400546: pCube2 1
+    400548: pCube20
+    400550: pCube3
+    400552: pCube3 1
+    400554: pCube4
+    400556: pCube4 1
+    400558: pCube5
+    400560: pCube5 1
+    400562: pCube6
+    400564: pCube6 1
+    400566: pCube7
+    400568: pCube7 1
+    400570: pCube7 10
+    400572: pCube7 11
+    400574: pCube7 2
+    400576: pCube7 3
+    400578: pCube7 4
+    400580: pCube7 5
+    400582: pCube7 6
+    400584: pCube7 7
+    400586: pCube7 8
+    400588: pCube7 9
+    400590: pCube8
+    400592: pCube8 1
+    400594: pCube8 10
+    400596: pCube8 11
+    400598: pCube8 2
+    400600: pCube8 3
+    400602: pCube8 4
+    400604: pCube8 5
+    400606: pCube8 6
+    400608: pCube8 7
+    400610: pCube8 8
+    400612: pCube8 9
+    400614: pCube9
+    400616: pCube9 1
+    400618: pCube9 10
+    400620: pCube9 11
+    400622: pCube9 2
+    400624: pCube9 3
+    400626: pCube9 4
+    400628: pCube9 5
+    400630: pCube9 6
+    400632: pCube9 7
+    400634: pCube9 8
+    400636: pCube9 9
+    400638: RomanNumerals
+    400640: RoofLeft
+    400642: RoofRight
+    400644: SidePillarLeft
+    400646: SidePillarRight
+    400648: TopOrnament
+    400650: TopWallTriangle
+    400652: TopWallTriangle 1
+    400654: Triangle
+    400656: Triangle1
+    400658: Triangle10
+    400660: Triangle11
+    400662: Triangle12
+    400664: Triangle13
+    400666: Triangle2
+    400668: Triangle3
+    400670: Triangle4
+    400672: Triangle5
+    400674: Triangle6
+    400676: Triangle7
+    400678: Triangle8
+    400680: Triangle9
+    400682: TriangleLeft
+    400684: TriangleRight
+    2100000: lambert1
+    2300000: CryptBackWall
+    2300002: CryptCeiling
+    2300004: CryptFloor
+    2300006: CryptFrontWall
+    2300008: CryptLeftWall
+    2300010: CryptMazeWall1
+    2300012: CryptMazeWall10
+    2300014: CryptMazeWall11
+    2300016: CryptMazeWall12
+    2300018: CryptMazeWall13
+    2300020: CryptMazeWall14
+    2300022: CryptMazeWall15
+    2300024: CryptMazeWall16
+    2300026: CryptMazeWall17
+    2300028: CryptMazeWall2
+    2300030: CryptMazeWall3
+    2300032: CryptMazeWall4
+    2300034: CryptMazeWall5
+    2300036: CryptMazeWall6
+    2300038: CryptMazeWall7
+    2300040: CryptMazeWall8
+    2300042: CryptMazeWall9
+    2300044: CryptPillar1
+    2300046: CryptPillar10
+    2300048: CryptPillar11
+    2300050: CryptPillar12
+    2300052: CryptPillar13
+    2300054: CryptPillar14
+    2300056: CryptPillar15
+    2300058: CryptPillar16
+    2300060: CryptPillar17
+    2300062: CryptPillar18
+    2300064: CryptPillar19
+    2300066: CryptPillar2
+    2300068: CryptPillar20
+    2300070: CryptPillar21
+    2300072: CryptPillar22
+    2300074: CryptPillar23
+    2300076: CryptPillar24
+    2300078: CryptPillar25
+    2300080: CryptPillar26
+    2300082: CryptPillar27
+    2300084: CryptPillar28
+    2300086: CryptPillar29
+    2300088: CryptPillar3
+    2300090: CryptPillar30
+    2300092: CryptPillar31
+    2300094: CryptPillar32
+    2300096: CryptPillar33
+    2300098: CryptPillar34
+    2300100: CryptPillar35
+    2300102: CryptPillar36
+    2300104: CryptPillar4
+    2300106: CryptPillar5
+    2300108: CryptPillar6
+    2300110: CryptPillar7
+    2300112: CryptPillar8
+    2300114: CryptPillar9
+    2300116: CryptRightWall
+    2300118: extrudedSurface1
+    2300120: extrudedSurface2
+    2300122: extrudedSurface3
+    2300124: extrudedSurface4
+    2300126: extrudedSurface6
+    2300128: extrudedSurface7
+    2300130: extrudedSurface8
+    2300132: extrudedSurface9
+    2300134: loftedSurface1
+    2300136: loftedSurface1 1
+    2300138: loftedSurface10
+    2300140: loftedSurface100
+    2300142: loftedSurface11
+    2300144: loftedSurface12
+    2300146: loftedSurface13
+    2300148: loftedSurface14
+    2300150: loftedSurface15
+    2300152: loftedSurface16
+    2300154: loftedSurface17
+    2300156: loftedSurface18
+    2300158: loftedSurface19
+    2300160: loftedSurface2
+    2300162: loftedSurface2 1
+    2300164: loftedSurface20
+    2300166: loftedSurface21
+    2300168: loftedSurface22
+    2300170: loftedSurface23
+    2300172: loftedSurface24
+    2300174: loftedSurface25
+    2300176: loftedSurface26
+    2300178: loftedSurface27
+    2300180: loftedSurface28
+    2300182: loftedSurface29
+    2300184: loftedSurface3
+    2300186: loftedSurface3 1
+    2300188: loftedSurface30
+    2300190: loftedSurface31
+    2300192: loftedSurface32
+    2300194: loftedSurface33
+    2300196: loftedSurface34
+    2300198: loftedSurface35
+    2300200: loftedSurface36
+    2300202: loftedSurface37
+    2300204: loftedSurface38
+    2300206: loftedSurface39
+    2300208: loftedSurface4
+    2300210: loftedSurface4 1
+    2300212: loftedSurface40
+    2300214: loftedSurface41
+    2300216: loftedSurface42
+    2300218: loftedSurface43
+    2300220: loftedSurface44
+    2300222: loftedSurface45
+    2300224: loftedSurface46
+    2300226: loftedSurface47
+    2300228: loftedSurface48
+    2300230: loftedSurface49
+    2300232: loftedSurface5
+    2300234: loftedSurface5 1
+    2300236: loftedSurface50
+    2300238: loftedSurface51
+    2300240: loftedSurface52
+    2300242: loftedSurface53
+    2300244: loftedSurface54
+    2300246: loftedSurface55
+    2300248: loftedSurface56
+    2300250: loftedSurface57
+    2300252: loftedSurface58
+    2300254: loftedSurface59
+    2300256: loftedSurface60
+    2300258: loftedSurface61
+    2300260: loftedSurface62
+    2300262: loftedSurface63
+    2300264: loftedSurface64
+    2300266: loftedSurface65
+    2300268: loftedSurface66
+    2300270: loftedSurface67
+    2300272: loftedSurface68
+    2300274: loftedSurface69
+    2300276: loftedSurface70
+    2300278: loftedSurface71
+    2300280: loftedSurface72
+    2300282: loftedSurface73
+    2300284: loftedSurface74
+    2300286: loftedSurface75
+    2300288: loftedSurface76
+    2300290: loftedSurface77
+    2300292: loftedSurface78
+    2300294: loftedSurface79
+    2300296: loftedSurface8
+    2300298: loftedSurface80
+    2300300: loftedSurface81
+    2300302: loftedSurface82
+    2300304: loftedSurface83
+    2300306: loftedSurface84
+    2300308: loftedSurface85
+    2300310: loftedSurface86
+    2300312: loftedSurface87
+    2300314: loftedSurface88
+    2300316: loftedSurface89
+    2300318: loftedSurface9
+    2300320: loftedSurface90
+    2300322: loftedSurface91
+    2300324: loftedSurface92
+    2300326: loftedSurface93
+    2300328: loftedSurface95
+    2300330: loftedSurface96
+    2300332: loftedSurface97
+    2300334: loftedSurface98
+    2300336: loftedSurface99
+    2300338: pCube10
+    2300340: pCube15
+    2300342: pCube17
+    2300344: pCube17 1
+    2300346: pCube18
+    2300348: pCube2
+    2300350: pCube2 1
+    2300352: pCube20
+    2300354: pCube3
+    2300356: pCube3 1
+    2300358: pCube4
+    2300360: pCube4 1
+    2300362: pCube5
+    2300364: pCube5 1
+    2300366: pCube6
+    2300368: pCube6 1
+    2300370: pCube7
+    2300372: pCube7 1
+    2300374: pCube7 10
+    2300376: pCube7 11
+    2300378: pCube7 2
+    2300380: pCube7 3
+    2300382: pCube7 4
+    2300384: pCube7 5
+    2300386: pCube7 6
+    2300388: pCube7 7
+    2300390: pCube7 8
+    2300392: pCube7 9
+    2300394: pCube8
+    2300396: pCube8 1
+    2300398: pCube8 10
+    2300400: pCube8 11
+    2300402: pCube8 2
+    2300404: pCube8 3
+    2300406: pCube8 4
+    2300408: pCube8 5
+    2300410: pCube8 6
+    2300412: pCube8 7
+    2300414: pCube8 8
+    2300416: pCube8 9
+    2300418: pCube9
+    2300420: pCube9 1
+    2300422: pCube9 10
+    2300424: pCube9 11
+    2300426: pCube9 2
+    2300428: pCube9 3
+    2300430: pCube9 4
+    2300432: pCube9 5
+    2300434: pCube9 6
+    2300436: pCube9 7
+    2300438: pCube9 8
+    2300440: pCube9 9
+    2300442: RomanNumerals
+    2300444: TopWallTriangle 1
+    3300000: CryptBackWall
+    3300002: CryptCeiling
+    3300004: CryptFloor
+    3300006: CryptFrontWall
+    3300008: CryptLeftWall
+    3300010: CryptMazeWall1
+    3300012: CryptMazeWall10
+    3300014: CryptMazeWall11
+    3300016: CryptMazeWall12
+    3300018: CryptMazeWall13
+    3300020: CryptMazeWall14
+    3300022: CryptMazeWall15
+    3300024: CryptMazeWall16
+    3300026: CryptMazeWall17
+    3300028: CryptMazeWall2
+    3300030: CryptMazeWall3
+    3300032: CryptMazeWall4
+    3300034: CryptMazeWall5
+    3300036: CryptMazeWall6
+    3300038: CryptMazeWall7
+    3300040: CryptMazeWall8
+    3300042: CryptMazeWall9
+    3300044: CryptPillar1
+    3300046: CryptPillar10
+    3300048: CryptPillar11
+    3300050: CryptPillar12
+    3300052: CryptPillar13
+    3300054: CryptPillar14
+    3300056: CryptPillar15
+    3300058: CryptPillar16
+    3300060: CryptPillar17
+    3300062: CryptPillar18
+    3300064: CryptPillar19
+    3300066: CryptPillar2
+    3300068: CryptPillar20
+    3300070: CryptPillar21
+    3300072: CryptPillar22
+    3300074: CryptPillar23
+    3300076: CryptPillar24
+    3300078: CryptPillar25
+    3300080: CryptPillar26
+    3300082: CryptPillar27
+    3300084: CryptPillar28
+    3300086: CryptPillar29
+    3300088: CryptPillar3
+    3300090: CryptPillar30
+    3300092: CryptPillar31
+    3300094: CryptPillar32
+    3300096: CryptPillar33
+    3300098: CryptPillar34
+    3300100: CryptPillar35
+    3300102: CryptPillar36
+    3300104: CryptPillar4
+    3300106: CryptPillar5
+    3300108: CryptPillar6
+    3300110: CryptPillar7
+    3300112: CryptPillar8
+    3300114: CryptPillar9
+    3300116: CryptRightWall
+    3300118: extrudedSurface1
+    3300120: extrudedSurface2
+    3300122: extrudedSurface3
+    3300124: extrudedSurface4
+    3300126: extrudedSurface6
+    3300128: extrudedSurface7
+    3300130: extrudedSurface8
+    3300132: extrudedSurface9
+    3300134: loftedSurface1
+    3300136: loftedSurface1 1
+    3300138: loftedSurface10
+    3300140: loftedSurface100
+    3300142: loftedSurface11
+    3300144: loftedSurface12
+    3300146: loftedSurface13
+    3300148: loftedSurface14
+    3300150: loftedSurface15
+    3300152: loftedSurface16
+    3300154: loftedSurface17
+    3300156: loftedSurface18
+    3300158: loftedSurface19
+    3300160: loftedSurface2
+    3300162: loftedSurface2 1
+    3300164: loftedSurface20
+    3300166: loftedSurface21
+    3300168: loftedSurface22
+    3300170: loftedSurface23
+    3300172: loftedSurface24
+    3300174: loftedSurface25
+    3300176: loftedSurface26
+    3300178: loftedSurface27
+    3300180: loftedSurface28
+    3300182: loftedSurface29
+    3300184: loftedSurface3
+    3300186: loftedSurface3 1
+    3300188: loftedSurface30
+    3300190: loftedSurface31
+    3300192: loftedSurface32
+    3300194: loftedSurface33
+    3300196: loftedSurface34
+    3300198: loftedSurface35
+    3300200: loftedSurface36
+    3300202: loftedSurface37
+    3300204: loftedSurface38
+    3300206: loftedSurface39
+    3300208: loftedSurface4
+    3300210: loftedSurface4 1
+    3300212: loftedSurface40
+    3300214: loftedSurface41
+    3300216: loftedSurface42
+    3300218: loftedSurface43
+    3300220: loftedSurface44
+    3300222: loftedSurface45
+    3300224: loftedSurface46
+    3300226: loftedSurface47
+    3300228: loftedSurface48
+    3300230: loftedSurface49
+    3300232: loftedSurface5
+    3300234: loftedSurface5 1
+    3300236: loftedSurface50
+    3300238: loftedSurface51
+    3300240: loftedSurface52
+    3300242: loftedSurface53
+    3300244: loftedSurface54
+    3300246: loftedSurface55
+    3300248: loftedSurface56
+    3300250: loftedSurface57
+    3300252: loftedSurface58
+    3300254: loftedSurface59
+    3300256: loftedSurface60
+    3300258: loftedSurface61
+    3300260: loftedSurface62
+    3300262: loftedSurface63
+    3300264: loftedSurface64
+    3300266: loftedSurface65
+    3300268: loftedSurface66
+    3300270: loftedSurface67
+    3300272: loftedSurface68
+    3300274: loftedSurface69
+    3300276: loftedSurface70
+    3300278: loftedSurface71
+    3300280: loftedSurface72
+    3300282: loftedSurface73
+    3300284: loftedSurface74
+    3300286: loftedSurface75
+    3300288: loftedSurface76
+    3300290: loftedSurface77
+    3300292: loftedSurface78
+    3300294: loftedSurface79
+    3300296: loftedSurface8
+    3300298: loftedSurface80
+    3300300: loftedSurface81
+    3300302: loftedSurface82
+    3300304: loftedSurface83
+    3300306: loftedSurface84
+    3300308: loftedSurface85
+    3300310: loftedSurface86
+    3300312: loftedSurface87
+    3300314: loftedSurface88
+    3300316: loftedSurface89
+    3300318: loftedSurface9
+    3300320: loftedSurface90
+    3300322: loftedSurface91
+    3300324: loftedSurface92
+    3300326: loftedSurface93
+    3300328: loftedSurface95
+    3300330: loftedSurface96
+    3300332: loftedSurface97
+    3300334: loftedSurface98
+    3300336: loftedSurface99
+    3300338: pCube10
+    3300340: pCube15
+    3300342: pCube17
+    3300344: pCube17 1
+    3300346: pCube18
+    3300348: pCube2
+    3300350: pCube2 1
+    3300352: pCube20
+    3300354: pCube3
+    3300356: pCube3 1
+    3300358: pCube4
+    3300360: pCube4 1
+    3300362: pCube5
+    3300364: pCube5 1
+    3300366: pCube6
+    3300368: pCube6 1
+    3300370: pCube7
+    3300372: pCube7 1
+    3300374: pCube7 10
+    3300376: pCube7 11
+    3300378: pCube7 2
+    3300380: pCube7 3
+    3300382: pCube7 4
+    3300384: pCube7 5
+    3300386: pCube7 6
+    3300388: pCube7 7
+    3300390: pCube7 8
+    3300392: pCube7 9
+    3300394: pCube8
+    3300396: pCube8 1
+    3300398: pCube8 10
+    3300400: pCube8 11
+    3300402: pCube8 2
+    3300404: pCube8 3
+    3300406: pCube8 4
+    3300408: pCube8 5
+    3300410: pCube8 6
+    3300412: pCube8 7
+    3300414: pCube8 8
+    3300416: pCube8 9
+    3300418: pCube9
+    3300420: pCube9 1
+    3300422: pCube9 10
+    3300424: pCube9 11
+    3300426: pCube9 2
+    3300428: pCube9 3
+    3300430: pCube9 4
+    3300432: pCube9 5
+    3300434: pCube9 6
+    3300436: pCube9 7
+    3300438: pCube9 8
+    3300440: pCube9 9
+    3300442: RomanNumerals
+    3300444: TopWallTriangle 1
+    4300000: CryptMazeWall1
+    4300002: CryptMazeWall2
+    4300004: CryptMazeWall3
+    4300006: CryptMazeWall4
+    4300008: CryptMazeWall5
+    4300010: CryptMazeWall6
+    4300012: CryptMazeWall7
+    4300014: CryptMazeWall8
+    4300016: CryptMazeWall9
+    4300018: CryptMazeWall10
+    4300020: CryptMazeWall11
+    4300022: CryptMazeWall12
+    4300024: CryptMazeWall13
+    4300026: CryptMazeWall14
+    4300028: CryptMazeWall15
+    4300030: CryptMazeWall16
+    4300032: CryptMazeWall17
+    4300034: CryptFrontWall
+    4300036: CryptBackWall
+    4300038: CryptRightWall
+    4300040: CryptLeftWall
+    4300042: CryptCeiling
+    4300044: CryptFloor
+    4300046: CryptPillar36
+    4300048: CryptPillar35
+    4300050: CryptPillar34
+    4300052: CryptPillar33
+    4300054: CryptPillar32
+    4300056: CryptPillar31
+    4300058: CryptPillar30
+    4300060: CryptPillar29
+    4300062: CryptPillar28
+    4300064: CryptPillar27
+    4300066: CryptPillar26
+    4300068: CryptPillar25
+    4300070: CryptPillar24
+    4300072: CryptPillar23
+    4300074: CryptPillar22
+    4300076: CryptPillar21
+    4300078: CryptPillar20
+    4300080: CryptPillar19
+    4300082: CryptPillar18
+    4300084: CryptPillar17
+    4300086: CryptPillar16
+    4300088: CryptPillar15
+    4300090: CryptPillar14
+    4300092: CryptPillar13
+    4300094: CryptPillar12
+    4300096: CryptPillar11
+    4300098: CryptPillar10
+    4300100: CryptPillar9
+    4300102: CryptPillar8
+    4300104: CryptPillar7
+    4300106: CryptPillar6
+    4300108: CryptPillar5
+    4300110: CryptPillar4
+    4300112: CryptPillar3
+    4300114: CryptPillar2
+    4300116: CryptPillar1
+    4300118: loftedSurface8
+    4300120: loftedSurface9
+    4300122: loftedSurface10
+    4300124: loftedSurface11
+    4300126: loftedSurface12
+    4300128: loftedSurface13
+    4300130: loftedSurface14
+    4300132: loftedSurface15
+    4300134: loftedSurface16
+    4300136: loftedSurface17
+    4300138: loftedSurface18
+    4300140: loftedSurface19
+    4300142: loftedSurface20
+    4300144: loftedSurface21
+    4300146: loftedSurface22
+    4300148: loftedSurface23
+    4300150: loftedSurface24
+    4300152: loftedSurface25
+    4300154: loftedSurface26
+    4300156: loftedSurface27
+    4300158: loftedSurface28
+    4300160: loftedSurface29
+    4300162: loftedSurface30
+    4300164: loftedSurface31
+    4300166: loftedSurface32
+    4300168: loftedSurface33
+    4300170: loftedSurface34
+    4300172: loftedSurface35
+    4300174: loftedSurface36
+    4300176: loftedSurface37
+    4300178: loftedSurface38
+    4300180: loftedSurface39
+    4300182: loftedSurface40
+    4300184: loftedSurface41
+    4300186: loftedSurface42
+    4300188: loftedSurface43
+    4300190: loftedSurface44
+    4300192: loftedSurface45
+    4300194: loftedSurface46
+    4300196: loftedSurface47
+    4300198: loftedSurface48
+    4300200: loftedSurface49
+    4300202: loftedSurface50
+    4300204: loftedSurface51
+    4300206: loftedSurface52
+    4300208: loftedSurface53
+    4300210: loftedSurface54
+    4300212: loftedSurface55
+    4300214: loftedSurface56
+    4300216: loftedSurface57
+    4300218: loftedSurface58
+    4300220: loftedSurface59
+    4300222: loftedSurface60
+    4300224: loftedSurface61
+    4300226: loftedSurface62
+    4300228: loftedSurface63
+    4300230: loftedSurface64
+    4300232: loftedSurface65
+    4300234: loftedSurface66
+    4300236: loftedSurface67
+    4300238: loftedSurface68
+    4300240: loftedSurface69
+    4300242: loftedSurface70
+    4300244: loftedSurface71
+    4300246: loftedSurface72
+    4300248: loftedSurface73
+    4300250: loftedSurface74
+    4300252: loftedSurface75
+    4300254: loftedSurface76
+    4300256: loftedSurface77
+    4300258: loftedSurface78
+    4300260: loftedSurface79
+    4300262: loftedSurface80
+    4300264: loftedSurface81
+    4300266: loftedSurface82
+    4300268: loftedSurface83
+    4300270: loftedSurface84
+    4300272: loftedSurface85
+    4300274: loftedSurface86
+    4300276: loftedSurface87
+    4300278: loftedSurface88
+    4300280: loftedSurface89
+    4300282: loftedSurface90
+    4300284: loftedSurface91
+    4300286: loftedSurface92
+    4300288: loftedSurface93
+    4300290: loftedSurface95
+    4300292: loftedSurface96
+    4300294: loftedSurface97
+    4300296: loftedSurface98
+    4300298: loftedSurface99
+    4300300: loftedSurface100
+    4300302: pCube6
+    4300304: pCube5
+    4300306: pCube4
+    4300308: pCube3
+    4300310: pCube2
+    4300312: extrudedSurface3
+    4300314: pCube6
+    4300316: pCube5
+    4300318: pCube4
+    4300320: pCube3
+    4300322: pCube2
+    4300324: extrudedSurface4
+    4300326: RomanNumerals
+    4300328: TopWallTriangle
+    4300330: extrudedSurface9
+    4300332: extrudedSurface8
+    4300334: extrudedSurface7
+    4300336: extrudedSurface6
+    4300338: pCube18
+    4300340: pCube17
+    4300342: loftedSurface1
+    4300344: loftedSurface2
+    4300346: loftedSurface3
+    4300348: loftedSurface4
+    4300350: loftedSurface5
+    4300352: pCube10
+    4300354: pCube7
+    4300356: pCube8
+    4300358: pCube7
+    4300360: pCube9
+    4300362: pCube8
+    4300364: pCube7
+    4300366: pCube9
+    4300368: pCube8
+    4300370: pCube7
+    4300372: pCube9
+    4300374: pCube8
+    4300376: pCube7
+    4300378: pCube9
+    4300380: pCube8
+    4300382: pCube7
+    4300384: pCube9
+    4300386: pCube8
+    4300388: pCube9
+    4300390: pCube17
+    4300392: loftedSurface1
+    4300394: loftedSurface2
+    4300396: loftedSurface3
+    4300398: loftedSurface4
+    4300400: loftedSurface5
+    4300402: pCube15
+    4300404: pCube7
+    4300406: pCube8
+    4300408: pCube7
+    4300410: pCube9
+    4300412: pCube8
+    4300414: pCube7
+    4300416: pCube9
+    4300418: pCube8
+    4300420: pCube7
+    4300422: pCube9
+    4300424: pCube8
+    4300426: pCube7
+    4300428: pCube9
+    4300430: pCube8
+    4300432: pCube7
+    4300434: pCube9
+    4300436: pCube8
+    4300438: pCube9
+    4300440: extrudedSurface2
+    4300442: extrudedSurface1
+    4300444: pCube20
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

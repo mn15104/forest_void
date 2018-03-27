@@ -379,7 +379,11 @@ public class MonsterAI : MonoBehaviour {
         if(currentAppear == MonsterAppear.STAGE1)
         {
             UpdateStage1();
-        }  
+        }
+        else if (currentAppear == MonsterAppear.STAGE2)
+        {
+            ///////////////
+        }
     }
     bool stage1_playerTorchOn1 = false;
     bool stage1_playerTorchOff = false;
@@ -414,6 +418,50 @@ public class MonsterAI : MonoBehaviour {
             }
         }
     }
+
+    private bool fadingIn = false;
+    private bool fadingOut = false;
+    public float Stage2_TeleportInterval = 5f;
+    public float Stage2_AppearInterval = 2f;
+    public float Stage2_AppearDistance = 12.5f;
+    IEnumerator UpdateStage2()
+    {
+        float e = 0f;
+        while (true)
+        {
+            ////////////////////APPEAR//////////////////////////
+            float inittime = 0f;
+            ParticleSystem.EmissionModule emission
+                = GetComponentInChildren<ParticleSystem>().emission;
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            GetComponentInChildren<MeshRenderer>().enabled = true;
+            TeleportVoidInfrontHuman_NoCollider(Stage2_AppearDistance);
+
+            ////////////////////HIDE//////////////////////////
+            inittime = 0f;
+            while (e < 10f)
+            {
+                inittime += Time.deltaTime / 2f;
+                yield return null;
+                e = Mathf.Lerp(e,
+                                        10f, inittime);
+                emission.rateOverTime = e;
+            }
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+            inittime = 0f;
+            while (e > 0f)
+            {
+                inittime += Time.deltaTime / 4f;
+                yield return null;
+                e = Mathf.Lerp(e,
+                                        0f, inittime);
+                emission.rateOverTime = e;
+            }
+            yield return null;
+        }
+    }
+    
     IEnumerator Stage1Appear()
     {
         TeleportVoidBehindHuman(-10f);
@@ -555,16 +603,50 @@ public class MonsterAI : MonoBehaviour {
         RenderSettings.fogMode = FogMode.ExponentialSquared;
         RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
     }
+
+    float original_y;
     void InitialiseStage2()
     {
-        /********/
+        GetComponent<Rigidbody>().isKinematic = true;
+        original_y = transform.position.y;
+        foreach(Collider collider in GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = false;
+        }
+        StartCoroutine(UpdateStage2());
     }
+
     void InitialiseStage3()
     {
         GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         TeleportVoidBehindHuman(1f);
     }
 
+    public float Stage1_MinAngle = 1f;
+    public float Stage1_MaxAngle = 3f;
+    void TeleportVoidInfrontHuman_NoCollider(float dist = 10)
+    {
+        Vector3 humanPos = player.transform.position;
+        Vector3 humanFacingDir = player.transform.forward;
+        Vector3 humanRightDir = player.transform.right;
+        foreach (Camera cam in player.GetComponentsInChildren<Camera>())
+        {
+            if (cam.isActiveAndEnabled)
+            {
+                humanFacingDir = cam.transform.forward;
+            }
+        }
+
+        float isAppearLeft = (Random.value >= 0.5) ? 1f : -1f;
+        float sidewaysAppearOffset = Random.Range(Stage1_MinAngle, Stage1_MaxAngle);
+
+        Vector3 voidPos = humanPos + dist * humanFacingDir + isAppearLeft * sidewaysAppearOffset * humanRightDir;
+        voidPos.y = original_y;
+        transform.position = voidPos;
+        Quaternion rotat = Quaternion.LookRotation(-player.transform.forward);
+        rotat.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, rotat.eulerAngles.y, transform.rotation.eulerAngles.z);
+        transform.rotation = rotat;
+    }
     void TeleportVoidBehindHuman(float dist = 10)
     {
         float orig_y = transform.position.y;

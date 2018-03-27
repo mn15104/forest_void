@@ -1,0 +1,2296 @@
+fileFormatVersion: 2
+guid: 4cfa046ab0e18854bb3a978bc30ed324
+timeCreated: 1516819612
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BambooSupportLeft
+    100002: BambooSupportLeft 1
+    100004: BambooSupportLeft 2
+    100006: BambooSupportLeft 3
+    100008: BambooSupportLeft 4
+    100010: BambooSupportLeft 5
+    100012: BambooSupportLeft 6
+    100014: BambooSupportLeft 7
+    100016: BambooSupportLeft 8
+    100018: BambooSupportRight
+    100020: BambooSupportRight 1
+    100022: BambooSupportRight 2
+    100024: BambooSupportRight 3
+    100026: BambooSupportRight 4
+    100028: BambooSupportRight 5
+    100030: BambooSupportRight 6
+    100032: BambooSupportRight 7
+    100034: BambooSupportRight 8
+    100036: BaseBenchLeg
+    100038: BaseBenchLeg 1
+    100040: BaseBenchLeg 2
+    100042: BaseBenchLeg 3
+    100044: BaseBenchLeg 4
+    100046: BaseBenchLeg 5
+    100048: BaseBenchLeg 6
+    100050: BaseBenchLeg 7
+    100052: BaseBenchLeg 8
+    100054: Bench
+    100056: Bench 1
+    100058: Bench 2
+    100060: Bench 3
+    100062: Bench 4
+    100064: Bench 5
+    100066: Bench 6
+    100068: Bench 7
+    100070: Bench 8
+    100072: Benches
+    100074: Benches 1
+    100076: Benches 2
+    100078: Benches 3
+    100080: Benches 4
+    100082: Benches 5
+    100084: Benches 6
+    100086: Benches 7
+    100088: Benches 8
+    100090: Benches 9
+    100092: BenchFromCSD2:BambooSupportLeft
+    100094: BenchFromCSD2:BambooSupportRight
+    100096: BenchFromCSD2:BaseBenchLeg
+    100098: BenchFromCSD2:Bench
+    100100: BenchFromCSD2:Benches
+    100102: BenchFromCSD2:BenchLegs
+    100104: BenchFromCSD2:BenchSeat
+    100106: BenchFromCSD2:BenchSeatBack
+    100108: BenchFromCSD2:BenchSeatFront
+    100110: BenchFromCSD2:BenchSeatMiddle
+    100112: BenchFromCSD2:BenchSeatSupport1
+    100114: BenchFromCSD2:BenchSeatSupport2
+    100116: BenchFromCSD2:BenchSeatSupport3
+    100118: BenchFromCSD2:BenchSeatSupport4
+    100120: BenchFromCSD2:BenchSeatSupports
+    100122: BenchFromCSD2:BenchSupportBeamBottom
+    100124: BenchFromCSD2:BenchSupportBeamMiddle
+    100126: BenchFromCSD2:BenchSupportBeams
+    100128: BenchFromCSD2:BenchSupportBeamTop
+    100130: BenchFromCSD2:BenchSupportPillarLeft
+    100132: BenchFromCSD2:BenchSupportPillarRight
+    100134: BenchFromCSD2:BenchSupports
+    100136: BenchFromCSD2:bottomnurbsSquare1
+    100138: BenchFromCSD2:Chapel_Sections
+    100140: BenchFromCSD2:CurveBenchLeg
+    100142: BenchFromCSD2:ExtrudedSurfaceBenchLLeg1
+    100144: BenchFromCSD2:ExtrudedSurfaceBenchLLeg2
+    100146: BenchFromCSD2:ExtrudedSurfaceBenchLLeg3
+    100148: BenchFromCSD2:ExtrudedSurfaceBenchLLeg4
+    100150: BenchFromCSD2:ExtrudedSurfaceBenchRLeg1
+    100152: BenchFromCSD2:ExtrudedSurfaceBenchRLeg2
+    100154: BenchFromCSD2:ExtrudedSurfaceBenchRLeg3
+    100156: BenchFromCSD2:ExtrudedSurfaceBenchRLeg4
+    100158: BenchFromCSD2:GroundArea
+    100160: BenchFromCSD2:leftnurbsSquare1
+    100162: BenchFromCSD2:rightnurbsSquare1
+    100164: BenchFromCSD2:SectionBambooSupportLeft1
+    100166: BenchFromCSD2:SectionBambooSupportLeft2
+    100168: BenchFromCSD2:SectionBambooSupportLeft3
+    100170: BenchFromCSD2:SectionBambooSupportLeft4
+    100172: BenchFromCSD2:SectionBambooSupportLeft5
+    100174: BenchFromCSD2:SectionBambooSupportRight1
+    100176: BenchFromCSD2:SectionBambooSupportRight2
+    100178: BenchFromCSD2:SectionBambooSupportRight3
+    100180: BenchFromCSD2:SectionBambooSupportRight4
+    100182: BenchFromCSD2:SectionBambooSupportRight5
+    100184: BenchFromCSD2:SurfaceBambooSupportLeft
+    100186: BenchFromCSD2:SurfaceBambooSupportRight
+    100188: BenchFromCSD2:SurfaceBenchLeg1
+    100190: BenchFromCSD2:SurfaceBenchLeg2
+    100192: BenchFromCSD2:SurfaceBenchLeg3
+    100194: BenchFromCSD2:SurfaceBenchLeg4
+    100196: BenchFromCSD2:topnurbsSquare1
+    100198: BenchLegs
+    100200: BenchLegs 1
+    100202: BenchLegs 2
+    100204: BenchLegs 3
+    100206: BenchLegs 4
+    100208: BenchLegs 5
+    100210: BenchLegs 6
+    100212: BenchLegs 7
+    100214: BenchLegs 8
+    100216: BenchSeat
+    100218: BenchSeat 1
+    100220: BenchSeat 2
+    100222: BenchSeat 3
+    100224: BenchSeat 4
+    100226: BenchSeat 5
+    100228: BenchSeat 6
+    100230: BenchSeat 7
+    100232: BenchSeat 8
+    100234: BenchSeatBack
+    100236: BenchSeatBack 1
+    100238: BenchSeatBack 2
+    100240: BenchSeatBack 3
+    100242: BenchSeatBack 4
+    100244: BenchSeatBack 5
+    100246: BenchSeatBack 6
+    100248: BenchSeatBack 7
+    100250: BenchSeatBack 8
+    100252: BenchSeatFront
+    100254: BenchSeatFront 1
+    100256: BenchSeatFront 2
+    100258: BenchSeatFront 3
+    100260: BenchSeatFront 4
+    100262: BenchSeatFront 5
+    100264: BenchSeatFront 6
+    100266: BenchSeatFront 7
+    100268: BenchSeatFront 8
+    100270: BenchSeatMiddle
+    100272: BenchSeatMiddle 1
+    100274: BenchSeatMiddle 2
+    100276: BenchSeatMiddle 3
+    100278: BenchSeatMiddle 4
+    100280: BenchSeatMiddle 5
+    100282: BenchSeatMiddle 6
+    100284: BenchSeatMiddle 7
+    100286: BenchSeatMiddle 8
+    100288: BenchSeatSupport1
+    100290: BenchSeatSupport1 1
+    100292: BenchSeatSupport1 2
+    100294: BenchSeatSupport1 3
+    100296: BenchSeatSupport1 4
+    100298: BenchSeatSupport1 5
+    100300: BenchSeatSupport1 6
+    100302: BenchSeatSupport1 7
+    100304: BenchSeatSupport1 8
+    100306: BenchSeatSupport2
+    100308: BenchSeatSupport2 1
+    100310: BenchSeatSupport2 2
+    100312: BenchSeatSupport2 3
+    100314: BenchSeatSupport2 4
+    100316: BenchSeatSupport2 5
+    100318: BenchSeatSupport2 6
+    100320: BenchSeatSupport2 7
+    100322: BenchSeatSupport2 8
+    100324: BenchSeatSupport3
+    100326: BenchSeatSupport3 1
+    100328: BenchSeatSupport3 2
+    100330: BenchSeatSupport3 3
+    100332: BenchSeatSupport3 4
+    100334: BenchSeatSupport3 5
+    100336: BenchSeatSupport3 6
+    100338: BenchSeatSupport3 7
+    100340: BenchSeatSupport3 8
+    100342: BenchSeatSupport4
+    100344: BenchSeatSupport4 1
+    100346: BenchSeatSupport4 2
+    100348: BenchSeatSupport4 3
+    100350: BenchSeatSupport4 4
+    100352: BenchSeatSupport4 5
+    100354: BenchSeatSupport4 6
+    100356: BenchSeatSupport4 7
+    100358: BenchSeatSupport4 8
+    100360: BenchSeatSupports
+    100362: BenchSeatSupports 1
+    100364: BenchSeatSupports 2
+    100366: BenchSeatSupports 3
+    100368: BenchSeatSupports 4
+    100370: BenchSeatSupports 5
+    100372: BenchSeatSupports 6
+    100374: BenchSeatSupports 7
+    100376: BenchSeatSupports 8
+    100378: BenchSupportBeamBottom
+    100380: BenchSupportBeamBottom 1
+    100382: BenchSupportBeamBottom 2
+    100384: BenchSupportBeamBottom 3
+    100386: BenchSupportBeamBottom 4
+    100388: BenchSupportBeamBottom 5
+    100390: BenchSupportBeamBottom 6
+    100392: BenchSupportBeamBottom 7
+    100394: BenchSupportBeamBottom 8
+    100396: BenchSupportBeamMiddle
+    100398: BenchSupportBeamMiddle 1
+    100400: BenchSupportBeamMiddle 2
+    100402: BenchSupportBeamMiddle 3
+    100404: BenchSupportBeamMiddle 4
+    100406: BenchSupportBeamMiddle 5
+    100408: BenchSupportBeamMiddle 6
+    100410: BenchSupportBeamMiddle 7
+    100412: BenchSupportBeamMiddle 8
+    100414: BenchSupportBeams
+    100416: BenchSupportBeams 1
+    100418: BenchSupportBeams 2
+    100420: BenchSupportBeams 3
+    100422: BenchSupportBeams 4
+    100424: BenchSupportBeams 5
+    100426: BenchSupportBeams 6
+    100428: BenchSupportBeams 7
+    100430: BenchSupportBeams 8
+    100432: BenchSupportBeamTop
+    100434: BenchSupportBeamTop 1
+    100436: BenchSupportBeamTop 2
+    100438: BenchSupportBeamTop 3
+    100440: BenchSupportBeamTop 4
+    100442: BenchSupportBeamTop 5
+    100444: BenchSupportBeamTop 6
+    100446: BenchSupportBeamTop 7
+    100448: BenchSupportBeamTop 8
+    100450: BenchSupportPillarLeft
+    100452: BenchSupportPillarLeft 1
+    100454: BenchSupportPillarLeft 2
+    100456: BenchSupportPillarLeft 3
+    100458: BenchSupportPillarLeft 4
+    100460: BenchSupportPillarLeft 5
+    100462: BenchSupportPillarLeft 6
+    100464: BenchSupportPillarLeft 7
+    100466: BenchSupportPillarLeft 8
+    100468: BenchSupportPillarRight
+    100470: BenchSupportPillarRight 1
+    100472: BenchSupportPillarRight 2
+    100474: BenchSupportPillarRight 3
+    100476: BenchSupportPillarRight 4
+    100478: BenchSupportPillarRight 5
+    100480: BenchSupportPillarRight 6
+    100482: BenchSupportPillarRight 7
+    100484: BenchSupportPillarRight 8
+    100486: BenchSupports
+    100488: BenchSupports 1
+    100490: BenchSupports 2
+    100492: BenchSupports 3
+    100494: BenchSupports 4
+    100496: BenchSupports 5
+    100498: BenchSupports 6
+    100500: BenchSupports 7
+    100502: BenchSupports 8
+    100504: bottomnurbsSquare1
+    100506: bottomnurbsSquare1 1
+    100508: bottomnurbsSquare1 2
+    100510: bottomnurbsSquare1 3
+    100512: bottomnurbsSquare1 4
+    100514: bottomnurbsSquare1 5
+    100516: bottomnurbsSquare1 6
+    100518: bottomnurbsSquare1 7
+    100520: bottomnurbsSquare1 8
+    100522: Chapel_Sections
+    100524: Chapel_Sections1
+    100526: Chapel_Sections10
+    100528: Chapel_Sections2
+    100530: Chapel_Sections4
+    100532: Chapel_Sections5
+    100534: Chapel_Sections6
+    100536: Chapel_Sections7
+    100538: Chapel_Sections8
+    100540: ChapelTest
+    100542: CurveBenchLeg
+    100544: CurveBenchLeg 1
+    100546: CurveBenchLeg 2
+    100548: CurveBenchLeg 3
+    100550: CurveBenchLeg 4
+    100552: CurveBenchLeg 5
+    100554: CurveBenchLeg 6
+    100556: CurveBenchLeg 7
+    100558: CurveBenchLeg 8
+    100560: ExtrudedSurfaceBenchLLeg1
+    100562: ExtrudedSurfaceBenchLLeg1 1
+    100564: ExtrudedSurfaceBenchLLeg1 2
+    100566: ExtrudedSurfaceBenchLLeg1 3
+    100568: ExtrudedSurfaceBenchLLeg1 4
+    100570: ExtrudedSurfaceBenchLLeg1 5
+    100572: ExtrudedSurfaceBenchLLeg1 6
+    100574: ExtrudedSurfaceBenchLLeg1 7
+    100576: ExtrudedSurfaceBenchLLeg1 8
+    100578: ExtrudedSurfaceBenchLLeg2
+    100580: ExtrudedSurfaceBenchLLeg2 1
+    100582: ExtrudedSurfaceBenchLLeg2 2
+    100584: ExtrudedSurfaceBenchLLeg2 3
+    100586: ExtrudedSurfaceBenchLLeg2 4
+    100588: ExtrudedSurfaceBenchLLeg2 5
+    100590: ExtrudedSurfaceBenchLLeg2 6
+    100592: ExtrudedSurfaceBenchLLeg2 7
+    100594: ExtrudedSurfaceBenchLLeg2 8
+    100596: ExtrudedSurfaceBenchLLeg3
+    100598: ExtrudedSurfaceBenchLLeg3 1
+    100600: ExtrudedSurfaceBenchLLeg3 2
+    100602: ExtrudedSurfaceBenchLLeg3 3
+    100604: ExtrudedSurfaceBenchLLeg3 4
+    100606: ExtrudedSurfaceBenchLLeg3 5
+    100608: ExtrudedSurfaceBenchLLeg3 6
+    100610: ExtrudedSurfaceBenchLLeg3 7
+    100612: ExtrudedSurfaceBenchLLeg3 8
+    100614: ExtrudedSurfaceBenchLLeg4
+    100616: ExtrudedSurfaceBenchLLeg4 1
+    100618: ExtrudedSurfaceBenchLLeg4 2
+    100620: ExtrudedSurfaceBenchLLeg4 3
+    100622: ExtrudedSurfaceBenchLLeg4 4
+    100624: ExtrudedSurfaceBenchLLeg4 5
+    100626: ExtrudedSurfaceBenchLLeg4 6
+    100628: ExtrudedSurfaceBenchLLeg4 7
+    100630: ExtrudedSurfaceBenchLLeg4 8
+    100632: ExtrudedSurfaceBenchRLeg1
+    100634: ExtrudedSurfaceBenchRLeg1 1
+    100636: ExtrudedSurfaceBenchRLeg1 2
+    100638: ExtrudedSurfaceBenchRLeg1 3
+    100640: ExtrudedSurfaceBenchRLeg1 4
+    100642: ExtrudedSurfaceBenchRLeg1 5
+    100644: ExtrudedSurfaceBenchRLeg1 6
+    100646: ExtrudedSurfaceBenchRLeg1 7
+    100648: ExtrudedSurfaceBenchRLeg1 8
+    100650: ExtrudedSurfaceBenchRLeg2
+    100652: ExtrudedSurfaceBenchRLeg2 1
+    100654: ExtrudedSurfaceBenchRLeg2 2
+    100656: ExtrudedSurfaceBenchRLeg2 3
+    100658: ExtrudedSurfaceBenchRLeg2 4
+    100660: ExtrudedSurfaceBenchRLeg2 5
+    100662: ExtrudedSurfaceBenchRLeg2 6
+    100664: ExtrudedSurfaceBenchRLeg2 7
+    100666: ExtrudedSurfaceBenchRLeg2 8
+    100668: ExtrudedSurfaceBenchRLeg3
+    100670: ExtrudedSurfaceBenchRLeg3 1
+    100672: ExtrudedSurfaceBenchRLeg3 2
+    100674: ExtrudedSurfaceBenchRLeg3 3
+    100676: ExtrudedSurfaceBenchRLeg3 4
+    100678: ExtrudedSurfaceBenchRLeg3 5
+    100680: ExtrudedSurfaceBenchRLeg3 6
+    100682: ExtrudedSurfaceBenchRLeg3 7
+    100684: ExtrudedSurfaceBenchRLeg3 8
+    100686: ExtrudedSurfaceBenchRLeg4
+    100688: ExtrudedSurfaceBenchRLeg4 1
+    100690: ExtrudedSurfaceBenchRLeg4 2
+    100692: ExtrudedSurfaceBenchRLeg4 3
+    100694: ExtrudedSurfaceBenchRLeg4 4
+    100696: ExtrudedSurfaceBenchRLeg4 5
+    100698: ExtrudedSurfaceBenchRLeg4 6
+    100700: ExtrudedSurfaceBenchRLeg4 7
+    100702: ExtrudedSurfaceBenchRLeg4 8
+    100704: GroundArea
+    100706: GroundArea 1
+    100708: GroundArea 2
+    100710: GroundArea 3
+    100712: GroundArea 4
+    100714: GroundArea 5
+    100716: GroundArea 6
+    100718: GroundArea 7
+    100720: GroundArea 8
+    100722: group1
+    100724: group2
+    100726: leftnurbsSquare1
+    100728: leftnurbsSquare1 1
+    100730: leftnurbsSquare1 2
+    100732: leftnurbsSquare1 3
+    100734: leftnurbsSquare1 4
+    100736: leftnurbsSquare1 5
+    100738: leftnurbsSquare1 6
+    100740: leftnurbsSquare1 7
+    100742: leftnurbsSquare1 8
+    100744: //RootNode
+    100746: pCube10
+    100748: pCube11
+    100750: pCube12
+    100752: pCube16
+    100754: pCube17
+    100756: pCube18
+    100758: pCube19
+    100760: pCube20
+    100762: pCube21
+    100764: pCube22
+    100766: pCube23
+    100768: pCube24
+    100770: pCube25
+    100772: pCube26
+    100774: pCube27
+    100776: pCube28
+    100778: pCube3
+    100780: pCube32
+    100782: pCube32 1
+    100784: pCube33
+    100786: pCube33 1
+    100788: pCube34
+    100790: pCube34 1
+    100792: pCube35
+    100794: pCube36
+    100796: pCube37
+    100798: pCube38
+    100800: pCube39
+    100802: pCube4
+    100804: pCube40
+    100806: pCube41
+    100808: pCube42
+    100810: pCube43
+    100812: pCube44
+    100814: pCube55
+    100816: pCube56
+    100818: pCube57
+    100820: pCube58
+    100822: pCube59
+    100824: pCube6
+    100826: pCube60
+    100828: pCube61
+    100830: pCube62
+    100832: pCube63
+    100834: pCube64
+    100836: pCube65
+    100838: pCube66
+    100840: pCube67
+    100842: pCube68
+    100844: pCube69
+    100846: pCube7
+    100848: pCube70
+    100850: pCube71
+    100852: pCube72
+    100854: pCube73
+    100856: pCube74
+    100858: pCube75
+    100860: pCube76
+    100862: pCube77
+    100864: pCube78
+    100866: pCube79
+    100868: pCube80
+    100870: pCube81
+    100872: pCube82
+    100874: pCube9
+    100876: pPlane1
+    100878: pPrism1
+    100880: pPrism2
+    100882: pPrism3
+    100884: pPyramid1
+    100886: rightnurbsSquare1
+    100888: rightnurbsSquare1 1
+    100890: rightnurbsSquare1 2
+    100892: rightnurbsSquare1 3
+    100894: rightnurbsSquare1 4
+    100896: rightnurbsSquare1 5
+    100898: rightnurbsSquare1 6
+    100900: rightnurbsSquare1 7
+    100902: rightnurbsSquare1 8
+    100904: SectionBambooSupportLeft1
+    100906: SectionBambooSupportLeft1 1
+    100908: SectionBambooSupportLeft1 2
+    100910: SectionBambooSupportLeft1 3
+    100912: SectionBambooSupportLeft1 4
+    100914: SectionBambooSupportLeft1 5
+    100916: SectionBambooSupportLeft1 6
+    100918: SectionBambooSupportLeft1 7
+    100920: SectionBambooSupportLeft1 8
+    100922: SectionBambooSupportLeft2
+    100924: SectionBambooSupportLeft2 1
+    100926: SectionBambooSupportLeft2 2
+    100928: SectionBambooSupportLeft2 3
+    100930: SectionBambooSupportLeft2 4
+    100932: SectionBambooSupportLeft2 5
+    100934: SectionBambooSupportLeft2 6
+    100936: SectionBambooSupportLeft2 7
+    100938: SectionBambooSupportLeft2 8
+    100940: SectionBambooSupportLeft3
+    100942: SectionBambooSupportLeft3 1
+    100944: SectionBambooSupportLeft3 2
+    100946: SectionBambooSupportLeft3 3
+    100948: SectionBambooSupportLeft3 4
+    100950: SectionBambooSupportLeft3 5
+    100952: SectionBambooSupportLeft3 6
+    100954: SectionBambooSupportLeft3 7
+    100956: SectionBambooSupportLeft3 8
+    100958: SectionBambooSupportLeft4
+    100960: SectionBambooSupportLeft4 1
+    100962: SectionBambooSupportLeft4 2
+    100964: SectionBambooSupportLeft4 3
+    100966: SectionBambooSupportLeft4 4
+    100968: SectionBambooSupportLeft4 5
+    100970: SectionBambooSupportLeft4 6
+    100972: SectionBambooSupportLeft4 7
+    100974: SectionBambooSupportLeft4 8
+    100976: SectionBambooSupportLeft5
+    100978: SectionBambooSupportLeft5 1
+    100980: SectionBambooSupportLeft5 2
+    100982: SectionBambooSupportLeft5 3
+    100984: SectionBambooSupportLeft5 4
+    100986: SectionBambooSupportLeft5 5
+    100988: SectionBambooSupportLeft5 6
+    100990: SectionBambooSupportLeft5 7
+    100992: SectionBambooSupportLeft5 8
+    100994: SectionBambooSupportRight1
+    100996: SectionBambooSupportRight1 1
+    100998: SectionBambooSupportRight1 2
+    101000: SectionBambooSupportRight1 3
+    101002: SectionBambooSupportRight1 4
+    101004: SectionBambooSupportRight1 5
+    101006: SectionBambooSupportRight1 6
+    101008: SectionBambooSupportRight1 7
+    101010: SectionBambooSupportRight1 8
+    101012: SectionBambooSupportRight2
+    101014: SectionBambooSupportRight2 1
+    101016: SectionBambooSupportRight2 2
+    101018: SectionBambooSupportRight2 3
+    101020: SectionBambooSupportRight2 4
+    101022: SectionBambooSupportRight2 5
+    101024: SectionBambooSupportRight2 6
+    101026: SectionBambooSupportRight2 7
+    101028: SectionBambooSupportRight2 8
+    101030: SectionBambooSupportRight3
+    101032: SectionBambooSupportRight3 1
+    101034: SectionBambooSupportRight3 2
+    101036: SectionBambooSupportRight3 3
+    101038: SectionBambooSupportRight3 4
+    101040: SectionBambooSupportRight3 5
+    101042: SectionBambooSupportRight3 6
+    101044: SectionBambooSupportRight3 7
+    101046: SectionBambooSupportRight3 8
+    101048: SectionBambooSupportRight4
+    101050: SectionBambooSupportRight4 1
+    101052: SectionBambooSupportRight4 2
+    101054: SectionBambooSupportRight4 3
+    101056: SectionBambooSupportRight4 4
+    101058: SectionBambooSupportRight4 5
+    101060: SectionBambooSupportRight4 6
+    101062: SectionBambooSupportRight4 7
+    101064: SectionBambooSupportRight4 8
+    101066: SectionBambooSupportRight5
+    101068: SectionBambooSupportRight5 1
+    101070: SectionBambooSupportRight5 2
+    101072: SectionBambooSupportRight5 3
+    101074: SectionBambooSupportRight5 4
+    101076: SectionBambooSupportRight5 5
+    101078: SectionBambooSupportRight5 6
+    101080: SectionBambooSupportRight5 7
+    101082: SectionBambooSupportRight5 8
+    101084: SurfaceBambooSupportLeft
+    101086: SurfaceBambooSupportLeft 1
+    101088: SurfaceBambooSupportLeft 2
+    101090: SurfaceBambooSupportLeft 3
+    101092: SurfaceBambooSupportLeft 4
+    101094: SurfaceBambooSupportLeft 5
+    101096: SurfaceBambooSupportLeft 6
+    101098: SurfaceBambooSupportLeft 7
+    101100: SurfaceBambooSupportLeft 8
+    101102: SurfaceBambooSupportRight
+    101104: SurfaceBambooSupportRight 1
+    101106: SurfaceBambooSupportRight 2
+    101108: SurfaceBambooSupportRight 3
+    101110: SurfaceBambooSupportRight 4
+    101112: SurfaceBambooSupportRight 5
+    101114: SurfaceBambooSupportRight 6
+    101116: SurfaceBambooSupportRight 7
+    101118: SurfaceBambooSupportRight 8
+    101120: SurfaceBenchLeg1
+    101122: SurfaceBenchLeg1 1
+    101124: SurfaceBenchLeg1 2
+    101126: SurfaceBenchLeg1 3
+    101128: SurfaceBenchLeg1 4
+    101130: SurfaceBenchLeg1 5
+    101132: SurfaceBenchLeg1 6
+    101134: SurfaceBenchLeg1 7
+    101136: SurfaceBenchLeg1 8
+    101138: SurfaceBenchLeg2
+    101140: SurfaceBenchLeg2 1
+    101142: SurfaceBenchLeg2 2
+    101144: SurfaceBenchLeg2 3
+    101146: SurfaceBenchLeg2 4
+    101148: SurfaceBenchLeg2 5
+    101150: SurfaceBenchLeg2 6
+    101152: SurfaceBenchLeg2 7
+    101154: SurfaceBenchLeg2 8
+    101156: SurfaceBenchLeg3
+    101158: SurfaceBenchLeg3 1
+    101160: SurfaceBenchLeg3 2
+    101162: SurfaceBenchLeg3 3
+    101164: SurfaceBenchLeg3 4
+    101166: SurfaceBenchLeg3 5
+    101168: SurfaceBenchLeg3 6
+    101170: SurfaceBenchLeg3 7
+    101172: SurfaceBenchLeg3 8
+    101174: SurfaceBenchLeg4
+    101176: SurfaceBenchLeg4 1
+    101178: SurfaceBenchLeg4 2
+    101180: SurfaceBenchLeg4 3
+    101182: SurfaceBenchLeg4 4
+    101184: SurfaceBenchLeg4 5
+    101186: SurfaceBenchLeg4 6
+    101188: SurfaceBenchLeg4 7
+    101190: SurfaceBenchLeg4 8
+    101192: topnurbsSquare1
+    101194: topnurbsSquare1 1
+    101196: topnurbsSquare1 2
+    101198: topnurbsSquare1 3
+    101200: topnurbsSquare1 4
+    101202: topnurbsSquare1 5
+    101204: topnurbsSquare1 6
+    101206: topnurbsSquare1 7
+    101208: topnurbsSquare1 8
+    400000: BambooSupportLeft
+    400002: BambooSupportLeft 1
+    400004: BambooSupportLeft 2
+    400006: BambooSupportLeft 3
+    400008: BambooSupportLeft 4
+    400010: BambooSupportLeft 5
+    400012: BambooSupportLeft 6
+    400014: BambooSupportLeft 7
+    400016: BambooSupportLeft 8
+    400018: BambooSupportRight
+    400020: BambooSupportRight 1
+    400022: BambooSupportRight 2
+    400024: BambooSupportRight 3
+    400026: BambooSupportRight 4
+    400028: BambooSupportRight 5
+    400030: BambooSupportRight 6
+    400032: BambooSupportRight 7
+    400034: BambooSupportRight 8
+    400036: BaseBenchLeg
+    400038: BaseBenchLeg 1
+    400040: BaseBenchLeg 2
+    400042: BaseBenchLeg 3
+    400044: BaseBenchLeg 4
+    400046: BaseBenchLeg 5
+    400048: BaseBenchLeg 6
+    400050: BaseBenchLeg 7
+    400052: BaseBenchLeg 8
+    400054: Bench
+    400056: Bench 1
+    400058: Bench 2
+    400060: Bench 3
+    400062: Bench 4
+    400064: Bench 5
+    400066: Bench 6
+    400068: Bench 7
+    400070: Bench 8
+    400072: Benches
+    400074: Benches 1
+    400076: Benches 2
+    400078: Benches 3
+    400080: Benches 4
+    400082: Benches 5
+    400084: Benches 6
+    400086: Benches 7
+    400088: Benches 8
+    400090: Benches 9
+    400092: BenchFromCSD2:BambooSupportLeft
+    400094: BenchFromCSD2:BambooSupportRight
+    400096: BenchFromCSD2:BaseBenchLeg
+    400098: BenchFromCSD2:Bench
+    400100: BenchFromCSD2:Benches
+    400102: BenchFromCSD2:BenchLegs
+    400104: BenchFromCSD2:BenchSeat
+    400106: BenchFromCSD2:BenchSeatBack
+    400108: BenchFromCSD2:BenchSeatFront
+    400110: BenchFromCSD2:BenchSeatMiddle
+    400112: BenchFromCSD2:BenchSeatSupport1
+    400114: BenchFromCSD2:BenchSeatSupport2
+    400116: BenchFromCSD2:BenchSeatSupport3
+    400118: BenchFromCSD2:BenchSeatSupport4
+    400120: BenchFromCSD2:BenchSeatSupports
+    400122: BenchFromCSD2:BenchSupportBeamBottom
+    400124: BenchFromCSD2:BenchSupportBeamMiddle
+    400126: BenchFromCSD2:BenchSupportBeams
+    400128: BenchFromCSD2:BenchSupportBeamTop
+    400130: BenchFromCSD2:BenchSupportPillarLeft
+    400132: BenchFromCSD2:BenchSupportPillarRight
+    400134: BenchFromCSD2:BenchSupports
+    400136: BenchFromCSD2:bottomnurbsSquare1
+    400138: BenchFromCSD2:Chapel_Sections
+    400140: BenchFromCSD2:CurveBenchLeg
+    400142: BenchFromCSD2:ExtrudedSurfaceBenchLLeg1
+    400144: BenchFromCSD2:ExtrudedSurfaceBenchLLeg2
+    400146: BenchFromCSD2:ExtrudedSurfaceBenchLLeg3
+    400148: BenchFromCSD2:ExtrudedSurfaceBenchLLeg4
+    400150: BenchFromCSD2:ExtrudedSurfaceBenchRLeg1
+    400152: BenchFromCSD2:ExtrudedSurfaceBenchRLeg2
+    400154: BenchFromCSD2:ExtrudedSurfaceBenchRLeg3
+    400156: BenchFromCSD2:ExtrudedSurfaceBenchRLeg4
+    400158: BenchFromCSD2:GroundArea
+    400160: BenchFromCSD2:leftnurbsSquare1
+    400162: BenchFromCSD2:rightnurbsSquare1
+    400164: BenchFromCSD2:SectionBambooSupportLeft1
+    400166: BenchFromCSD2:SectionBambooSupportLeft2
+    400168: BenchFromCSD2:SectionBambooSupportLeft3
+    400170: BenchFromCSD2:SectionBambooSupportLeft4
+    400172: BenchFromCSD2:SectionBambooSupportLeft5
+    400174: BenchFromCSD2:SectionBambooSupportRight1
+    400176: BenchFromCSD2:SectionBambooSupportRight2
+    400178: BenchFromCSD2:SectionBambooSupportRight3
+    400180: BenchFromCSD2:SectionBambooSupportRight4
+    400182: BenchFromCSD2:SectionBambooSupportRight5
+    400184: BenchFromCSD2:SurfaceBambooSupportLeft
+    400186: BenchFromCSD2:SurfaceBambooSupportRight
+    400188: BenchFromCSD2:SurfaceBenchLeg1
+    400190: BenchFromCSD2:SurfaceBenchLeg2
+    400192: BenchFromCSD2:SurfaceBenchLeg3
+    400194: BenchFromCSD2:SurfaceBenchLeg4
+    400196: BenchFromCSD2:topnurbsSquare1
+    400198: BenchLegs
+    400200: BenchLegs 1
+    400202: BenchLegs 2
+    400204: BenchLegs 3
+    400206: BenchLegs 4
+    400208: BenchLegs 5
+    400210: BenchLegs 6
+    400212: BenchLegs 7
+    400214: BenchLegs 8
+    400216: BenchSeat
+    400218: BenchSeat 1
+    400220: BenchSeat 2
+    400222: BenchSeat 3
+    400224: BenchSeat 4
+    400226: BenchSeat 5
+    400228: BenchSeat 6
+    400230: BenchSeat 7
+    400232: BenchSeat 8
+    400234: BenchSeatBack
+    400236: BenchSeatBack 1
+    400238: BenchSeatBack 2
+    400240: BenchSeatBack 3
+    400242: BenchSeatBack 4
+    400244: BenchSeatBack 5
+    400246: BenchSeatBack 6
+    400248: BenchSeatBack 7
+    400250: BenchSeatBack 8
+    400252: BenchSeatFront
+    400254: BenchSeatFront 1
+    400256: BenchSeatFront 2
+    400258: BenchSeatFront 3
+    400260: BenchSeatFront 4
+    400262: BenchSeatFront 5
+    400264: BenchSeatFront 6
+    400266: BenchSeatFront 7
+    400268: BenchSeatFront 8
+    400270: BenchSeatMiddle
+    400272: BenchSeatMiddle 1
+    400274: BenchSeatMiddle 2
+    400276: BenchSeatMiddle 3
+    400278: BenchSeatMiddle 4
+    400280: BenchSeatMiddle 5
+    400282: BenchSeatMiddle 6
+    400284: BenchSeatMiddle 7
+    400286: BenchSeatMiddle 8
+    400288: BenchSeatSupport1
+    400290: BenchSeatSupport1 1
+    400292: BenchSeatSupport1 2
+    400294: BenchSeatSupport1 3
+    400296: BenchSeatSupport1 4
+    400298: BenchSeatSupport1 5
+    400300: BenchSeatSupport1 6
+    400302: BenchSeatSupport1 7
+    400304: BenchSeatSupport1 8
+    400306: BenchSeatSupport2
+    400308: BenchSeatSupport2 1
+    400310: BenchSeatSupport2 2
+    400312: BenchSeatSupport2 3
+    400314: BenchSeatSupport2 4
+    400316: BenchSeatSupport2 5
+    400318: BenchSeatSupport2 6
+    400320: BenchSeatSupport2 7
+    400322: BenchSeatSupport2 8
+    400324: BenchSeatSupport3
+    400326: BenchSeatSupport3 1
+    400328: BenchSeatSupport3 2
+    400330: BenchSeatSupport3 3
+    400332: BenchSeatSupport3 4
+    400334: BenchSeatSupport3 5
+    400336: BenchSeatSupport3 6
+    400338: BenchSeatSupport3 7
+    400340: BenchSeatSupport3 8
+    400342: BenchSeatSupport4
+    400344: BenchSeatSupport4 1
+    400346: BenchSeatSupport4 2
+    400348: BenchSeatSupport4 3
+    400350: BenchSeatSupport4 4
+    400352: BenchSeatSupport4 5
+    400354: BenchSeatSupport4 6
+    400356: BenchSeatSupport4 7
+    400358: BenchSeatSupport4 8
+    400360: BenchSeatSupports
+    400362: BenchSeatSupports 1
+    400364: BenchSeatSupports 2
+    400366: BenchSeatSupports 3
+    400368: BenchSeatSupports 4
+    400370: BenchSeatSupports 5
+    400372: BenchSeatSupports 6
+    400374: BenchSeatSupports 7
+    400376: BenchSeatSupports 8
+    400378: BenchSupportBeamBottom
+    400380: BenchSupportBeamBottom 1
+    400382: BenchSupportBeamBottom 2
+    400384: BenchSupportBeamBottom 3
+    400386: BenchSupportBeamBottom 4
+    400388: BenchSupportBeamBottom 5
+    400390: BenchSupportBeamBottom 6
+    400392: BenchSupportBeamBottom 7
+    400394: BenchSupportBeamBottom 8
+    400396: BenchSupportBeamMiddle
+    400398: BenchSupportBeamMiddle 1
+    400400: BenchSupportBeamMiddle 2
+    400402: BenchSupportBeamMiddle 3
+    400404: BenchSupportBeamMiddle 4
+    400406: BenchSupportBeamMiddle 5
+    400408: BenchSupportBeamMiddle 6
+    400410: BenchSupportBeamMiddle 7
+    400412: BenchSupportBeamMiddle 8
+    400414: BenchSupportBeams
+    400416: BenchSupportBeams 1
+    400418: BenchSupportBeams 2
+    400420: BenchSupportBeams 3
+    400422: BenchSupportBeams 4
+    400424: BenchSupportBeams 5
+    400426: BenchSupportBeams 6
+    400428: BenchSupportBeams 7
+    400430: BenchSupportBeams 8
+    400432: BenchSupportBeamTop
+    400434: BenchSupportBeamTop 1
+    400436: BenchSupportBeamTop 2
+    400438: BenchSupportBeamTop 3
+    400440: BenchSupportBeamTop 4
+    400442: BenchSupportBeamTop 5
+    400444: BenchSupportBeamTop 6
+    400446: BenchSupportBeamTop 7
+    400448: BenchSupportBeamTop 8
+    400450: BenchSupportPillarLeft
+    400452: BenchSupportPillarLeft 1
+    400454: BenchSupportPillarLeft 2
+    400456: BenchSupportPillarLeft 3
+    400458: BenchSupportPillarLeft 4
+    400460: BenchSupportPillarLeft 5
+    400462: BenchSupportPillarLeft 6
+    400464: BenchSupportPillarLeft 7
+    400466: BenchSupportPillarLeft 8
+    400468: BenchSupportPillarRight
+    400470: BenchSupportPillarRight 1
+    400472: BenchSupportPillarRight 2
+    400474: BenchSupportPillarRight 3
+    400476: BenchSupportPillarRight 4
+    400478: BenchSupportPillarRight 5
+    400480: BenchSupportPillarRight 6
+    400482: BenchSupportPillarRight 7
+    400484: BenchSupportPillarRight 8
+    400486: BenchSupports
+    400488: BenchSupports 1
+    400490: BenchSupports 2
+    400492: BenchSupports 3
+    400494: BenchSupports 4
+    400496: BenchSupports 5
+    400498: BenchSupports 6
+    400500: BenchSupports 7
+    400502: BenchSupports 8
+    400504: bottomnurbsSquare1
+    400506: bottomnurbsSquare1 1
+    400508: bottomnurbsSquare1 2
+    400510: bottomnurbsSquare1 3
+    400512: bottomnurbsSquare1 4
+    400514: bottomnurbsSquare1 5
+    400516: bottomnurbsSquare1 6
+    400518: bottomnurbsSquare1 7
+    400520: bottomnurbsSquare1 8
+    400522: Chapel_Sections
+    400524: Chapel_Sections1
+    400526: Chapel_Sections10
+    400528: Chapel_Sections2
+    400530: Chapel_Sections4
+    400532: Chapel_Sections5
+    400534: Chapel_Sections6
+    400536: Chapel_Sections7
+    400538: Chapel_Sections8
+    400540: ChapelTest
+    400542: CurveBenchLeg
+    400544: CurveBenchLeg 1
+    400546: CurveBenchLeg 2
+    400548: CurveBenchLeg 3
+    400550: CurveBenchLeg 4
+    400552: CurveBenchLeg 5
+    400554: CurveBenchLeg 6
+    400556: CurveBenchLeg 7
+    400558: CurveBenchLeg 8
+    400560: ExtrudedSurfaceBenchLLeg1
+    400562: ExtrudedSurfaceBenchLLeg1 1
+    400564: ExtrudedSurfaceBenchLLeg1 2
+    400566: ExtrudedSurfaceBenchLLeg1 3
+    400568: ExtrudedSurfaceBenchLLeg1 4
+    400570: ExtrudedSurfaceBenchLLeg1 5
+    400572: ExtrudedSurfaceBenchLLeg1 6
+    400574: ExtrudedSurfaceBenchLLeg1 7
+    400576: ExtrudedSurfaceBenchLLeg1 8
+    400578: ExtrudedSurfaceBenchLLeg2
+    400580: ExtrudedSurfaceBenchLLeg2 1
+    400582: ExtrudedSurfaceBenchLLeg2 2
+    400584: ExtrudedSurfaceBenchLLeg2 3
+    400586: ExtrudedSurfaceBenchLLeg2 4
+    400588: ExtrudedSurfaceBenchLLeg2 5
+    400590: ExtrudedSurfaceBenchLLeg2 6
+    400592: ExtrudedSurfaceBenchLLeg2 7
+    400594: ExtrudedSurfaceBenchLLeg2 8
+    400596: ExtrudedSurfaceBenchLLeg3
+    400598: ExtrudedSurfaceBenchLLeg3 1
+    400600: ExtrudedSurfaceBenchLLeg3 2
+    400602: ExtrudedSurfaceBenchLLeg3 3
+    400604: ExtrudedSurfaceBenchLLeg3 4
+    400606: ExtrudedSurfaceBenchLLeg3 5
+    400608: ExtrudedSurfaceBenchLLeg3 6
+    400610: ExtrudedSurfaceBenchLLeg3 7
+    400612: ExtrudedSurfaceBenchLLeg3 8
+    400614: ExtrudedSurfaceBenchLLeg4
+    400616: ExtrudedSurfaceBenchLLeg4 1
+    400618: ExtrudedSurfaceBenchLLeg4 2
+    400620: ExtrudedSurfaceBenchLLeg4 3
+    400622: ExtrudedSurfaceBenchLLeg4 4
+    400624: ExtrudedSurfaceBenchLLeg4 5
+    400626: ExtrudedSurfaceBenchLLeg4 6
+    400628: ExtrudedSurfaceBenchLLeg4 7
+    400630: ExtrudedSurfaceBenchLLeg4 8
+    400632: ExtrudedSurfaceBenchRLeg1
+    400634: ExtrudedSurfaceBenchRLeg1 1
+    400636: ExtrudedSurfaceBenchRLeg1 2
+    400638: ExtrudedSurfaceBenchRLeg1 3
+    400640: ExtrudedSurfaceBenchRLeg1 4
+    400642: ExtrudedSurfaceBenchRLeg1 5
+    400644: ExtrudedSurfaceBenchRLeg1 6
+    400646: ExtrudedSurfaceBenchRLeg1 7
+    400648: ExtrudedSurfaceBenchRLeg1 8
+    400650: ExtrudedSurfaceBenchRLeg2
+    400652: ExtrudedSurfaceBenchRLeg2 1
+    400654: ExtrudedSurfaceBenchRLeg2 2
+    400656: ExtrudedSurfaceBenchRLeg2 3
+    400658: ExtrudedSurfaceBenchRLeg2 4
+    400660: ExtrudedSurfaceBenchRLeg2 5
+    400662: ExtrudedSurfaceBenchRLeg2 6
+    400664: ExtrudedSurfaceBenchRLeg2 7
+    400666: ExtrudedSurfaceBenchRLeg2 8
+    400668: ExtrudedSurfaceBenchRLeg3
+    400670: ExtrudedSurfaceBenchRLeg3 1
+    400672: ExtrudedSurfaceBenchRLeg3 2
+    400674: ExtrudedSurfaceBenchRLeg3 3
+    400676: ExtrudedSurfaceBenchRLeg3 4
+    400678: ExtrudedSurfaceBenchRLeg3 5
+    400680: ExtrudedSurfaceBenchRLeg3 6
+    400682: ExtrudedSurfaceBenchRLeg3 7
+    400684: ExtrudedSurfaceBenchRLeg3 8
+    400686: ExtrudedSurfaceBenchRLeg4
+    400688: ExtrudedSurfaceBenchRLeg4 1
+    400690: ExtrudedSurfaceBenchRLeg4 2
+    400692: ExtrudedSurfaceBenchRLeg4 3
+    400694: ExtrudedSurfaceBenchRLeg4 4
+    400696: ExtrudedSurfaceBenchRLeg4 5
+    400698: ExtrudedSurfaceBenchRLeg4 6
+    400700: ExtrudedSurfaceBenchRLeg4 7
+    400702: ExtrudedSurfaceBenchRLeg4 8
+    400704: GroundArea
+    400706: GroundArea 1
+    400708: GroundArea 2
+    400710: GroundArea 3
+    400712: GroundArea 4
+    400714: GroundArea 5
+    400716: GroundArea 6
+    400718: GroundArea 7
+    400720: GroundArea 8
+    400722: group1
+    400724: group2
+    400726: leftnurbsSquare1
+    400728: leftnurbsSquare1 1
+    400730: leftnurbsSquare1 2
+    400732: leftnurbsSquare1 3
+    400734: leftnurbsSquare1 4
+    400736: leftnurbsSquare1 5
+    400738: leftnurbsSquare1 6
+    400740: leftnurbsSquare1 7
+    400742: leftnurbsSquare1 8
+    400744: //RootNode
+    400746: pCube10
+    400748: pCube11
+    400750: pCube12
+    400752: pCube16
+    400754: pCube17
+    400756: pCube18
+    400758: pCube19
+    400760: pCube20
+    400762: pCube21
+    400764: pCube22
+    400766: pCube23
+    400768: pCube24
+    400770: pCube25
+    400772: pCube26
+    400774: pCube27
+    400776: pCube28
+    400778: pCube3
+    400780: pCube32
+    400782: pCube32 1
+    400784: pCube33
+    400786: pCube33 1
+    400788: pCube34
+    400790: pCube34 1
+    400792: pCube35
+    400794: pCube36
+    400796: pCube37
+    400798: pCube38
+    400800: pCube39
+    400802: pCube4
+    400804: pCube40
+    400806: pCube41
+    400808: pCube42
+    400810: pCube43
+    400812: pCube44
+    400814: pCube55
+    400816: pCube56
+    400818: pCube57
+    400820: pCube58
+    400822: pCube59
+    400824: pCube6
+    400826: pCube60
+    400828: pCube61
+    400830: pCube62
+    400832: pCube63
+    400834: pCube64
+    400836: pCube65
+    400838: pCube66
+    400840: pCube67
+    400842: pCube68
+    400844: pCube69
+    400846: pCube7
+    400848: pCube70
+    400850: pCube71
+    400852: pCube72
+    400854: pCube73
+    400856: pCube74
+    400858: pCube75
+    400860: pCube76
+    400862: pCube77
+    400864: pCube78
+    400866: pCube79
+    400868: pCube80
+    400870: pCube81
+    400872: pCube82
+    400874: pCube9
+    400876: pPlane1
+    400878: pPrism1
+    400880: pPrism2
+    400882: pPrism3
+    400884: pPyramid1
+    400886: rightnurbsSquare1
+    400888: rightnurbsSquare1 1
+    400890: rightnurbsSquare1 2
+    400892: rightnurbsSquare1 3
+    400894: rightnurbsSquare1 4
+    400896: rightnurbsSquare1 5
+    400898: rightnurbsSquare1 6
+    400900: rightnurbsSquare1 7
+    400902: rightnurbsSquare1 8
+    400904: SectionBambooSupportLeft1
+    400906: SectionBambooSupportLeft1 1
+    400908: SectionBambooSupportLeft1 2
+    400910: SectionBambooSupportLeft1 3
+    400912: SectionBambooSupportLeft1 4
+    400914: SectionBambooSupportLeft1 5
+    400916: SectionBambooSupportLeft1 6
+    400918: SectionBambooSupportLeft1 7
+    400920: SectionBambooSupportLeft1 8
+    400922: SectionBambooSupportLeft2
+    400924: SectionBambooSupportLeft2 1
+    400926: SectionBambooSupportLeft2 2
+    400928: SectionBambooSupportLeft2 3
+    400930: SectionBambooSupportLeft2 4
+    400932: SectionBambooSupportLeft2 5
+    400934: SectionBambooSupportLeft2 6
+    400936: SectionBambooSupportLeft2 7
+    400938: SectionBambooSupportLeft2 8
+    400940: SectionBambooSupportLeft3
+    400942: SectionBambooSupportLeft3 1
+    400944: SectionBambooSupportLeft3 2
+    400946: SectionBambooSupportLeft3 3
+    400948: SectionBambooSupportLeft3 4
+    400950: SectionBambooSupportLeft3 5
+    400952: SectionBambooSupportLeft3 6
+    400954: SectionBambooSupportLeft3 7
+    400956: SectionBambooSupportLeft3 8
+    400958: SectionBambooSupportLeft4
+    400960: SectionBambooSupportLeft4 1
+    400962: SectionBambooSupportLeft4 2
+    400964: SectionBambooSupportLeft4 3
+    400966: SectionBambooSupportLeft4 4
+    400968: SectionBambooSupportLeft4 5
+    400970: SectionBambooSupportLeft4 6
+    400972: SectionBambooSupportLeft4 7
+    400974: SectionBambooSupportLeft4 8
+    400976: SectionBambooSupportLeft5
+    400978: SectionBambooSupportLeft5 1
+    400980: SectionBambooSupportLeft5 2
+    400982: SectionBambooSupportLeft5 3
+    400984: SectionBambooSupportLeft5 4
+    400986: SectionBambooSupportLeft5 5
+    400988: SectionBambooSupportLeft5 6
+    400990: SectionBambooSupportLeft5 7
+    400992: SectionBambooSupportLeft5 8
+    400994: SectionBambooSupportRight1
+    400996: SectionBambooSupportRight1 1
+    400998: SectionBambooSupportRight1 2
+    401000: SectionBambooSupportRight1 3
+    401002: SectionBambooSupportRight1 4
+    401004: SectionBambooSupportRight1 5
+    401006: SectionBambooSupportRight1 6
+    401008: SectionBambooSupportRight1 7
+    401010: SectionBambooSupportRight1 8
+    401012: SectionBambooSupportRight2
+    401014: SectionBambooSupportRight2 1
+    401016: SectionBambooSupportRight2 2
+    401018: SectionBambooSupportRight2 3
+    401020: SectionBambooSupportRight2 4
+    401022: SectionBambooSupportRight2 5
+    401024: SectionBambooSupportRight2 6
+    401026: SectionBambooSupportRight2 7
+    401028: SectionBambooSupportRight2 8
+    401030: SectionBambooSupportRight3
+    401032: SectionBambooSupportRight3 1
+    401034: SectionBambooSupportRight3 2
+    401036: SectionBambooSupportRight3 3
+    401038: SectionBambooSupportRight3 4
+    401040: SectionBambooSupportRight3 5
+    401042: SectionBambooSupportRight3 6
+    401044: SectionBambooSupportRight3 7
+    401046: SectionBambooSupportRight3 8
+    401048: SectionBambooSupportRight4
+    401050: SectionBambooSupportRight4 1
+    401052: SectionBambooSupportRight4 2
+    401054: SectionBambooSupportRight4 3
+    401056: SectionBambooSupportRight4 4
+    401058: SectionBambooSupportRight4 5
+    401060: SectionBambooSupportRight4 6
+    401062: SectionBambooSupportRight4 7
+    401064: SectionBambooSupportRight4 8
+    401066: SectionBambooSupportRight5
+    401068: SectionBambooSupportRight5 1
+    401070: SectionBambooSupportRight5 2
+    401072: SectionBambooSupportRight5 3
+    401074: SectionBambooSupportRight5 4
+    401076: SectionBambooSupportRight5 5
+    401078: SectionBambooSupportRight5 6
+    401080: SectionBambooSupportRight5 7
+    401082: SectionBambooSupportRight5 8
+    401084: SurfaceBambooSupportLeft
+    401086: SurfaceBambooSupportLeft 1
+    401088: SurfaceBambooSupportLeft 2
+    401090: SurfaceBambooSupportLeft 3
+    401092: SurfaceBambooSupportLeft 4
+    401094: SurfaceBambooSupportLeft 5
+    401096: SurfaceBambooSupportLeft 6
+    401098: SurfaceBambooSupportLeft 7
+    401100: SurfaceBambooSupportLeft 8
+    401102: SurfaceBambooSupportRight
+    401104: SurfaceBambooSupportRight 1
+    401106: SurfaceBambooSupportRight 2
+    401108: SurfaceBambooSupportRight 3
+    401110: SurfaceBambooSupportRight 4
+    401112: SurfaceBambooSupportRight 5
+    401114: SurfaceBambooSupportRight 6
+    401116: SurfaceBambooSupportRight 7
+    401118: SurfaceBambooSupportRight 8
+    401120: SurfaceBenchLeg1
+    401122: SurfaceBenchLeg1 1
+    401124: SurfaceBenchLeg1 2
+    401126: SurfaceBenchLeg1 3
+    401128: SurfaceBenchLeg1 4
+    401130: SurfaceBenchLeg1 5
+    401132: SurfaceBenchLeg1 6
+    401134: SurfaceBenchLeg1 7
+    401136: SurfaceBenchLeg1 8
+    401138: SurfaceBenchLeg2
+    401140: SurfaceBenchLeg2 1
+    401142: SurfaceBenchLeg2 2
+    401144: SurfaceBenchLeg2 3
+    401146: SurfaceBenchLeg2 4
+    401148: SurfaceBenchLeg2 5
+    401150: SurfaceBenchLeg2 6
+    401152: SurfaceBenchLeg2 7
+    401154: SurfaceBenchLeg2 8
+    401156: SurfaceBenchLeg3
+    401158: SurfaceBenchLeg3 1
+    401160: SurfaceBenchLeg3 2
+    401162: SurfaceBenchLeg3 3
+    401164: SurfaceBenchLeg3 4
+    401166: SurfaceBenchLeg3 5
+    401168: SurfaceBenchLeg3 6
+    401170: SurfaceBenchLeg3 7
+    401172: SurfaceBenchLeg3 8
+    401174: SurfaceBenchLeg4
+    401176: SurfaceBenchLeg4 1
+    401178: SurfaceBenchLeg4 2
+    401180: SurfaceBenchLeg4 3
+    401182: SurfaceBenchLeg4 4
+    401184: SurfaceBenchLeg4 5
+    401186: SurfaceBenchLeg4 6
+    401188: SurfaceBenchLeg4 7
+    401190: SurfaceBenchLeg4 8
+    401192: topnurbsSquare1
+    401194: topnurbsSquare1 1
+    401196: topnurbsSquare1 2
+    401198: topnurbsSquare1 3
+    401200: topnurbsSquare1 4
+    401202: topnurbsSquare1 5
+    401204: topnurbsSquare1 6
+    401206: topnurbsSquare1 7
+    401208: topnurbsSquare1 8
+    2100000: Test
+    2100002: BenchMaterial1
+    2100004: RoofMaterial
+    2100006: CrossMaterial
+    2100008: FloorMaterial
+    2100010: lambert9
+    2100012: PlasterMaterial
+    2100014: Roof
+    2300000: BenchFromCSD2:BenchSeatBack
+    2300002: BenchFromCSD2:BenchSeatFront
+    2300004: BenchFromCSD2:BenchSeatMiddle
+    2300006: BenchFromCSD2:BenchSeatSupport1
+    2300008: BenchFromCSD2:BenchSeatSupport2
+    2300010: BenchFromCSD2:BenchSeatSupport3
+    2300012: BenchFromCSD2:BenchSeatSupport4
+    2300014: BenchFromCSD2:BenchSupportBeamBottom
+    2300016: BenchFromCSD2:BenchSupportBeamMiddle
+    2300018: BenchFromCSD2:BenchSupportBeamTop
+    2300020: BenchFromCSD2:BenchSupportPillarLeft
+    2300022: BenchFromCSD2:BenchSupportPillarRight
+    2300024: BenchFromCSD2:SectionBambooSupportLeft1
+    2300026: BenchFromCSD2:SectionBambooSupportLeft2
+    2300028: BenchFromCSD2:SectionBambooSupportLeft3
+    2300030: BenchFromCSD2:SectionBambooSupportLeft4
+    2300032: BenchFromCSD2:SectionBambooSupportLeft5
+    2300034: BenchFromCSD2:SectionBambooSupportRight1
+    2300036: BenchFromCSD2:SectionBambooSupportRight2
+    2300038: BenchFromCSD2:SectionBambooSupportRight3
+    2300040: BenchFromCSD2:SectionBambooSupportRight4
+    2300042: BenchFromCSD2:SectionBambooSupportRight5
+    2300044: BenchFromCSD2:SurfaceBambooSupportLeft
+    2300046: BenchFromCSD2:SurfaceBambooSupportRight
+    2300048: BenchFromCSD2:SurfaceBenchLeg1
+    2300050: BenchFromCSD2:SurfaceBenchLeg2
+    2300052: BenchSeatBack
+    2300054: BenchSeatBack 1
+    2300056: BenchSeatBack 2
+    2300058: BenchSeatBack 3
+    2300060: BenchSeatBack 4
+    2300062: BenchSeatBack 5
+    2300064: BenchSeatBack 6
+    2300066: BenchSeatBack 7
+    2300068: BenchSeatBack 8
+    2300070: BenchSeatFront
+    2300072: BenchSeatFront 1
+    2300074: BenchSeatFront 2
+    2300076: BenchSeatFront 3
+    2300078: BenchSeatFront 4
+    2300080: BenchSeatFront 5
+    2300082: BenchSeatFront 6
+    2300084: BenchSeatFront 7
+    2300086: BenchSeatFront 8
+    2300088: BenchSeatMiddle
+    2300090: BenchSeatMiddle 1
+    2300092: BenchSeatMiddle 2
+    2300094: BenchSeatMiddle 3
+    2300096: BenchSeatMiddle 4
+    2300098: BenchSeatMiddle 5
+    2300100: BenchSeatMiddle 6
+    2300102: BenchSeatMiddle 7
+    2300104: BenchSeatMiddle 8
+    2300106: BenchSeatSupport1
+    2300108: BenchSeatSupport1 1
+    2300110: BenchSeatSupport1 2
+    2300112: BenchSeatSupport1 3
+    2300114: BenchSeatSupport1 4
+    2300116: BenchSeatSupport1 5
+    2300118: BenchSeatSupport1 6
+    2300120: BenchSeatSupport1 7
+    2300122: BenchSeatSupport1 8
+    2300124: BenchSeatSupport2
+    2300126: BenchSeatSupport2 1
+    2300128: BenchSeatSupport2 2
+    2300130: BenchSeatSupport2 3
+    2300132: BenchSeatSupport2 4
+    2300134: BenchSeatSupport2 5
+    2300136: BenchSeatSupport2 6
+    2300138: BenchSeatSupport2 7
+    2300140: BenchSeatSupport2 8
+    2300142: BenchSeatSupport3
+    2300144: BenchSeatSupport3 1
+    2300146: BenchSeatSupport3 2
+    2300148: BenchSeatSupport3 3
+    2300150: BenchSeatSupport3 4
+    2300152: BenchSeatSupport3 5
+    2300154: BenchSeatSupport3 6
+    2300156: BenchSeatSupport3 7
+    2300158: BenchSeatSupport3 8
+    2300160: BenchSeatSupport4
+    2300162: BenchSeatSupport4 1
+    2300164: BenchSeatSupport4 2
+    2300166: BenchSeatSupport4 3
+    2300168: BenchSeatSupport4 4
+    2300170: BenchSeatSupport4 5
+    2300172: BenchSeatSupport4 6
+    2300174: BenchSeatSupport4 7
+    2300176: BenchSeatSupport4 8
+    2300178: BenchSupportBeamBottom
+    2300180: BenchSupportBeamBottom 1
+    2300182: BenchSupportBeamBottom 2
+    2300184: BenchSupportBeamBottom 3
+    2300186: BenchSupportBeamBottom 4
+    2300188: BenchSupportBeamBottom 5
+    2300190: BenchSupportBeamBottom 6
+    2300192: BenchSupportBeamBottom 7
+    2300194: BenchSupportBeamBottom 8
+    2300196: BenchSupportBeamMiddle
+    2300198: BenchSupportBeamMiddle 1
+    2300200: BenchSupportBeamMiddle 2
+    2300202: BenchSupportBeamMiddle 3
+    2300204: BenchSupportBeamMiddle 4
+    2300206: BenchSupportBeamMiddle 5
+    2300208: BenchSupportBeamMiddle 6
+    2300210: BenchSupportBeamMiddle 7
+    2300212: BenchSupportBeamMiddle 8
+    2300214: BenchSupportBeamTop
+    2300216: BenchSupportBeamTop 1
+    2300218: BenchSupportBeamTop 2
+    2300220: BenchSupportBeamTop 3
+    2300222: BenchSupportBeamTop 4
+    2300224: BenchSupportBeamTop 5
+    2300226: BenchSupportBeamTop 6
+    2300228: BenchSupportBeamTop 7
+    2300230: BenchSupportBeamTop 8
+    2300232: BenchSupportPillarLeft
+    2300234: BenchSupportPillarLeft 1
+    2300236: BenchSupportPillarLeft 2
+    2300238: BenchSupportPillarLeft 3
+    2300240: BenchSupportPillarLeft 4
+    2300242: BenchSupportPillarLeft 5
+    2300244: BenchSupportPillarLeft 6
+    2300246: BenchSupportPillarLeft 7
+    2300248: BenchSupportPillarLeft 8
+    2300250: BenchSupportPillarRight
+    2300252: BenchSupportPillarRight 1
+    2300254: BenchSupportPillarRight 2
+    2300256: BenchSupportPillarRight 3
+    2300258: BenchSupportPillarRight 4
+    2300260: BenchSupportPillarRight 5
+    2300262: BenchSupportPillarRight 6
+    2300264: BenchSupportPillarRight 7
+    2300266: BenchSupportPillarRight 8
+    2300268: pCube10
+    2300270: pCube11
+    2300272: pCube12
+    2300274: pCube16
+    2300276: pCube17
+    2300278: pCube18
+    2300280: pCube19
+    2300282: pCube20
+    2300284: pCube21
+    2300286: pCube22
+    2300288: pCube23
+    2300290: pCube24
+    2300292: pCube25
+    2300294: pCube26
+    2300296: pCube27
+    2300298: pCube28
+    2300300: pCube3
+    2300302: pCube32
+    2300304: pCube32 1
+    2300306: pCube33
+    2300308: pCube33 1
+    2300310: pCube34
+    2300312: pCube34 1
+    2300314: pCube35
+    2300316: pCube36
+    2300318: pCube37
+    2300320: pCube38
+    2300322: pCube39
+    2300324: pCube4
+    2300326: pCube40
+    2300328: pCube41
+    2300330: pCube42
+    2300332: pCube43
+    2300334: pCube44
+    2300336: pCube55
+    2300338: pCube56
+    2300340: pCube57
+    2300342: pCube58
+    2300344: pCube59
+    2300346: pCube6
+    2300348: pCube60
+    2300350: pCube61
+    2300352: pCube62
+    2300354: pCube63
+    2300356: pCube64
+    2300358: pCube65
+    2300360: pCube66
+    2300362: pCube67
+    2300364: pCube68
+    2300366: pCube69
+    2300368: pCube7
+    2300370: pCube70
+    2300372: pCube71
+    2300374: pCube72
+    2300376: pCube73
+    2300378: pCube74
+    2300380: pCube75
+    2300382: pCube76
+    2300384: pCube77
+    2300386: pCube78
+    2300388: pCube79
+    2300390: pCube80
+    2300392: pCube81
+    2300394: pCube82
+    2300396: pCube9
+    2300398: pPlane1
+    2300400: pPrism1
+    2300402: pPrism2
+    2300404: pPrism3
+    2300406: pPyramid1
+    2300408: SectionBambooSupportLeft1
+    2300410: SectionBambooSupportLeft1 1
+    2300412: SectionBambooSupportLeft1 2
+    2300414: SectionBambooSupportLeft1 3
+    2300416: SectionBambooSupportLeft1 4
+    2300418: SectionBambooSupportLeft1 5
+    2300420: SectionBambooSupportLeft1 6
+    2300422: SectionBambooSupportLeft1 7
+    2300424: SectionBambooSupportLeft1 8
+    2300426: SectionBambooSupportLeft2
+    2300428: SectionBambooSupportLeft2 1
+    2300430: SectionBambooSupportLeft2 2
+    2300432: SectionBambooSupportLeft2 3
+    2300434: SectionBambooSupportLeft2 4
+    2300436: SectionBambooSupportLeft2 5
+    2300438: SectionBambooSupportLeft2 6
+    2300440: SectionBambooSupportLeft2 7
+    2300442: SectionBambooSupportLeft2 8
+    2300444: SectionBambooSupportLeft3
+    2300446: SectionBambooSupportLeft3 1
+    2300448: SectionBambooSupportLeft3 2
+    2300450: SectionBambooSupportLeft3 3
+    2300452: SectionBambooSupportLeft3 4
+    2300454: SectionBambooSupportLeft3 5
+    2300456: SectionBambooSupportLeft3 6
+    2300458: SectionBambooSupportLeft3 7
+    2300460: SectionBambooSupportLeft3 8
+    2300462: SectionBambooSupportLeft4
+    2300464: SectionBambooSupportLeft4 1
+    2300466: SectionBambooSupportLeft4 2
+    2300468: SectionBambooSupportLeft4 3
+    2300470: SectionBambooSupportLeft4 4
+    2300472: SectionBambooSupportLeft4 5
+    2300474: SectionBambooSupportLeft4 6
+    2300476: SectionBambooSupportLeft4 7
+    2300478: SectionBambooSupportLeft4 8
+    2300480: SectionBambooSupportLeft5
+    2300482: SectionBambooSupportLeft5 1
+    2300484: SectionBambooSupportLeft5 2
+    2300486: SectionBambooSupportLeft5 3
+    2300488: SectionBambooSupportLeft5 4
+    2300490: SectionBambooSupportLeft5 5
+    2300492: SectionBambooSupportLeft5 6
+    2300494: SectionBambooSupportLeft5 7
+    2300496: SectionBambooSupportLeft5 8
+    2300498: SectionBambooSupportRight1
+    2300500: SectionBambooSupportRight1 1
+    2300502: SectionBambooSupportRight1 2
+    2300504: SectionBambooSupportRight1 3
+    2300506: SectionBambooSupportRight1 4
+    2300508: SectionBambooSupportRight1 5
+    2300510: SectionBambooSupportRight1 6
+    2300512: SectionBambooSupportRight1 7
+    2300514: SectionBambooSupportRight1 8
+    2300516: SectionBambooSupportRight2
+    2300518: SectionBambooSupportRight2 1
+    2300520: SectionBambooSupportRight2 2
+    2300522: SectionBambooSupportRight2 3
+    2300524: SectionBambooSupportRight2 4
+    2300526: SectionBambooSupportRight2 5
+    2300528: SectionBambooSupportRight2 6
+    2300530: SectionBambooSupportRight2 7
+    2300532: SectionBambooSupportRight2 8
+    2300534: SectionBambooSupportRight3
+    2300536: SectionBambooSupportRight3 1
+    2300538: SectionBambooSupportRight3 2
+    2300540: SectionBambooSupportRight3 3
+    2300542: SectionBambooSupportRight3 4
+    2300544: SectionBambooSupportRight3 5
+    2300546: SectionBambooSupportRight3 6
+    2300548: SectionBambooSupportRight3 7
+    2300550: SectionBambooSupportRight3 8
+    2300552: SectionBambooSupportRight4
+    2300554: SectionBambooSupportRight4 1
+    2300556: SectionBambooSupportRight4 2
+    2300558: SectionBambooSupportRight4 3
+    2300560: SectionBambooSupportRight4 4
+    2300562: SectionBambooSupportRight4 5
+    2300564: SectionBambooSupportRight4 6
+    2300566: SectionBambooSupportRight4 7
+    2300568: SectionBambooSupportRight4 8
+    2300570: SectionBambooSupportRight5
+    2300572: SectionBambooSupportRight5 1
+    2300574: SectionBambooSupportRight5 2
+    2300576: SectionBambooSupportRight5 3
+    2300578: SectionBambooSupportRight5 4
+    2300580: SectionBambooSupportRight5 5
+    2300582: SectionBambooSupportRight5 6
+    2300584: SectionBambooSupportRight5 7
+    2300586: SectionBambooSupportRight5 8
+    2300588: SurfaceBambooSupportLeft
+    2300590: SurfaceBambooSupportLeft 1
+    2300592: SurfaceBambooSupportLeft 2
+    2300594: SurfaceBambooSupportLeft 3
+    2300596: SurfaceBambooSupportLeft 4
+    2300598: SurfaceBambooSupportLeft 5
+    2300600: SurfaceBambooSupportLeft 6
+    2300602: SurfaceBambooSupportLeft 7
+    2300604: SurfaceBambooSupportLeft 8
+    2300606: SurfaceBambooSupportRight
+    2300608: SurfaceBambooSupportRight 1
+    2300610: SurfaceBambooSupportRight 2
+    2300612: SurfaceBambooSupportRight 3
+    2300614: SurfaceBambooSupportRight 4
+    2300616: SurfaceBambooSupportRight 5
+    2300618: SurfaceBambooSupportRight 6
+    2300620: SurfaceBambooSupportRight 7
+    2300622: SurfaceBambooSupportRight 8
+    2300624: SurfaceBenchLeg1
+    2300626: SurfaceBenchLeg1 1
+    2300628: SurfaceBenchLeg1 2
+    2300630: SurfaceBenchLeg1 3
+    2300632: SurfaceBenchLeg1 4
+    2300634: SurfaceBenchLeg1 5
+    2300636: SurfaceBenchLeg1 6
+    2300638: SurfaceBenchLeg1 7
+    2300640: SurfaceBenchLeg1 8
+    2300642: SurfaceBenchLeg2
+    2300644: SurfaceBenchLeg2 1
+    2300646: SurfaceBenchLeg2 2
+    2300648: SurfaceBenchLeg2 3
+    2300650: SurfaceBenchLeg2 4
+    2300652: SurfaceBenchLeg2 5
+    2300654: SurfaceBenchLeg2 6
+    2300656: SurfaceBenchLeg2 7
+    2300658: SurfaceBenchLeg2 8
+    3300000: BenchFromCSD2:BenchSeatBack
+    3300002: BenchFromCSD2:BenchSeatFront
+    3300004: BenchFromCSD2:BenchSeatMiddle
+    3300006: BenchFromCSD2:BenchSeatSupport1
+    3300008: BenchFromCSD2:BenchSeatSupport2
+    3300010: BenchFromCSD2:BenchSeatSupport3
+    3300012: BenchFromCSD2:BenchSeatSupport4
+    3300014: BenchFromCSD2:BenchSupportBeamBottom
+    3300016: BenchFromCSD2:BenchSupportBeamMiddle
+    3300018: BenchFromCSD2:BenchSupportBeamTop
+    3300020: BenchFromCSD2:BenchSupportPillarLeft
+    3300022: BenchFromCSD2:BenchSupportPillarRight
+    3300024: BenchFromCSD2:SectionBambooSupportLeft1
+    3300026: BenchFromCSD2:SectionBambooSupportLeft2
+    3300028: BenchFromCSD2:SectionBambooSupportLeft3
+    3300030: BenchFromCSD2:SectionBambooSupportLeft4
+    3300032: BenchFromCSD2:SectionBambooSupportLeft5
+    3300034: BenchFromCSD2:SectionBambooSupportRight1
+    3300036: BenchFromCSD2:SectionBambooSupportRight2
+    3300038: BenchFromCSD2:SectionBambooSupportRight3
+    3300040: BenchFromCSD2:SectionBambooSupportRight4
+    3300042: BenchFromCSD2:SectionBambooSupportRight5
+    3300044: BenchFromCSD2:SurfaceBambooSupportLeft
+    3300046: BenchFromCSD2:SurfaceBambooSupportRight
+    3300048: BenchFromCSD2:SurfaceBenchLeg1
+    3300050: BenchFromCSD2:SurfaceBenchLeg2
+    3300052: BenchSeatBack
+    3300054: BenchSeatBack 1
+    3300056: BenchSeatBack 2
+    3300058: BenchSeatBack 3
+    3300060: BenchSeatBack 4
+    3300062: BenchSeatBack 5
+    3300064: BenchSeatBack 6
+    3300066: BenchSeatBack 7
+    3300068: BenchSeatBack 8
+    3300070: BenchSeatFront
+    3300072: BenchSeatFront 1
+    3300074: BenchSeatFront 2
+    3300076: BenchSeatFront 3
+    3300078: BenchSeatFront 4
+    3300080: BenchSeatFront 5
+    3300082: BenchSeatFront 6
+    3300084: BenchSeatFront 7
+    3300086: BenchSeatFront 8
+    3300088: BenchSeatMiddle
+    3300090: BenchSeatMiddle 1
+    3300092: BenchSeatMiddle 2
+    3300094: BenchSeatMiddle 3
+    3300096: BenchSeatMiddle 4
+    3300098: BenchSeatMiddle 5
+    3300100: BenchSeatMiddle 6
+    3300102: BenchSeatMiddle 7
+    3300104: BenchSeatMiddle 8
+    3300106: BenchSeatSupport1
+    3300108: BenchSeatSupport1 1
+    3300110: BenchSeatSupport1 2
+    3300112: BenchSeatSupport1 3
+    3300114: BenchSeatSupport1 4
+    3300116: BenchSeatSupport1 5
+    3300118: BenchSeatSupport1 6
+    3300120: BenchSeatSupport1 7
+    3300122: BenchSeatSupport1 8
+    3300124: BenchSeatSupport2
+    3300126: BenchSeatSupport2 1
+    3300128: BenchSeatSupport2 2
+    3300130: BenchSeatSupport2 3
+    3300132: BenchSeatSupport2 4
+    3300134: BenchSeatSupport2 5
+    3300136: BenchSeatSupport2 6
+    3300138: BenchSeatSupport2 7
+    3300140: BenchSeatSupport2 8
+    3300142: BenchSeatSupport3
+    3300144: BenchSeatSupport3 1
+    3300146: BenchSeatSupport3 2
+    3300148: BenchSeatSupport3 3
+    3300150: BenchSeatSupport3 4
+    3300152: BenchSeatSupport3 5
+    3300154: BenchSeatSupport3 6
+    3300156: BenchSeatSupport3 7
+    3300158: BenchSeatSupport3 8
+    3300160: BenchSeatSupport4
+    3300162: BenchSeatSupport4 1
+    3300164: BenchSeatSupport4 2
+    3300166: BenchSeatSupport4 3
+    3300168: BenchSeatSupport4 4
+    3300170: BenchSeatSupport4 5
+    3300172: BenchSeatSupport4 6
+    3300174: BenchSeatSupport4 7
+    3300176: BenchSeatSupport4 8
+    3300178: BenchSupportBeamBottom
+    3300180: BenchSupportBeamBottom 1
+    3300182: BenchSupportBeamBottom 2
+    3300184: BenchSupportBeamBottom 3
+    3300186: BenchSupportBeamBottom 4
+    3300188: BenchSupportBeamBottom 5
+    3300190: BenchSupportBeamBottom 6
+    3300192: BenchSupportBeamBottom 7
+    3300194: BenchSupportBeamBottom 8
+    3300196: BenchSupportBeamMiddle
+    3300198: BenchSupportBeamMiddle 1
+    3300200: BenchSupportBeamMiddle 2
+    3300202: BenchSupportBeamMiddle 3
+    3300204: BenchSupportBeamMiddle 4
+    3300206: BenchSupportBeamMiddle 5
+    3300208: BenchSupportBeamMiddle 6
+    3300210: BenchSupportBeamMiddle 7
+    3300212: BenchSupportBeamMiddle 8
+    3300214: BenchSupportBeamTop
+    3300216: BenchSupportBeamTop 1
+    3300218: BenchSupportBeamTop 2
+    3300220: BenchSupportBeamTop 3
+    3300222: BenchSupportBeamTop 4
+    3300224: BenchSupportBeamTop 5
+    3300226: BenchSupportBeamTop 6
+    3300228: BenchSupportBeamTop 7
+    3300230: BenchSupportBeamTop 8
+    3300232: BenchSupportPillarLeft
+    3300234: BenchSupportPillarLeft 1
+    3300236: BenchSupportPillarLeft 2
+    3300238: BenchSupportPillarLeft 3
+    3300240: BenchSupportPillarLeft 4
+    3300242: BenchSupportPillarLeft 5
+    3300244: BenchSupportPillarLeft 6
+    3300246: BenchSupportPillarLeft 7
+    3300248: BenchSupportPillarLeft 8
+    3300250: BenchSupportPillarRight
+    3300252: BenchSupportPillarRight 1
+    3300254: BenchSupportPillarRight 2
+    3300256: BenchSupportPillarRight 3
+    3300258: BenchSupportPillarRight 4
+    3300260: BenchSupportPillarRight 5
+    3300262: BenchSupportPillarRight 6
+    3300264: BenchSupportPillarRight 7
+    3300266: BenchSupportPillarRight 8
+    3300268: pCube10
+    3300270: pCube11
+    3300272: pCube12
+    3300274: pCube16
+    3300276: pCube17
+    3300278: pCube18
+    3300280: pCube19
+    3300282: pCube20
+    3300284: pCube21
+    3300286: pCube22
+    3300288: pCube23
+    3300290: pCube24
+    3300292: pCube25
+    3300294: pCube26
+    3300296: pCube27
+    3300298: pCube28
+    3300300: pCube3
+    3300302: pCube32
+    3300304: pCube32 1
+    3300306: pCube33
+    3300308: pCube33 1
+    3300310: pCube34
+    3300312: pCube34 1
+    3300314: pCube35
+    3300316: pCube36
+    3300318: pCube37
+    3300320: pCube38
+    3300322: pCube39
+    3300324: pCube4
+    3300326: pCube40
+    3300328: pCube41
+    3300330: pCube42
+    3300332: pCube43
+    3300334: pCube44
+    3300336: pCube55
+    3300338: pCube56
+    3300340: pCube57
+    3300342: pCube58
+    3300344: pCube59
+    3300346: pCube6
+    3300348: pCube60
+    3300350: pCube61
+    3300352: pCube62
+    3300354: pCube63
+    3300356: pCube64
+    3300358: pCube65
+    3300360: pCube66
+    3300362: pCube67
+    3300364: pCube68
+    3300366: pCube69
+    3300368: pCube7
+    3300370: pCube70
+    3300372: pCube71
+    3300374: pCube72
+    3300376: pCube73
+    3300378: pCube74
+    3300380: pCube75
+    3300382: pCube76
+    3300384: pCube77
+    3300386: pCube78
+    3300388: pCube79
+    3300390: pCube80
+    3300392: pCube81
+    3300394: pCube82
+    3300396: pCube9
+    3300398: pPlane1
+    3300400: pPrism1
+    3300402: pPrism2
+    3300404: pPrism3
+    3300406: pPyramid1
+    3300408: SectionBambooSupportLeft1
+    3300410: SectionBambooSupportLeft1 1
+    3300412: SectionBambooSupportLeft1 2
+    3300414: SectionBambooSupportLeft1 3
+    3300416: SectionBambooSupportLeft1 4
+    3300418: SectionBambooSupportLeft1 5
+    3300420: SectionBambooSupportLeft1 6
+    3300422: SectionBambooSupportLeft1 7
+    3300424: SectionBambooSupportLeft1 8
+    3300426: SectionBambooSupportLeft2
+    3300428: SectionBambooSupportLeft2 1
+    3300430: SectionBambooSupportLeft2 2
+    3300432: SectionBambooSupportLeft2 3
+    3300434: SectionBambooSupportLeft2 4
+    3300436: SectionBambooSupportLeft2 5
+    3300438: SectionBambooSupportLeft2 6
+    3300440: SectionBambooSupportLeft2 7
+    3300442: SectionBambooSupportLeft2 8
+    3300444: SectionBambooSupportLeft3
+    3300446: SectionBambooSupportLeft3 1
+    3300448: SectionBambooSupportLeft3 2
+    3300450: SectionBambooSupportLeft3 3
+    3300452: SectionBambooSupportLeft3 4
+    3300454: SectionBambooSupportLeft3 5
+    3300456: SectionBambooSupportLeft3 6
+    3300458: SectionBambooSupportLeft3 7
+    3300460: SectionBambooSupportLeft3 8
+    3300462: SectionBambooSupportLeft4
+    3300464: SectionBambooSupportLeft4 1
+    3300466: SectionBambooSupportLeft4 2
+    3300468: SectionBambooSupportLeft4 3
+    3300470: SectionBambooSupportLeft4 4
+    3300472: SectionBambooSupportLeft4 5
+    3300474: SectionBambooSupportLeft4 6
+    3300476: SectionBambooSupportLeft4 7
+    3300478: SectionBambooSupportLeft4 8
+    3300480: SectionBambooSupportLeft5
+    3300482: SectionBambooSupportLeft5 1
+    3300484: SectionBambooSupportLeft5 2
+    3300486: SectionBambooSupportLeft5 3
+    3300488: SectionBambooSupportLeft5 4
+    3300490: SectionBambooSupportLeft5 5
+    3300492: SectionBambooSupportLeft5 6
+    3300494: SectionBambooSupportLeft5 7
+    3300496: SectionBambooSupportLeft5 8
+    3300498: SectionBambooSupportRight1
+    3300500: SectionBambooSupportRight1 1
+    3300502: SectionBambooSupportRight1 2
+    3300504: SectionBambooSupportRight1 3
+    3300506: SectionBambooSupportRight1 4
+    3300508: SectionBambooSupportRight1 5
+    3300510: SectionBambooSupportRight1 6
+    3300512: SectionBambooSupportRight1 7
+    3300514: SectionBambooSupportRight1 8
+    3300516: SectionBambooSupportRight2
+    3300518: SectionBambooSupportRight2 1
+    3300520: SectionBambooSupportRight2 2
+    3300522: SectionBambooSupportRight2 3
+    3300524: SectionBambooSupportRight2 4
+    3300526: SectionBambooSupportRight2 5
+    3300528: SectionBambooSupportRight2 6
+    3300530: SectionBambooSupportRight2 7
+    3300532: SectionBambooSupportRight2 8
+    3300534: SectionBambooSupportRight3
+    3300536: SectionBambooSupportRight3 1
+    3300538: SectionBambooSupportRight3 2
+    3300540: SectionBambooSupportRight3 3
+    3300542: SectionBambooSupportRight3 4
+    3300544: SectionBambooSupportRight3 5
+    3300546: SectionBambooSupportRight3 6
+    3300548: SectionBambooSupportRight3 7
+    3300550: SectionBambooSupportRight3 8
+    3300552: SectionBambooSupportRight4
+    3300554: SectionBambooSupportRight4 1
+    3300556: SectionBambooSupportRight4 2
+    3300558: SectionBambooSupportRight4 3
+    3300560: SectionBambooSupportRight4 4
+    3300562: SectionBambooSupportRight4 5
+    3300564: SectionBambooSupportRight4 6
+    3300566: SectionBambooSupportRight4 7
+    3300568: SectionBambooSupportRight4 8
+    3300570: SectionBambooSupportRight5
+    3300572: SectionBambooSupportRight5 1
+    3300574: SectionBambooSupportRight5 2
+    3300576: SectionBambooSupportRight5 3
+    3300578: SectionBambooSupportRight5 4
+    3300580: SectionBambooSupportRight5 5
+    3300582: SectionBambooSupportRight5 6
+    3300584: SectionBambooSupportRight5 7
+    3300586: SectionBambooSupportRight5 8
+    3300588: SurfaceBambooSupportLeft
+    3300590: SurfaceBambooSupportLeft 1
+    3300592: SurfaceBambooSupportLeft 2
+    3300594: SurfaceBambooSupportLeft 3
+    3300596: SurfaceBambooSupportLeft 4
+    3300598: SurfaceBambooSupportLeft 5
+    3300600: SurfaceBambooSupportLeft 6
+    3300602: SurfaceBambooSupportLeft 7
+    3300604: SurfaceBambooSupportLeft 8
+    3300606: SurfaceBambooSupportRight
+    3300608: SurfaceBambooSupportRight 1
+    3300610: SurfaceBambooSupportRight 2
+    3300612: SurfaceBambooSupportRight 3
+    3300614: SurfaceBambooSupportRight 4
+    3300616: SurfaceBambooSupportRight 5
+    3300618: SurfaceBambooSupportRight 6
+    3300620: SurfaceBambooSupportRight 7
+    3300622: SurfaceBambooSupportRight 8
+    3300624: SurfaceBenchLeg1
+    3300626: SurfaceBenchLeg1 1
+    3300628: SurfaceBenchLeg1 2
+    3300630: SurfaceBenchLeg1 3
+    3300632: SurfaceBenchLeg1 4
+    3300634: SurfaceBenchLeg1 5
+    3300636: SurfaceBenchLeg1 6
+    3300638: SurfaceBenchLeg1 7
+    3300640: SurfaceBenchLeg1 8
+    3300642: SurfaceBenchLeg2
+    3300644: SurfaceBenchLeg2 1
+    3300646: SurfaceBenchLeg2 2
+    3300648: SurfaceBenchLeg2 3
+    3300650: SurfaceBenchLeg2 4
+    3300652: SurfaceBenchLeg2 5
+    3300654: SurfaceBenchLeg2 6
+    3300656: SurfaceBenchLeg2 7
+    3300658: SurfaceBenchLeg2 8
+    4300000: pPrism3
+    4300002: pCube56
+    4300004: pCube55
+    4300006: BenchFromCSD2:BenchSeatFront
+    4300008: BenchFromCSD2:BenchSeatMiddle
+    4300010: BenchFromCSD2:BenchSeatBack
+    4300012: BenchFromCSD2:SurfaceBambooSupportRight
+    4300014: BenchFromCSD2:SectionBambooSupportRight1
+    4300016: BenchFromCSD2:SectionBambooSupportRight2
+    4300018: BenchFromCSD2:SectionBambooSupportRight3
+    4300020: BenchFromCSD2:SectionBambooSupportRight4
+    4300022: BenchFromCSD2:SectionBambooSupportRight5
+    4300024: BenchFromCSD2:SurfaceBambooSupportLeft
+    4300026: BenchFromCSD2:SectionBambooSupportLeft1
+    4300028: BenchFromCSD2:SectionBambooSupportLeft2
+    4300030: BenchFromCSD2:SectionBambooSupportLeft3
+    4300032: BenchFromCSD2:SectionBambooSupportLeft4
+    4300034: BenchFromCSD2:SectionBambooSupportLeft5
+    4300036: BenchFromCSD2:BenchSeatSupport1
+    4300038: BenchFromCSD2:BenchSeatSupport2
+    4300040: BenchFromCSD2:BenchSeatSupport3
+    4300042: BenchFromCSD2:BenchSeatSupport4
+    4300044: BenchFromCSD2:BenchSupportPillarRight
+    4300046: BenchFromCSD2:BenchSupportPillarLeft
+    4300048: BenchFromCSD2:BenchSupportBeamTop
+    4300050: BenchFromCSD2:BenchSupportBeamMiddle
+    4300052: BenchFromCSD2:BenchSupportBeamBottom
+    4300054: BenchFromCSD2:SurfaceBenchLeg1
+    4300056: BenchFromCSD2:SurfaceBenchLeg2
+    4300058: BenchSeatFront
+    4300060: BenchSeatMiddle
+    4300062: BenchSeatBack
+    4300064: SurfaceBambooSupportRight
+    4300066: SectionBambooSupportRight1
+    4300068: SectionBambooSupportRight2
+    4300070: SectionBambooSupportRight3
+    4300072: SectionBambooSupportRight4
+    4300074: SectionBambooSupportRight5
+    4300076: SurfaceBambooSupportLeft
+    4300078: SectionBambooSupportLeft1
+    4300080: SectionBambooSupportLeft2
+    4300082: SectionBambooSupportLeft3
+    4300084: SectionBambooSupportLeft4
+    4300086: SectionBambooSupportLeft5
+    4300088: BenchSeatSupport1
+    4300090: BenchSeatSupport2
+    4300092: BenchSeatSupport3
+    4300094: BenchSeatSupport4
+    4300096: BenchSupportPillarRight
+    4300098: BenchSupportPillarLeft
+    4300100: BenchSupportBeamTop
+    4300102: BenchSupportBeamMiddle
+    4300104: BenchSupportBeamBottom
+    4300106: SurfaceBenchLeg1
+    4300108: SurfaceBenchLeg2
+    4300110: BenchSeatFront
+    4300112: BenchSeatMiddle
+    4300114: BenchSeatBack
+    4300116: SurfaceBambooSupportRight
+    4300118: SectionBambooSupportRight1
+    4300120: SectionBambooSupportRight2
+    4300122: SectionBambooSupportRight3
+    4300124: SectionBambooSupportRight4
+    4300126: SectionBambooSupportRight5
+    4300128: SurfaceBambooSupportLeft
+    4300130: SectionBambooSupportLeft1
+    4300132: SectionBambooSupportLeft2
+    4300134: SectionBambooSupportLeft3
+    4300136: SectionBambooSupportLeft4
+    4300138: SectionBambooSupportLeft5
+    4300140: BenchSeatSupport1
+    4300142: BenchSeatSupport2
+    4300144: BenchSeatSupport3
+    4300146: BenchSeatSupport4
+    4300148: BenchSupportPillarRight
+    4300150: BenchSupportPillarLeft
+    4300152: BenchSupportBeamTop
+    4300154: BenchSupportBeamMiddle
+    4300156: BenchSupportBeamBottom
+    4300158: SurfaceBenchLeg1
+    4300160: SurfaceBenchLeg2
+    4300162: BenchSeatFront
+    4300164: BenchSeatMiddle
+    4300166: BenchSeatBack
+    4300168: SurfaceBambooSupportRight
+    4300170: SectionBambooSupportRight1
+    4300172: SectionBambooSupportRight2
+    4300174: SectionBambooSupportRight3
+    4300176: SectionBambooSupportRight4
+    4300178: SectionBambooSupportRight5
+    4300180: SurfaceBambooSupportLeft
+    4300182: SectionBambooSupportLeft1
+    4300184: SectionBambooSupportLeft2
+    4300186: SectionBambooSupportLeft3
+    4300188: SectionBambooSupportLeft4
+    4300190: SectionBambooSupportLeft5
+    4300192: BenchSeatSupport1
+    4300194: BenchSeatSupport2
+    4300196: BenchSeatSupport3
+    4300198: BenchSeatSupport4
+    4300200: BenchSupportPillarRight
+    4300202: BenchSupportPillarLeft
+    4300204: BenchSupportBeamTop
+    4300206: BenchSupportBeamMiddle
+    4300208: BenchSupportBeamBottom
+    4300210: SurfaceBenchLeg1
+    4300212: SurfaceBenchLeg2
+    4300214: BenchSeatFront
+    4300216: BenchSeatMiddle
+    4300218: BenchSeatBack
+    4300220: SurfaceBambooSupportRight
+    4300222: SectionBambooSupportRight1
+    4300224: SectionBambooSupportRight2
+    4300226: SectionBambooSupportRight3
+    4300228: SectionBambooSupportRight4
+    4300230: SectionBambooSupportRight5
+    4300232: SurfaceBambooSupportLeft
+    4300234: SectionBambooSupportLeft1
+    4300236: SectionBambooSupportLeft2
+    4300238: SectionBambooSupportLeft3
+    4300240: SectionBambooSupportLeft4
+    4300242: SectionBambooSupportLeft5
+    4300244: BenchSeatSupport1
+    4300246: BenchSeatSupport2
+    4300248: BenchSeatSupport3
+    4300250: BenchSeatSupport4
+    4300252: BenchSupportPillarRight
+    4300254: BenchSupportPillarLeft
+    4300256: BenchSupportBeamTop
+    4300258: BenchSupportBeamMiddle
+    4300260: BenchSupportBeamBottom
+    4300262: SurfaceBenchLeg1
+    4300264: SurfaceBenchLeg2
+    4300266: BenchSeatFront
+    4300268: BenchSeatMiddle
+    4300270: BenchSeatBack
+    4300272: SurfaceBambooSupportRight
+    4300274: SectionBambooSupportRight1
+    4300276: SectionBambooSupportRight2
+    4300278: SectionBambooSupportRight3
+    4300280: SectionBambooSupportRight4
+    4300282: SectionBambooSupportRight5
+    4300284: SurfaceBambooSupportLeft
+    4300286: SectionBambooSupportLeft1
+    4300288: SectionBambooSupportLeft2
+    4300290: SectionBambooSupportLeft3
+    4300292: SectionBambooSupportLeft4
+    4300294: SectionBambooSupportLeft5
+    4300296: BenchSeatSupport1
+    4300298: BenchSeatSupport2
+    4300300: BenchSeatSupport3
+    4300302: BenchSeatSupport4
+    4300304: BenchSupportPillarRight
+    4300306: BenchSupportPillarLeft
+    4300308: BenchSupportBeamTop
+    4300310: BenchSupportBeamMiddle
+    4300312: BenchSupportBeamBottom
+    4300314: SurfaceBenchLeg1
+    4300316: SurfaceBenchLeg2
+    4300318: BenchSeatFront
+    4300320: BenchSeatMiddle
+    4300322: BenchSeatBack
+    4300324: SurfaceBambooSupportRight
+    4300326: SectionBambooSupportRight1
+    4300328: SectionBambooSupportRight2
+    4300330: SectionBambooSupportRight3
+    4300332: SectionBambooSupportRight4
+    4300334: SectionBambooSupportRight5
+    4300336: SurfaceBambooSupportLeft
+    4300338: SectionBambooSupportLeft1
+    4300340: SectionBambooSupportLeft2
+    4300342: SectionBambooSupportLeft3
+    4300344: SectionBambooSupportLeft4
+    4300346: SectionBambooSupportLeft5
+    4300348: BenchSeatSupport1
+    4300350: BenchSeatSupport2
+    4300352: BenchSeatSupport3
+    4300354: BenchSeatSupport4
+    4300356: BenchSupportPillarRight
+    4300358: BenchSupportPillarLeft
+    4300360: BenchSupportBeamTop
+    4300362: BenchSupportBeamMiddle
+    4300364: BenchSupportBeamBottom
+    4300366: SurfaceBenchLeg1
+    4300368: SurfaceBenchLeg2
+    4300370: BenchSeatFront
+    4300372: BenchSeatMiddle
+    4300374: BenchSeatBack
+    4300376: SurfaceBambooSupportRight
+    4300378: SectionBambooSupportRight1
+    4300380: SectionBambooSupportRight2
+    4300382: SectionBambooSupportRight3
+    4300384: SectionBambooSupportRight4
+    4300386: SectionBambooSupportRight5
+    4300388: SurfaceBambooSupportLeft
+    4300390: SectionBambooSupportLeft1
+    4300392: SectionBambooSupportLeft2
+    4300394: SectionBambooSupportLeft3
+    4300396: SectionBambooSupportLeft4
+    4300398: SectionBambooSupportLeft5
+    4300400: BenchSeatSupport1
+    4300402: BenchSeatSupport2
+    4300404: BenchSeatSupport3
+    4300406: BenchSeatSupport4
+    4300408: BenchSupportPillarRight
+    4300410: BenchSupportPillarLeft
+    4300412: BenchSupportBeamTop
+    4300414: BenchSupportBeamMiddle
+    4300416: BenchSupportBeamBottom
+    4300418: SurfaceBenchLeg1
+    4300420: SurfaceBenchLeg2
+    4300422: BenchSeatFront
+    4300424: BenchSeatMiddle
+    4300426: BenchSeatBack
+    4300428: SurfaceBambooSupportRight
+    4300430: SectionBambooSupportRight1
+    4300432: SectionBambooSupportRight2
+    4300434: SectionBambooSupportRight3
+    4300436: SectionBambooSupportRight4
+    4300438: SectionBambooSupportRight5
+    4300440: SurfaceBambooSupportLeft
+    4300442: SectionBambooSupportLeft1
+    4300444: SectionBambooSupportLeft2
+    4300446: SectionBambooSupportLeft3
+    4300448: SectionBambooSupportLeft4
+    4300450: SectionBambooSupportLeft5
+    4300452: BenchSeatSupport1
+    4300454: BenchSeatSupport2
+    4300456: BenchSeatSupport3
+    4300458: BenchSeatSupport4
+    4300460: BenchSupportPillarRight
+    4300462: BenchSupportPillarLeft
+    4300464: BenchSupportBeamTop
+    4300466: BenchSupportBeamMiddle
+    4300468: BenchSupportBeamBottom
+    4300470: SurfaceBenchLeg1
+    4300472: SurfaceBenchLeg2
+    4300474: BenchSeatFront
+    4300476: BenchSeatMiddle
+    4300478: BenchSeatBack
+    4300480: SurfaceBambooSupportRight
+    4300482: SectionBambooSupportRight1
+    4300484: SectionBambooSupportRight2
+    4300486: SectionBambooSupportRight3
+    4300488: SectionBambooSupportRight4
+    4300490: SectionBambooSupportRight5
+    4300492: SurfaceBambooSupportLeft
+    4300494: SectionBambooSupportLeft1
+    4300496: SectionBambooSupportLeft2
+    4300498: SectionBambooSupportLeft3
+    4300500: SectionBambooSupportLeft4
+    4300502: SectionBambooSupportLeft5
+    4300504: BenchSeatSupport1
+    4300506: BenchSeatSupport2
+    4300508: BenchSeatSupport3
+    4300510: BenchSeatSupport4
+    4300512: BenchSupportPillarRight
+    4300514: BenchSupportPillarLeft
+    4300516: BenchSupportBeamTop
+    4300518: BenchSupportBeamMiddle
+    4300520: BenchSupportBeamBottom
+    4300522: SurfaceBenchLeg1
+    4300524: SurfaceBenchLeg2
+    4300526: pPrism2
+    4300528: pPrism1
+    4300530: pPyramid1
+    4300532: pCube16
+    4300534: pCube17
+    4300536: pPlane1
+    4300538: pCube3
+    4300540: pCube4
+    4300542: pCube6
+    4300544: pCube7
+    4300546: pCube9
+    4300548: pCube10
+    4300550: pCube11
+    4300552: pCube12
+    4300554: pCube18
+    4300556: pCube19
+    4300558: pCube20
+    4300560: pCube21
+    4300562: pCube22
+    4300564: pCube23
+    4300566: pCube24
+    4300568: pCube25
+    4300570: pCube26
+    4300572: pCube27
+    4300574: pCube28
+    4300576: pCube32
+    4300578: pCube33
+    4300580: pCube34
+    4300582: pCube32
+    4300584: pCube33
+    4300586: pCube34
+    4300588: pCube35
+    4300590: pCube36
+    4300592: pCube37
+    4300594: pCube38
+    4300596: pCube39
+    4300598: pCube40
+    4300600: pCube41
+    4300602: pCube42
+    4300604: pCube43
+    4300606: pCube44
+    4300608: pCube57
+    4300610: pCube58
+    4300612: pCube59
+    4300614: pCube60
+    4300616: pCube61
+    4300618: pCube62
+    4300620: pCube63
+    4300622: pCube64
+    4300624: pCube65
+    4300626: pCube66
+    4300628: pCube67
+    4300630: pCube68
+    4300632: pCube69
+    4300634: pCube70
+    4300636: pCube71
+    4300638: pCube72
+    4300640: pCube73
+    4300642: pCube74
+    4300644: pCube75
+    4300646: pCube76
+    4300648: pCube77
+    4300650: pCube78
+    4300652: pCube79
+    4300654: pCube80
+    4300656: pCube81
+    4300658: pCube82
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
