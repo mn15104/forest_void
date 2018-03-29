@@ -8042,7 +8042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 660407200}
   debugState: 0
-  currentAppear: 2
+  currentAppear: 1
   soundDetectionPercentage: 0.2
   lightDetectionPercentage: 0.2
   Stage2_TeleportInterval: 5
