@@ -421,6 +421,8 @@ public class MonsterAI : MonoBehaviour {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 player.GetComponentInChildren<Flashlight>().Switch(gameObject);
+                GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                GetComponentInChildren<MeshRenderer>().enabled = false;
                 RenderSettings.fogMode = FogMode.ExponentialSquared;
                 RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
                 stage1_playerTorchOn2 = true;
@@ -434,6 +436,8 @@ public class MonsterAI : MonoBehaviour {
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                 SetState(MonsterState.HIDDEN_IDLE);
                 currentAppear = MonsterAppear.STAGE2;
+                GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+                GetComponentInChildren<MeshRenderer>().enabled = true;
                 gameObject.SetActive(false);
             }
         }
@@ -472,8 +476,7 @@ public class MonsterAI : MonoBehaviour {
             {
                 inittime += Time.deltaTime / 2f;
                 yield return null;
-                e = Mathf.Lerp(e,
-                                        10f, inittime);
+                e = Mathf.Lerp(e,10f, inittime);
                 emission.rateOverTime = e;
             }
             GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -671,11 +674,8 @@ public class MonsterAI : MonoBehaviour {
                 humanFacingDir = cam.transform.forward;
             }
         }
-
-        float isAppearLeft = (Random.value >= 0.5) ? 1f : -1f;
-        float sidewaysAppearOffset = Random.Range(Stage1_MinAngle, Stage1_MaxAngle);
-
-        Vector3 voidPos = humanPos + dist * humanFacingDir + isAppearLeft * sidewaysAppearOffset * humanRightDir;
+        
+        Vector3 voidPos = humanPos + dist * humanFacingDir;
         voidPos.y = original_y;
         transform.position = voidPos;
         Quaternion rotat = Quaternion.LookRotation(-player.transform.forward);
