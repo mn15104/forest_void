@@ -126,99 +126,6 @@ public partial class MonsterAI : MonoBehaviour {
         m_MonsterStateMachine.update_state();
     }
 
-    /*------------------ SET Functions --------------------*/
-
-    public void SetState(MonsterState state)
-    {
-        if (state != currentState)
-        {
-            switch (state)
-            {
-                case MonsterState.HIDDEN_IDLE:
-                    StopAllCoroutines();
-                    StartCoroutine(UpdateHiddenDestination());
-                    anim.SetBool("Run", false);
-                    anim.SetBool("Walk", false);
-                    anim.SetBool("Idle", true);
-                    anim.SetFloat("Speed", m_HiddenIdleSpeed);
-                    m_CurrentSpeed = m_HiddenIdleSpeed;
-                    StartCoroutine(DelayStateChange(MonsterState.HIDDEN_MOVING, 2f));
-                    break;
-                case MonsterState.HIDDEN_MOVING:
-                    StopAllCoroutines();
-                    StartCoroutine(UpdateHiddenDestination());
-                    anim.SetBool("Run", false);
-                    anim.SetBool("Walk", true);
-                    anim.SetBool("Idle", false);
-                    anim.SetFloat("Speed", m_HiddenMovingSpeed);
-                    m_CurrentSpeed = m_HiddenMovingSpeed;
-                    StartCoroutine(DelayStateChange(MonsterState.HIDDEN_IDLE, 8f));
-                    break;
-                case MonsterState.FOLLOW:
-                    StopAllCoroutines();
-                    StartCoroutine(UpdateChaseDestination());
-                    anim.SetBool("Run", false);
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("Walk", true);
-                    anim.SetFloat("Speed", m_FollowSpeed);
-                    m_CurrentSpeed = m_FollowSpeed;
-                    break;
-                case MonsterState.APPEAR:
-                    StopAllCoroutines();
-                    StartCoroutine(UpdateChaseDestination());
-                    InitialiseCurrentAppearBehaviour(currentAppear);           // CALL APPEAR BEHAVIOUR TYPE
-                    follow_finished = false;                                   // Reset follow bool
-                    anim.SetBool("Run", false);
-                    anim.SetBool("Walk", false);
-                    anim.SetBool("Idle", true);
-                    anim.SetFloat("Speed", m_AppearSpeed);
-                    m_CurrentSpeed = m_AppearSpeed;
-                    break;
-                case MonsterState.APPROACH:
-                    StopAllCoroutines();
-                    StartCoroutine(UpdateChaseDestination());
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("Walk", true);
-                    anim.SetBool("Run", false);
-                    anim.SetFloat("Speed", m_MinApproachSpeed);
-                    m_CurrentSpeed = m_MinApproachSpeed;
-                    StartCoroutine(DelayStateChange(MonsterState.CHASE, 4f));
-                    break;
-                case MonsterState.CHASE:
-                    StopAllCoroutines();
-                    StartCoroutine(UpdateChaseDestination());
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("Walk", false);
-                    anim.SetBool("Run", true);
-                    anim.SetFloat("Speed", m_RunSpeed);
-                    m_CurrentSpeed = m_RunSpeed;
-                    NextAppearStage();
-                    break;
-                case MonsterState.GAMEOVER:
-                    GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-                    anim.SetBool("Idle", true);
-                    anim.SetBool("Walk", false);
-                    anim.SetBool("Run", false);
-                    break;
-                default:
-                    m_MonsterStateMachine.hidden_idle();
-                    break;
-            }
-            stage1_playerLookingAtMonster = false;
-            stage2_coroutineCalled = false;
-            stage3_invokeCalled = false;
-            debugState = state;
-            currentState = state;
-            OnMonsterStateChange(state);
-        }
-    }
-
-    IEnumerator DelayStateChange(MonsterState state, float delayTime)
-    {
-        yield return new WaitForSeconds(delayTime);
-        SetState(state);
-    }
-
     /*------------------ UPDATE DESTINATION Functions --------------------*/
 
     IEnumerator UpdateHiddenDestination()
@@ -241,7 +148,6 @@ public partial class MonsterAI : MonoBehaviour {
             yield return new WaitForSeconds(3);
         }
     }
-
     IEnumerator UpdateChaseDestination()
     {
         while (true)
@@ -250,8 +156,54 @@ public partial class MonsterAI : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
     }
+    IEnumerator DelayStateChange(MonsterState state, float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        m_MonsterStateMachine.SetState(state);
+    }
 
-    /*------------------ STATE UPDATE Functions --------------------*/
+    /* ---------> STAGE 1 <--------- */
+
+    private bool fadingIn = false;
+    private bool fadingOut = false;
+    public float Stage1_TeleportInterval = 5f;
+    public float Stage1_AppearInterval = 2f;
+    public float Stage1_AppearDistance = 12.5f;
+    IEnumerator UpdateStage1()
+    {
+        float e = 0f;
+        while (true)
+        {
+            ////////////////////APPEAR//////////////////////////
+            float inittime = 0f;
+            ParticleSystem.EmissionModule emission
+                = GetComponentInChildren<ParticleSystem>().emission;
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            GetComponentInChildren<MeshRenderer>().enabled = true;
+            TeleportVoidInfrontHuman_NoCollider(Stage1_AppearDistance);
+
+            ////////////////////HIDE//////////////////////////
+            inittime = 0f;
+            while (e < 10f)
+            {
+                inittime += Time.deltaTime / 2f;
+                yield return null;
+                e = Mathf.Lerp(e, 10f, inittime);
+                emission.rateOverTime = e;
+            }
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+            inittime = 0f;
+            while (e > 0f)
+            {
+                inittime += Time.deltaTime / 4f;
+                yield return null;
+                e = Mathf.Lerp(e, 0f, inittime);
+                emission.rateOverTime = e;
+            }
+            yield return null;
+        }
+    }
 
 
     /* ---------> STAGE 2 <--------- */
@@ -302,7 +254,7 @@ public partial class MonsterAI : MonoBehaviour {
             {
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
-                SetState(MonsterState.HIDDEN_IDLE);
+                m_MonsterStateMachine.SetState(MonsterState.HIDDEN_IDLE);
                 currentAppear = MonsterAppear.STAGE2;
                 GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
                 GetComponentInChildren<MeshRenderer>().enabled = true;
@@ -315,53 +267,7 @@ public partial class MonsterAI : MonoBehaviour {
         yield return new WaitForSeconds(time);
         stage2_coroutine_finished = true;
     }
-
-
-
-    /* ---------> STAGE 2 <--------- */
-
-    private bool fadingIn = false;
-    private bool fadingOut = false;
-    public float Stage1_TeleportInterval = 5f;
-    public float Stage1_AppearInterval = 2f;
-    public float Stage1_AppearDistance = 12.5f;
-    IEnumerator UpdateStage1()
-    {
-        float e = 0f;
-        while (true)
-        {
-            ////////////////////APPEAR//////////////////////////
-            float inittime = 0f;
-            ParticleSystem.EmissionModule emission
-                = GetComponentInChildren<ParticleSystem>().emission;
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-            GetComponentInChildren<MeshRenderer>().enabled = true;
-            TeleportVoidInfrontHuman_NoCollider(Stage1_AppearDistance);
-
-            ////////////////////HIDE//////////////////////////
-            inittime = 0f;
-            while (e < 10f)
-            {
-                inittime += Time.deltaTime / 2f;
-                yield return null;
-                e = Mathf.Lerp(e,10f, inittime);
-                emission.rateOverTime = e;
-            }
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            GetComponentInChildren<MeshRenderer>().enabled = false;
-            inittime = 0f;
-            while (e > 0f)
-            {
-                inittime += Time.deltaTime / 4f;
-                yield return null;
-                e = Mathf.Lerp(e, 0f, inittime);
-                emission.rateOverTime = e;
-            }
-            yield return null;
-        }
-    }
-
-   
+    
 
     /*------------------ UTILITY Functions --------------------*/
 
@@ -578,7 +484,7 @@ public partial class MonsterAI : MonoBehaviour {
     void HumanDetected(Transform detectionTrans)
     {
         destinationPosition = detectionTrans.position;
-        SetState(MonsterState.APPEAR);
+        m_MonsterStateMachine.SetState(MonsterState.APPEAR);
     }
 
     void HumanSoundDetected(float soundHeard)
@@ -680,7 +586,7 @@ public partial class MonsterAI : MonoBehaviour {
                 float angleBetween = Vector3.Angle(dirToMonster, player.transform.forward);
                 if (angleBetween < player.GetComponentInChildren<Camera>().fieldOfView / 1.35f)
                 {
-                    SetState(MonsterState.CHASE);
+                    m_MonsterStateMachine.SetState(MonsterState.CHASE);
                 }
             }
         }
