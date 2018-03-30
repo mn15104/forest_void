@@ -19,7 +19,6 @@ limitations under the License.
 
 ************************************************************************************/
 
-#if UNITY_EDITOR
 
 using UnityEngine;
 using UnityEditor;
@@ -346,11 +345,8 @@ public class OVRLint : EditorWindow
 		var lights = GameObject.FindObjectsOfType<Light> ();
 		for (int i = 0; i < lights.Length; ++i) 
 		{
-#if UNITY_2017_3_OR_NEWER
 			if (lights [i].type != LightType.Directional && !lights [i].bakingOutput.isBaked && IsLightBaked(lights[i]))
-#else
-			if (lights [i].type != LightType.Directional && !lights [i].isBaked && IsLightBaked(lights[i]))
-#endif
+                
 			{
 				AddFix ("Optimize Light Baking", "For GPU performance, please bake lightmaps to avoid realtime lighting cost.", delegate(UnityEngine.Object obj, bool last, int selected) 
 				{
@@ -531,20 +527,14 @@ public class OVRLint : EditorWindow
                 OVRManager.instance.useRecommendedMSAALevel = true;
 			}, null, "Fix");
 		}
-
-#if UNITY_2017_2_OR_NEWER
+        
 		if (UnityEngine.XR.XRSettings.eyeTextureResolutionScale > 1.5)
-#else
-		if (UnityEngine.VR.VRSettings.renderScale > 1.5)
-#endif
+
 		{
 			AddFix ("Optimize Render Scale", "For GPU performance, please don't use render scale over 1.5.", delegate(UnityEngine.Object obj, bool last, int selected)
 			{
-#if UNITY_2017_2_OR_NEWER
 				UnityEngine.XR.XRSettings.eyeTextureResolutionScale = 1.5f;
-#else
-				UnityEngine.VR.VRSettings.renderScale = 1.5f;
-#endif
+
 			}, null, "Fix");
 		}
 	}
@@ -795,4 +785,3 @@ public class OVRLint : EditorWindow
 	}
 }
 
-#endif

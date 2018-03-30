@@ -79,6 +79,14 @@ public partial class MonsterAI
                         break;
                     case MonsterState.GAMEOVER:
                         m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                        m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
+                        m_MonsterAI.anim.SetBool("Idle", true);
+                        m_MonsterAI.anim.SetBool("Walk", false);
+                        m_MonsterAI.anim.SetBool("Run", false);
+                        break;
+                    case MonsterState.DISABLED:
+                        m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                        m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
                         m_MonsterAI.anim.SetBool("Idle", true);
                         m_MonsterAI.anim.SetBool("Walk", false);
                         m_MonsterAI.anim.SetBool("Run", false);
@@ -123,6 +131,9 @@ public partial class MonsterAI
                     break;
                 case MonsterState.GAMEOVER:
                     hidden_idle();
+                    break;
+                case MonsterState.DISABLED:
+
                     break;
                 default:
                     hidden_idle();
