@@ -24,8 +24,7 @@ public enum MonsterAppear
     STAGE4 = 4,
     STAGE5 = 5
 }
-
-public class MonsterAI : MonoBehaviour {
+public partial class MonsterAI : MonoBehaviour {
 
     public delegate void MonsterStateChange(MonsterState monsterState);
     public event MonsterStateChange OnMonsterStateChange = delegate { };
@@ -35,6 +34,7 @@ public class MonsterAI : MonoBehaviour {
     private MonsterState currentState;
     public MonsterState debugState;
     public MonsterAppear currentAppear = MonsterAppear.STAGE1;
+    private MonsterAIState m_MonsterStateMachine;
     private Animator anim;
 	private GameObject trigger;
 	private float chaseTimer = 10f;
@@ -116,40 +116,14 @@ public class MonsterAI : MonoBehaviour {
         collisionRight = false;
         collisionLeft = false;
     }
-    
+    private void Start()
+    {
+        m_MonsterStateMachine = new MonsterAIState(this);
+    }
     void Update () {
-
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                    + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
-        if (currentState != debugState)
-            SetState(debugState);
-        switch (currentState) 
-		{
-        case MonsterState.HIDDEN_IDLE:
-            hidden_idle();
-            break;
-        case MonsterState.HIDDEN_MOVING:
-            hidden_walking();
-			break;
-        case MonsterState.FOLLOW:
-            follow();
-            break;
-        case MonsterState.APPEAR:
-			appear();
-            break;
-        case MonsterState.APPROACH:
-            approach();
-            break;
-		case MonsterState.CHASE:
-            chase ();			
-			break;
-        case MonsterState.GAMEOVER:
-            hidden_idle();			
-			break;
-		default:
-            hidden_idle();
-            break;
-		}
+        m_MonsterStateMachine.update_state();
     }
 
     /*------------------ SET Functions --------------------*/
@@ -227,7 +201,7 @@ public class MonsterAI : MonoBehaviour {
                     anim.SetBool("Run", false);
                     break;
                 default:
-                    hidden_idle();
+                    m_MonsterStateMachine.hidden_idle();
                     break;
             }
             stage1_playerLookingAtMonster = false;
@@ -279,144 +253,38 @@ public class MonsterAI : MonoBehaviour {
 
     /*------------------ STATE UPDATE Functions --------------------*/
 
-    void hidden_idle()
+
+    /* ---------> STAGE 2 <--------- */
+
+    bool stage2_playerTorchOn1 = false;
+    bool stage2_playerTorchOff = false;
+    bool stage2_playerTorchOn2 = false;
+    bool stage2_playerTorchOff2 = false;
+    bool stage2_coroutine_finished = false;
+    void UpdateStage2()
     {
-        if ((currentState == MonsterState.HIDDEN_IDLE || currentState == MonsterState.HIDDEN_MOVING)
-                && distanceToHuman < distanceToHuman_FollowTrigger)
-        {
-            SetState(MonsterState.FOLLOW);
-        }
-    }
-
-    void hidden_walking()
-    {
-        if ((currentState == MonsterState.HIDDEN_IDLE || currentState == MonsterState.HIDDEN_MOVING)
-                && distanceToHuman < distanceToHuman_FollowTrigger)
-        {
-            SetState(MonsterState.FOLLOW);
-            return;
-        }
-        if (firstCollision != AICollisionSide.NONE)
-        {
-            Vector3 t_rotation = transform.rotation.eulerAngles;
-            if (firstCollision == AICollisionSide.RIGHT)
-            {
-                t_rotation.y -= Time.deltaTime * 100;
-            }
-            else
-            {
-                t_rotation.y += Time.deltaTime * 100;
-            }
-            transform.rotation = Quaternion.Euler(t_rotation);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, destinationRotation, Time.deltaTime * 1.2f);
-        }
-    }
-
-    void follow()
-    {
-        if (firstCollision != AICollisionSide.NONE)
-        {
-            Vector3 t_rotation = transform.rotation.eulerAngles;
-            if (firstCollision == AICollisionSide.RIGHT)
-            {
-                t_rotation.y -= Time.deltaTime * 100;
-            }
-            else
-            {
-                t_rotation.y += Time.deltaTime * 100;
-            }
-
-            transform.rotation = Quaternion.Euler(t_rotation);
-        }
-        else
-        {
-            var lookPos = destinationPosition - transform.position;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1.2f);
-        }
-
-        if (!follow_finished && (currentAppear == MonsterAppear.STAGE1 || currentAppear == MonsterAppear.NONE))
-        {
-            if (distanceToHuman > distanceToHuman_AppearTrigger && !anim.GetBool("Walk"))
-            {
-                m_CurrentSpeed = m_HiddenMovingSpeed;
-                anim.SetBool("Run", false);
-                anim.SetBool("Walk", true);
-                anim.SetBool("Idle", false);
-                anim.SetFloat("Speed", m_CurrentSpeed);
-            }
-            else if (distanceToHuman <= distanceToHuman_AppearTrigger)
-            {
-                anim.SetBool("Run", false);
-                anim.SetBool("Idle", true);
-                anim.SetBool("Walk", false);
-                StartCoroutine(DelayStateChange(MonsterState.APPEAR, 3f));
-                follow_finished = true;
-            }
-        }
-        if (!follow_finished && (currentAppear == MonsterAppear.STAGE2))
-        {
-            if (distanceToHuman > distanceToHuman_AppearTrigger && !anim.GetBool("Walk"))
-            {
-                m_CurrentSpeed = m_HiddenMovingSpeed;
-                anim.SetBool("Run", false);
-                anim.SetBool("Walk", true);
-                anim.SetBool("Idle", false);
-                anim.SetFloat("Speed", m_CurrentSpeed);
-            }
-            else if (distanceToHuman <= distanceToHuman_AppearTrigger)
-            {
-                StartCoroutine(DelayStateChange(MonsterState.APPEAR, 0f));
-                follow_finished = true;
-            }
-        }
-    }
-    
-    void appear () {
-        if(currentAppear == MonsterAppear.STAGE1)
-        {
-            UpdateStage1();
-        }
-        else if (currentAppear == MonsterAppear.STAGE2)
-        {
-            
-        }
-    }
-
-    /* ---------> STAGE 1 <--------- */
-
-    bool stage1_playerTorchOn1 = false;
-    bool stage1_playerTorchOff = false;
-    bool stage1_playerTorchOn2 = false;
-    bool stage1_playerTorchOff2 = false;
-    bool stage1_coroutine_finished = false;
-    void UpdateStage1()
-    {
-        if (!stage1_playerTorchOn1)
+        if (!stage2_playerTorchOn1)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 player.GetComponentInChildren<Flashlight>().Switch(gameObject);
                 RenderSettings.fogMode = FogMode.ExponentialSquared;
                 RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
-                stage1_playerTorchOn1 = true;
+                stage2_playerTorchOn1 = true;
             }
         }
-        else if (!stage1_playerTorchOff)
+        else if (!stage2_playerTorchOff)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 TeleportVoidInfrontHuman(3f);
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
-                stage1_playerTorchOff = true;
-                StartCoroutine(Stage1_ToggleBool(0.4f));
+                stage2_playerTorchOff = true;
+                StartCoroutine(Stage2_ToggleBool(0.4f));
             }
         }
-        else if (!stage1_playerTorchOn2 && stage1_coroutine_finished)
+        else if (!stage2_playerTorchOn2 && stage2_coroutine_finished)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
@@ -425,10 +293,10 @@ public class MonsterAI : MonoBehaviour {
                 GetComponentInChildren<MeshRenderer>().enabled = false;
                 RenderSettings.fogMode = FogMode.ExponentialSquared;
                 RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
-                stage1_playerTorchOn2 = true;
+                stage2_playerTorchOn2 = true;
             }
         }
-        else if (!stage1_playerTorchOff2 && stage1_playerTorchOn2)
+        else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
@@ -442,10 +310,10 @@ public class MonsterAI : MonoBehaviour {
             }
         }
     }
-    IEnumerator Stage1_ToggleBool(float time)
+    IEnumerator Stage2_ToggleBool(float time)
     {
         yield return new WaitForSeconds(time);
-        stage1_coroutine_finished = true;
+        stage2_coroutine_finished = true;
     }
 
 
@@ -454,10 +322,10 @@ public class MonsterAI : MonoBehaviour {
 
     private bool fadingIn = false;
     private bool fadingOut = false;
-    public float Stage2_TeleportInterval = 5f;
-    public float Stage2_AppearInterval = 2f;
-    public float Stage2_AppearDistance = 12.5f;
-    IEnumerator UpdateStage2()
+    public float Stage1_TeleportInterval = 5f;
+    public float Stage1_AppearInterval = 2f;
+    public float Stage1_AppearDistance = 12.5f;
+    IEnumerator UpdateStage1()
     {
         float e = 0f;
         while (true)
@@ -468,7 +336,7 @@ public class MonsterAI : MonoBehaviour {
                 = GetComponentInChildren<ParticleSystem>().emission;
             GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             GetComponentInChildren<MeshRenderer>().enabled = true;
-            TeleportVoidInfrontHuman_NoCollider(Stage2_AppearDistance);
+            TeleportVoidInfrontHuman_NoCollider(Stage1_AppearDistance);
 
             ////////////////////HIDE//////////////////////////
             inittime = 0f;
@@ -492,82 +360,8 @@ public class MonsterAI : MonoBehaviour {
             yield return null;
         }
     }
-    
-  
-    bool stage1_playerLookingAtMonster = false;
-    bool stage2_coroutineCalled = false;
-    bool stage3_invokeCalled = false;
-    bool stage3_invokeFinished = false;
+
    
-    void approach()
-    {
-        if (firstCollision != AICollisionSide.NONE)
-        {
-            Vector3 t_rotation = transform.rotation.eulerAngles;
-            if (firstCollision == AICollisionSide.RIGHT)
-            {
-                t_rotation.y -= Time.deltaTime * 100;
-            }
-            else
-            {
-                t_rotation.y += Time.deltaTime * 100;
-            }
-            
-            transform.rotation = Quaternion.Euler(t_rotation);
-        }
-        else
-        {
-            var lookPos = destinationPosition - transform.position;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1.2f);
-        }
-      
-        m_CurrentSpeed = Mathf.Lerp(m_CurrentSpeed, m_MaxApproachSpeed, Time.deltaTime * 0.1f);
-        anim.SetFloat("Speed", m_CurrentSpeed);
-    }
-
-    void chase () {
-        if (firstCollision != AICollisionSide.NONE)
-        {
-            Vector3 t_rotation = transform.rotation.eulerAngles;
-            if (firstCollision == AICollisionSide.RIGHT)
-            {
-                t_rotation.y -= Time.deltaTime * 100;
-            }
-            else
-            {
-                t_rotation.y += Time.deltaTime * 100;
-            }
-
-            transform.rotation = Quaternion.Euler(t_rotation);
-        }
-        else
-        {
-            var lookPos = destinationPosition - transform.position;
-            var rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 1.5f);
-        }
-        //Chase
-        float distanceToHuman = Mathf.Sqrt(Mathf.Pow(destinationPosition.x - transform.position.x, 2) 
-                                + Mathf.Pow(destinationPosition.y - transform.position.y, 2));
-        
-		chaseTimer -= Time.deltaTime;
-		if (chaseTimer < 0) {
-			SetState(MonsterState.HIDDEN_IDLE);
-            chaseTimer = 20f;
-        }
-
-		// Game Over
-		float distance = (destinationPosition - transform.position).magnitude;
-		if (distance < 1f) {
-            SetState(MonsterState.GAMEOVER);
-        }
-	}
-
-    void GameOver()
-    {
-
-    }
 
     /*------------------ UTILITY Functions --------------------*/
 
@@ -615,19 +409,19 @@ public class MonsterAI : MonoBehaviour {
 
     void InitialiseStage1()
     {
-       
+        GetComponent<Rigidbody>().isKinematic = true;
+        original_y = transform.position.y;
+        foreach (Collider collider in GetComponentsInChildren<Collider>())
+        {
+            collider.enabled = false;
+        }
+        StartCoroutine(UpdateStage1());
     }
 
     float original_y;
     void InitialiseStage2()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
-        original_y = transform.position.y;
-        foreach(Collider collider in GetComponentsInChildren<Collider>())
-        {
-            collider.enabled = false;
-        }
-        StartCoroutine(UpdateStage2());
+
     }
 
     void InitialiseStage3()
@@ -723,12 +517,7 @@ public class MonsterAI : MonoBehaviour {
         rot.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, rot.eulerAngles.y, transform.rotation.eulerAngles.z);
         transform.rotation = rot;
     }
-    void JumpscareBehindHuman()
-    {
-        GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-        TeleportVoidBehindHuman(1f);
-        stage3_invokeFinished = true;
-    }
+
     float NextGaussianFloat()
     {
         float u, v, S;
@@ -829,9 +618,21 @@ public class MonsterAI : MonoBehaviour {
     {
         return m_CurrentSpeed;
     }
-    
-    
+
+
     /*------------------ DEPRECATED Functions --------------------*/
+
+
+    bool stage1_playerLookingAtMonster = false;
+    bool stage2_coroutineCalled = false;
+    bool stage3_invokeCalled = false;
+    bool stage3_invokeFinished = false;
+    void JumpscareBehindHuman()
+    {
+        GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        TeleportVoidBehindHuman(1f);
+        stage3_invokeFinished = true;
+    }
     void old_appear()
     {
         
