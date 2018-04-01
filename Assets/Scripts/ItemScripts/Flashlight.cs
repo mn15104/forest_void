@@ -7,6 +7,9 @@ public class Flashlight : MonoBehaviour {
     private Light m_Light;
     private EventManager eventManager;
     public  bool m_FlashlightActive = false;
+    public AudioClip m_SwitchOnClip;
+    public AudioClip m_SwitchOffClip;
+    private AudioSource m_Aud;
     private bool m_FlashLightActiveBeforeCrypt = false;
     private bool insideCrypt = false;
 
@@ -30,6 +33,7 @@ public class Flashlight : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        m_Aud = GetComponent<AudioSource>();
         m_Light = GetComponentInChildren<Light>();
         m_Light.intensity = 0;
 	}
@@ -74,12 +78,16 @@ public class Flashlight : MonoBehaviour {
         {
             if (m_FlashlightActive && (GetComponentInParent<HumanController>() || true))
             {
+                m_Aud.clip = m_SwitchOffClip;
+                m_Aud.Play();
                 m_Light.intensity = 0;
                 m_FlashlightActive = false;
                 eventManager.NotifyTorchPressed.Notify(false);
             }
             else if (!m_FlashlightActive && (GetComponentInParent<HumanController>() || true))
             {
+                m_Aud.clip = m_SwitchOnClip;
+                m_Aud.Play();
                 m_Light.intensity = 4;
                 m_FlashlightActive = true;
                 eventManager.NotifyTorchPressed.Notify(true);
