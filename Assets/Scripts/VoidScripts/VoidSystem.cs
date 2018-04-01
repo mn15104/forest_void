@@ -12,7 +12,7 @@ public class VoidSystem : MonoBehaviour
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private float gameTimer = 0f;
     private float[] m_DelayTimeToActive = { 120f, 210f, 330f };
-    private MonsterAppear m_MonsterAppear = MonsterAppear.STAGE1;
+    private MonsterAppear m_MonsterAppear;
     private MonsterState m_MonsterState = MonsterState.HIDDEN_IDLE;
 
 
@@ -25,10 +25,10 @@ public class VoidSystem : MonoBehaviour
     {
         if (m_ForestVoid)
             m_ForestVoid.SetActive(false);
-
+        else
+            m_MonsterAppear = m_ForestVoid.GetComponent<MonsterAI>().currentAppear;
         foreach (Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
             m_SpawnPositions.Add(trans.position);
-
     }
 
     void Update()
@@ -55,22 +55,20 @@ public class VoidSystem : MonoBehaviour
         if (!m_ForestVoid.activeSelf && gameTimer > 120f)
         {
             m_ForestVoid.SetActive(true);
-        }
-        if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.APPEAR)
-        {
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
         }
         if (gameTimer > 210f && 
-            (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
+            (   m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                 m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                 m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.CHASE)
             )
         {
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
-            m_MonsterAppear = MonsterAppear.STAGE2;
         }
         if (m_ForestVoid.activeSelf && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED)
         {
             SetVoidInactive();
+            m_MonsterAppear = MonsterAppear.STAGE2;
         }
     }
     void UpdateStage2()
@@ -78,6 +76,7 @@ public class VoidSystem : MonoBehaviour
         if (!m_ForestVoid.activeSelf && gameTimer > 210f)
         {
             m_ForestVoid.SetActive(true);
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
         }
         if (gameTimer > 330f && (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                 m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
@@ -97,6 +96,7 @@ public class VoidSystem : MonoBehaviour
         if (!m_ForestVoid.activeSelf && gameTimer > 330f)
         {
             m_ForestVoid.SetActive(true);
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
         }
         if (gameTimer > 470f && 
             (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&

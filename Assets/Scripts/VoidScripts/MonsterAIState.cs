@@ -15,6 +15,7 @@ public partial class MonsterAI
         {
             if (state != m_MonsterAI.currentState)
             {
+                bool validStateChange = true;
                 switch (state)
                 {
                     case MonsterState.HIDDEN_IDLE:
@@ -47,42 +48,59 @@ public partial class MonsterAI
                         m_MonsterAI.m_CurrentSpeed = m_FollowSpeed;
                         break;
                     case MonsterState.APPEAR:
-                        m_MonsterAI.StopAllCoroutines();
-                        m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                        m_MonsterAI.InitialiseCurrentAppearBehaviour(m_MonsterAI.currentAppear);           // CALL APPEAR BEHAVIOUR TYPE
-                        m_MonsterAI.follow_finished = false;                                   // Reset follow bool
-                        m_MonsterAI.anim.SetBool("Run", false);
-                        m_MonsterAI.anim.SetBool("Walk", false);
-                        m_MonsterAI.anim.SetBool("Idle", true);
-                        m_MonsterAI.anim.SetFloat("Speed", m_AppearSpeed);
-                        m_MonsterAI.m_CurrentSpeed = m_AppearSpeed;
+                        if (m_MonsterAI.currentState == MonsterState.FOLLOW)
+                        {
+                            m_MonsterAI.StopAllCoroutines();
+                            m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
+                            m_MonsterAI.InitialiseCurrentAppearBehaviour(m_MonsterAI.currentAppear);           // CALL APPEAR BEHAVIOUR TYPE
+                            m_MonsterAI.follow_finished = false;                                   // Reset follow bool
+                            m_MonsterAI.anim.SetBool("Run", false);
+                            m_MonsterAI.anim.SetBool("Walk", false);
+                            m_MonsterAI.anim.SetBool("Idle", true);
+                            m_MonsterAI.anim.SetFloat("Speed", m_AppearSpeed);
+                            m_MonsterAI.m_CurrentSpeed = m_AppearSpeed;
+                        }
+                        else { validStateChange = false;  }
                         break;
                     case MonsterState.APPROACH:
-                        m_MonsterAI.StopAllCoroutines();
-                        m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                        m_MonsterAI.anim.SetBool("Idle", false);
-                        m_MonsterAI.anim.SetBool("Walk", true);
-                        m_MonsterAI.anim.SetBool("Run", false);
-                        m_MonsterAI.anim.SetFloat("Speed", m_MinApproachSpeed);
-                        m_MonsterAI.m_CurrentSpeed = m_MinApproachSpeed;
-                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.CHASE, 4f));
+                        if (m_MonsterAI.currentState == MonsterState.APPEAR)
+                        {
+                            m_MonsterAI.StopAllCoroutines();
+                            m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
+                            m_MonsterAI.anim.SetBool("Idle", false);
+                            m_MonsterAI.anim.SetBool("Walk", true);
+                            m_MonsterAI.anim.SetBool("Run", false);
+                            m_MonsterAI.anim.SetFloat("Speed", m_MinApproachSpeed);
+                            m_MonsterAI.m_CurrentSpeed = m_MinApproachSpeed;
+                            m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.CHASE, 4f));
+                        }
+                        else { validStateChange = false; }
                         break;
                     case MonsterState.CHASE:
-                        m_MonsterAI.StopAllCoroutines();
-                        m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                        m_MonsterAI.anim.SetBool("Idle", false);
-                        m_MonsterAI.anim.SetBool("Walk", false);
-                        m_MonsterAI.anim.SetBool("Run", true);
-                        m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
-                        m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
-                        m_MonsterAI.NextAppearStage();
+                        if (m_MonsterAI.currentState == MonsterState.APPROACH)
+                        {
+                            m_MonsterAI.StopAllCoroutines();
+                            m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
+                            m_MonsterAI.anim.SetBool("Idle", false);
+                            m_MonsterAI.anim.SetBool("Walk", false);
+                            m_MonsterAI.anim.SetBool("Run", true);
+                            m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
+                            m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
+                            m_MonsterAI.NextAppearStage();
+                        }
+                        else { validStateChange = false; }
                         break;
                     case MonsterState.GAMEOVER:
-                        m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-                        m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
-                        m_MonsterAI.anim.SetBool("Idle", true);
-                        m_MonsterAI.anim.SetBool("Walk", false);
-                        m_MonsterAI.anim.SetBool("Run", false);
+                        if (m_MonsterAI.currentState == MonsterState.CHASE 
+                            || m_MonsterAI.currentState == MonsterState.APPROACH)
+                        {
+                            m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                            m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
+                            m_MonsterAI.anim.SetBool("Idle", true);
+                            m_MonsterAI.anim.SetBool("Walk", false);
+                            m_MonsterAI.anim.SetBool("Run", false);
+                        }
+                        else { validStateChange = false; }
                         break;
                     case MonsterState.DISABLED:
                         m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -95,12 +113,12 @@ public partial class MonsterAI
                         m_MonsterAI.m_MonsterStateMachine.hidden_idle();
                         break;
                 }
-                m_MonsterAI.stage1_playerLookingAtMonster = false;
-                m_MonsterAI.stage2_coroutineCalled = false;
-                m_MonsterAI.stage3_invokeCalled = false;
-                m_MonsterAI.debugState = state;
-                m_MonsterAI.currentState = state;
-                m_MonsterAI.OnMonsterStateChange(state);
+                if (validStateChange)
+                {
+                    m_MonsterAI.debugState = state;
+                    m_MonsterAI.currentState = state;
+                    m_MonsterAI.OnMonsterStateChange(state);
+                }
             }
         }
 
@@ -245,7 +263,11 @@ public partial class MonsterAI
             }
             else if (m_MonsterAI.currentAppear == MonsterAppear.STAGE2)
             {
-
+                m_MonsterAI.UpdateStage2();
+            }
+            else if (m_MonsterAI.currentAppear == MonsterAppear.STAGE3)
+            {
+                m_MonsterAI.UpdateStage3();
             }
         }
         public void approach()

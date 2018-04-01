@@ -210,7 +210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1046233553721682
 GameObject:
   m_ObjectHideFlags: 1
@@ -2095,14 +2095,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4263344459438322}
-  - component: {fileID: 114375352282706580}
   m_Layer: 0
   m_Name: VoidSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1507419043641682
 GameObject:
   m_ObjectHideFlags: 1
@@ -4540,7 +4539,7 @@ Transform:
   - {fileID: 4113211761330848}
   - {fileID: 4670299158042330}
   m_Father: {fileID: 4263344459438322}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4189929598676662
 Transform:
@@ -4930,8 +4929,8 @@ Transform:
   m_Children:
   - {fileID: 4683752754310506}
   - {fileID: 4843638001319348}
-  - {fileID: 4600696567669136}
   - {fileID: 4189523903533580}
+  - {fileID: 4600696567669136}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 94.262, z: 0}
@@ -5442,7 +5441,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219660164934384}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6299,7 +6298,7 @@ Transform:
   m_GameObject: {fileID: 1042390867119212}
   m_LocalRotation: {x: -0, y: -0.84583277, z: -0, w: -0.5334482}
   m_LocalPosition: {x: 26.977274, y: 0, z: 64.24399}
-  m_LocalScale: {x: 0.7692313, y: 0.7692308, z: 0.7692313}
+  m_LocalScale: {x: 0.76923144, y: 0.7692308, z: 0.76923144}
   m_Children:
   - {fileID: 4394667187835536}
   - {fileID: 4302018109218122}
@@ -6308,7 +6307,7 @@ Transform:
   - {fileID: 4330394668150668}
   - {fileID: 4463763536425340}
   m_Father: {fileID: 4263344459438322}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -150.216, z: 0}
 --- !u!4 &4606476955461212
 Transform:
@@ -8283,29 +8282,6 @@ MonoBehaviour:
   m_BreathingBehind: {fileID: 8300000, guid: b77d8af86a104124aa9c9dfbc7645a9d, type: 3}
   m_GasLoop: {fileID: 8300000, guid: 5b9105783f881be4280f5bd170821020, type: 3}
   m_Jumpscare: {fileID: 8300000, guid: 6a43aae4923c37a41bce220a9465c784, type: 3}
---- !u!114 &114375352282706580
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1501347471926804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 155196317229852448a8f3924a3babd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ForestVoid: {fileID: 0}
-  m_CryptVoid: {fileID: 0}
-  m_SpawnpointsHolder: {fileID: 1787675764598556}
-  monsterAppeared: 0
-  m_SpawnPositions: []
-  gameTimer: 0
-  m_DelayTimeToActive:
-  - 120
-  - 210
-  - 330
-  m_MonsterAppear: 1
-  m_MonsterState: 0
 --- !u!114 &114436418992035494
 MonoBehaviour:
   m_ObjectHideFlags: 1

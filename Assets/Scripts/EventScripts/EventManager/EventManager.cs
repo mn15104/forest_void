@@ -8,7 +8,7 @@ public class EventManager : MonoBehaviour {
 
     public enum Stage
     {
-        Stage0,Stage1,Stage2,Stage3,GameOverStage 
+        Stage1,Stage2,Stage3,GameOverStage 
     }
    
     public enum Location
@@ -59,7 +59,7 @@ public class EventManager : MonoBehaviour {
         TextTriggerEvent = new TriggerEvent();
         StructureZoneTriggerEvent = new TriggerEvent();
 
-        currentStage = Stage.Stage0;
+        currentStage = Stage.Stage1;
         currentLocation = Location.Forest;
     
         EventManagerSubscriptions();
@@ -92,24 +92,24 @@ public class EventManager : MonoBehaviour {
     {
         switch (currentStage)
         {
-            case Stage.Stage0:
-                if (GameTimerSeconds > StageTimes[1])
-                {
-                    currentStage = Stage.Stage1;
-                    NotifyStage.Notify(currentStage);
-                }
-                break;
             case Stage.Stage1:
-                if (GameTimerSeconds > StageTimes[2])
+                if (GameTimerSeconds > StageTimes[1])
                 {
                     currentStage = Stage.Stage2;
                     NotifyStage.Notify(currentStage);
                 }
                 break;
             case Stage.Stage2:
-                if (GameTimerSeconds > StageTimes[3])
+                if (GameTimerSeconds > StageTimes[2])
                 {
                     currentStage = Stage.Stage3;
+                    NotifyStage.Notify(currentStage);
+                }
+                break;
+            case Stage.Stage3:
+                if (GameTimerSeconds > StageTimes[3])
+                {
+                    currentStage = Stage.GameOverStage;
                     NotifyStage.Notify(currentStage);
                 }
                 break;
@@ -142,5 +142,8 @@ public class EventManager : MonoBehaviour {
         NotifyLocation.Notify(currentLocation);
     }
 
-
+    public Stage GetCurrentStage()
+    {
+        return currentStage; 
+    }
 }

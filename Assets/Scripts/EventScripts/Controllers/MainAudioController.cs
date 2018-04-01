@@ -5,17 +5,69 @@ using UnityEngine;
 public class MainAudioController : MonoBehaviour {
 
     private EventManager eventManager;
-
-    private void Awake()
+    public AudioSource m_Aud_1;
+    public AudioSource m_Aud_2;
+    public AudioSource m_Aud_SFX;
+    public AudioSource m_Aud_Wind;
+    public AudioClip m_WindClip;
+    public AudioClip m_Stage1Clip;
+    public AudioClip m_Stage2Clip;
+    public AudioClip m_Stage3Clip;
+    private EventManager.Stage currentAudioStage = EventManager.Stage.Stage1;
+    private void Awake() 
     {
         eventManager = FindObjectOfType<EventManager>();
         eventManager.NotifyRunStamina.NotifyEventOccurred += RunAudio;
         eventManager.NotifyLocation.NotifyEventOccurred += StructureAudio;
         eventManager.NotifyStage.NotifyEventOccurred += StageAudio;
         eventManager.NotifyHeartRate.NotifyEventOccurred += HeartRateAudio;
-        eventManager.NotifyTorchPressed.NotifyEventOccurred += TorchPressAudio;
         //eventManager.BridgeCrossedEvent.TriggerEnterEvent += BridgeTriggerAudio; 
 
+    }
+    private void Start()
+    {
+        m_Aud_1.clip = m_Stage1Clip;
+        m_Aud_1.loop = true;
+        m_Aud_1.volume = 0;
+        FadeInAudioSource(m_Aud_1);
+        //----------------
+        m_Aud_Wind.clip = m_WindClip;
+        m_Aud_Wind.loop = true;
+        m_Aud_Wind.volume = 0;
+        FadeInAudioSource(m_Aud_Wind);
+        //----------------
+        m_Aud_2.Stop();
+        m_Aud_2.clip = null;
+        m_Aud_2.loop = true;
+        //----------------
+        m_Aud_SFX.Stop();
+        m_Aud_SFX.clip = null;
+        m_Aud_SFX.loop = false;
+    }
+
+    void StageAudio(EventManager.Stage stage)
+    {
+        switch (stage)
+        {
+            case EventManager.Stage.Stage1:
+
+                break;
+            case EventManager.Stage.Stage2:
+                if(currentAudioStage == EventManager.Stage.Stage1)
+                {
+                    TransitionClip(m_Stage2Clip);
+                    currentAudioStage = EventManager.Stage.Stage2;
+                }
+                break;
+            case EventManager.Stage.Stage3:
+                if (currentAudioStage == EventManager.Stage.Stage2)
+                {
+                    m_Aud_1.clip = m_Stage3Clip;
+                    m_Aud_1.Play();
+                    currentAudioStage = EventManager.Stage.Stage3;
+                }
+                break;
+        }
     }
 
 
@@ -25,7 +77,6 @@ public class MainAudioController : MonoBehaviour {
         {
             //Means is able to run again - not exhausted audio
             Debug.Log("Event: Stamina=True");
-            
         }
         else
         {
@@ -36,78 +87,36 @@ public class MainAudioController : MonoBehaviour {
 
     void StructureAudio(EventManager.Location location)
     {
+        bool windOn = false;
         switch (location)
         {
+            case EventManager.Location.Forest:
+                windOn = true;
+                break;
             case EventManager.Location.Caravan:
-                //Caravan Audio
-                Debug.Log("Event: Location=Caravan");
                 break;
             case EventManager.Location.Chapel:
-                Debug.Log("Event: Location=Chapel");
-                //Chapel Audio
                 break;
             case EventManager.Location.Crypt:
-                Debug.Log("Event: Location=Crypt");
-                //Crypt Audio
-                break;
-            case EventManager.Location.Forest:
-                Debug.Log("Event: Location=Forest");
-                //Forest Audio
                 break;
             case EventManager.Location.Generator:
-                Debug.Log("Event: Location=Generator");
-                //Generator Audio
+                windOn = true;
                 break;
             case EventManager.Location.ToolShed:
-                Debug.Log("Event: Location=Toolshed");
-                //Toolshed Audio
+                windOn = true;
                 break;
-
         }
-            
-    }
-
-    void StageAudio(EventManager.Stage stage)
-    {
-        switch (stage)
+        if(windOn && !m_Aud_Wind.isPlaying)
         {
-            case EventManager.Stage.Stage0:
-                Debug.Log("Event: Stage=Stage0");
-                //Initial Audio
-                break;
-            case EventManager.Stage.Stage1:
-                Debug.Log("Event: Stage=Stage1");
-                //Stage 1 Audio
-                break;
-            case EventManager.Stage.Stage2:
-                Debug.Log("Event: Stage=Stage2");
-                //Stage 2 Audio
-                break;
-            case EventManager.Stage.Stage3:
-                Debug.Log("Event: Stage=Stage3");
-                //Stage 3 Audio
-                break;
+            StopAllCoroutines();
+            StartCoroutine(FadeInAudioSource(m_Aud_Wind));
+        }
+        else if(!windOn && m_Aud_Wind.isPlaying)
+        {
+            StopAllCoroutines();
+            StartCoroutine(FadeOutAudioSource(m_Aud_Wind));
         }
     }
-
-    void TorchPressAudio(bool lightvalue)
-    {
-        //LIGHTPressAudio
-        if (lightvalue)
-        {
-   
-            Debug.Log("Event: TorchPress");
-            Debug.Log("Event: LightOn");
-        }
-        else
-        {
-
-            Debug.Log("Event: TorchPress");
-            Debug.Log("Event: LightOff");
-        }
-       
-    }
-
 
     void HeartRateAudio(float heartRate)
     {
@@ -128,6 +137,41 @@ public class MainAudioController : MonoBehaviour {
  
     }
 
+    void TransitionClip(AudioClip t_clip)
+    {
+        if (m_Aud_1.isPlaying)
+        {
+            m_Aud_2.clip = t_clip;
+            StopAllCoroutines();
+            FadeOutAudioSource(m_Aud_1);
+            FadeInAudioSource(m_Aud_2);
+        }
+        else if (m_Aud_2.isPlaying)
+        {
+            m_Aud_1.clip = t_clip;
+            StopAllCoroutines();
+            FadeOutAudioSource(m_Aud_2);
+            FadeInAudioSource(m_Aud_1);
+        }
+    }
 
+    IEnumerator FadeInAudioSource(AudioSource aud)
+    {
+        aud.Play();
+        while (aud.volume < 1)
+        {
+            yield return null; 
+            aud.volume += Time.deltaTime;
+        }
+    }
+    IEnumerator FadeOutAudioSource(AudioSource aud)
+    {
+        while (aud.volume > 0)
+        {
+            yield return null;
+            aud.volume -= Time.deltaTime;
+        }
+        aud.Stop();
+    }
 
 }
