@@ -1,52 +1,72 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class VoidSystem : MonoBehaviour
 {
+
     public GameObject m_ForestVoid;
     private GameObject m_CryptVoid;
     public GameObject m_SpawnpointsHolder;
+    private EventManager m_eventManager;
     private bool monsterAppeared = false;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private float gameTimer = 0f;
     private float[] m_DelayTimeToActive = { 120f, 210f, 330f };
-    private MonsterAppear m_MonsterAppear;
+    private EventManager.Stage m_MonsterStage;
     private MonsterState m_MonsterState = MonsterState.HIDDEN_IDLE;
 
+    public NotifyEvent<EventManager.Stage> NotifyStage;
+    //private Stage 
 
     private void OnEnable()
     {
-
+        NotifyStage = new NotifyEvent<EventManager.Stage>();
+        NotifyStage.Notify(m_ForestVoid.GetComponent<MonsterAI>().currentStage);
     }
-
+    
     void Start()
     {
         if (m_ForestVoid)
             m_ForestVoid.SetActive(false);
         else
-            m_MonsterAppear = m_ForestVoid.GetComponent<MonsterAI>().currentAppear;
+            m_MonsterStage = m_ForestVoid.GetComponent<MonsterAI>().currentStage;
         foreach (Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
             m_SpawnPositions.Add(trans.position);
     }
 
     void Update()
     {
-        gameTimer += Time.deltaTime;
-        switch (m_MonsterAppear)
+        gameTimer = m_eventManager.GetGameTime();
+        switch (m_MonsterStage)
         {
-            case MonsterAppear.STAGE1:
+            case EventManager.Stage.Intro:
+
+                break;
+            case EventManager.Stage.Stage1:
                 UpdateStage1();
                 break;
-            case MonsterAppear.STAGE2:
+            case EventManager.Stage.Stage2:
                 UpdateStage2();
                 break;
-            case MonsterAppear.STAGE3:
+            case EventManager.Stage.Stage3:
                 UpdateStage3();
                 break;
             default:
                 break;
+        }
+    }
+    
+    void UpdateStageIntro()
+    {
+        if (!m_ForestVoid.activeSelf && gameTimer > 120f)
+        {
+            m_ForestVoid.SetActive(true);
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
+            m_MonsterStage = EventManager.Stage.Stage1;
+            NotifyStage.Notify(m_MonsterStage);
         }
     }
 
@@ -68,7 +88,8 @@ public class VoidSystem : MonoBehaviour
         if (m_ForestVoid.activeSelf && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED)
         {
             SetVoidInactive();
-            m_MonsterAppear = MonsterAppear.STAGE2;
+            m_MonsterStage = EventManager.Stage.Stage2;
+            NotifyStage.Notify(m_MonsterStage);
         }
     }
     void UpdateStage2()
@@ -88,7 +109,8 @@ public class VoidSystem : MonoBehaviour
         if (m_ForestVoid.activeSelf && m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED)
         {
             SetVoidInactive();
-            m_MonsterAppear = MonsterAppear.STAGE3;
+            m_MonsterStage = EventManager.Stage.Stage3;
+            NotifyStage.Notify(m_MonsterStage);
         }
     }
     void UpdateStage3()
@@ -109,9 +131,11 @@ public class VoidSystem : MonoBehaviour
         if (m_ForestVoid.activeSelf &&  m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED)
         {
             SetVoidInactive();
-            m_MonsterAppear = MonsterAppear.NONE;
+            m_MonsterStage = EventManager.Stage.GameOverStage;  /////////////////// Fix conditionals to gameover
+            NotifyStage.Notify(m_MonsterStage);
         }
     }
+
 
     public void SetVoidActive(Vector3 position = new Vector3())
     {

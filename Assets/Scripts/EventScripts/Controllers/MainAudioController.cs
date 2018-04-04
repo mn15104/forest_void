@@ -13,7 +13,7 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage1Clip;
     public AudioClip m_Stage2Clip;
     public AudioClip m_Stage3Clip;
-    private EventManager.Stage currentAudioStage = EventManager.Stage.Stage1;
+    private EventManager.Stage currentAudioStage = EventManager.Stage.Intro;
     private void Awake() 
     {
         eventManager = FindObjectOfType<EventManager>();
@@ -49,6 +49,9 @@ public class MainAudioController : MonoBehaviour {
     {
         switch (stage)
         {
+            case EventManager.Stage.Intro:
+
+                break;
             case EventManager.Stage.Stage1:
 
                 break;

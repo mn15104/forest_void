@@ -52,7 +52,7 @@ public partial class MonsterAI
                         {
                             m_MonsterAI.StopAllCoroutines();
                             m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                            m_MonsterAI.InitialiseCurrentAppearBehaviour(m_MonsterAI.currentAppear);           // CALL APPEAR BEHAVIOUR TYPE
+                            m_MonsterAI.InitialiseCurrentAppearBehaviour(m_MonsterAI.currentStage);           // CALL APPEAR BEHAVIOUR TYPE
                             m_MonsterAI.follow_finished = false;                                   // Reset follow bool
                             m_MonsterAI.anim.SetBool("Run", false);
                             m_MonsterAI.anim.SetBool("Walk", false);
@@ -218,7 +218,7 @@ public partial class MonsterAI
                 m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 1.2f);
             }
 
-            if (!m_MonsterAI.follow_finished && (m_MonsterAI.currentAppear == MonsterAppear.STAGE1 || m_MonsterAI.currentAppear == MonsterAppear.NONE))
+            if (!m_MonsterAI.follow_finished && (m_MonsterAI.currentStage == EventManager.Stage.Stage1))
             {
                 if (m_MonsterAI.distanceToHuman > m_MonsterAI.distanceToHuman_AppearTrigger && !m_MonsterAI.anim.GetBool("Walk"))
                 {
@@ -237,7 +237,7 @@ public partial class MonsterAI
                     m_MonsterAI.follow_finished = true;
                 }
             }
-            if (!m_MonsterAI.follow_finished && (m_MonsterAI.currentAppear == MonsterAppear.STAGE2))
+            if (!m_MonsterAI.follow_finished && (m_MonsterAI.currentStage == EventManager.Stage.Stage2))
             {
                 if (m_MonsterAI.distanceToHuman > m_MonsterAI.distanceToHuman_AppearTrigger && !m_MonsterAI.anim.GetBool("Walk"))
                 {
@@ -257,15 +257,15 @@ public partial class MonsterAI
 
         public void appear()
         {
-            if (m_MonsterAI.currentAppear == MonsterAppear.STAGE1)
+            if (m_MonsterAI.currentStage == EventManager.Stage.Stage1)
             {
                 m_MonsterAI.UpdateStage1();
             }
-            else if (m_MonsterAI.currentAppear == MonsterAppear.STAGE2)
+            else if (m_MonsterAI.currentStage == EventManager.Stage.Stage2)
             {
                 m_MonsterAI.UpdateStage2();
             }
-            else if (m_MonsterAI.currentAppear == MonsterAppear.STAGE3)
+            else if (m_MonsterAI.currentStage == EventManager.Stage.Stage3)
             {
                 m_MonsterAI.UpdateStage3();
             }

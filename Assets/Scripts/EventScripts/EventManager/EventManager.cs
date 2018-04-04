@@ -8,7 +8,7 @@ public class EventManager : MonoBehaviour {
 
     public enum Stage
     {
-        Stage1,Stage2,Stage3,GameOverStage 
+        Intro,Stage1,Stage2,Stage3,GameOverStage 
     }
    
     public enum Location
@@ -16,7 +16,7 @@ public class EventManager : MonoBehaviour {
         Chapel,Forest,Crypt,ToolShed, Caravan, Generator
     }
 
-    private float[] StageTimes = { 0f, 120f, 600f, 720f };
+    private float[] StageTimes = { 120f, 600f, 720f };
     private float GameTimerSeconds = 0f; 
 
     public TriggerEvent TextTriggerEvent;
@@ -32,7 +32,7 @@ public class EventManager : MonoBehaviour {
     public NotifyEvent<bool> NotifyRunStamina;
     public NotifyEvent<bool> NotifyTorchPressed;
 
-
+    private VoidSystem voidSys;
     private Stage currentStage;
     private Location currentLocation;
 
@@ -59,20 +59,21 @@ public class EventManager : MonoBehaviour {
         TextTriggerEvent = new TriggerEvent();
         StructureZoneTriggerEvent = new TriggerEvent();
 
-        currentStage = Stage.Stage1;
+        currentStage = Stage.Intro;
         currentLocation = Location.Forest;
-    
         EventManagerSubscriptions();
     }
 
     public void Start()
     {
         //E.G Notify heart rate to all listeners, after 20sec -> every 3 sec
-        InvokeRepeating("PassHeartRate", startNotifyingHeartRate, NotifyHeartRateInterval); 
+        InvokeRepeating("PassHeartRate", startNotifyingHeartRate, NotifyHeartRateInterval);
+        NotifyStage.Notify(currentStage);
     }
 
     void EventManagerSubscriptions()
     {
+        voidSys.NotifyStage.NotifyEventOccurred += SetStage;
         StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
         StructureZoneTriggerEvent.TriggerExitEvent += SetForestLocation;
     }
@@ -88,32 +89,11 @@ public class EventManager : MonoBehaviour {
         
     }
 
-    void UpdateStage()
+    // VoidSystem notifies EventManager of stage, EventManager notifies every other necessary script
+    void SetStage(Stage t_stage)
     {
-        switch (currentStage)
-        {
-            case Stage.Stage1:
-                if (GameTimerSeconds > StageTimes[1])
-                {
-                    currentStage = Stage.Stage2;
-                    NotifyStage.Notify(currentStage);
-                }
-                break;
-            case Stage.Stage2:
-                if (GameTimerSeconds > StageTimes[2])
-                {
-                    currentStage = Stage.Stage3;
-                    NotifyStage.Notify(currentStage);
-                }
-                break;
-            case Stage.Stage3:
-                if (GameTimerSeconds > StageTimes[3])
-                {
-                    currentStage = Stage.GameOverStage;
-                    NotifyStage.Notify(currentStage);
-                }
-                break;
-        }
+        currentStage = t_stage;
+        NotifyStage.Notify(currentStage);
     }
 
     void PassHeartRate()
@@ -126,7 +106,6 @@ public class EventManager : MonoBehaviour {
     void Update()
     {
         GameTimerSeconds += Time.deltaTime;
-        UpdateStage();
     }
 
 
@@ -142,6 +121,10 @@ public class EventManager : MonoBehaviour {
         NotifyLocation.Notify(currentLocation);
     }
 
+    public float GetGameTime()
+    {
+        return GameTimerSeconds;
+    }
     public Stage GetCurrentStage()
     {
         return currentStage; 

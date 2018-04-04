@@ -16,15 +16,6 @@ public enum MonsterState
     DISABLED
 };
 
-public enum MonsterAppear
-{
-    NONE = -1,
-    STAGE1 = 1,
-    STAGE2 = 2,
-    STAGE3 = 3,
-    STAGE4 = 4,
-    STAGE5 = 5
-}
 
 public partial class MonsterAI : MonoBehaviour
 {
@@ -36,7 +27,7 @@ public partial class MonsterAI : MonoBehaviour
     public GameObject player;
     private MonsterState currentState;
     public MonsterState debugState;
-    public MonsterAppear currentAppear = MonsterAppear.STAGE1;
+    public EventManager.Stage currentStage = EventManager.Stage.Stage1;
     private MonsterAIState m_MonsterStateMachine;
     private Animator anim;
     private GameObject trigger;
@@ -89,17 +80,17 @@ public partial class MonsterAI : MonoBehaviour
         anim.SetFloat("Speed", m_HiddenMovingSpeed);
         m_CurrentSpeed = m_HiddenMovingSpeed;
         StartCoroutine(DelayStateChange(MonsterState.HIDDEN_IDLE, 8f));
-        if (currentAppear == MonsterAppear.STAGE1)
+        if (currentStage == EventManager.Stage.Stage1)
         {
             distanceToHuman_FollowTrigger = 12;
             distanceToHuman_AppearTrigger = 6;
         }
-        else if (currentAppear == MonsterAppear.STAGE2)
+        else if (currentStage == EventManager.Stage.Stage2)
         {
             distanceToHuman_FollowTrigger = 15;
             distanceToHuman_AppearTrigger = 12;
         }
-        else if (currentAppear == MonsterAppear.STAGE3)
+        else if (currentStage == EventManager.Stage.Stage3)
         {
             distanceToHuman_FollowTrigger = 15;
             distanceToHuman_AppearTrigger = 12;
@@ -262,7 +253,7 @@ public partial class MonsterAI : MonoBehaviour
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                 m_MonsterStateMachine.SetState(MonsterState.DISABLED);
-                currentAppear = MonsterAppear.STAGE2;
+                currentStage = EventManager.Stage.Stage2;
                 GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
                 GetComponentInChildren<MeshRenderer>().enabled = true;
                 gameObject.SetActive(false);
@@ -301,19 +292,17 @@ public partial class MonsterAI : MonoBehaviour
 
     /*------------------ UTILITY Functions --------------------*/
 
-    public void InitialiseCurrentAppearBehaviour(MonsterAppear appear)
+    public void InitialiseCurrentAppearBehaviour(EventManager.Stage t_stage)
     {
-        switch (appear)
+        switch (t_stage)
         {
-            case MonsterAppear.NONE:
-                break;
-            case MonsterAppear.STAGE1:
+            case EventManager.Stage.Stage1:
                 InitialiseStage1();
                 break;
-            case MonsterAppear.STAGE2:
+            case EventManager.Stage.Stage2:
                 InitialiseStage2();
                 break;
-            case MonsterAppear.STAGE3:
+            case EventManager.Stage.Stage3:
                 InitialiseStage3();
                 break;
         }
@@ -321,22 +310,20 @@ public partial class MonsterAI : MonoBehaviour
 
     public void NextAppearStage()
     {
-        switch (currentAppear)
+        switch (currentStage)
         {
-            case MonsterAppear.NONE:
-                break;
-            case MonsterAppear.STAGE1:
-                currentAppear = MonsterAppear.STAGE2;
+            case EventManager.Stage.Stage1:
+                currentStage = EventManager.Stage.Stage2;
                 distanceToHuman_FollowTrigger = 20f;
                 distanceToHuman_AppearTrigger = 15f;
                 break;
-            case MonsterAppear.STAGE2:
-                currentAppear = MonsterAppear.STAGE3;
+            case EventManager.Stage.Stage2:
+                currentStage = EventManager.Stage.Stage3;
                 distanceToHuman_FollowTrigger = 15f;
                 distanceToHuman_AppearTrigger = 10f;
                 break;
-            case MonsterAppear.STAGE3:
-                currentAppear = MonsterAppear.STAGE1;
+            case EventManager.Stage.Stage3:
+                currentStage = EventManager.Stage.Stage1;
                 distanceToHuman_FollowTrigger = 12f;
                 distanceToHuman_AppearTrigger = 6f;
                 break;
