@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 82061931866943436}
   - component: {fileID: 82393516102736928}
   m_Layer: 0
-  m_Name: VoidAudioController (1)
+  m_Name: VoidAudioController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,7 +1398,7 @@ GameObject:
   - component: {fileID: 114287171952641212}
   - component: {fileID: 65602181991470248}
   m_Layer: 0
-  m_Name: RightCollisionDetector (1)
+  m_Name: RightCollisionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1642,7 +1642,7 @@ GameObject:
   - component: {fileID: 114850246767287614}
   - component: {fileID: 65658569070866176}
   m_Layer: 0
-  m_Name: LeftCollisionDetector (1)
+  m_Name: LeftCollisionDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2884,7 +2884,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033277563816748}
   m_LocalRotation: {x: -0, y: -0.96641123, z: -0, w: 0.25700083}
-  m_LocalPosition: {x: 594.18, y: 73.99817, z: 811.12}
+  m_LocalPosition: {x: 599.12, y: 73.99817, z: 824.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4841383279146252}
@@ -4910,8 +4910,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18128815, y: 5.5544257, z: 0.97617906}
-  m_Center: {x: 0.12272861, y: 0.38914582, z: 0.48371574}
+  m_Size: {x: 0.18128815, y: 5.370436, z: 0.97617906}
+  m_Center: {x: 0.12272856, y: 0.1865639, z: 0.48371562}
 --- !u!65 &65658569070866176
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4922,8 +4922,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14680287, y: 5.5544257, z: 0.97617894}
-  m_Center: {x: -0.07717903, y: 0.38914585, z: 0.48371527}
+  m_Size: {x: 0.14680287, y: 5.420503, z: 0.9761789}
+  m_Center: {x: -0.07717903, y: 0.32218385, z: 0.48371536}
 --- !u!82 &82061931866943436
 AudioSource:
   m_ObjectHideFlags: 1
@@ -5322,7 +5322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   debugState: 0
-  currentAppear: 2
+  currentStage: 1
   soundDetectionPercentage: 0.2
   lightDetectionPercentage: 0.2
   Stage1_TeleportInterval: 5

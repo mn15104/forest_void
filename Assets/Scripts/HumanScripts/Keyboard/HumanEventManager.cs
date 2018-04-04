@@ -51,6 +51,10 @@ public class HumanEventManager : MonoBehaviour {
         {
            OnInteract(gameObject);
         }
+        if (Input.GetKeyDown("k"))
+        {
+            GetComponent<HumanController>().FallOver();
+        }
 	}
     
 }

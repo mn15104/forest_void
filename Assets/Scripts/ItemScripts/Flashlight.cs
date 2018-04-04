@@ -15,12 +15,12 @@ public class Flashlight : MonoBehaviour {
 
     private void Awake()
     {
-        eventManager = FindObjectOfType<EventManager>();
     }
 
     void OnEnable()
     {
         HumanEventManager.OnUseItem += Switch;
+        eventManager = FindObjectOfType<EventManager>();
         eventManager.StructureZoneTriggerEvent.TriggerEnterEvent += CryptTorchLightOff;
         eventManager.StructureZoneTriggerEvent.TriggerExitEvent += CryptTorchLightOn;
     }

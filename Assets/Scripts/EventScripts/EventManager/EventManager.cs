@@ -108,7 +108,6 @@ public class EventManager : MonoBehaviour {
         GameTimerSeconds += Time.deltaTime;
     }
 
-
     void SetStructureLocation(GameObject gameObject)
     {
         currentLocation = gameObject.GetComponent<StructureZone>().location;
@@ -124,9 +123,5 @@ public class EventManager : MonoBehaviour {
     public float GetGameTime()
     {
         return GameTimerSeconds;
-    }
-    public Stage GetCurrentStage()
-    {
-        return currentStage; 
     }
 }

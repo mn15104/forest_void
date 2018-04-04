@@ -12,6 +12,7 @@ public enum MonsterState
     APPEAR,
     APPROACH,
     CHASE,
+    ATTACK,
     GAMEOVER,
     DISABLED
 };
@@ -268,9 +269,9 @@ public partial class MonsterAI : MonoBehaviour
 
     public void UpdateStage3()
     {
-        if(distanceToHuman > 3f)
+        if(distanceToHuman > 7f)
         {
-            TeleportVoidBehindHuman(2f);
+            TeleportVoidBehindHuman(5f);
         }
         
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(player.GetComponentInChildren<Camera>());
@@ -284,7 +285,6 @@ public partial class MonsterAI : MonoBehaviour
                 m_MonsterStateMachine.SetState(MonsterState.APPROACH);
             }
         }
-        
     }
 
 
@@ -349,8 +349,7 @@ public partial class MonsterAI : MonoBehaviour
 
     public void InitialiseStage3()
     {
-        GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-        TeleportVoidBehindHuman(1f);
+        TeleportVoidBehindHuman(5f);
     }
 
     public float Stage1_MinAngle = 1f;
@@ -524,7 +523,18 @@ public partial class MonsterAI : MonoBehaviour
 
     /*------------------ DEPRECATED Functions --------------------*/
 
-        
- 
+    void OnCollisionEnter(Collision col)
+    {
+       
+        if (currentState == MonsterState.ATTACK)
+        {
+            if (col.gameObject.GetComponent<HumanVRController>() ||
+                col.gameObject.GetComponent<HumanController>())
+            {
+                SetState(MonsterState.GAMEOVER);
+            }
+        }
+    }
+
 
 }

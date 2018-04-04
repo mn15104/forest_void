@@ -47,7 +47,9 @@ public enum PlayerMoveState
     [Description("1.0f")]
     JUMPING,
     [Description("0.0f")]
-    CLIMBING
+    CLIMBING,
+    [Description("0.0f")]
+    FALLING
 }
 //Helper get-function for speed value 
 public static class MoveToFloat
@@ -151,7 +153,7 @@ public class HumanController : MonoBehaviour
                
             }
         }
-  
+        
         
         Move(movement, rotation);
     }
@@ -183,9 +185,18 @@ public class HumanController : MonoBehaviour
         CheckClimbState();
         CheckCrouchState();
         CheckRunState();
-        
+        CheckFallOverState();
     }
-
+    void CheckFallOverState()
+    {
+        var pos = transform.position;
+        if (m_FallingOver)
+        {
+            var rotation = Quaternion.LookRotation(Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2f);
+            transform.position = pos;
+        }
+    }
     void CheckJumpState()
     {
         if (Input.GetKey(KeyCode.Space) && 
@@ -362,33 +373,36 @@ public class HumanController : MonoBehaviour
     
     void UpdateAnimator(Vector3 move)
     {
-        if (m_playerMoveState == PlayerMoveState.CROUCHING)
+        if (!m_FallingOver)
         {
-            float moveSpeed = MoveToFloat.Value(m_playerMoveState) / MoveToFloat.Value(PlayerMoveState.RUNNING);
-            m_Animator.speed = move.magnitude > 0 ? moveSpeed : 1;
-        }
-        else if (m_playerMoveState == PlayerMoveState.JUMPING)
-        {
-            m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
-        }
-        else if(m_playerMoveState == PlayerMoveState.CLIMBING)
-        {
-            // LEAVE THIS HERE until an animation is put in
-        }
-        else
-        {
-            m_Animator.SetFloat("Speed", m_Speed, 0.1f, Time.deltaTime);
-            m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+            if (m_playerMoveState == PlayerMoveState.CROUCHING)
+            {
+                float moveSpeed = MoveToFloat.Value(m_playerMoveState) / MoveToFloat.Value(PlayerMoveState.RUNNING);
+                m_Animator.speed = move.magnitude > 0 ? moveSpeed : 1;
+            }
+            else if (m_playerMoveState == PlayerMoveState.JUMPING)
+            {
+                m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
+            }
+            else if (m_playerMoveState == PlayerMoveState.CLIMBING)
+            {
+                // LEAVE THIS HERE until an animation is put in
+            }
+            else
+            {
+                m_Animator.SetFloat("Speed", m_Speed, 0.1f, Time.deltaTime);
+                m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
 
-            float runCycle =
-                Mathf.Repeat(
-                    m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
-            float jumpLeg = (runCycle < 0.5f ? 1 : -1) * m_Speed * 0.8f;
+                float runCycle =
+                    Mathf.Repeat(
+                        m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
+                float jumpLeg = (runCycle < 0.5f ? 1 : -1) * m_Speed * 0.8f;
 
-            m_Animator.SetFloat("JumpLeg", jumpLeg);
+                m_Animator.SetFloat("JumpLeg", jumpLeg);
 
-            float moveSpeed = MoveToFloat.Value(m_playerMoveState) / MoveToFloat.Value(PlayerMoveState.RUNNING);
-            m_Animator.speed = move.magnitude > 0 ? moveSpeed : 1;
+                float moveSpeed = MoveToFloat.Value(m_playerMoveState) / MoveToFloat.Value(PlayerMoveState.RUNNING);
+                m_Animator.speed = move.magnitude > 0 ? moveSpeed : 1;
+            }
         }
     }
 
