@@ -15,21 +15,21 @@ public class VoidSystem : MonoBehaviour
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private float gameTimer = 0f;
     private float[] m_DelayTimeToActive = { 120f, 210f, 330f };
-    private EventManager.Stage m_MonsterStage;
+    private EventManager.Stage m_MonsterStage = EventManager.Stage.Intro;
 
-    public NotifyEvent<EventManager.Stage> NotifyStage;
+    public NotifyEvent<EventManager.Stage> NotifyStage = new NotifyEvent<EventManager.Stage>();
     //private Stage 
 
     private void OnEnable()
     {
-        NotifyStage = new NotifyEvent<EventManager.Stage>();
+        m_eventManager = FindObjectOfType<EventManager>();
+        m_MonsterStage = m_ForestVoid.GetComponent<MonsterAI>().currentStage;
         NotifyStage.Notify(m_ForestVoid.GetComponent<MonsterAI>().currentStage);
+        m_ForestVoid.SetActive(false);
     }
     
     void Start()
     {
-        m_ForestVoid.SetActive(false);
-        m_MonsterStage = m_ForestVoid.GetComponent<MonsterAI>().currentStage;
         foreach (Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
             m_SpawnPositions.Add(trans.position);
     }

@@ -14,10 +14,10 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage2Clip;
     public AudioClip m_Stage3Clip;
     private EventManager.Stage currentAudioStage = EventManager.Stage.Intro;
+
     private void Awake() 
     {
         eventManager = FindObjectOfType<EventManager>();
-        eventManager.NotifyRunStamina.NotifyEventOccurred += RunAudio;
         eventManager.NotifyLocation.NotifyEventOccurred += StructureAudio;
         eventManager.NotifyStage.NotifyEventOccurred += StageAudio;
         eventManager.NotifyHeartRate.NotifyEventOccurred += HeartRateAudio;
@@ -53,7 +53,11 @@ public class MainAudioController : MonoBehaviour {
 
                 break;
             case EventManager.Stage.Stage1:
-
+                if (currentAudioStage == EventManager.Stage.Intro)
+                {
+                    TransitionClip(m_Stage1Clip);
+                    currentAudioStage = EventManager.Stage.Stage1;
+                }
                 break;
             case EventManager.Stage.Stage2:
                 if(currentAudioStage == EventManager.Stage.Stage1)
@@ -70,21 +74,6 @@ public class MainAudioController : MonoBehaviour {
                     currentAudioStage = EventManager.Stage.Stage3;
                 }
                 break;
-        }
-    }
-
-
-    void RunAudio(bool runStamina)
-    {
-        if (runStamina)
-        {
-            //Means is able to run again - not exhausted audio
-            Debug.Log("Event: Stamina=True");
-        }
-        else
-        {
-            //No running left Audio - panting
-            Debug.Log("Event: Stamina=False");
         }
     }
 
@@ -128,8 +117,7 @@ public class MainAudioController : MonoBehaviour {
         //Currrently set to start notifying after 30sec, every 10sec
     }
 
-
-
+    
     //If you want to also control audio for triggerevents(e.g BridgeTrigger(voice recording), CaravanTrigger(enter door), TextAppear etc
     //Do this e.g BridgeTrigger: uncomment is awake subscription to this event
      

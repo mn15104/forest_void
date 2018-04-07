@@ -28,7 +28,7 @@ public partial class MonsterAI : MonoBehaviour
     public GameObject player;
     private MonsterState currentState;
     public MonsterState debugState;
-    public EventManager.Stage currentStage = EventManager.Stage.Stage1;
+    public EventManager.Stage currentStage = EventManager.Stage.Intro;
     private MonsterAIState m_MonsterStateMachine;
     private Animator anim;
     private GameObject trigger;

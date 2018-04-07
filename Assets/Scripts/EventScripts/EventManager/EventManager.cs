@@ -19,63 +19,56 @@ public class EventManager : MonoBehaviour {
     private float[] StageTimes = { 120f, 600f, 720f };
     private float GameTimerSeconds = 0f; 
 
-    public TriggerEvent TextTriggerEvent;
-    public TriggerEvent BridgeCrossedEvent;
-    public TriggerEvent ChapelBackDoorHandEvent;
-    public TriggerEvent CaravanTriggerEvent;
-    public TriggerEvent GeneratorZoneTriggerEvent;
-    public TriggerEvent StructureZoneTriggerEvent;
+    public TriggerEvent TextTriggerEvent = new TriggerEvent();
+    public TriggerEvent BridgeCrossedEvent = new TriggerEvent();
+    public TriggerEvent ChapelBackDoorHandEvent = new TriggerEvent();
+    public TriggerEvent CaravanTriggerEvent = new TriggerEvent();
+    public TriggerEvent GeneratorZoneTriggerEvent = new TriggerEvent();
+    public TriggerEvent StructureZoneTriggerEvent = new TriggerEvent();
 
-    public NotifyEvent<float> NotifyHeartRate;
-    public NotifyEvent<Stage> NotifyStage;
-    public NotifyEvent<Location> NotifyLocation;
-    public NotifyEvent<bool> NotifyRunStamina;
-    public NotifyEvent<bool> NotifyTorchPressed;
+    public NotifyEvent<float> NotifyHeartRate = new NotifyEvent<float>();
+    public NotifyEvent<Stage> NotifyStage = new NotifyEvent<Stage>();
+    public NotifyEvent<Location> NotifyLocation = new NotifyEvent<Location>();
+    public NotifyEvent<bool> NotifyRunStamina = new NotifyEvent<bool>();
+    public NotifyEvent<bool> NotifyTorchPressed = new NotifyEvent<bool>();
 
     private VoidSystem voidSys;
-    private Stage currentStage;
+    public Stage currentStage;
     private Location currentLocation;
 
     public GameObject player;
     public GameObject monster;
-
+    public GameObject playerSpawnPoint;
+    public bool StoryMode = false;
     private float startNotifyingHeartRate = 20;
     private float NotifyHeartRateInterval = 3;
-    
-   
-    public void Awake()
+
+    private void OnEnable()
     {
-       
-        NotifyHeartRate = new NotifyEvent<float>();
-        NotifyStage = new NotifyEvent<Stage>();
-        NotifyLocation = new NotifyEvent<Location>();
-        NotifyRunStamina = new NotifyEvent<bool>();
-        NotifyTorchPressed = new NotifyEvent<bool>();
-
-        BridgeCrossedEvent = new TriggerEvent();
-        ChapelBackDoorHandEvent = new TriggerEvent();
-        CaravanTriggerEvent = new TriggerEvent();
-        GeneratorZoneTriggerEvent = new TriggerEvent();
-        TextTriggerEvent = new TriggerEvent();
-        StructureZoneTriggerEvent = new TriggerEvent();
-
+        voidSys = FindObjectOfType<VoidSystem>();
         currentStage = Stage.Intro;
         currentLocation = Location.Forest;
-        EventManagerSubscriptions();
+        voidSys.NotifyStage.NotifyEventOccurred += SetStage;
+        StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
+        StructureZoneTriggerEvent.TriggerExitEvent += SetForestLocation;
     }
+
 
     public void Start()
     {
-        //E.G Notify heart rate to all listeners, after 20sec -> every 3 sec
+        
         InvokeRepeating("PassHeartRate", startNotifyingHeartRate, NotifyHeartRateInterval);
         NotifyStage.Notify(currentStage);
+        if (StoryMode)
+        {
+            player.transform.position = playerSpawnPoint.transform.position;
+        }
+
     }
 
     void EventManagerSubscriptions()
     {
-        voidSys.NotifyStage.NotifyEventOccurred += SetStage;
-        StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
-        StructureZoneTriggerEvent.TriggerExitEvent += SetForestLocation;
+
     }
 
     public float getPlayerHeartrate()
