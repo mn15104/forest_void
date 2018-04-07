@@ -40,7 +40,7 @@ public class VoidSystem : MonoBehaviour
         switch (m_MonsterStage)
         {
             case EventManager.Stage.Intro:
-
+                UpdateStageIntro();
                 break;
             case EventManager.Stage.Stage1:
                 UpdateStage1();

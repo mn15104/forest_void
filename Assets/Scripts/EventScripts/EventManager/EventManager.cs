@@ -17,7 +17,7 @@ public class EventManager : MonoBehaviour {
     }
 
     private float[] StageTimes = { 120f, 600f, 720f };
-    private float GameTimerSeconds = 0f; 
+    public float GameTimerSeconds = 0f; 
 
     public TriggerEvent TextTriggerEvent = new TriggerEvent();
     public TriggerEvent BridgeCrossedEvent = new TriggerEvent();
