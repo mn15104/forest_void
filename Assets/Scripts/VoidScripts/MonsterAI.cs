@@ -14,6 +14,7 @@ public enum MonsterState
     CHASE,
     ATTACK,
     GAMEOVER,
+    STAGE_COMPLETE,
     DISABLED
 };
 
@@ -25,10 +26,10 @@ public partial class MonsterAI : MonoBehaviour
     public event MonsterStateChange OnMonsterStateChange = delegate { };
 
     //Main Component Variables
-    public GameObject player;
-    private MonsterState currentState;
+    public MonsterState currentState;
     public MonsterState debugState;
     public EventManager.Stage currentStage = EventManager.Stage.Intro;
+    public GameObject player;
     private MonsterAIState m_MonsterStateMachine;
     private Animator anim;
     private GameObject trigger;
@@ -56,8 +57,8 @@ public partial class MonsterAI : MonoBehaviour
     private float distanceToHuman_AppearTrigger = 6;
     private const float maxDetectionRange = 165;
     //State Utility Variables
-    private bool follow_finished;
-    private bool humanTorchOn;
+    private bool follow_finished = false;
+    private bool humanTorchOn = false;
 
     /*------------------ STANDARD Functions --------------------*/
 
@@ -72,29 +73,27 @@ public partial class MonsterAI : MonoBehaviour
         destinationPosition = player.transform.position;
         follow_finished = false;
         //*Set Initial State As Moving*//
-        debugState = MonsterState.HIDDEN_MOVING;
-        currentState = MonsterState.HIDDEN_MOVING;
-        StartCoroutine(UpdateHiddenDestination());
-        anim.SetBool("Run", false);
-        anim.SetBool("Walk", true);
-        anim.SetBool("Idle", false);
-        anim.SetFloat("Speed", m_HiddenMovingSpeed);
-        m_CurrentSpeed = m_HiddenMovingSpeed;
-        StartCoroutine(DelayStateChange(MonsterState.HIDDEN_IDLE, 8f));
-        if (currentStage == EventManager.Stage.Stage1)
+        if(currentStage == EventManager.Stage.Intro)
         {
-            distanceToHuman_FollowTrigger = 12;
-            distanceToHuman_AppearTrigger = 6;
+            debugState = MonsterState.DISABLED;
+            currentState = MonsterState.DISABLED;
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+            anim.SetBool("Idle", true);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Run", false);
         }
-        else if (currentStage == EventManager.Stage.Stage2)
+        else
         {
-            distanceToHuman_FollowTrigger = 15;
-            distanceToHuman_AppearTrigger = 12;
-        }
-        else if (currentStage == EventManager.Stage.Stage3)
-        {
-            distanceToHuman_FollowTrigger = 15;
-            distanceToHuman_AppearTrigger = 12;
+            debugState = MonsterState.HIDDEN_MOVING;
+            currentState = MonsterState.HIDDEN_MOVING;
+            StartCoroutine(UpdateHiddenDestination());
+            anim.SetBool("Run", false);
+            anim.SetBool("Walk", true);
+            anim.SetBool("Idle", false);
+            anim.SetFloat("Speed", m_HiddenMovingSpeed);
+            m_CurrentSpeed = m_HiddenMovingSpeed;
+            StartCoroutine(DelayStateChange(MonsterState.HIDDEN_IDLE, 8f));
         }
     }
 
@@ -117,6 +116,7 @@ public partial class MonsterAI : MonoBehaviour
     }
     void Update()
     {
+        
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                     + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         m_MonsterStateMachine.update_state();
@@ -161,7 +161,11 @@ public partial class MonsterAI : MonoBehaviour
     {
         m_MonsterStateMachine.SetState(state_);
     }
-    /* ---------> STAGE 1 <--------- */
+    public void SetStage(EventManager.Stage stage)
+    {
+        currentStage = stage;
+    }
+    /////////////// STAGE 1 ///////////////
 
     private bool fadingIn = false;
     private bool fadingOut = false;
@@ -173,7 +177,7 @@ public partial class MonsterAI : MonoBehaviour
         float e = 0f;
         while (true)
         {
-            ////////////////////APPEAR//////////////////////////
+            //////APPEAR//////
             float inittime = 0f;
             ParticleSystem.EmissionModule emission
                 = GetComponentInChildren<ParticleSystem>().emission;
@@ -181,7 +185,7 @@ public partial class MonsterAI : MonoBehaviour
             GetComponentInChildren<MeshRenderer>().enabled = true;
             TeleportVoidInfrontHuman_NoCollider(Stage1_AppearDistance);
 
-            ////////////////////HIDE//////////////////////////
+            //////HIDE///////
             inittime = 0f;
             while (e < 10f)
             {
@@ -205,7 +209,7 @@ public partial class MonsterAI : MonoBehaviour
     }
 
 
-        /* ---------> STAGE 2 <--------- */
+    /////////////// STAGE 2 ///////////////
 
     bool stage2_playerTorchOn1 = false;
     bool stage2_playerTorchOff = false;
@@ -253,20 +257,18 @@ public partial class MonsterAI : MonoBehaviour
             {
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
-                m_MonsterStateMachine.SetState(MonsterState.DISABLED);
-                currentStage = EventManager.Stage.Stage2;
-                GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-                GetComponentInChildren<MeshRenderer>().enabled = true;
-                gameObject.SetActive(false);
+                m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
             }
         }
     }
+
     IEnumerator Stage2_ToggleBool(float time)
     {
         yield return new WaitForSeconds(time);
         stage2_coroutine_finished = true;
     }
 
+    /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
     {
         if(distanceToHuman > 7f)
@@ -286,10 +288,7 @@ public partial class MonsterAI : MonoBehaviour
             }
         }
     }
-
-
-
-
+    
     /*------------------ UTILITY Functions --------------------*/
 
     public void InitialiseCurrentAppearBehaviour(EventManager.Stage t_stage)
@@ -308,27 +307,6 @@ public partial class MonsterAI : MonoBehaviour
         }
     }
 
-    public void NextAppearStage()
-    {
-        switch (currentStage)
-        {
-            case EventManager.Stage.Stage1:
-                currentStage = EventManager.Stage.Stage2;
-                distanceToHuman_FollowTrigger = 20f;
-                distanceToHuman_AppearTrigger = 15f;
-                break;
-            case EventManager.Stage.Stage2:
-                currentStage = EventManager.Stage.Stage3;
-                distanceToHuman_FollowTrigger = 15f;
-                distanceToHuman_AppearTrigger = 10f;
-                break;
-            case EventManager.Stage.Stage3:
-                currentStage = EventManager.Stage.Stage1;
-                distanceToHuman_FollowTrigger = 12f;
-                distanceToHuman_AppearTrigger = 6f;
-                break;
-        }
-    }
 
     public void InitialiseStage1()
     {
@@ -519,8 +497,7 @@ public partial class MonsterAI : MonoBehaviour
     {
         return m_CurrentSpeed;
     }
-
-
+    
     /*------------------ DEPRECATED Functions --------------------*/
 
     void OnCollisionEnter(Collision col)
@@ -536,5 +513,15 @@ public partial class MonsterAI : MonoBehaviour
         }
     }
 
+    void ResetStageVariables()
+    {
+        stage2_playerTorchOn1 = false;
+        stage2_playerTorchOff = false;
+        stage2_playerTorchOn2 = false;
+        stage2_playerTorchOff2 = false;
+        stage2_coroutine_finished = false;
+        fadingIn = false;
+        fadingOut = false;
+    }
 
 }

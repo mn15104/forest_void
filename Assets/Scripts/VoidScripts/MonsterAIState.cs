@@ -28,6 +28,7 @@ public partial class MonsterAI
                 if (m_MonsterAI.currentState != MonsterState.FOLLOW &&
                     m_MonsterAI.currentState != MonsterState.APPEAR &&
                     m_MonsterAI.currentState != MonsterState.GAMEOVER &&
+                    m_MonsterAI.currentState != MonsterState.STAGE_COMPLETE &&
                     m_MonsterAI.currentState != MonsterState.DISABLED)
                 {
                     m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
@@ -103,7 +104,6 @@ public partial class MonsterAI
                     case MonsterState.CHASE:
                         if (m_MonsterAI.currentState == MonsterState.APPROACH)
                         {
-                            
                             m_MonsterAI.StopAllCoroutines();
                             m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
                             m_MonsterAI.anim.SetBool("Idle", true);
@@ -111,7 +111,6 @@ public partial class MonsterAI
                             m_MonsterAI.anim.SetBool("Run", false);
                             m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
                             m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
-                            m_MonsterAI.NextAppearStage();
                         }
                         else { validStateChange = false; }
                         break;
@@ -141,12 +140,23 @@ public partial class MonsterAI
                         }
                         else { validStateChange = false; }
                         break;
-                    case MonsterState.DISABLED:
+                    case MonsterState.STAGE_COMPLETE:
+                        m_MonsterAI.StopAllCoroutines();
                         m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
                         m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
                         m_MonsterAI.anim.SetBool("Idle", true);
                         m_MonsterAI.anim.SetBool("Walk", false);
                         m_MonsterAI.anim.SetBool("Run", false);
+                        m_MonsterAI.ResetStageVariables();
+                        break;
+                    case MonsterState.DISABLED:
+                        m_MonsterAI.StopAllCoroutines();
+                        m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                        m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
+                        m_MonsterAI.anim.SetBool("Idle", true);
+                        m_MonsterAI.anim.SetBool("Walk", false);
+                        m_MonsterAI.anim.SetBool("Run", false);
+                        m_MonsterAI.ResetStageVariables();
                         break;
                     default:
                         m_MonsterAI.m_MonsterStateMachine.hidden_idle();
@@ -168,8 +178,21 @@ public partial class MonsterAI
         
         public void update_state()
         {
+            // Prevent monster behaviour occuring during the intro stage
+            if(m_MonsterAI.currentStage == EventManager.Stage.Intro)
+            {
+                if (m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled)
+                {
+                    m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                    m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
+                    return;
+                }
+            }
+
+            // Use debugState if changed in inspector during testing
             if (m_MonsterAI.currentState != m_MonsterAI.debugState)
                    SetState(m_MonsterAI.debugState);
+
             switch (m_MonsterAI.currentState)
             {
                 case MonsterState.HIDDEN_IDLE:
@@ -198,6 +221,8 @@ public partial class MonsterAI
                     break;
                 case MonsterState.DISABLED:
 
+                    break;
+                case MonsterState.STAGE_COMPLETE:
                     break;
                 default:
                     hidden_idle();

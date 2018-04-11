@@ -15,9 +15,23 @@ public class EventManager : MonoBehaviour {
     {
         Chapel,Forest,Crypt,ToolShed, Caravan, Generator
     }
-
-    private float[] StageTimes = { 120f, 600f, 720f };
-    public float GameTimerSeconds = 0f; 
+    public void SetGameTimeFromStage(Stage stage)
+    {
+        switch (stage)
+        {
+            case Stage.Stage1:
+                GameTimerSeconds = StageTimes[0];
+                break;
+            case Stage.Stage2:
+                GameTimerSeconds = StageTimes[1];
+                break;
+            case Stage.Stage3:
+                GameTimerSeconds = StageTimes[2];
+                break;
+        }
+    }
+    private float[] StageTimes = { 100f, 300f, 420f, 480f };
+    public float GameTimerSeconds = 0f;
 
     public TriggerEvent TextTriggerEvent = new TriggerEvent();
     public TriggerEvent BridgeCrossedEvent = new TriggerEvent();
@@ -33,6 +47,8 @@ public class EventManager : MonoBehaviour {
     public NotifyEvent<bool> NotifyTorchPressed = new NotifyEvent<bool>();
 
     private VoidSystem voidSys;
+    public Stage debugChangeStage;
+    private bool debugForceStageChange = true;
     public Stage currentStage;
     private Location currentLocation;
 
@@ -47,6 +63,7 @@ public class EventManager : MonoBehaviour {
     {
         voidSys = FindObjectOfType<VoidSystem>();
         currentStage = Stage.Intro;
+        debugChangeStage = Stage.Intro;
         currentLocation = Location.Forest;
         voidSys.NotifyStage.NotifyEventOccurred += SetStage;
         StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
@@ -56,9 +73,10 @@ public class EventManager : MonoBehaviour {
 
     public void Start()
     {
-        
         InvokeRepeating("PassHeartRate", startNotifyingHeartRate, NotifyHeartRateInterval);
         NotifyStage.Notify(currentStage);
+
+        // An in-development system to simulate real game chronological behaviour/events
         if (StoryMode)
         {
             player.transform.position = playerSpawnPoint.transform.position;
@@ -66,11 +84,16 @@ public class EventManager : MonoBehaviour {
 
     }
 
-    void EventManagerSubscriptions()
+    void Update()
     {
-
+        GameTimerSeconds += Time.deltaTime;
+        if(debugChangeStage != currentStage && !debugForceStageChange)
+        {
+            debugForceStageChange = true;
+            ForceStageChange();
+        }
     }
-
+    
     public float getPlayerHeartrate()
     {
         return player.GetComponentInChildren<Heartbeat>().m_Heartbeat;
@@ -81,12 +104,22 @@ public class EventManager : MonoBehaviour {
         return player.GetComponent<Inventory>().keys.Count;
         
     }
-
+    void ForceStageChange()
+    {
+        voidSys.ResetVoidToStage(debugChangeStage);
+        SetGameTimeFromStage(debugChangeStage);
+    }
     // VoidSystem notifies EventManager of stage, EventManager notifies every other necessary script
     void SetStage(Stage t_stage)
     {
         currentStage = t_stage;
+        debugChangeStage = t_stage;
+        if (debugForceStageChange)
+        {
+            SetGameTimeFromStage(t_stage);
+        }
         NotifyStage.Notify(currentStage);
+        debugForceStageChange = false;
     }
 
     void PassHeartRate()
@@ -94,13 +127,7 @@ public class EventManager : MonoBehaviour {
         float currentHeartRate = getPlayerHeartrate();
         NotifyHeartRate.Notify(currentHeartRate);
     }
-
-
-    void Update()
-    {
-        GameTimerSeconds += Time.deltaTime;
-    }
-
+    
     void SetStructureLocation(GameObject gameObject)
     {
         currentLocation = gameObject.GetComponent<StructureZone>().location;
