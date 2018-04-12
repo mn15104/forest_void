@@ -14,28 +14,15 @@ public partial class MonsterAI
         public void SetState(MonsterState state)
         {
             // Reset collider disabling
-            if (!m_MonsterAI.GetComponentInChildren<Collider>().enabled)
+            foreach (Collider collider in m_MonsterAI.GetComponentsInChildren<Collider>())
             {
-                foreach (Collider collider in m_MonsterAI.GetComponentsInChildren<Collider>())
-                {
-                    collider.enabled = true;
-                }
+                collider.enabled = true;
             }
             
             // Reset mesh renderer disabling
-            if (!m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled)
-            {
-                if (m_MonsterAI.currentState != MonsterState.FOLLOW &&
-                    m_MonsterAI.currentState != MonsterState.APPEAR &&
-                    m_MonsterAI.currentState != MonsterState.GAMEOVER &&
-                    m_MonsterAI.currentState != MonsterState.STAGE_COMPLETE &&
-                    m_MonsterAI.currentState != MonsterState.DISABLED)
-                {
-                    m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-                    m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = true;
-                }
-            }
-
+            m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = true;
+            
             if (state != m_MonsterAI.currentState)
             {
                 //Check for correct state switching
@@ -178,16 +165,6 @@ public partial class MonsterAI
         
         public void update_state()
         {
-            // Prevent monster behaviour occuring during the intro stage
-            if(m_MonsterAI.currentStage == EventManager.Stage.Intro)
-            {
-                if (m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled)
-                {
-                    m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-                    m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
-                    return;
-                }
-            }
 
             // Use debugState if changed in inspector during testing
             if (m_MonsterAI.currentState != m_MonsterAI.debugState)
@@ -220,9 +197,10 @@ public partial class MonsterAI
                     gameover();
                     break;
                 case MonsterState.DISABLED:
-
+                    gameover();
                     break;
                 case MonsterState.STAGE_COMPLETE:
+                    gameover();
                     break;
                 default:
                     hidden_idle();
