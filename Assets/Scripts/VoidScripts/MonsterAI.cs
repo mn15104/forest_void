@@ -18,6 +18,13 @@ public enum MonsterState
     DISABLED
 };
 
+public enum BlendMode
+{
+    Opaque,
+    Cutout,
+    Fade,
+    Transparent
+}
 
 public partial class MonsterAI : MonoBehaviour
 {
@@ -26,7 +33,7 @@ public partial class MonsterAI : MonoBehaviour
     public event MonsterStateChange OnMonsterStateChange = delegate { };
 
     //Main Component Variables
-    public MonsterState currentState;
+    private MonsterState currentState;
     public MonsterState debugState;
     public EventManager.Stage currentStage = EventManager.Stage.Intro;
     public GameObject player;
@@ -53,8 +60,8 @@ public partial class MonsterAI : MonoBehaviour
     public float soundDetectionPercentage = 0.2f;
     public float lightDetectionPercentage = 0.2f;
     private float distanceToHuman;
-    private float distanceToHuman_FollowTrigger = 12;
-    private float distanceToHuman_AppearTrigger = 6;
+    private float distanceToHuman_FollowTrigger = 16;
+    private float distanceToHuman_AppearTrigger = 10;
     private const float maxDetectionRange = 165;
     //State Utility Variables
     private bool follow_finished = false;
@@ -114,14 +121,64 @@ public partial class MonsterAI : MonoBehaviour
     {
         m_MonsterStateMachine = new MonsterAIState(this);
     }
+
     void Update()
     {
-        
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                     + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         m_MonsterStateMachine.update_state();
     }
 
+    IEnumerator FadeInMaterial(Material mat, float fadeSpeed)
+    {
+        Color col = mat.color;
+        float alpha = col.a;
+        while (alpha < 1.0f)
+        {
+            alpha += fadeSpeed * Time.deltaTime;
+            mat.color = new Color(col.r, col.g, col.b, alpha);
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOutMaterial(Material mat, float fadeSpeed)
+    {
+        Color col = mat.color;
+        float alpha = col.a;
+        while (alpha > 0.0f)
+        {
+            alpha -= fadeSpeed * Time.deltaTime;
+            mat.color = new Color(col.r, col.g, col.b, alpha);
+            yield return null;
+        }
+    }
+
+    void ChangeRenderMode(Material mat, BlendMode blendMode)
+    {
+        switch (blendMode)
+        {
+            case BlendMode.Opaque:
+                mat.SetFloat("_Mode", 0);
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                mat.SetInt("_ZWrite", 1);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.DisableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = -1;
+                break;
+            case BlendMode.Fade:
+                mat.SetFloat("_Mode", 2);
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                mat.SetInt("_ZWrite", 0);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.EnableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = 3000;
+                break;
+        }
+    }
     /*------------------ UPDATE DESTINATION Functions --------------------*/
 
     public IEnumerator UpdateHiddenDestination()
@@ -174,36 +231,39 @@ public partial class MonsterAI : MonoBehaviour
     public float Stage1_AppearDistance = 12.5f;
     public IEnumerator UpdateStage1()
     {
-        float e = 0f;
+        //Set both mesh renders to fade
+        foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
+        {
+            ChangeRenderMode(mat, BlendMode.Fade);
+        }
+        foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
+        {
+            ChangeRenderMode(mat, BlendMode.Fade);
+        }
         while (true)
         {
-            //////APPEAR//////
-            float inittime = 0f;
-            ParticleSystem.EmissionModule emission
-                = GetComponentInChildren<ParticleSystem>().emission;
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-            GetComponentInChildren<MeshRenderer>().enabled = true;
             TeleportVoidInfrontHuman_NoCollider(Stage1_AppearDistance);
+            foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
+            {
+                StartCoroutine(FadeInMaterial(mat, .5f));
+            }
+            foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
+            {
+                StartCoroutine(FadeInMaterial(mat, .5f));
+            }
 
-            //////HIDE///////
-            inittime = 0f;
-            while (e < 10f)
+            yield return new WaitForSeconds(4f);
+            foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
             {
-                inittime += Time.deltaTime / 2f;
-                yield return null;
-                e = Mathf.Lerp(e, 10f, inittime);
-                emission.rateOverTime = e;
+                StartCoroutine(FadeOutMaterial(mat, .5f));
             }
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-            GetComponentInChildren<MeshRenderer>().enabled = false;
-            inittime = 0f;
-            while (e > 0f)
+            foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
             {
-                inittime += Time.deltaTime / 4f;
-                yield return null;
-                e = Mathf.Lerp(e, 0f, inittime);
-                emission.rateOverTime = e;
+                StartCoroutine(FadeOutMaterial(mat, .5f));
             }
+
+            yield return new WaitForSeconds(4f);
+
             yield return null;
         }
     }

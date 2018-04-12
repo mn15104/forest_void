@@ -16,7 +16,7 @@ public class VoidSystem : MonoBehaviour
     private EventManager.Stage m_MonsterStage;
 
     public NotifyEvent<EventManager.Stage> NotifyStage = new NotifyEvent<EventManager.Stage>();
-    public bool debugResettingStage = false;
+    private bool debugResettingStage = false;
 
     private void OnEnable()
     {

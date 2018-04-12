@@ -48,8 +48,8 @@ public class EventManager : MonoBehaviour {
 
     private VoidSystem voidSys;
     public Stage debugChangeStage;
-    private bool debugForceStageChange = true;
-    public Stage currentStage;
+    private bool debugForceStageChange = false;
+    private Stage currentStage;
     private Location currentLocation;
 
     public GameObject player;
