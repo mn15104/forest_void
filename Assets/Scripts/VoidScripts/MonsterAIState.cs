@@ -66,15 +66,15 @@ public partial class MonsterAI
                         m_MonsterAI.m_CurrentSpeed = m_FollowSpeed;
                         break;
                     case MonsterState.APPEAR:
-                            m_MonsterAI.StopAllCoroutines();
-                            m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                            m_MonsterAI.InitialiseCurrentAppearBehaviour(m_MonsterAI.currentStage);           // CALL APPEAR BEHAVIOUR TYPE
-                            m_MonsterAI.follow_finished = false;                                   // Reset follow bool
-                            m_MonsterAI.anim.SetBool("Run", false);
-                            m_MonsterAI.anim.SetBool("Walk", false);
-                            m_MonsterAI.anim.SetBool("Idle", true);
-                            m_MonsterAI.anim.SetFloat("Speed", m_AppearSpeed);
-                            m_MonsterAI.m_CurrentSpeed = m_AppearSpeed;
+                        m_MonsterAI.StopAllCoroutines();
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
+                        m_MonsterAI.InitialiseCurrentAppearBehaviour(m_MonsterAI.currentStage);           // CALL APPEAR BEHAVIOUR TYPE
+                        m_MonsterAI.follow_finished = false;                                   // Reset follow bool
+                        m_MonsterAI.anim.SetBool("Run", false);
+                        m_MonsterAI.anim.SetBool("Walk", false);
+                        m_MonsterAI.anim.SetBool("Idle", true);
+                        m_MonsterAI.anim.SetFloat("Speed", m_AppearSpeed);
+                        m_MonsterAI.m_CurrentSpeed = m_AppearSpeed;
                         break;
                     case MonsterState.APPROACH:
                         if (m_MonsterAI.currentState == MonsterState.APPEAR)
@@ -211,6 +211,7 @@ public partial class MonsterAI
                     gameover();
                     break;
                 case MonsterState.STAGE_COMPLETE:
+                    
                     gameover();
                     break;
                 case MonsterState.HUMAN_IN_STRUCT:

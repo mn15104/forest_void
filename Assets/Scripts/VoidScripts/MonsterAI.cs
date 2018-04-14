@@ -221,7 +221,7 @@ public partial class MonsterAI : MonoBehaviour
     public void SetState(MonsterState state_)
     {
         m_MonsterStateMachine.SetState(state_);
-    }
+    } 
     public void SetStage(EventManager.Stage stage)
     {
         if (stage != currentStage)
