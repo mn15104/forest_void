@@ -130,6 +130,7 @@ public partial class MonsterAI : MonoBehaviour
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                     + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         m_MonsterStateMachine.update_state();
+        Debug.Log(currentState);
     }
 
     IEnumerator FadeInMaterial(Material mat, float fadeSpeed)
@@ -254,10 +255,6 @@ public partial class MonsterAI : MonoBehaviour
                     
                 }
             }
-            if (stage == EventManager.Stage.Stage1)
-                SetState(MonsterState.APPEAR);
-            else
-                SetState(MonsterState.HIDDEN_IDLE);
             currentStage = stage;
         }
     }
@@ -593,6 +590,10 @@ public partial class MonsterAI : MonoBehaviour
     public MonsterState GetMonsterState()
     {
         return currentState;
+    }
+    public EventManager.Stage GetMonsterStage()
+    {
+        return currentStage;
     }
     public float GetMonsterSpeed()
     {

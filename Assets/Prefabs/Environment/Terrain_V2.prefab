@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4302445885077082}
   - component: {fileID: 218417699860997130}
   - component: {fileID: 154928913193895370}
+  - component: {fileID: 114865726732284442}
   m_Layer: 0
   m_Name: Terrain_V2
   m_TagString: Untagged
@@ -41,6 +42,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114865726732284442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1815940961770774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd993c8e204bd8149972574e4c4b778b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!154 &154928913193895370
 TerrainCollider:
   m_ObjectHideFlags: 1

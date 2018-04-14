@@ -66,8 +66,6 @@ public partial class MonsterAI
                         m_MonsterAI.m_CurrentSpeed = m_FollowSpeed;
                         break;
                     case MonsterState.APPEAR:
-                        if (m_MonsterAI.currentState == MonsterState.FOLLOW)
-                        {
                             m_MonsterAI.StopAllCoroutines();
                             m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
                             m_MonsterAI.InitialiseCurrentAppearBehaviour(m_MonsterAI.currentStage);           // CALL APPEAR BEHAVIOUR TYPE
@@ -77,8 +75,6 @@ public partial class MonsterAI
                             m_MonsterAI.anim.SetBool("Idle", true);
                             m_MonsterAI.anim.SetFloat("Speed", m_AppearSpeed);
                             m_MonsterAI.m_CurrentSpeed = m_AppearSpeed;
-                        }
-                        else { validStateChange = false;  }
                         break;
                     case MonsterState.APPROACH:
                         if (m_MonsterAI.currentState == MonsterState.APPEAR)
@@ -196,6 +192,7 @@ public partial class MonsterAI
                     follow();
                     break;
                 case MonsterState.APPEAR:
+                    Debug.Log("Appear state set");
                     appear();
                     break;
                 case MonsterState.APPROACH:

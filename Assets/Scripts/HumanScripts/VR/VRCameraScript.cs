@@ -84,6 +84,14 @@ public class VRCameraScript : MonoBehaviour {
         }
         if (m_Monster)
         {
+            EventManager.Stage monsterstage = m_Monster.GetComponent<MonsterAI>().GetMonsterStage();
+            MonsterState monsterstate = m_Monster.GetComponent<MonsterAI>().GetMonsterState();
+            if (monsterstage == EventManager.Stage.Intro || monsterstage == EventManager.Stage.Stage1 
+                || monsterstate == MonsterState.DISABLED || monsterstate == MonsterState.STAGE_COMPLETE || monsterstate == MonsterState.HUMAN_IN_STRUCT)
+            {
+                effectsOn = false;
+            }
+
             distanceToMonster = (m_Monster.transform.position - transform.position).magnitude;
             if (distanceToMonster < m_MinDistanceEffectTrigger)
             {
