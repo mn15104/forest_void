@@ -13,8 +13,8 @@ public class VoidSystem : MonoBehaviour
     private bool monsterAppeared = false;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private float[] m_DelayTimeToActive = { 100f, 300f, 420f, 480f };
+    private float m_gameTimer = 0f;
     private EventManager.Stage m_MonsterStage;
-
     public NotifyEvent<EventManager.Stage> NotifyStage = new NotifyEvent<EventManager.Stage>();
     private bool debugResettingStage = false;
 
@@ -35,23 +35,36 @@ public class VoidSystem : MonoBehaviour
     {
         if (!debugResettingStage)
         {
-            
-            switch (m_MonsterStage)
+            if (m_eventManager.GetIsInForest())
             {
-                case EventManager.Stage.Intro:
-                    UpdateStageIntro();
-                    break;
-                case EventManager.Stage.Stage1:
-                    UpdateStage1();
-                    break;
-                case EventManager.Stage.Stage2:
-                    UpdateStage2();
-                    break;
-                case EventManager.Stage.Stage3:
-                    UpdateStage3();
-                    break;
-                default:
-                    break;
+                m_gameTimer += Time.deltaTime;
+
+                if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.HUMAN_IN_STRUCT)
+                    m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
+
+                switch (m_MonsterStage)
+                {
+                    case EventManager.Stage.Intro:
+                        UpdateStageIntro();
+                        break;
+                    case EventManager.Stage.Stage1:
+                        UpdateStage1();
+                        break;
+                    case EventManager.Stage.Stage2:
+                        UpdateStage2();
+                        break;
+                    case EventManager.Stage.Stage3:
+                        UpdateStage3();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                if(m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.HUMAN_IN_STRUCT)
+                    m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HUMAN_IN_STRUCT);
+
             }
         }
     }
@@ -59,7 +72,7 @@ public class VoidSystem : MonoBehaviour
     void UpdateStageIntro()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
-            && m_eventManager.GetGameTime() > m_DelayTimeToActive[0])
+            && m_gameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
@@ -72,13 +85,13 @@ public class VoidSystem : MonoBehaviour
     void UpdateStage1()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
-            && m_eventManager.GetGameTime() > m_DelayTimeToActive[0])
+            && m_gameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         }
 
-        if (m_eventManager.GetGameTime() > m_DelayTimeToActive[1] && 
+        if (m_gameTimer > m_DelayTimeToActive[1] && 
                             (   m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                                 m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                                 m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.CHASE &&
@@ -99,13 +112,13 @@ public class VoidSystem : MonoBehaviour
     void UpdateStage2()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED &&
-            m_eventManager.GetGameTime() > m_DelayTimeToActive[1])
+            m_gameTimer > m_DelayTimeToActive[1])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         }
 
-        if (m_eventManager.GetGameTime() > m_DelayTimeToActive[2] && 
+        if (m_gameTimer > m_DelayTimeToActive[2] && 
                                 (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                                  m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                                  m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.CHASE &&
@@ -126,13 +139,13 @@ public class VoidSystem : MonoBehaviour
     void UpdateStage3()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
-            && m_eventManager.GetGameTime() > m_DelayTimeToActive[2])
+            && m_gameTimer  > m_DelayTimeToActive[2])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         }
 
-        if (m_eventManager.GetGameTime() > m_DelayTimeToActive[3] && 
+        if (m_gameTimer > m_DelayTimeToActive[3] && 
                                 (   m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                                     m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                                     m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.ATTACK &&
@@ -153,10 +166,13 @@ public class VoidSystem : MonoBehaviour
         debugResettingStage = true;
         m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         m_ForestVoid.GetComponent<MonsterAI>().SetStage(stage);
+        m_gameTimer = m_eventManager.GetGameTime();
         m_MonsterStage = stage;
         NotifyStage.Notify(m_MonsterStage);
         debugResettingStage = false;
     }
+
+    
 
     Vector3 GetFurthestSpawnPoint()
     {

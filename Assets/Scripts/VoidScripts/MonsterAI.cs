@@ -15,7 +15,8 @@ public enum MonsterState
     ATTACK,
     GAMEOVER,
     STAGE_COMPLETE,
-    DISABLED
+    DISABLED,
+    HUMAN_IN_STRUCT
 };
 
 public enum BlendMode
@@ -253,7 +254,10 @@ public partial class MonsterAI : MonoBehaviour
                     
                 }
             }
-            SetState(MonsterState.HIDDEN_IDLE);
+            if (stage == EventManager.Stage.Stage1)
+                SetState(MonsterState.APPEAR);
+            else
+                SetState(MonsterState.HIDDEN_IDLE);
             currentStage = stage;
         }
     }
@@ -364,6 +368,7 @@ public partial class MonsterAI : MonoBehaviour
         stage2_coroutine_finished = true;
     }
 
+    float timer_Stage3Active = 0f;
     /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
     {
@@ -616,6 +621,7 @@ public partial class MonsterAI : MonoBehaviour
         stage2_playerTorchOn2 = false;
         stage2_playerTorchOff2 = false;
         stage2_coroutine_finished = false;
+        timer_Stage3Active = 0f;
     }
 
 }

@@ -6,6 +6,7 @@ public partial class MonsterAI
     public class MonsterAIState : ScriptableObject
     {
         MonsterAI m_MonsterAI;
+        MonsterState stalledState;
         public MonsterAIState(MonsterAI monsterAI)
         {
             m_MonsterAI = monsterAI;
@@ -13,6 +14,12 @@ public partial class MonsterAI
 
         public void SetState(MonsterState state)
         {
+            // If monster is stalled due to human in structure, set to previous set regardless of parameter
+            if (m_MonsterAI.currentState == MonsterState.HUMAN_IN_STRUCT)
+            {
+                state = stalledState;
+            }
+
             // Reset collider disabling
             foreach (Collider collider in m_MonsterAI.GetComponentsInChildren<Collider>())
             {
@@ -27,7 +34,6 @@ public partial class MonsterAI
             {
                 //Check for correct state switching
                 bool validStateChange = true;
-
                 switch (state)
                 {
                     case MonsterState.HIDDEN_IDLE:
@@ -145,6 +151,14 @@ public partial class MonsterAI
                         m_MonsterAI.anim.SetBool("Run", false);
                         m_MonsterAI.ResetStageVariables();
                         break;
+                    case MonsterState.HUMAN_IN_STRUCT:
+                        m_MonsterAI.StopAllCoroutines();
+                        stalledState = m_MonsterAI.currentState;
+                        m_MonsterAI.anim.SetBool("Idle", true);
+                        m_MonsterAI.anim.SetBool("Walk", false);
+                        m_MonsterAI.anim.SetBool("Run", false);
+                        m_MonsterAI.ResetStageVariables();
+                        break;
                     default:
                         m_MonsterAI.m_MonsterStateMachine.hidden_idle();
                         break;
@@ -200,6 +214,9 @@ public partial class MonsterAI
                     gameover();
                     break;
                 case MonsterState.STAGE_COMPLETE:
+                    gameover();
+                    break;
+                case MonsterState.HUMAN_IN_STRUCT:
                     gameover();
                     break;
                 default:

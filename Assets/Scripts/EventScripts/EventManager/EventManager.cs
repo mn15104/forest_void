@@ -144,4 +144,8 @@ public class EventManager : MonoBehaviour {
     {
         return GameTimerSeconds;
     }
+    public bool GetIsInForest()
+    {
+        return currentLocation == Location.Forest;
+    }
 }
