@@ -49,7 +49,7 @@ public partial class MonsterAI : MonoBehaviour
     private const float m_AppearSpeed = 1.0f;
     private const float m_MinApproachSpeed = 0.3f;
     private const float m_MaxApproachSpeed = 3.0f;
-    private const float m_RunSpeed = 0.35f;
+    private const float m_RunSpeed = 0.42f;
     private float m_CurrentSpeed = 1f;
     //Destination Variables
     private Quaternion destinationRotation;

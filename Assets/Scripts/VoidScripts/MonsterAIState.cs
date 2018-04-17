@@ -182,7 +182,6 @@ public partial class MonsterAI
         
         public void update_state()
         {
-
             // Use debugState if changed in inspector during testing
             if (m_MonsterAI.currentState != m_MonsterAI.debugState)
                    SetState(m_MonsterAI.debugState);
@@ -217,7 +216,6 @@ public partial class MonsterAI
                     gameover();
                     break;
                 case MonsterState.STAGE_COMPLETE:
-                    
                     gameover();
                     break;
                 case MonsterState.HUMAN_IN_STRUCT:
@@ -409,12 +407,12 @@ public partial class MonsterAI
             float distanceToHuman = Mathf.Sqrt(Mathf.Pow(m_MonsterAI.destinationPosition.x - m_MonsterAI.transform.position.x, 2)
                                     + Mathf.Pow(m_MonsterAI.destinationPosition.y - m_MonsterAI.transform.position.y, 2));
 
-            m_MonsterAI.chaseTimer -= Time.deltaTime;
-            if (m_MonsterAI.chaseTimer < 0)
-            {
-                SetState(MonsterState.HIDDEN_IDLE);
-                m_MonsterAI.chaseTimer = 20f;
-            }
+            //m_MonsterAI.chaseTimer -= Time.deltaTime;
+            //if (m_MonsterAI.chaseTimer < 0)
+            //{
+            //    SetState(MonsterState.HIDDEN_IDLE);
+            //    m_MonsterAI.chaseTimer = 20f;
+            //}
 
             // Game Over
             float distance = (m_MonsterAI.distanceToHuman);
