@@ -13,6 +13,11 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage1Clip;
     public AudioClip m_Stage2Clip;
     public AudioClip m_Stage3Clip;
+
+    public float m_MaxVolume;
+    public float m_FadeSpeed;
+
+    private AudioClip currentlySelected;
     private EventManager.Stage currentAudioStage = EventManager.Stage.Intro;
 
     private void Awake() 
@@ -25,16 +30,16 @@ public class MainAudioController : MonoBehaviour {
 
     }
     private void Start()
-    {
+    {   
         m_Aud_1.clip = m_Stage1Clip;
         m_Aud_1.loop = true;
         m_Aud_1.volume = 0;
-        FadeInAudioSource(m_Aud_1);
+        StartCoroutine(FadeInAudioSource(m_Aud_1, m_MaxVolume, m_FadeSpeed));
         //----------------
         m_Aud_Wind.clip = m_WindClip;
         m_Aud_Wind.loop = true;
         m_Aud_Wind.volume = 0;
-        FadeInAudioSource(m_Aud_Wind);
+        //FadeInAudioSource(m_Aud_Wind);
         //----------------
         m_Aud_2.Stop();
         m_Aud_2.clip = null;
@@ -47,6 +52,7 @@ public class MainAudioController : MonoBehaviour {
 
     void StageAudio(EventManager.Stage stage)
     {
+        Debug.Log("Stage Audio changing");
         switch (stage)
         {
             case EventManager.Stage.Intro:
@@ -101,12 +107,12 @@ public class MainAudioController : MonoBehaviour {
         if(windOn && !m_Aud_Wind.isPlaying)
         {
             StopAllCoroutines();
-            StartCoroutine(FadeInAudioSource(m_Aud_Wind));
+           // StartCoroutine(FadeInAudioSource(m_Aud_Wind));
         }
         else if(!windOn && m_Aud_Wind.isPlaying)
         {
             StopAllCoroutines();
-            StartCoroutine(FadeOutAudioSource(m_Aud_Wind));
+         //   StartCoroutine(FadeOutAudioSource(m_Aud_Wind));
         }
     }
 
@@ -134,33 +140,39 @@ public class MainAudioController : MonoBehaviour {
         {
             m_Aud_2.clip = t_clip;
             StopAllCoroutines();
-            FadeOutAudioSource(m_Aud_1);
-            FadeInAudioSource(m_Aud_2);
+
+            StartCoroutine(FadeOutAudioSource(m_Aud_1, m_FadeSpeed));
+            //FadeInAudioSource(m_Aud_2);
+            StartCoroutine(FadeInAudioSource(m_Aud_2, m_MaxVolume, m_FadeSpeed));
         }
         else if (m_Aud_2.isPlaying)
         {
             m_Aud_1.clip = t_clip;
             StopAllCoroutines();
-            FadeOutAudioSource(m_Aud_2);
-            FadeInAudioSource(m_Aud_1);
+            StartCoroutine(FadeOutAudioSource(m_Aud_2, m_FadeSpeed));
+            StartCoroutine(FadeInAudioSource(m_Aud_1, m_MaxVolume, m_FadeSpeed));
         }
     }
 
-    IEnumerator FadeInAudioSource(AudioSource aud)
+    //parms[0] is audiosource, parms[1] is max volume
+    IEnumerator FadeInAudioSource(AudioSource aud, float max_vol, float fade_in_rate)
     {
+        Debug.Log("Fading in");
         aud.Play();
-        while (aud.volume < 1)
+        while (aud.volume < max_vol)
         {
-            yield return null; 
-            aud.volume += Time.deltaTime;
+            yield return null;
+            aud.volume = Mathf.Lerp(aud.volume, max_vol, Time.deltaTime * fade_in_rate);
         }
     }
-    IEnumerator FadeOutAudioSource(AudioSource aud)
+    IEnumerator FadeOutAudioSource(AudioSource aud, float fade_out_rate)
     {
+        Debug.Log("Fading out");
         while (aud.volume > 0)
         {
             yield return null;
-            aud.volume -= Time.deltaTime;
+            aud.volume = Mathf.Lerp(aud.volume, 0, Time.deltaTime * fade_out_rate);
+
         }
         aud.Stop();
     }
