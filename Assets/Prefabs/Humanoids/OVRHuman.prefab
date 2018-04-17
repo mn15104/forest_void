@@ -228,6 +228,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4622375221059512}
+  - component: {fileID: 114151682670334974}
   m_Layer: 0
   m_Name: TrackingSpace
   m_TagString: Untagged
@@ -1420,7 +1421,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1813220861970262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c6542548ce3e842b3dcbcbf5093691, type: 3}
+  m_Script: {fileID: 11500000, guid: b1000dac79727234ea21056bdd234ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_FlashlightActive: 0
@@ -1439,6 +1440,18 @@ MonoBehaviour:
   m_BeatA: {fileID: 8300000, guid: e1c0d627d5bdf054e8490db46df4799d, type: 3}
   m_BeatB: {fileID: 8300000, guid: 586b708e41cc76946907c1ff1c0738bf, type: 3}
   m_HeartbeatAudioSrc: {fileID: 82416047100174532}
+--- !u!114 &114151682670334974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1493514681300006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d935886368085f74d89dd182a2b12e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentRotateTime: 0
 --- !u!114 &114335588713233252
 MonoBehaviour:
   m_ObjectHideFlags: 1
