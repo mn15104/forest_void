@@ -13,7 +13,7 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage1Clip;
     public AudioClip m_Stage2Clip;
     public AudioClip m_Stage3Clip;
-
+    public AudioClip[] m_IntenseNoises;
     public float m_MaxVolume = 0.3f;
     public float m_FadeSpeed = 0.3f;
 
