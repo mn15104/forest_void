@@ -14,8 +14,8 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage2Clip;
     public AudioClip m_Stage3Clip;
 
-    public float m_MaxVolume;
-    public float m_FadeSpeed;
+    public float m_MaxVolume = 0.3f;
+    public float m_FadeSpeed = 0.5f;
 
     private AudioClip currentlySelected;
     private EventManager.Stage currentAudioStage = EventManager.Stage.Intro;
@@ -30,7 +30,9 @@ public class MainAudioController : MonoBehaviour {
 
     }
     private void Start()
-    {   
+    {
+        m_MaxVolume = 0.3f;
+        m_FadeSpeed = 0.5f;
         m_Aud_1.clip = m_Stage1Clip;
         m_Aud_1.loop = true;
         m_Aud_1.volume = 0;
