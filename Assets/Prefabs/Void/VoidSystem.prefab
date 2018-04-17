@@ -3442,6 +3442,7 @@ GameObject:
   - component: {fileID: 82759836235433006}
   - component: {fileID: 82999144418386696}
   - component: {fileID: 82331276313788006}
+  - component: {fileID: 82648003665536760}
   m_Layer: 0
   m_Name: VoidAudioController
   m_TagString: Untagged
@@ -5433,7 +5434,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219660164934384}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7762,40 +7763,46 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.05
-      value: 1
+      time: 0.046772767
+      value: 0.85238266
       inSlope: -0.29031113
       outSlope: -0.29031113
       tangentMode: 0
     - serializedVersion: 2
       time: 0.25378188
-      value: 0.99028015
+      value: 0.8712349
       inSlope: -0.14968362
       outSlope: -0.14968362
       tangentMode: 0
     - serializedVersion: 2
       time: 0.38533998
-      value: 1.0020945
+      value: 0.88304925
       inSlope: -0.47202107
       outSlope: -0.47202107
       tangentMode: 0
     - serializedVersion: 2
+      time: 0.47089705
+      value: 0.88133
+      inSlope: 0.02026558
+      outSlope: 0.02026558
+      tangentMode: 0
+    - serializedVersion: 2
       time: 0.6090576
-      value: 0.98994446
+      value: 0.8708992
       inSlope: -0.16672252
       outSlope: -0.16672252
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.77522886
-      value: 0.99658966
-      inSlope: 0.083581045
-      outSlope: 0.083581045
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.92609864
-      value: 0.993103
+      time: 0.65836793
+      value: 0.87405777
       inSlope: -0.07815612
       outSlope: -0.07815612
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.79137266
+      value: 0.8584976
+      inSlope: 0.083581045
+      outSlope: 0.083581045
       tangentMode: 0
     - serializedVersion: 2
       time: 0.9784851
@@ -7835,7 +7842,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 1
+      value: 1.014286
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -7905,6 +7912,117 @@ AudioSource:
     - serializedVersion: 2
       time: 0
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82648003665536760
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857112896044290}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243073818630311012, guid: c6cedd23cfd050d468f8d3a187325b5a,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 623008be4fe6b38499ec41bc34fbd88a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 4
+  MaxDistance: 25
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0.012899904
+      value: 0.82556534
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.15217209
+      value: 0.76841736
+      inSlope: -0.48397604
+      outSlope: -0.48397604
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.33514404
+      value: 0.6758461
+      inSlope: -0.5497909
+      outSlope: -0.5497909
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.490165
+      value: 0.43386865
+      inSlope: -0.77630025
+      outSlope: -0.77630025
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.6284847
+      value: 0.22680855
+      inSlope: -0.5082829
+      outSlope: -0.5082829
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.8258418
+      value: 0.04762268
+      inSlope: -0.34939292
+      outSlope: -0.34939292
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.86388886
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -8016,7 +8134,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 623008be4fe6b38499ec41bc34fbd88a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.519
+  m_Volume: 0.799
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8035,38 +8153,50 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.16185379
-      value: 0.9969902
-      inSlope: 0.14874618
-      outSlope: 0.14874618
+      time: 0
+      value: 0.7350826
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.31900024
-      value: 0.5377426
-      inSlope: -1.3455454
-      outSlope: -1.3455454
+      time: 0.10378647
+      value: 0.68745995
+      inSlope: -0.48397604
+      outSlope: -0.48397604
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.40629506
-      value: 0.3148234
-      inSlope: -2.8698785
-      outSlope: -2.8698785
+      time: 0.2351532
+      value: 0.44250298
+      inSlope: -2.9269474
+      outSlope: -2.9269474
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.5994549
-      value: 0.131567
+      time: 0.33855367
+      value: 0.2862494
+      inSlope: -0.77630025
+      outSlope: -0.77630025
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.4704342
+      value: 0.21253586
       inSlope: -0.5082829
       outSlope: -0.5082829
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.79681194
-      value: 0.049684465
+      time: 0.65486705
+      value: 0.14761353
       inSlope: -0.34939292
       outSlope: -0.34939292
       tangentMode: 0
     - serializedVersion: 2
+      time: 0.81933594
+      value: 0.0999119
+      inSlope: -0.44280663
+      outSlope: -0.44280663
+      tangentMode: 0
+    - serializedVersion: 2
       time: 1
-      value: 0.004638672
+      value: 0.019042969
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -8140,43 +8270,55 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.009159863
-      value: 1.0916388
+      time: 0.0064525604
+      value: 0.80591416
       inSlope: 0.35996073
       outSlope: 0.35996073
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.1124814
-      value: 1.0951096
+      time: 0.10280733
+      value: 0.70938265
       inSlope: -0.1001358
       outSlope: -0.1001358
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.24753946
-      value: 1.0873523
-      inSlope: -0.12238174
-      outSlope: -0.12238174
+      time: 0.19915384
+      value: 0.60636663
+      inSlope: -0.85407734
+      outSlope: -0.85407734
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.49454665
-      value: 0.9030304
+      time: 0.30745864
+      value: 0.52680206
       inSlope: -1.5171267
       outSlope: -1.5171267
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.69348085
-      value: 0.7113474
+      time: 0.40586054
+      value: 0.4675946
+      inSlope: -0.13440847
+      outSlope: -0.13440847
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.53541505
+      value: 0.42086583
       inSlope: -0.26180133
       outSlope: -0.26180133
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.88668823
-      value: 0.2223854
-      inSlope: -0.17965215
-      outSlope: -0.17965215
+      time: 0.6673126
+      value: 0.34619522
+      inSlope: -1.007298
+      outSlope: -1.007298
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.97305423
+      time: 0.838596
+      value: 0.09497996
+      inSlope: -0.9620935
+      outSlope: -0.9620935
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.99563724
       value: 0
       inSlope: 0
       outSlope: 0
@@ -8273,6 +8415,11 @@ MonoBehaviour:
   Stage1_TeleportInterval: 5
   Stage1_AppearInterval: 2
   Stage1_AppearDistance: 12.5
+  stage2_playerTorchOn1: 0
+  stage2_playerTorchOff: 0
+  stage2_playerTorchOn2: 0
+  stage2_playerTorchOff2: 0
+  stage2_coroutine_finished: 0
   Stage1_MinAngle: 1
   Stage1_MaxAngle: 3
 --- !u!114 &114422241815363918
@@ -8339,6 +8486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MonsterSFX1AudioSrc: {fileID: 82999144418386696}
   MonsterSFX2AudioSrc: {fileID: 82331276313788006}
+  MonsterSFX3AudioSrc: {fileID: 82648003665536760}
   MonsterMotionAudioSrc: {fileID: 82759836235433006}
   m_GrassRun: {fileID: 8300000, guid: 8b2fd0afa40a1c04797fe0049f9dd88c, type: 3}
   m_StoneRun: {fileID: 8300000, guid: ff42943390b0fbc448252d12a4bcbbe4, type: 3}
@@ -8354,7 +8502,8 @@ MonoBehaviour:
   m_BreathingFront: {fileID: 8300000, guid: f216dfa483e56624586fc43b373654e7, type: 3}
   m_BreathingBehind: {fileID: 8300000, guid: b77d8af86a104124aa9c9dfbc7645a9d, type: 3}
   m_GasLoop: {fileID: 8300000, guid: 5b9105783f881be4280f5bd170821020, type: 3}
-  m_Jumpscare: {fileID: 8300000, guid: 6a43aae4923c37a41bce220a9465c784, type: 3}
+  m_Jumpscare_Stage2: {fileID: 8300000, guid: 49687e8dd1e01484495c019fce06f3c7, type: 3}
+  m_Jumpscare_Stage3: {fileID: 8300000, guid: 6a43aae4923c37a41bce220a9465c784, type: 3}
 --- !u!114 &114620123144592012
 MonoBehaviour:
   m_ObjectHideFlags: 1

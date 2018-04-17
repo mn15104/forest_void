@@ -82,7 +82,7 @@ public partial class MonsterAI : MonoBehaviour
         destinationPosition = player.transform.position;
         follow_finished = false;
         //*Set Initial State As Moving*//
-        if(currentStage == EventManager.Stage.Intro)
+        if (currentStage == EventManager.Stage.Intro)
         {
             debugState = MonsterState.DISABLED;
             currentState = MonsterState.DISABLED;
@@ -221,7 +221,7 @@ public partial class MonsterAI : MonoBehaviour
     public void SetState(MonsterState state_)
     {
         m_MonsterStateMachine.SetState(state_);
-    } 
+    }
     public void SetStage(EventManager.Stage stage)
     {
         if (stage != currentStage)
@@ -252,7 +252,7 @@ public partial class MonsterAI : MonoBehaviour
                 }
                 else if (currentStage == EventManager.Stage.Stage3)
                 {
-                    
+
                 }
             }
             currentStage = stage;
@@ -285,7 +285,7 @@ public partial class MonsterAI : MonoBehaviour
             foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
                 StartCoroutine(FadeInMaterial(mat, .5f));
 
-            yield return new WaitForSeconds(Mathf.Max(Stage1_AppearInterval,2f));
+            yield return new WaitForSeconds(Mathf.Max(Stage1_AppearInterval, 2f));
 
             // Fade out
             foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
@@ -297,7 +297,7 @@ public partial class MonsterAI : MonoBehaviour
 
             yield return null;
         }
-        
+
         /////// Need to reset render mode at some point 
         foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
             ChangeRenderMode(mat, BlendMode.Opaque);
@@ -308,11 +308,11 @@ public partial class MonsterAI : MonoBehaviour
 
     /////////////// STAGE 2 ///////////////
 
-    bool stage2_playerTorchOn1 = false;
-    bool stage2_playerTorchOff = false;
-    bool stage2_playerTorchOn2 = false;
-    bool stage2_playerTorchOff2 = false;
-    bool stage2_coroutine_finished = false;
+    public bool stage2_playerTorchOn1  = false;
+    public bool stage2_playerTorchOff  = false;
+    public bool stage2_playerTorchOn2  = false;
+    public bool stage2_playerTorchOff2  = false;
+    public bool stage2_coroutine_finished  = false;
     public void UpdateStage2()
     {
         if (!stage2_playerTorchOn1)
@@ -333,7 +333,7 @@ public partial class MonsterAI : MonoBehaviour
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                 stage2_playerTorchOff = true;
-                StartCoroutine(Stage2_ToggleBool(0.4f));
+                StartCoroutine(Stage2_ToggleBool(0.2f));
             }
         }
         else if (!stage2_playerTorchOn2 && stage2_coroutine_finished)
@@ -617,6 +617,7 @@ public partial class MonsterAI : MonoBehaviour
 
     void ResetStageVariables()
     {
+        GetComponentInChildren<MonsterAudioController>().Reset();
         stage2_playerTorchOn1 = false;
         stage2_playerTorchOff = false;
         stage2_playerTorchOn2 = false;

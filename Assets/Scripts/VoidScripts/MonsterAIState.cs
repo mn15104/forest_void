@@ -14,6 +14,14 @@ public partial class MonsterAI
 
         public void SetState(MonsterState state)
         {
+            // Reset opaque
+            if (m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().material.GetFloat("_Mode") != 0)
+            {
+                foreach (Material mat in m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().materials)
+                    m_MonsterAI.ChangeRenderMode(mat, BlendMode.Opaque);
+                foreach (Material mat in m_MonsterAI.GetComponentInChildren<MeshRenderer>().materials)
+                    m_MonsterAI.ChangeRenderMode(mat, BlendMode.Opaque);
+            }
             // If monster is stalled due to human in structure, set to previous set regardless of parameter
             if (m_MonsterAI.currentState == MonsterState.HUMAN_IN_STRUCT)
             {

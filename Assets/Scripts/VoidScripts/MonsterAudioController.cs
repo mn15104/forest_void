@@ -11,9 +11,11 @@ public class MonsterAudioController : MonoBehaviour
     private Terrain m_CurrentTerrain;
     private MonsterAI m_Monster;
     private MonsterState m_MonsterState;
+    private MonsterState m_MonsterPrevState;
     private float m_MonsterSpeed;
     public AudioSource MonsterSFX1AudioSrc;
     public AudioSource MonsterSFX2AudioSrc;
+    public AudioSource MonsterSFX3AudioSrc;
     public AudioSource MonsterMotionAudioSrc;
     public AudioClip m_GrassRun;
     public AudioClip m_StoneRun;
@@ -29,15 +31,19 @@ public class MonsterAudioController : MonoBehaviour
     public AudioClip m_BreathingFront;
     public AudioClip m_BreathingBehind;
     public AudioClip m_GasLoop;
-    public AudioClip m_Jumpscare;
+    public AudioClip m_Jumpscare_Stage2;
+    public AudioClip m_Jumpscare_Stage3;
     private Camera m_PlayerCamera;
+
+    private bool m_MotionEnabled = true;
+
     private void OnEnable()
     {
         
         MonsterMotionAudioSrc.Stop();
         MonsterSFX1AudioSrc.Stop();
         MonsterSFX2AudioSrc.Stop();
-        MonsterMotionAudioSrc.clip = m_StoneRun;
+        MonsterMotionAudioSrc.clip = m_GrassWalk;
         MonsterMotionAudioSrc.loop = true;
         MonsterSFX1AudioSrc.clip = null;
         MonsterSFX1AudioSrc.loop = true;
@@ -81,6 +87,7 @@ public class MonsterAudioController : MonoBehaviour
     }
     private void UpdateMonsterMotion()
     {
+        
         Terrain m_CurrentTerrain = Terrain.activeTerrain;
         int textureIndex = GetMainTexture(transform.position);
         TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
@@ -91,7 +98,8 @@ public class MonsterAudioController : MonoBehaviour
                 {
                     if (MonsterMotionAudioSrc.clip != m_GrassWalk && 
                         (m_Monster.GetMonsterState() == MonsterState.HIDDEN_MOVING
-                        || m_Monster.GetMonsterState() == MonsterState.APPROACH))
+                        || m_Monster.GetMonsterState() == MonsterState.APPROACH
+                        || m_Monster.GetMonsterState() == MonsterState.FOLLOW))
                     {
                         MonsterMotionAudioSrc.clip = m_GrassWalk;
                     }
@@ -107,7 +115,7 @@ public class MonsterAudioController : MonoBehaviour
                 {
                     if (MonsterMotionAudioSrc.clip != m_GrassWalk && 
                         (m_Monster.GetMonsterState() == MonsterState.HIDDEN_MOVING
-                        || m_Monster.GetMonsterState() == MonsterState.APPROACH))
+                        || m_Monster.GetMonsterState() == MonsterState.APPROACH || m_Monster.GetMonsterState() == MonsterState.FOLLOW))
                     {
                         MonsterMotionAudioSrc.clip = m_StoneWalk;
                     }
@@ -123,7 +131,7 @@ public class MonsterAudioController : MonoBehaviour
                 {
                     if (MonsterMotionAudioSrc.clip != m_GrassWalk &&
                         (m_Monster.GetMonsterState() == MonsterState.HIDDEN_MOVING
-                        || m_Monster.GetMonsterState() == MonsterState.APPROACH))
+                        || m_Monster.GetMonsterState() == MonsterState.APPROACH || m_Monster.GetMonsterState() == MonsterState.FOLLOW))
                     {
                         MonsterMotionAudioSrc.clip = m_GravelWalk;
                     }
@@ -139,7 +147,7 @@ public class MonsterAudioController : MonoBehaviour
                 {
                     if (MonsterMotionAudioSrc.clip != m_MudWalk &&
                         (m_Monster.GetMonsterState() == MonsterState.HIDDEN_MOVING
-                        || m_Monster.GetMonsterState() == MonsterState.APPROACH))
+                        || m_Monster.GetMonsterState() == MonsterState.APPROACH || m_Monster.GetMonsterState() == MonsterState.FOLLOW))
                     {
                         MonsterMotionAudioSrc.clip = m_MudWalk;
                     }
@@ -158,13 +166,24 @@ public class MonsterAudioController : MonoBehaviour
     }
     void UpdateMonsterAudioState()
     {
-        switch (m_MonsterState)
+        if (m_Monster.GetMonsterState() != m_MonsterState)
+        {
+            m_MonsterState = m_Monster.GetMonsterState();
+            MonsterSFX1AudioSrc.clip = null;
+            MonsterSFX2AudioSrc.clip = null;
+            MonsterSFX2AudioSrc.loop = false;
+            MonsterSFX3AudioSrc.clip = null;
+            MonsterSFX3AudioSrc.loop = false;
+        }
+
+        switch (m_Monster.GetMonsterState())
         {
             case MonsterState.HIDDEN_IDLE:
                 if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                 {
                     MonsterSFX1AudioSrc.clip = (m_GasLoop);
                     MonsterSFX1AudioSrc.Play();
+                     
                 }
                 break;
             case MonsterState.HIDDEN_MOVING:
@@ -175,83 +194,96 @@ public class MonsterAudioController : MonoBehaviour
                 }
                 break;
             case MonsterState.FOLLOW:
-                MonsterSFX2AudioSrc.clip = null;
-                if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
+                if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                 {
-                    MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
+                    MonsterSFX1AudioSrc.clip = m_GasLoop;
                     MonsterSFX1AudioSrc.Play();
                 }
                 break;
             case MonsterState.APPEAR:
                 {
-                    //if (m_Monster.currentAppear == MonsterAppear.STAGE1 || m_Monster.currentAppear == MonsterAppear.NONE)
-                    //{
-                    //    if (m_PlayerCamera)
-                    //    {
-                    //        Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_PlayerCamera);
-                    //        if (MonsterSFX2AudioSrc.clip != m_Jumpscare && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
-                    //        {
-                    //            Vector3 dirToMonster = (m_Monster.transform.position - m_Monster.player.transform.position).normalized;
-                    //            float angleBetween = Vector3.Angle(dirToMonster, m_Monster.player.transform.forward);
-                    //            if (angleBetween < m_PlayerCamera.fieldOfView / 1.35f)
-                    //            {
-                    //                MonsterSFX2AudioSrc.clip = m_Jumpscare;
-                    //                MonsterSFX2AudioSrc.Play();
-                    //            }
-                    //        }
-                    //        if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
-                    //        {
-                    //            MonsterSFX1AudioSrc.clip = (m_BreathingFront);
-                    //            MonsterSFX1AudioSrc.Play();
-                    //        }
-                    //        else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
-                    //        {
-                    //            MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
-                    //            MonsterSFX1AudioSrc.Play();
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        if (MonsterSFX1AudioSrc.clip != m_BreathingFront)
-                    //        {
-                    //            MonsterSFX1AudioSrc.clip = (m_BreathingFront);
-                    //            MonsterSFX1AudioSrc.Play();
-                    //        }
-                    //    }
-                    //}
-                    //else if (m_Monster.currentAppear == MonsterAppear.STAGE2)
-                    //{
-                    //    if (MonsterSFX1AudioSrc.clip != m_Chase)
-                    //    {
-                    //        MonsterSFX1AudioSrc.loop = false;
-                    //        MonsterSFX1AudioSrc.clip = (m_Chase);
-                    //        MonsterSFX1AudioSrc.Play();
-                    //    }
-                    //}
+                    if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage1 || m_Monster.GetMonsterStage() == EventManager.Stage.Intro)
+                    {
+                        MonsterSFX1AudioSrc.Stop();
+                    }
+                    else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage2)
+                    {
+                        if(m_Monster.stage2_playerTorchOff && !m_Monster.stage2_coroutine_finished)
+                        {
+                            if (MonsterSFX2AudioSrc.clip != m_Jumpscare_Stage2)
+                            {
+                                MonsterSFX2AudioSrc.clip = (m_Jumpscare_Stage2);
+                                MonsterSFX2AudioSrc.Play();
+                            }
+                        }
+                        else if (MonsterSFX3AudioSrc.clip != m_MudWalk && m_Monster.stage2_playerTorchOff && m_Monster.stage2_coroutine_finished)
+                        {
+                            if (MonsterSFX1AudioSrc.clip != m_GasLoop)
+                            {
+                                MonsterSFX1AudioSrc.clip = m_GasLoop;
+                                MonsterSFX1AudioSrc.Play();
+                            }
+                            MonsterSFX3AudioSrc.clip = m_MudWalk;
+                            MonsterSFX3AudioSrc.loop = true;
+                            MonsterSFX3AudioSrc.Play();
+                        }
+                    }
+                    else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage3)
+                    {
+                        if (m_PlayerCamera)
+                        {
+                            Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_PlayerCamera);
+                            if (MonsterSFX2AudioSrc.clip != m_Jumpscare_Stage3 && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                            {
+                                Vector3 dirToMonster = (m_Monster.transform.position - m_Monster.player.transform.position).normalized;
+                                float angleBetween = Vector3.Angle(dirToMonster, m_Monster.player.transform.forward);
+                                if (angleBetween < m_PlayerCamera.fieldOfView / 1.35f)
+                                {
+                                    MonsterSFX2AudioSrc.clip = m_Jumpscare_Stage3;
+                                    MonsterSFX2AudioSrc.Play();
+                                }
+                            }
+                            if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
+                            {
+                                MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                                MonsterSFX1AudioSrc.Play();
+                            }
+                            else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
+                            {
+                                MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
+                                MonsterSFX1AudioSrc.Play();
+                            }
+                        }
+                        else
+                        {
+                            if (MonsterSFX1AudioSrc.clip != m_BreathingFront)
+                            {
+                                MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                                MonsterSFX1AudioSrc.Play();
+                            }
+                        }
+                    }
                 }
                 break;
             case MonsterState.APPROACH:
                 {
                     StopAllCoroutines();
-                    MonsterSFX2AudioSrc.clip = null;
                     Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_Monster.player.GetComponentInChildren<Camera>());
                     if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
                     {
-                        MonsterSFX1AudioSrc.clip = (m_BreathingFront);
+                        MonsterSFX1AudioSrc.clip = m_GasLoop;
                         MonsterSFX1AudioSrc.Play();
                     }
-                    else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
+                    if (MonsterSFX3AudioSrc.clip != m_GasLoop)
                     {
-                        MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
-                        MonsterSFX1AudioSrc.Play();
+                        MonsterSFX3AudioSrc.loop = true;
+                        MonsterSFX3AudioSrc.clip = (m_GasLoop);
+                        MonsterSFX3AudioSrc.Play();
                     }
-
                 }
                 break;
-                
             case MonsterState.CHASE:
                 StopAllCoroutines();
-                MonsterSFX2AudioSrc.clip = null;
                 if (MonsterSFX1AudioSrc.clip != m_Chase)
                 {
                     MonsterSFX1AudioSrc.loop = false;
@@ -259,32 +291,51 @@ public class MonsterAudioController : MonoBehaviour
                     MonsterSFX1AudioSrc.Play();
                 }
                 break;
+            case MonsterState.DISABLED:
+            case MonsterState.STAGE_COMPLETE:
+            case MonsterState.GAMEOVER:
+                m_MotionEnabled = true;
+                MonsterSFX1AudioSrc.Stop();
+                MonsterSFX1AudioSrc.clip = null;
+                MonsterSFX2AudioSrc.Stop();
+                MonsterSFX2AudioSrc.clip = null;
+                MonsterSFX2AudioSrc.loop = false;
+                break;
             default:
                 break;
         }
     }
-
-
+    public void Reset()
+    {
+        MonsterMotionAudioSrc.Stop();
+        MonsterSFX1AudioSrc.Stop();
+        MonsterSFX2AudioSrc.Stop();
+        MonsterMotionAudioSrc.clip = m_GrassWalk;
+        MonsterMotionAudioSrc.loop = true;
+        MonsterSFX1AudioSrc.clip = null;
+        MonsterSFX1AudioSrc.loop = true;
+        MonsterSFX2AudioSrc.clip = null;
+        MonsterSFX2AudioSrc.loop = false;
+    }
     // Update is called once per frame
     void Update()
     {
-        Vector3 vel = m_Monster.GetComponent<Rigidbody>().velocity ;
+        Vector3 vel = m_Monster.GetComponent<Rigidbody>().velocity;
         m_MonsterSpeed = new Vector2(vel.x, vel.z).magnitude;
         
-        m_MonsterState = m_Monster.GetMonsterState();
         ////////////////////////////////////////////////////////////////////////////////////////
         UpdateMonsterMotion();
         UpdateMonsterAudioState();
-        float monsterSpeed = m_Monster.GetMonsterSpeed(); 
+
         if (MonsterMotionAudioSrc.clip != null)
         {
             if (!MonsterMotionAudioSrc.isPlaying)
                 MonsterMotionAudioSrc.Play();
             if (m_MonsterSpeed < 0.1f)
                 MonsterMotionAudioSrc.volume = 0;
-            else if (m_StateVolumeDictionary[m_MonsterState] != MonsterMotionAudioSrc.volume)
+            else
             {
-                MonsterMotionAudioSrc.volume = m_StateVolumeDictionary[m_MonsterState];
+                MonsterMotionAudioSrc.volume = 1f;
             }
         }
         ///////////////////////////////////////////////////////////////////////////////////////////
@@ -342,5 +393,12 @@ public class MonsterAudioController : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    void ResetAudioStates()
+    {
+        m_MotionEnabled = true;
+        MonsterSFX2AudioSrc.clip = null;
+        MonsterSFX2AudioSrc.loop = false;
     }
 }

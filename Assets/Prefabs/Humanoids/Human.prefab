@@ -1355,6 +1355,7 @@ GameObject:
   - component: {fileID: 114190305806908088}
   - component: {fileID: 114203682614928200}
   - component: {fileID: 114692409029344746}
+  - component: {fileID: 114783012872352504}
   m_Layer: 8
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -1945,7 +1946,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1399983817755806}
-  m_LocalRotation: {x: -0.5380882, y: 0.45875865, z: -0.5380877, w: -0.4587628}
+  m_LocalRotation: {x: -0.55947953, y: 0.4324144, z: -0.55947775, w: -0.43241778}
   m_LocalPosition: {x: -0.157, y: -0.081, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3106,7 +3107,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484944895108866}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d0636030dd4f65342b0e70fae549f179,
     type: 2}
@@ -3191,7 +3192,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 93cbb9677a0866b49892da950538b98f,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7d8cac319329d224eaca292d7e52a07a, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 0.5
@@ -3271,7 +3272,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d4f40da02c8b49e418ba08e9454df881, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3413,7 +3414,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886106476796390}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e9c7b8a809a5364bb70f6060fcf389d, type: 3}
   m_Name: 
@@ -3423,7 +3424,7 @@ MonoBehaviour:
   effectsOn: 1
   isLookingAtMonster: 0
   timeLookedAtMonster: 0
-  distanceToMonster: 10
+  distanceToMonster: 9.922373
 --- !u!114 &114042928277560636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3441,23 +3442,23 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886106476796390}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04712e4abc80e964bad8c0f3b48b97b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 1267041dcf94b544584e9bf3063c9206, type: 3}
   displacementMap: {fileID: 2800000, guid: 8ef0997c92d26cd4287885cbd899df80, type: 3}
-  intensity: 0
-  flipIntensity: 0.458
-  colorIntensity: 0.241
+  intensity: 0.8
+  flipIntensity: 0.35999998
+  colorIntensity: 0
 --- !u!114 &114203682614928200
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886106476796390}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -3603,12 +3604,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254094480216546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c6542548ce3e842b3dcbcbf5093691, type: 3}
+  m_Script: {fileID: 11500000, guid: b1000dac79727234ea21056bdd234ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_FlashlightActive: 0
-  m_SwitchOnClip: {fileID: 8300000, guid: 98a6cbf016b41f546b5b0e016c699cc4, type: 3}
-  m_SwitchOffClip: {fileID: 8300000, guid: d4f40da02c8b49e418ba08e9454df881, type: 3}
+--- !u!114 &114783012872352504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886106476796390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5488e098d8f4eb492591bb089fe793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strengthX: 0.56
+  strengthY: 0.6
+  fishEyeShader: {fileID: 4800000, guid: 61572e443c4879f49b377df947fa172d, type: 3}
 --- !u!114 &114887808692876550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3620,8 +3633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d867ccf5a84e54dac6072834bc19d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryMappingKeys: 
-  InventoryMappingValues: 
+  InventoryMappingKeys: 0000000001000000
+  InventoryMappingValues: 0000
 --- !u!114 &114929010878569882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3839,7 +3852,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382307280244786}
   m_LocalRotation: {x: -0, y: 0.76836604, z: -0, w: -0.6400107}
-  m_LocalPosition: {x: 0, y: 0, z: 865.6}
+  m_LocalPosition: {x: 0, y: 0, z: 830.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337399597682046}
@@ -3853,6 +3866,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 259.585, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 608.9, y: 73.9}
+  m_AnchoredPosition: {x: 581.7, y: 73.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

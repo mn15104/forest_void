@@ -160,22 +160,46 @@ public class VoidSystem : MonoBehaviour
     public void ResetVoidToStage(EventManager.Stage stage)
     {
         debugResettingStage = true;
+        SetGameTimeFromStage(stage);
         m_ForestVoid.GetComponent<MonsterAI>().SetStage(stage);
         if (stage == EventManager.Stage.Stage1)
         {
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
         }
-        else
+        else if (stage == EventManager.Stage.Stage2 || stage == EventManager.Stage.Stage3)
         {
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_IDLE);
         }
-        m_gameTimer = m_eventManager.GetGameTime();
+        else
+        {
+            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.DISABLED);
+        }
         m_MonsterStage = stage;
         NotifyStage.Notify(m_MonsterStage);
         debugResettingStage = false;
     }
 
-    
+    public void SetGameTimeFromStage(EventManager.Stage stage)
+    {
+        switch (stage)
+        {
+            case EventManager.Stage.Intro:
+                m_gameTimer = 0f;
+                break;
+            case EventManager.Stage.Stage1:
+                m_gameTimer = m_DelayTimeToActive[0];
+                break;
+            case EventManager.Stage.Stage2:
+                m_gameTimer = m_DelayTimeToActive[1];
+                break;
+            case EventManager.Stage.Stage3:
+                m_gameTimer = m_DelayTimeToActive[2];
+                break;
+            case EventManager.Stage.GameOverStage:
+                m_gameTimer = 0f;
+                break;
+        }
+    }
 
     Vector3 GetFurthestSpawnPoint()
     {
