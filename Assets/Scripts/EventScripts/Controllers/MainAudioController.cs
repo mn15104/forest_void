@@ -15,7 +15,7 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage3Clip;
 
     public float m_MaxVolume = 0.3f;
-    public float m_FadeSpeed = 0.5f;
+    public float m_FadeSpeed = 0.3f;
 
     private AudioClip currentlySelected;
     private EventManager.Stage currentAudioStage = EventManager.Stage.Intro;
@@ -55,32 +55,31 @@ public class MainAudioController : MonoBehaviour {
     void StageAudio(EventManager.Stage stage)
     {
         Debug.Log("Stage Audio changing");
+        Debug.Log(stage);
         switch (stage)
         {
             case EventManager.Stage.Intro:
 
                 break;
             case EventManager.Stage.Stage1:
-                if (currentAudioStage == EventManager.Stage.Intro)
-                {
+                
                     TransitionClip(m_Stage1Clip);
                     currentAudioStage = EventManager.Stage.Stage1;
-                }
+                
                 break;
             case EventManager.Stage.Stage2:
-                if(currentAudioStage == EventManager.Stage.Stage1)
-                {
+                Debug.Log("Transitioning to stage 2");
+                
                     TransitionClip(m_Stage2Clip);
                     currentAudioStage = EventManager.Stage.Stage2;
-                }
+               
                 break;
             case EventManager.Stage.Stage3:
-                if (currentAudioStage == EventManager.Stage.Stage2)
-                {
+                
                     m_Aud_1.clip = m_Stage3Clip;
                     m_Aud_1.Play();
                     currentAudioStage = EventManager.Stage.Stage3;
-                }
+                
                 break;
         }
     }
@@ -144,7 +143,7 @@ public class MainAudioController : MonoBehaviour {
             StopAllCoroutines();
 
             StartCoroutine(FadeOutAudioSource(m_Aud_1, m_FadeSpeed));
-            //FadeInAudioSource(m_Aud_2);
+            m_Aud_2.volume = 0f;
             StartCoroutine(FadeInAudioSource(m_Aud_2, m_MaxVolume, m_FadeSpeed));
         }
         else if (m_Aud_2.isPlaying)
@@ -152,6 +151,7 @@ public class MainAudioController : MonoBehaviour {
             m_Aud_1.clip = t_clip;
             StopAllCoroutines();
             StartCoroutine(FadeOutAudioSource(m_Aud_2, m_FadeSpeed));
+            m_Aud_1.volume = 0f;
             StartCoroutine(FadeInAudioSource(m_Aud_1, m_MaxVolume, m_FadeSpeed));
         }
     }
