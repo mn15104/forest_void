@@ -3320,11 +3320,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114349028090818040, guid: 07c6790ed08b06b418bd6ef87aca5c6a,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 660407200}
     - target: {fileID: 4393093483465170, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.5326752
@@ -3341,6 +3336,11 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.110415146
       objectReference: {fileID: 0}
+    - target: {fileID: 114349028090818040, guid: 07c6790ed08b06b418bd6ef87aca5c6a,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 660407200}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07c6790ed08b06b418bd6ef87aca5c6a, type: 2}
   m_IsPrefabParent: 0

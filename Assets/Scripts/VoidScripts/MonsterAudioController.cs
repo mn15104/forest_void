@@ -179,6 +179,7 @@ public class MonsterAudioController : MonoBehaviour
         switch (m_Monster.GetMonsterState())
         {
             case MonsterState.HIDDEN_IDLE:
+                StopAllCoroutines();
                 if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                 {
                     MonsterSFX1AudioSrc.clip = (m_GasLoop);
@@ -187,6 +188,7 @@ public class MonsterAudioController : MonoBehaviour
                 }
                 break;
             case MonsterState.HIDDEN_MOVING:
+                StopAllCoroutines();
                 if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                 {
                     MonsterSFX1AudioSrc.clip = (m_GasLoop);
@@ -194,6 +196,7 @@ public class MonsterAudioController : MonoBehaviour
                 }
                 break;
             case MonsterState.FOLLOW:
+                StopAllCoroutines();
                 if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                 {
                     MonsterSFX1AudioSrc.clip = m_GasLoop;
@@ -208,7 +211,7 @@ public class MonsterAudioController : MonoBehaviour
                     }
                     else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage2)
                     {
-                        if(m_Monster.stage2_playerTorchOff && !m_Monster.stage2_coroutine_finished)
+                        if(m_Monster.stage2_playerTorchOff && !m_Monster.stage2_coroutine1_finished)
                         {
                             if (MonsterSFX2AudioSrc.clip != m_Jumpscare_Stage2)
                             {
@@ -216,16 +219,26 @@ public class MonsterAudioController : MonoBehaviour
                                 MonsterSFX2AudioSrc.Play();
                             }
                         }
-                        else if (MonsterSFX3AudioSrc.clip != m_MudWalk && m_Monster.stage2_playerTorchOff && m_Monster.stage2_coroutine_finished)
+                        else if (MonsterSFX3AudioSrc.clip != m_MudWalk && m_Monster.stage2_playerTorchOff && m_Monster.stage2_coroutine1_finished)
                         {
                             if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                             {
                                 MonsterSFX1AudioSrc.clip = m_GasLoop;
                                 MonsterSFX1AudioSrc.Play();
                             }
-                            MonsterSFX3AudioSrc.clip = m_MudWalk;
-                            MonsterSFX3AudioSrc.loop = true;
-                            MonsterSFX3AudioSrc.Play();
+                            if(MonsterSFX3AudioSrc.clip != m_MudWalk)
+                            {
+                                MonsterSFX3AudioSrc.clip = m_MudWalk;
+                                MonsterSFX3AudioSrc.volume = 0.3f;
+                                MonsterSFX3AudioSrc.loop = true;
+                                MonsterSFX3AudioSrc.Play();
+                                StartCoroutine(FadeInAudioSource(MonsterSFX3AudioSrc, 1f, 1f));
+                            }
+                        }
+                        else if (m_Monster.stage2_coroutine2_finished)
+                        {
+                            StopAllCoroutines();
+                            ResetAudioStates();
                         }
                     }
                     else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage3)
@@ -400,5 +413,28 @@ public class MonsterAudioController : MonoBehaviour
         m_MotionEnabled = true;
         MonsterSFX2AudioSrc.clip = null;
         MonsterSFX2AudioSrc.loop = false;
+        MonsterSFX3AudioSrc.clip = null;
+        MonsterSFX3AudioSrc.loop = false;
+    }
+    IEnumerator FadeInAudioSource(AudioSource aud, float max_vol, float fade_in_rate)
+    {
+        Debug.Log("Fading in");
+        aud.Play();
+        while (aud.volume < max_vol)
+        {
+            yield return null;
+            aud.volume = Mathf.Lerp(aud.volume, max_vol, Time.deltaTime * fade_in_rate);
+        }
+    }
+    IEnumerator FadeOutAudioSource(AudioSource aud, float fade_out_rate)
+    {
+        Debug.Log("Fading out");
+        while (aud.volume > 0)
+        {
+            yield return null;
+            aud.volume = Mathf.Lerp(aud.volume, 0, Time.deltaTime * fade_out_rate);
+
+        }
+        aud.Stop();
     }
 }

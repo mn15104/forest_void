@@ -136,7 +136,7 @@ public partial class MonsterAI : MonoBehaviour
     {
         Color col = mat.color;
         float alpha = col.a;
-        while (alpha < 1.0f)
+        while (alpha < 0.6f)
         {
             alpha += fadeSpeed * Time.deltaTime;
             mat.color = new Color(col.r, col.g, col.b, alpha);
@@ -226,6 +226,8 @@ public partial class MonsterAI : MonoBehaviour
         if (stage != currentStage)
         {
             StopAllCoroutines();
+            player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
+            player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
             if (currentState == MonsterState.APPEAR)
             {
                 if (currentStage == EventManager.Stage.Stage1)
@@ -261,7 +263,9 @@ public partial class MonsterAI : MonoBehaviour
 
     public float Stage1_TeleportInterval = 2f;
     public float Stage1_AppearInterval = 2f;
-    public float Stage1_AppearDistance = 14f;
+    public float Stage1_AppearDistance = 17f;
+    private int  Stage1_appearCount = 0;
+    public int Stage1_maxAppears = 10;
     public IEnumerator UpdateStage1()
     {
         //Set both mesh renders to fade and set alpha as zero before looping
@@ -275,7 +279,7 @@ public partial class MonsterAI : MonoBehaviour
             StartCoroutine(FadeOutMaterial(mat, 2f));
         yield return new WaitForSeconds(1f);
 
-        while (true)
+        while (Stage1_appearCount < Stage1_maxAppears)
         {
             // Teleport and fade in
             TeleportVoidInfrontHuman_NoCollider(Stage1_AppearDistance);
@@ -295,6 +299,7 @@ public partial class MonsterAI : MonoBehaviour
             yield return new WaitForSeconds(Stage1_TeleportInterval);
 
             yield return null;
+            Stage1_appearCount += 1;
         }
 
         /////// Need to reset render mode at some point 
@@ -302,6 +307,8 @@ public partial class MonsterAI : MonoBehaviour
             ChangeRenderMode(mat, BlendMode.Opaque);
         foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
             ChangeRenderMode(mat, BlendMode.Opaque);
+
+        m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
     }
 
 
@@ -311,9 +318,11 @@ public partial class MonsterAI : MonoBehaviour
     public bool stage2_playerTorchOff  = false;
     public bool stage2_playerTorchOn2  = false;
     public bool stage2_playerTorchOff2  = false;
-    public bool stage2_coroutine_finished  = false;
+    public bool stage2_coroutine1_finished  = false;
+    public bool stage2_coroutine2_finished = false;
     public void UpdateStage2()
     {
+       
         if (!stage2_playerTorchOn1)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
@@ -332,38 +341,46 @@ public partial class MonsterAI : MonoBehaviour
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                 stage2_playerTorchOff = true;
-                StartCoroutine(Stage2_ToggleBool(0.2f));
+                StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
             }
         }
-        else if (!stage2_playerTorchOn2 && stage2_coroutine_finished)
+        else if (!stage2_playerTorchOn2 && stage2_coroutine1_finished)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 player.GetComponentInChildren<Flashlight>().Switch(gameObject);
+                player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(true);
                 GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
                 GetComponentInChildren<MeshRenderer>().enabled = false;
                 RenderSettings.fogMode = FogMode.ExponentialSquared;
                 RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
                 stage2_playerTorchOn2 = true;
+                StartCoroutine(Stage2_ToggleCoroutine2(5f));
             }
         }
-        else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2)
+        else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2 && stage2_coroutine2_finished)
         {
+            player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                 m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
             }
+            player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
         }
     }
 
-    IEnumerator Stage2_ToggleBool(float time)
+    IEnumerator Stage2_ToggleCoroutine1(float time)
     {
         yield return new WaitForSeconds(time);
-        stage2_coroutine_finished = true;
+        stage2_coroutine1_finished = true;
     }
-
+    IEnumerator Stage2_ToggleCoroutine2(float time)
+    {
+        yield return new WaitForSeconds(time);
+        stage2_coroutine2_finished = true;
+    }
     float timer_Stage3Active = 0f;
     /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
@@ -419,7 +436,7 @@ public partial class MonsterAI : MonoBehaviour
     float original_y;
     public void InitialiseStage2()
     {
-
+        player.GetComponentInChildren<Flashlight>().SetDisableFlicker(true);
     }
 
     public void InitialiseStage3()
@@ -617,11 +634,15 @@ public partial class MonsterAI : MonoBehaviour
     void ResetStageVariables()
     {
         GetComponentInChildren<MonsterAudioController>().Reset();
+        Stage1_maxAppears = 10;
         stage2_playerTorchOn1 = false;
         stage2_playerTorchOff = false;
         stage2_playerTorchOn2 = false;
         stage2_playerTorchOff2 = false;
-        stage2_coroutine_finished = false;
+        stage2_coroutine1_finished = false;
+        stage2_coroutine2_finished = false;
+        player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
+        player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
         timer_Stage3Active = 0f;
     }
 

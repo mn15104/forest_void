@@ -3271,7 +3271,8 @@ AudioSource:
   m_GameObject: {fileID: 1254094480216546}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243987257962976122, guid: ba51afcf24b5f3e4188de1c37f23dd43,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: d4f40da02c8b49e418ba08e9454df881, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3608,6 +3609,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FlashlightActive: 0
+  m_FlashlightAudio: {fileID: 82856873186292306}
+  m_FlashlightOn: {fileID: 8300000, guid: 98a6cbf016b41f546b5b0e016c699cc4, type: 3}
+  m_FlashlightOff: {fileID: 8300000, guid: d4f40da02c8b49e418ba08e9454df881, type: 3}
 --- !u!114 &114783012872352504
 MonoBehaviour:
   m_ObjectHideFlags: 1
