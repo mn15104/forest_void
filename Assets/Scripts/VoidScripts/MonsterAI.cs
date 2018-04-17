@@ -61,7 +61,7 @@ public partial class MonsterAI : MonoBehaviour
     public float soundDetectionPercentage = 0.2f;
     public float lightDetectionPercentage = 0.2f;
     private float distanceToHuman;
-    private float distanceToHuman_FollowTrigger = 16;
+    private float distanceToHuman_FollowTrigger = 20;
     private float distanceToHuman_AppearTrigger = 10;
     private const float maxDetectionRange = 165;
     //State Utility Variables
@@ -381,24 +381,30 @@ public partial class MonsterAI : MonoBehaviour
         yield return new WaitForSeconds(time);
         stage2_coroutine2_finished = true;
     }
+
+
     float timer_Stage3Active = 0f;
+    public bool Stage3_Appeared = false;
     /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
     {
-        if(distanceToHuman > 7f)
-        {
-            TeleportVoidBehindHuman(5f);
-        }
-        
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(player.GetComponentInChildren<Camera>());
-        bool monsterInFrustum = GeometryUtility.TestPlanesAABB(planes, GetComponent<Collider>().bounds);
-        if (monsterInFrustum)
-        {
-            Vector3 dirToMonster = (transform.position - player.transform.position).normalized;
-            float angleBetween = Vector3.Angle(dirToMonster, player.transform.forward);
-            if (angleBetween < player.GetComponentInChildren<Camera>().fieldOfView / 1.35f)
+        if (!Stage3_Appeared) { 
+            if (distanceToHuman > 3f)
             {
-                m_MonsterStateMachine.SetState(MonsterState.APPROACH);
+                TeleportVoidBehindHuman(2f);
+            }
+        
+            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(player.GetComponentInChildren<Camera>());
+            bool monsterInFrustum = GeometryUtility.TestPlanesAABB(planes, GetComponent<Collider>().bounds);
+            if (monsterInFrustum)
+            {
+                Vector3 dirToMonster = (transform.position - player.transform.position).normalized;
+                float angleBetween = Vector3.Angle(dirToMonster, player.transform.forward);
+                if (angleBetween < player.GetComponentInChildren<Camera>().fieldOfView / 1.35f)
+                {
+                    Stage3_Appeared = true;
+                    StartCoroutine(DelayStateChange(MonsterState.APPROACH, 4f));
+                }
             }
         }
     }
@@ -422,6 +428,7 @@ public partial class MonsterAI : MonoBehaviour
     }
 
 
+    float original_y;
     public void InitialiseStage1()
     {
         GetComponent<Rigidbody>().isKinematic = true;
@@ -433,7 +440,6 @@ public partial class MonsterAI : MonoBehaviour
         StartCoroutine(UpdateStage1());
     }
 
-    float original_y;
     public void InitialiseStage2()
     {
         player.GetComponentInChildren<Flashlight>().SetDisableFlicker(true);
@@ -441,7 +447,7 @@ public partial class MonsterAI : MonoBehaviour
 
     public void InitialiseStage3()
     {
-        TeleportVoidBehindHuman(5f);
+        TeleportVoidBehindHuman(2f);
     }
 
     public float Stage1_MinAngle = 1f;
@@ -641,6 +647,7 @@ public partial class MonsterAI : MonoBehaviour
         stage2_playerTorchOff2 = false;
         stage2_coroutine1_finished = false;
         stage2_coroutine2_finished = false;
+        Stage3_Appeared = false;
         player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
         player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
         timer_Stage3Active = 0f;

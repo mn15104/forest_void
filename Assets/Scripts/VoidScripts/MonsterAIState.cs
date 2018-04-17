@@ -92,31 +92,23 @@ public partial class MonsterAI
                         m_MonsterAI.m_CurrentSpeed = m_AppearSpeed;
                         break;
                     case MonsterState.APPROACH:
-                        if (m_MonsterAI.currentState == MonsterState.APPEAR)
-                        {
-                            m_MonsterAI.StopAllCoroutines();
-                            m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                            m_MonsterAI.anim.SetBool("Idle", false);
-                            m_MonsterAI.anim.SetBool("Walk", true);
-                            m_MonsterAI.anim.SetBool("Run", false);
-                            m_MonsterAI.anim.SetFloat("Speed", m_MinApproachSpeed);
-                            m_MonsterAI.m_CurrentSpeed = m_MinApproachSpeed;
-                            m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.CHASE, 4f));
-                        }
-                        else { validStateChange = false; }
+                        m_MonsterAI.StopAllCoroutines();
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
+                        m_MonsterAI.anim.SetBool("Idle", false);
+                        m_MonsterAI.anim.SetBool("Walk", true);
+                        m_MonsterAI.anim.SetBool("Run", false);
+                        m_MonsterAI.anim.SetFloat("Speed", m_MinApproachSpeed);
+                        m_MonsterAI.m_CurrentSpeed = m_MinApproachSpeed;
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.CHASE, 4f));
                         break;
                     case MonsterState.CHASE:
-                        if (m_MonsterAI.currentState == MonsterState.APPROACH)
-                        {
-                            m_MonsterAI.StopAllCoroutines();
-                            m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                            m_MonsterAI.anim.SetBool("Idle", true);
-                            m_MonsterAI.anim.SetBool("Walk", false);
-                            m_MonsterAI.anim.SetBool("Run", false);
-                            m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
-                            m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
-                        }
-                        else { validStateChange = false; }
+                        m_MonsterAI.StopAllCoroutines();
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
+                        m_MonsterAI.anim.SetBool("Idle", false);
+                        m_MonsterAI.anim.SetBool("Walk", false);
+                        m_MonsterAI.anim.SetBool("Run", true);
+                        m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
+                        m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
                         break;
                     case MonsterState.ATTACK:
                         if (m_MonsterAI.currentState == MonsterState.CHASE)
@@ -316,6 +308,22 @@ public partial class MonsterAI
                 }
             }
             if (!m_MonsterAI.follow_finished && (m_MonsterAI.currentStage == EventManager.Stage.Stage2))
+            {
+                if (m_MonsterAI.distanceToHuman > m_MonsterAI.distanceToHuman_AppearTrigger && !m_MonsterAI.anim.GetBool("Walk"))
+                {
+                    m_MonsterAI.m_CurrentSpeed = m_HiddenMovingSpeed;
+                    m_MonsterAI.anim.SetBool("Run", false);
+                    m_MonsterAI.anim.SetBool("Walk", true);
+                    m_MonsterAI.anim.SetBool("Idle", false);
+                    m_MonsterAI.anim.SetFloat("Speed", m_MonsterAI.m_CurrentSpeed);
+                }
+                else if (m_MonsterAI.distanceToHuman <= m_MonsterAI.distanceToHuman_AppearTrigger)
+                {
+                    m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.APPEAR, 0f));
+                    m_MonsterAI.follow_finished = true;
+                }
+            }
+            if (!m_MonsterAI.follow_finished && (m_MonsterAI.currentStage == EventManager.Stage.Stage3))
             {
                 if (m_MonsterAI.distanceToHuman > m_MonsterAI.distanceToHuman_AppearTrigger && !m_MonsterAI.anim.GetBool("Walk"))
                 {

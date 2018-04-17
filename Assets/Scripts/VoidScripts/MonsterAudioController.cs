@@ -207,7 +207,12 @@ public class MonsterAudioController : MonoBehaviour
                 {
                     if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage1 || m_Monster.GetMonsterStage() == EventManager.Stage.Intro)
                     {
-                        MonsterSFX1AudioSrc.Stop();
+                        if(MonsterSFX1AudioSrc.clip != null)
+                        {
+                            MonsterSFX1AudioSrc.clip = null;
+                            StopAllCoroutines();
+                            MonsterSFX1AudioSrc.Stop();
+                        }
                     }
                     else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage2)
                     {
@@ -243,37 +248,18 @@ public class MonsterAudioController : MonoBehaviour
                     }
                     else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage3)
                     {
-                        if (m_PlayerCamera)
+                        if (MonsterSFX1AudioSrc.clip != m_GasLoop)
                         {
-                            Plane[] cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_PlayerCamera);
-                            if (MonsterSFX2AudioSrc.clip != m_Jumpscare_Stage3 && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
-                            {
-                                Vector3 dirToMonster = (m_Monster.transform.position - m_Monster.player.transform.position).normalized;
-                                float angleBetween = Vector3.Angle(dirToMonster, m_Monster.player.transform.forward);
-                                if (angleBetween < m_PlayerCamera.fieldOfView / 1.35f)
-                                {
-                                    MonsterSFX2AudioSrc.clip = m_Jumpscare_Stage3;
-                                    MonsterSFX2AudioSrc.Play();
-                                }
-                            }
-                            if (MonsterSFX1AudioSrc.clip != m_BreathingFront && GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
-                            {
-                                MonsterSFX1AudioSrc.clip = (m_BreathingFront);
-                                MonsterSFX1AudioSrc.Play();
-                            }
-                            else if (MonsterSFX1AudioSrc.clip != m_BreathingBehind)
-                            {
-                                MonsterSFX1AudioSrc.clip = (m_BreathingBehind);
-                                MonsterSFX1AudioSrc.Play();
-                            }
+                            MonsterSFX1AudioSrc.clip = m_GasLoop;
+                            MonsterSFX1AudioSrc.loop = true;
+                            MonsterSFX1AudioSrc.volume = 0;
+                            StartCoroutine(FadeInAudioSource(MonsterSFX3AudioSrc, 1f, 0.3f));
                         }
-                        else
+                        if (m_Monster.Stage3_Appeared && MonsterSFX2AudioSrc.clip != m_Jumpscare_Stage3)
                         {
-                            if (MonsterSFX1AudioSrc.clip != m_BreathingFront)
-                            {
-                                MonsterSFX1AudioSrc.clip = (m_BreathingFront);
-                                MonsterSFX1AudioSrc.Play();
-                            }
+                            MonsterSFX2AudioSrc.clip = m_Jumpscare_Stage3;
+                            MonsterSFX2AudioSrc.loop = false;
+                            MonsterSFX2AudioSrc.Play();
                         }
                     }
                 }
