@@ -200,7 +200,6 @@ public partial class MonsterAI
                     follow();
                     break;
                 case MonsterState.APPEAR:
-                    Debug.Log("Appear state set");
                     appear();
                     break;
                 case MonsterState.APPROACH:

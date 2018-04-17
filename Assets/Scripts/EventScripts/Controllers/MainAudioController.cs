@@ -59,27 +59,19 @@ public class MainAudioController : MonoBehaviour {
         switch (stage)
         {
             case EventManager.Stage.Intro:
-
                 break;
             case EventManager.Stage.Stage1:
-                
-                    TransitionClip(m_Stage1Clip);
-                    currentAudioStage = EventManager.Stage.Stage1;
-                
+                TransitionClip(m_Stage1Clip);
+                currentAudioStage = EventManager.Stage.Stage1;
                 break;
             case EventManager.Stage.Stage2:
-                Debug.Log("Transitioning to stage 2");
-                
-                    TransitionClip(m_Stage2Clip);
-                    currentAudioStage = EventManager.Stage.Stage2;
-               
+                TransitionClip(m_Stage2Clip);
+                currentAudioStage = EventManager.Stage.Stage2;
                 break;
             case EventManager.Stage.Stage3:
-                
-                    m_Aud_1.clip = m_Stage3Clip;
-                    m_Aud_1.Play();
-                    currentAudioStage = EventManager.Stage.Stage3;
-                
+                m_Aud_1.clip = m_Stage3Clip;
+                m_Aud_1.Play();
+                currentAudioStage = EventManager.Stage.Stage3;
                 break;
         }
     }
