@@ -6,7 +6,7 @@ public class TextEvent : MonoBehaviour {
 
     protected TextController textController;
     protected EventManager eventManager;
-    protected TriggerEvent trigger;
+    protected TriggerEvent2 trigger;
     Camera cam;
     GameObject player;
 
@@ -39,12 +39,12 @@ public class TextEvent : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        trigger.TriggerEnter(other.gameObject);
+        trigger.TriggerEnter(other.gameObject, transform.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        trigger.TriggerExit(other.gameObject);
+        trigger.TriggerExit(other.gameObject, transform.gameObject);
 
     }
     private void Update()

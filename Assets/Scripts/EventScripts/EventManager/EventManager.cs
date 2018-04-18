@@ -33,7 +33,8 @@ public class EventManager : MonoBehaviour {
     private float[] StageTimes = { 100f, 300f, 420f, 480f };
     public float GameTimerSeconds = 0f;
 
-    public TriggerEvent TextTriggerEvent = new TriggerEvent();
+    public TriggerEvent2 TextTriggerEvent = new TriggerEvent2();
+
     public TriggerEvent BridgeCrossedEvent = new TriggerEvent();
     public TriggerEvent ChapelBackDoorHandEvent = new TriggerEvent();
     public TriggerEvent CaravanTriggerEvent = new TriggerEvent();
@@ -92,6 +93,7 @@ public class EventManager : MonoBehaviour {
             debugForceStageChange = true;
             ForceStageChange();
         }
+      
     }
     
     public float getPlayerHeartrate()
@@ -131,12 +133,14 @@ public class EventManager : MonoBehaviour {
     void SetStructureLocation(GameObject gameObject)
     {
         currentLocation = gameObject.GetComponent<StructureZone>().location;
+        Debug.Log("EventManager:" + currentLocation);
         NotifyLocation.Notify(currentLocation);
     } 
 
     void SetForestLocation(GameObject gameObject)
     {
         currentLocation = Location.Forest;
+        Debug.Log("EventManager:" + currentLocation);
         NotifyLocation.Notify(currentLocation);
     }
 

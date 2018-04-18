@@ -66,7 +66,7 @@ public class TextController : MonoBehaviour {
         Debug.Log("Fading");
         ChangingColor = true;
         float timeToStart = Time.time;
-        while (text.color != interactColor)
+        while (Time.time - timeToStart < 1)
         {
             text.color = Color.Lerp(text.color, interactColor , (Time.time - timeToStart));
             yield return null;
@@ -84,7 +84,7 @@ public class TextController : MonoBehaviour {
             Debug.Log("Waiting for fade in to finish");
         }
         float timeToStart = Time.time;
-        while (text.color != fadeInColor)
+        while (Time.time - timeToStart < 1)
         {
             text.color = Color.Lerp(text.color, fadeInColor, (Time.time - timeToStart));
             yield return null;
@@ -96,16 +96,17 @@ public class TextController : MonoBehaviour {
     // Still a bit off when fading in and out lots of times
     IEnumerator FadeIn()
     {
-        Debug.Log("Fading");
-        FadingIn = true;
-        float timeToStart = Time.time;
-        while (text.color != fadeInColor)
+        if (!FadingIn)
         {
-            text.color = Color.Lerp(text.color, fadeInColor, (Time.time - timeToStart));
-            yield return null;
+            FadingIn = true;
+            float timeToStart = Time.time;
+            while (Time.time - timeToStart < 1)
+            {
+                text.color = Color.Lerp(text.color, fadeInColor, (Time.time - timeToStart));
+                yield return null;
+            }
+            FadingIn = false;
         }
-        Debug.Log(" Faded In");
-        FadingIn = false;
     }
 
 
@@ -114,44 +115,49 @@ public class TextController : MonoBehaviour {
         while (FadingIn)
         {
             yield return null;
-            Debug.Log("Waiting for fade in to finish");
         }
         float timeToStart = Time.time;
-        while (text.color != fadeOutColor)
+        while (Time.time - timeToStart < 1f)
         {
             text.color = Color.Lerp(text.color, fadeOutColor, (Time.time - timeToStart));
+            Debug.Log(Time.time - timeToStart);
             yield return null;
         }
         Debug.Log("Back to transparent");
     }
 
 
-    public void ShowText(GameObject other)
+    public void ShowText(GameObject cone, GameObject text)
     {
-        if (other == narrativeViewCone)
+        if (text == transform.gameObject)
         {
-            Debug.Log("Fading In");
-            StartCoroutine("FadeIn");
-        }
-        else if (textType == TextTypeEnum.INTERACTABLE && other == interactableViewCone)
-        {
-            Debug.Log("This is a thing");
-            StopCoroutine("FadeIn");
-            StartCoroutine("ChangeColorIn");
+
+            if (cone == narrativeViewCone)
+            {
+                Debug.Log("running show text");
+                Debug.Log("Fading In");
+                StartCoroutine("FadeIn");
+            }
+            else if (textType == TextTypeEnum.INTERACTABLE && cone == interactableViewCone)
+            {
+                //Debug.Log("This is a thing");
+                StartCoroutine("ChangeColorIn");
+            }
         }
     }
 
-    public void HideText(GameObject other)
+    public void HideText(GameObject cone, GameObject text)
     {
-        if(textType == TextTypeEnum.INTERACTABLE && other == interactableViewCone)
+        if (text == transform.gameObject)
         {
-            StopCoroutine("ChangeColourIn");
-            StartCoroutine("ChangeColorOut");
-        }
-        else if (other == narrativeViewCone)
-        {
-            StopCoroutine("FadeIn");
-            StartCoroutine("FadeOut");
+            if (textType == TextTypeEnum.INTERACTABLE && cone == interactableViewCone)
+            {
+                StartCoroutine("ChangeColorOut");
+            }
+            else if (cone == narrativeViewCone)
+            {
+                StartCoroutine("FadeOut");
+            }
         }
     }
 

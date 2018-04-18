@@ -22,8 +22,10 @@ public class StructureZone : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+       
         if (other == eventManager.player.GetComponent<Collider>())
         {
+            Debug.Log("Structure Event triggered");
             eventManager.StructureZoneTriggerEvent.TriggerEnter(gameObject);
         }
     }
