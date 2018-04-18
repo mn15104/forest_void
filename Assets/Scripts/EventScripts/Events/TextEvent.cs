@@ -49,9 +49,9 @@ public class TextEvent : MonoBehaviour {
     }
     private void Update()
     {
-        Vector3 v = player.transform.position - transform.position;
-        v.x = v.z = 0.0f;
-        transform.LookAt(player.transform.position - v );
-        transform.Rotate(0, 180, 0);
+        //Vector3 v = player.transform.position - transform.position;
+        //v.x = v.z = 0.0f;
+        //transform.LookAt(player.transform.position - v );
+        //transform.Rotate(0, 180, 0);
     }
 }

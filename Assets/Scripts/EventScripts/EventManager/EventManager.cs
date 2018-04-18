@@ -30,7 +30,7 @@ public class EventManager : MonoBehaviour {
                 break;
         }
     }
-    private float[] StageTimes = { 100f, 300f, 420f, 480f };
+    private float[] StageTimes = { 50f, 200f, 420f, 480f };
     public float GameTimerSeconds = 0f;
 
     public TriggerEvent2 TextTriggerEvent = new TriggerEvent2();

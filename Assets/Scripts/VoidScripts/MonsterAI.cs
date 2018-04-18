@@ -298,7 +298,6 @@ public partial class MonsterAI : MonoBehaviour
 
             yield return new WaitForSeconds(Stage1_TeleportInterval);
 
-            yield return null;
             Stage1_appearCount += 1;
         }
 
