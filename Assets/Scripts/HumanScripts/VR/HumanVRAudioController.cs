@@ -23,6 +23,7 @@ public class HumanVRAudioController : MonoBehaviour {
     private Dictionary<TerrainType, float> m_TerrainVolumeDictionary = new Dictionary<TerrainType, float>();
     private Terrain m_CurrentTerrain;
     public AudioSource HumanMotion;
+    public AudioSource m_Breathing;
     public AudioClip m_GrassRun;
     public AudioClip m_StoneRun;
     public AudioClip m_GrassWalk;
@@ -32,11 +33,9 @@ public class HumanVRAudioController : MonoBehaviour {
     public AudioClip m_MudWalk;
     public AudioClip m_MudRun;
     public AudioClip m_WoodRun;
-    public AudioSource m_Breathing;
     private Transform m_Transform;
     private Rigidbody m_ParentRigidBody;
     private HumanVRController m_humanVRController;
-    private bool m_airborne = false;
     private float m_introTimeForBreathing;
     private float m_maxRunTime;
     private void OnEnable()
@@ -64,150 +63,81 @@ public class HumanVRAudioController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        m_CurrentTerrain = Terrain.activeTerrain;
         m_humanVRController = GetComponentInParent<HumanVRController>();
         m_Transform = transform;
         m_ParentRigidBody = GetComponentInParent<Rigidbody>();
         m_Breathing.enabled = false;
         m_Breathing.loop = true;
         m_Breathing.volume = 0;
-        m_CurrentTerrain = m_humanVRController.GetCurrentTerrain();
         m_maxRunTime = m_humanVRController.GetMaxRunTime();
         m_introTimeForBreathing = m_maxRunTime / 2;
-    }
-    
-    double Normalize3Dto2D(Vector3 vector3)
-    {
-        return Math.Sqrt(Math.Pow(vector3.x, 2) + Math.Pow(vector3.z, 2));
-    }
-
-    private void FixedUpdate()
-    {
-        if (HumanMotion.isPlaying)
-        {
-            if(m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING || 
-               m_humanVRController.GetPlayerMoveState() == PlayerMoveState.CROUCHING)
-            {
-                OnHumanAudioEmission(0.3f);
-            }
-            else if (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-            {
-                OnHumanAudioEmission(1f);
-            }
-        }
-        else
-        {
-            OnHumanAudioEmission(0);
-        }
-    }
-
-    // GetTextureMix
-    // returns an array containing the relative mix of textures
-    // on the main terrain at this world position.
-    // The number of values in the array will equal the number
-    // of textures added to the terrain.
-    // calculate which splat map cell the worldPos falls within (ignoring y)
-    // get the splat data for this cell as a 1x1xN 3d array (where N = number of textures)
-    // extract the 3D array data to a 1D array
-    float[] GetTextureMix(Vector3 worldPos)
-    {
-       
-        TerrainData terrainData = m_CurrentTerrain.terrainData;
-        Vector3 terrainPos = m_CurrentTerrain.transform.position;
-      
-        int mapX = (int)(((worldPos.x - terrainPos.x) / terrainData.size.x) * terrainData.alphamapWidth);
-        int mapZ = (int)(((worldPos.z - terrainPos.z) / terrainData.size.z) * terrainData.alphamapHeight);
-
-        float[,,] splatmapData = terrainData.GetAlphamaps(mapX, mapZ, 1, 1);
-
-        float[] cellMix = new float[splatmapData.GetUpperBound(2) + 1];
-        for (int n = 0; n < cellMix.Length; ++n)
-        {
-            cellMix[n] = splatmapData[0, 0, n];
-        }
-
-        return cellMix;
-    }
-
-    
-    // GetMainTexture
-    // returns the zero-based index of the most dominant texture
-    // on the main terrain at this world position.
-    // loop through each mix value and find the maximum
-    int GetMainTexture(Vector3 worldPos)
-    {
-        float[] mix = GetTextureMix(worldPos);
-        float maxMix = 0;
-        int maxIndex = 0;
-        for (int n = 0; n < mix.Length; ++n)
-        {
-            if (mix[n] > maxMix)
-            {
-                maxIndex = n;
-                maxMix = mix[n];
-            }
-        }
-        return maxIndex;
     }
   
     private void UpdateHumanMotion()
     {
-        m_CurrentTerrain = m_humanVRController.GetCurrentTerrain();
-        if (m_CurrentTerrain == null)
+
+        int textureIndex = GetMainTexture(transform.position);
+        TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
+        switch (currentTerrainType)
         {
-            return;
-        }
-        CurrentGroundCollision CurrentGround = m_humanVRController.GetCurrentGroundCollision();
-        if (CurrentGround == CurrentGroundCollision.WOOD)
-        {
-            if (HumanMotion.clip != m_WoodRun)
-            {
-                HumanMotion.clip = m_WoodRun;
-            }
-        }
-        else if (CurrentGround == CurrentGroundCollision.AIR)
-        {
-            if (HumanMotion.clip != null)
-            {
-                HumanMotion.clip = null;
-            }
-        }
-        else if (CurrentGround == CurrentGroundCollision.TERRAIN)
-        {
-            int textureIndex = GetMainTexture(transform.position);
-            TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
-            switch (currentTerrainType)
-            {
-                case TerrainType.GRASS:
-                    if (HumanMotion.clip != m_GrassWalk || HumanMotion.clip != m_GrassRun)
+            case TerrainType.GRASS:
+                if (HumanMotion.clip != m_GrassWalk || HumanMotion.clip != m_GrassRun)
+                {
+                    if (HumanMotion.clip != m_GrassWalk && (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanVRController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
                     {
-                        if (HumanMotion.clip != m_GrassWalk && (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanVRController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
-                        {
-                            HumanMotion.clip = m_GrassWalk;
-                        }
-                        else if (HumanMotion.clip != m_GrassRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                        {
-                            HumanMotion.clip = m_GrassRun;
-                        }
+                        HumanMotion.clip = m_GrassWalk;
                     }
-                    break;
-                case TerrainType.STONE:
-                    if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
+                    else if (HumanMotion.clip != m_GrassRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
                     {
-                        if (HumanMotion.clip != m_StoneWalk && (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanVRController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
-                        {
-                            HumanMotion.clip = m_StoneWalk;
-                        }
-                        else if(HumanMotion.clip != m_StoneRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                        {
-                            HumanMotion.clip = m_StoneRun;
-                        }
+                        HumanMotion.clip = m_GrassRun;
                     }
-                    break;
-                default:
-                    Debug.Log("WARNING: NO AUDIO SOURCE FOR CURRENT TERRAIN TYPE BELOW PLAYER.");
-                    break;
-            }
+                }
+                break;
+            case TerrainType.STONE:
+                if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
+                {
+                    if (HumanMotion.clip != m_StoneWalk && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
+                    {
+                        HumanMotion.clip = m_StoneWalk;
+                    }
+                    else if(HumanMotion.clip != m_StoneRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                    {
+                        HumanMotion.clip = m_StoneRun;
+                    }
+                }
+                break;
+            case TerrainType.GRAVEL:
+                if (HumanMotion.clip != m_GravelWalk || HumanMotion.clip != m_GravelRun)
+                {
+                    if (HumanMotion.clip != m_GrassWalk && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
+                    {
+                        HumanMotion.clip = m_GravelWalk;
+                    }
+                    else if (HumanMotion.clip != m_GravelRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                    {
+                        HumanMotion.clip = m_GravelRun;
+                    }
+                }
+                break;
+            case TerrainType.MUD:
+                if (HumanMotion.clip != m_MudRun || HumanMotion.clip != m_MudWalk)
+                {
+                    if (HumanMotion.clip != m_MudWalk && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
+                    {
+                        HumanMotion.clip = m_MudWalk;
+                    }
+                    else if (HumanMotion.clip != m_MudRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                    {
+                        HumanMotion.clip = m_MudRun;
+                    }
+                }
+                break;
+            default:
+                Debug.Log("WARNING: NO AUDIO SOURCE FOR CURRENT TERRAIN TYPE BELOW PLAYER.");
+                break;
         }
+        
         
     }
 
@@ -219,14 +149,31 @@ public class HumanVRAudioController : MonoBehaviour {
         
         if (HumanMotion.isPlaying && horizontalSpeed < 0.2f)
         {
+            if (HumanMotion.volume != 0f)
+            {
+                OnHumanAudioEmission(0.5f);
+            }
             HumanMotion.volume = 0f;
         }
         else if(HumanMotion.clip != null && horizontalSpeed > 0.4f)
         {
-            if(!HumanMotion.isPlaying)
+            if (!HumanMotion.isPlaying)
+            {
                 HumanMotion.Play();
+            }
+            if(HumanMotion.volume == 0f)
+            {
+                if (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
+                {
+                    OnHumanAudioEmission(0.5f);
+                }
+                else if (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                {
+                    OnHumanAudioEmission(1f);
+                }
+            }
             if (HumanMotion.volume < 1f)
-                HumanMotion.volume = 1f;
+                HumanMotion.volume += Time.deltaTime * 0.5f;
         }
 
         //Breathing
@@ -245,5 +192,46 @@ public class HumanVRAudioController : MonoBehaviour {
         }
     }
 
+    float[] GetTextureMix(Vector3 worldPos)
+    {
+
+        TerrainData terrainData = m_CurrentTerrain.terrainData;
+        Vector3 terrainPos = m_CurrentTerrain.transform.position;
+
+        int mapX = (int)(((worldPos.x - terrainPos.x) / terrainData.size.x) * terrainData.alphamapWidth);
+        int mapZ = (int)(((worldPos.z - terrainPos.z) / terrainData.size.z) * terrainData.alphamapHeight);
+
+        float[,,] splatmapData = terrainData.GetAlphamaps(mapX, mapZ, 1, 1);
+
+        float[] cellMix = new float[splatmapData.GetUpperBound(2) + 1];
+        for (int n = 0; n < cellMix.Length; ++n)
+        {
+            cellMix[n] = splatmapData[0, 0, n];
+        }
+
+        return cellMix;
+    }
+
+    int GetMainTexture(Vector3 worldPos)
+    {
+        float[] mix = GetTextureMix(worldPos);
+        float maxMix = 0;
+        int maxIndex = 0;
+        for (int n = 0; n < mix.Length; ++n)
+        {
+            if (mix[n] > maxMix)
+            {
+                maxIndex = n;
+                maxMix = mix[n];
+            }
+        }
+        return maxIndex;
+    }
+
+
+    double Normalize3Dto2D(Vector3 vector3)
+    {
+        return Math.Sqrt(Math.Pow(vector3.x, 2) + Math.Pow(vector3.z, 2));
+    }
 
 }

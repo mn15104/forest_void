@@ -219,6 +219,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1914663506303954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4634454003473598}
+  - component: {fileID: 33975602374855864}
+  - component: {fileID: 135504034756492650}
+  m_Layer: 0
+  m_Name: PlayerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1975678814300654
 GameObject:
   m_ObjectHideFlags: 1
@@ -260,11 +277,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1071792611612464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 541.8861, y: 75.201225, z: 851.4429}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388377573503430}
+  - {fileID: 4634454003473598}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -284,6 +302,19 @@ Transform:
   m_Father: {fileID: 4187380462585822}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 38.755, z: 0}
+--- !u!4 &4634454003473598
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914663506303954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.38, y: -2.8673172, z: 38.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4187380462585822}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4660156256131714
 Transform:
   m_ObjectHideFlags: 1
@@ -372,6 +403,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1248867935648536}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33975602374855864
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914663506303954}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64736840899219180
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1067,8 +1105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6dab8aa98c8b994db49cb39d432f91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameTimerSeconds: 0
+  debugChangeStage: 2
   player: {fileID: 0}
   monster: {fileID: 0}
+  playerSpawnPoint: {fileID: 1914663506303954}
+  StoryMode: 0
 --- !u!114 &114845344705116388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1135,6 +1177,18 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Three Keys?
+--- !u!135 &135504034756492650
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914663506303954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222039313967894052
 CanvasRenderer:
   m_ObjectHideFlags: 1

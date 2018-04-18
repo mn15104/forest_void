@@ -6,24 +6,18 @@ using UnityEngine;
 
 public class HumanAudioController : MonoBehaviour {
 
-
-    enum TerrainType
-    {
-        GRASS,
-        STONE,
-        FLESH
-    }
-
     private Dictionary<int, TerrainType> m_TerrainTypeDictionary = new Dictionary<int, TerrainType>();
     private Dictionary<TerrainType, float> m_TerrainVolumeDictionary = new Dictionary<TerrainType, float>();
     private Terrain m_CurrentTerrain;
     public AudioSource HumanMotion;
     public AudioClip m_GrassRun;
-    public AudioClip m_FleshRun;
     public AudioClip m_StoneRun;
     public AudioClip m_GrassWalk;
-    public AudioClip m_FleshWalk;
     public AudioClip m_StoneWalk;
+    public AudioClip m_GravelWalk;
+    public AudioClip m_GravelRun;
+    public AudioClip m_MudWalk;
+    public AudioClip m_MudRun;
     public AudioClip m_WoodRun;
     public AudioSource m_Breathing;
     private Transform m_Transform;
@@ -43,10 +37,14 @@ public class HumanAudioController : MonoBehaviour {
         m_TerrainTypeDictionary.Add(5, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(6, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(7, TerrainType.STONE);
-        m_TerrainTypeDictionary.Add(8, TerrainType.STONE);
-        m_TerrainTypeDictionary.Add(9, TerrainType.FLESH);
-        m_TerrainTypeDictionary.Add(10, TerrainType.FLESH);
-        m_TerrainTypeDictionary.Add(11, TerrainType.FLESH);
+        m_TerrainTypeDictionary.Add(8, TerrainType.GRAVEL);
+        m_TerrainTypeDictionary.Add(9, TerrainType.MUD);
+        m_TerrainTypeDictionary.Add(10, TerrainType.GRASS);
+        m_TerrainTypeDictionary.Add(11, TerrainType.GRASS);
+        m_TerrainTypeDictionary.Add(12, TerrainType.GRAVEL);
+        m_TerrainTypeDictionary.Add(13, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(14, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(15, TerrainType.GRASS);
 
         HumanMotion.clip = m_StoneRun;
         HumanMotion.loop = true;
@@ -165,19 +163,6 @@ public class HumanAudioController : MonoBehaviour {
                         }
                     }
                     break;
-                case TerrainType.FLESH:
-                    if (HumanMotion.clip != m_FleshWalk || HumanMotion.clip != m_FleshRun)
-                    {
-                        if (HumanMotion.clip != m_FleshWalk && (m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
-                        {
-                            HumanMotion.clip = m_FleshWalk;
-                        }
-                        else if (HumanMotion.clip != m_FleshRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                        {
-                            HumanMotion.clip = m_FleshRun;
-                        }
-                    }
-                    break;
                 case TerrainType.STONE:
                     if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
                     {
@@ -204,7 +189,6 @@ public class HumanAudioController : MonoBehaviour {
         UpdateHumanMotion();
 
         double horizontalSpeed = Normalize3Dto2D(m_ParentRigidBody.velocity);
-        float maxSpeed = HumanController.m_MoveSpeedMultiplier;
         
         if (HumanMotion.isPlaying && horizontalSpeed < 0.2f)
         {

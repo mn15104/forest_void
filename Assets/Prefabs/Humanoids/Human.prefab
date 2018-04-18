@@ -3577,11 +3577,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HumanMotion: {fileID: 82625212954730384}
   m_GrassRun: {fileID: 8300000, guid: 7d8cac319329d224eaca292d7e52a07a, type: 3}
-  m_FleshRun: {fileID: 0}
   m_StoneRun: {fileID: 8300000, guid: ff42943390b0fbc448252d12a4bcbbe4, type: 3}
   m_GrassWalk: {fileID: 8300000, guid: 5b5f6711c4d53c1429672b9566e1fb27, type: 3}
-  m_FleshWalk: {fileID: 0}
   m_StoneWalk: {fileID: 8300000, guid: 2625d9a92c2aef64cb45a59c181a5db7, type: 3}
+  m_GravelWalk: {fileID: 8300000, guid: 8ecbfbbb3e5c13b4cb1c06a984dd3e00, type: 3}
+  m_GravelRun: {fileID: 8300000, guid: 623008be4fe6b38499ec41bc34fbd88a, type: 3}
+  m_MudWalk: {fileID: 8300000, guid: 8b2fd0afa40a1c04797fe0049f9dd88c, type: 3}
+  m_MudRun: {fileID: 8300000, guid: 36dfaac452bb06741b66dc33d7913d34, type: 3}
   m_WoodRun: {fileID: 8300000, guid: c487e899886e2af469c7f0809f549d85, type: 3}
   m_Breathing: {fileID: 82563371645255554}
 --- !u!114 &114692409029344746

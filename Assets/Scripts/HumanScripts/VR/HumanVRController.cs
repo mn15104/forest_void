@@ -46,20 +46,16 @@ public class HumanVRController : MonoBehaviour
     private float m_TurnAmount;
 
     // Movement State Variables
-    public Terrain m_CurrentTerrain;
+    private Terrain m_CurrentTerrain;
     private PlayerMoveState m_playerMoveState;
-    private CurrentGroundCollision m_CurrentGroundCollision;
-    private GameObject m_CurrentGroundCollider;
-    private bool m_Ladder = false;
-    private GameObject ladder;
     private Quaternion OriginalRotation;
     private float maxRunTime = 8f;
     private float timeRunning = 0f;
 
     void Start()
     {
-        m_playerMoveState = PlayerMoveState.RUNNING;
-        m_CurrentGroundCollision = CurrentGroundCollision.AIR;
+        m_CurrentTerrain = Terrain.activeTerrain;
+        m_playerMoveState = PlayerMoveState.WALKING;
         OriginalRotation = transform.rotation;
         m_Animator = GetComponentInChildren<Animator>();
         cameraRig = GetComponentInChildren<OVRCameraRig>();
@@ -94,71 +90,43 @@ public class HumanVRController : MonoBehaviour
 
     private void Update()
     {
-        CheckClimbState();
         CheckRunState();
     }
   
     void CheckRunState()
     {
-        if (m_playerMoveState != PlayerMoveState.CLIMBING)
+        
+        if (SixenseInput.Controllers[0].GetButton(SixenseButtons.TRIGGER))
         {
-            if (SixenseInput.Controllers[0].GetButton(SixenseButtons.TRIGGER))
+            if (m_playerMoveState != PlayerMoveState.RUNNING && (timeRunning < (maxRunTime) / 2))
             {
-                if (m_playerMoveState != PlayerMoveState.RUNNING && (timeRunning < (maxRunTime) / 2))
-                {
-                    m_Animator.SetBool("Running", true);
-                    m_playerMoveState = PlayerMoveState.RUNNING;
-                }
+                m_Animator.SetBool("Running", true);
+                m_playerMoveState = PlayerMoveState.RUNNING;
             }
-            else if(m_playerMoveState == PlayerMoveState.RUNNING)
+        }
+        else if(m_playerMoveState == PlayerMoveState.RUNNING)
+        {
+            m_Animator.SetBool("Running", false);
+            m_playerMoveState = PlayerMoveState.WALKING;
+        }
+
+        if (m_playerMoveState == PlayerMoveState.RUNNING)
+        {
+            if (timeRunning < maxRunTime)
+                timeRunning += Time.deltaTime;
+            else
             {
                 m_Animator.SetBool("Running", false);
                 m_playerMoveState = PlayerMoveState.WALKING;
             }
-
-            if (m_playerMoveState == PlayerMoveState.RUNNING)
-            {
-                if (timeRunning < maxRunTime)
-                    timeRunning += Time.deltaTime;
-                else
-                {
-                    m_Animator.SetBool("Running", false);
-                    m_playerMoveState = PlayerMoveState.WALKING;
-                }
-            }
-            else if (m_playerMoveState != PlayerMoveState.RUNNING && timeRunning > 0f)
-            {
-                timeRunning -= Time.deltaTime;
-            }
         }
-    }
-
-    void CheckClimbState()
-    {
-        if (m_Ladder && m_playerMoveState != PlayerMoveState.CLIMBING)
+        else if (m_playerMoveState != PlayerMoveState.RUNNING && timeRunning > 0f)
         {
-            if (moveVertical > 0.5 && Vector3.Dot(transform.forward, (ladder.transform.position - transform.position).normalized) > 0)
-            {
-                OriginalRotation = transform.rotation;
-                m_Rigidbody.useGravity = false;
-                m_playerMoveState = PlayerMoveState.CLIMBING;
-                m_Animator.SetBool("Climbing", true);
-                m_Animator.SetBool("Running", false);
-                var lookPos = ladder.transform.position - transform.position;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = rotation;
-            }
+            timeRunning -= Time.deltaTime;
         }
-        if (m_playerMoveState == PlayerMoveState.CLIMBING && !m_Ladder)
-        {
-            m_Rigidbody.useGravity = true;
-            m_playerMoveState = PlayerMoveState.RUNNING;
-            m_Animator.SetBool("Climbing", false);
-            transform.rotation = OriginalRotation;
-        }
+        
     }
-
-  
+    
 
     public void Move(Vector3 move, Vector3 rotation)
     {
@@ -167,49 +135,26 @@ public class HumanVRController : MonoBehaviour
         float y_frame = m_Rigidbody.velocity.y;
         float z_frame = m_Rigidbody.velocity.z;
 
-        if (m_playerMoveState == PlayerMoveState.CLIMBING && m_Ladder)
+
+        //Rotate
+        m_TurnAmount = rotation.x;
+        float turnSpeed = m_TurnSpeed * Mathf.Lerp(m_TurnSpeedLerpMin, m_TurnSpeedLerpMax, 0.001f);
+        transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
+        //Camera Rotate
+        if (rotation.y > 0 && cameraRig.transform.forward.y < maxRotateUp ||
+            rotation.y < 0 && cameraRig.transform.forward.y > maxRotateDown)
         {
-            {
-                m_Rigidbody.velocity = new Vector3(0, 0, 0);
-                Vector3 up = ladder.transform.up;
-                if (moveVertical > 0.5)
-                {
-                    transform.Translate(new Vector3(0, 0.025f, 0), ladder.transform);
-                }
-                else if (moveVertical < - 0.5)
-                {
-                    transform.Translate(new Vector3(0, -0.025f, 0), ladder.transform);
-                }
-                //Camera Rotate
-                if (rotation.y > 0 && cameraRig.transform.forward.y < maxRotateUp ||
-                    rotation.y < 0 && cameraRig.transform.forward.y > maxRotateDown)
-                {
-                    cameraRig.transform.Rotate(Vector3.right, -1 * rotation.y * m_rotateSpeed);
-                }
-            }
+            cameraRig.transform.Rotate(Vector3.right, -1 * rotation.y * m_rotateSpeed);
         }
-        // Enables walking or running
-        else 
-        {
-            //Rotate
-            m_TurnAmount = rotation.x;
-            float turnSpeed = m_TurnSpeed * Mathf.Lerp(m_TurnSpeedLerpMin, m_TurnSpeedLerpMax, 0.001f);
-            transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
-            //Camera Rotate
-            if (rotation.y > 0 && cameraRig.transform.forward.y < maxRotateUp ||
-                rotation.y < 0 && cameraRig.transform.forward.y > maxRotateDown)
-            {
-                cameraRig.transform.Rotate(Vector3.right, -1 * rotation.y * m_rotateSpeed);
-            }
-            //Move
-            float moveSpeedMultiplier = MoveToFloat.Value(m_playerMoveState);
-            Vector3 vel = move * moveSpeedMultiplier;
-            vel.y = y_frame;
-            m_Rigidbody.velocity = vel;
-            Vector2 xz = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.z);
-            m_Speed = xz.magnitude;
-            move = vel;
-        }
+        //Move
+        float moveSpeedMultiplier = MoveToFloat.Value(m_playerMoveState);
+        Vector3 vel = move * moveSpeedMultiplier;
+        vel.y = y_frame;
+        m_Rigidbody.velocity = vel;
+        Vector2 xz = new Vector2(m_Rigidbody.velocity.x, m_Rigidbody.velocity.z);
+        m_Speed = xz.magnitude;
+        move = vel;
+        
         UpdateAnimator(move);
     }
 
@@ -236,72 +181,11 @@ public class HumanVRController : MonoBehaviour
             m_Animator.speed = move.magnitude > 0 ? moveSpeed : 1;
         }
     }
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Detect if current terrain has changed
-        if (collision.gameObject.GetComponent<Terrain>())
-        {
-            if (collision.gameObject.GetComponent<Terrain>() != m_CurrentTerrain)
-            {
-                m_CurrentTerrain = collision.gameObject.GetComponent<Terrain>();
-            }
-        }
-
-    }
-
-    private void OnTriggerExit(Collider collider)
-    {
-        //Detect ladder
-        if (m_Ladder && collider.gameObject.tag == "Ladder")
-        {
-            m_Ladder = false;
-            ladder = null;
-        }
-        //Detect if airborne
-        if (collider.gameObject == m_CurrentGroundCollider)
-        {
-            m_CurrentGroundCollider = null;
-            m_CurrentGroundCollision = CurrentGroundCollision.AIR;
-        }
-
-    }
-    private void OnTriggerStay(Collider collider)
-    {
-        //Detect proximity of ladder
-        if (collider.gameObject.tag == "Ladder" && !m_Ladder)
-        {
-            m_Ladder = true;
-            ladder = collider.gameObject;
-        }
-        if (collider.gameObject.layer == 9 && m_CurrentGroundCollision != CurrentGroundCollision.WOOD)
-        {
-            m_CurrentGroundCollision = CurrentGroundCollision.WOOD;
-            m_CurrentGroundCollider = collider.gameObject;
-        }
-        else if (collider.gameObject.layer == 8 && m_CurrentGroundCollision != CurrentGroundCollision.TERRAIN)
-        {
-            m_CurrentGroundCollision = CurrentGroundCollision.TERRAIN;
-            m_CurrentGroundCollider = collider.gameObject;
-        }
-    }
-
+    
+    
     public PlayerMoveState GetPlayerMoveState()
     {
         return m_playerMoveState;
-    }
-    public CurrentGroundCollision GetCurrentGroundCollision()
-    {
-        return m_CurrentGroundCollision;
-    }
-    public void SetCurrentTerrain(Terrain terrain)
-    {
-        m_CurrentTerrain = terrain;
-    }
-    public Terrain GetCurrentTerrain()
-    {
-        return m_CurrentTerrain;
     }
     public float GetTimeSpentRunning()
     {

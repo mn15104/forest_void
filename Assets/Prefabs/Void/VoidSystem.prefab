@@ -5434,7 +5434,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219660164934384}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022246646, y: -0.00006150933, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7374,7 +7374,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1377970876835744}
   m_LocalRotation: {x: -0, y: -0.84583277, z: -0, w: -0.5334482}
-  m_LocalPosition: {x: 22.53, y: 1.81, z: 49.83}
+  m_LocalPosition: {x: 16.66, y: 1.81, z: 49.39}
   m_LocalScale: {x: 0.76923144, y: 0.7692308, z: 0.76923144}
   m_Children:
   - {fileID: 4086757277834904}
@@ -7764,25 +7764,25 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0.046772767
-      value: 0.85238266
+      value: 0.9904747
       inSlope: -0.29031113
       outSlope: -0.29031113
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.25378188
-      value: 0.8712349
+      time: 0.26023635
+      value: 0.9855232
       inSlope: -0.14968362
       outSlope: -0.14968362
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.38533998
-      value: 0.88304925
+      time: 0.3982489
+      value: 0.98780847
       inSlope: -0.47202107
       outSlope: -0.47202107
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.47089705
-      value: 0.88133
+      time: 0.49993452
+      value: 0.93371344
       inSlope: 0.02026558
       outSlope: 0.02026558
       tangentMode: 0
@@ -7793,14 +7793,14 @@ AudioSource:
       outSlope: -0.16672252
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.65836793
-      value: 0.87405777
+      time: 0.6744965
+      value: 0.79787064
       inSlope: -0.07815612
       outSlope: -0.07815612
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.79137266
-      value: 0.8584976
+      time: 0.77522886
+      value: 0.71087646
       inSlope: 0.083581045
       outSlope: 0.083581045
       tangentMode: 0
@@ -8415,11 +8415,14 @@ MonoBehaviour:
   Stage1_TeleportInterval: 5
   Stage1_AppearInterval: 2
   Stage1_AppearDistance: 12.5
+  Stage1_maxAppears: 10
   stage2_playerTorchOn1: 0
   stage2_playerTorchOff: 0
   stage2_playerTorchOn2: 0
   stage2_playerTorchOff2: 0
-  stage2_coroutine_finished: 0
+  stage2_coroutine1_finished: 0
+  stage2_coroutine2_finished: 0
+  Stage3_Appeared: 0
   Stage1_MinAngle: 1
   Stage1_MaxAngle: 3
 --- !u!114 &114422241815363918
@@ -8502,8 +8505,8 @@ MonoBehaviour:
   m_BreathingFront: {fileID: 8300000, guid: f216dfa483e56624586fc43b373654e7, type: 3}
   m_BreathingBehind: {fileID: 8300000, guid: b77d8af86a104124aa9c9dfbc7645a9d, type: 3}
   m_GasLoop: {fileID: 8300000, guid: 5b9105783f881be4280f5bd170821020, type: 3}
-  m_Jumpscare_Stage2: {fileID: 8300000, guid: 49687e8dd1e01484495c019fce06f3c7, type: 3}
-  m_Jumpscare_Stage3: {fileID: 8300000, guid: 6a43aae4923c37a41bce220a9465c784, type: 3}
+  m_Jumpscare_Stage2: {fileID: 8300000, guid: 36ce1e2edc41dad4ebcc03859cb10e45, type: 3}
+  m_Jumpscare_Stage3: {fileID: 8300000, guid: 345b437366955b341885253446ca19bd, type: 3}
 --- !u!114 &114620123144592012
 MonoBehaviour:
   m_ObjectHideFlags: 1
