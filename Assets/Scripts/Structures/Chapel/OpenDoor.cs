@@ -7,17 +7,18 @@ public class OpenDoor : MonoBehaviour {
     private HingeJoint hinge;
     private JointMotor motor;
     private JointLimits limits;
-    private float doorOpenTimer;
+    public float doorOpenTimer;
+    private float minAngle;
+    private float maxAngle;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         hinge = GetComponent<HingeJoint>();
         this.motor = hinge.motor;
         this.limits = hinge.limits;
-        //motor.targetVelocity = 90;
-        //Debug.Log(motor.force);
-        //motor.force = 100;
-        //Debug.Log(motor.force);
+        minAngle = hinge.limits.min;
+        maxAngle = hinge.limits.max;
+
         doorOpenTimer = 10f;
 	}
 	

@@ -36,14 +36,13 @@ public class CaravanEventController : MonoBehaviour {
     {
         eventManager = FindObjectOfType<EventManager>();
         trigger = eventManager.CaravanTriggerEvent;
+        trigger.TriggerEnterEvent += ActivateCaravanEvents;
     }
 
     // Use this for initialization
     void Start () {
         monster.SetActive(false);
         MonsterAppeared = false;
-        trigger.TriggerEnterEvent += ActivateCaravanEvents;
-
     }
 
     private void OnDisable()
@@ -127,14 +126,14 @@ public class CaravanEventController : MonoBehaviour {
     IEnumerator LightChange()
     {
 
-        MonsterAppeared = true;
-        monster.SetActive(false);
+        //MonsterAppeared = true;
+        //monster.SetActive(false);
         light.enabled = true;
 
     
         print("Starting Monster Flicker");
         //yield return new WaitForSeconds(1.8f);
-        yield return new WaitForSeconds(22.1f);
+        yield return new WaitForSeconds(4.0f);
 
         //Light Off 1
         print("Light Off");
@@ -147,8 +146,8 @@ public class CaravanEventController : MonoBehaviour {
         print("Light On Monster On");
         RenderSettings.fogDensity = 0.25F;
         light.f_Light.intensity = 0.3f;
-        monsterAppear(10);
-        monster.SetActive(true);
+        //monsterAppear(10);
+        //monster.SetActive(true);
         RenderSettings.fogDensity = 0.25F;
         yield return new WaitForSeconds(1.3f);
 
@@ -156,14 +155,14 @@ public class CaravanEventController : MonoBehaviour {
         print("Monster Off");
         RenderSettings.fogDensity = 0.6F;
         light.f_Light.intensity = 0;
-        monster.SetActive(false);
+        //monster.SetActive(false);
         yield return new WaitForSeconds(0.4f);
 
         //Light On 1
         RenderSettings.fogDensity = 0.25F;
         light.enabled = true;
-        MonsterAppeared = true;
-        yield return new WaitForSeconds(7.4f);
+        //MonsterAppeared = true;
+        yield return new WaitForSeconds(4.4f);
 
 
         //Light Off 2
@@ -177,21 +176,21 @@ public class CaravanEventController : MonoBehaviour {
         print("Light On Monster On");
         RenderSettings.fogDensity = 0.25F;
         light.f_Light.intensity = 0.5f;
-        monsterAppear(5);
-        monster.SetActive(true);
+        //monsterAppear(5);
+        //monster.SetActive(true);
         yield return new WaitForSeconds(0.6f);
 
         //Light Off Monster Off 2
         print("Monster Off");
         RenderSettings.fogDensity = 0.6F;
         light.f_Light.intensity = 0;
-        monster.SetActive(false);
+        //monster.SetActive(false);
         yield return new WaitForSeconds(0.4f); 
 
         //Light On 2
         RenderSettings.fogDensity = 0.25F;
         light.enabled = true;
-        yield return new WaitForSeconds(9.0f);
+        yield return new WaitForSeconds(4.0f);
 
 
         //Light Off 3
@@ -205,15 +204,15 @@ public class CaravanEventController : MonoBehaviour {
         print("Light On Monster On");
         RenderSettings.fogDensity = 0.25F;
         light.f_Light.intensity = 0.5f;
-        monsterAppear(3);
-        monster.SetActive(true);
+        //monsterAppear(3);
+        //monster.SetActive(true);
         yield return new WaitForSeconds(1.5f);
 
         //Light Off Monster Off 3
         print("Monster Off");
         RenderSettings.fogDensity = 0.6F;
         light.f_Light.intensity = 0;
-        monster.SetActive(false);
+        //monster.SetActive(false);
         yield return new WaitForSeconds(2.1f);
 
         //Light On 3
@@ -226,6 +225,7 @@ public class CaravanEventController : MonoBehaviour {
 
     void ActivateCaravanEvents(GameObject colliderGameObject)
     {
+        Debug.Log("Caravan Triggered");
         lightval = light.f_Light.color;
         light.f_Light.color = Color.red;
         TriggerTriggered = true;
@@ -240,9 +240,12 @@ public class CaravanEventController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == human && TriggerTriggered == false)
+        if (other.gameObject == eventManager.player && TriggerTriggered == false)
         {
+            Debug.Log("On trigger caravan entered");
             trigger.TriggerEnter(other.gameObject);
+
+
         }
     }
 }

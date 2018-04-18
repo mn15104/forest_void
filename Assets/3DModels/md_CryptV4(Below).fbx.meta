@@ -1,0 +1,2284 @@
+fileFormatVersion: 2
+guid: 37a68ddefa993ad49a98346532b9b3f8
+timeCreated: 1524072162
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Candle1
+    100002: Candle1 1
+    100004: Candle1 10
+    100006: Candle1 11
+    100008: Candle1 12
+    100010: Candle1 13
+    100012: Candle1 14
+    100014: Candle1 15
+    100016: Candle1 16
+    100018: Candle1 17
+    100020: Candle1 18
+    100022: Candle1 19
+    100024: Candle1 2
+    100026: Candle1 20
+    100028: Candle1 3
+    100030: Candle1 4
+    100032: Candle1 5
+    100034: Candle1 6
+    100036: Candle1 7
+    100038: Candle1 8
+    100040: Candle1 9
+    100042: Candle2
+    100044: Candle2 1
+    100046: Candle2 2
+    100048: Candle2 3
+    100050: Candle2 4
+    100052: Candle2 5
+    100054: Candle3
+    100056: Candle3 1
+    100058: Candle3 2
+    100060: Candle3 3
+    100062: Candle3 4
+    100064: Candle3 5
+    100066: Candle4
+    100068: Candle4 1
+    100070: Candle4 2
+    100072: Candle4 3
+    100074: Candle4 4
+    100076: Candle4 5
+    100078: Candle5
+    100080: Candle5 1
+    100082: Candle5 2
+    100084: Candle5 3
+    100086: Candle5 4
+    100088: Candle5 5
+    100090: Candle6
+    100092: Candle6 1
+    100094: Candle6 2
+    100096: CandleGroup
+    100098: CandleGroup1
+    100100: CandleGroup2
+    100102: CandleHolder
+    100104: CandleHolder1
+    100106: CandleHolder10
+    100108: CandleHolder11
+    100110: CandleHolder12
+    100112: CandleHolder13
+    100114: CandleHolder2
+    100116: CandleHolder3
+    100118: CandleHolder4
+    100120: CandleHolder5
+    100122: CandleHolder6
+    100124: CandleHolder7
+    100126: CandleHolder8
+    100128: CandleHolder9
+    100130: CandleHolders
+    100132: CandleLeg1
+    100134: CandleLeg1 1
+    100136: CandleLeg1 10
+    100138: CandleLeg1 11
+    100140: CandleLeg1 12
+    100142: CandleLeg1 13
+    100144: CandleLeg1 2
+    100146: CandleLeg1 3
+    100148: CandleLeg1 4
+    100150: CandleLeg1 5
+    100152: CandleLeg1 6
+    100154: CandleLeg1 7
+    100156: CandleLeg1 8
+    100158: CandleLeg1 9
+    100160: CandleLeg2
+    100162: CandleLeg2 1
+    100164: CandleLeg2 10
+    100166: CandleLeg2 11
+    100168: CandleLeg2 12
+    100170: CandleLeg2 13
+    100172: CandleLeg2 2
+    100174: CandleLeg2 3
+    100176: CandleLeg2 4
+    100178: CandleLeg2 5
+    100180: CandleLeg2 6
+    100182: CandleLeg2 7
+    100184: CandleLeg2 8
+    100186: CandleLeg2 9
+    100188: CandleLeg3
+    100190: CandleLeg3 1
+    100192: CandleLeg3 10
+    100194: CandleLeg3 11
+    100196: CandleLeg3 12
+    100198: CandleLeg3 13
+    100200: CandleLeg3 2
+    100202: CandleLeg3 3
+    100204: CandleLeg3 4
+    100206: CandleLeg3 5
+    100208: CandleLeg3 6
+    100210: CandleLeg3 7
+    100212: CandleLeg3 8
+    100214: CandleLeg3 9
+    100216: CandleLegs
+    100218: CandleLegs 1
+    100220: CandleLegs 10
+    100222: CandleLegs 11
+    100224: CandleLegs 12
+    100226: CandleLegs 13
+    100228: CandleLegs 2
+    100230: CandleLegs 3
+    100232: CandleLegs 4
+    100234: CandleLegs 5
+    100236: CandleLegs 6
+    100238: CandleLegs 7
+    100240: CandleLegs 8
+    100242: CandleLegs 9
+    100244: Candles
+    100246: Candles 1
+    100248: Candles 2
+    100250: Candles1
+    100252: Candles1 1
+    100254: Candles1 2
+    100256: CandleStand
+    100258: CandleStand 1
+    100260: CandleStand 10
+    100262: CandleStand 11
+    100264: CandleStand 12
+    100266: CandleStand 13
+    100268: CandleStand 2
+    100270: CandleStand 3
+    100272: CandleStand 4
+    100274: CandleStand 5
+    100276: CandleStand 6
+    100278: CandleStand 7
+    100280: CandleStand 8
+    100282: CandleStand 9
+    100284: CandleTray
+    100286: CandleTray 1
+    100288: CandleTray 10
+    100290: CandleTray 11
+    100292: CandleTray 12
+    100294: CandleTray 13
+    100296: CandleTray 2
+    100298: CandleTray 3
+    100300: CandleTray 4
+    100302: CandleTray 5
+    100304: CandleTray 6
+    100306: CandleTray 7
+    100308: CandleTray 8
+    100310: CandleTray 9
+    100312: CandleUpperSupport
+    100314: CandleUpperSupport 1
+    100316: CandleUpperSupport 10
+    100318: CandleUpperSupport 11
+    100320: CandleUpperSupport 12
+    100322: CandleUpperSupport 13
+    100324: CandleUpperSupport 2
+    100326: CandleUpperSupport 3
+    100328: CandleUpperSupport 4
+    100330: CandleUpperSupport 5
+    100332: CandleUpperSupport 6
+    100334: CandleUpperSupport 7
+    100336: CandleUpperSupport 8
+    100338: CandleUpperSupport 9
+    100340: CandleWax
+    100342: CandleWax 1
+    100344: CandleWax 10
+    100346: CandleWax 11
+    100348: CandleWax 12
+    100350: CandleWax 13
+    100352: CandleWax 14
+    100354: CandleWax 15
+    100356: CandleWax 16
+    100358: CandleWax 17
+    100360: CandleWax 18
+    100362: CandleWax 19
+    100364: CandleWax 2
+    100366: CandleWax 20
+    100368: CandleWax 21
+    100370: CandleWax 22
+    100372: CandleWax 23
+    100374: CandleWax 24
+    100376: CandleWax 25
+    100378: CandleWax 26
+    100380: CandleWax 27
+    100382: CandleWax 3
+    100384: CandleWax 4
+    100386: CandleWax 5
+    100388: CandleWax 6
+    100390: CandleWax 7
+    100392: CandleWax 8
+    100394: CandleWax 9
+    100396: CombinedBackWall1
+    100398: CombinedCurvedWalls
+    100400: CombinedFrontWall
+    100402: CombinedLeftWall1
+    100404: CombinedLongWalls
+    100406: CombinedRightWall
+    100408: CryptBelow 1
+    100410: CryptFloor
+    100412: CryptPillar1
+    100414: CryptPillar10
+    100416: CryptPillar11
+    100418: CryptPillar12
+    100420: CryptPillar13
+    100422: CryptPillar14
+    100424: CryptPillar15
+    100426: CryptPillar16
+    100428: CryptPillar17
+    100430: CryptPillar18
+    100432: CryptPillar19
+    100434: CryptPillar2
+    100436: CryptPillar20
+    100438: CryptPillar21
+    100440: CryptPillar22
+    100442: CryptPillar23
+    100444: CryptPillar24
+    100446: CryptPillar25
+    100448: CryptPillar26
+    100450: CryptPillar27
+    100452: CryptPillar28
+    100454: CryptPillar29
+    100456: CryptPillar3
+    100458: CryptPillar30
+    100460: CryptPillar31
+    100462: CryptPillar32
+    100464: CryptPillar33
+    100466: CryptPillar34
+    100468: CryptPillar35
+    100470: CryptPillar36
+    100472: CryptPillar4
+    100474: CryptPillar5
+    100476: CryptPillar6
+    100478: CryptPillar7
+    100480: CryptPillar8
+    100482: CryptPillar9
+    100484: CryptPillars
+    100486: CryptWalls
+    100488: CurvedWall
+    100490: CurvedWall1
+    100492: CurvedWall10
+    100494: CurvedWall12
+    100496: CurvedWall13
+    100498: CurvedWall14
+    100500: CurvedWall15
+    100502: CurvedWall16
+    100504: CurvedWall2
+    100506: CurvedWall3
+    100508: CurvedWall4
+    100510: CurvedWall5
+    100512: CurvedWall6
+    100514: CurvedWall7
+    100516: CurvedWall8
+    100518: CurvedWall9
+    100520: DeadBodyCloth
+    100522: DeadBodyCloth1
+    100524: DeadBodyCloth10
+    100526: DeadBodyCloth11
+    100528: DeadBodyCloth12
+    100530: DeadBodyCloth13
+    100532: DeadBodyCloth2
+    100534: DeadBodyCloth3
+    100536: DeadBodyCloth4
+    100538: DeadBodyCloth5
+    100540: DeadBodyCloth6
+    100542: DeadBodyCloth7
+    100544: DeadBodyCloth8
+    100546: DeadBodyCloth9
+    100548: DeadBodyClothAfter
+    100550: DeadBodyClothBefore
+    100552: DeadBodyClothMon
+    100554: DeadBodyCloths
+    100556: Extras
+    100558: group3
+    100560: group4
+    100562: group5
+    100564: group6
+    100566: //RootNode
+    100568: Plynth1
+    100570: Plynth2
+    100572: Plynth3
+    100574: Plynth4
+    100576: Plynth5
+    100578: Plynths
+    100580: polySurface10
+    100582: polySurface12
+    100584: polySurface13
+    100586: polySurface14
+    100588: polySurface37
+    100590: polySurface38
+    100592: polySurface39
+    100594: polySurface40
+    100596: polySurface41
+    100598: polySurface42
+    100600: polySurface43
+    100602: polySurface44
+    100604: polySurface48
+    100606: polySurface49
+    100608: polySurface50
+    100610: polySurface51
+    100612: polySurface52
+    100614: polySurface53
+    100616: polySurface54
+    100618: polySurface55
+    100620: polySurface56
+    100622: polySurface63
+    100624: polySurface66
+    100626: polySurface67
+    100628: polySurface68
+    100630: polySurface70
+    100632: polySurface70 1
+    100634: polySurface71
+    100636: polySurface71 1
+    100638: polySurface72
+    100640: polySurface73
+    100642: polySurface74
+    100644: polySurface75
+    100646: polySurface76
+    100648: polySurface77
+    100650: polySurface78
+    100652: polySurface79
+    100654: polySurface80
+    100656: polySurface81
+    100658: polySurface82
+    100660: polySurface83
+    100662: polySurface84
+    100664: polySurface85
+    100666: polySurface86
+    100668: polySurface87
+    100670: polySurface88
+    100672: polySurface89
+    100674: polySurface9
+    100676: polySurface90
+    100678: polySurface91
+    100680: polySurface92
+    100682: polySurface93
+    100684: polySurface94
+    100686: polySurface95
+    100688: PostMonsterWall
+    100690: PreMonsterWall
+    100692: PreMonsterWall1
+    100694: PreMonsterWall2
+    100696: transform25
+    100698: transform29
+    100700: transform30
+    100702: transform31
+    100704: transform32
+    100706: transform33
+    100708: transform34
+    100710: transform35
+    100712: transform36
+    100714: transform37
+    100716: transform8
+    100718: Wick
+    100720: Wick 1
+    100722: Wick 10
+    100724: Wick 11
+    100726: Wick 12
+    100728: Wick 13
+    100730: Wick 2
+    100732: Wick 3
+    100734: Wick 4
+    100736: Wick 5
+    100738: Wick 6
+    100740: Wick 7
+    100742: Wick 8
+    100744: Wick 9
+    100746: Wick1
+    100748: Wick1 1
+    100750: Wick1 10
+    100752: Wick1 11
+    100754: Wick1 12
+    100756: Wick1 13
+    100758: Wick1 14
+    100760: Wick1 15
+    100762: Wick1 16
+    100764: Wick1 17
+    100766: Wick1 18
+    100768: Wick1 19
+    100770: Wick1 2
+    100772: Wick1 20
+    100774: Wick1 21
+    100776: Wick1 22
+    100778: Wick1 23
+    100780: Wick1 3
+    100782: Wick1 4
+    100784: Wick1 5
+    100786: Wick1 6
+    100788: Wick1 7
+    100790: Wick1 8
+    100792: Wick1 9
+    100794: WoodBeam
+    100796: WoodBeam1
+    100798: WoodBeam10
+    100800: WoodBeam11
+    100802: WoodBeam12
+    100804: WoodBeam13
+    100806: WoodBeam14
+    100808: WoodBeam15
+    100810: WoodBeam2
+    100812: WoodBeam3
+    100814: WoodBeam4
+    100816: WoodBeam5
+    100818: WoodBeam6
+    100820: WoodBeam7
+    100822: WoodBeam8
+    100824: WoodBeam9
+    100826: WoodBeams
+    100828: WoodCurvedStruts
+    100830: WoodSideStrut
+    100832: WoodSideStrut 1
+    100834: WoodSideStrut 10
+    100836: WoodSideStrut 11
+    100838: WoodSideStrut 12
+    100840: WoodSideStrut 13
+    100842: WoodSideStrut 14
+    100844: WoodSideStrut 15
+    100846: WoodSideStrut 16
+    100848: WoodSideStrut 17
+    100850: WoodSideStrut 18
+    100852: WoodSideStrut 19
+    100854: WoodSideStrut 2
+    100856: WoodSideStrut 20
+    100858: WoodSideStrut 21
+    100860: WoodSideStrut 22
+    100862: WoodSideStrut 23
+    100864: WoodSideStrut 3
+    100866: WoodSideStrut 4
+    100868: WoodSideStrut 5
+    100870: WoodSideStrut 6
+    100872: WoodSideStrut 7
+    100874: WoodSideStrut 8
+    100876: WoodSideStrut 9
+    100878: WoodSideStrut1
+    100880: WoodSideStrut1 1
+    100882: WoodSideStrut1 10
+    100884: WoodSideStrut1 11
+    100886: WoodSideStrut1 12
+    100888: WoodSideStrut1 13
+    100890: WoodSideStrut1 14
+    100892: WoodSideStrut1 15
+    100894: WoodSideStrut1 16
+    100896: WoodSideStrut1 17
+    100898: WoodSideStrut1 18
+    100900: WoodSideStrut1 19
+    100902: WoodSideStrut1 2
+    100904: WoodSideStrut1 20
+    100906: WoodSideStrut1 21
+    100908: WoodSideStrut1 22
+    100910: WoodSideStrut1 23
+    100912: WoodSideStrut1 3
+    100914: WoodSideStrut1 4
+    100916: WoodSideStrut1 5
+    100918: WoodSideStrut1 6
+    100920: WoodSideStrut1 7
+    100922: WoodSideStrut1 8
+    100924: WoodSideStrut1 9
+    100926: WoodSideStrut2
+    100928: WoodSideStrut3
+    100930: WoodSideStrut4
+    100932: WoodStrut1
+    100934: WoodStrut10
+    100936: WoodStrut11
+    100938: WoodStrut12
+    100940: WoodStrut13
+    100942: WoodStrut14
+    100944: WoodStrut15
+    100946: WoodStrut16
+    100948: WoodStrut17
+    100950: WoodStrut18
+    100952: WoodStrut19
+    100954: WoodStrut2
+    100956: WoodStrut20
+    100958: WoodStrut21
+    100960: WoodStrut22
+    100962: WoodStrut23
+    100964: WoodStrut24
+    100966: WoodStrut25
+    100968: WoodStrut26
+    100970: WoodStrut27
+    100972: WoodStrut28
+    100974: WoodStrut29
+    100976: WoodStrut3
+    100978: WoodStrut30
+    100980: WoodStrut31
+    100982: WoodStrut32
+    100984: WoodStrut33
+    100986: WoodStrut34
+    100988: WoodStrut35
+    100990: WoodStrut36
+    100992: WoodStrut4
+    100994: WoodStrut5
+    100996: WoodStrut6
+    100998: WoodStrut7
+    101000: WoodStrut8
+    101002: WoodStrut9
+    101004: WoodStrutTunnel
+    101006: WoodStrutTunnel1
+    101008: WoodStrutTunnel10
+    101010: WoodStrutTunnel11
+    101012: WoodStrutTunnel12
+    101014: WoodStrutTunnel13
+    101016: WoodStrutTunnel14
+    101018: WoodStrutTunnel15
+    101020: WoodStrutTunnel16
+    101022: WoodStrutTunnel17
+    101024: WoodStrutTunnel18
+    101026: WoodStrutTunnel19
+    101028: WoodStrutTunnel2
+    101030: WoodStrutTunnel20
+    101032: WoodStrutTunnel21
+    101034: WoodStrutTunnel22
+    101036: WoodStrutTunnel23
+    101038: WoodStrutTunnel3
+    101040: WoodStrutTunnel4
+    101042: WoodStrutTunnel5
+    101044: WoodStrutTunnel6
+    101046: WoodStrutTunnel7
+    101048: WoodStrutTunnel8
+    101050: WoodStrutTunnel9
+    101052: WoodTunnelStruts
+    400000: Candle1
+    400002: Candle1 1
+    400004: Candle1 10
+    400006: Candle1 11
+    400008: Candle1 12
+    400010: Candle1 13
+    400012: Candle1 14
+    400014: Candle1 15
+    400016: Candle1 16
+    400018: Candle1 17
+    400020: Candle1 18
+    400022: Candle1 19
+    400024: Candle1 2
+    400026: Candle1 20
+    400028: Candle1 3
+    400030: Candle1 4
+    400032: Candle1 5
+    400034: Candle1 6
+    400036: Candle1 7
+    400038: Candle1 8
+    400040: Candle1 9
+    400042: Candle2
+    400044: Candle2 1
+    400046: Candle2 2
+    400048: Candle2 3
+    400050: Candle2 4
+    400052: Candle2 5
+    400054: Candle3
+    400056: Candle3 1
+    400058: Candle3 2
+    400060: Candle3 3
+    400062: Candle3 4
+    400064: Candle3 5
+    400066: Candle4
+    400068: Candle4 1
+    400070: Candle4 2
+    400072: Candle4 3
+    400074: Candle4 4
+    400076: Candle4 5
+    400078: Candle5
+    400080: Candle5 1
+    400082: Candle5 2
+    400084: Candle5 3
+    400086: Candle5 4
+    400088: Candle5 5
+    400090: Candle6
+    400092: Candle6 1
+    400094: Candle6 2
+    400096: CandleGroup
+    400098: CandleGroup1
+    400100: CandleGroup2
+    400102: CandleHolder
+    400104: CandleHolder1
+    400106: CandleHolder10
+    400108: CandleHolder11
+    400110: CandleHolder12
+    400112: CandleHolder13
+    400114: CandleHolder2
+    400116: CandleHolder3
+    400118: CandleHolder4
+    400120: CandleHolder5
+    400122: CandleHolder6
+    400124: CandleHolder7
+    400126: CandleHolder8
+    400128: CandleHolder9
+    400130: CandleHolders
+    400132: CandleLeg1
+    400134: CandleLeg1 1
+    400136: CandleLeg1 10
+    400138: CandleLeg1 11
+    400140: CandleLeg1 12
+    400142: CandleLeg1 13
+    400144: CandleLeg1 2
+    400146: CandleLeg1 3
+    400148: CandleLeg1 4
+    400150: CandleLeg1 5
+    400152: CandleLeg1 6
+    400154: CandleLeg1 7
+    400156: CandleLeg1 8
+    400158: CandleLeg1 9
+    400160: CandleLeg2
+    400162: CandleLeg2 1
+    400164: CandleLeg2 10
+    400166: CandleLeg2 11
+    400168: CandleLeg2 12
+    400170: CandleLeg2 13
+    400172: CandleLeg2 2
+    400174: CandleLeg2 3
+    400176: CandleLeg2 4
+    400178: CandleLeg2 5
+    400180: CandleLeg2 6
+    400182: CandleLeg2 7
+    400184: CandleLeg2 8
+    400186: CandleLeg2 9
+    400188: CandleLeg3
+    400190: CandleLeg3 1
+    400192: CandleLeg3 10
+    400194: CandleLeg3 11
+    400196: CandleLeg3 12
+    400198: CandleLeg3 13
+    400200: CandleLeg3 2
+    400202: CandleLeg3 3
+    400204: CandleLeg3 4
+    400206: CandleLeg3 5
+    400208: CandleLeg3 6
+    400210: CandleLeg3 7
+    400212: CandleLeg3 8
+    400214: CandleLeg3 9
+    400216: CandleLegs
+    400218: CandleLegs 1
+    400220: CandleLegs 10
+    400222: CandleLegs 11
+    400224: CandleLegs 12
+    400226: CandleLegs 13
+    400228: CandleLegs 2
+    400230: CandleLegs 3
+    400232: CandleLegs 4
+    400234: CandleLegs 5
+    400236: CandleLegs 6
+    400238: CandleLegs 7
+    400240: CandleLegs 8
+    400242: CandleLegs 9
+    400244: Candles
+    400246: Candles 1
+    400248: Candles 2
+    400250: Candles1
+    400252: Candles1 1
+    400254: Candles1 2
+    400256: CandleStand
+    400258: CandleStand 1
+    400260: CandleStand 10
+    400262: CandleStand 11
+    400264: CandleStand 12
+    400266: CandleStand 13
+    400268: CandleStand 2
+    400270: CandleStand 3
+    400272: CandleStand 4
+    400274: CandleStand 5
+    400276: CandleStand 6
+    400278: CandleStand 7
+    400280: CandleStand 8
+    400282: CandleStand 9
+    400284: CandleTray
+    400286: CandleTray 1
+    400288: CandleTray 10
+    400290: CandleTray 11
+    400292: CandleTray 12
+    400294: CandleTray 13
+    400296: CandleTray 2
+    400298: CandleTray 3
+    400300: CandleTray 4
+    400302: CandleTray 5
+    400304: CandleTray 6
+    400306: CandleTray 7
+    400308: CandleTray 8
+    400310: CandleTray 9
+    400312: CandleUpperSupport
+    400314: CandleUpperSupport 1
+    400316: CandleUpperSupport 10
+    400318: CandleUpperSupport 11
+    400320: CandleUpperSupport 12
+    400322: CandleUpperSupport 13
+    400324: CandleUpperSupport 2
+    400326: CandleUpperSupport 3
+    400328: CandleUpperSupport 4
+    400330: CandleUpperSupport 5
+    400332: CandleUpperSupport 6
+    400334: CandleUpperSupport 7
+    400336: CandleUpperSupport 8
+    400338: CandleUpperSupport 9
+    400340: CandleWax
+    400342: CandleWax 1
+    400344: CandleWax 10
+    400346: CandleWax 11
+    400348: CandleWax 12
+    400350: CandleWax 13
+    400352: CandleWax 14
+    400354: CandleWax 15
+    400356: CandleWax 16
+    400358: CandleWax 17
+    400360: CandleWax 18
+    400362: CandleWax 19
+    400364: CandleWax 2
+    400366: CandleWax 20
+    400368: CandleWax 21
+    400370: CandleWax 22
+    400372: CandleWax 23
+    400374: CandleWax 24
+    400376: CandleWax 25
+    400378: CandleWax 26
+    400380: CandleWax 27
+    400382: CandleWax 3
+    400384: CandleWax 4
+    400386: CandleWax 5
+    400388: CandleWax 6
+    400390: CandleWax 7
+    400392: CandleWax 8
+    400394: CandleWax 9
+    400396: CombinedBackWall1
+    400398: CombinedCurvedWalls
+    400400: CombinedFrontWall
+    400402: CombinedLeftWall1
+    400404: CombinedLongWalls
+    400406: CombinedRightWall
+    400408: CryptBelow 1
+    400410: CryptFloor
+    400412: CryptPillar1
+    400414: CryptPillar10
+    400416: CryptPillar11
+    400418: CryptPillar12
+    400420: CryptPillar13
+    400422: CryptPillar14
+    400424: CryptPillar15
+    400426: CryptPillar16
+    400428: CryptPillar17
+    400430: CryptPillar18
+    400432: CryptPillar19
+    400434: CryptPillar2
+    400436: CryptPillar20
+    400438: CryptPillar21
+    400440: CryptPillar22
+    400442: CryptPillar23
+    400444: CryptPillar24
+    400446: CryptPillar25
+    400448: CryptPillar26
+    400450: CryptPillar27
+    400452: CryptPillar28
+    400454: CryptPillar29
+    400456: CryptPillar3
+    400458: CryptPillar30
+    400460: CryptPillar31
+    400462: CryptPillar32
+    400464: CryptPillar33
+    400466: CryptPillar34
+    400468: CryptPillar35
+    400470: CryptPillar36
+    400472: CryptPillar4
+    400474: CryptPillar5
+    400476: CryptPillar6
+    400478: CryptPillar7
+    400480: CryptPillar8
+    400482: CryptPillar9
+    400484: CryptPillars
+    400486: CryptWalls
+    400488: CurvedWall
+    400490: CurvedWall1
+    400492: CurvedWall10
+    400494: CurvedWall12
+    400496: CurvedWall13
+    400498: CurvedWall14
+    400500: CurvedWall15
+    400502: CurvedWall16
+    400504: CurvedWall2
+    400506: CurvedWall3
+    400508: CurvedWall4
+    400510: CurvedWall5
+    400512: CurvedWall6
+    400514: CurvedWall7
+    400516: CurvedWall8
+    400518: CurvedWall9
+    400520: DeadBodyCloth
+    400522: DeadBodyCloth1
+    400524: DeadBodyCloth10
+    400526: DeadBodyCloth11
+    400528: DeadBodyCloth12
+    400530: DeadBodyCloth13
+    400532: DeadBodyCloth2
+    400534: DeadBodyCloth3
+    400536: DeadBodyCloth4
+    400538: DeadBodyCloth5
+    400540: DeadBodyCloth6
+    400542: DeadBodyCloth7
+    400544: DeadBodyCloth8
+    400546: DeadBodyCloth9
+    400548: DeadBodyClothAfter
+    400550: DeadBodyClothBefore
+    400552: DeadBodyClothMon
+    400554: DeadBodyCloths
+    400556: Extras
+    400558: group3
+    400560: group4
+    400562: group5
+    400564: group6
+    400566: //RootNode
+    400568: Plynth1
+    400570: Plynth2
+    400572: Plynth3
+    400574: Plynth4
+    400576: Plynth5
+    400578: Plynths
+    400580: polySurface10
+    400582: polySurface12
+    400584: polySurface13
+    400586: polySurface14
+    400588: polySurface37
+    400590: polySurface38
+    400592: polySurface39
+    400594: polySurface40
+    400596: polySurface41
+    400598: polySurface42
+    400600: polySurface43
+    400602: polySurface44
+    400604: polySurface48
+    400606: polySurface49
+    400608: polySurface50
+    400610: polySurface51
+    400612: polySurface52
+    400614: polySurface53
+    400616: polySurface54
+    400618: polySurface55
+    400620: polySurface56
+    400622: polySurface63
+    400624: polySurface66
+    400626: polySurface67
+    400628: polySurface68
+    400630: polySurface70
+    400632: polySurface70 1
+    400634: polySurface71
+    400636: polySurface71 1
+    400638: polySurface72
+    400640: polySurface73
+    400642: polySurface74
+    400644: polySurface75
+    400646: polySurface76
+    400648: polySurface77
+    400650: polySurface78
+    400652: polySurface79
+    400654: polySurface80
+    400656: polySurface81
+    400658: polySurface82
+    400660: polySurface83
+    400662: polySurface84
+    400664: polySurface85
+    400666: polySurface86
+    400668: polySurface87
+    400670: polySurface88
+    400672: polySurface89
+    400674: polySurface9
+    400676: polySurface90
+    400678: polySurface91
+    400680: polySurface92
+    400682: polySurface93
+    400684: polySurface94
+    400686: polySurface95
+    400688: PostMonsterWall
+    400690: PreMonsterWall
+    400692: PreMonsterWall1
+    400694: PreMonsterWall2
+    400696: transform25
+    400698: transform29
+    400700: transform30
+    400702: transform31
+    400704: transform32
+    400706: transform33
+    400708: transform34
+    400710: transform35
+    400712: transform36
+    400714: transform37
+    400716: transform8
+    400718: Wick
+    400720: Wick 1
+    400722: Wick 10
+    400724: Wick 11
+    400726: Wick 12
+    400728: Wick 13
+    400730: Wick 2
+    400732: Wick 3
+    400734: Wick 4
+    400736: Wick 5
+    400738: Wick 6
+    400740: Wick 7
+    400742: Wick 8
+    400744: Wick 9
+    400746: Wick1
+    400748: Wick1 1
+    400750: Wick1 10
+    400752: Wick1 11
+    400754: Wick1 12
+    400756: Wick1 13
+    400758: Wick1 14
+    400760: Wick1 15
+    400762: Wick1 16
+    400764: Wick1 17
+    400766: Wick1 18
+    400768: Wick1 19
+    400770: Wick1 2
+    400772: Wick1 20
+    400774: Wick1 21
+    400776: Wick1 22
+    400778: Wick1 23
+    400780: Wick1 3
+    400782: Wick1 4
+    400784: Wick1 5
+    400786: Wick1 6
+    400788: Wick1 7
+    400790: Wick1 8
+    400792: Wick1 9
+    400794: WoodBeam
+    400796: WoodBeam1
+    400798: WoodBeam10
+    400800: WoodBeam11
+    400802: WoodBeam12
+    400804: WoodBeam13
+    400806: WoodBeam14
+    400808: WoodBeam15
+    400810: WoodBeam2
+    400812: WoodBeam3
+    400814: WoodBeam4
+    400816: WoodBeam5
+    400818: WoodBeam6
+    400820: WoodBeam7
+    400822: WoodBeam8
+    400824: WoodBeam9
+    400826: WoodBeams
+    400828: WoodCurvedStruts
+    400830: WoodSideStrut
+    400832: WoodSideStrut 1
+    400834: WoodSideStrut 10
+    400836: WoodSideStrut 11
+    400838: WoodSideStrut 12
+    400840: WoodSideStrut 13
+    400842: WoodSideStrut 14
+    400844: WoodSideStrut 15
+    400846: WoodSideStrut 16
+    400848: WoodSideStrut 17
+    400850: WoodSideStrut 18
+    400852: WoodSideStrut 19
+    400854: WoodSideStrut 2
+    400856: WoodSideStrut 20
+    400858: WoodSideStrut 21
+    400860: WoodSideStrut 22
+    400862: WoodSideStrut 23
+    400864: WoodSideStrut 3
+    400866: WoodSideStrut 4
+    400868: WoodSideStrut 5
+    400870: WoodSideStrut 6
+    400872: WoodSideStrut 7
+    400874: WoodSideStrut 8
+    400876: WoodSideStrut 9
+    400878: WoodSideStrut1
+    400880: WoodSideStrut1 1
+    400882: WoodSideStrut1 10
+    400884: WoodSideStrut1 11
+    400886: WoodSideStrut1 12
+    400888: WoodSideStrut1 13
+    400890: WoodSideStrut1 14
+    400892: WoodSideStrut1 15
+    400894: WoodSideStrut1 16
+    400896: WoodSideStrut1 17
+    400898: WoodSideStrut1 18
+    400900: WoodSideStrut1 19
+    400902: WoodSideStrut1 2
+    400904: WoodSideStrut1 20
+    400906: WoodSideStrut1 21
+    400908: WoodSideStrut1 22
+    400910: WoodSideStrut1 23
+    400912: WoodSideStrut1 3
+    400914: WoodSideStrut1 4
+    400916: WoodSideStrut1 5
+    400918: WoodSideStrut1 6
+    400920: WoodSideStrut1 7
+    400922: WoodSideStrut1 8
+    400924: WoodSideStrut1 9
+    400926: WoodSideStrut2
+    400928: WoodSideStrut3
+    400930: WoodSideStrut4
+    400932: WoodStrut1
+    400934: WoodStrut10
+    400936: WoodStrut11
+    400938: WoodStrut12
+    400940: WoodStrut13
+    400942: WoodStrut14
+    400944: WoodStrut15
+    400946: WoodStrut16
+    400948: WoodStrut17
+    400950: WoodStrut18
+    400952: WoodStrut19
+    400954: WoodStrut2
+    400956: WoodStrut20
+    400958: WoodStrut21
+    400960: WoodStrut22
+    400962: WoodStrut23
+    400964: WoodStrut24
+    400966: WoodStrut25
+    400968: WoodStrut26
+    400970: WoodStrut27
+    400972: WoodStrut28
+    400974: WoodStrut29
+    400976: WoodStrut3
+    400978: WoodStrut30
+    400980: WoodStrut31
+    400982: WoodStrut32
+    400984: WoodStrut33
+    400986: WoodStrut34
+    400988: WoodStrut35
+    400990: WoodStrut36
+    400992: WoodStrut4
+    400994: WoodStrut5
+    400996: WoodStrut6
+    400998: WoodStrut7
+    401000: WoodStrut8
+    401002: WoodStrut9
+    401004: WoodStrutTunnel
+    401006: WoodStrutTunnel1
+    401008: WoodStrutTunnel10
+    401010: WoodStrutTunnel11
+    401012: WoodStrutTunnel12
+    401014: WoodStrutTunnel13
+    401016: WoodStrutTunnel14
+    401018: WoodStrutTunnel15
+    401020: WoodStrutTunnel16
+    401022: WoodStrutTunnel17
+    401024: WoodStrutTunnel18
+    401026: WoodStrutTunnel19
+    401028: WoodStrutTunnel2
+    401030: WoodStrutTunnel20
+    401032: WoodStrutTunnel21
+    401034: WoodStrutTunnel22
+    401036: WoodStrutTunnel23
+    401038: WoodStrutTunnel3
+    401040: WoodStrutTunnel4
+    401042: WoodStrutTunnel5
+    401044: WoodStrutTunnel6
+    401046: WoodStrutTunnel7
+    401048: WoodStrutTunnel8
+    401050: WoodStrutTunnel9
+    401052: WoodTunnelStruts
+    2100000: BrickWallPillar
+    2100002: WoodStruts
+    2100004: BrickWallMedium
+    2100006: BrickWallLong
+    2100008: BrickWallFloor
+    2100010: lambert6
+    2100012: CandleWaxTexture1
+    2100014: CandleHolderTexture2
+    2100016: CandleHolderTexture1
+    2100018: BodyTexture2
+    2100020: BodyTexture13
+    2100022: BodyTexture3
+    2100024: bodyTexture8
+    2100026: BodyTexture7
+    2100028: BosyTexture4
+    2100030: BodyTexture14
+    2100032: BodyTexture5
+    2100034: BodyTexture6
+    2100036: BodyTexture
+    2100038: BodyTexture11
+    2100040: BodyTexture10
+    2100042: BodyTexture1
+    2100044: BodyTexture15_18
+    2100046: BodyTexture12
+    2100048: PlynthTexture
+    2300000: Candle1 10
+    2300002: Candle1 11
+    2300004: Candle1 12
+    2300006: Candle1 13
+    2300008: Candle1 14
+    2300010: Candle1 15
+    2300012: Candle1 16
+    2300014: Candle1 17
+    2300016: Candle1 18
+    2300018: Candle1 19
+    2300020: Candle1 20
+    2300022: Candle1 6
+    2300024: Candle1 7
+    2300026: Candle1 8
+    2300028: Candle1 9
+    2300030: Candle5
+    2300032: Candle5 1
+    2300034: Candle5 2
+    2300036: Candle5 3
+    2300038: Candle5 4
+    2300040: Candle5 5
+    2300042: Candle6
+    2300044: Candle6 1
+    2300046: Candle6 2
+    2300048: CandleLeg1
+    2300050: CandleLeg1 1
+    2300052: CandleLeg1 10
+    2300054: CandleLeg1 11
+    2300056: CandleLeg1 12
+    2300058: CandleLeg1 13
+    2300060: CandleLeg1 2
+    2300062: CandleLeg1 3
+    2300064: CandleLeg1 4
+    2300066: CandleLeg1 5
+    2300068: CandleLeg1 6
+    2300070: CandleLeg1 7
+    2300072: CandleLeg1 8
+    2300074: CandleLeg1 9
+    2300076: CandleLeg2
+    2300078: CandleLeg2 1
+    2300080: CandleLeg2 10
+    2300082: CandleLeg2 11
+    2300084: CandleLeg2 12
+    2300086: CandleLeg2 13
+    2300088: CandleLeg2 2
+    2300090: CandleLeg2 3
+    2300092: CandleLeg2 4
+    2300094: CandleLeg2 5
+    2300096: CandleLeg2 6
+    2300098: CandleLeg2 7
+    2300100: CandleLeg2 8
+    2300102: CandleLeg2 9
+    2300104: CandleLeg3
+    2300106: CandleLeg3 1
+    2300108: CandleLeg3 10
+    2300110: CandleLeg3 11
+    2300112: CandleLeg3 12
+    2300114: CandleLeg3 13
+    2300116: CandleLeg3 2
+    2300118: CandleLeg3 3
+    2300120: CandleLeg3 4
+    2300122: CandleLeg3 5
+    2300124: CandleLeg3 6
+    2300126: CandleLeg3 7
+    2300128: CandleLeg3 8
+    2300130: CandleLeg3 9
+    2300132: CandleStand
+    2300134: CandleStand 1
+    2300136: CandleStand 10
+    2300138: CandleStand 11
+    2300140: CandleStand 12
+    2300142: CandleStand 13
+    2300144: CandleStand 2
+    2300146: CandleStand 3
+    2300148: CandleStand 4
+    2300150: CandleStand 5
+    2300152: CandleStand 6
+    2300154: CandleStand 7
+    2300156: CandleStand 8
+    2300158: CandleStand 9
+    2300160: CandleTray
+    2300162: CandleTray 1
+    2300164: CandleTray 10
+    2300166: CandleTray 11
+    2300168: CandleTray 12
+    2300170: CandleTray 13
+    2300172: CandleTray 2
+    2300174: CandleTray 3
+    2300176: CandleTray 4
+    2300178: CandleTray 5
+    2300180: CandleTray 6
+    2300182: CandleTray 7
+    2300184: CandleTray 8
+    2300186: CandleTray 9
+    2300188: CandleWax 14
+    2300190: CandleWax 15
+    2300192: CandleWax 16
+    2300194: CandleWax 17
+    2300196: CandleWax 18
+    2300198: CandleWax 19
+    2300200: CandleWax 20
+    2300202: CandleWax 21
+    2300204: CandleWax 22
+    2300206: CandleWax 23
+    2300208: CandleWax 24
+    2300210: CandleWax 25
+    2300212: CandleWax 26
+    2300214: CandleWax 27
+    2300216: CombinedBackWall1
+    2300218: CombinedFrontWall
+    2300220: CombinedRightWall
+    2300222: CryptFloor
+    2300224: CryptPillar1
+    2300226: CryptPillar10
+    2300228: CryptPillar11
+    2300230: CryptPillar12
+    2300232: CryptPillar13
+    2300234: CryptPillar14
+    2300236: CryptPillar15
+    2300238: CryptPillar16
+    2300240: CryptPillar17
+    2300242: CryptPillar18
+    2300244: CryptPillar19
+    2300246: CryptPillar2
+    2300248: CryptPillar20
+    2300250: CryptPillar21
+    2300252: CryptPillar22
+    2300254: CryptPillar23
+    2300256: CryptPillar24
+    2300258: CryptPillar25
+    2300260: CryptPillar26
+    2300262: CryptPillar27
+    2300264: CryptPillar28
+    2300266: CryptPillar29
+    2300268: CryptPillar3
+    2300270: CryptPillar30
+    2300272: CryptPillar31
+    2300274: CryptPillar32
+    2300276: CryptPillar33
+    2300278: CryptPillar34
+    2300280: CryptPillar35
+    2300282: CryptPillar36
+    2300284: CryptPillar4
+    2300286: CryptPillar5
+    2300288: CryptPillar6
+    2300290: CryptPillar7
+    2300292: CryptPillar8
+    2300294: CryptPillar9
+    2300296: CurvedWall10
+    2300298: CurvedWall12
+    2300300: CurvedWall13
+    2300302: CurvedWall14
+    2300304: CurvedWall16
+    2300306: CurvedWall3
+    2300308: CurvedWall4
+    2300310: CurvedWall5
+    2300312: CurvedWall8
+    2300314: DeadBodyCloth
+    2300316: DeadBodyCloth1
+    2300318: DeadBodyCloth10
+    2300320: DeadBodyCloth11
+    2300322: DeadBodyCloth12
+    2300324: DeadBodyCloth13
+    2300326: DeadBodyCloth2
+    2300328: DeadBodyCloth3
+    2300330: DeadBodyCloth4
+    2300332: DeadBodyCloth5
+    2300334: DeadBodyCloth6
+    2300336: DeadBodyCloth7
+    2300338: DeadBodyCloth8
+    2300340: DeadBodyCloth9
+    2300342: DeadBodyClothAfter
+    2300344: DeadBodyClothBefore
+    2300346: Plynth1
+    2300348: Plynth2
+    2300350: Plynth3
+    2300352: Plynth4
+    2300354: Plynth5
+    2300356: polySurface10
+    2300358: polySurface12
+    2300360: polySurface13
+    2300362: polySurface14
+    2300364: polySurface37
+    2300366: polySurface38
+    2300368: polySurface39
+    2300370: polySurface40
+    2300372: polySurface41
+    2300374: polySurface42
+    2300376: polySurface43
+    2300378: polySurface44
+    2300380: polySurface48
+    2300382: polySurface49
+    2300384: polySurface50
+    2300386: polySurface51
+    2300388: polySurface52
+    2300390: polySurface53
+    2300392: polySurface54
+    2300394: polySurface55
+    2300396: polySurface56
+    2300398: polySurface66
+    2300400: polySurface70
+    2300402: polySurface70 1
+    2300404: polySurface71
+    2300406: polySurface71 1
+    2300408: polySurface72
+    2300410: polySurface73
+    2300412: polySurface74
+    2300414: polySurface75
+    2300416: polySurface76
+    2300418: polySurface77
+    2300420: polySurface78
+    2300422: polySurface79
+    2300424: polySurface80
+    2300426: polySurface81
+    2300428: polySurface82
+    2300430: polySurface83
+    2300432: polySurface84
+    2300434: polySurface85
+    2300436: polySurface86
+    2300438: polySurface87
+    2300440: polySurface88
+    2300442: polySurface89
+    2300444: polySurface9
+    2300446: polySurface90
+    2300448: polySurface91
+    2300450: polySurface92
+    2300452: polySurface93
+    2300454: polySurface94
+    2300456: polySurface95
+    2300458: PreMonsterWall1
+    2300460: PreMonsterWall2
+    2300462: Wick
+    2300464: Wick 1
+    2300466: Wick 10
+    2300468: Wick 11
+    2300470: Wick 12
+    2300472: Wick 13
+    2300474: Wick 2
+    2300476: Wick 3
+    2300478: Wick 4
+    2300480: Wick 5
+    2300482: Wick 6
+    2300484: Wick 7
+    2300486: Wick 8
+    2300488: Wick 9
+    2300490: Wick1
+    2300492: Wick1 1
+    2300494: Wick1 10
+    2300496: Wick1 11
+    2300498: Wick1 12
+    2300500: Wick1 13
+    2300502: Wick1 14
+    2300504: Wick1 15
+    2300506: Wick1 16
+    2300508: Wick1 17
+    2300510: Wick1 18
+    2300512: Wick1 19
+    2300514: Wick1 2
+    2300516: Wick1 20
+    2300518: Wick1 21
+    2300520: Wick1 22
+    2300522: Wick1 23
+    2300524: Wick1 3
+    2300526: Wick1 4
+    2300528: Wick1 5
+    2300530: Wick1 6
+    2300532: Wick1 7
+    2300534: Wick1 8
+    2300536: Wick1 9
+    2300538: WoodBeam
+    2300540: WoodBeam1
+    2300542: WoodBeam10
+    2300544: WoodBeam11
+    2300546: WoodBeam12
+    2300548: WoodBeam13
+    2300550: WoodBeam14
+    2300552: WoodBeam15
+    2300554: WoodBeam2
+    2300556: WoodBeam3
+    2300558: WoodBeam4
+    2300560: WoodBeam5
+    2300562: WoodBeam6
+    2300564: WoodBeam7
+    2300566: WoodBeam8
+    2300568: WoodBeam9
+    2300570: WoodSideStrut
+    2300572: WoodSideStrut 1
+    2300574: WoodSideStrut 10
+    2300576: WoodSideStrut 11
+    2300578: WoodSideStrut 12
+    2300580: WoodSideStrut 13
+    2300582: WoodSideStrut 14
+    2300584: WoodSideStrut 15
+    2300586: WoodSideStrut 16
+    2300588: WoodSideStrut 17
+    2300590: WoodSideStrut 18
+    2300592: WoodSideStrut 19
+    2300594: WoodSideStrut 2
+    2300596: WoodSideStrut 20
+    2300598: WoodSideStrut 21
+    2300600: WoodSideStrut 22
+    2300602: WoodSideStrut 23
+    2300604: WoodSideStrut 3
+    2300606: WoodSideStrut 4
+    2300608: WoodSideStrut 5
+    2300610: WoodSideStrut 6
+    2300612: WoodSideStrut 7
+    2300614: WoodSideStrut 8
+    2300616: WoodSideStrut 9
+    2300618: WoodSideStrut1
+    2300620: WoodSideStrut1 1
+    2300622: WoodSideStrut1 10
+    2300624: WoodSideStrut1 11
+    2300626: WoodSideStrut1 12
+    2300628: WoodSideStrut1 13
+    2300630: WoodSideStrut1 14
+    2300632: WoodSideStrut1 15
+    2300634: WoodSideStrut1 16
+    2300636: WoodSideStrut1 17
+    2300638: WoodSideStrut1 18
+    2300640: WoodSideStrut1 19
+    2300642: WoodSideStrut1 2
+    2300644: WoodSideStrut1 20
+    2300646: WoodSideStrut1 21
+    2300648: WoodSideStrut1 22
+    2300650: WoodSideStrut1 23
+    2300652: WoodSideStrut1 3
+    2300654: WoodSideStrut1 4
+    2300656: WoodSideStrut1 5
+    2300658: WoodSideStrut1 6
+    2300660: WoodSideStrut1 7
+    2300662: WoodSideStrut1 8
+    2300664: WoodSideStrut1 9
+    2300666: WoodSideStrut2
+    2300668: WoodSideStrut3
+    2300670: WoodSideStrut4
+    2300672: WoodStrut1
+    2300674: WoodStrut10
+    2300676: WoodStrut11
+    2300678: WoodStrut12
+    2300680: WoodStrut13
+    2300682: WoodStrut14
+    2300684: WoodStrut15
+    2300686: WoodStrut16
+    2300688: WoodStrut17
+    2300690: WoodStrut18
+    2300692: WoodStrut19
+    2300694: WoodStrut2
+    2300696: WoodStrut20
+    2300698: WoodStrut21
+    2300700: WoodStrut22
+    2300702: WoodStrut23
+    2300704: WoodStrut24
+    2300706: WoodStrut25
+    2300708: WoodStrut26
+    2300710: WoodStrut27
+    2300712: WoodStrut28
+    2300714: WoodStrut29
+    2300716: WoodStrut3
+    2300718: WoodStrut30
+    2300720: WoodStrut31
+    2300722: WoodStrut32
+    2300724: WoodStrut33
+    2300726: WoodStrut34
+    2300728: WoodStrut35
+    2300730: WoodStrut36
+    2300732: WoodStrut4
+    2300734: WoodStrut5
+    2300736: WoodStrut6
+    2300738: WoodStrut7
+    2300740: WoodStrut8
+    2300742: WoodStrut9
+    3300000: Candle1 10
+    3300002: Candle1 11
+    3300004: Candle1 12
+    3300006: Candle1 13
+    3300008: Candle1 14
+    3300010: Candle1 15
+    3300012: Candle1 16
+    3300014: Candle1 17
+    3300016: Candle1 18
+    3300018: Candle1 19
+    3300020: Candle1 20
+    3300022: Candle1 6
+    3300024: Candle1 7
+    3300026: Candle1 8
+    3300028: Candle1 9
+    3300030: Candle5
+    3300032: Candle5 1
+    3300034: Candle5 2
+    3300036: Candle5 3
+    3300038: Candle5 4
+    3300040: Candle5 5
+    3300042: Candle6
+    3300044: Candle6 1
+    3300046: Candle6 2
+    3300048: CandleLeg1
+    3300050: CandleLeg1 1
+    3300052: CandleLeg1 10
+    3300054: CandleLeg1 11
+    3300056: CandleLeg1 12
+    3300058: CandleLeg1 13
+    3300060: CandleLeg1 2
+    3300062: CandleLeg1 3
+    3300064: CandleLeg1 4
+    3300066: CandleLeg1 5
+    3300068: CandleLeg1 6
+    3300070: CandleLeg1 7
+    3300072: CandleLeg1 8
+    3300074: CandleLeg1 9
+    3300076: CandleLeg2
+    3300078: CandleLeg2 1
+    3300080: CandleLeg2 10
+    3300082: CandleLeg2 11
+    3300084: CandleLeg2 12
+    3300086: CandleLeg2 13
+    3300088: CandleLeg2 2
+    3300090: CandleLeg2 3
+    3300092: CandleLeg2 4
+    3300094: CandleLeg2 5
+    3300096: CandleLeg2 6
+    3300098: CandleLeg2 7
+    3300100: CandleLeg2 8
+    3300102: CandleLeg2 9
+    3300104: CandleLeg3
+    3300106: CandleLeg3 1
+    3300108: CandleLeg3 10
+    3300110: CandleLeg3 11
+    3300112: CandleLeg3 12
+    3300114: CandleLeg3 13
+    3300116: CandleLeg3 2
+    3300118: CandleLeg3 3
+    3300120: CandleLeg3 4
+    3300122: CandleLeg3 5
+    3300124: CandleLeg3 6
+    3300126: CandleLeg3 7
+    3300128: CandleLeg3 8
+    3300130: CandleLeg3 9
+    3300132: CandleStand
+    3300134: CandleStand 1
+    3300136: CandleStand 10
+    3300138: CandleStand 11
+    3300140: CandleStand 12
+    3300142: CandleStand 13
+    3300144: CandleStand 2
+    3300146: CandleStand 3
+    3300148: CandleStand 4
+    3300150: CandleStand 5
+    3300152: CandleStand 6
+    3300154: CandleStand 7
+    3300156: CandleStand 8
+    3300158: CandleStand 9
+    3300160: CandleTray
+    3300162: CandleTray 1
+    3300164: CandleTray 10
+    3300166: CandleTray 11
+    3300168: CandleTray 12
+    3300170: CandleTray 13
+    3300172: CandleTray 2
+    3300174: CandleTray 3
+    3300176: CandleTray 4
+    3300178: CandleTray 5
+    3300180: CandleTray 6
+    3300182: CandleTray 7
+    3300184: CandleTray 8
+    3300186: CandleTray 9
+    3300188: CandleWax 14
+    3300190: CandleWax 15
+    3300192: CandleWax 16
+    3300194: CandleWax 17
+    3300196: CandleWax 18
+    3300198: CandleWax 19
+    3300200: CandleWax 20
+    3300202: CandleWax 21
+    3300204: CandleWax 22
+    3300206: CandleWax 23
+    3300208: CandleWax 24
+    3300210: CandleWax 25
+    3300212: CandleWax 26
+    3300214: CandleWax 27
+    3300216: CombinedBackWall1
+    3300218: CombinedFrontWall
+    3300220: CombinedRightWall
+    3300222: CryptFloor
+    3300224: CryptPillar1
+    3300226: CryptPillar10
+    3300228: CryptPillar11
+    3300230: CryptPillar12
+    3300232: CryptPillar13
+    3300234: CryptPillar14
+    3300236: CryptPillar15
+    3300238: CryptPillar16
+    3300240: CryptPillar17
+    3300242: CryptPillar18
+    3300244: CryptPillar19
+    3300246: CryptPillar2
+    3300248: CryptPillar20
+    3300250: CryptPillar21
+    3300252: CryptPillar22
+    3300254: CryptPillar23
+    3300256: CryptPillar24
+    3300258: CryptPillar25
+    3300260: CryptPillar26
+    3300262: CryptPillar27
+    3300264: CryptPillar28
+    3300266: CryptPillar29
+    3300268: CryptPillar3
+    3300270: CryptPillar30
+    3300272: CryptPillar31
+    3300274: CryptPillar32
+    3300276: CryptPillar33
+    3300278: CryptPillar34
+    3300280: CryptPillar35
+    3300282: CryptPillar36
+    3300284: CryptPillar4
+    3300286: CryptPillar5
+    3300288: CryptPillar6
+    3300290: CryptPillar7
+    3300292: CryptPillar8
+    3300294: CryptPillar9
+    3300296: CurvedWall10
+    3300298: CurvedWall12
+    3300300: CurvedWall13
+    3300302: CurvedWall14
+    3300304: CurvedWall16
+    3300306: CurvedWall3
+    3300308: CurvedWall4
+    3300310: CurvedWall5
+    3300312: CurvedWall8
+    3300314: DeadBodyCloth
+    3300316: DeadBodyCloth1
+    3300318: DeadBodyCloth10
+    3300320: DeadBodyCloth11
+    3300322: DeadBodyCloth12
+    3300324: DeadBodyCloth13
+    3300326: DeadBodyCloth2
+    3300328: DeadBodyCloth3
+    3300330: DeadBodyCloth4
+    3300332: DeadBodyCloth5
+    3300334: DeadBodyCloth6
+    3300336: DeadBodyCloth7
+    3300338: DeadBodyCloth8
+    3300340: DeadBodyCloth9
+    3300342: DeadBodyClothAfter
+    3300344: DeadBodyClothBefore
+    3300346: Plynth1
+    3300348: Plynth2
+    3300350: Plynth3
+    3300352: Plynth4
+    3300354: Plynth5
+    3300356: polySurface10
+    3300358: polySurface12
+    3300360: polySurface13
+    3300362: polySurface14
+    3300364: polySurface37
+    3300366: polySurface38
+    3300368: polySurface39
+    3300370: polySurface40
+    3300372: polySurface41
+    3300374: polySurface42
+    3300376: polySurface43
+    3300378: polySurface44
+    3300380: polySurface48
+    3300382: polySurface49
+    3300384: polySurface50
+    3300386: polySurface51
+    3300388: polySurface52
+    3300390: polySurface53
+    3300392: polySurface54
+    3300394: polySurface55
+    3300396: polySurface56
+    3300398: polySurface66
+    3300400: polySurface70
+    3300402: polySurface70 1
+    3300404: polySurface71
+    3300406: polySurface71 1
+    3300408: polySurface72
+    3300410: polySurface73
+    3300412: polySurface74
+    3300414: polySurface75
+    3300416: polySurface76
+    3300418: polySurface77
+    3300420: polySurface78
+    3300422: polySurface79
+    3300424: polySurface80
+    3300426: polySurface81
+    3300428: polySurface82
+    3300430: polySurface83
+    3300432: polySurface84
+    3300434: polySurface85
+    3300436: polySurface86
+    3300438: polySurface87
+    3300440: polySurface88
+    3300442: polySurface89
+    3300444: polySurface9
+    3300446: polySurface90
+    3300448: polySurface91
+    3300450: polySurface92
+    3300452: polySurface93
+    3300454: polySurface94
+    3300456: polySurface95
+    3300458: PreMonsterWall1
+    3300460: PreMonsterWall2
+    3300462: Wick
+    3300464: Wick 1
+    3300466: Wick 10
+    3300468: Wick 11
+    3300470: Wick 12
+    3300472: Wick 13
+    3300474: Wick 2
+    3300476: Wick 3
+    3300478: Wick 4
+    3300480: Wick 5
+    3300482: Wick 6
+    3300484: Wick 7
+    3300486: Wick 8
+    3300488: Wick 9
+    3300490: Wick1
+    3300492: Wick1 1
+    3300494: Wick1 10
+    3300496: Wick1 11
+    3300498: Wick1 12
+    3300500: Wick1 13
+    3300502: Wick1 14
+    3300504: Wick1 15
+    3300506: Wick1 16
+    3300508: Wick1 17
+    3300510: Wick1 18
+    3300512: Wick1 19
+    3300514: Wick1 2
+    3300516: Wick1 20
+    3300518: Wick1 21
+    3300520: Wick1 22
+    3300522: Wick1 23
+    3300524: Wick1 3
+    3300526: Wick1 4
+    3300528: Wick1 5
+    3300530: Wick1 6
+    3300532: Wick1 7
+    3300534: Wick1 8
+    3300536: Wick1 9
+    3300538: WoodBeam
+    3300540: WoodBeam1
+    3300542: WoodBeam10
+    3300544: WoodBeam11
+    3300546: WoodBeam12
+    3300548: WoodBeam13
+    3300550: WoodBeam14
+    3300552: WoodBeam15
+    3300554: WoodBeam2
+    3300556: WoodBeam3
+    3300558: WoodBeam4
+    3300560: WoodBeam5
+    3300562: WoodBeam6
+    3300564: WoodBeam7
+    3300566: WoodBeam8
+    3300568: WoodBeam9
+    3300570: WoodSideStrut
+    3300572: WoodSideStrut 1
+    3300574: WoodSideStrut 10
+    3300576: WoodSideStrut 11
+    3300578: WoodSideStrut 12
+    3300580: WoodSideStrut 13
+    3300582: WoodSideStrut 14
+    3300584: WoodSideStrut 15
+    3300586: WoodSideStrut 16
+    3300588: WoodSideStrut 17
+    3300590: WoodSideStrut 18
+    3300592: WoodSideStrut 19
+    3300594: WoodSideStrut 2
+    3300596: WoodSideStrut 20
+    3300598: WoodSideStrut 21
+    3300600: WoodSideStrut 22
+    3300602: WoodSideStrut 23
+    3300604: WoodSideStrut 3
+    3300606: WoodSideStrut 4
+    3300608: WoodSideStrut 5
+    3300610: WoodSideStrut 6
+    3300612: WoodSideStrut 7
+    3300614: WoodSideStrut 8
+    3300616: WoodSideStrut 9
+    3300618: WoodSideStrut1
+    3300620: WoodSideStrut1 1
+    3300622: WoodSideStrut1 10
+    3300624: WoodSideStrut1 11
+    3300626: WoodSideStrut1 12
+    3300628: WoodSideStrut1 13
+    3300630: WoodSideStrut1 14
+    3300632: WoodSideStrut1 15
+    3300634: WoodSideStrut1 16
+    3300636: WoodSideStrut1 17
+    3300638: WoodSideStrut1 18
+    3300640: WoodSideStrut1 19
+    3300642: WoodSideStrut1 2
+    3300644: WoodSideStrut1 20
+    3300646: WoodSideStrut1 21
+    3300648: WoodSideStrut1 22
+    3300650: WoodSideStrut1 23
+    3300652: WoodSideStrut1 3
+    3300654: WoodSideStrut1 4
+    3300656: WoodSideStrut1 5
+    3300658: WoodSideStrut1 6
+    3300660: WoodSideStrut1 7
+    3300662: WoodSideStrut1 8
+    3300664: WoodSideStrut1 9
+    3300666: WoodSideStrut2
+    3300668: WoodSideStrut3
+    3300670: WoodSideStrut4
+    3300672: WoodStrut1
+    3300674: WoodStrut10
+    3300676: WoodStrut11
+    3300678: WoodStrut12
+    3300680: WoodStrut13
+    3300682: WoodStrut14
+    3300684: WoodStrut15
+    3300686: WoodStrut16
+    3300688: WoodStrut17
+    3300690: WoodStrut18
+    3300692: WoodStrut19
+    3300694: WoodStrut2
+    3300696: WoodStrut20
+    3300698: WoodStrut21
+    3300700: WoodStrut22
+    3300702: WoodStrut23
+    3300704: WoodStrut24
+    3300706: WoodStrut25
+    3300708: WoodStrut26
+    3300710: WoodStrut27
+    3300712: WoodStrut28
+    3300714: WoodStrut29
+    3300716: WoodStrut3
+    3300718: WoodStrut30
+    3300720: WoodStrut31
+    3300722: WoodStrut32
+    3300724: WoodStrut33
+    3300726: WoodStrut34
+    3300728: WoodStrut35
+    3300730: WoodStrut36
+    3300732: WoodStrut4
+    3300734: WoodStrut5
+    3300736: WoodStrut6
+    3300738: WoodStrut7
+    3300740: WoodStrut8
+    3300742: WoodStrut9
+    4300000: CryptPillar36
+    4300002: CryptPillar35
+    4300004: CryptPillar34
+    4300006: CryptPillar33
+    4300008: CryptPillar32
+    4300010: CryptPillar31
+    4300012: CryptPillar30
+    4300014: CryptPillar29
+    4300016: CryptPillar28
+    4300018: CryptPillar27
+    4300020: CryptPillar26
+    4300022: CryptPillar25
+    4300024: CryptPillar24
+    4300026: CryptPillar23
+    4300028: CryptPillar22
+    4300030: CryptPillar21
+    4300032: CryptPillar20
+    4300034: CryptPillar19
+    4300036: CryptPillar18
+    4300038: CryptPillar17
+    4300040: CryptPillar16
+    4300042: CryptPillar15
+    4300044: CryptPillar14
+    4300046: CryptPillar13
+    4300048: CryptPillar12
+    4300050: CryptPillar11
+    4300052: CryptPillar10
+    4300054: CryptPillar9
+    4300056: CryptPillar8
+    4300058: CryptPillar7
+    4300060: CryptPillar6
+    4300062: CryptPillar5
+    4300064: CryptPillar4
+    4300066: CryptPillar3
+    4300068: CryptPillar2
+    4300070: CryptPillar1
+    4300072: WoodBeam
+    4300074: WoodBeam1
+    4300076: WoodBeam2
+    4300078: WoodBeam3
+    4300080: WoodBeam4
+    4300082: WoodBeam5
+    4300084: WoodBeam6
+    4300086: WoodBeam7
+    4300088: WoodBeam8
+    4300090: WoodBeam9
+    4300092: WoodBeam10
+    4300094: WoodBeam11
+    4300096: WoodBeam12
+    4300098: WoodStrut1
+    4300100: WoodStrut2
+    4300102: WoodStrut3
+    4300104: WoodStrut4
+    4300106: WoodStrut5
+    4300108: WoodStrut6
+    4300110: WoodStrut7
+    4300112: WoodStrut10
+    4300114: WoodStrut11
+    4300116: WoodStrut12
+    4300118: WoodStrut13
+    4300120: WoodStrut14
+    4300122: WoodStrut15
+    4300124: WoodStrut16
+    4300126: WoodStrut17
+    4300128: WoodStrut18
+    4300130: WoodStrut19
+    4300132: WoodStrut20
+    4300134: WoodStrut21
+    4300136: WoodStrut22
+    4300138: WoodStrut23
+    4300140: WoodStrut24
+    4300142: WoodStrut25
+    4300144: WoodStrut26
+    4300146: WoodStrut27
+    4300148: WoodStrut28
+    4300150: WoodStrut29
+    4300152: WoodStrut30
+    4300154: WoodStrut31
+    4300156: WoodStrut33
+    4300158: WoodSideStrut1
+    4300160: WoodSideStrut
+    4300162: WoodSideStrut1
+    4300164: WoodSideStrut
+    4300166: WoodSideStrut1
+    4300168: WoodSideStrut
+    4300170: WoodSideStrut1
+    4300172: WoodSideStrut
+    4300174: WoodSideStrut1
+    4300176: WoodSideStrut
+    4300178: WoodSideStrut1
+    4300180: WoodSideStrut
+    4300182: WoodSideStrut1
+    4300184: WoodSideStrut
+    4300186: WoodSideStrut1
+    4300188: WoodSideStrut
+    4300190: WoodSideStrut1
+    4300192: WoodSideStrut
+    4300194: WoodSideStrut1
+    4300196: WoodSideStrut
+    4300198: WoodSideStrut1
+    4300200: WoodSideStrut
+    4300202: WoodSideStrut1
+    4300204: WoodSideStrut
+    4300206: WoodSideStrut1
+    4300208: WoodSideStrut
+    4300210: WoodSideStrut1
+    4300212: WoodSideStrut
+    4300214: WoodSideStrut1
+    4300216: WoodSideStrut
+    4300218: WoodSideStrut1
+    4300220: WoodSideStrut
+    4300222: WoodSideStrut1
+    4300224: WoodSideStrut
+    4300226: WoodSideStrut1
+    4300228: WoodSideStrut
+    4300230: WoodSideStrut1
+    4300232: WoodSideStrut
+    4300234: WoodSideStrut1
+    4300236: WoodSideStrut
+    4300238: WoodSideStrut1
+    4300240: WoodSideStrut
+    4300242: WoodSideStrut1
+    4300244: WoodSideStrut
+    4300246: WoodSideStrut1
+    4300248: WoodSideStrut
+    4300250: WoodSideStrut1
+    4300252: WoodSideStrut
+    4300254: polySurface83
+    4300256: polySurface84
+    4300258: polySurface85
+    4300260: polySurface54
+    4300262: polySurface55
+    4300264: polySurface56
+    4300266: CurvedWall3
+    4300268: CurvedWall4
+    4300270: CurvedWall5
+    4300272: polySurface75
+    4300274: polySurface76
+    4300276: polySurface77
+    4300278: polySurface78
+    4300280: polySurface79
+    4300282: polySurface80
+    4300284: polySurface66
+    4300286: CurvedWall8
+    4300288: polySurface48
+    4300290: polySurface49
+    4300292: polySurface50
+    4300294: polySurface51
+    4300296: polySurface52
+    4300298: polySurface53
+    4300300: CurvedWall10
+    4300302: CurvedWall12
+    4300304: CurvedWall13
+    4300306: CurvedWall14
+    4300308: polySurface37
+    4300310: polySurface38
+    4300312: polySurface39
+    4300314: polySurface40
+    4300316: polySurface42
+    4300318: polySurface43
+    4300320: polySurface44
+    4300322: polySurface72
+    4300324: polySurface73
+    4300326: polySurface70
+    4300328: polySurface71
+    4300330: polySurface70
+    4300332: polySurface71
+    4300334: CurvedWall16
+    4300336: CombinedFrontWall
+    4300338: CombinedBackWall1
+    4300340: CombinedRightWall
+    4300342: polySurface9
+    4300344: polySurface10
+    4300346: polySurface12
+    4300348: polySurface13
+    4300350: polySurface14
+    4300352: CryptFloor
+    4300354: polySurface86
+    4300356: polySurface87
+    4300358: polySurface88
+    4300360: polySurface89
+    4300362: polySurface90
+    4300364: polySurface91
+    4300366: polySurface92
+    4300368: polySurface93
+    4300370: polySurface94
+    4300372: polySurface95
+    4300374: WoodSideStrut2
+    4300376: WoodStrut34
+    4300378: WoodSideStrut3
+    4300380: WoodSideStrut4
+    4300382: WoodBeam15
+    4300384: WoodStrut35
+    4300386: WoodStrut36
+    4300388: polySurface74
+    4300390: polySurface41
+    4300392: polySurface81
+    4300394: polySurface82
+    4300396: PreMonsterWall1
+    4300398: PreMonsterWall2
+    4300400: WoodStrut8
+    4300402: WoodBeam13
+    4300404: WoodStrut32
+    4300406: WoodBeam14
+    4300408: WoodStrut9
+    4300410: Wick
+    4300412: CandleWax
+    4300414: CandleLeg1
+    4300416: CandleLeg2
+    4300418: CandleLeg3
+    4300420: CandleTray
+    4300422: CandleStand
+    4300424: Wick
+    4300426: CandleWax
+    4300428: CandleLeg1
+    4300430: CandleLeg2
+    4300432: CandleLeg3
+    4300434: CandleTray
+    4300436: CandleStand
+    4300438: Wick
+    4300440: CandleWax
+    4300442: CandleLeg1
+    4300444: CandleLeg2
+    4300446: CandleLeg3
+    4300448: CandleTray
+    4300450: CandleStand
+    4300452: Wick
+    4300454: CandleWax
+    4300456: CandleLeg1
+    4300458: CandleLeg2
+    4300460: CandleLeg3
+    4300462: CandleTray
+    4300464: CandleStand
+    4300466: Wick
+    4300468: CandleWax
+    4300470: CandleLeg1
+    4300472: CandleLeg2
+    4300474: CandleLeg3
+    4300476: CandleTray
+    4300478: CandleStand
+    4300480: Wick
+    4300482: CandleWax
+    4300484: CandleLeg1
+    4300486: CandleLeg2
+    4300488: CandleLeg3
+    4300490: CandleTray
+    4300492: CandleStand
+    4300494: Wick
+    4300496: CandleWax
+    4300498: CandleLeg1
+    4300500: CandleLeg2
+    4300502: CandleLeg3
+    4300504: CandleTray
+    4300506: CandleStand
+    4300508: Wick
+    4300510: CandleWax
+    4300512: CandleLeg1
+    4300514: CandleLeg2
+    4300516: CandleLeg3
+    4300518: CandleTray
+    4300520: CandleStand
+    4300522: Wick
+    4300524: CandleWax
+    4300526: CandleLeg1
+    4300528: CandleLeg2
+    4300530: CandleLeg3
+    4300532: CandleTray
+    4300534: CandleStand
+    4300536: Wick
+    4300538: CandleWax
+    4300540: CandleLeg1
+    4300542: CandleLeg2
+    4300544: CandleLeg3
+    4300546: CandleTray
+    4300548: CandleStand
+    4300550: Wick
+    4300552: CandleWax
+    4300554: CandleLeg1
+    4300556: CandleLeg2
+    4300558: CandleLeg3
+    4300560: CandleTray
+    4300562: CandleStand
+    4300564: Wick
+    4300566: CandleWax
+    4300568: CandleLeg1
+    4300570: CandleLeg2
+    4300572: CandleLeg3
+    4300574: CandleTray
+    4300576: CandleStand
+    4300578: Wick
+    4300580: CandleWax
+    4300582: CandleLeg1
+    4300584: CandleLeg2
+    4300586: CandleLeg3
+    4300588: CandleTray
+    4300590: CandleStand
+    4300592: Wick
+    4300594: CandleWax
+    4300596: CandleLeg1
+    4300598: CandleLeg2
+    4300600: CandleLeg3
+    4300602: CandleTray
+    4300604: CandleStand
+    4300606: DeadBodyCloth
+    4300608: DeadBodyCloth1
+    4300610: DeadBodyCloth2
+    4300612: DeadBodyCloth3
+    4300614: DeadBodyCloth4
+    4300616: DeadBodyCloth5
+    4300618: DeadBodyCloth6
+    4300620: DeadBodyCloth7
+    4300622: DeadBodyCloth8
+    4300624: DeadBodyCloth9
+    4300626: DeadBodyCloth10
+    4300628: DeadBodyCloth11
+    4300630: DeadBodyCloth12
+    4300632: DeadBodyCloth13
+    4300634: DeadBodyClothBefore
+    4300636: DeadBodyClothAfter
+    4300638: Plynth4
+    4300640: Plynth5
+    4300642: Plynth3
+    4300644: Plynth2
+    4300646: Plynth1
+    4300648: Candle1
+    4300650: Wick1
+    4300652: Wick1
+    4300654: Candle6
+    4300656: Wick1
+    4300658: Candle1
+    4300660: Wick1
+    4300662: Candle5
+    4300664: Candle1
+    4300666: Wick1
+    4300668: Candle1
+    4300670: Wick1
+    4300672: Wick1
+    4300674: Candle5
+    4300676: Candle1
+    4300678: Wick1
+    4300680: Candle1
+    4300682: Wick1
+    4300684: Wick1
+    4300686: Candle6
+    4300688: Wick1
+    4300690: Candle1
+    4300692: Wick1
+    4300694: Candle5
+    4300696: Candle1
+    4300698: Wick1
+    4300700: Candle1
+    4300702: Wick1
+    4300704: Wick1
+    4300706: Candle5
+    4300708: Candle1
+    4300710: Wick1
+    4300712: Candle1
+    4300714: Wick1
+    4300716: Wick1
+    4300718: Candle6
+    4300720: Wick1
+    4300722: Candle1
+    4300724: Wick1
+    4300726: Candle5
+    4300728: Candle1
+    4300730: Wick1
+    4300732: Candle1
+    4300734: Wick1
+    4300736: Wick1
+    4300738: Candle5
+    4300740: Candle1
+    4300742: Wick1
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

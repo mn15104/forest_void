@@ -37,6 +37,7 @@ public class EventManager : MonoBehaviour {
 
     public TriggerEvent BridgeCrossedEvent = new TriggerEvent();
     public TriggerEvent ChapelBackDoorHandEvent = new TriggerEvent();
+    public TriggerEvent ToolShedDoorHandEvent = new TriggerEvent();
     public TriggerEvent CaravanTriggerEvent = new TriggerEvent();
     public TriggerEvent GeneratorZoneTriggerEvent = new TriggerEvent();
     public TriggerEvent StructureZoneTriggerEvent = new TriggerEvent();
@@ -133,14 +134,12 @@ public class EventManager : MonoBehaviour {
     void SetStructureLocation(GameObject gameObject)
     {
         currentLocation = gameObject.GetComponent<StructureZone>().location;
-        Debug.Log("EventManager:" + currentLocation);
         NotifyLocation.Notify(currentLocation);
     } 
 
     void SetForestLocation(GameObject gameObject)
     {
         currentLocation = Location.Forest;
-        Debug.Log("EventManager:" + currentLocation);
         NotifyLocation.Notify(currentLocation);
     }
 
