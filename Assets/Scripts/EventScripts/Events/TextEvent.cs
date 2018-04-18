@@ -7,6 +7,8 @@ public class TextEvent : MonoBehaviour {
     protected TextController textController;
     protected EventManager eventManager;
     protected TriggerEvent trigger;
+    Camera cam;
+    GameObject player;
 
     // Use this for initialization
     public virtual void Awake()
@@ -14,6 +16,8 @@ public class TextEvent : MonoBehaviour {
         textController = GetComponent<TextController>();
         eventManager = FindObjectOfType<EventManager>();
         trigger = eventManager.TextTriggerEvent;
+        cam = eventManager.player.GetComponentInChildren<Camera>();
+        player = eventManager.player;
     }
 
     public virtual void OnEnable()
@@ -42,5 +46,12 @@ public class TextEvent : MonoBehaviour {
     {
         trigger.TriggerExit(other.gameObject);
 
+    }
+    private void Update()
+    {
+        Vector3 v = player.transform.position - transform.position;
+        v.x = v.z = 0.0f;
+        transform.LookAt(player.transform.position - v );
+        transform.Rotate(0, 180, 0);
     }
 }
