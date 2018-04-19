@@ -134,10 +134,15 @@ public partial class MonsterAI : MonoBehaviour
         m_MonsterStateMachine.update_state();
     }
 
-    IEnumerator FadeInMaterial(Material mat, float fadeSpeed)
+    IEnumerator FadeInMaterial(Material mat, float fadeSpeed, bool isSkinned)
     {
         Color col = mat.color;
         float alpha = col.a;
+        if (isSkinned)
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        else
+            GetComponentInChildren<MeshRenderer>().enabled = true;
+
         while (alpha < 0.6f)
         {
             alpha += fadeSpeed * Time.deltaTime;
@@ -146,7 +151,7 @@ public partial class MonsterAI : MonoBehaviour
         }
     }
 
-    IEnumerator FadeOutMaterial(Material mat, float fadeSpeed)
+    IEnumerator FadeOutMaterial(Material mat, float fadeSpeed, bool isSkinned)
     {
         Color col = mat.color;
         float alpha = col.a;
@@ -156,6 +161,13 @@ public partial class MonsterAI : MonoBehaviour
             mat.color = new Color(col.r, col.g, col.b, alpha);
             yield return null;
         }
+        if(isSkinned)
+         GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+        else
+        {
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+        }
+
     }
 
     void ChangeRenderMode(Material mat, BlendMode blendMode)
@@ -262,9 +274,10 @@ public partial class MonsterAI : MonoBehaviour
     }
     /////////////// STAGE 1 ///////////////
 
-    public float Stage1_TeleportInterval = 2f;
+    public float Stage1_TeleportInterval = 3f;
     public float Stage1_AppearInterval = 2f;
     public float Stage1_AppearDistance = 17f;
+    public float Stage1_FadeOutTime = 0.1f;
     private int  Stage1_appearCount = 0;
     public const int Stage1_maxAppears = 10;
     public IEnumerator UpdateStage1()
@@ -275,9 +288,9 @@ public partial class MonsterAI : MonoBehaviour
         foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
             ChangeRenderMode(mat, BlendMode.Fade);
         foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
-            StartCoroutine(FadeOutMaterial(mat, 2f));
+            StartCoroutine(FadeOutMaterial(mat, 2f, true));
         foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
-            StartCoroutine(FadeOutMaterial(mat, 2f));
+            StartCoroutine(FadeOutMaterial(mat, 2f, false));
         yield return new WaitForSeconds(1f);
 
         while (Stage1_appearCount < Stage1_maxAppears)
@@ -285,25 +298,26 @@ public partial class MonsterAI : MonoBehaviour
             // Teleport and fade in
             TeleportVoidInfrontHuman_NoCollider(Stage1_AppearDistance);
             foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
-                StartCoroutine(FadeInMaterial(mat, .5f));
+                StartCoroutine(FadeInMaterial(mat, .5f, true));
             foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
-                StartCoroutine(FadeInMaterial(mat, .5f));
-
+                StartCoroutine(FadeInMaterial(mat, .5f, false));
             yield return new WaitForSeconds(Mathf.Max(Stage1_AppearInterval, 2f));
 
             // Fade out
             foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
-                StartCoroutine(FadeOutMaterial(mat, .5f));
+                StartCoroutine(FadeOutMaterial(mat, .5f, true));
             foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
-                StartCoroutine(FadeOutMaterial(mat, .5f));
-
+                StartCoroutine(FadeOutMaterial(mat, .5f, false));
+            yield return new WaitForSeconds(Stage1_FadeOutTime);
+            
             yield return new WaitForSeconds(Stage1_TeleportInterval);
-
             yield return null;
             Stage1_appearCount += 1;
         }
 
         /////// Need to reset render mode at some point 
+        GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        GetComponentInChildren<MeshRenderer>().enabled = true;
         foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
             ChangeRenderMode(mat, BlendMode.Opaque);
         foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)

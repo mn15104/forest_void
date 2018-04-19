@@ -98,6 +98,7 @@ public class VoidSystem : MonoBehaviour
 
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.STAGE_COMPLETE)
         {
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.DISABLED);
             m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.Stage2);
             m_MonsterStage = EventManager.Stage.Stage2;
@@ -125,6 +126,7 @@ public class VoidSystem : MonoBehaviour
 
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.STAGE_COMPLETE)
         {
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.DISABLED);
             m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.Stage3);
             m_MonsterStage = EventManager.Stage.Stage3;
