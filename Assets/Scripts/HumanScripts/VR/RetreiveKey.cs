@@ -9,7 +9,8 @@ public class RetreiveKey : OVRGrabber
     private GameObject key;
     private EventManager eventManager;
     public bool inGeneratorZone = false;
-  
+    protected NotifyEvent<bool> notify;
+
 
 
     protected override void Awake()
@@ -17,6 +18,7 @@ public class RetreiveKey : OVRGrabber
         base.Awake();
         human = transform.root.gameObject;
         eventManager = FindObjectOfType<EventManager>();
+        notify = eventManager.NotifyYellowKeyPickup;
     }
 
     private void OnEnable()
@@ -130,8 +132,10 @@ public class RetreiveKey : OVRGrabber
             m_grabbedObj.gameObject.SetActive(false);
             GrabbableRelease(Vector3.zero, Vector3.zero);
             human.GetComponent<Inventory>().addKeyToInventory(m_grabbedObj.gameObject);
-            
-
+            if (m_grabbedObj.gameObject.name == "md_KeySetYellowV1")
+            {
+                notify.Notify(true);
+            }
         }
       
     }
@@ -182,9 +186,11 @@ public class RetreiveKey : OVRGrabber
             m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
             //INSERTED
-            if(!inGeneratorZone)
-              StartCoroutine(AddKeyToInventory(m_grabbedObj));
+            if (!inGeneratorZone)
+            {
+                StartCoroutine(AddKeyToInventory(m_grabbedObj));
 
+            }
             m_lastPos = transform.position;
             m_lastRot = transform.rotation;
 

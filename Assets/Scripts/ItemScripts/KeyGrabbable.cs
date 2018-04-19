@@ -10,7 +10,6 @@ public class KeyGrabbable : OVRGrabbable {
     public GameObject human;
     private bool hasBeenInserted = false;
     public GameObject light;
-    
 
     protected override void Start()
     {
