@@ -7374,8 +7374,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1377970876835744}
   m_LocalRotation: {x: -0, y: -0.84583277, z: -0, w: -0.5334482}
-  m_LocalPosition: {x: 16.66, y: 1.81, z: 49.39}
-  m_LocalScale: {x: 0.76923144, y: 0.7692308, z: 0.76923144}
+  m_LocalPosition: {x: 13.132, y: 1.484, z: 49.64}
+  m_LocalScale: {x: 0.7038451, y: 0.7692474, z: 0.6973927}
   m_Children:
   - {fileID: 4086757277834904}
   - {fileID: 4468448822843644}
@@ -8414,12 +8414,13 @@ MonoBehaviour:
   lightDetectionPercentage: 0.2
   Stage1_TeleportInterval: 5
   Stage1_AppearInterval: 2
-  Stage1_AppearDistance: 12.5
-  Stage1_maxAppears: 10
+  Stage1_AppearDistance: 2
+  Stage1_FadeOutTime: 2
   stage2_playerTorchOn1: 0
   stage2_playerTorchOff: 0
   stage2_playerTorchOn2: 0
   stage2_playerTorchOff2: 0
+  stage2_coroutine0_finished: 0
   stage2_coroutine1_finished: 0
   stage2_coroutine2_finished: 0
   Stage3_Appeared: 0

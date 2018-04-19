@@ -311,6 +311,16 @@ public class MonsterAudioController : MonoBehaviour
                     MonsterSFX3AudioSrc.Play();
                 }
                 break;
+            case MonsterState.ATTACK:
+                StopAllCoroutines();
+                if (MonsterSFX2AudioSrc.clip != m_Chase || !MonsterSFX2AudioSrc.isPlaying)
+                {
+                    MonsterSFX2AudioSrc.clip = m_Chase;
+                    MonsterSFX2AudioSrc.loop = false;
+                    MonsterSFX2AudioSrc.volume = 1f;
+                    MonsterSFX2AudioSrc.Play();
+                }
+                break;
             case MonsterState.DISABLED:
             case MonsterState.STAGE_COMPLETE:
             case MonsterState.GAMEOVER:
