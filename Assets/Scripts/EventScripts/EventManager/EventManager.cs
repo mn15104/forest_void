@@ -82,6 +82,7 @@ public class EventManager : MonoBehaviour {
         if (StoryMode)
         {
             player.transform.position = playerSpawnPoint.transform.position;
+           // player.transform.rotation = playerSpawnPoint.transform.rotation;
         }
 
     }

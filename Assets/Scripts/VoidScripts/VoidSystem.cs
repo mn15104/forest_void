@@ -75,7 +75,7 @@ public class VoidSystem : MonoBehaviour
             && m_gameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
-            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
+            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.DISABLED);
             m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.Stage1);
             m_MonsterStage = EventManager.Stage.Stage1;
             NotifyStage.Notify(m_MonsterStage);

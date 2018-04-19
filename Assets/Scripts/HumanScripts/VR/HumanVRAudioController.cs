@@ -181,6 +181,7 @@ public class HumanVRAudioController : MonoBehaviour {
         if (timeSpentRunning > m_introTimeForBreathing 
            && !m_Breathing.isPlaying)
         {
+            Debug.Log("Breathing is playing!");
             m_Breathing.enabled = true;
             m_Breathing.loop = true;
             m_Breathing.Play();

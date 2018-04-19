@@ -120,7 +120,7 @@ public class TextController : MonoBehaviour {
         while (Time.time - timeToStart < 1f)
         {
             text.color = Color.Lerp(text.color, fadeOutColor, (Time.time - timeToStart));
-            Debug.Log(Time.time - timeToStart);
+            //Debug.Log(Time.time - timeToStart);
             yield return null;
         }
         Debug.Log("Back to transparent");

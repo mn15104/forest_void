@@ -140,6 +140,8 @@ public partial class MonsterAI : MonoBehaviour
         {
             alpha += fadeSpeed * Time.deltaTime;
             mat.color = new Color(col.r, col.g, col.b, alpha);
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+            GetComponentInChildren<MeshRenderer>().enabled = true;
             yield return null;
         }
     }
@@ -152,6 +154,8 @@ public partial class MonsterAI : MonoBehaviour
         {
             alpha -= fadeSpeed * Time.deltaTime;
             mat.color = new Color(col.r, col.g, col.b, alpha);
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GetComponentInChildren<MeshRenderer>().enabled = false;
             yield return null;
         }
     }
@@ -288,7 +292,7 @@ public partial class MonsterAI : MonoBehaviour
             foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
                 StartCoroutine(FadeInMaterial(mat, .5f));
 
-            yield return new WaitForSeconds(Mathf.Max(Stage1_AppearInterval, 2f));
+            yield return new WaitForSeconds(Mathf.Max(Stage1_AppearInterval, 1f));
 
             // Fade out
             foreach (Material mat in GetComponentInChildren<SkinnedMeshRenderer>().materials)
@@ -314,16 +318,22 @@ public partial class MonsterAI : MonoBehaviour
     /////////////// STAGE 2 ///////////////
 
     public bool stage2_playerTorchOn1  = false;
+    public bool firstTime = false;
     public bool stage2_playerTorchOff  = false;
     public bool stage2_playerTorchOn2  = false;
     public bool stage2_playerTorchOff2  = false;
     public bool stage2_coroutine1_finished  = false;
     public bool stage2_coroutine2_finished = false;
+    public float startTime = 5f;
     public void UpdateStage2()
     {
-       
+        //if (!firstTime) {
+        //    startTime = Time.time;
+        //    firstTime = true;
+        //}
         if (!stage2_playerTorchOn1)
         {
+            Debug.Log("first if");
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 player.GetComponentInChildren<Flashlight>().Switch(gameObject);
@@ -340,11 +350,13 @@ public partial class MonsterAI : MonoBehaviour
                 RenderSettings.fogMode = FogMode.Exponential;
                 RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                 stage2_playerTorchOff = true;
-                StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
+                StartCoroutine(Stage2_ToggleCoroutine1(2f));
             }
         }
-        else if (!stage2_playerTorchOn2 && stage2_coroutine1_finished)
+        else if ((!stage2_playerTorchOn2 && stage2_coroutine1_finished)  )
         {
+            Debug.Log("third if");
+            player.GetComponentInChildren<Flashlight>().Switch(gameObject);
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 player.GetComponentInChildren<Flashlight>().Switch(gameObject);
@@ -357,8 +369,10 @@ public partial class MonsterAI : MonoBehaviour
                 StartCoroutine(Stage2_ToggleCoroutine2(5f));
             }
         }
-        else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2 && stage2_coroutine2_finished)
+        else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2 && stage2_coroutine2_finished )
         {
+            Debug.Log("fourth if");
+
             player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
