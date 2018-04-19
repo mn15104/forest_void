@@ -42,14 +42,7 @@ public class Flashlight : MonoBehaviour {
     }
     private void Update()
     {
-        if (disableFlashlight && m_FlashlightActive)
-        {
-            m_FlashlightAudio.clip = m_FlashlightOff;
-            m_FlashlightAudio.Play();
-            m_Light.intensity = 0;
-            m_FlashlightActive = false;
-            eventManager.NotifyTorchPressed.Notify(false);
-        }
+
     }
 
     IEnumerator StartRandomFlicker()
@@ -110,7 +103,6 @@ public class Flashlight : MonoBehaviour {
 
     public void Switch(GameObject t)
     {
-       
         if (m_FlashlightActive && (GetComponentInParent<HumanController>() || true))
         {
             m_FlashlightAudio.clip = m_FlashlightOff;
@@ -141,11 +133,6 @@ public class Flashlight : MonoBehaviour {
     public void SetDisableFlashlight(bool off)
     {
         disableFlashlight = off;
-        if (off)
-        {
-            m_FlashlightActive = false;
-            m_Light.intensity = 0;
-        }
     }
     public bool GetDisableFlashlight()
     {
@@ -169,5 +156,24 @@ public class Flashlight : MonoBehaviour {
     public bool GetDisableFlicker()
     {
         return disableFlicker;
+    }
+    public void ForceSwitchFlashlight(bool on)
+    {
+        if (!on)
+        {
+            m_FlashlightAudio.clip = m_FlashlightOff;
+            m_FlashlightAudio.Play();
+            m_Light.intensity = 0;
+            m_FlashlightActive = false;
+            eventManager.NotifyTorchPressed.Notify(false);
+        }
+        else
+        {
+            m_FlashlightAudio.clip = m_FlashlightOn;
+            m_FlashlightAudio.Play();
+            m_Light.intensity = 4;
+            m_FlashlightActive = true;
+            eventManager.NotifyTorchPressed.Notify(true);
+        }
     }
 }

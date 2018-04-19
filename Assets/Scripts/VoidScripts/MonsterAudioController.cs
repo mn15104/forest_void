@@ -220,7 +220,7 @@ public class MonsterAudioController : MonoBehaviour
                     }
                     else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage2)
                     {
-                        if(m_Monster.stage2_playerTorchOff && !m_Monster.stage2_coroutine1_finished)
+                        if(m_Monster.stage2_playerTorchOff && m_Monster.stage2_coroutine0_finished)
                         {
                             if (MonsterSFX2AudioSrc.clip != m_Jumpscare_Stage2)
                             {

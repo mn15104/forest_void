@@ -127,6 +127,8 @@ public partial class MonsterAI : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(currentStage);
+        Debug.Log(currentState);
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                     + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         m_MonsterStateMachine.update_state();
@@ -226,8 +228,7 @@ public partial class MonsterAI : MonoBehaviour
         if (stage != currentStage)
         {
             StopAllCoroutines();
-            player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
-            player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
+           
             if (currentState == MonsterState.APPEAR)
             {
                 if (currentStage == EventManager.Stage.Stage1)
@@ -265,7 +266,7 @@ public partial class MonsterAI : MonoBehaviour
     public float Stage1_AppearInterval = 2f;
     public float Stage1_AppearDistance = 17f;
     private int  Stage1_appearCount = 0;
-    public int Stage1_maxAppears = 10;
+    public const int Stage1_maxAppears = 10;
     public IEnumerator UpdateStage1()
     {
         //Set both mesh renders to fade and set alpha as zero before looping
@@ -318,59 +319,59 @@ public partial class MonsterAI : MonoBehaviour
     public bool stage2_playerTorchOff  = false;
     public bool stage2_playerTorchOn2  = false;
     public bool stage2_playerTorchOff2  = false;
+    public bool stage2_coroutine0_finished = false;
     public bool stage2_coroutine1_finished  = false;
     public bool stage2_coroutine2_finished = false;
     public void UpdateStage2()
     {
-       
+        Flashlight flashlight = player.GetComponentInChildren<Flashlight>();
         if (!stage2_playerTorchOn1)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
-                player.GetComponentInChildren<Flashlight>().Switch(gameObject);
+                flashlight.SetDisableFlashlight(true);
+                flashlight.ForceSwitchFlashlight(false);
                 RenderSettings.fogMode = FogMode.ExponentialSquared;
                 RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
                 stage2_playerTorchOn1 = true;
+                StartCoroutine(Stage2_ToggleCoroutine0(1.5f));
             }
         }
-        else if (!stage2_playerTorchOff)
+        else if (!stage2_playerTorchOff && stage2_coroutine0_finished)
         {
-            if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
-            {
-                TeleportVoidInfrontHuman(3f);
-                RenderSettings.fogMode = FogMode.Exponential;
-                RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
-                stage2_playerTorchOff = true;
-                StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
-            }
+            TeleportVoidInfrontHuman(3f);
+            flashlight.ForceSwitchFlashlight(true);
+            RenderSettings.fogMode = FogMode.Exponential;
+            RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
+            stage2_playerTorchOff = true;
+            StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
         }
         else if (!stage2_playerTorchOn2 && stage2_coroutine1_finished)
         {
-            if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
-            {
-                player.GetComponentInChildren<Flashlight>().Switch(gameObject);
-                player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(true);
-                GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-                GetComponentInChildren<MeshRenderer>().enabled = false;
-                RenderSettings.fogMode = FogMode.ExponentialSquared;
-                RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
-                stage2_playerTorchOn2 = true;
-                StartCoroutine(Stage2_ToggleCoroutine2(5f));
-            }
+            flashlight.ForceSwitchFlashlight(false);
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+            RenderSettings.fogMode = FogMode.ExponentialSquared;
+            RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
+            stage2_playerTorchOn2 = true;
+            StartCoroutine(Stage2_ToggleCoroutine2(5f));
         }
         else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2 && stage2_coroutine2_finished)
         {
+            m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
+            flashlight.ForceSwitchFlashlight(true);
             player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
-            if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
-            {
-                RenderSettings.fogMode = FogMode.Exponential;
-                RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
-                m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
-            }
             player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
+            RenderSettings.fogMode = FogMode.Exponential;
+            RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
+            stage2_playerTorchOff2 = true;
         }
     }
-
+    IEnumerator Stage2_ToggleCoroutine0(float time)
+    {
+        yield return new WaitForSeconds(time);
+        stage2_coroutine0_finished = true;
+    }
     IEnumerator Stage2_ToggleCoroutine1(float time)
     {
         yield return new WaitForSeconds(time);
@@ -640,17 +641,18 @@ public partial class MonsterAI : MonoBehaviour
     void ResetStageVariables()
     {
         GetComponentInChildren<MonsterAudioController>().Reset();
-        Stage1_maxAppears = 10;
+        Stage1_appearCount = 0;
         stage2_playerTorchOn1 = false;
         stage2_playerTorchOff = false;
         stage2_playerTorchOn2 = false;
         stage2_playerTorchOff2 = false;
+        stage2_coroutine0_finished = false;
         stage2_coroutine1_finished = false;
         stage2_coroutine2_finished = false;
         Stage3_Appeared = false;
         player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
         player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
         timer_Stage3Active = 0f;
-    }
+}
 
 }
