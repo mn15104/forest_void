@@ -12,7 +12,7 @@ public class VoidSystem : MonoBehaviour
     private EventManager m_eventManager;
     private bool monsterAppeared = false;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
-    private float[] m_DelayTimeToActive = { 50f, 200f, 420f, 480f };
+    private float[] m_DelayTimeToActive = { 100f, 300f, 420f, 480f };
     private float m_gameTimer = 0f;
     private EventManager.Stage m_MonsterStage;
     public NotifyEvent<EventManager.Stage> NotifyStage = new NotifyEvent<EventManager.Stage>();
@@ -64,7 +64,6 @@ public class VoidSystem : MonoBehaviour
             {
                 if(m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.HUMAN_IN_STRUCT)
                     m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HUMAN_IN_STRUCT);
-
             }
         }
     }
@@ -75,8 +74,8 @@ public class VoidSystem : MonoBehaviour
             && m_gameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
-            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.DISABLED);
             m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.Stage1);
+            m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
             m_MonsterStage = EventManager.Stage.Stage1;
             NotifyStage.Notify(m_MonsterStage);
         }
@@ -98,6 +97,7 @@ public class VoidSystem : MonoBehaviour
 
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.STAGE_COMPLETE)
         {
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.DISABLED);
             m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.Stage2);
             m_MonsterStage = EventManager.Stage.Stage2;
@@ -125,6 +125,7 @@ public class VoidSystem : MonoBehaviour
 
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.STAGE_COMPLETE)
         {
+            m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.DISABLED);
             m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.Stage3);
             m_MonsterStage = EventManager.Stage.Stage3;

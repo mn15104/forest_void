@@ -655,7 +655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1390058952658892
 GameObject:
   m_ObjectHideFlags: 1
@@ -2154,7 +2154,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143188469967458}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3511,7 +3511,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1382307280244786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7494d34898b669e418e463167e55ace8, type: 3}
+  m_Script: {fileID: 11500000, guid: 86a0ef8f123cbae45a6adc967205f38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_RunCycleLegOffset: 0.2
@@ -3572,7 +3572,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1484944895108866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57b202317db82a4ab17b2894974d6cd, type: 3}
+  m_Script: {fileID: 11500000, guid: a9f33b36bf58a2c48819bd126c4233a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HumanMotion: {fileID: 82625212954730384}
@@ -3607,7 +3607,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254094480216546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1000dac79727234ea21056bdd234ee0, type: 3}
+  m_Script: {fileID: 11500000, guid: 690bf25c7bec4594eab48c34a57b63e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_FlashlightActive: 0

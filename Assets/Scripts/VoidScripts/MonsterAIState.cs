@@ -17,10 +17,6 @@ public partial class MonsterAI
             if (m_MonsterAI.player.GetComponentInChildren<Flashlight>().GetDisableFlashlight()) {
                 m_MonsterAI.player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
             }
-            if (m_MonsterAI.player.GetComponentInChildren<Flashlight>().GetDisableFlicker())
-            {
-                m_MonsterAI.player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
-            }
             // Reset opaque
             if (m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().material.GetFloat("_Mode") != 0)
             {
@@ -44,11 +40,13 @@ public partial class MonsterAI
             // Reset mesh renderer disabling
             m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = true;
-            
+            m_MonsterAI.follow_finished = false;
             if (state != m_MonsterAI.currentState)
             {
                 //Check for correct state switching
-                bool validStateChange = true;
+                m_MonsterAI.debugState = state;
+                m_MonsterAI.currentState = state;
+                m_MonsterAI.OnMonsterStateChange(state);
                 switch (state)
                 {
                     case MonsterState.HIDDEN_IDLE:
@@ -111,30 +109,26 @@ public partial class MonsterAI
                         m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
                         break;
                     case MonsterState.ATTACK:
-                        if (m_MonsterAI.currentState == MonsterState.CHASE)
+                        m_MonsterAI.StopAllCoroutines();
+                        orig_y = m_MonsterAI.transform.position.y;
+                        foreach (Collider collider in m_MonsterAI.GetComponentsInChildren<Collider>())
                         {
-                            m_MonsterAI.StopAllCoroutines();
-                            m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
-                            m_MonsterAI.anim.SetBool("Idle", true);
-                            m_MonsterAI.anim.SetBool("Walk", false);
-                            m_MonsterAI.anim.SetBool("Run", false);
-                            m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
-                            m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
+                            collider.enabled = false;
                         }
-                        else { validStateChange = false; }
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
+                        m_MonsterAI.anim.SetBool("Idle", false);
+                        m_MonsterAI.anim.SetBool("Walk", false);
+                        m_MonsterAI.anim.SetBool("Run", true);
+                        m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
+                        m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 3f));
                         break;
                     case MonsterState.GAMEOVER:
-                        if (   m_MonsterAI.currentState == MonsterState.CHASE
-                            || m_MonsterAI.currentState == MonsterState.APPROACH
-                            || m_MonsterAI.currentState == MonsterState.ATTACK)
-                        {
-                            m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-                            m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
-                            m_MonsterAI.anim.SetBool("Idle", true);
-                            m_MonsterAI.anim.SetBool("Walk", false);
-                            m_MonsterAI.anim.SetBool("Run", false);
-                        }
-                        else { validStateChange = false; }
+                        m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                        m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
+                        m_MonsterAI.anim.SetBool("Idle", true);
+                        m_MonsterAI.anim.SetBool("Walk", false);
+                        m_MonsterAI.anim.SetBool("Run", false);
                         break;
                     case MonsterState.STAGE_COMPLETE:
                         m_MonsterAI.StopAllCoroutines();
@@ -143,7 +137,6 @@ public partial class MonsterAI
                         m_MonsterAI.anim.SetBool("Idle", true);
                         m_MonsterAI.anim.SetBool("Walk", false);
                         m_MonsterAI.anim.SetBool("Run", false);
-                        m_MonsterAI.ResetStageVariables();
                         break;
                     case MonsterState.DISABLED:
                         m_MonsterAI.StopAllCoroutines();
@@ -157,6 +150,8 @@ public partial class MonsterAI
                     case MonsterState.HUMAN_IN_STRUCT:
                         m_MonsterAI.StopAllCoroutines();
                         stalledState = m_MonsterAI.currentState;
+                        m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                        m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
                         m_MonsterAI.anim.SetBool("Idle", true);
                         m_MonsterAI.anim.SetBool("Walk", false);
                         m_MonsterAI.anim.SetBool("Run", false);
@@ -166,16 +161,7 @@ public partial class MonsterAI
                         m_MonsterAI.m_MonsterStateMachine.hidden_idle();
                         break;
                 }
-                if (validStateChange)
-                {
-                    m_MonsterAI.debugState = state;
-                    m_MonsterAI.currentState = state;
-                    m_MonsterAI.OnMonsterStateChange(state);
-                }
-                else
-                {
-                    m_MonsterAI.debugState = m_MonsterAI.currentState;
-                }
+                
             }
         }
 
@@ -388,11 +374,11 @@ public partial class MonsterAI
                 Vector3 t_rotation = m_MonsterAI.transform.rotation.eulerAngles;
                 if (m_MonsterAI.firstCollision == AICollisionSide.RIGHT)
                 {
-                    t_rotation.y -= Time.deltaTime * 100;
+                    t_rotation.y -= Time.deltaTime * 200;
                 }
                 else
                 {
-                    t_rotation.y += Time.deltaTime * 100;
+                    t_rotation.y += Time.deltaTime * 200;
                 }
 
                 m_MonsterAI.transform.rotation = Quaternion.Euler(t_rotation);
@@ -401,7 +387,7 @@ public partial class MonsterAI
             {
                 var lookPos = m_MonsterAI.destinationPosition - m_MonsterAI.transform.position;
                 var rotation = Quaternion.LookRotation(lookPos);
-                m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 1.5f);
+                m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 2.5f);
             }
             //Chase
             float distanceToHuman = Mathf.Sqrt(Mathf.Pow(m_MonsterAI.destinationPosition.x - m_MonsterAI.transform.position.x, 2)
@@ -423,40 +409,15 @@ public partial class MonsterAI
         }
 
         bool attack_playerSeesMonster = false;
+        float orig_y;
         public void attack()
         {
-            if (!attack_playerSeesMonster)
-            {
-                //disable player camera here //
-
-                //rotate player
-                var lookPos = m_MonsterAI.transform.position - m_MonsterAI.player.transform.position;
-                var rotation = Quaternion.LookRotation(lookPos);
-                m_MonsterAI.player.transform.rotation = Quaternion.Slerp(m_MonsterAI.player.transform.rotation, rotation, Time.deltaTime * 2.5f);
-
-                //
-                Plane[] planes = GeometryUtility.CalculateFrustumPlanes(m_MonsterAI.player.GetComponentInChildren<Camera>());
-                bool monsterInFrustum = GeometryUtility.TestPlanesAABB(planes, m_MonsterAI.GetComponent<Collider>().bounds);
-                if (monsterInFrustum)
-                {
-                    Vector3 dirToMonster = (m_MonsterAI.transform.position - m_MonsterAI.player.transform.position).normalized;
-                    float angleBetween = Vector3.Angle(dirToMonster, m_MonsterAI.player.transform.forward);
-                    if (angleBetween < m_MonsterAI.player.GetComponentInChildren<Camera>().fieldOfView / 1.35f)
-                    {
-                        attack_playerSeesMonster = true;
-                        m_MonsterAI.anim.SetBool("Run", true);
-                        m_MonsterAI.anim.SetBool("Walk", false);
-                        m_MonsterAI.anim.SetBool("Idle", false);
-                    }
-                }
-            }
-            //run into player
-            else
-            {
-                var lookPos = m_MonsterAI.destinationPosition - m_MonsterAI.transform.position;
-                var rotation = Quaternion.LookRotation(lookPos);
-                m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 2.5f);
-            }
+            m_MonsterAI.player.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(false);
+            m_MonsterAI.transform.position = new Vector3(m_MonsterAI.transform.position.x, orig_y, m_MonsterAI.transform.position.z);
+            m_MonsterAI.TeleportVoidInfrontHuman(0.65f);
+            var lookPos = m_MonsterAI.destinationPosition - m_MonsterAI.transform.position;
+            var rotation = Quaternion.LookRotation(lookPos);
+            m_MonsterAI.transform.rotation = rotation;
         }
 
         public void gameover()

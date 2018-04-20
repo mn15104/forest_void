@@ -147,7 +147,7 @@ public class HumanVRAudioController : MonoBehaviour {
 
         double horizontalSpeed = Normalize3Dto2D(m_ParentRigidBody.velocity);
         
-        if (HumanMotion.isPlaying && horizontalSpeed < 0.2f)
+        if (horizontalSpeed < 0.2f)
         {
             if (HumanMotion.volume != 0f)
             {
@@ -155,7 +155,7 @@ public class HumanVRAudioController : MonoBehaviour {
             }
             HumanMotion.volume = 0f;
         }
-        else if(HumanMotion.clip != null && horizontalSpeed > 0.4f)
+        else if(horizontalSpeed > 0.4f)
         {
             if (!HumanMotion.isPlaying)
             {
@@ -173,15 +173,14 @@ public class HumanVRAudioController : MonoBehaviour {
                 }
             }
             if (HumanMotion.volume < 1f)
-                HumanMotion.volume += Time.deltaTime * 0.5f;
+                HumanMotion.volume = 1f;
         }
 
         //Breathing
         float timeSpentRunning = m_humanVRController.GetTimeSpentRunning();
-        if (timeSpentRunning > m_introTimeForBreathing 
-           && !m_Breathing.isPlaying)
+        if (timeSpentRunning > m_introTimeForBreathing
+           && m_Breathing.volume == 0f)
         {
-            Debug.Log("Breathing is playing!");
             m_Breathing.enabled = true;
             m_Breathing.loop = true;
             m_Breathing.Play();

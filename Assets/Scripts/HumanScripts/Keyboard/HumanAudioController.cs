@@ -44,7 +44,7 @@ public class HumanAudioController : MonoBehaviour {
         m_TerrainTypeDictionary.Add(12, TerrainType.GRAVEL);
         m_TerrainTypeDictionary.Add(13, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(14, TerrainType.STONE);
-        m_TerrainTypeDictionary.Add(15, TerrainType.GRASS);
+        m_TerrainTypeDictionary.Add(15, TerrainType.MUD);
 
         HumanMotion.clip = m_StoneRun;
         HumanMotion.loop = true;
@@ -55,10 +55,9 @@ public class HumanAudioController : MonoBehaviour {
         m_humanController = GetComponentInParent<HumanController>();
         m_Transform = transform;
         m_ParentRigidBody = GetComponentInParent<Rigidbody>();
-        m_Breathing.enabled = false;
-        m_Breathing.loop = true;
         m_Breathing.volume = 0;
-        m_CurrentTerrain = m_humanController.GetCurrentTerrain();
+        m_Breathing.loop = true;
+        m_CurrentTerrain = Terrain.activeTerrain;
         m_maxRunTime = m_humanController.GetMaxRunTime();
         m_introTimeForBreathing = m_maxRunTime / 2;
     }
@@ -124,63 +123,68 @@ public class HumanAudioController : MonoBehaviour {
   
     private void UpdateHumanMotion()
     {
-        m_CurrentTerrain = m_humanController.GetCurrentTerrain();
-        if (m_CurrentTerrain == null)
+
+        int textureIndex = GetMainTexture(transform.position);
+        TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
+        switch (currentTerrainType)
         {
-            return;
-        }
-        CurrentGroundCollision CurrentGround = m_humanController.GetCurrentGroundCollision();
-        if (CurrentGround == CurrentGroundCollision.WOOD)
-        {
-            if (HumanMotion.clip != m_WoodRun)
-            {
-                HumanMotion.clip = m_WoodRun;
-            }
-        }
-        else if (CurrentGround == CurrentGroundCollision.AIR)
-        {
-            if (HumanMotion.clip != null)
-            {
-                HumanMotion.clip = null;
-            }
-        }
-        else if (CurrentGround == CurrentGroundCollision.TERRAIN)
-        {
-            int textureIndex = GetMainTexture(transform.position);
-            TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
-            switch (currentTerrainType)
-            {
-                case TerrainType.GRASS:
-                    if (HumanMotion.clip != m_GrassWalk || HumanMotion.clip != m_GrassRun)
+            case TerrainType.GRASS:
+                if (HumanMotion.clip != m_GrassWalk || HumanMotion.clip != m_GrassRun)
+                {
+                    if (HumanMotion.clip != m_GrassWalk && (m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
                     {
-                        if (HumanMotion.clip != m_GrassWalk && (m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
-                        {
-                            HumanMotion.clip = m_GrassWalk;
-                        }
-                        else if (HumanMotion.clip != m_GrassRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                        {
-                            HumanMotion.clip = m_GrassRun;
-                        }
+                        HumanMotion.clip = m_GrassWalk;
                     }
-                    break;
-                case TerrainType.STONE:
-                    if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
+                    else if (HumanMotion.clip != m_GrassRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
                     {
-                        if (HumanMotion.clip != m_StoneWalk && (m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
-                        {
-                            HumanMotion.clip = m_StoneWalk;
-                        }
-                        else if(HumanMotion.clip != m_StoneRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                        {
-                            HumanMotion.clip = m_StoneRun;
-                        }
+                        HumanMotion.clip = m_GrassRun;
                     }
-                    break;
-                default:
-                    Debug.Log("WARNING: NO AUDIO SOURCE FOR CURRENT TERRAIN TYPE BELOW PLAYER.");
-                    break;
-            }
+                }
+                break;
+            case TerrainType.STONE:
+                if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
+                {
+                    if (HumanMotion.clip != m_StoneWalk && (m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
+                    {
+                        HumanMotion.clip = m_StoneWalk;
+                    }
+                    else if(HumanMotion.clip != m_StoneRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                    {
+                        HumanMotion.clip = m_StoneRun;
+                    }
+                }
+                break;
+            case TerrainType.GRAVEL:
+                if (HumanMotion.clip != m_GravelWalk || HumanMotion.clip != m_GravelRun)
+                {
+                    if (HumanMotion.clip != m_GrassWalk && m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING)
+                    {
+                        HumanMotion.clip = m_GravelWalk;
+                    }
+                    else if (HumanMotion.clip != m_GravelRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                    {
+                        HumanMotion.clip = m_GravelRun;
+                    }
+                }
+                break;
+            case TerrainType.MUD:
+                if (HumanMotion.clip != m_MudRun || HumanMotion.clip != m_MudWalk)
+                {
+                    if (HumanMotion.clip != m_MudWalk && m_humanController.GetPlayerMoveState() == PlayerMoveState.WALKING)
+                    {
+                        HumanMotion.clip = m_MudWalk;
+                    }
+                    else if (HumanMotion.clip != m_MudRun && m_humanController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                    {
+                        HumanMotion.clip = m_MudRun;
+                    }
+                }
+                break;
+            default:
+                Debug.Log("WARNING: NO AUDIO SOURCE FOR CURRENT TERRAIN TYPE BELOW PLAYER.");
+                break;
         }
+        
         
     }
 
@@ -189,7 +193,7 @@ public class HumanAudioController : MonoBehaviour {
         UpdateHumanMotion();
 
         double horizontalSpeed = Normalize3Dto2D(m_ParentRigidBody.velocity);
-        
+        Debug.Log(HumanMotion.isPlaying);
         if (HumanMotion.isPlaying && horizontalSpeed < 0.2f)
         {
             HumanMotion.volume = 0f;
@@ -204,17 +208,14 @@ public class HumanAudioController : MonoBehaviour {
 
         //Breathing
         float timeSpentRunning = m_humanController.GetTimeSpentRunning();
-        if (timeSpentRunning > m_introTimeForBreathing
-           && !m_Breathing.isPlaying)
-        {
-            m_Breathing.enabled = true;
-            m_Breathing.loop = true;
-            m_Breathing.Play();
-            m_Breathing.volume = 0;
-        }
+        Debug.Log(timeSpentRunning + " " + m_introTimeForBreathing + " " + m_maxRunTime);
         if (m_Breathing.isPlaying)
         {
             m_Breathing.volume = ((timeSpentRunning - m_introTimeForBreathing) / m_maxRunTime)*2;
+        }
+        if (!m_Breathing.isPlaying)
+        {
+            m_Breathing.Play();
         }
     }
 

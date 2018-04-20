@@ -7731,7 +7731,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1252268114388284}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!82 &82331276313788006
 AudioSource:
   m_ObjectHideFlags: 1
@@ -8253,7 +8253,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -8404,7 +8404,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1377970876835744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2804cf8233d68d74f874c02f2212a0af, type: 3}
+  m_Script: {fileID: 11500000, guid: bb381aefbb6b0e34bb25216f5b2a21fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debugState: 0
@@ -8412,17 +8412,19 @@ MonoBehaviour:
   player: {fileID: 0}
   soundDetectionPercentage: 0.2
   lightDetectionPercentage: 0.2
-  Stage1_TeleportInterval: 5
+  Stage1_TeleportInterval: 20
   Stage1_AppearInterval: 2
-  Stage1_AppearDistance: 12.5
-  Stage1_maxAppears: 10
+  Stage1_AppearDistance: 20
+  Stage1_FadeOutTime: 0.1
   stage2_playerTorchOn1: 0
   stage2_playerTorchOff: 0
   stage2_playerTorchOn2: 0
   stage2_playerTorchOff2: 0
+  stage2_coroutine0_finished: 0
   stage2_coroutine1_finished: 0
   stage2_coroutine2_finished: 0
   Stage3_Appeared: 0
+  Stage3_playerWalking: 0
   Stage1_MinAngle: 1
   Stage1_MaxAngle: 3
 --- !u!114 &114422241815363918
@@ -8471,7 +8473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501347471926804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 155196317229852448a8f3924a3babd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c2d57a226b167f44b60ed86ab3cd75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ForestVoid: {fileID: 1377970876835744}
@@ -8484,7 +8486,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857112896044290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0582824e7c9b1d24abd54d15f65bf2f1, type: 3}
+  m_Script: {fileID: 11500000, guid: e7a54d90366e6774caa316994a55a7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MonsterSFX1AudioSrc: {fileID: 82999144418386696}
@@ -8501,7 +8503,7 @@ MonoBehaviour:
   m_MudRun: {fileID: 8300000, guid: 36dfaac452bb06741b66dc33d7913d34, type: 3}
   m_Appear: {fileID: 8300000, guid: accd801219b294d4690061604055c453, type: 3}
   m_Approach: {fileID: 8300000, guid: c0dcfc26482d341c68de7a0c0f36fce7, type: 3}
-  m_Chase: {fileID: 8300000, guid: b46db3d5a603e4b7093e9e6316970f51, type: 3}
+  m_Chase: {fileID: 8300000, guid: 795ba36579e80294baab68ae4a8656eb, type: 3}
   m_BreathingFront: {fileID: 8300000, guid: f216dfa483e56624586fc43b373654e7, type: 3}
   m_BreathingBehind: {fileID: 8300000, guid: b77d8af86a104124aa9c9dfbc7645a9d, type: 3}
   m_GasLoop: {fileID: 8300000, guid: 5b9105783f881be4280f5bd170821020, type: 3}
