@@ -162,7 +162,7 @@ public partial class MonsterAI : MonoBehaviour
             yield return null;
         }
         if(isSkinned)
-         GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         else
         {
             GetComponentInChildren<MeshRenderer>().enabled = false;
@@ -315,6 +315,7 @@ public partial class MonsterAI : MonoBehaviour
             Stage1_appearCount += 1;
         }
 
+        m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
         /////// Need to reset render mode at some point 
         GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         GetComponentInChildren<MeshRenderer>().enabled = true;
@@ -322,8 +323,6 @@ public partial class MonsterAI : MonoBehaviour
             ChangeRenderMode(mat, BlendMode.Opaque);
         foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
             ChangeRenderMode(mat, BlendMode.Opaque);
-
-        m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
     }
 
 
@@ -400,6 +399,7 @@ public partial class MonsterAI : MonoBehaviour
 
     float timer_Stage3Active = 0f;
     public bool Stage3_Appeared = false;
+    public bool Stage3_playerWalking = false;
     /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
     {
@@ -407,6 +407,7 @@ public partial class MonsterAI : MonoBehaviour
             if (distanceToHuman > 3f)
             {
                 TeleportVoidBehindHuman(2f);
+                Stage3_playerWalking = true;
             }
         
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(player.GetComponentInChildren<Camera>());
@@ -664,6 +665,7 @@ public partial class MonsterAI : MonoBehaviour
         stage2_coroutine1_finished = false;
         stage2_coroutine2_finished = false;
         Stage3_Appeared = false;
+        follow_finished = false;
         player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
         player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
         timer_Stage3Active = 0f;
