@@ -52,6 +52,20 @@ public class HumanVRController : MonoBehaviour
     private float maxRunTime = 8f;
     private float timeRunning = 0f;
 
+
+    private bool monsterAttacking = false;
+
+    private void OnEnable()
+    {
+        FindObjectOfType<MonsterAI>().OnMonsterStateChange += ReactMonsterState;        
+    }
+    private void ReactMonsterState(MonsterState st)
+    {
+        if(st == MonsterState.ATTACK)
+        {
+            monsterAttacking = true;
+        }
+    }
     void Start()
     {
         m_CurrentTerrain = Terrain.activeTerrain;
@@ -64,33 +78,37 @@ public class HumanVRController : MonoBehaviour
         m_CapsuleHeight = m_Capsule.height;
         m_CapsuleCenter = m_Capsule.center;
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-
     }
 
     private void FixedUpdate()
     {
+        if (!monsterAttacking)
+        {
+            moveHorizontal = lhand.m_controller.JoystickX;
+            moveVertical = lhand.m_controller.JoystickY;
+            rotateHorizontal = rhand.m_controller.JoystickX;
+            //rotateVertical = rhand.m_controller.JoystickY;
 
-        moveHorizontal = lhand.m_controller.JoystickX;
-        moveVertical = lhand.m_controller.JoystickY;
-        rotateHorizontal = rhand.m_controller.JoystickX;
-        //rotateVertical = rhand.m_controller.JoystickY;
+            m_Forward = Vector3.Scale(transform.forward, new Vector3(1, 0, 1)).normalized;
+            m_Right = Vector3.Scale(transform.right, new Vector3(1, 0, 1)).normalized;
 
-        m_Forward = Vector3.Scale(transform.forward, new Vector3(1, 0, 1)).normalized;
-        m_Right = Vector3.Scale(transform.right, new Vector3(1, 0, 1)).normalized;
+            //Get horizontal and vertical movement
+            Transform m_trans = GetComponent<Transform>();
 
-        //Get horizontal and vertical movement
-        Transform m_trans = GetComponent<Transform>();
+            //Create movement & rotation vectors
+            Vector3 movement = moveVertical * m_Forward + moveHorizontal * m_Right;
+            Vector3 rotation = new Vector3(rotateHorizontal * m_rotateSpeed, 0, 0);
 
-        //Create movement & rotation vectors
-        Vector3 movement = moveVertical * m_Forward + moveHorizontal * m_Right;
-        Vector3 rotation = new Vector3(rotateHorizontal * m_rotateSpeed, 0, 0);
-        
-        Move(movement, rotation);
+            Move(movement, rotation);
+        }
     }
 
     private void Update()
     {
-        CheckRunState();
+        if (!monsterAttacking)
+        {
+            CheckRunState();
+        }
     }
   
     void CheckRunState()
