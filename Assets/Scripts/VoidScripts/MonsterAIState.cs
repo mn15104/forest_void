@@ -40,7 +40,7 @@ public partial class MonsterAI
             // Reset mesh renderer disabling
             m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = true;
-            
+            m_MonsterAI.follow_finished = false;
             if (state != m_MonsterAI.currentState)
             {
                 //Check for correct state switching
@@ -150,6 +150,8 @@ public partial class MonsterAI
                     case MonsterState.HUMAN_IN_STRUCT:
                         m_MonsterAI.StopAllCoroutines();
                         stalledState = m_MonsterAI.currentState;
+                        m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                        m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = false;
                         m_MonsterAI.anim.SetBool("Idle", true);
                         m_MonsterAI.anim.SetBool("Walk", false);
                         m_MonsterAI.anim.SetBool("Run", false);

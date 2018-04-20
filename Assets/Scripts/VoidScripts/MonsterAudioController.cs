@@ -164,6 +164,8 @@ public class MonsterAudioController : MonoBehaviour
         }
         
     }
+
+
     void UpdateMonsterAudioState()
     {
         if (m_Monster.GetMonsterState() != m_MonsterState)
@@ -188,7 +190,6 @@ public class MonsterAudioController : MonoBehaviour
                 {
                     MonsterSFX1AudioSrc.clip = (m_GasLoop);
                     MonsterSFX1AudioSrc.Play();
-                     
                 }
                 break;
             case MonsterState.HIDDEN_MOVING:
@@ -252,15 +253,54 @@ public class MonsterAudioController : MonoBehaviour
                     }
                     else if (m_Monster.GetMonsterStage() == EventManager.Stage.Stage3)
                     {
-                        if (MonsterSFX1AudioSrc.clip != m_GasLoop)
+                        Debug.Log(m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude);
+                        if (MonsterSFX1AudioSrc.clip != m_GasLoop || !MonsterSFX1AudioSrc.isPlaying)
                         {
                             MonsterSFX1AudioSrc.clip = m_GasLoop;
                             MonsterSFX1AudioSrc.loop = true;
+                            MonsterSFX1AudioSrc.Play();
                             MonsterSFX1AudioSrc.volume = 0.2f;
                             StartCoroutine(FadeInAudioSource(MonsterSFX1AudioSrc, 1f, 1f));
                         }
+                        if ((MonsterSFX2AudioSrc.clip != m_BreathingBehind || !MonsterSFX2AudioSrc.isPlaying) && !m_Monster.Stage3_Appeared)
+                        {
+                            MonsterSFX2AudioSrc.clip = m_BreathingBehind;
+                            MonsterSFX2AudioSrc.loop = true;
+                            MonsterSFX2AudioSrc.Play();
+                            MonsterSFX2AudioSrc.volume = 0.0f;
+                            StartCoroutine(FadeInAudioSource(MonsterSFX2AudioSrc, 0.22f, 0.1f));
+                        }
+                        if ((MonsterSFX3AudioSrc.clip != m_GravelWalk || MonsterSFX3AudioSrc.clip != m_GravelRun || !MonsterSFX3AudioSrc.isPlaying) && !m_Monster.Stage3_Appeared)
+                        {
+                            if (MonsterSFX3AudioSrc.clip != m_GravelWalk && m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude < 2f)
+                            {
+                                MonsterSFX3AudioSrc.clip = m_GravelWalk;
+                                MonsterSFX3AudioSrc.loop = true;
+                                MonsterSFX3AudioSrc.volume = 1f;
+                                MonsterSFX3AudioSrc.Play();
+                            }
+                        }
+                        if (m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude > 1f && 
+                            m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude < 2f &&
+                            !m_Monster.Stage3_Appeared)
+                        {
+                            StartCoroutine(DelayClipPlay(MonsterSFX3AudioSrc, true, 1.2f));
+                        }
+                        else if (m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude > 2f &&
+                            !m_Monster.Stage3_Appeared)
+                        {
+                            MonsterSFX3AudioSrc.volume = 0;
+                        }
+                        else if (m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude < 1f && !m_Monster.Stage3_Appeared)
+                        {
+                            StartCoroutine(DelayClipPlay(MonsterSFX3AudioSrc, false, 1.2f));
+                        }
                         if (m_Monster.Stage3_Appeared && MonsterSFX2AudioSrc.clip != m_Jumpscare_Stage3)
                         {
+                            StopAllCoroutines();
+                            MonsterSFX3AudioSrc.clip = null;
+
+                            MonsterSFX2AudioSrc.volume = 1f;
                             MonsterSFX2AudioSrc.clip = m_Jumpscare_Stage3;
                             MonsterSFX2AudioSrc.loop = false;
                             MonsterSFX2AudioSrc.Play();
@@ -289,18 +329,18 @@ public class MonsterAudioController : MonoBehaviour
                 break;
             case MonsterState.CHASE:
                 StopAllCoroutines();
-                if (MonsterSFX1AudioSrc.clip != m_Chase)
+                if (MonsterSFX1AudioSrc.clip != m_BreathingFront || !MonsterSFX1AudioSrc.isPlaying)
                 {
-                    MonsterSFX1AudioSrc.loop = false;
+                    MonsterSFX1AudioSrc.clip = m_BreathingFront;
+                    MonsterSFX1AudioSrc.loop = true;
                     MonsterSFX1AudioSrc.volume = 1f;
-                    MonsterSFX1AudioSrc.clip = (m_Chase);
                     MonsterSFX1AudioSrc.Play();
                 }
-                if (MonsterSFX2AudioSrc.clip != m_BreathingFront || !MonsterSFX2AudioSrc.isPlaying)
+                if (MonsterSFX2AudioSrc.clip != m_Chase || !MonsterSFX2AudioSrc.isPlaying)
                 {
-                    MonsterSFX2AudioSrc.clip = m_BreathingFront;
-                    MonsterSFX2AudioSrc.loop = true;
+                    MonsterSFX2AudioSrc.loop = false;
                     MonsterSFX2AudioSrc.volume = 1f;
+                    MonsterSFX2AudioSrc.clip = (m_Chase);
                     MonsterSFX2AudioSrc.Play();
                 }
                 if (MonsterSFX3AudioSrc.clip != m_GasLoop || !MonsterSFX3AudioSrc.isPlaying)
@@ -338,6 +378,14 @@ public class MonsterAudioController : MonoBehaviour
             default:
                 break;
         }
+    }
+    IEnumerator DelayClipPlay(AudioSource audsrc, bool playing, float delaytime)
+    {
+        yield return new WaitForSeconds(delaytime);
+        if(playing)
+            audsrc.volume = 1f;
+        else
+            audsrc.volume = 0f;
     }
     public void Reset()
     {
@@ -443,7 +491,6 @@ public class MonsterAudioController : MonoBehaviour
     IEnumerator FadeInAudioSource(AudioSource aud, float max_vol, float fade_in_rate)
     {
         Debug.Log("Fading in");
-        aud.Play();
         while (aud.volume < max_vol)
         {
             yield return null;
@@ -459,6 +506,5 @@ public class MonsterAudioController : MonoBehaviour
             aud.volume = Mathf.Lerp(aud.volume, 0, Time.deltaTime * fade_out_rate);
 
         }
-        aud.Stop();
     }
 }
