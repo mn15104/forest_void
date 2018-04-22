@@ -43,10 +43,7 @@ public partial class MonsterAI
             m_MonsterAI.follow_finished = false;
             if (state != m_MonsterAI.currentState)
             {
-                //Check for correct state switching
-                m_MonsterAI.debugState = state;
-                m_MonsterAI.currentState = state;
-                m_MonsterAI.OnMonsterStateChange(state);
+
                 switch (state)
                 {
                     case MonsterState.HIDDEN_IDLE:
@@ -161,7 +158,10 @@ public partial class MonsterAI
                         m_MonsterAI.m_MonsterStateMachine.hidden_idle();
                         break;
                 }
-                
+                //Check for correct state switching
+                m_MonsterAI.debugState = state;
+                m_MonsterAI.currentState = state;
+                m_MonsterAI.OnMonsterStateChange(state);
             }
         }
 

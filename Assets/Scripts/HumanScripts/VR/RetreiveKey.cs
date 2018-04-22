@@ -9,8 +9,8 @@ public class RetreiveKey : OVRGrabber
     private GameObject key;
     private EventManager eventManager;
     public bool inGeneratorZone = false;
-    protected NotifyEvent<bool> notify;
-
+    protected NotifyEvent<bool> notifyYellow;
+    protected NotifyEvent<bool> notifyBlue;
 
 
     protected override void Awake()
@@ -18,7 +18,8 @@ public class RetreiveKey : OVRGrabber
         base.Awake();
         human = transform.root.gameObject;
         eventManager = FindObjectOfType<EventManager>();
-        notify = eventManager.NotifyYellowKeyPickup;
+        notifyYellow = eventManager.NotifyYellowKeyPickup;
+        notifyBlue = eventManager.NotifyBlueKeyPickup;
     }
 
     private void OnEnable()
@@ -125,7 +126,6 @@ public class RetreiveKey : OVRGrabber
     private IEnumerator AddKeyToInventory(OVRGrabbable m_grabbedObj)
     {
         
-        yield return new WaitForSeconds(0.5f);
         if (m_grabbedObj != null)
         {
 
@@ -134,10 +134,14 @@ public class RetreiveKey : OVRGrabber
             human.GetComponent<Inventory>().addKeyToInventory(m_grabbedObj.gameObject);
             if (m_grabbedObj.gameObject.name == "md_KeySetYellowV1")
             {
-                notify.Notify(true);
+                notifyYellow.Notify(true);
+            }
+            if (m_grabbedObj.gameObject.name == "md_KeySetBlueV2")
+            {
+                notifyBlue.Notify(true);
             }
         }
-      
+        yield return new WaitForSeconds(0);
     }
 
     protected override void GrabBegin()

@@ -7961,46 +7961,16 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.012899904
-      value: 0.82556534
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.15217209
-      value: 0.76841736
-      inSlope: -0.48397604
-      outSlope: -0.48397604
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.33514404
-      value: 0.6758461
-      inSlope: -0.5497909
-      outSlope: -0.5497909
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.490165
-      value: 0.43386865
-      inSlope: -0.77630025
-      outSlope: -0.77630025
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.6284847
-      value: 0.22680855
-      inSlope: -0.5082829
-      outSlope: -0.5082829
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.8258418
-      value: 0.04762268
-      inSlope: -0.34939292
-      outSlope: -0.34939292
+      time: 0.16
+      value: 0.41072083
+      inSlope: -1.7372451
+      outSlope: -1.7372451
       tangentMode: 0
     - serializedVersion: 2
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.1600638
+      outSlope: -0.1600638
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -8270,58 +8240,28 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.0064525604
-      value: 0.80591416
-      inSlope: 0.35996073
-      outSlope: 0.35996073
+      time: 0.16
+      value: 0.88868713
+      inSlope: -6.25249
+      outSlope: -6.25249
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.10280733
-      value: 0.70938265
-      inSlope: -0.1001358
-      outSlope: -0.1001358
+      time: 0.32
+      value: 0.38868713
+      inSlope: -1.5631225
+      outSlope: -1.5631225
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.19915384
-      value: 0.60636663
-      inSlope: -0.85407734
-      outSlope: -0.85407734
+      time: 0.63557494
+      value: 0.07319641
+      inSlope: -0.39078063
+      outSlope: -0.39078063
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.30745864
-      value: 0.52680206
-      inSlope: -1.5171267
-      outSlope: -1.5171267
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.40586054
-      value: 0.4675946
-      inSlope: -0.13440847
-      outSlope: -0.13440847
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.53541505
-      value: 0.42086583
-      inSlope: -0.26180133
-      outSlope: -0.26180133
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.6673126
-      value: 0.34619522
-      inSlope: -1.007298
-      outSlope: -1.007298
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.838596
-      value: 0.09497996
-      inSlope: -0.9620935
-      outSlope: -0.9620935
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.99563724
+      time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.1600638
+      outSlope: -0.1600638
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -8478,6 +8418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ForestVoid: {fileID: 1377970876835744}
   m_SpawnpointsHolder: {fileID: 1787675764598556}
+  m_MonsterGameTimer: 0
 --- !u!114 &114490850187417454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8551,7 +8492,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1194363496412154}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8563,7 +8504,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706188622232814}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8575,7 +8516,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658379029724094}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8587,7 +8528,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688590498670280}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8599,7 +8540,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021886950235802}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
