@@ -42,6 +42,7 @@ public class EventManager : MonoBehaviour {
     public TriggerEvent GeneratorZoneTriggerEvent = new TriggerEvent();
     public TriggerEvent StructureZoneTriggerEvent = new TriggerEvent();
 
+    public NotifyEvent<bool> NotifyBlueKeyPickup = new NotifyEvent<bool>();
     public NotifyEvent<bool> NotifyYellowKeyPickup = new NotifyEvent<bool>();
     public NotifyEvent<float> NotifyHeartRate = new NotifyEvent<float>();
     public NotifyEvent<Stage> NotifyStage = new NotifyEvent<Stage>();
