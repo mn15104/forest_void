@@ -134,68 +134,7 @@ public partial class MonsterAI : MonoBehaviour
         m_MonsterStateMachine.update_state();
     }
 
-    IEnumerator FadeInMaterial(Material mat, float fadeSpeed, bool isSkinned)
-    {
-        Color col = mat.color;
-        float alpha = col.a;
-        if (isSkinned)
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
-        else
-            GetComponentInChildren<MeshRenderer>().enabled = true;
-
-        while (alpha < 0.6f)
-        {
-            alpha += fadeSpeed * Time.deltaTime;
-            mat.color = new Color(col.r, col.g, col.b, alpha);
-            yield return null;
-        }
-    }
-
-    IEnumerator FadeOutMaterial(Material mat, float fadeSpeed, bool isSkinned)
-    {
-        Color col = mat.color;
-        float alpha = col.a;
-        while (alpha > 0.0f)
-        {
-            alpha -= fadeSpeed * Time.deltaTime;
-            mat.color = new Color(col.r, col.g, col.b, alpha);
-            yield return null;
-        }
-        if(isSkinned)
-            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
-        else
-        {
-            GetComponentInChildren<MeshRenderer>().enabled = false;
-        }
-
-    }
-
-    void ChangeRenderMode(Material mat, BlendMode blendMode)
-    {
-        switch (blendMode)
-        {
-            case BlendMode.Opaque:
-                mat.SetFloat("_Mode", 0);
-                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-                mat.SetInt("_ZWrite", 1);
-                mat.DisableKeyword("_ALPHATEST_ON");
-                mat.DisableKeyword("_ALPHABLEND_ON");
-                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                mat.renderQueue = -1;
-                break;
-            case BlendMode.Fade:
-                mat.SetFloat("_Mode", 2);
-                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                mat.SetInt("_ZWrite", 0);
-                mat.DisableKeyword("_ALPHATEST_ON");
-                mat.EnableKeyword("_ALPHABLEND_ON");
-                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-                mat.renderQueue = 3000;
-                break;
-        }
-    }
+    
     /*------------------ UPDATE DESTINATION Functions --------------------*/
 
     public IEnumerator UpdateHiddenDestination()
@@ -533,22 +472,6 @@ public partial class MonsterAI : MonoBehaviour
         transform.rotation = rot;
     }
 
-    public float NextGaussianFloat()
-    {
-        float u, v, S;
-
-        do
-        {
-            u = 2.0f * Random.value - 1.0f;
-            v = 2.0f * Random.value - 1.0f;
-            S = u * u + v * v;
-        }
-        while (S >= 1.0);
-
-        float fac = Mathf.Sqrt(-2.0f * Mathf.Log(S) / S);
-        return u * fac;
-    }
-
     /*------------------ Detection Functions --------------------*/
 
     public void NotifyCollisionAhead(AICollisionSide collisionSide, bool isCollision)
@@ -598,7 +521,6 @@ public partial class MonsterAI : MonoBehaviour
 
     public void HumanSoundDetected(float soundHeard)
     {
-        Debug.Log(soundHeard);
         Vector3 xyz_distance = player.transform.position - transform.position;
         Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
         float distance = xz_distance.magnitude;
@@ -608,7 +530,6 @@ public partial class MonsterAI : MonoBehaviour
 
     public void HumanLightDetected(bool on)
     {
-        Debug.Log(on);
         Vector3 xyz_distance = player.transform.position - transform.position;
         Vector2 xz_distance = new Vector2(xyz_distance.x, xyz_distance.z);
         float distance = xz_distance.magnitude;
@@ -624,6 +545,84 @@ public partial class MonsterAI : MonoBehaviour
         }
     }
 
+    public float NextGaussianFloat()
+    {
+        float u, v, S;
+
+        do
+        {
+            u = 2.0f * Random.value - 1.0f;
+            v = 2.0f * Random.value - 1.0f;
+            S = u * u + v * v;
+        }
+        while (S >= 1.0);
+
+        float fac = Mathf.Sqrt(-2.0f * Mathf.Log(S) / S);
+        return u * fac;
+    }
+
+    IEnumerator FadeInMaterial(Material mat, float fadeSpeed, bool isSkinned)
+    {
+        Color col = mat.color;
+        float alpha = col.a;
+        if (isSkinned)
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
+        else
+            GetComponentInChildren<MeshRenderer>().enabled = true;
+
+        while (alpha < 0.6f)
+        {
+            alpha += fadeSpeed * Time.deltaTime;
+            mat.color = new Color(col.r, col.g, col.b, alpha);
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOutMaterial(Material mat, float fadeSpeed, bool isSkinned)
+    {
+        Color col = mat.color;
+        float alpha = col.a;
+        while (alpha > 0.0f)
+        {
+            alpha -= fadeSpeed * Time.deltaTime;
+            mat.color = new Color(col.r, col.g, col.b, alpha);
+            yield return null;
+        }
+        if (isSkinned)
+            GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+        else
+        {
+            GetComponentInChildren<MeshRenderer>().enabled = false;
+        }
+
+    }
+
+    void ChangeRenderMode(Material mat, BlendMode blendMode)
+    {
+        switch (blendMode)
+        {
+            case BlendMode.Opaque:
+                mat.SetFloat("_Mode", 0);
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+                mat.SetInt("_ZWrite", 1);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.DisableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = -1;
+                break;
+            case BlendMode.Fade:
+                mat.SetFloat("_Mode", 2);
+                mat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                mat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                mat.SetInt("_ZWrite", 0);
+                mat.DisableKeyword("_ALPHATEST_ON");
+                mat.EnableKeyword("_ALPHABLEND_ON");
+                mat.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                mat.renderQueue = 3000;
+                break;
+        }
+    }
     /*------------------ GET Functions --------------------*/
     public MonsterState GetMonsterState()
     {
@@ -640,18 +639,6 @@ public partial class MonsterAI : MonoBehaviour
     
     /*------------------ DEPRECATED Functions --------------------*/
 
-    void OnCollisionEnter(Collision col)
-    {
-       
-        if (currentState == MonsterState.ATTACK)
-        {
-            if (col.gameObject.GetComponent<HumanVRController>() ||
-                col.gameObject.GetComponent<HumanController>())
-            {
-                SetState(MonsterState.GAMEOVER);
-            }
-        }
-    }
 
     void ResetStageVariables()
     {

@@ -9,14 +9,14 @@ public class VoidSystem : MonoBehaviour
 
     public GameObject m_ForestVoid;
     public GameObject m_SpawnpointsHolder;
+    public float m_MonsterGameTimer = 0f;
     private EventManager m_eventManager;
-    private bool monsterAppeared = false;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
     private float[] m_DelayTimeToActive = { 100f, 300f, 420f, 480f };
-    public float m_gameTimer = 0f;
     private EventManager.Stage m_MonsterStage;
     public NotifyEvent<EventManager.Stage> NotifyStage = new NotifyEvent<EventManager.Stage>();
     private bool debugResettingStage = false;
+    private bool monsterAppeared = false;
 
     private void OnEnable()
     {
@@ -37,7 +37,7 @@ public class VoidSystem : MonoBehaviour
         {
             if (m_eventManager.GetIsInForest())
             {
-                m_gameTimer += Time.deltaTime;
+                m_MonsterGameTimer += Time.deltaTime;
 
                 if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.HUMAN_IN_STRUCT)
                     m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
@@ -71,7 +71,7 @@ public class VoidSystem : MonoBehaviour
     void UpdateStageIntro()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
-            && m_gameTimer > m_DelayTimeToActive[0])
+            && m_MonsterGameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.Stage1);
@@ -84,13 +84,13 @@ public class VoidSystem : MonoBehaviour
     void UpdateStage1()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
-            && m_gameTimer > m_DelayTimeToActive[0])
+            && m_MonsterGameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
         }
 
-        if (m_gameTimer > m_DelayTimeToActive[1])
+        if (m_MonsterGameTimer > m_DelayTimeToActive[1])
         {
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.STAGE_COMPLETE);
         }
@@ -108,13 +108,13 @@ public class VoidSystem : MonoBehaviour
     void UpdateStage2()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED &&
-            m_gameTimer > m_DelayTimeToActive[1])
+            m_MonsterGameTimer > m_DelayTimeToActive[1])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         }
 
-        if (m_gameTimer > m_DelayTimeToActive[2] && 
+        if (m_MonsterGameTimer > m_DelayTimeToActive[2] && 
                                 (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                                  m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                                  m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.CHASE &&
@@ -136,13 +136,13 @@ public class VoidSystem : MonoBehaviour
     void UpdateStage3()
     {
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
-            && m_gameTimer  > m_DelayTimeToActive[2])
+            && m_MonsterGameTimer > m_DelayTimeToActive[2])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         }
 
-        if (m_gameTimer > m_DelayTimeToActive[3] && 
+        if (m_MonsterGameTimer > m_DelayTimeToActive[3] && 
                                 (   m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                                     m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                                     m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.ATTACK &&
@@ -185,19 +185,19 @@ public class VoidSystem : MonoBehaviour
         switch (stage)
         {
             case EventManager.Stage.Intro:
-                m_gameTimer = 0f;
+                m_MonsterGameTimer = 0f;
                 break;
             case EventManager.Stage.Stage1:
-                m_gameTimer = m_DelayTimeToActive[0];
+                m_MonsterGameTimer = m_DelayTimeToActive[0];
                 break;
             case EventManager.Stage.Stage2:
-                m_gameTimer = m_DelayTimeToActive[1];
+                m_MonsterGameTimer = m_DelayTimeToActive[1];
                 break;
             case EventManager.Stage.Stage3:
-                m_gameTimer = m_DelayTimeToActive[2];
+                m_MonsterGameTimer = m_DelayTimeToActive[2];
                 break;
             case EventManager.Stage.GameOverStage:
-                m_gameTimer = 0f;
+                m_MonsterGameTimer = 0f;
                 break;
         }
     }
