@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b235179bd2a63d1468dd430670338c55
+guid: 43b0fccf18409de4783f81abb5ae09a1
 timeCreated: 1477489902
 licenseType: Pro
 ModelImporter:
@@ -362,7 +362,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: EthanWhite
-    second: {fileID: 2100000, guid: f62b52b2d4b721742a0bc5c6b4db468d, type: 2}
+    second: {fileID: 2100000, guid: 5c3a2f1ee16507f4994dd3785d155250, type: 2}
   materials:
     importMaterials: 1
     materialName: 1
