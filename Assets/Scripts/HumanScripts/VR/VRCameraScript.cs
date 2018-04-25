@@ -18,24 +18,25 @@ public class VRCameraScript : MonoBehaviour {
     [Range(0.0f, 10f)]
     public float distanceToMonster = 10f;
 
-    private const float m_PPP_GrainMaxIntensity = 0.5f;
-    private const float m_PPP_GrainMaxSize = 1.7f;
-    private const float m_PPP_GrainFixedLuminance = 0.5f;
+    private const float m_PPP_GrainMaxIntensity = 0.3f;
+    private const float m_PPP_GrainMaxSize = 1.5f;
+    private const float m_PPP_GrainFixedLuminance = 0.35f;
 
-    private const float m_PPP_VignetteMaxIntensity = 0.55f;
+    private const float m_PPP_VignetteMaxIntensity = 0.45f;
     private const float m_PPP_VignetteFixedSmoothness = 0.215f;
     private const float m_PPP_VignetteFixedRoundness = 1f;
     private const string m_PPP_VignetteFixedColor = "#2F0505";
 
-    private const float m_GlitchMaxIntensity = 1f;
-    private const float m_GlitchMaxFlipIntensity = 0.45f;
+    private const float m_GlitchMaxIntensity = 0.8f;
+    private const float m_GlitchMaxFlipIntensity = 0.35f;
     private const float m_GlitchFixedColorIntensity = 0f;
 
-    private const float m_FisheyeMax_X = 1f;
-    private const float m_FisheyeMax_Y = 1f;
+    private const float m_FisheyeMax_X = 0.8f;
+    private const float m_FisheyeMax_Y = 0.8f;
 
     private const float m_MinDistanceEffectTrigger = 15f;
     private const float m_MinDistanceLookingEffectTrigger = 10f;
+
     private Fisheye m_Fisheye;
     private float rateOfChange = 0f;
     Plane[] cameraPlanes;
@@ -79,19 +80,20 @@ public class VRCameraScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         cameraPlanes = GeometryUtility.CalculateFrustumPlanes(m_Camera);
-        if (!m_Monster) {
+        if (!m_Monster)
+        {
             m_Monster = FindObjectOfType<MonsterAI>().gameObject;
+        }
+        EventManager.Stage monsterstage = m_Monster.GetComponent<MonsterAI>().GetMonsterStage();
+        MonsterState monsterstate = m_Monster.GetComponent<MonsterAI>().GetMonsterState();
+        if (monsterstage == EventManager.Stage.Intro || monsterstage == EventManager.Stage.Stage1
+            || monsterstate == MonsterState.DISABLED || monsterstate == MonsterState.STAGE_COMPLETE || monsterstate == MonsterState.HUMAN_IN_STRUCT)
+        {
+            effectsOn = false;
+            return;
         }
         if (m_Monster)
         {
-            EventManager.Stage monsterstage = m_Monster.GetComponent<MonsterAI>().GetMonsterStage();
-            MonsterState monsterstate = m_Monster.GetComponent<MonsterAI>().GetMonsterState();
-            if (monsterstage == EventManager.Stage.Intro || monsterstage == EventManager.Stage.Stage1 
-                || monsterstate == MonsterState.DISABLED || monsterstate == MonsterState.STAGE_COMPLETE || monsterstate == MonsterState.HUMAN_IN_STRUCT)
-            {
-                effectsOn = false;
-            }
-
             distanceToMonster = (m_Monster.transform.position - transform.position).magnitude;
             if (distanceToMonster < m_MinDistanceEffectTrigger)
             {
