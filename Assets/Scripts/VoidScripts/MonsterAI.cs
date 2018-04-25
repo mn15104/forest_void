@@ -127,8 +127,6 @@ public partial class MonsterAI : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(currentStage);
-        Debug.Log(currentState);
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                     + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         m_MonsterStateMachine.update_state();
@@ -342,6 +340,9 @@ public partial class MonsterAI : MonoBehaviour
     /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
     {
+        var lookPos = player.transform.position - transform.position;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2.2f);
         if (!Stage3_Appeared) { 
             if (distanceToHuman > 3f)
             {

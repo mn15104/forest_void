@@ -16,6 +16,7 @@ public class MonsterAudioController : MonoBehaviour
     public AudioSource MonsterSFX1AudioSrc;
     public AudioSource MonsterSFX2AudioSrc;
     public AudioSource MonsterSFX3AudioSrc;
+    public AudioSource MonsterSFX4AudioSrc;
     public AudioSource MonsterMotionAudioSrc;
     public AudioClip m_GrassRun;
     public AudioClip m_StoneRun;
@@ -174,12 +175,15 @@ public class MonsterAudioController : MonoBehaviour
             MonsterSFX1AudioSrc.clip = null;
             MonsterSFX2AudioSrc.clip = null;
             MonsterSFX3AudioSrc.clip = null;
+            MonsterSFX4AudioSrc.clip = null;
             MonsterSFX1AudioSrc.loop = false;
             MonsterSFX2AudioSrc.loop = false;
+            MonsterSFX4AudioSrc.loop = false;
             MonsterSFX3AudioSrc.loop = false;
             MonsterSFX1AudioSrc.volume = 1f;
             MonsterSFX2AudioSrc.volume = 1f;
             MonsterSFX3AudioSrc.volume = 1f;
+            MonsterSFX4AudioSrc.volume = 1f;
         }
 
         switch (m_Monster.GetMonsterState())
@@ -342,10 +346,14 @@ public class MonsterAudioController : MonoBehaviour
                 if (!monsterScream && (MonsterSFX2AudioSrc.clip != m_Chase || !MonsterSFX2AudioSrc.isPlaying))
                 {
                     MonsterSFX2AudioSrc.loop = false;
-                    MonsterSFX2AudioSrc.volume = 1f;
+                    MonsterSFX2AudioSrc.volume = 0 ;
                     MonsterSFX2AudioSrc.clip = (m_Chase);
                     MonsterSFX2AudioSrc.Play();
                     monsterScream = true;
+                }
+                if(MonsterSFX2AudioSrc.volume < 1)
+                {
+                    MonsterSFX2AudioSrc.volume += Time.deltaTime * 0.4f;
                 }
                 if (MonsterSFX3AudioSrc.clip != m_GasLoop || !MonsterSFX3AudioSrc.isPlaying)
                 {
@@ -357,6 +365,13 @@ public class MonsterAudioController : MonoBehaviour
                 break;
             case MonsterState.ATTACK:
                 StopAllCoroutines();
+                if (MonsterSFX4AudioSrc.clip != m_Jumpscare_Stage2)
+                {
+                    MonsterSFX4AudioSrc.loop = false;
+                    MonsterSFX4AudioSrc.volume = 1f;
+                    MonsterSFX4AudioSrc.clip = (m_Jumpscare_Stage2);
+                    MonsterSFX4AudioSrc.Play();
+                }
                 if (MonsterSFX2AudioSrc.clip != m_Chase || !MonsterSFX2AudioSrc.isPlaying)
                 {
                     MonsterSFX2AudioSrc.clip = m_Chase;
@@ -367,7 +382,6 @@ public class MonsterAudioController : MonoBehaviour
                 break;
             case MonsterState.DISABLED:
             case MonsterState.STAGE_COMPLETE:
-            case MonsterState.GAMEOVER:
                 monsterScream = false;
                 m_MotionEnabled = true;
                 MonsterSFX1AudioSrc.Stop();
@@ -379,6 +393,19 @@ public class MonsterAudioController : MonoBehaviour
                 MonsterSFX1AudioSrc.loop = false;
                 MonsterSFX2AudioSrc.loop = false;
                 MonsterSFX3AudioSrc.loop = false;
+                break;
+            case MonsterState.GAMEOVER:
+                if (MonsterSFX2AudioSrc.clip != m_Chase || !MonsterSFX2AudioSrc.isPlaying)
+                {
+                    MonsterSFX2AudioSrc.clip = m_Chase;
+                    MonsterSFX2AudioSrc.loop = false;
+                    MonsterSFX2AudioSrc.volume = 1f;
+                    MonsterSFX2AudioSrc.Play();
+                }
+                if (MonsterSFX2AudioSrc.volume > 0)
+                {
+                    MonsterSFX2AudioSrc.volume -= Time.deltaTime * 0.3f;
+                }
                 break;
             default:
                 break;
@@ -397,15 +424,19 @@ public class MonsterAudioController : MonoBehaviour
         MonsterMotionAudioSrc.Stop();
         MonsterSFX1AudioSrc.Stop();
         MonsterSFX2AudioSrc.Stop();
+        MonsterSFX4AudioSrc.Stop();
         MonsterSFX1AudioSrc.volume = 1f;
         MonsterSFX2AudioSrc.volume = 1f;
         MonsterSFX3AudioSrc.volume = 1f;
+        MonsterSFX4AudioSrc.volume = 1f;
         MonsterMotionAudioSrc.clip = m_GrassWalk;
         MonsterMotionAudioSrc.loop = true;
         MonsterSFX1AudioSrc.clip = null;
         MonsterSFX1AudioSrc.loop = true;
         MonsterSFX2AudioSrc.clip = null;
         MonsterSFX2AudioSrc.loop = false;
+        MonsterSFX4AudioSrc.clip = null;
+        MonsterSFX4AudioSrc.loop = false;
     }
     // Update is called once per frame
     void Update()

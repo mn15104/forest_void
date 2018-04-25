@@ -360,7 +360,7 @@ public partial class MonsterAI
             {
                 var lookPos = m_MonsterAI.destinationPosition - m_MonsterAI.transform.position;
                 var rotation = Quaternion.LookRotation(lookPos);
-                m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 1.2f);
+                m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 2.2f);
             }
 
             m_MonsterAI.m_CurrentSpeed = Mathf.Lerp(m_MonsterAI.m_CurrentSpeed, m_MaxApproachSpeed, Time.deltaTime * 0.1f);

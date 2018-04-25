@@ -102,7 +102,7 @@ public class VRCameraScript : MonoBehaviour {
                     GeometryUtility.TestPlanesAABB(cameraPlanes, m_Monster.GetComponent<Collider>().bounds))
                 {
                     if (!isLookingAtMonster) isLookingAtMonster = true;
-                    timeLookedAtMonster = Mathf.Min(5, timeLookedAtMonster + Time.deltaTime);
+                    timeLookedAtMonster = Mathf.Min(2.5f, timeLookedAtMonster + Time.deltaTime);
                 }
                 else
                 {
@@ -120,17 +120,7 @@ public class VRCameraScript : MonoBehaviour {
 
     void UpdateEffects()
     {
-        if (m_Monster.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.GAMEOVER)
-        {
-            ColorGradingModel.Settings colgradmod = m_PostProcessProfile.colorGrading.settings;
-            colgradmod.tonemapping.neutralBlackIn = -0.1f;
-            colgradmod.tonemapping.neutralBlackOut = -0.09f;
-            colgradmod.tonemapping.neutralWhiteIn = 0;
-            colgradmod.tonemapping.neutralWhiteOut = 0f;
-            m_PostProcessProfile.colorGrading.settings = colgradmod;
-        }
-        else
-        {
+        
             rateOfChange = Mathf.Clamp(timeLookedAtMonster, 1, 5);
             if (!effectsOn)
             {
@@ -153,7 +143,7 @@ public class VRCameraScript : MonoBehaviour {
                 /////////////////////////GLITCH///////////////////////////
                 UpdateGlitch(m_GlitchMaxIntensity, m_GlitchMaxFlipIntensity);
             }
-        }
+        
     }
 
     void UpdateVignette(float intensityDestination)
