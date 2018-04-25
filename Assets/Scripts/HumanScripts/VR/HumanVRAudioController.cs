@@ -66,7 +66,6 @@ public class HumanVRAudioController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_CurrentTerrain = Terrain.activeTerrain;
-        m_humanVRController = GetComponentInParent<HumanVRController>();
         m_Transform = transform;
         m_ParentRigidBody = transform.root.GetComponentInChildren<Rigidbody>();
         m_Breathing.enabled = false;
@@ -87,11 +86,11 @@ public class HumanVRAudioController : MonoBehaviour {
             case TerrainType.GRASS:
                 if (HumanMotion.clip != m_GrassWalk || HumanMotion.clip != m_GrassRun)
                 {
-                    if (HumanMotion.clip != m_GrassWalk && parent_velocity > 1f && parent_velocity < 2f)
+                    if (HumanMotion.clip != m_GrassWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_GrassWalk;
                     }
-                    else if (HumanMotion.clip != m_GrassRun && parent_velocity > 2f)
+                    else if (HumanMotion.clip != m_GrassRun && parent_velocity > runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_GrassRun;
                     }
@@ -100,11 +99,11 @@ public class HumanVRAudioController : MonoBehaviour {
             case TerrainType.STONE:
                 if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
                 {
-                    if (HumanMotion.clip != m_StoneWalk && parent_velocity > 1f && parent_velocity < 2f)
+                    if (HumanMotion.clip != m_StoneWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_StoneWalk;
                     }
-                    else if(HumanMotion.clip != m_StoneRun && parent_velocity > 2f)
+                    else if(HumanMotion.clip != m_StoneRun && parent_velocity > runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_StoneRun;
                     }
@@ -113,11 +112,11 @@ public class HumanVRAudioController : MonoBehaviour {
             case TerrainType.GRAVEL:
                 if (HumanMotion.clip != m_GravelWalk || HumanMotion.clip != m_GravelRun)
                 {
-                    if (HumanMotion.clip != m_GrassWalk && parent_velocity > 1f && parent_velocity < 2f)
+                    if (HumanMotion.clip != m_GrassWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_GravelWalk;
                     }
-                    else if (HumanMotion.clip != m_GravelRun && parent_velocity > 2f)
+                    else if (HumanMotion.clip != m_GravelRun && parent_velocity > runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_GravelRun;
                     }
@@ -126,11 +125,11 @@ public class HumanVRAudioController : MonoBehaviour {
             case TerrainType.MUD:
                 if (HumanMotion.clip != m_MudRun || HumanMotion.clip != m_MudWalk)
                 {
-                    if (HumanMotion.clip != m_MudWalk && parent_velocity > 1f && parent_velocity < 2f)
+                    if (HumanMotion.clip != m_MudWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_MudWalk;
                     }
-                    else if (HumanMotion.clip != m_MudRun && parent_velocity > 2f)
+                    else if (HumanMotion.clip != m_MudRun && parent_velocity > runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_MudRun;
                     }
@@ -150,7 +149,7 @@ public class HumanVRAudioController : MonoBehaviour {
 
         double horizontalSpeed = m_ParentRigidBody.velocity.magnitude;
 
-        if (horizontalSpeed < 0.8f)
+        if (horizontalSpeed < walkingVelocityTrigger/2f)
         {
             if (HumanMotion.volume != 0f)
             {
@@ -158,7 +157,7 @@ public class HumanVRAudioController : MonoBehaviour {
             }
             HumanMotion.volume = 0f;
         }
-        else if(horizontalSpeed > 1f)
+        else if(horizontalSpeed > walkingVelocityTrigger)
         {
             if (!HumanMotion.isPlaying)
             {
@@ -166,7 +165,7 @@ public class HumanVRAudioController : MonoBehaviour {
             }
             if(HumanMotion.volume == 0f)
             {
-                if (horizontalSpeed < 2f)
+                if (horizontalSpeed < runningVelocityTrigger)
                 {
                     OnHumanAudioEmission(0.5f);
                 }
@@ -180,18 +179,24 @@ public class HumanVRAudioController : MonoBehaviour {
         }
 
         //Breathing
-        float timeSpentRunning = m_humanVRController.GetTimeSpentRunning();
-        if (timeSpentRunning > m_introTimeForBreathing
-           && m_Breathing.volume == 0f)
+        if (horizontalSpeed > runningVelocityTrigger)
         {
             m_Breathing.enabled = true;
             m_Breathing.loop = true;
             m_Breathing.Play();
             m_Breathing.volume = 0;
         }
+        
         if (m_Breathing.isPlaying)
         {
-             m_Breathing.volume = ((timeSpentRunning - m_introTimeForBreathing) / m_maxRunTime) * 2;
+            if(horizontalSpeed > runningVelocityTrigger)
+            {
+                m_Breathing.volume = Mathf.Lerp(0f, 1f, Time.deltaTime * 0.3f);
+            }
+            else
+            {
+                m_Breathing.volume = Mathf.Lerp(1f, 0f, Time.deltaTime * 0.5f);
+            }
         }
     }
 
