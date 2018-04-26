@@ -17,6 +17,7 @@ public class IntroCubeScript : MonoBehaviour {
     public Camera cameraRight;
     public GameObject audioController;
     public GameObject subtitles;
+    
 
     // Use this for initialization
     void Start () {
@@ -32,9 +33,9 @@ public class IntroCubeScript : MonoBehaviour {
         flashlight.SetActive(false);
 
         cameraLeft.nearClipPlane = 0.01f;
-        cameraLeft.farClipPlane = 0.2f;
+        cameraLeft.farClipPlane = 0.5f;
         cameraRight.nearClipPlane = 0.01f;
-        cameraRight.farClipPlane = 0.2f;
+        cameraRight.farClipPlane = 0.5f;
         previousColour = cameraLeft.backgroundColor;
         cameraLeft.backgroundColor = Color.black;
         cameraRight.backgroundColor = Color.black;
@@ -57,23 +58,28 @@ public class IntroCubeScript : MonoBehaviour {
 
 
 
-//            cameraLeft.nearClipPlane = 0.3f;
- //           cameraRight.nearClipPlane = 0.3f;
+            //            cameraLeft.nearClipPlane = 0.3f;
+            //           cameraRight.nearClipPlane = 0.3f;
 
 
-//            float origtime = Time.time;
- //           float currentTime = origtime; 
-  //          while(currentTime - origtime < 2f)
-   //         {
-    //            currentTime += Time.deltaTime;
-     //       }
+            //            float origtime = Time.time;
+            //           float currentTime = origtime; 
+            //          while(currentTime - origtime < 2f)
+            //         {
+            //            currentTime += Time.deltaTime;
+            //       }
 
             //lerpFar();
-            cameraLeft.farClipPlane = 20f;
-            cameraRight.farClipPlane = 20f;
-
             cameraLeft.backgroundColor = previousColour;
             cameraRight.backgroundColor = previousColour;
+
+            StartCoroutine(LerpFar());
+
+
+            //cameraLeft.farClipPlane = 20f;
+            //cameraRight.farClipPlane = 20f;
+
+
 
             teleported = true;
         }
@@ -85,19 +91,31 @@ public class IntroCubeScript : MonoBehaviour {
        player.transform.position = spawnPoint.transform.position;
     }
 
-    void lerpFar()
-    {
-        float t = 0f;
-        float duration = 300f;
-        while (t <= 1)
-        {
+    //void lerpFar()
+    //{
+    //    float t = 0f;
+    //    float duration = 300f;
+    //    while (t <= 1)
+    //    {
         
-            float power = Mathf.Lerp(0.02f, 20f, t);
-            //Debug.Log("Power" + power);
-            t += Time.deltaTime / duration;
-            cameraLeft.farClipPlane = power;
-            cameraRight.farClipPlane = power;
-        }
+    //        float power = Mathf.Lerp(0.02f, 20f, t);
+    //        //Debug.Log("Power" + power);
+    //        t += Time.deltaTime / duration;
+    //        cameraLeft.farClipPlane = power;
+    //        cameraRight.farClipPlane = power;
+    //    }
      
+    //}
+
+    IEnumerator LerpFar()
+    {
+        //print(Time.time);
+        for (int i = 2; i < 2000; i ++)
+        {
+        cameraLeft.farClipPlane = i/100;
+        cameraRight.farClipPlane = i/100;
+        yield return new WaitForSeconds(0.2f);
+        }
+
     }
 }
