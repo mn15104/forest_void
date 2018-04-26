@@ -19,7 +19,6 @@ public class ChapelDoorEvent : MonoBehaviour
     {
         if (other.gameObject == eventManager.player)
         {
-            Debug.Log("Trigger entered at chapel door");
             trigger.TriggerEnter(other.gameObject);
         }
     }
@@ -28,7 +27,6 @@ public class ChapelDoorEvent : MonoBehaviour
     {
         if (other.gameObject == eventManager.player)
         {
-            Debug.Log("Trigger entered at chapel door");
             trigger.TriggerExit(other.gameObject);
         }
 

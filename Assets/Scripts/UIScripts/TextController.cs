@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class TextController : MonoBehaviour {
+public class TextController : MonoBehaviour
+{
 
-    public enum TextTypeEnum { INTERACTABLE, NARRATIVE };
+    public enum TextTypeEnum { INTERACTABLE, NARRATIVE, TWOWAY };
     public TextTypeEnum textType;
     public float amplitude;
     public float floatSpeed;
@@ -23,11 +24,13 @@ public class TextController : MonoBehaviour {
     private Color fadeOutColor;
     private Color fadeInColor;
     private Color interactColor;
+    private Material myMaterial;
     private bool keyCollected = false;
 
 
 
-    void Start () {
+    void Start()
+    {
         interactableViewCone = GameObject.FindWithTag("InteractableConeCollider");
         narrativeViewCone = GameObject.FindWithTag("NarrativeConeCollider");
 
@@ -35,7 +38,11 @@ public class TextController : MonoBehaviour {
         floatSpeed = 3f;
         text = gameObject.GetComponent<Text>();
         interactableViewCone.transform.localScale = narrativeViewCone.transform.localScale * 0.5f;
-
+        if (textType == TextTypeEnum.TWOWAY)
+        {
+            myMaterial = GetComponent<Text>().material;
+            myMaterial.color = new Color(1, 1, 1, 0);
+        }
         Initialise();
     }
 
@@ -45,13 +52,14 @@ public class TextController : MonoBehaviour {
         text.color = new Color(1, 1, 1, 0);
         fadeOutColor = text.color;
         fadeInColor = new Color(1, 1, 1, 1);
-        if(textType == TextTypeEnum.INTERACTABLE)
+        if (textType == TextTypeEnum.INTERACTABLE)
         {
             interactColor = new Color(1, 0.92f, 0.016f);
         }
     }
-    
-    void Update () {
+
+    void Update()
+    {
         var y0 = transform.position.y;
         transform.position = new Vector3(transform.position.x, y0 + amplitude * Mathf.Sin(floatSpeed * Time.time), transform.position.z);
         if (key != null && !key.activeSelf && !keyCollected)
@@ -68,7 +76,7 @@ public class TextController : MonoBehaviour {
         float timeToStart = Time.time;
         while (Time.time - timeToStart < 1)
         {
-            text.color = Color.Lerp(text.color, interactColor , (Time.time - timeToStart));
+            text.color = Color.Lerp(text.color, interactColor, (Time.time - timeToStart));
             yield return null;
         }
         Debug.Log("Changed Colour");
@@ -103,6 +111,10 @@ public class TextController : MonoBehaviour {
             while (Time.time - timeToStart < 1)
             {
                 text.color = Color.Lerp(text.color, fadeInColor, (Time.time - timeToStart));
+                if (textType == TextTypeEnum.TWOWAY)
+                {
+                    myMaterial.color = Color.Lerp(text.color, fadeInColor, (Time.time - timeToStart));
+                }
                 yield return null;
             }
             FadingIn = false;
@@ -120,6 +132,10 @@ public class TextController : MonoBehaviour {
         while (Time.time - timeToStart < 1f)
         {
             text.color = Color.Lerp(text.color, fadeOutColor, (Time.time - timeToStart));
+            if (textType == TextTypeEnum.TWOWAY)
+            {
+                myMaterial.color = Color.Lerp(text.color, fadeOutColor, (Time.time - timeToStart));
+            }
             //Debug.Log(Time.time - timeToStart);
             yield return null;
         }

@@ -127,8 +127,7 @@ public partial class MonsterAI : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(currentStage);
-        Debug.Log(currentState);
+
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                     + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         m_MonsterStateMachine.update_state();

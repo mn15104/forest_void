@@ -21,10 +21,11 @@ public class CinematicTorchMoveScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        TorchMoveSpeed = 0.25f;
+        TorchMoveSpeed = 0.45f;
         PlayedMusic = false;
         foo = 0f;
         EventFinished = false;
+        torch.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -44,11 +45,11 @@ public class CinematicTorchMoveScript : MonoBehaviour {
             CandleLight.GetComponent<LightFlicker>().enabled = false;
             CandleLight.intensity = 0f;      
         }
-        //foreach (GameObject Candle in Candles)
-        //{
-        //    Candle.GetComponent<Fire>().enabled = false;
-        //    //Candle.intensity = 0f;
-        //}
+        foreach (GameObject Candle in Candles)
+        {
+            Candle.GetComponent<MeshRenderer>().enabled = false;
+            //Candle.intensity = 0f;
+        }
 
             torch.SetActive(false);
         monster.SetActive(false);
@@ -65,6 +66,7 @@ public class CinematicTorchMoveScript : MonoBehaviour {
         triggered = true;
         if (!PlayedMusic)
         {
+            torch.SetActive(true);
             jumpScare.Play();
             PlayedMusic = true;
         }

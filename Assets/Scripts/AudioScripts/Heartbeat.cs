@@ -29,7 +29,6 @@ public class Heartbeat : MonoBehaviour
 
     IEnumerator getHeartRate()
     {
-        Debug.Log("Doing Something");
         while (true)
         {
             yield return new WaitForSeconds(1);

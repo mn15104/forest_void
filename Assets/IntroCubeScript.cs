@@ -16,13 +16,16 @@ public class IntroCubeScript : MonoBehaviour {
     float power;
     float fogIntensity;
     float timeStart;
+    float textTimeStart;
     private Color previousColour;
+    private Color textColor;
 
     public GameObject flashlight;
     public Camera cameraLeft;
     public Camera cameraRight;
     public GameObject audioController;
     public GameObject subtitles;
+    public Text subtitleText;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +33,7 @@ public class IntroCubeScript : MonoBehaviour {
         teleported = false;
         fadedOut = false;
         timeStart = 0;
+        textTimeStart = 0;
         audioController.SetActive(false);
         eventManager = FindObjectOfType<EventManager>();
         player = eventManager.player;
@@ -38,6 +42,9 @@ public class IntroCubeScript : MonoBehaviour {
         distressCall.Play(44100 * delayTime);
         player.GetComponent<OVRPlayerController>().Acceleration = 0;
         flashlight.SetActive(false);
+        subtitleText = subtitles.GetComponentInChildren<Text>();
+
+
 
         cameraLeft.nearClipPlane = 0.01f;
         cameraLeft.farClipPlane = 0.2f;
@@ -58,16 +65,16 @@ public class IntroCubeScript : MonoBehaviour {
 
         float distressTime = Time.time;
         //if (!(distressCall.isPlaying) && !teleported)
-        if ( distressTime > 28f && !teleported)
+        if ( distressTime > 31f && !teleported)
         {
             TeleportPlayer();
             player.GetComponent<OVRPlayerController>().Acceleration = 0.1f;
             flashlight.SetActive(true);
             audioController.SetActive(true);
-            //subtitles.SetActive(false);
+            
 
-            cameraLeft.nearClipPlane = 0.3f;
-            cameraRight.nearClipPlane = 0.3f;
+            //cameraLeft.nearClipPlane = 0.3f;
+            //cameraRight.nearClipPlane = 0.3f;
 
             teleported = true;
         }
@@ -79,22 +86,23 @@ public class IntroCubeScript : MonoBehaviour {
             fogIntensity = Mathf.Lerp(1.0f, 0.25f, timeStart);
             cameraColor = Color.Lerp(Color.black, previousColour, timeStart);
             power = Mathf.Lerp(0.3f, 20.0f, timeStart);
-            //Color textColor = Color.Lerp(subtitles.GetComponent<Text>().color, Color.clear, timeStart);
+            textColor = Color.Lerp(subtitleText.color, Color.clear, textTimeStart);
 
             timeStart += Time.deltaTime * 0.2f;
+            textTimeStart += Time.deltaTime * 0.01f;
 
             cameraLeft.farClipPlane = power;
             cameraRight.farClipPlane = power;
             cameraLeft.backgroundColor = cameraColor;
             cameraRight.backgroundColor = cameraColor;
             RenderSettings.fogColor = cameraColor;
-            //subtitles.GetComponent<Text>().color = textColor;
-
+            subtitleText.color = textColor;
             RenderSettings.fogDensity = fogIntensity;
 
             Debug.Log(RenderSettings.fogDensity);
             if (fogIntensity < 0.26 && cameraColor == previousColour)
             {
+                subtitles.SetActive(false);
                 Debug.Log(" done fading");
                 fadedOut = true;
             }

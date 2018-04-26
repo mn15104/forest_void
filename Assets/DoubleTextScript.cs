@@ -141,13 +141,14 @@ public class DoubleTextScript : MonoBehaviour
 
             if (cone == narrativeViewCone)
             {
-                if (mutex.isUnlocked())
-                {
+                //Debug.Log(mutex.isUnlocked());
+               // if (mutex.isUnlocked())
+               // {
                     mutex.getMutex();
                     Debug.Log("running show text");
                     Debug.Log("Fading In");
                     StartCoroutine("FadeIn");
-                }
+               // }
             }
             else if (textType == TextTypeEnum.INTERACTABLE && cone == interactableViewCone)
             {
@@ -164,7 +165,7 @@ public class DoubleTextScript : MonoBehaviour
             if (textType == TextTypeEnum.INTERACTABLE && cone == interactableViewCone)
             {
                 StartCoroutine("ChangeColorOut");
-                mutex.releaseMutex();
+               // mutex.releaseMutex();
             }
             else if (cone == narrativeViewCone)
             {

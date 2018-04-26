@@ -20,7 +20,6 @@ public class ElectricEffect : MonoBehaviour {
             foreach (Transform child in transform)
             {
                 DisplayParticles(child);
-                Debug.Log("Particle show");
                 randomInterval = Random.Range(lowerRange, higherRange);
 
                 yield return new WaitForSeconds(1+randomInterval);
