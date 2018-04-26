@@ -14,6 +14,9 @@ public class CinematicTorchMoveScript : MonoBehaviour {
     public bool PlayedMusic;
     public float maxTime;
     public float foo;
+    public List<Light> CandleLights;
+    public List<GameObject> Candles;
+    private bool EventFinished;
 
 
     // Use this for initialization
@@ -21,6 +24,7 @@ public class CinematicTorchMoveScript : MonoBehaviour {
         TorchMoveSpeed = 0.25f;
         PlayedMusic = false;
         foo = 0f;
+        EventFinished = false;
 	}
 	
 	// Update is called once per frame
@@ -32,10 +36,23 @@ public class CinematicTorchMoveScript : MonoBehaviour {
             Debug.Log(torch.transform.position);
             torch.transform.position = Vector3.Lerp(torch.transform.position, TargetPoint.transform.position, Time.deltaTime * TorchMoveSpeed);
         }
-        if (foo >= maxTime)
+        if (foo >= maxTime && !EventFinished)
         {
+            
+        foreach (Light CandleLight in CandleLights)
+        {
+            CandleLight.GetComponent<LightFlicker>().enabled = false;
+            CandleLight.intensity = 0f;      
+        }
+        //foreach (GameObject Candle in Candles)
+        //{
+        //    Candle.GetComponent<Fire>().enabled = false;
+        //    //Candle.intensity = 0f;
+        //}
+
             torch.SetActive(false);
-            monster.SetActive(false);
+        monster.SetActive(false);
+        EventFinished = true;
         }
 
 
