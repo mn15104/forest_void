@@ -18,7 +18,6 @@ public class HumanVRAudioController : MonoBehaviour {
     public delegate void HumanAudioEmitter(float volumeEmitted);
     public static event HumanAudioEmitter OnHumanAudioEmission;
 
-    
     private Dictionary<int, TerrainType> m_TerrainTypeDictionary = new Dictionary<int, TerrainType>();
     private Dictionary<TerrainType, float> m_TerrainVolumeDictionary = new Dictionary<TerrainType, float>();
     private Terrain m_CurrentTerrain;
@@ -64,17 +63,19 @@ public class HumanVRAudioController : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         m_CurrentTerrain = Terrain.activeTerrain;
         m_Transform = transform;
         m_ParentRigidBody = transform.root.GetComponentInChildren<Rigidbody>();
-        m_Breathing.enabled = false;
+        m_Breathing.enabled = true;
         m_Breathing.loop = true;
         m_Breathing.volume = 0;
+        m_Breathing.Play();
         m_maxRunTime = m_humanVRController.GetMaxRunTime();
         m_introTimeForBreathing = m_maxRunTime / 2;
     }
-  
+
     private void UpdateHumanMotion()
     {
 
@@ -103,7 +104,7 @@ public class HumanVRAudioController : MonoBehaviour {
                     {
                         HumanMotion.clip = m_StoneWalk;
                     }
-                    else if(HumanMotion.clip != m_StoneRun && parent_velocity > runningVelocityTrigger)
+                    else if (HumanMotion.clip != m_StoneRun && parent_velocity > runningVelocityTrigger)
                     {
                         HumanMotion.clip = m_StoneRun;
                     }
@@ -139,63 +140,40 @@ public class HumanVRAudioController : MonoBehaviour {
                 Debug.Log("WARNING: NO AUDIO SOURCE FOR CURRENT TERRAIN TYPE BELOW PLAYER.");
                 break;
         }
-        
-        
+
+
     }
 
-    void Update ()
+    void Update()
     {
         UpdateHumanMotion();
 
         double horizontalSpeed = m_ParentRigidBody.velocity.magnitude;
-
-        if (horizontalSpeed < walkingVelocityTrigger/2f)
+        Debug.Log(horizontalSpeed + ": " + walkingVelocityTrigger / 2f);
+        if (horizontalSpeed < (walkingVelocityTrigger / 2f))
         {
-            if (HumanMotion.volume != 0f)
-            {
-                OnHumanAudioEmission(0.5f);
-            }
             HumanMotion.volume = 0f;
         }
-        else if(horizontalSpeed > walkingVelocityTrigger)
+        else if (horizontalSpeed > walkingVelocityTrigger)
         {
             if (!HumanMotion.isPlaying)
             {
                 HumanMotion.Play();
-            }
-            if(HumanMotion.volume == 0f)
-            {
-                if (horizontalSpeed < runningVelocityTrigger)
-                {
-                    OnHumanAudioEmission(0.5f);
-                }
-                else
-                {
-                    OnHumanAudioEmission(1f);
-                }
             }
             if (HumanMotion.volume < 1f)
                 HumanMotion.volume = 1f;
         }
 
         //Breathing
-        if (horizontalSpeed > runningVelocityTrigger)
-        {
-            m_Breathing.enabled = true;
-            m_Breathing.loop = true;
-            m_Breathing.Play();
-            m_Breathing.volume = 0;
-        }
-        
         if (m_Breathing.isPlaying)
         {
-            if(horizontalSpeed > runningVelocityTrigger)
+            if (horizontalSpeed > runningVelocityTrigger)
             {
-                m_Breathing.volume = Mathf.Lerp(0f, 1f, Time.deltaTime * 0.3f);
+                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 1f, Time.deltaTime * 0.5f);
             }
             else
             {
-                m_Breathing.volume = Mathf.Lerp(1f, 0f, Time.deltaTime * 0.5f);
+                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 0f, Time.deltaTime * 0.3f);
             }
         }
     }

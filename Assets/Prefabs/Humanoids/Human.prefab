@@ -655,7 +655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1390058952658892
 GameObject:
   m_ObjectHideFlags: 1
@@ -2154,7 +2154,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143188469967458}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3107,11 +3107,11 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484944895108866}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: d0636030dd4f65342b0e70fae549f179,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: bfd7b25a17028c44cb886c135b918859, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3c9b0822c822d7a43b95f20af69bb5bb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1
@@ -3576,6 +3576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HumanMotion: {fileID: 82625212954730384}
+  m_Breathing: {fileID: 82563371645255554}
   m_GrassRun: {fileID: 8300000, guid: 7d8cac319329d224eaca292d7e52a07a, type: 3}
   m_StoneRun: {fileID: 8300000, guid: ff42943390b0fbc448252d12a4bcbbe4, type: 3}
   m_GrassWalk: {fileID: 8300000, guid: 5b5f6711c4d53c1429672b9566e1fb27, type: 3}
@@ -3585,7 +3586,8 @@ MonoBehaviour:
   m_MudWalk: {fileID: 8300000, guid: 8b2fd0afa40a1c04797fe0049f9dd88c, type: 3}
   m_MudRun: {fileID: 8300000, guid: 36dfaac452bb06741b66dc33d7913d34, type: 3}
   m_WoodRun: {fileID: 8300000, guid: c487e899886e2af469c7f0809f549d85, type: 3}
-  m_Breathing: {fileID: 82563371645255554}
+  walkingVelocityTrigger: 1
+  runningVelocityTrigger: 2
 --- !u!114 &114692409029344746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3860,7 +3862,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382307280244786}
   m_LocalRotation: {x: -0, y: 0.76836604, z: -0, w: -0.6400107}
-  m_LocalPosition: {x: 0, y: 0, z: 830.92}
+  m_LocalPosition: {x: 0, y: 0, z: 796.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337399597682046}
@@ -3874,6 +3876,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 259.585, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 581.7, y: 73.9}
+  m_AnchoredPosition: {x: 547.02, y: 73.57}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
