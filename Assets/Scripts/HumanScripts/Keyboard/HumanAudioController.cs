@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class HumanAudioController : MonoBehaviour {
 
+    public delegate void TerrainStateChange(TerrainType terrType);
+    public event TerrainStateChange OnTerrainStateChange = delegate { };
+
+
     private Dictionary<int, TerrainType> m_TerrainTypeDictionary = new Dictionary<int, TerrainType>();
     private Dictionary<TerrainType, float> m_TerrainVolumeDictionary = new Dictionary<TerrainType, float>();
     private Terrain m_CurrentTerrain;

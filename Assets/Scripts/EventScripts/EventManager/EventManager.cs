@@ -13,7 +13,7 @@ public class EventManager : MonoBehaviour {
    
     public enum Location
     {
-        Chapel,Forest,Crypt,ToolShed, Caravan, Generator
+        Chapel,Forest,Crypt,ToolShed, Caravan, Generator, Bridge
     }
     public void SetGameTimeFromStage(Stage stage)
     {
@@ -136,12 +136,14 @@ public class EventManager : MonoBehaviour {
     
     void SetStructureLocation(GameObject gameObject)
     {
+        Debug.Log(gameObject.GetComponent<StructureZone>().location);
         currentLocation = gameObject.GetComponent<StructureZone>().location;
         NotifyLocation.Notify(currentLocation);
     } 
 
     void SetForestLocation(GameObject gameObject)
     {
+        Debug.Log("Exited " + currentLocation);
         currentLocation = Location.Forest;
         NotifyLocation.Notify(currentLocation);
     }

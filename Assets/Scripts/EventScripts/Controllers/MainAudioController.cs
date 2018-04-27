@@ -125,6 +125,9 @@ public class MainAudioController : MonoBehaviour {
             case EventManager.Location.Generator:
                 windOn = true;
                 break;
+            case EventManager.Location.Bridge:
+                windOn = true;
+                break;
             case EventManager.Location.ToolShed:
                 break;
         }

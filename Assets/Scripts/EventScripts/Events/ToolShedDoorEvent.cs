@@ -28,7 +28,7 @@ public class ToolShedDoorEvent : MonoBehaviour
     {
         if (other.gameObject == eventManager.player)
         {
-            Debug.Log("Trigger entered at chapel door");
+            Debug.Log("Trigger exited at tool shed door");
             trigger.TriggerExit(other.gameObject);
         }
 

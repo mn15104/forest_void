@@ -115,8 +115,7 @@ public partial class MonsterAI
                         m_MonsterAI.StartCoroutine(m_MonsterAI.UpdateChaseDestination());
                         m_MonsterAI.anim.SetBool("Idle", false);
                         m_MonsterAI.anim.SetBool("Walk", false);
-                        m_MonsterAI.anim.SetBool("Run", false);
-                        m_MonsterAI.anim.SetBool("Attack", true);
+                        m_MonsterAI.anim.SetBool("Run", true);
                         m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
                         m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
                         m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 3f));

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StructureZone : MonoBehaviour {
+public class StructureZone : MonoBehaviour
+{
 
     public EventManager.Location location;
+    private EventManager eventManager;
+    bool humanInStruct = false;
 
-
-    private EventManager eventManager;  
 
     public void Awake()
     {
-       
+
         eventManager = FindObjectOfType<EventManager>();
     }
 
@@ -22,7 +23,7 @@ public class StructureZone : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-       
+
         if (other == eventManager.player.GetComponent<Collider>())
         {
             Debug.Log("Structure Event triggered");
@@ -35,7 +36,6 @@ public class StructureZone : MonoBehaviour {
         if (other == eventManager.player.GetComponent<Collider>())
         {
             eventManager.StructureZoneTriggerEvent.TriggerExit(gameObject);
-
         }
     }
 
