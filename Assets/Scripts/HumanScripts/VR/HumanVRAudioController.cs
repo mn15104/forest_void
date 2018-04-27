@@ -41,9 +41,6 @@ public class HumanVRAudioController : MonoBehaviour {
     private Transform m_Transform;
     private EventManager m_EventManager;
     private Rigidbody m_ParentRigidBody;
-    private HumanVRController m_humanVRController;
-    private float m_introTimeForBreathing;
-    private float m_maxRunTime;
 
     private void OnEnable()
     {
@@ -79,8 +76,6 @@ public class HumanVRAudioController : MonoBehaviour {
         m_Breathing.loop = true;
         m_Breathing.volume = 0;
         m_Breathing.Play();
-        m_maxRunTime = m_humanVRController.GetMaxRunTime();
-        m_introTimeForBreathing = m_maxRunTime / 2;
     }
 
     void LocationChange(EventManager.Location s)
