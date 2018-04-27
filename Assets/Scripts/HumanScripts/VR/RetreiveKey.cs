@@ -117,15 +117,19 @@ public class RetreiveKey : OVRGrabber
 
     void KeyAppearAndInsert()
     {
-        GetComponent<OculusHaptics>().Vibrate(VibrationForce.Hard);
+    
         key = human.GetComponent<Inventory>().peekInventory();
         key.SetActive(true);
         key.transform.position = transform.position;
         key.transform.rotation = m_lastRot;
         key.transform.Rotate(new Vector3(90, 90, 0));
+        key.GetComponent<BoxCollider>().center = new Vector3(0.001272247f, 0.001169248f, -0.00668247f);
+        key.GetComponent<BoxCollider>().size = new Vector3(0.202461f, 0.027565f, 0.1165298f);
+
         key.GetComponent<KeyGrabbable>().checkInserted();
         if (key.GetComponent<KeyGrabbable>().hasBeenInserted)
         {
+            GetComponent<OculusHaptics>().Vibrate(VibrationForce.Hard);
             human.GetComponent<Inventory>().removeKeyFromInventory(key);
             //Animate insertion;
             key.GetComponent<KeyGrabbable>().light.GetComponent<Light>().enabled = true;

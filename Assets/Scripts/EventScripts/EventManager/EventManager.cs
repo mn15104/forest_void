@@ -32,6 +32,7 @@ public class EventManager : MonoBehaviour {
     }
     private float[] StageTimes = { 50f, 200f, 420f, 480f };
     public float GameTimerSeconds = 0f;
+    private int TOTALKEYS = 3;
 
     public TriggerEvent2 TextTriggerEvent = new TriggerEvent2();
 
@@ -49,12 +50,15 @@ public class EventManager : MonoBehaviour {
     public NotifyEvent<Location> NotifyLocation = new NotifyEvent<Location>();
     public NotifyEvent<bool> NotifyRunStamina = new NotifyEvent<bool>();
     public NotifyEvent<bool> NotifyTorchPressed = new NotifyEvent<bool>();
+    public NotifyEvent<bool> NotifyKeyInserted = new NotifyEvent<bool>();
+    public NotifyEvent<bool> NotifyAllKeysInserted = new NotifyEvent<bool>();
 
     private VoidSystem voidSys;
     public Stage debugChangeStage;
     private bool debugForceStageChange = false;
     private Stage currentStage;
     private Location currentLocation;
+    private int numKeyInserted;
 
     public GameObject player;
     public GameObject monster;
@@ -72,6 +76,7 @@ public class EventManager : MonoBehaviour {
         voidSys.NotifyStage.NotifyEventOccurred += SetStage;
         StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
         StructureZoneTriggerEvent.TriggerExitEvent += SetForestLocation;
+        NotifyKeyInserted.NotifyEventOccurred += AddKey;
     }
 
 
@@ -126,6 +131,15 @@ public class EventManager : MonoBehaviour {
         }
         NotifyStage.Notify(currentStage);
         debugForceStageChange = false;
+    }
+
+    void AddKey(bool value)
+    {
+        numKeyInserted += 1;
+        if(numKeyInserted == TOTALKEYS)
+        {
+            NotifyAllKeysInserted.Notify(true);
+        }
     }
 
     void PassHeartRate()

@@ -11,10 +11,12 @@ public class KeyGrabbable : OVRGrabbable {
     public bool hasBeenInserted = false;
     public bool hasBeenCollected = false;
     public GameObject light;
+    private EventManager eventManager;
 
     protected override void Start()
     {
         base.Start();
+        eventManager = FindObjectOfType<EventManager>();
         human = GameObject.FindGameObjectWithTag("Player");
         speed = 0.7f;
         light.GetComponent<Light>().enabled = false;
@@ -55,7 +57,7 @@ public class KeyGrabbable : OVRGrabbable {
 
     public IEnumerator InsertionAnimation()
     {
-        Vector3 finalKeyPosition = new Vector3(target.transform.position.x - 0.025f, target.transform.position.y , target.transform.position.z);
+        Vector3 finalKeyPosition = new Vector3(target.transform.position.x, target.transform.position.y , target.transform.position.z);
         Debug.Log("inserted key");
         while (Vector3.Distance(transform.position, finalKeyPosition) > 0.0001f)
         {
@@ -68,7 +70,10 @@ public class KeyGrabbable : OVRGrabbable {
         
         //Wait to do rotation
         yield return new WaitForSeconds(0.5f);
+        eventManager.NotifyKeyInserted.Notify(true);
 
+
+        /*
         Quaternion startingRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(-180,0,0);
         float originalRotationTime = 0.3f;
@@ -79,6 +84,7 @@ public class KeyGrabbable : OVRGrabbable {
             transform.rotation = Quaternion.Slerp(startingRotation, targetRotation, currentTime/originalRotationTime);
             yield return new WaitForEndOfFrame();
         }
+        */
     }
 
     void Update () {
