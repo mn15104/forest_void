@@ -21,8 +21,12 @@ public class CryptWallController : MonoBehaviour {
     {
         foreach (GameObject wall in toTurnOff)
         {
-            
-            if (wall.activeSelf)
+            if(wall.activeSelf && wall.name == "md_KeySetYellowV1" && !wall.GetComponent<KeyGrabbable>().hasBeenCollected)
+            {
+                wall.SetActive(false);
+            }
+
+            else if (wall.activeSelf && wall.name != "md_KeySetYellowV1")
             {
                 wall.SetActive(false);
                 //if (wall.GetComponent<MeshCollider>())

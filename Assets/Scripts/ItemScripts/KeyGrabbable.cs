@@ -8,7 +8,8 @@ public class KeyGrabbable : OVRGrabbable {
     public GameObject target;
     public float speed;
     private GameObject human;
-    private bool hasBeenInserted = false;
+    public bool hasBeenInserted = false;
+    public bool hasBeenCollected = false;
     public GameObject light;
 
     protected override void Start()
@@ -25,6 +26,7 @@ public class KeyGrabbable : OVRGrabbable {
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        hasBeenCollected = true;
     }
 
     public override void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
@@ -45,20 +47,25 @@ public class KeyGrabbable : OVRGrabbable {
         {
             hasBeenInserted = true;
             transform.GetComponent<Rigidbody>().useGravity = false;
+            transform.GetComponent<Collider>().enabled = false;
+            transform.GetComponent<Rigidbody>().isKinematic = true;
         }
-        transform.GetComponent<Collider>().enabled = false;
+       
     }
 
-    private IEnumerator InsertionAnimation()
+    public IEnumerator InsertionAnimation()
     {
-        Vector3 finalKeyPosition = new Vector3(target.transform.position.x - 0.025f, target.transform.position.y , target.transform.position.z); 
-        while (transform.position != finalKeyPosition)
+        Vector3 finalKeyPosition = new Vector3(target.transform.position.x - 0.025f, target.transform.position.y , target.transform.position.z);
+        Debug.Log("inserted key");
+        while (Vector3.Distance(transform.position, finalKeyPosition) > 0.0001f)
         {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, finalKeyPosition, step);
+            Debug.Log("Stuck in loop");
             yield return 1;
 
         }
+        
         //Wait to do rotation
         yield return new WaitForSeconds(0.5f);
 

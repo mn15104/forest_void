@@ -76,24 +76,35 @@ public class RetreiveKey : OVRGrabber
         m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
 
         CheckForGrabOrRelease(prevFlex);
+        CheckForGeneratorZone();
     
     }
+
+    void CheckForGeneratorZone()
+    {
+        if (inGeneratorZone && human.GetComponent<Inventory>().inventorySize() > 0)
+        {
+            KeyAppearAndInsert();
+
+        }
+    }
+
 
     protected override void CheckForGrabOrRelease(float prevFlex)
     {
         if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))
         {
-            if (inGeneratorZone && CheckHandInPocket() && human.GetComponent<Inventory>().inventorySize() > 0)
-            {
-                KeyAppear();
-                OVRGrabbable grabbable = key.GetComponent<OVRGrabbable>() ?? key.GetComponentInParent<OVRGrabbable>();
-                if (grabbable == null) return;
+            //if (inGeneratorZone && CheckHandInPocket() && human.GetComponent<Inventory>().inventorySize() > 0)
+            //{
+            //    KeyAppear();
+            //    OVRGrabbable grabbable = key.GetComponent<OVRGrabbable>() ?? key.GetComponentInParent<OVRGrabbable>();
+            //    if (grabbable == null) return;
 
                 // Add the grabbable
-                int refCount = 0;
-                m_grabCandidates.TryGetValue(grabbable, out refCount);
-                m_grabCandidates[grabbable] = refCount + 1;
-            }
+            //    int refCount = 0;
+            //    m_grabCandidates.TryGetValue(grabbable, out refCount);
+            //    m_grabCandidates[grabbable] = refCount + 1;
+            //}
            
             GrabBegin();
         }
@@ -104,7 +115,7 @@ public class RetreiveKey : OVRGrabber
 
     }
 
-    void KeyAppear()
+    void KeyAppearAndInsert()
     {
         GetComponent<OculusHaptics>().Vibrate(VibrationForce.Hard);
         key = human.GetComponent<Inventory>().peekInventory();
@@ -112,7 +123,20 @@ public class RetreiveKey : OVRGrabber
         key.transform.position = transform.position;
         key.transform.rotation = m_lastRot;
         key.transform.Rotate(new Vector3(90, 90, 0));
+        key.GetComponent<KeyGrabbable>().checkInserted();
+        if (key.GetComponent<KeyGrabbable>().hasBeenInserted)
+        {
+            human.GetComponent<Inventory>().removeKeyFromInventory(key);
+            //Animate insertion;
+            key.GetComponent<KeyGrabbable>().light.GetComponent<Light>().enabled = true;
+            StartCoroutine(key.GetComponent<KeyGrabbable>().InsertionAnimation());
+            key.GetComponent<KeyGrabbable>().hasBeenInserted = false;
+        }
     }
+
+
+
+
 
     bool CheckHandInPocket()
     {
@@ -199,7 +223,6 @@ public class RetreiveKey : OVRGrabber
 
             }
    
-
             m_lastPos = transform.position;
             m_lastRot = transform.rotation;
     
