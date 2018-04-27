@@ -147,7 +147,10 @@ public class EventManager : MonoBehaviour {
         currentLocation = Location.Forest;
         NotifyLocation.Notify(currentLocation);
     }
-
+    public Location GetLocation()
+    {
+        return currentLocation;
+    }
     public float GetGameTime()
     {
         return GameTimerSeconds;

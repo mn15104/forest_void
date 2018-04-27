@@ -5,7 +5,7 @@ AudioMixerController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: GrassRunMixer
+  m_Name: HumanMotionMixer
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
@@ -60,5 +60,5 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: b607b68f408b9b54cbb77f7b9fb5a7ed
   m_FloatValues:
-    f9c119995404e1648a5797f03f97c5ca: 3.3
+    f9c119995404e1648a5797f03f97c5ca: 4.5
   m_TransitionOverrides: {}
