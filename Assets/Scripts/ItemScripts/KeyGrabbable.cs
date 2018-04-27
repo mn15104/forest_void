@@ -7,7 +7,7 @@ public class KeyGrabbable : OVRGrabbable {
     // Use this for initialization
     public GameObject target;
     public float speed;
-    public GameObject human;
+    private GameObject human;
     private bool hasBeenInserted = false;
     public GameObject light;
 
@@ -75,7 +75,7 @@ public class KeyGrabbable : OVRGrabbable {
     }
 
     void Update () {
-  
+        Debug.Log("Has key been inserted" + hasBeenInserted); 
         if (hasBeenInserted)
         {
             human.GetComponent<Inventory>().removeKeyFromInventory(gameObject);

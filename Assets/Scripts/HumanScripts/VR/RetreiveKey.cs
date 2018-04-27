@@ -12,7 +12,7 @@ public class RetreiveKey : OVRGrabber
     protected NotifyEvent<bool> notifyYellow;
     protected NotifyEvent<bool> notifyBlue;
 
-
+    //Set up event Manager
     protected override void Awake()
     {
         base.Awake();
@@ -187,56 +187,65 @@ public class RetreiveKey : OVRGrabber
             //}
 
             m_grabbedObj = closestGrabbable;
-            m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
+            Debug.Log(closestGrabbable);
+            
+            m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
+           
             //INSERTED
             if (!inGeneratorZone)
             {
                 StartCoroutine(AddKeyToInventory(m_grabbedObj));
 
             }
+   
+
             m_lastPos = transform.position;
             m_lastRot = transform.rotation;
-
-            // Set up offsets for grabbed object desired position relative to hand.
-            if (m_grabbedObj.snapPosition)
+    
+            //When key is grabbed, m_grabbedObj is set to null
+            if(m_grabbedObj != null)
             {
-                m_grabbedObjectPosOff = m_gripTransform.localPosition;
-                if (m_grabbedObj.snapOffset)
+                // Set up offsets for grabbed object desired position relative to hand.
+                if (m_grabbedObj.snapPosition)
                 {
-                    Vector3 snapOffset = m_grabbedObj.snapOffset.position;
-                    if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
-                    m_grabbedObjectPosOff += snapOffset;
+                    m_grabbedObjectPosOff = m_gripTransform.localPosition;
+                    if (m_grabbedObj.snapOffset)
+                    {
+                        Vector3 snapOffset = m_grabbedObj.snapOffset.position;
+                        if (m_controller == OVRInput.Controller.LTouch) snapOffset.x = -snapOffset.x;
+                        m_grabbedObjectPosOff += snapOffset;
+                    }
                 }
-            }
-            else
-            {
-                Vector3 relPos = m_grabbedObj.transform.position - transform.position;
-                relPos = Quaternion.Inverse(transform.rotation) * relPos;
-                m_grabbedObjectPosOff = relPos;
-            }
-
-            if (m_grabbedObj.snapOrientation)
-            {
-                m_grabbedObjectRotOff = m_gripTransform.localRotation;
-                if (m_grabbedObj.snapOffset)
+                else
                 {
-                    m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
+                    Vector3 relPos = m_grabbedObj.transform.position - transform.position;
+                    relPos = Quaternion.Inverse(transform.rotation) * relPos;
+                    m_grabbedObjectPosOff = relPos;
                 }
-            }
-            else
-            {
-                Quaternion relOri = Quaternion.Inverse(transform.rotation) * m_grabbedObj.transform.rotation;
-                m_grabbedObjectRotOff = relOri;
-            }
 
-            // Note: force teleport on grab, to avoid high-speed travel to dest which hits a lot of other objects at high
-            // speed and sends them flying. The grabbed object may still teleport inside of other objects, but fixing that
-            // is beyond the scope of this demo.
-            MoveGrabbedObject(m_lastPos, m_lastRot, true);
-            if (m_parentHeldObject)
-            {
-                m_grabbedObj.transform.parent = transform;
+                if (m_grabbedObj.snapOrientation)
+                {
+                    m_grabbedObjectRotOff = m_gripTransform.localRotation;
+                    if (m_grabbedObj.snapOffset)
+                    {
+                        m_grabbedObjectRotOff = m_grabbedObj.snapOffset.rotation * m_grabbedObjectRotOff;
+                    }
+                }
+                else
+                {
+                    Quaternion relOri = Quaternion.Inverse(transform.rotation) * m_grabbedObj.transform.rotation;
+                    m_grabbedObjectRotOff = relOri;
+                }
+
+                // Note: force teleport on grab, to avoid high-speed travel to dest which hits a lot of other objects at high
+                // speed and sends them flying. The grabbed object may still teleport inside of other objects, but fixing that
+                // is beyond the scope of this demo.
+                MoveGrabbedObject(m_lastPos, m_lastRot, true);
+                if (m_parentHeldObject)
+                {
+                    m_grabbedObj.transform.parent = transform;
+                }
             }
         }
     }
