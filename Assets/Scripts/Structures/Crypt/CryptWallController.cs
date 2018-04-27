@@ -6,7 +6,11 @@ public class CryptWallController : MonoBehaviour {
 
     public List<GameObject> toTurnOn;
     public List<GameObject> toTurnOff;
+    public GameObject key;
+    public Vector3 plinthLocation;
+    public Vector3 outsideLocation;
     private EventManager eventManager;
+
     // Use this for initialization
     void Start () {
         eventManager = FindObjectOfType<EventManager>();
@@ -21,12 +25,7 @@ public class CryptWallController : MonoBehaviour {
     {
         foreach (GameObject wall in toTurnOff)
         {
-            if(wall.activeSelf && wall.name == "md_KeySetYellowV1" && !wall.GetComponent<KeyGrabbable>().hasBeenCollected)
-            {
-                wall.SetActive(false);
-            }
-
-            else if (wall.activeSelf && wall.name != "md_KeySetYellowV1")
+            if (wall.activeSelf)
             {
                 wall.SetActive(false);
                 //if (wall.GetComponent<MeshCollider>())
@@ -35,6 +34,7 @@ public class CryptWallController : MonoBehaviour {
                 //}
             }
         }
+        key.transform.position = outsideLocation;
     }
 
     private void TurnWallsOn()
@@ -51,6 +51,7 @@ public class CryptWallController : MonoBehaviour {
                 //}
             }
         }
+        key.transform.position = plinthLocation;
     }
 
     private void OnTriggerEnter(Collider other)

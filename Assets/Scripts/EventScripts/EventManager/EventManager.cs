@@ -42,6 +42,7 @@ public class EventManager : MonoBehaviour {
     public TriggerEvent CaravanTriggerEvent = new TriggerEvent();
     public TriggerEvent GeneratorZoneTriggerEvent = new TriggerEvent();
     public TriggerEvent StructureZoneTriggerEvent = new TriggerEvent();
+    public TriggerEvent ElectricFieldEvent = new TriggerEvent();
 
     public NotifyEvent<bool> NotifyBlueKeyPickup = new NotifyEvent<bool>();
     public NotifyEvent<bool> NotifyYellowKeyPickup = new NotifyEvent<bool>();

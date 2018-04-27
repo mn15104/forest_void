@@ -16,6 +16,8 @@ public class ElectricFenceText : MonoBehaviour {
     void TextDisappear(bool value) {
         GetComponent<Text>().enabled = false;
     }
+
+
 	
 	// Update is called once per frame
 	void Update () {
