@@ -193,7 +193,6 @@ public class HumanAudioController : MonoBehaviour {
         UpdateHumanMotion();
 
         double horizontalSpeed = Normalize3Dto2D(m_ParentRigidBody.velocity);
-        Debug.Log(HumanMotion.isPlaying);
         if (HumanMotion.isPlaying && horizontalSpeed < 0.2f)
         {
             HumanMotion.volume = 0f;
@@ -208,7 +207,6 @@ public class HumanAudioController : MonoBehaviour {
 
         //Breathing
         float timeSpentRunning = m_humanController.GetTimeSpentRunning();
-        Debug.Log(timeSpentRunning + " " + m_introTimeForBreathing + " " + m_maxRunTime);
         if (m_Breathing.isPlaying)
         {
             m_Breathing.volume = ((timeSpentRunning - m_introTimeForBreathing) / m_maxRunTime)*2;

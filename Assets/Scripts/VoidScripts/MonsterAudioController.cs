@@ -88,9 +88,10 @@ public class MonsterAudioController : MonoBehaviour
     }
     private void UpdateMonsterMotion()
     {
-        
+
         Terrain m_CurrentTerrain = Terrain.activeTerrain;
         int textureIndex = GetMainTexture(transform.position);
+        Debug.Log(textureIndex);
         TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
         switch (currentTerrainType)
         {
