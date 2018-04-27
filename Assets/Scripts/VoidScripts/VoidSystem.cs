@@ -153,7 +153,8 @@ public class VoidSystem : MonoBehaviour
 
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.GAMEOVER)
         {
-            m_MonsterStage = EventManager.Stage.GameOverStage;                                         
+            m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.GameOverStage);
+            m_MonsterStage = EventManager.Stage.GameOverStage;
             NotifyStage.Notify(m_MonsterStage);
         }
     }

@@ -387,9 +387,11 @@ MonoBehaviour:
   m_Stage1Clip: {fileID: 8300000, guid: 25f0e131fdd3d704d95046be2b40059c, type: 3}
   m_Stage2Clip: {fileID: 8300000, guid: 4e6ffda4a89e2ee4fb24279b6dd22570, type: 3}
   m_Stage3Clip: {fileID: 8300000, guid: 08d6b7dad979f844ea1d2f8809a3aab9, type: 3}
+  m_GameOverClip: {fileID: 8300000, guid: 42e6c0ae238a4484782a6b5b9634f441, type: 3}
   m_IntenseNoises:
   - {fileID: 8300000, guid: 6a270a6cfa3e0c54b95855c1a5f4c093, type: 3}
   - {fileID: 8300000, guid: be9946ba1e6e57b4fbe9f58af80497a3, type: 3}
   - {fileID: 8300000, guid: fa46ebe250f92e746a17e1fdeb7e7a97, type: 3}
   m_MaxVolume: 0.3
+  m_MaxWindVolume: 0.5
   m_FadeSpeed: 0.3

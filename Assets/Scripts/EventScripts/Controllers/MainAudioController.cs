@@ -14,6 +14,7 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage1Clip;
     public AudioClip m_Stage2Clip;
     public AudioClip m_Stage3Clip;
+    public AudioClip m_GameOverClip;
     public AudioClip[] m_IntenseNoises;
     private bool monsterStateInterrupt = false;
     public float m_MaxVolume = 0.3f;
@@ -103,6 +104,10 @@ public class MainAudioController : MonoBehaviour {
             case EventManager.Stage.Stage3:
                 TransitionClip(m_Stage3Clip);
                 currentAudioStage = EventManager.Stage.Stage3;
+                break;
+            case EventManager.Stage.GameOverStage:
+                TransitionClip(m_GameOverClip);
+                currentAudioStage = EventManager.Stage.GameOverStage;
                 break;
         }
     }

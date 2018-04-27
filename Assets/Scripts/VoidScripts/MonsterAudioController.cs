@@ -346,12 +346,12 @@ public class MonsterAudioController : MonoBehaviour
                 if (!monsterScream && (MonsterSFX2AudioSrc.clip != m_Chase || !MonsterSFX2AudioSrc.isPlaying))
                 {
                     MonsterSFX2AudioSrc.loop = false;
-                    MonsterSFX2AudioSrc.volume = 0 ;
+                    MonsterSFX2AudioSrc.volume = 0;
                     MonsterSFX2AudioSrc.clip = (m_Chase);
                     MonsterSFX2AudioSrc.Play();
                     monsterScream = true;
                 }
-                if(MonsterSFX2AudioSrc.volume < 1)
+                if(MonsterSFX2AudioSrc.volume < 0.9f)
                 {
                     MonsterSFX2AudioSrc.volume += Time.deltaTime * 0.4f;
                 }
@@ -368,7 +368,7 @@ public class MonsterAudioController : MonoBehaviour
                 if (MonsterSFX4AudioSrc.clip != m_Jumpscare_Stage2)
                 {
                     MonsterSFX4AudioSrc.loop = false;
-                    MonsterSFX4AudioSrc.volume = 1f;
+                    MonsterSFX4AudioSrc.volume = 0.9f;
                     MonsterSFX4AudioSrc.clip = (m_Jumpscare_Stage2);
                     MonsterSFX4AudioSrc.Play();
                 }
@@ -376,7 +376,7 @@ public class MonsterAudioController : MonoBehaviour
                 {
                     MonsterSFX2AudioSrc.clip = m_Chase;
                     MonsterSFX2AudioSrc.loop = false;
-                    MonsterSFX2AudioSrc.volume = 1f;
+                    MonsterSFX2AudioSrc.volume = 0.9f;
                     MonsterSFX2AudioSrc.Play();
                 }
                 break;

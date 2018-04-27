@@ -118,7 +118,7 @@ public partial class MonsterAI
                         m_MonsterAI.anim.SetBool("Run", true);
                         m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
                         m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
-                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 3f));
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 2.5f));
                         break;
                     case MonsterState.GAMEOVER:
                         m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
