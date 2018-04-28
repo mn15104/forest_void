@@ -207,7 +207,6 @@ public class HumanVRAudioController : MonoBehaviour
 
     void Update()
     {
-
         UpdateHumanMotion();
 
         double horizontalSpeed = m_ParentRigidBody.velocity.magnitude;

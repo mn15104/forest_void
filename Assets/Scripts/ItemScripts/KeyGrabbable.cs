@@ -88,7 +88,6 @@ public class KeyGrabbable : OVRGrabbable {
     }
 
     void Update () {
-        Debug.Log("Has key been inserted" + hasBeenInserted); 
         if (hasBeenInserted)
         {
             human.GetComponent<Inventory>().removeKeyFromInventory(gameObject);

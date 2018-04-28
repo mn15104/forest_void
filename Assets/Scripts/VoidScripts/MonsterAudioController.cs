@@ -50,9 +50,6 @@ public class MonsterAudioController : MonoBehaviour
         MonsterSFX1AudioSrc.loop = true;
         MonsterSFX2AudioSrc.clip = null;
         MonsterSFX2AudioSrc.loop = false;
-        m_Monster = GetComponentInParent<MonsterAI>();
-        m_PlayerCamera = m_Monster.player.GetComponentInChildren<Camera>();
-        m_MonsterState = m_Monster.GetMonsterState();
     }
 
     private void OnDisable()
@@ -62,6 +59,9 @@ public class MonsterAudioController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        m_Monster = GetComponentInParent<MonsterAI>();
+        m_MonsterState = m_Monster.GetMonsterState();
+        m_PlayerCamera = m_Monster.GetPlayer().GetComponentInChildren<Camera>();
         m_TerrainTypeDictionary.Add(0, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(1, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(2, TerrainType.STONE);
@@ -278,7 +278,7 @@ public class MonsterAudioController : MonoBehaviour
                         }
                         if ((MonsterSFX3AudioSrc.clip != m_GravelWalk || !MonsterSFX3AudioSrc.isPlaying) && !m_Monster.Stage3_Appeared)
                         {
-                            if (MonsterSFX3AudioSrc.clip != m_GravelWalk && m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude < 2f)
+                            if (MonsterSFX3AudioSrc.clip != m_GravelWalk && m_Monster.GetPlayer().transform.GetComponent<Rigidbody>().velocity.magnitude < 2f)
                             {
                                 MonsterSFX3AudioSrc.clip = m_GravelWalk;
                                 MonsterSFX3AudioSrc.loop = true;
@@ -286,18 +286,18 @@ public class MonsterAudioController : MonoBehaviour
                                 MonsterSFX3AudioSrc.Play();
                             }
                         }
-                        if (m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude > 1f &&
-                            m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude < 2f &&
+                        if (m_Monster.GetPlayer().transform.GetComponent<Rigidbody>().velocity.magnitude > 1f &&
+                            m_Monster.GetPlayer().transform.GetComponent<Rigidbody>().velocity.magnitude < 2f &&
                             !m_Monster.Stage3_Appeared)
                         {
                             StartCoroutine(DelayClipPlay(MonsterSFX3AudioSrc, true, 1.2f));
                         }
-                        else if (m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude > 2f &&
+                        else if (m_Monster.GetPlayer().transform.GetComponent<Rigidbody>().velocity.magnitude > 2f &&
                             !m_Monster.Stage3_Appeared)
                         {
                             MonsterSFX3AudioSrc.volume = 0;
                         }
-                        else if (m_Monster.player.transform.GetComponent<Rigidbody>().velocity.magnitude < 1f && !m_Monster.Stage3_Appeared)
+                        else if (m_Monster.GetPlayer().transform.GetComponent<Rigidbody>().velocity.magnitude < 1f && !m_Monster.Stage3_Appeared)
                         {
                             StartCoroutine(DelayClipPlay(MonsterSFX3AudioSrc, false, 1.2f));
                         }
@@ -460,8 +460,8 @@ public class MonsterAudioController : MonoBehaviour
             }
         }
         ///////////////////////////////////////////////////////////////////////////////////////////
-        float dist = Mathf.Sqrt(Mathf.Pow(m_Monster.player.transform.position.x - transform.position.x, 2)
-                                + Mathf.Pow(m_Monster.player.transform.position.z - transform.position.z, 2));
+        float dist = Mathf.Sqrt(Mathf.Pow(m_Monster.GetPlayer().transform.position.x - transform.position.x, 2)
+                                + Mathf.Pow(m_Monster.GetPlayer().transform.position.z - transform.position.z, 2));
 
     }
 
@@ -527,7 +527,6 @@ public class MonsterAudioController : MonoBehaviour
     }
     IEnumerator FadeInAudioSource(AudioSource aud, float max_vol, float fade_in_rate)
     {
-        Debug.Log("Fading in");
         while (aud.volume < max_vol)
         {
             yield return null;
@@ -536,7 +535,6 @@ public class MonsterAudioController : MonoBehaviour
     }
     IEnumerator FadeOutAudioSource(AudioSource aud, float fade_out_rate)
     {
-        Debug.Log("Fading out");
         while (aud.volume > 0)
         {
             yield return null;

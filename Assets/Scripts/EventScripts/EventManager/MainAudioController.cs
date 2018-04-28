@@ -87,8 +87,7 @@ public class MainAudioController : MonoBehaviour {
 
     void StageAudio(EventManager.Stage stage)
     {
-        Debug.Log("Stage Audio changing");
-        Debug.Log(stage);
+        Debug.Log("Stage Audio changing to " + stage);
         switch (stage)
         {
             case EventManager.Stage.Intro:
@@ -196,7 +195,6 @@ public class MainAudioController : MonoBehaviour {
     //parms[0] is audiosource, parms[1] is max volume
     IEnumerator FadeInAudioSource(AudioSource aud, float max_vol, float fade_in_rate)
     {
-        Debug.Log("Fading in");
         aud.Play();
         while (aud.volume < max_vol)
         {
@@ -206,7 +204,6 @@ public class MainAudioController : MonoBehaviour {
     }
     IEnumerator FadeOutAudioSource(AudioSource aud, float min_vol, float fade_out_rate)
     {
-        Debug.Log("Fading out");
         while (aud.volume > 0)
         {
             yield return null;

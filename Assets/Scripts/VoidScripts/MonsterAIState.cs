@@ -7,11 +7,16 @@ public partial class MonsterAI
     {
         MonsterAI m_MonsterAI;
         MonsterState stalledState;
-        public MonsterAIState(MonsterAI monsterAI)
+        public static MonsterAIState newInstance(MonsterAI monsterAI)
         {
-            m_MonsterAI = monsterAI;
+            var data = ScriptableObject.CreateInstance<MonsterAIState>();
+            data.init(monsterAI);
+            return data;
         }
-
+        public void init(MonsterAI monsterAI)
+        {
+            this.m_MonsterAI = monsterAI;
+        }
         public void SetState(MonsterState state)
         {
             if (m_MonsterAI.player.GetComponentInChildren<Flashlight>().GetDisableFlashlight())
@@ -26,6 +31,7 @@ public partial class MonsterAI
                 foreach (Material mat in m_MonsterAI.GetComponentInChildren<MeshRenderer>().materials)
                     m_MonsterAI.ChangeRenderMode(mat, BlendMode.Opaque);
             }
+
             // If monster is stalled due to human in structure, set to previous set regardless of parameter
             if (m_MonsterAI.currentState == MonsterState.HUMAN_IN_STRUCT)
             {
@@ -37,7 +43,7 @@ public partial class MonsterAI
             {
                 collider.enabled = true;
             }
-
+            m_MonsterAI.GetComponent<Rigidbody>().isKinematic = false;
             // Reset mesh renderer disabling
             m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = true;
@@ -119,7 +125,7 @@ public partial class MonsterAI
                         m_MonsterAI.anim.SetBool("Run", true);
                         m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
                         m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
-                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 2.5f));
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 2f));
                         break;
                     case MonsterState.GAMEOVER:
                         m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -288,7 +294,7 @@ public partial class MonsterAI
                     m_MonsterAI.anim.SetBool("Run", false);
                     m_MonsterAI.anim.SetBool("Idle", true);
                     m_MonsterAI.anim.SetBool("Walk", false);
-                    m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.APPEAR, 3f));
+                    m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.APPEAR, 2f));
                     m_MonsterAI.follow_finished = true;
                 }
             }
@@ -394,12 +400,6 @@ public partial class MonsterAI
             float distanceToHuman = Mathf.Sqrt(Mathf.Pow(m_MonsterAI.destinationPosition.x - m_MonsterAI.transform.position.x, 2)
                                     + Mathf.Pow(m_MonsterAI.destinationPosition.y - m_MonsterAI.transform.position.y, 2));
 
-            //m_MonsterAI.chaseTimer -= Time.deltaTime;
-            //if (m_MonsterAI.chaseTimer < 0)
-            //{
-            //    SetState(MonsterState.HIDDEN_IDLE);
-            //    m_MonsterAI.chaseTimer = 20f;
-            //}
 
             // Game Over
             float distance = (m_MonsterAI.distanceToHuman);

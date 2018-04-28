@@ -38,6 +38,7 @@ public partial class MonsterAI : MonoBehaviour
     public MonsterState debugState;
     public EventManager.Stage currentStage = EventManager.Stage.Intro;
     public GameObject player;
+    private bool isPlayerVR = false;
     private MonsterAIState m_MonsterStateMachine;
     private Animator anim;
     private GameObject trigger;
@@ -68,18 +69,24 @@ public partial class MonsterAI : MonoBehaviour
     private float m_OriginalFogDensity;
     private bool follow_finished = false;
     private bool humanTorchOn = false;
-
     /*------------------ STANDARD Functions --------------------*/
 
     private void OnEnable()
     {
+        if (player.GetComponentInChildren<OVRPlayerController>())
+        {
+            isPlayerVR = true;
+        }
+        else if(player.GetComponentInChildren<HumanController>())
+        {
+            isPlayerVR = false;
+        }
         //*Add Events*//
         HumanVRRightHand.OnHumanLightEmission += HumanLightDetected;
         HumanVRAudioController.OnHumanAudioEmission += HumanSoundDetected;
         MonsterTrigger.OnHumanDetected += HumanDetected;
         //*Add Events*//
         anim = GetComponent<Animator>();
-        destinationPosition = player.transform.position;
         follow_finished = false;
         //*Set Initial State As Moving*//
         if (currentStage == EventManager.Stage.Intro)
@@ -121,8 +128,10 @@ public partial class MonsterAI : MonoBehaviour
     }
     private void Start()
     {
+        if (!player) Debug.Log("PLAYER NULL");
+        destinationPosition = player.transform.position;
         m_OriginalFogDensity = RenderSettings.fogDensity;
-        m_MonsterStateMachine = new MonsterAIState(this);
+        m_MonsterStateMachine = MonsterAIState.newInstance(this);
     }
 
     void Update()
@@ -275,6 +284,7 @@ public partial class MonsterAI : MonoBehaviour
     public void UpdateStage2()
     {
         Flashlight flashlight = player.GetComponentInChildren<Flashlight>();
+       
         if (!stage2_playerTorchOn1)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
@@ -289,12 +299,32 @@ public partial class MonsterAI : MonoBehaviour
         }
         else if (!stage2_playerTorchOff && stage2_coroutine0_finished)
         {
-            TeleportVoidInfrontHuman(3f);
-            flashlight.ForceSwitchFlashlight(true);
-            RenderSettings.fogMode = FogMode.Exponential;
-            RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
-            stage2_playerTorchOff = true;
-            StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
+            float verticalCamRotation = player.GetComponentInChildren<OVRCameraRig>().transform.localEulerAngles.x;
+            //  If within camera forward limits
+            if (isPlayerVR)
+            {
+                if ((360 > verticalCamRotation && 340 < verticalCamRotation) || (0 < verticalCamRotation && 12 > verticalCamRotation))
+                {
+                    TeleportVoidInfrontHuman(3f);
+                    flashlight.ForceSwitchFlashlight(true);
+                    RenderSettings.fogMode = FogMode.Exponential;
+                    RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
+                    stage2_playerTorchOff = true;
+                    StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
+                }
+            }
+            else
+            {
+                if (90 >= verticalCamRotation && 70 < verticalCamRotation)
+                {
+                    TeleportVoidInfrontHuman(3f);
+                    flashlight.ForceSwitchFlashlight(true);
+                    RenderSettings.fogMode = FogMode.Exponential;
+                    RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
+                    stage2_playerTorchOff = true;
+                    StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
+                }
+            }
         }
         else if (!stage2_playerTorchOn2 && stage2_coroutine1_finished)
         {
@@ -399,11 +429,13 @@ public partial class MonsterAI : MonoBehaviour
 
     public void InitialiseStage2()
     {
+        GetComponent<Rigidbody>().isKinematic = false;
         player.GetComponentInChildren<Flashlight>().SetDisableFlicker(true);
     }
 
     public void InitialiseStage3()
     {
+        GetComponent<Rigidbody>().isKinematic = false;
         TeleportVoidBehindHuman(2f);
     }
 
@@ -411,6 +443,7 @@ public partial class MonsterAI : MonoBehaviour
     public float Stage1_MaxAngle = 3f;
     public void TeleportVoidInfrontHuman_NoCollider(float dist = 10)
     {
+        original_y = transform.position.y;
         Vector3 humanPos = player.transform.position;
         Vector3 humanFacingDir = player.transform.forward;
         Vector3 humanRightDir = player.transform.right;
@@ -437,7 +470,6 @@ public partial class MonsterAI : MonoBehaviour
         original_y = transform.position.y;
         Vector3 humanPos = player.transform.position;
         Vector3 humanFacingDir = player.transform.forward;
-        Vector3 humanRightDir = player.transform.right;
         foreach (Camera cam in player.GetComponentsInChildren<Camera>())
         {
             if (cam.isActiveAndEnabled)
@@ -455,7 +487,7 @@ public partial class MonsterAI : MonoBehaviour
     }
     public void TeleportVoidBehindHuman(float dist = 10)
     {
-        float orig_y = transform.position.y;
+        original_y = transform.position.y;
         Vector3 humanPos = player.transform.position;
         Vector3 humanFacingDir = player.transform.forward;
         foreach (Camera cam in player.GetComponentsInChildren<Camera>())
@@ -466,7 +498,7 @@ public partial class MonsterAI : MonoBehaviour
             }
         }
         Vector3 voidPos = humanPos - dist * humanFacingDir;
-        voidPos.y = orig_y;
+        voidPos.y = original_y;
 
         transform.position = voidPos;
         Quaternion rot = Quaternion.LookRotation(player.transform.forward);
@@ -641,6 +673,10 @@ public partial class MonsterAI : MonoBehaviour
 
     /*------------------ DEPRECATED Functions --------------------*/
 
+    public GameObject GetPlayer()
+    {
+        return player;
+    }
 
     void ResetStageVariables()
     {

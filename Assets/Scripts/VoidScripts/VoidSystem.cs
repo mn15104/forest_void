@@ -205,7 +205,7 @@ public class VoidSystem : MonoBehaviour
 
     Vector3 GetFurthestSpawnPoint()
     {
-        Vector3 playerPos = m_ForestVoid.GetComponent<MonsterAI>().player.transform.position;
+        Vector3 playerPos = m_ForestVoid.GetComponent<MonsterAI>().GetPlayer().transform.position;
         Vector3 furthestSpawnPoint = m_SpawnPositions[0];
         foreach (Vector3 pos in m_SpawnPositions)
         {

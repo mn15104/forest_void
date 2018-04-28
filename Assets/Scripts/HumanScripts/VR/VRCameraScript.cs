@@ -98,30 +98,10 @@ public class VRCameraScript : MonoBehaviour
             return;
         }
         // Fade screen to black
-        else if (monsterstage == EventManager.Stage.GameOverStage || (monsterstage == EventManager.Stage.Stage3 && monsterstate == MonsterState.ATTACK))
+        else if (monsterstage == EventManager.Stage.GameOverStage)
         {
-            m_GlitchEffect.intensity = Mathf.Lerp(m_GlitchEffect.intensity, 0, Time.deltaTime * 0.75f);
-            m_GlitchEffect.flipIntensity = Mathf.Lerp(m_GlitchEffect.flipIntensity, 0, Time.deltaTime * 0.75f);
-            GrainModel.Settings grain = m_PostProcessProfile.grain.settings;
-            grain.intensity = Mathf.Lerp(grain.intensity, 0f, Time.deltaTime * 0.75f);
-            grain.size = Mathf.Lerp(grain.intensity, 0f, Time.deltaTime * 0.75f);
-            m_PostProcessProfile.grain.settings = grain;
-            if (monsterstage == EventManager.Stage.GameOverStage)
-            {
-                GetComponent<Camera>().backgroundColor = Color.Lerp(GetComponent<Camera>().backgroundColor, Color.black, Time.deltaTime * 0.55f);
-                GetComponent<Camera>().farClipPlane = Mathf.Lerp(GetComponent<Camera>().farClipPlane, GetComponent<Camera>().nearClipPlane, Time.deltaTime * 0.55f);
-                VignetteModel.Settings vignette = m_PostProcessProfile.vignette.settings;
-                vignette.intensity = Mathf.Lerp(vignette.intensity, 1f, Time.deltaTime * 0.75f);
-                m_PostProcessProfile.vignette.settings = vignette;
-            }
-            else
-            {
-                GetComponent<Camera>().backgroundColor = Color.Lerp(GetComponent<Camera>().backgroundColor, Color.black, Time.deltaTime * 0.2f);
-                GetComponent<Camera>().farClipPlane = Mathf.Lerp(GetComponent<Camera>().farClipPlane, GetComponent<Camera>().nearClipPlane, Time.deltaTime * 0.2f);
-                VignetteModel.Settings vignette = m_PostProcessProfile.vignette.settings;
-                vignette.intensity = Mathf.Lerp(vignette.intensity, 1f, Time.deltaTime * 0.25f);
-                m_PostProcessProfile.vignette.settings = vignette;
-            }
+            GetComponent<Camera>().backgroundColor = Color.black; 
+            GetComponent<Camera>().farClipPlane = GetComponent<Camera>().nearClipPlane;
         }
         // Process effects as usual
         else
