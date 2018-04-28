@@ -56,6 +56,6 @@ public class OpenDoor : MonoBehaviour
             this.motor.targetVelocity = 0;
             this.motor.force = 0;
         }
-
+        GetComponent<AudioSource>().volume = Mathf.Abs(GetComponent<HingeJoint>().velocity/45);
     }
 }

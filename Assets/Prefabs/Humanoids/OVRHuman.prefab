@@ -956,14 +956,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1750455580066802}
-  m_LocalRotation: {x: -0, y: 0.32207078, z: -0, w: 0.94671565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4383891861230614}
   m_Father: {fileID: 4375896117422384}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 37.576, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4293088824923380
 Transform:
   m_ObjectHideFlags: 1
@@ -1015,7 +1015,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001860840367018}
   m_LocalRotation: {x: -0, y: 0.9996683, z: -0, w: -0.025756078}
-  m_LocalPosition: {x: 548.89, y: 74.87, z: 841.44}
+  m_LocalPosition: {x: 551.132, y: 74.87, z: 809.658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4743603651390370}
@@ -2802,10 +2802,12 @@ MonoBehaviour:
   m_MudRun: {fileID: 8300000, guid: 36dfaac452bb06741b66dc33d7913d34, type: 3}
   m_WoodRun: {fileID: 8300000, guid: 78230618f2855ad4fa43efc3f0c3bbcd, type: 3}
   m_WoodWalk: {fileID: 8300000, guid: 2eba1e3bf794d9e408276cc6e2256a98, type: 3}
+  m_LightWoodRun: {fileID: 8300000, guid: bc99a20142566c64bae991b3944c5b90, type: 3}
+  m_LightWoodWalk: {fileID: 8300000, guid: dd53534d19d63c64983c0434db8b5543, type: 3}
   m_CryptWalk: {fileID: 8300000, guid: e08415407ba7935449406e49d90fd77d, type: 3}
   m_CryptRun: {fileID: 8300000, guid: 9b543dd4b91476744a514f19631eef92, type: 3}
   walkingVelocityTrigger: 1
-  runningVelocityTrigger: 2.3
+  runningVelocityTrigger: 2.1
 --- !u!114 &114081261657793184
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,8 @@ public class HumanAudioController : MonoBehaviour
     public AudioClip m_MudRun;
     public AudioClip m_WoodRun;
     public AudioClip m_WoodWalk;
+    public AudioClip m_LightWoodRun;
+    public AudioClip m_LightWoodWalk;
     public AudioClip m_CryptWalk;
     public AudioClip m_CryptRun;
 
@@ -88,8 +90,6 @@ public class HumanAudioController : MonoBehaviour
             switch (currentLocation)
             {
                 case EventManager.Location.Bridge:
-                case EventManager.Location.Caravan:
-                case EventManager.Location.ToolShed:
                     if (HumanMotion.clip != m_WoodWalk || HumanMotion.clip != m_WoodRun)
                     {
                         if (HumanMotion.clip != m_WoodWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
@@ -99,6 +99,20 @@ public class HumanAudioController : MonoBehaviour
                         else if (HumanMotion.clip != m_WoodRun && parent_velocity > runningVelocityTrigger)
                         {
                             HumanMotion.clip = m_WoodRun;
+                        }
+                    }
+                    break;
+                case EventManager.Location.Caravan:
+                case EventManager.Location.ToolShed:
+                    if (HumanMotion.clip != m_LightWoodWalk || HumanMotion.clip != m_LightWoodRun)
+                    {
+                        if (HumanMotion.clip != m_LightWoodWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_LightWoodWalk;
+                        }
+                        else if (HumanMotion.clip != m_LightWoodRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_LightWoodRun;
                         }
                     }
                     break;

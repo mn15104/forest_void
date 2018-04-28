@@ -2154,7 +2154,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1143188469967458}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3599,6 +3599,8 @@ MonoBehaviour:
   m_MudRun: {fileID: 8300000, guid: 36dfaac452bb06741b66dc33d7913d34, type: 3}
   m_WoodRun: {fileID: 8300000, guid: 78230618f2855ad4fa43efc3f0c3bbcd, type: 3}
   m_WoodWalk: {fileID: 8300000, guid: 2eba1e3bf794d9e408276cc6e2256a98, type: 3}
+  m_LightWoodRun: {fileID: 8300000, guid: bc99a20142566c64bae991b3944c5b90, type: 3}
+  m_LightWoodWalk: {fileID: 8300000, guid: dd53534d19d63c64983c0434db8b5543, type: 3}
   m_CryptWalk: {fileID: 8300000, guid: e08415407ba7935449406e49d90fd77d, type: 3}
   m_CryptRun: {fileID: 8300000, guid: 9b543dd4b91476744a514f19631eef92, type: 3}
   walkingVelocityTrigger: 1
@@ -3876,8 +3878,8 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382307280244786}
-  m_LocalRotation: {x: -0, y: 0.76836604, z: -0, w: -0.6400107}
-  m_LocalPosition: {x: 0, y: 0, z: 810.86}
+  m_LocalRotation: {x: -0, y: 0.9848354, z: -0, w: 0.1734915}
+  m_LocalPosition: {x: 0, y: 0, z: 810.143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337399597682046}
@@ -3888,7 +3890,7 @@ RectTransform:
   - {fileID: 4596310928619686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 259.585, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 160.018, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 551.23, y: 73.9}
