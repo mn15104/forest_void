@@ -14,7 +14,8 @@ public partial class MonsterAI
 
         public void SetState(MonsterState state)
         {
-            if (m_MonsterAI.player.GetComponentInChildren<Flashlight>().GetDisableFlashlight()) {
+            if (m_MonsterAI.player.GetComponentInChildren<Flashlight>().GetDisableFlashlight())
+            {
                 m_MonsterAI.player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
             }
             // Reset opaque
@@ -36,7 +37,7 @@ public partial class MonsterAI
             {
                 collider.enabled = true;
             }
-            
+
             // Reset mesh renderer disabling
             m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
             m_MonsterAI.GetComponentInChildren<MeshRenderer>().enabled = true;
@@ -118,7 +119,7 @@ public partial class MonsterAI
                         m_MonsterAI.anim.SetBool("Run", true);
                         m_MonsterAI.anim.SetFloat("Speed", m_RunSpeed);
                         m_MonsterAI.m_CurrentSpeed = m_RunSpeed;
-                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 3f));
+                        m_MonsterAI.StartCoroutine(m_MonsterAI.DelayStateChange(MonsterState.GAMEOVER, 2.5f));
                         break;
                     case MonsterState.GAMEOVER:
                         m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
@@ -165,12 +166,12 @@ public partial class MonsterAI
             }
         }
 
-        
+
         public void update_state()
         {
             // Use debugState if changed in inspector during testing
             if (m_MonsterAI.currentState != m_MonsterAI.debugState)
-                   SetState(m_MonsterAI.debugState);
+                SetState(m_MonsterAI.debugState);
 
             switch (m_MonsterAI.currentState)
             {
@@ -360,7 +361,7 @@ public partial class MonsterAI
             {
                 var lookPos = m_MonsterAI.destinationPosition - m_MonsterAI.transform.position;
                 var rotation = Quaternion.LookRotation(lookPos);
-                m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 1.2f);
+                m_MonsterAI.transform.rotation = Quaternion.Slerp(m_MonsterAI.transform.rotation, rotation, Time.deltaTime * 2.2f);
             }
 
             m_MonsterAI.m_CurrentSpeed = Mathf.Lerp(m_MonsterAI.m_CurrentSpeed, m_MaxApproachSpeed, Time.deltaTime * 0.1f);
@@ -422,11 +423,11 @@ public partial class MonsterAI
 
         public void gameover()
         {
-            
-        }
-        
 
-       
+        }
+
+
+
 
 
 

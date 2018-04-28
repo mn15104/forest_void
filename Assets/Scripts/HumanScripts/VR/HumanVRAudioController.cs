@@ -12,13 +12,13 @@ public enum TerrainType
     WOOD
 }
 
-public class HumanVRAudioController : MonoBehaviour {
-
+public class HumanVRAudioController : MonoBehaviour
+{
 
     public delegate void HumanAudioEmitter(float volumeEmitted);
     public static event HumanAudioEmitter OnHumanAudioEmission;
 
-    
+
     private Dictionary<int, TerrainType> m_TerrainTypeDictionary = new Dictionary<int, TerrainType>();
     private Dictionary<TerrainType, float> m_TerrainVolumeDictionary = new Dictionary<TerrainType, float>();
     private Terrain m_CurrentTerrain;
@@ -33,11 +33,16 @@ public class HumanVRAudioController : MonoBehaviour {
     public AudioClip m_MudWalk;
     public AudioClip m_MudRun;
     public AudioClip m_WoodRun;
+    public AudioClip m_WoodWalk;
+    public AudioClip m_CryptWalk;
+    public AudioClip m_CryptRun;
+
+    public float walkingVelocityTrigger = 1f;
+    public float runningVelocityTrigger = 2.3f;
     private Transform m_Transform;
+    private EventManager m_EventManager;
     private Rigidbody m_ParentRigidBody;
-    private HumanVRController m_humanVRController;
-    private float m_introTimeForBreathing;
-    private float m_maxRunTime;
+
     private void OnEnable()
     {
         m_TerrainTypeDictionary.Add(0, TerrainType.GRASS);
@@ -48,147 +53,189 @@ public class HumanVRAudioController : MonoBehaviour {
         m_TerrainTypeDictionary.Add(5, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(6, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(7, TerrainType.STONE);
-        m_TerrainTypeDictionary.Add(8, TerrainType.GRAVEL);
+        m_TerrainTypeDictionary.Add(8, TerrainType.MUD);
         m_TerrainTypeDictionary.Add(9, TerrainType.MUD);
         m_TerrainTypeDictionary.Add(10, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(11, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(12, TerrainType.GRAVEL);
-        m_TerrainTypeDictionary.Add(13, TerrainType.STONE);
+        m_TerrainTypeDictionary.Add(13, TerrainType.GRASS);
         m_TerrainTypeDictionary.Add(14, TerrainType.STONE);
         m_TerrainTypeDictionary.Add(15, TerrainType.GRASS);
 
         HumanMotion.clip = m_StoneRun;
         HumanMotion.loop = true;
+        m_EventManager = FindObjectOfType<EventManager>();
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         m_CurrentTerrain = Terrain.activeTerrain;
-        m_humanVRController = GetComponentInParent<HumanVRController>();
         m_Transform = transform;
-        m_ParentRigidBody = GetComponentInParent<Rigidbody>();
-        m_Breathing.enabled = false;
+        m_ParentRigidBody = transform.root.GetComponentInChildren<Rigidbody>();
+        m_Breathing.enabled = true;
         m_Breathing.loop = true;
         m_Breathing.volume = 0;
-        m_maxRunTime = m_humanVRController.GetMaxRunTime();
-        m_introTimeForBreathing = m_maxRunTime / 2;
+        m_Breathing.Play();
     }
-  
+
+    void LocationChange(EventManager.Location s)
+    {
+
+    }
+
     private void UpdateHumanMotion()
     {
+        EventManager.Location currentLocation = m_EventManager.GetLocation();
+        float parent_velocity = m_ParentRigidBody.velocity.magnitude;
 
-        int textureIndex = GetMainTexture(transform.position);
-        TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
-        switch (currentTerrainType)
+        if (currentLocation != EventManager.Location.Forest &&
+            currentLocation != EventManager.Location.Generator)
         {
-            case TerrainType.GRASS:
-                if (HumanMotion.clip != m_GrassWalk || HumanMotion.clip != m_GrassRun)
-                {
-                    if (HumanMotion.clip != m_GrassWalk && (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING || m_humanVRController.GetPlayerMoveState() == PlayerMoveState.CROUCHING))
+            switch (currentLocation)
+            {
+                case EventManager.Location.Bridge:
+                case EventManager.Location.Caravan:
+                case EventManager.Location.ToolShed:
+                    if (HumanMotion.clip != m_WoodWalk || HumanMotion.clip != m_WoodRun)
                     {
-                        HumanMotion.clip = m_GrassWalk;
+                        if (HumanMotion.clip != m_WoodWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_WoodWalk;
+                        }
+                        else if (HumanMotion.clip != m_WoodRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_WoodRun;
+                        }
                     }
-                    else if (HumanMotion.clip != m_GrassRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
+                    break;
+                case EventManager.Location.Chapel:
+                    if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
                     {
-                        HumanMotion.clip = m_GrassRun;
+                        if (HumanMotion.clip != m_StoneWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_StoneWalk;
+                        }
+                        else if (HumanMotion.clip != m_StoneRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_StoneRun;
+                        }
                     }
-                }
-                break;
-            case TerrainType.STONE:
-                if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
-                {
-                    if (HumanMotion.clip != m_StoneWalk && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
+                    break;
+                case EventManager.Location.Crypt:
+                    if (HumanMotion.clip != m_CryptWalk || HumanMotion.clip != m_CryptRun)
                     {
-                        HumanMotion.clip = m_StoneWalk;
+                        if (HumanMotion.clip != m_CryptWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_CryptWalk;
+                        }
+                        else if (HumanMotion.clip != m_CryptRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_CryptRun;
+                        }
                     }
-                    else if(HumanMotion.clip != m_StoneRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                    {
-                        HumanMotion.clip = m_StoneRun;
-                    }
-                }
-                break;
-            case TerrainType.GRAVEL:
-                if (HumanMotion.clip != m_GravelWalk || HumanMotion.clip != m_GravelRun)
-                {
-                    if (HumanMotion.clip != m_GrassWalk && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
-                    {
-                        HumanMotion.clip = m_GravelWalk;
-                    }
-                    else if (HumanMotion.clip != m_GravelRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                    {
-                        HumanMotion.clip = m_GravelRun;
-                    }
-                }
-                break;
-            case TerrainType.MUD:
-                if (HumanMotion.clip != m_MudRun || HumanMotion.clip != m_MudWalk)
-                {
-                    if (HumanMotion.clip != m_MudWalk && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
-                    {
-                        HumanMotion.clip = m_MudWalk;
-                    }
-                    else if (HumanMotion.clip != m_MudRun && m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                    {
-                        HumanMotion.clip = m_MudRun;
-                    }
-                }
-                break;
-            default:
-                Debug.Log("WARNING: NO AUDIO SOURCE FOR CURRENT TERRAIN TYPE BELOW PLAYER.");
-                break;
+                    break;
+                default:
+                    Debug.Log("What location is this?!");
+                    break;
+            }
         }
-        
-        
+        else
+        {
+            int textureIndex = GetMainTexture(transform.position);
+            TerrainType currentTerrainType = m_TerrainTypeDictionary[textureIndex];
+            switch (currentTerrainType)
+            {
+                case TerrainType.GRASS:
+                    if (HumanMotion.clip != m_GrassWalk || HumanMotion.clip != m_GrassRun)
+                    {
+                        if (HumanMotion.clip != m_GrassWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_GrassWalk;
+                        }
+                        else if (HumanMotion.clip != m_GrassRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_GrassRun;
+                        }
+                    }
+                    break;
+                case TerrainType.STONE:
+                    if (HumanMotion.clip != m_StoneRun || HumanMotion.clip != m_StoneWalk)
+                    {
+                        if (HumanMotion.clip != m_StoneWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_StoneWalk;
+                        }
+                        else if (HumanMotion.clip != m_StoneRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_StoneRun;
+                        }
+                    }
+                    break;
+                case TerrainType.GRAVEL:
+                    if (HumanMotion.clip != m_GravelWalk || HumanMotion.clip != m_GravelRun)
+                    {
+                        if (HumanMotion.clip != m_GrassWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_GravelWalk;
+                        }
+                        else if (HumanMotion.clip != m_GravelRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_GravelRun;
+                        }
+                    }
+                    break;
+                case TerrainType.MUD:
+                    if (HumanMotion.clip != m_MudRun || HumanMotion.clip != m_MudWalk)
+                    {
+                        if (HumanMotion.clip != m_MudWalk && parent_velocity > walkingVelocityTrigger && parent_velocity < runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_MudWalk;
+                        }
+                        else if (HumanMotion.clip != m_MudRun && parent_velocity > runningVelocityTrigger)
+                        {
+                            HumanMotion.clip = m_MudRun;
+                        }
+                    }
+                    break;
+                default:
+                    Debug.Log("WARNING: NO AUDIO SOURCE FOR CURRENT TERRAIN TYPE BELOW PLAYER.");
+                    break;
+            }
+        }
     }
 
-    void Update ()
+    void Update()
     {
+
         UpdateHumanMotion();
 
-        double horizontalSpeed = Normalize3Dto2D(m_ParentRigidBody.velocity);
-        
-        if (horizontalSpeed < 0.2f)
+        double horizontalSpeed = m_ParentRigidBody.velocity.magnitude;
+        if (horizontalSpeed < (walkingVelocityTrigger / 2f))
         {
-            if (HumanMotion.volume != 0f)
-            {
-                OnHumanAudioEmission(0.5f);
-            }
             HumanMotion.volume = 0f;
         }
-        else if(horizontalSpeed > 0.4f)
+        else if (horizontalSpeed > walkingVelocityTrigger)
         {
             if (!HumanMotion.isPlaying)
             {
                 HumanMotion.Play();
-            }
-            if(HumanMotion.volume == 0f)
-            {
-                if (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.WALKING)
-                {
-                    OnHumanAudioEmission(0.5f);
-                }
-                else if (m_humanVRController.GetPlayerMoveState() == PlayerMoveState.RUNNING)
-                {
-                    OnHumanAudioEmission(1f);
-                }
             }
             if (HumanMotion.volume < 1f)
                 HumanMotion.volume = 1f;
         }
 
         //Breathing
-        float timeSpentRunning = m_humanVRController.GetTimeSpentRunning();
-        if (timeSpentRunning > m_introTimeForBreathing
-           && m_Breathing.volume == 0f)
-        {
-            m_Breathing.enabled = true;
-            m_Breathing.loop = true;
-            m_Breathing.Play();
-            m_Breathing.volume = 0;
-        }
         if (m_Breathing.isPlaying)
         {
-             m_Breathing.volume = ((timeSpentRunning - m_introTimeForBreathing) / m_maxRunTime) * 2;
+            if (horizontalSpeed > runningVelocityTrigger)
+            {
+                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 1f, Time.deltaTime * 0.3f);
+            }
+            else
+            {
+                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 0f, Time.deltaTime * 0.3f);
+            }
         }
     }
 
@@ -235,3 +282,4 @@ public class HumanVRAudioController : MonoBehaviour {
     }
 
 }
+

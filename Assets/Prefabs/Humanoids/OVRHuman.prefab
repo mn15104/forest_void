@@ -451,6 +451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4743603651390370}
   - component: {fileID: 114065146381275230}
+  - component: {fileID: 82347576022565738}
   - component: {fileID: 82571989015836758}
   m_Layer: 8
   m_Name: OVRHumanAudio
@@ -1013,8 +1014,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001860840367018}
-  m_LocalRotation: {x: -0, y: 0.96977067, z: -0, w: 0.24401829}
-  m_LocalPosition: {x: 553.4, y: 74.87, z: 803.4}
+  m_LocalRotation: {x: -0, y: 0.9996683, z: -0, w: -0.025756078}
+  m_LocalPosition: {x: 548.89, y: 74.87, z: 841.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4743603651390370}
@@ -1023,7 +1024,7 @@ Transform:
   - {fileID: 4564162810960088}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 151.75201, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 182.952, z: 0}
 --- !u!4 &4383891861230614
 Transform:
   m_ObjectHideFlags: 1
@@ -2286,6 +2287,87 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355857546742378}
   m_Enabled: 1
+--- !u!82 &82347576022565738
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1532608938718054}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 4430c46b2d6abfe4dabb27b00015f772,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!82 &82571989015836758
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2708,17 +2790,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc636ddfa2073543bc35a90a2bbac60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HumanMotion: {fileID: 0}
+  HumanMotion: {fileID: 82347576022565738}
   m_Breathing: {fileID: 82571989015836758}
   m_GrassRun: {fileID: 8300000, guid: 7d8cac319329d224eaca292d7e52a07a, type: 3}
-  m_StoneRun: {fileID: 8300000, guid: ff42943390b0fbc448252d12a4bcbbe4, type: 3}
+  m_StoneRun: {fileID: 8300000, guid: 9c2301de29f7d254eb474c580c695072, type: 3}
   m_GrassWalk: {fileID: 8300000, guid: 5b5f6711c4d53c1429672b9566e1fb27, type: 3}
-  m_StoneWalk: {fileID: 8300000, guid: 2625d9a92c2aef64cb45a59c181a5db7, type: 3}
+  m_StoneWalk: {fileID: 8300000, guid: 632903c7184b99442a4be9cef8688057, type: 3}
   m_GravelWalk: {fileID: 8300000, guid: 8ecbfbbb3e5c13b4cb1c06a984dd3e00, type: 3}
   m_GravelRun: {fileID: 8300000, guid: 623008be4fe6b38499ec41bc34fbd88a, type: 3}
   m_MudWalk: {fileID: 8300000, guid: 8b2fd0afa40a1c04797fe0049f9dd88c, type: 3}
   m_MudRun: {fileID: 8300000, guid: 36dfaac452bb06741b66dc33d7913d34, type: 3}
-  m_WoodRun: {fileID: 8300000, guid: c487e899886e2af469c7f0809f549d85, type: 3}
+  m_WoodRun: {fileID: 8300000, guid: 78230618f2855ad4fa43efc3f0c3bbcd, type: 3}
+  m_WoodWalk: {fileID: 8300000, guid: 2eba1e3bf794d9e408276cc6e2256a98, type: 3}
+  m_CryptWalk: {fileID: 8300000, guid: e08415407ba7935449406e49d90fd77d, type: 3}
+  m_CryptRun: {fileID: 8300000, guid: 9b543dd4b91476744a514f19631eef92, type: 3}
+  walkingVelocityTrigger: 1
+  runningVelocityTrigger: 2.3
 --- !u!114 &114081261657793184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2805,11 +2892,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355857546742378}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 4739c22ef73ad62488fe344c8fe9addd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strengthX: 0.05
+  strengthY: 0.07
+  fishEyeShader: {fileID: 4800000, guid: 61572e443c4879f49b377df947fa172d, type: 3}
 --- !u!114 &114163565227112174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2904,6 +2994,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dfe4a57e299b44d98ba9bda1fb277f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fenceColliders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114282630208783326
 MonoBehaviour:
   m_ObjectHideFlags: 1

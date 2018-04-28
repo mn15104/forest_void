@@ -4,16 +4,17 @@ using UnityEngine;
 
 
 // This is the event manager of which a new instance is attached to every area. Once the player enters the area a set of events will be triggered. 
-public class EventManager : MonoBehaviour {
+public class EventManager : MonoBehaviour
+{
 
     public enum Stage
     {
-        Intro,Stage1,Stage2,Stage3,GameOverStage 
+        Intro, Stage1, Stage2, Stage3, GameOverStage
     }
-   
+
     public enum Location
     {
-        Chapel,Forest,Crypt,ToolShed, Caravan, Generator
+        Chapel, Forest, Crypt, ToolShed, Caravan, Generator, Bridge
     }
     public void SetGameTimeFromStage(Stage stage)
     {
@@ -90,7 +91,7 @@ public class EventManager : MonoBehaviour {
         if (StoryMode)
         {
             player.transform.position = playerSpawnPoint.transform.position;
-           // player.transform.rotation = playerSpawnPoint.transform.rotation;
+            // player.transform.rotation = playerSpawnPoint.transform.rotation;
         }
 
     }
@@ -98,14 +99,14 @@ public class EventManager : MonoBehaviour {
     void Update()
     {
         GameTimerSeconds += Time.deltaTime;
-        if(debugChangeStage != currentStage && !debugForceStageChange)
+        if (debugChangeStage != currentStage && !debugForceStageChange)
         {
             debugForceStageChange = true;
             ForceStageChange();
         }
-      
+
     }
-    
+
     public float getPlayerHeartrate()
     {
         return player.GetComponentInChildren<Heartbeat>().m_Heartbeat;
@@ -114,7 +115,7 @@ public class EventManager : MonoBehaviour {
     public int getCurrentKeyCount()
     {
         return player.GetComponent<Inventory>().keys.Count;
-        
+
     }
     void ForceStageChange()
     {
@@ -133,34 +134,37 @@ public class EventManager : MonoBehaviour {
         NotifyStage.Notify(currentStage);
         debugForceStageChange = false;
     }
-
     void AddKey(bool value)
     {
         numKeyInserted += 1;
-        if(numKeyInserted == TOTALKEYS)
+        if (numKeyInserted == TOTALKEYS)
         {
             NotifyAllKeysInserted.Notify(true);
         }
     }
-
     void PassHeartRate()
     {
         float currentHeartRate = getPlayerHeartrate();
         NotifyHeartRate.Notify(currentHeartRate);
     }
-    
+
     void SetStructureLocation(GameObject gameObject)
     {
+        Debug.Log(gameObject.GetComponent<StructureZone>().location);
         currentLocation = gameObject.GetComponent<StructureZone>().location;
-        NotifyLocation.Notify(currentLocation);
-    } 
-
-    void SetForestLocation(GameObject gameObject)
-    {
-        currentLocation = Location.Forest;
         NotifyLocation.Notify(currentLocation);
     }
 
+    void SetForestLocation(GameObject gameObject)
+    {
+        Debug.Log("Exited " + currentLocation);
+        currentLocation = Location.Forest;
+        NotifyLocation.Notify(currentLocation);
+    }
+    public Location GetLocation()
+    {
+        return currentLocation;
+    }
     public float GetGameTime()
     {
         return GameTimerSeconds;

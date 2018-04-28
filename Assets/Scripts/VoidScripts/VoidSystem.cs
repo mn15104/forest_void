@@ -24,7 +24,7 @@ public class VoidSystem : MonoBehaviour
         m_MonsterStage = m_ForestVoid.GetComponent<MonsterAI>().currentStage;
         NotifyStage.Notify(m_ForestVoid.GetComponent<MonsterAI>().currentStage);
     }
-    
+
     void Start()
     {
         foreach (Transform trans in m_SpawnpointsHolder.GetComponentsInChildren<Transform>())
@@ -62,15 +62,15 @@ public class VoidSystem : MonoBehaviour
             }
             else
             {
-                if(m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.HUMAN_IN_STRUCT)
+                if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.HUMAN_IN_STRUCT)
                     m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HUMAN_IN_STRUCT);
             }
         }
     }
-    
+
     void UpdateStageIntro()
     {
-        if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
+        if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED
             && m_MonsterGameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
@@ -83,7 +83,7 @@ public class VoidSystem : MonoBehaviour
 
     void UpdateStage1()
     {
-        if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
+        if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED
             && m_MonsterGameTimer > m_DelayTimeToActive[0])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
@@ -114,7 +114,7 @@ public class VoidSystem : MonoBehaviour
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         }
 
-        if (m_MonsterGameTimer > m_DelayTimeToActive[2] && 
+        if (m_MonsterGameTimer > m_DelayTimeToActive[2] &&
                                 (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                                  m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                                  m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.CHASE &&
@@ -135,29 +135,30 @@ public class VoidSystem : MonoBehaviour
 
     void UpdateStage3()
     {
-        if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED 
+        if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.DISABLED
             && m_MonsterGameTimer > m_DelayTimeToActive[2])
         {
             m_ForestVoid.transform.position = GetFurthestSpawnPoint();
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.HIDDEN_MOVING);
         }
 
-        if (m_MonsterGameTimer > m_DelayTimeToActive[3] && 
-                                (   m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
+        if (m_MonsterGameTimer > m_DelayTimeToActive[3] &&
+                                (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPEAR &&
                                     m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.APPROACH &&
                                     m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.ATTACK &&
-                                    m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.CHASE ))
+                                    m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() != MonsterState.CHASE))
         {
             m_ForestVoid.GetComponent<MonsterAI>().SetState(MonsterState.APPEAR);
         }
 
         if (m_ForestVoid.GetComponent<MonsterAI>().GetMonsterState() == MonsterState.GAMEOVER)
         {
-            m_MonsterStage = EventManager.Stage.GameOverStage;                                         
+            m_ForestVoid.GetComponent<MonsterAI>().SetStage(EventManager.Stage.GameOverStage);
+            m_MonsterStage = EventManager.Stage.GameOverStage;
             NotifyStage.Notify(m_MonsterStage);
         }
     }
-    
+
     public void ResetVoidToStage(EventManager.Stage stage)
     {
         debugResettingStage = true;

@@ -30,7 +30,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4775312497182646
 Transform:
   m_ObjectHideFlags: 1
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1421043120994692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4742eea432de4054790186b1d6bba4c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d1e1813044feec4e9aa329462274f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Aud_1: {fileID: 82068409168420942}
@@ -387,9 +387,11 @@ MonoBehaviour:
   m_Stage1Clip: {fileID: 8300000, guid: 25f0e131fdd3d704d95046be2b40059c, type: 3}
   m_Stage2Clip: {fileID: 8300000, guid: 4e6ffda4a89e2ee4fb24279b6dd22570, type: 3}
   m_Stage3Clip: {fileID: 8300000, guid: 08d6b7dad979f844ea1d2f8809a3aab9, type: 3}
+  m_GameOverClip: {fileID: 8300000, guid: 42e6c0ae238a4484782a6b5b9634f441, type: 3}
   m_IntenseNoises:
   - {fileID: 8300000, guid: 6a270a6cfa3e0c54b95855c1a5f4c093, type: 3}
   - {fileID: 8300000, guid: be9946ba1e6e57b4fbe9f58af80497a3, type: 3}
   - {fileID: 8300000, guid: fa46ebe250f92e746a17e1fdeb7e7a97, type: 3}
   m_MaxVolume: 0.3
+  m_MaxWindVolume: 0.5
   m_FadeSpeed: 0.3

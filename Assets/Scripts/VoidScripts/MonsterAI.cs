@@ -127,13 +127,12 @@ public partial class MonsterAI : MonoBehaviour
 
     void Update()
     {
-
         distanceToHuman = Mathf.Sqrt(Mathf.Pow(player.transform.position.x - transform.position.x, 2)
                                     + Mathf.Pow(player.transform.position.z - transform.position.z, 2));
         m_MonsterStateMachine.update_state();
     }
 
-    
+
     /*------------------ UPDATE DESTINATION Functions --------------------*/
 
     public IEnumerator UpdateHiddenDestination()
@@ -178,7 +177,7 @@ public partial class MonsterAI : MonoBehaviour
         if (stage != currentStage)
         {
             StopAllCoroutines();
-           
+
             if (currentState == MonsterState.APPEAR)
             {
                 if (currentStage == EventManager.Stage.Stage1)
@@ -216,7 +215,7 @@ public partial class MonsterAI : MonoBehaviour
     public float Stage1_AppearInterval = 2f;
     public float Stage1_AppearDistance = 17f;
     public float Stage1_FadeOutTime = 0.1f;
-    private int  Stage1_appearCount = 0;
+    private int Stage1_appearCount = 0;
     public const int Stage1_maxAppears = 10;
     public IEnumerator UpdateStage1()
     {
@@ -247,7 +246,7 @@ public partial class MonsterAI : MonoBehaviour
             foreach (Material mat in GetComponentInChildren<MeshRenderer>().materials)
                 StartCoroutine(FadeOutMaterial(mat, .5f, false));
             yield return new WaitForSeconds(Stage1_FadeOutTime);
-            
+
             yield return new WaitForSeconds(Stage1_TeleportInterval);
             yield return null;
             Stage1_appearCount += 1;
@@ -266,12 +265,12 @@ public partial class MonsterAI : MonoBehaviour
 
     /////////////// STAGE 2 ///////////////
 
-    public bool stage2_playerTorchOn1  = false;
-    public bool stage2_playerTorchOff  = false;
-    public bool stage2_playerTorchOn2  = false;
-    public bool stage2_playerTorchOff2  = false;
+    public bool stage2_playerTorchOn1 = false;
+    public bool stage2_playerTorchOff = false;
+    public bool stage2_playerTorchOn2 = false;
+    public bool stage2_playerTorchOff2 = false;
     public bool stage2_coroutine0_finished = false;
-    public bool stage2_coroutine1_finished  = false;
+    public bool stage2_coroutine1_finished = false;
     public bool stage2_coroutine2_finished = false;
     public void UpdateStage2()
     {
@@ -341,13 +340,17 @@ public partial class MonsterAI : MonoBehaviour
     /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
     {
-        if (!Stage3_Appeared) { 
+        var lookPos = player.transform.position - transform.position;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2.2f);
+        if (!Stage3_Appeared)
+        {
             if (distanceToHuman > 3f)
             {
                 TeleportVoidBehindHuman(1.5f);
                 Stage3_playerWalking = true;
             }
-        
+
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(player.GetComponentInChildren<Camera>());
             bool monsterInFrustum = GeometryUtility.TestPlanesAABB(planes, GetComponent<Collider>().bounds);
             if (monsterInFrustum)
@@ -362,7 +365,7 @@ public partial class MonsterAI : MonoBehaviour
             }
         }
     }
-    
+
     /*------------------ UTILITY Functions --------------------*/
 
     public void InitialiseCurrentAppearBehaviour(EventManager.Stage t_stage)
@@ -635,7 +638,7 @@ public partial class MonsterAI : MonoBehaviour
     {
         return m_CurrentSpeed;
     }
-    
+
     /*------------------ DEPRECATED Functions --------------------*/
 
 
@@ -655,6 +658,6 @@ public partial class MonsterAI : MonoBehaviour
         player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
         player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
         timer_Stage3Active = 0f;
-}
+    }
 
 }

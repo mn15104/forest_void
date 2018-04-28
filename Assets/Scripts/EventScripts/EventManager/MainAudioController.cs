@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainAudioController : MonoBehaviour {
 
     private EventManager eventManager;
+    private MonsterAI monsterAI;
     public AudioSource m_Aud_1;
     public AudioSource m_Aud_2;
     public AudioSource m_Aud_SFX;
@@ -13,8 +14,11 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage1Clip;
     public AudioClip m_Stage2Clip;
     public AudioClip m_Stage3Clip;
+    public AudioClip m_GameOverClip;
     public AudioClip[] m_IntenseNoises;
+    private bool monsterStateInterrupt = false;
     public float m_MaxVolume = 0.3f;
+    public float m_MaxWindVolume = 0.5f;
     public float m_FadeSpeed = 0.3f;
 
     private AudioClip currentlySelected;
@@ -22,6 +26,8 @@ public class MainAudioController : MonoBehaviour {
 
     private void Awake() 
     {
+        monsterAI = FindObjectOfType<MonsterAI>();
+        monsterAI.OnMonsterStateChange += MonsterStateReact;
         eventManager = FindObjectOfType<EventManager>();
         eventManager.NotifyLocation.NotifyEventOccurred += StructureAudio;
         eventManager.NotifyStage.NotifyEventOccurred += StageAudio;
@@ -41,7 +47,8 @@ public class MainAudioController : MonoBehaviour {
         m_Aud_Wind.clip = m_WindClip;
         m_Aud_Wind.loop = true;
         m_Aud_Wind.volume = 0;
-        //FadeInAudioSource(m_Aud_Wind);
+        m_Aud_Wind.Play();
+        StartCoroutine(FadeInAudioSource(m_Aud_Wind, m_MaxWindVolume, m_FadeSpeed));
         //----------------
         m_Aud_2.Stop();
         m_Aud_2.clip = null;
@@ -50,6 +57,32 @@ public class MainAudioController : MonoBehaviour {
         m_Aud_SFX.Stop();
         m_Aud_SFX.clip = null;
         m_Aud_SFX.loop = false;
+    }
+    private void Update()
+    {
+        if (!monsterStateInterrupt && !m_Aud_1.isPlaying && !m_Aud_2.isPlaying)
+        {
+            StopAllCoroutines();
+            currentAudioStage = monsterAI.GetMonsterStage();
+            StartCoroutine(FadeInAudioSource(m_Aud_1, m_MaxVolume, m_FadeSpeed));
+        }
+    }
+    void MonsterStateReact(MonsterState state)
+    {
+        if (monsterAI.GetMonsterState() == MonsterState.FOLLOW)
+        {
+            monsterStateInterrupt = true;
+            if (m_Aud_1.isPlaying || m_Aud_2.isPlaying)
+            {
+                StopAllCoroutines();
+                StartCoroutine(FadeOutAudioSource(m_Aud_1, 0.0f, m_FadeSpeed));
+                StartCoroutine(FadeOutAudioSource(m_Aud_2, 0.0f, m_FadeSpeed));
+            }
+        }
+        else
+        {
+            monsterStateInterrupt = false;
+        }
     }
 
     void StageAudio(EventManager.Stage stage)
@@ -69,15 +102,19 @@ public class MainAudioController : MonoBehaviour {
                 currentAudioStage = EventManager.Stage.Stage2;
                 break;
             case EventManager.Stage.Stage3:
-                m_Aud_1.clip = m_Stage3Clip;
-                m_Aud_1.Play();
+                TransitionClip(m_Stage3Clip);
                 currentAudioStage = EventManager.Stage.Stage3;
+                break;
+            case EventManager.Stage.GameOverStage:
+                TransitionClip(m_GameOverClip);
+                currentAudioStage = EventManager.Stage.GameOverStage;
                 break;
         }
     }
 
     void StructureAudio(EventManager.Location location)
     {
+        
         bool windOn = false;
         switch (location)
         {
@@ -93,19 +130,19 @@ public class MainAudioController : MonoBehaviour {
             case EventManager.Location.Generator:
                 windOn = true;
                 break;
-            case EventManager.Location.ToolShed:
+            case EventManager.Location.Bridge:
                 windOn = true;
+                break;
+            case EventManager.Location.ToolShed:
                 break;
         }
         if(windOn && !m_Aud_Wind.isPlaying)
         {
-            StopAllCoroutines();
-           // StartCoroutine(FadeInAudioSource(m_Aud_Wind));
+            StartCoroutine(FadeInAudioSource(m_Aud_Wind, m_MaxWindVolume, m_FadeSpeed));
         }
         else if(!windOn && m_Aud_Wind.isPlaying)
         {
-            StopAllCoroutines();
-         //   StartCoroutine(FadeOutAudioSource(m_Aud_Wind));
+            StartCoroutine(FadeOutAudioSource(m_Aud_Wind, 0.0f, m_FadeSpeed));
         }
     }
 
@@ -134,7 +171,7 @@ public class MainAudioController : MonoBehaviour {
             m_Aud_2.clip = t_clip;
             StopAllCoroutines();
 
-            StartCoroutine(FadeOutAudioSource(m_Aud_1, m_FadeSpeed));
+            StartCoroutine(FadeOutAudioSource(m_Aud_1, 0, m_FadeSpeed));
             m_Aud_2.volume = 0f;
             StartCoroutine(FadeInAudioSource(m_Aud_2, m_MaxVolume, m_FadeSpeed));
         }
@@ -142,7 +179,15 @@ public class MainAudioController : MonoBehaviour {
         {
             m_Aud_1.clip = t_clip;
             StopAllCoroutines();
-            StartCoroutine(FadeOutAudioSource(m_Aud_2, m_FadeSpeed));
+            StartCoroutine(FadeOutAudioSource(m_Aud_2, 0, m_FadeSpeed));
+            m_Aud_1.volume = 0f;
+            StartCoroutine(FadeInAudioSource(m_Aud_1, m_MaxVolume, m_FadeSpeed));
+        }
+        else if (!m_Aud_2.isPlaying && !m_Aud_1.isPlaying)
+        {
+            m_Aud_1.clip = t_clip;
+            StopAllCoroutines();
+            StartCoroutine(FadeOutAudioSource(m_Aud_2, 0, m_FadeSpeed));
             m_Aud_1.volume = 0f;
             StartCoroutine(FadeInAudioSource(m_Aud_1, m_MaxVolume, m_FadeSpeed));
         }
@@ -159,13 +204,13 @@ public class MainAudioController : MonoBehaviour {
             aud.volume = Mathf.Lerp(aud.volume, max_vol, Time.deltaTime * fade_in_rate);
         }
     }
-    IEnumerator FadeOutAudioSource(AudioSource aud, float fade_out_rate)
+    IEnumerator FadeOutAudioSource(AudioSource aud, float min_vol, float fade_out_rate)
     {
         Debug.Log("Fading out");
         while (aud.volume > 0)
         {
             yield return null;
-            aud.volume = Mathf.Lerp(aud.volume, 0, Time.deltaTime * fade_out_rate);
+            aud.volume = Mathf.Lerp(aud.volume, min_vol, Time.deltaTime * fade_out_rate);
 
         }
         aud.Stop();
