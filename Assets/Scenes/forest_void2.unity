@@ -15728,7 +15728,7 @@ Prefab:
     - target: {fileID: 114791917943288210, guid: b1a3cf0530c4d1a46b8390b7898486df,
         type: 2}
       propertyPath: StoryMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4634454003473598, guid: b1a3cf0530c4d1a46b8390b7898486df, type: 2}
       propertyPath: m_LocalPosition.z
