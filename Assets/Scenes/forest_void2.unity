@@ -231,14 +231,13 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.110415146
       objectReference: {fileID: 0}
+    - target: {fileID: 1382307280244786, guid: cf15caae1ad55474a8d35f93d5493a9d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf15caae1ad55474a8d35f93d5493a9d, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &150133540 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1382307280244786, guid: cf15caae1ad55474a8d35f93d5493a9d,
-    type: 2}
-  m_PrefabInternal: {fileID: 150133539}
 --- !u!1 &175042812
 GameObject:
   m_ObjectHideFlags: 0
@@ -15629,7 +15628,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 150133540}
+      objectReference: {fileID: 1170266218}
     - target: {fileID: 114791917943288210, guid: b1a3cf0530c4d1a46b8390b7898486df,
         type: 2}
       propertyPath: monster
@@ -15805,7 +15804,7 @@ Prefab:
         type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 150133540}
+      objectReference: {fileID: 1170266218}
     - target: {fileID: 1033277563816748, guid: 303a4698c3504f44896af3bcdf96d104, type: 2}
       propertyPath: m_Name
       value: Void
@@ -15967,6 +15966,11 @@ GameObject:
 --- !u!20 &1159487915 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20940344777547442, guid: 662e2c187d44e2c42a866d4dacd8f1da,
+    type: 2}
+  m_PrefabInternal: {fileID: 1771774157}
+--- !u!1 &1170266218 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1001860840367018, guid: 662e2c187d44e2c42a866d4dacd8f1da,
     type: 2}
   m_PrefabInternal: {fileID: 1771774157}
 --- !u!1001 &1202274667
@@ -16542,7 +16546,7 @@ Prefab:
       objectReference: {fileID: 1968799938}
     - target: {fileID: 1001860840367018, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}

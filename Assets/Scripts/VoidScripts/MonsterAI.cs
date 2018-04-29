@@ -299,7 +299,7 @@ public partial class MonsterAI : MonoBehaviour
         }
         else if (!stage2_playerTorchOff && stage2_coroutine0_finished)
         {
-            float verticalCamRotation = player.GetComponentInChildren<OVRCameraRig>().transform.localEulerAngles.x;
+            float verticalCamRotation = player.transform.localEulerAngles.x;
             //  If within camera forward limits
             if (isPlayerVR)
             {
