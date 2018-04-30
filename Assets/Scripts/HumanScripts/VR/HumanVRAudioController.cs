@@ -249,11 +249,11 @@ public class HumanVRAudioController : MonoBehaviour
         {
             if (horizontalSpeed > runningVelocityTrigger)
             {
-                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 1f, Time.deltaTime * 0.3f);
+                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 1f, Time.deltaTime * 0.9f);
             }
             else
             {
-                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 0f, Time.deltaTime * 0.3f);
+                m_Breathing.volume = Mathf.Lerp(m_Breathing.volume, 0f, Time.deltaTime * 0.45f);
             }
         }
         previousPosition = newPosition;
