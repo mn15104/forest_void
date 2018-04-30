@@ -15728,7 +15728,7 @@ Prefab:
     - target: {fileID: 114791917943288210, guid: b1a3cf0530c4d1a46b8390b7898486df,
         type: 2}
       propertyPath: StoryMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4634454003473598, guid: b1a3cf0530c4d1a46b8390b7898486df, type: 2}
       propertyPath: m_LocalPosition.z
@@ -16484,7 +16484,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4375896117422384, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 563.3
+      value: 574.8
       objectReference: {fileID: 0}
     - target: {fileID: 4375896117422384, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}
       propertyPath: m_LocalPosition.y
@@ -16492,7 +16492,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4375896117422384, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 809.658
+      value: 824
       objectReference: {fileID: 0}
     - target: {fileID: 4375896117422384, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}
       propertyPath: m_LocalRotation.x

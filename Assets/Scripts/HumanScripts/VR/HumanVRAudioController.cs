@@ -301,5 +301,9 @@ public class HumanVRAudioController : MonoBehaviour
         return Math.Sqrt(Math.Pow(vector3.x, 2) + Math.Pow(vector3.z, 2));
     }
 
+    public float GetSpeed()
+    {
+        return horizontalSpeed;
+    }
 }
 
