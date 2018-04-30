@@ -299,11 +299,11 @@ public partial class MonsterAI : MonoBehaviour
         }
         else if (!stage2_playerTorchOff && stage2_coroutine0_finished)
         {
-            float verticalCamRotation = player.transform.localEulerAngles.x;
+            float verticalCamRotation = player.GetComponentInChildren<Camera>().transform.localRotation.x;
             //  If within camera forward limits
             if (isPlayerVR)
             {
-                if ((360 > verticalCamRotation && 340 < verticalCamRotation) || (0 < verticalCamRotation && 12 > verticalCamRotation))
+                if (-30 < verticalCamRotation && verticalCamRotation < 10)
                 {
                     TeleportVoidInfrontHuman(3f);
                     flashlight.ForceSwitchFlashlight(true);
