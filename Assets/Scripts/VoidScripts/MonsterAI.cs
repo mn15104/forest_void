@@ -367,17 +367,24 @@ public partial class MonsterAI : MonoBehaviour
     float timer_Stage3Active = 0f;
     public bool Stage3_Appeared = false;
     public bool Stage3_playerWalking = false;
+    private Vector3 originalRotation;
     /////////////// STAGE 3 ///////////////
     public void UpdateStage3()
     {
+        originalRotation = transform.rotation.eulerAngles;
         var lookPos = player.transform.position - transform.position;
-        var rotation = Quaternion.LookRotation(lookPos);
+        var rotationEuler = Quaternion.LookRotation(lookPos).eulerAngles;
+
+        rotationEuler.x = originalRotation.x;
+
+        var rotation = Quaternion.Euler(rotationEuler);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2.2f);
         if (!Stage3_Appeared)
         {
-            if (distanceToHuman > 3f)
+            if (distanceToHuman > 1.5f)
             {
-                TeleportVoidBehindHuman(1.5f);
+                TeleportVoidBehindHuman(1f);
                 Stage3_playerWalking = true;
             }
 
@@ -387,7 +394,7 @@ public partial class MonsterAI : MonoBehaviour
             {
                 Vector3 dirToMonster = (transform.position - player.transform.position).normalized;
                 float angleBetween = Vector3.Angle(dirToMonster, player.transform.forward);
-                if (angleBetween < player.GetComponentInChildren<Camera>().fieldOfView / 1.35f)
+                if (angleBetween < player.GetComponentInChildren<Camera>().fieldOfView / 1.45f)
                 {
                     Stage3_Appeared = true;
                     StartCoroutine(DelayStateChange(MonsterState.APPROACH, 2f));

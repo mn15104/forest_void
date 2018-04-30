@@ -79,6 +79,10 @@ public class MainAudioController : MonoBehaviour {
                 StartCoroutine(FadeOutAudioSource(m_Aud_2, 0.0f, m_FadeSpeed));
             }
         }
+        else if (monsterAI.GetMonsterState() == MonsterState.APPROACH && !m_Aud_1.isPlaying || !m_Aud_2.isPlaying)
+        {
+            TransitionClip(m_Stage3Clip);
+        }
         else
         {
             monsterStateInterrupt = false;
@@ -160,7 +164,6 @@ public class MainAudioController : MonoBehaviour {
     {
         //Audio for bridge would go in here. Currently the audio is attached to the trigger itself. Found in the scene -> EventTriggers -> BridgeTrigger
         //Putting audio is here with run when trigger has been entered
- 
     }
 
     void TransitionClip(AudioClip t_clip)
