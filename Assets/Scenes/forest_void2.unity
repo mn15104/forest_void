@@ -16514,11 +16514,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114806014401580974, guid: 662e2c187d44e2c42a866d4dacd8f1da,
-        type: 2}
-      propertyPath: m_Monster
-      value: 
-      objectReference: {fileID: 1334915062}
     - target: {fileID: 114245780018424542, guid: 662e2c187d44e2c42a866d4dacd8f1da,
         type: 2}
       propertyPath: fenceColliders.Array.data[0]
@@ -16544,10 +16539,11 @@ Prefab:
       propertyPath: fenceColliders.Array.data[4]
       value: 
       objectReference: {fileID: 1968799938}
-    - target: {fileID: 1001860840367018, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 114806014401580974, guid: 662e2c187d44e2c42a866d4dacd8f1da,
+        type: 2}
+      propertyPath: m_Monster
+      value: 
+      objectReference: {fileID: 1334915062}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 662e2c187d44e2c42a866d4dacd8f1da, type: 2}
   m_IsPrefabParent: 0

@@ -2301,16 +2301,16 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2318,20 +2318,20 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 1
+      time: 0.77744627
+      value: 1.0062866
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.0204082
+      outSlope: -1.0204082
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2360,8 +2360,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 1
+      time: 0.15744591
+      value: 1.0062866
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2389,7 +2389,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -2399,28 +2399,16 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.2
-      value: 1
-      inSlope: -5.0019917
-      outSlope: -5.0019917
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.4
-      value: 0.5
-      inSlope: -1.2504979
-      outSlope: -1.2504979
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.98356324
-      value: 0
-      inSlope: -0.31262448
-      outSlope: -0.31262448
+      time: 0.71787214
+      value: 0.98742676
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
       time: 1
       value: 0
-      inSlope: -0.20007975
-      outSlope: -0.20007975
+      inSlope: -1.0204082
+      outSlope: -1.0204082
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -2806,8 +2794,6 @@ MonoBehaviour:
   m_LightWoodWalk: {fileID: 8300000, guid: dd53534d19d63c64983c0434db8b5543, type: 3}
   m_CryptWalk: {fileID: 8300000, guid: e08415407ba7935449406e49d90fd77d, type: 3}
   m_CryptRun: {fileID: 8300000, guid: 9b543dd4b91476744a514f19631eef92, type: 3}
-  walkingVelocityTrigger: 1
-  runningVelocityTrigger: 2.1
 --- !u!114 &114081261657793184
 MonoBehaviour:
   m_ObjectHideFlags: 1
