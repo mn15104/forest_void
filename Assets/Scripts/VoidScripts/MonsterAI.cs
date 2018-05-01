@@ -475,20 +475,29 @@ public partial class MonsterAI : MonoBehaviour
     public void TeleportVoidInfrontHuman(float dist = 10)
     {
         original_y = transform.position.y;
-        Vector3 humanPos = player.transform.position;
-        Vector3 humanFacingDir = player.transform.forward;
-        foreach (Camera cam in player.GetComponentsInChildren<Camera>())
+        Vector3 humanPos;
+        Vector3 humanFacingDir;
+        if (isPlayerVR)
         {
-            if (cam.isActiveAndEnabled)
+            humanPos = player.GetComponentInChildren<Camera>().transform.position;
+            humanFacingDir = player.GetComponentInChildren<Camera>().transform.forward;
+        }
+        else
+        {
+            humanPos = player.transform.position;
+            humanFacingDir = player.transform.forward;
+            foreach (Camera cam in player.GetComponentsInChildren<Camera>())
             {
-                humanFacingDir = cam.transform.forward;
+                if (cam.isActiveAndEnabled)
+                {
+                    humanFacingDir = cam.transform.forward;
+                }
             }
         }
-
         Vector3 voidPos = humanPos + dist * humanFacingDir;
         voidPos.y = original_y;
         transform.position = voidPos;
-        Quaternion rotat = Quaternion.LookRotation(-player.transform.forward);
+        Quaternion rotat = Quaternion.LookRotation(-humanFacingDir);
         rotat.eulerAngles = new Vector3(transform.rotation.eulerAngles.x, rotat.eulerAngles.y, transform.rotation.eulerAngles.z);
         transform.rotation = rotat;
     }
