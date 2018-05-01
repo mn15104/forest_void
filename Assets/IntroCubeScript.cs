@@ -44,8 +44,6 @@ public class IntroCubeScript : MonoBehaviour {
         flashlight.SetActive(false);
         subtitleText = subtitles.GetComponentInChildren<Text>();
 
-
-
         cameraLeft.nearClipPlane = 0.01f;
         cameraLeft.farClipPlane = 0.2f;
         cameraRight.nearClipPlane = 0.01f;
@@ -54,24 +52,20 @@ public class IntroCubeScript : MonoBehaviour {
         cameraLeft.backgroundColor = Color.black;
         cameraRight.backgroundColor = Color.black;
 
-
-
     }
 
     private void Update()
     {
 
-
-
         float distressTime = Time.time;
         //if (!(distressCall.isPlaying) && !teleported)
-        if ( distressTime > 31f && !teleported)
+        if (distressTime > 31f && !teleported)
         {
             TeleportPlayer();
             player.GetComponent<OVRPlayerController>().Acceleration = 0.1f;
             flashlight.SetActive(true);
             audioController.SetActive(true);
-            
+
 
             //cameraLeft.nearClipPlane = 0.3f;
             //cameraRight.nearClipPlane = 0.3f;

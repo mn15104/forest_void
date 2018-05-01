@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 // This is the event manager of which a new instance is attached to every area. Once the player enters the area a set of events will be triggered. 
@@ -65,6 +66,9 @@ public class EventManager : MonoBehaviour
     public GameObject player;
     public GameObject monster;
     public GameObject playerSpawnPoint;
+    private Transform introBoxTeleportPoint;
+    public GameObject introBox;
+    public GameObject subtitles;
     public bool StoryMode = false;
     private float startNotifyingHeartRate = 20;
     private float NotifyHeartRateInterval = 3;
@@ -79,6 +83,7 @@ public class EventManager : MonoBehaviour
         StructureZoneTriggerEvent.TriggerEnterEvent += SetStructureLocation;
         StructureZoneTriggerEvent.TriggerExitEvent += SetForestLocation;
         NotifyKeyInserted.NotifyEventOccurred += AddKey;
+        introBoxTeleportPoint = introBox.transform.Find("IntroSpawnPoint");
     }
 
 
@@ -90,10 +95,22 @@ public class EventManager : MonoBehaviour
         // An in-development system to simulate real game chronological behaviour/events
         if (StoryMode)
         {
-            player.transform.position = playerSpawnPoint.transform.position;
+            player.transform.position = introBoxTeleportPoint.position;
             // player.transform.rotation = playerSpawnPoint.transform.rotation;
         }
 
+    }
+
+    public void GameOver(Camera cameraLeft, Camera cameraRight)
+    {
+        cameraLeft.farClipPlane = 0.3f;
+        cameraRight.farClipPlane = 0.3f;
+
+        player.transform.position = introBoxTeleportPoint.position;
+        subtitles.SetActive(true);
+        Debug.Log(subtitles.GetComponentInChildren<Text>());
+        GameObject gameOverText = subtitles.transform.Find("GameOverText").gameObject;
+        gameOverText.GetComponent<Text>().text = "Game Over";
     }
 
     void Update()

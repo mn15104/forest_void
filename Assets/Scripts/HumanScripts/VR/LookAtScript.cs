@@ -5,6 +5,7 @@ using UnityEngine;
 public class LookAtScript : MonoBehaviour {
 
     public TrackingSpaceController trackingSpace;
+    
     public bool LookBack = false;
     public float rotateSpeed = 5f;
 

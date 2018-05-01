@@ -2885,8 +2885,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033277563816748}
-  m_LocalRotation: {x: -0, y: 0.060157508, z: -0, w: -0.9981889}
-  m_LocalPosition: {x: 575.79, y: 74.07675, z: 847.5}
+  m_LocalRotation: {x: -0, y: -0.0785653, z: -0, w: -0.996909}
+  m_LocalPosition: {x: 575.2, y: 74.07675, z: 821.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4841383279146252}
@@ -2897,7 +2897,7 @@ Transform:
   - {fileID: 4122507938828634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -150.216, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 9.012, z: 0}
 --- !u!4 &4141616747954848
 Transform:
   m_ObjectHideFlags: 1
@@ -5134,8 +5134,14 @@ AudioSource:
     - serializedVersion: 2
       time: 0.05
       value: 1
-      inSlope: -0.78125006
-      outSlope: -0.78125006
+      inSlope: -0.10978601
+      outSlope: -0.10978601
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.22967032
+      value: 1.0017035
+      inSlope: 0.1062446
+      outSlope: 0.1062446
       tangentMode: 0
     - serializedVersion: 2
       time: 0.39236602
@@ -5471,13 +5477,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033277563816748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb381aefbb6b0e34bb25216f5b2a21fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debugState: 9
-  currentStage: 2
+  currentStage: 3
   player: {fileID: 0}
   soundDetectionPercentage: 0.2
   lightDetectionPercentage: 0.2

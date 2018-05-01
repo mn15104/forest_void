@@ -1,0 +1,1504 @@
+fileFormatVersion: 2
+guid: e9919849e16a7e24085333a16068181b
+timeCreated: 1525167428
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bed
+    100002: Bed 1
+    100004: Candles:Candle1
+    100006: Candles:Candle1 1
+    100008: Candles:Candle1 2
+    100010: Candles:Candle1 3
+    100012: Candles:Candle1 4
+    100014: Candles:Candle1 5
+    100016: Candles:Candle1 6
+    100018: Candles:Candle2
+    100020: Candles:Candle2 1
+    100022: Candles:Candle3
+    100024: Candles:Candle3 1
+    100026: Candles:Candle4
+    100028: Candles:Candle4 1
+    100030: Candles:Candle5
+    100032: Candles:Candle5 1
+    100034: Candles:Candle6
+    100036: Candles:CandleGroup
+    100038: Candles:Candles
+    100040: Candles:Candles1
+    100042: Candles:Extras
+    100044: Candles:Wick1
+    100046: Candles:Wick1 1
+    100048: Candles:Wick1 2
+    100050: Candles:Wick1 3
+    100052: Candles:Wick1 4
+    100054: Candles:Wick1 5
+    100056: Candles:Wick1 6
+    100058: Candles:Wick1 7
+    100060: CellarDoor
+    100062: CellarEntrance
+    100064: CellarEntranceCeiling
+    100066: CellarEntranceLeft1
+    100068: CellarEntranceWallLeft
+    100070: CellarStep10
+    100072: CellarStep11
+    100074: CellarStep12
+    100076: CellarStep13
+    100078: CellarStep14
+    100080: CellarStep15
+    100082: CellarStep16
+    100084: CellarStep17
+    100086: CellarStep18
+    100088: CellarStep19
+    100090: CellarStep20
+    100092: CellarStep21
+    100094: CellarStep22
+    100096: CellarStep23
+    100098: CellarStep24
+    100100: CellarStep3
+    100102: CellarStep4
+    100104: CellarStep5
+    100106: CellarStep6
+    100108: CellarStep7
+    100110: CellarStep8
+    100112: CellarStep9
+    100114: CellarSteps
+    100116: Chair1
+    100118: Cloth2
+    100120: Cup4
+    100122: Cup5
+    100124: Cup6
+    100126: Cupboard1Back
+    100128: Cupboard1Back 1
+    100130: Cupboard1Back 2
+    100132: Cupboard1Back1
+    100134: Cupboard1Back2
+    100136: Cupboard1Back2 1
+    100138: Cupboard1Back3
+    100140: Cupboard1Back4
+    100142: Cupboard1Back5
+    100144: Cupboard1Back6
+    100146: Cupboard1Back7
+    100148: Cupboard1Back8
+    100150: Cupboard1Back9
+    100152: Cupboard1BaseShape
+    100154: Cupboard1BaseShape 1
+    100156: Cupboard1BaseShape 2
+    100158: Cupboard1Bottom
+    100160: Cupboard1Bottom 1
+    100162: Cupboard1Bottom 2
+    100164: Cupboard1Bottom1
+    100166: Cupboard1Left
+    100168: Cupboard1Left 1
+    100170: Cupboard1Left 2
+    100172: Cupboard1Left1
+    100174: Cupboard1Middle
+    100176: Cupboard1Middle 1
+    100178: Cupboard1Middle 2
+    100180: Cupboard1Middle1
+    100182: Cupboard1Right
+    100184: Cupboard1Right 1
+    100186: Cupboard1Right 2
+    100188: Cupboard1Right1
+    100190: Cupboard1Top
+    100192: Cupboard1Top 1
+    100194: Cupboard1Top 2
+    100196: Cupboard1Top1
+    100198: Cupboard4
+    100200: Cupboard5
+    100202: Cupboard6
+    100204: CupboardDoor1
+    100206: CupboardDoor2
+    100208: CupboardDoor3
+    100210: CupboardDoor4
+    100212: DoorFrame
+    100214: Extras
+    100216: GasCannisterV1
+    100218: GasMask:Extras
+    100220: GasMask:GasCannisterV1
+    100222: GasMask:GasMaskV1
+    100224: GasMask:GasTubeV1
+    100226: GasMaskV2
+    100228: GasTubeV1
+    100230: group2
+    100232: group4
+    100234: HouseDoor
+    100236: HouseFloor
+    100238: HouseFloorMain2
+    100240: HouseFloorMain4
+    100242: HouseFloorMain5
+    100244: HouseFloorMain6
+    100246: HouseObjects
+    100248: HouseRoof
+    100250: HouseRoofLeft
+    100252: HouseRoofLeft2
+    100254: HouseRoofRight
+    100256: HouseRoomBeam
+    100258: HouseRoomBeam2
+    100260: HouseRoomBeam3
+    100262: HouseWallBack
+    100264: HouseWallBack1
+    100266: HouseWallBack2
+    100268: HouseWallBack3
+    100270: HouseWallBack4
+    100272: HouseWallBack5
+    100274: HouseWallBack6
+    100276: HouseWallBack7
+    100278: HouseWallBack8
+    100280: HouseWallBack9
+    100282: HouseWallFront
+    100284: HouseWallLeft
+    100286: HouseWallRight
+    100288: HouseWallRight1
+    100290: HouseWalls
+    100292: //RootNode
+    100294: OldRoof
+    100296: pCube1
+    100298: pCube10
+    100300: pCube11
+    100302: pCube12
+    100304: pCube13
+    100306: pCube14
+    100308: pCube15
+    100310: pCube16
+    100312: pCube17
+    100314: pCube18
+    100316: pCube19
+    100318: pCube2
+    100320: pCube24
+    100322: pCube24 1
+    100324: pCube25
+    100326: pCube25 1
+    100328: pCube3
+    100330: pCube4
+    100332: pCube5
+    100334: pCube6
+    100336: pCube8
+    100338: pCube9
+    100340: pCylinder1
+    100342: pCylinder1 1
+    100344: pCylinder2
+    100346: pCylinder2 1
+    100348: pCylinder3
+    100350: pCylinder3 1
+    100352: pCylinder4
+    100354: pCylinder4 1
+    100356: polySurface10
+    100358: polySurface104
+    100360: polySurface105
+    100362: polySurface106
+    100364: polySurface107
+    100366: polySurface108
+    100368: polySurface11
+    100370: polySurface12
+    100372: polySurface13
+    100374: polySurface14
+    100376: polySurface149
+    100378: polySurface15
+    100380: polySurface16
+    100382: polySurface17
+    100384: polySurface18
+    100386: polySurface19
+    100388: polySurface20
+    100390: polySurface205
+    100392: polySurface206
+    100394: polySurface207
+    100396: polySurface208
+    100398: polySurface21
+    100400: polySurface23
+    100402: polySurface25
+    100404: polySurface27
+    100406: polySurface28
+    100408: polySurface29
+    100410: polySurface31
+    100412: polySurface32
+    100414: polySurface33
+    100416: polySurface34
+    100418: polySurface36
+    100420: polySurface39
+    100422: polySurface40
+    100424: polySurface41
+    100426: polySurface43
+    100428: polySurface44
+    100430: polySurface45
+    100432: polySurface46
+    100434: polySurface47
+    100436: polySurface49
+    100438: polySurface5
+    100440: polySurface50
+    100442: polySurface55
+    100444: polySurface56
+    100446: polySurface58
+    100448: polySurface59
+    100450: polySurface61
+    100452: polySurface65
+    100454: polySurface66
+    100456: polySurface69
+    100458: polySurface7
+    100460: polySurface70
+    100462: polySurface8
+    100464: pSphere1
+    100466: pSphere1 1
+    100468: pSphere2
+    100470: pSphere3
+    100472: Roof
+    100474: Roof2
+    100476: ShedWallBack
+    100478: ShedWallBack1
+    100480: ShedWallBack10
+    100482: ShedWallBack11
+    100484: ShedWallBack12
+    100486: ShedWallBack3
+    100488: ShedWallBack5
+    100490: ShedWallBack6
+    100492: ShedWallBack7
+    100494: ShedWallFront
+    100496: ShedWallFront1
+    100498: ShedWallFront2
+    100500: ShedWallFront3
+    100502: ShedWallRight
+    100504: ShedWalls
+    100506: Table
+    100508: transform10
+    100510: transform6
+    100512: transform9
+    100514: Tray
+    100516: Tray1
+    100518: WallBack
+    100520: WallLeft
+    100522: WallRight
+    100524: Windows
+    100526: Windows1
+    100528: Windows2
+    100530: WindowSill1
+    100532: WindowSill2
+    100534: WindowSill3
+    100536: WindowSill4
+    100538: WindowSillBottom
+    100540: WindowSillBottom 1
+    100542: WindowSillBottom 2
+    100544: WindowSillLeft
+    100546: WindowSillLeft 1
+    100548: WindowSillLeft 2
+    100550: WindowSillLeft 3
+    100552: WindowSillLeft1
+    100554: WindowSillRight
+    100556: WindowSillRight 1
+    100558: WindowSillRight 2
+    100560: WindowSillRight 3
+    100562: WindowSillRight1
+    100564: WindowSillRight10
+    100566: WindowSillRight11
+    100568: WindowSillRight12
+    100570: WindowSillRight13
+    100572: WindowSillRight14
+    100574: WindowSillRight15
+    100576: WindowSillRight16
+    100578: WindowSillRight17
+    100580: WindowSillRight18
+    100582: WindowSillRight19
+    100584: WindowSillRight2
+    100586: WindowSillRight20
+    100588: WindowSillRight21
+    100590: WindowSillRight22
+    100592: WindowSillRight23
+    100594: WindowSillRight24
+    100596: WindowSillRight25
+    100598: WindowSillRight26
+    100600: WindowSillRight27
+    100602: WindowSillRight28
+    100604: WindowSillRight3
+    100606: WindowSillRight4
+    100608: WindowSillRight5
+    100610: WindowSillRight6
+    100612: WindowSillRight7
+    100614: WindowSillRight8
+    100616: WindowSillRight9
+    100618: WindowSillTop
+    100620: WindowSillTop 1
+    100622: WindowSillTop 2
+    100624: WindowSillTop 3
+    100626: WindowSillTop1
+    100628: WoodPlanksHouse
+    100630: WoodPlanksHouse1
+    400000: Bed
+    400002: Bed 1
+    400004: Candles:Candle1
+    400006: Candles:Candle1 1
+    400008: Candles:Candle1 2
+    400010: Candles:Candle1 3
+    400012: Candles:Candle1 4
+    400014: Candles:Candle1 5
+    400016: Candles:Candle1 6
+    400018: Candles:Candle2
+    400020: Candles:Candle2 1
+    400022: Candles:Candle3
+    400024: Candles:Candle3 1
+    400026: Candles:Candle4
+    400028: Candles:Candle4 1
+    400030: Candles:Candle5
+    400032: Candles:Candle5 1
+    400034: Candles:Candle6
+    400036: Candles:CandleGroup
+    400038: Candles:Candles
+    400040: Candles:Candles1
+    400042: Candles:Extras
+    400044: Candles:Wick1
+    400046: Candles:Wick1 1
+    400048: Candles:Wick1 2
+    400050: Candles:Wick1 3
+    400052: Candles:Wick1 4
+    400054: Candles:Wick1 5
+    400056: Candles:Wick1 6
+    400058: Candles:Wick1 7
+    400060: CellarDoor
+    400062: CellarEntrance
+    400064: CellarEntranceCeiling
+    400066: CellarEntranceLeft1
+    400068: CellarEntranceWallLeft
+    400070: CellarStep10
+    400072: CellarStep11
+    400074: CellarStep12
+    400076: CellarStep13
+    400078: CellarStep14
+    400080: CellarStep15
+    400082: CellarStep16
+    400084: CellarStep17
+    400086: CellarStep18
+    400088: CellarStep19
+    400090: CellarStep20
+    400092: CellarStep21
+    400094: CellarStep22
+    400096: CellarStep23
+    400098: CellarStep24
+    400100: CellarStep3
+    400102: CellarStep4
+    400104: CellarStep5
+    400106: CellarStep6
+    400108: CellarStep7
+    400110: CellarStep8
+    400112: CellarStep9
+    400114: CellarSteps
+    400116: Chair1
+    400118: Cloth2
+    400120: Cup4
+    400122: Cup5
+    400124: Cup6
+    400126: Cupboard1Back
+    400128: Cupboard1Back 1
+    400130: Cupboard1Back 2
+    400132: Cupboard1Back1
+    400134: Cupboard1Back2
+    400136: Cupboard1Back2 1
+    400138: Cupboard1Back3
+    400140: Cupboard1Back4
+    400142: Cupboard1Back5
+    400144: Cupboard1Back6
+    400146: Cupboard1Back7
+    400148: Cupboard1Back8
+    400150: Cupboard1Back9
+    400152: Cupboard1BaseShape
+    400154: Cupboard1BaseShape 1
+    400156: Cupboard1BaseShape 2
+    400158: Cupboard1Bottom
+    400160: Cupboard1Bottom 1
+    400162: Cupboard1Bottom 2
+    400164: Cupboard1Bottom1
+    400166: Cupboard1Left
+    400168: Cupboard1Left 1
+    400170: Cupboard1Left 2
+    400172: Cupboard1Left1
+    400174: Cupboard1Middle
+    400176: Cupboard1Middle 1
+    400178: Cupboard1Middle 2
+    400180: Cupboard1Middle1
+    400182: Cupboard1Right
+    400184: Cupboard1Right 1
+    400186: Cupboard1Right 2
+    400188: Cupboard1Right1
+    400190: Cupboard1Top
+    400192: Cupboard1Top 1
+    400194: Cupboard1Top 2
+    400196: Cupboard1Top1
+    400198: Cupboard4
+    400200: Cupboard5
+    400202: Cupboard6
+    400204: CupboardDoor1
+    400206: CupboardDoor2
+    400208: CupboardDoor3
+    400210: CupboardDoor4
+    400212: DoorFrame
+    400214: Extras
+    400216: GasCannisterV1
+    400218: GasMask:Extras
+    400220: GasMask:GasCannisterV1
+    400222: GasMask:GasMaskV1
+    400224: GasMask:GasTubeV1
+    400226: GasMaskV2
+    400228: GasTubeV1
+    400230: group2
+    400232: group4
+    400234: HouseDoor
+    400236: HouseFloor
+    400238: HouseFloorMain2
+    400240: HouseFloorMain4
+    400242: HouseFloorMain5
+    400244: HouseFloorMain6
+    400246: HouseObjects
+    400248: HouseRoof
+    400250: HouseRoofLeft
+    400252: HouseRoofLeft2
+    400254: HouseRoofRight
+    400256: HouseRoomBeam
+    400258: HouseRoomBeam2
+    400260: HouseRoomBeam3
+    400262: HouseWallBack
+    400264: HouseWallBack1
+    400266: HouseWallBack2
+    400268: HouseWallBack3
+    400270: HouseWallBack4
+    400272: HouseWallBack5
+    400274: HouseWallBack6
+    400276: HouseWallBack7
+    400278: HouseWallBack8
+    400280: HouseWallBack9
+    400282: HouseWallFront
+    400284: HouseWallLeft
+    400286: HouseWallRight
+    400288: HouseWallRight1
+    400290: HouseWalls
+    400292: //RootNode
+    400294: OldRoof
+    400296: pCube1
+    400298: pCube10
+    400300: pCube11
+    400302: pCube12
+    400304: pCube13
+    400306: pCube14
+    400308: pCube15
+    400310: pCube16
+    400312: pCube17
+    400314: pCube18
+    400316: pCube19
+    400318: pCube2
+    400320: pCube24
+    400322: pCube24 1
+    400324: pCube25
+    400326: pCube25 1
+    400328: pCube3
+    400330: pCube4
+    400332: pCube5
+    400334: pCube6
+    400336: pCube8
+    400338: pCube9
+    400340: pCylinder1
+    400342: pCylinder1 1
+    400344: pCylinder2
+    400346: pCylinder2 1
+    400348: pCylinder3
+    400350: pCylinder3 1
+    400352: pCylinder4
+    400354: pCylinder4 1
+    400356: polySurface10
+    400358: polySurface104
+    400360: polySurface105
+    400362: polySurface106
+    400364: polySurface107
+    400366: polySurface108
+    400368: polySurface11
+    400370: polySurface12
+    400372: polySurface13
+    400374: polySurface14
+    400376: polySurface149
+    400378: polySurface15
+    400380: polySurface16
+    400382: polySurface17
+    400384: polySurface18
+    400386: polySurface19
+    400388: polySurface20
+    400390: polySurface205
+    400392: polySurface206
+    400394: polySurface207
+    400396: polySurface208
+    400398: polySurface21
+    400400: polySurface23
+    400402: polySurface25
+    400404: polySurface27
+    400406: polySurface28
+    400408: polySurface29
+    400410: polySurface31
+    400412: polySurface32
+    400414: polySurface33
+    400416: polySurface34
+    400418: polySurface36
+    400420: polySurface39
+    400422: polySurface40
+    400424: polySurface41
+    400426: polySurface43
+    400428: polySurface44
+    400430: polySurface45
+    400432: polySurface46
+    400434: polySurface47
+    400436: polySurface49
+    400438: polySurface5
+    400440: polySurface50
+    400442: polySurface55
+    400444: polySurface56
+    400446: polySurface58
+    400448: polySurface59
+    400450: polySurface61
+    400452: polySurface65
+    400454: polySurface66
+    400456: polySurface69
+    400458: polySurface7
+    400460: polySurface70
+    400462: polySurface8
+    400464: pSphere1
+    400466: pSphere1 1
+    400468: pSphere2
+    400470: pSphere3
+    400472: Roof
+    400474: Roof2
+    400476: ShedWallBack
+    400478: ShedWallBack1
+    400480: ShedWallBack10
+    400482: ShedWallBack11
+    400484: ShedWallBack12
+    400486: ShedWallBack3
+    400488: ShedWallBack5
+    400490: ShedWallBack6
+    400492: ShedWallBack7
+    400494: ShedWallFront
+    400496: ShedWallFront1
+    400498: ShedWallFront2
+    400500: ShedWallFront3
+    400502: ShedWallRight
+    400504: ShedWalls
+    400506: Table
+    400508: transform10
+    400510: transform6
+    400512: transform9
+    400514: Tray
+    400516: Tray1
+    400518: WallBack
+    400520: WallLeft
+    400522: WallRight
+    400524: Windows
+    400526: Windows1
+    400528: Windows2
+    400530: WindowSill1
+    400532: WindowSill2
+    400534: WindowSill3
+    400536: WindowSill4
+    400538: WindowSillBottom
+    400540: WindowSillBottom 1
+    400542: WindowSillBottom 2
+    400544: WindowSillLeft
+    400546: WindowSillLeft 1
+    400548: WindowSillLeft 2
+    400550: WindowSillLeft 3
+    400552: WindowSillLeft1
+    400554: WindowSillRight
+    400556: WindowSillRight 1
+    400558: WindowSillRight 2
+    400560: WindowSillRight 3
+    400562: WindowSillRight1
+    400564: WindowSillRight10
+    400566: WindowSillRight11
+    400568: WindowSillRight12
+    400570: WindowSillRight13
+    400572: WindowSillRight14
+    400574: WindowSillRight15
+    400576: WindowSillRight16
+    400578: WindowSillRight17
+    400580: WindowSillRight18
+    400582: WindowSillRight19
+    400584: WindowSillRight2
+    400586: WindowSillRight20
+    400588: WindowSillRight21
+    400590: WindowSillRight22
+    400592: WindowSillRight23
+    400594: WindowSillRight24
+    400596: WindowSillRight25
+    400598: WindowSillRight26
+    400600: WindowSillRight27
+    400602: WindowSillRight28
+    400604: WindowSillRight3
+    400606: WindowSillRight4
+    400608: WindowSillRight5
+    400610: WindowSillRight6
+    400612: WindowSillRight7
+    400614: WindowSillRight8
+    400616: WindowSillRight9
+    400618: WindowSillTop
+    400620: WindowSillTop 1
+    400622: WindowSillTop 2
+    400624: WindowSillTop 3
+    400626: WindowSillTop1
+    400628: WoodPlanksHouse
+    400630: WoodPlanksHouse1
+    2100000: DoorTexture
+    2100002: WindowSill
+    2100004: Wood
+    2100006: ShedWoodMaterial
+    2100008: DownStairs
+    2100010: ShedWoodMaterial2
+    2100012: PlasterFloor
+    2100014: lambert14
+    2100016: RoofTexture
+    2100018: lambert1
+    2100020: lambert15
+    2100022: lambert17
+    2100024: lambert18
+    2100026: Floor2
+    2100028: MudFloor
+    2100030: Steps
+    2100032: CupboardTexture
+    2100034: Candles_CandleWaxTexture1
+    2100036: Candles_lambert6
+    2100038: GasMask_lambert8
+    2100040: GasMask_blinn2
+    2100042: GasMask_blinn1
+    2100044: Cloth1
+    2100046: Cloth
+    2100048: SomeHelp_BlackLeather
+    2300000: Bed 1
+    2300002: Candles:Candle1 2
+    2300004: Candles:Candle1 3
+    2300006: Candles:Candle1 4
+    2300008: Candles:Candle1 5
+    2300010: Candles:Candle1 6
+    2300012: Candles:Candle5
+    2300014: Candles:Candle5 1
+    2300016: Candles:Candle6
+    2300018: Candles:Wick1
+    2300020: Candles:Wick1 1
+    2300022: Candles:Wick1 2
+    2300024: Candles:Wick1 3
+    2300026: Candles:Wick1 4
+    2300028: Candles:Wick1 5
+    2300030: Candles:Wick1 6
+    2300032: Candles:Wick1 7
+    2300034: CellarDoor
+    2300036: CellarEntranceCeiling
+    2300038: CellarEntranceLeft1
+    2300040: CellarEntranceWallLeft
+    2300042: CellarStep10
+    2300044: CellarStep11
+    2300046: CellarStep12
+    2300048: CellarStep13
+    2300050: CellarStep14
+    2300052: CellarStep15
+    2300054: CellarStep16
+    2300056: CellarStep17
+    2300058: CellarStep18
+    2300060: CellarStep19
+    2300062: CellarStep20
+    2300064: CellarStep21
+    2300066: CellarStep22
+    2300068: CellarStep23
+    2300070: CellarStep24
+    2300072: CellarStep3
+    2300074: CellarStep4
+    2300076: CellarStep5
+    2300078: CellarStep6
+    2300080: CellarStep7
+    2300082: CellarStep8
+    2300084: CellarStep9
+    2300086: Cloth2
+    2300088: Cup4
+    2300090: Cup5
+    2300092: Cup6
+    2300094: Cupboard1Back
+    2300096: Cupboard1Back 1
+    2300098: Cupboard1Back 2
+    2300100: Cupboard1Back1
+    2300102: Cupboard1Back2
+    2300104: Cupboard1Back2 1
+    2300106: Cupboard1Back3
+    2300108: Cupboard1Back4
+    2300110: Cupboard1Back5
+    2300112: Cupboard1Back6
+    2300114: Cupboard1Back7
+    2300116: Cupboard1Back8
+    2300118: Cupboard1Back9
+    2300120: Cupboard1BaseShape
+    2300122: Cupboard1BaseShape 1
+    2300124: Cupboard1BaseShape 2
+    2300126: Cupboard1Bottom
+    2300128: Cupboard1Bottom 1
+    2300130: Cupboard1Bottom 2
+    2300132: Cupboard1Bottom1
+    2300134: Cupboard1Left
+    2300136: Cupboard1Left 1
+    2300138: Cupboard1Left 2
+    2300140: Cupboard1Left1
+    2300142: Cupboard1Middle
+    2300144: Cupboard1Middle 1
+    2300146: Cupboard1Middle 2
+    2300148: Cupboard1Middle1
+    2300150: Cupboard1Right
+    2300152: Cupboard1Right 1
+    2300154: Cupboard1Right 2
+    2300156: Cupboard1Right1
+    2300158: Cupboard1Top
+    2300160: Cupboard1Top 1
+    2300162: Cupboard1Top 2
+    2300164: Cupboard1Top1
+    2300166: GasCannisterV1
+    2300168: GasMask:GasCannisterV1
+    2300170: GasMask:GasMaskV1
+    2300172: GasMask:GasTubeV1
+    2300174: GasMaskV2
+    2300176: GasTubeV1
+    2300178: HouseDoor
+    2300180: HouseFloorMain2
+    2300182: HouseFloorMain4
+    2300184: HouseFloorMain5
+    2300186: HouseFloorMain6
+    2300188: HouseRoofLeft
+    2300190: HouseRoofRight
+    2300192: HouseRoomBeam
+    2300194: HouseRoomBeam2
+    2300196: HouseWallBack1
+    2300198: HouseWallBack2
+    2300200: HouseWallBack3
+    2300202: HouseWallBack6
+    2300204: HouseWallBack8
+    2300206: HouseWallBack9
+    2300208: HouseWallLeft
+    2300210: HouseWallRight
+    2300212: pCube1
+    2300214: pCube10
+    2300216: pCube11
+    2300218: pCube12
+    2300220: pCube13
+    2300222: pCube14
+    2300224: pCube15
+    2300226: pCube16
+    2300228: pCube17
+    2300230: pCube18
+    2300232: pCube19
+    2300234: pCube2
+    2300236: pCube24
+    2300238: pCube24 1
+    2300240: pCube25
+    2300242: pCube25 1
+    2300244: pCube3
+    2300246: pCube4
+    2300248: pCube5
+    2300250: pCube6
+    2300252: pCube8
+    2300254: pCube9
+    2300256: pCylinder1
+    2300258: pCylinder1 1
+    2300260: pCylinder2
+    2300262: pCylinder2 1
+    2300264: pCylinder3
+    2300266: pCylinder3 1
+    2300268: pCylinder4
+    2300270: pCylinder4 1
+    2300272: polySurface10
+    2300274: polySurface104
+    2300276: polySurface105
+    2300278: polySurface106
+    2300280: polySurface107
+    2300282: polySurface108
+    2300284: polySurface11
+    2300286: polySurface12
+    2300288: polySurface13
+    2300290: polySurface14
+    2300292: polySurface149
+    2300294: polySurface15
+    2300296: polySurface16
+    2300298: polySurface17
+    2300300: polySurface18
+    2300302: polySurface19
+    2300304: polySurface20
+    2300306: polySurface205
+    2300308: polySurface206
+    2300310: polySurface207
+    2300312: polySurface208
+    2300314: polySurface21
+    2300316: polySurface23
+    2300318: polySurface25
+    2300320: polySurface27
+    2300322: polySurface28
+    2300324: polySurface29
+    2300326: polySurface31
+    2300328: polySurface32
+    2300330: polySurface33
+    2300332: polySurface34
+    2300334: polySurface36
+    2300336: polySurface39
+    2300338: polySurface40
+    2300340: polySurface41
+    2300342: polySurface43
+    2300344: polySurface44
+    2300346: polySurface45
+    2300348: polySurface46
+    2300350: polySurface47
+    2300352: polySurface49
+    2300354: polySurface5
+    2300356: polySurface50
+    2300358: polySurface55
+    2300360: polySurface56
+    2300362: polySurface58
+    2300364: polySurface59
+    2300366: polySurface61
+    2300368: polySurface65
+    2300370: polySurface66
+    2300372: polySurface69
+    2300374: polySurface70
+    2300376: pSphere1
+    2300378: pSphere1 1
+    2300380: pSphere2
+    2300382: pSphere3
+    2300384: ShedWallBack
+    2300386: ShedWallBack1
+    2300388: ShedWallBack10
+    2300390: ShedWallBack11
+    2300392: ShedWallBack12
+    2300394: ShedWallBack3
+    2300396: ShedWallBack5
+    2300398: ShedWallBack6
+    2300400: ShedWallBack7
+    2300402: ShedWallFront1
+    2300404: ShedWallFront2
+    2300406: ShedWallFront3
+    2300408: ShedWallRight
+    2300410: Windows
+    2300412: Windows1
+    2300414: Windows2
+    2300416: WindowSillBottom
+    2300418: WindowSillBottom 1
+    2300420: WindowSillBottom 2
+    2300422: WindowSillLeft
+    2300424: WindowSillLeft 1
+    2300426: WindowSillLeft 2
+    2300428: WindowSillLeft 3
+    2300430: WindowSillLeft1
+    2300432: WindowSillRight
+    2300434: WindowSillRight 1
+    2300436: WindowSillRight 2
+    2300438: WindowSillRight 3
+    2300440: WindowSillRight1
+    2300442: WindowSillRight10
+    2300444: WindowSillRight11
+    2300446: WindowSillRight12
+    2300448: WindowSillRight13
+    2300450: WindowSillRight14
+    2300452: WindowSillRight15
+    2300454: WindowSillRight16
+    2300456: WindowSillRight17
+    2300458: WindowSillRight18
+    2300460: WindowSillRight19
+    2300462: WindowSillRight2
+    2300464: WindowSillRight20
+    2300466: WindowSillRight21
+    2300468: WindowSillRight22
+    2300470: WindowSillRight23
+    2300472: WindowSillRight24
+    2300474: WindowSillRight25
+    2300476: WindowSillRight26
+    2300478: WindowSillRight27
+    2300480: WindowSillRight28
+    2300482: WindowSillRight3
+    2300484: WindowSillRight4
+    2300486: WindowSillRight5
+    2300488: WindowSillRight6
+    2300490: WindowSillRight7
+    2300492: WindowSillRight8
+    2300494: WindowSillRight9
+    2300496: WindowSillTop
+    2300498: WindowSillTop 1
+    2300500: WindowSillTop 2
+    2300502: WindowSillTop 3
+    2300504: WindowSillTop1
+    3300000: Bed 1
+    3300002: Candles:Candle1 2
+    3300004: Candles:Candle1 3
+    3300006: Candles:Candle1 4
+    3300008: Candles:Candle1 5
+    3300010: Candles:Candle1 6
+    3300012: Candles:Candle5
+    3300014: Candles:Candle5 1
+    3300016: Candles:Candle6
+    3300018: Candles:Wick1
+    3300020: Candles:Wick1 1
+    3300022: Candles:Wick1 2
+    3300024: Candles:Wick1 3
+    3300026: Candles:Wick1 4
+    3300028: Candles:Wick1 5
+    3300030: Candles:Wick1 6
+    3300032: Candles:Wick1 7
+    3300034: CellarDoor
+    3300036: CellarEntranceCeiling
+    3300038: CellarEntranceLeft1
+    3300040: CellarEntranceWallLeft
+    3300042: CellarStep10
+    3300044: CellarStep11
+    3300046: CellarStep12
+    3300048: CellarStep13
+    3300050: CellarStep14
+    3300052: CellarStep15
+    3300054: CellarStep16
+    3300056: CellarStep17
+    3300058: CellarStep18
+    3300060: CellarStep19
+    3300062: CellarStep20
+    3300064: CellarStep21
+    3300066: CellarStep22
+    3300068: CellarStep23
+    3300070: CellarStep24
+    3300072: CellarStep3
+    3300074: CellarStep4
+    3300076: CellarStep5
+    3300078: CellarStep6
+    3300080: CellarStep7
+    3300082: CellarStep8
+    3300084: CellarStep9
+    3300086: Cloth2
+    3300088: Cup4
+    3300090: Cup5
+    3300092: Cup6
+    3300094: Cupboard1Back
+    3300096: Cupboard1Back 1
+    3300098: Cupboard1Back 2
+    3300100: Cupboard1Back1
+    3300102: Cupboard1Back2
+    3300104: Cupboard1Back2 1
+    3300106: Cupboard1Back3
+    3300108: Cupboard1Back4
+    3300110: Cupboard1Back5
+    3300112: Cupboard1Back6
+    3300114: Cupboard1Back7
+    3300116: Cupboard1Back8
+    3300118: Cupboard1Back9
+    3300120: Cupboard1BaseShape
+    3300122: Cupboard1BaseShape 1
+    3300124: Cupboard1BaseShape 2
+    3300126: Cupboard1Bottom
+    3300128: Cupboard1Bottom 1
+    3300130: Cupboard1Bottom 2
+    3300132: Cupboard1Bottom1
+    3300134: Cupboard1Left
+    3300136: Cupboard1Left 1
+    3300138: Cupboard1Left 2
+    3300140: Cupboard1Left1
+    3300142: Cupboard1Middle
+    3300144: Cupboard1Middle 1
+    3300146: Cupboard1Middle 2
+    3300148: Cupboard1Middle1
+    3300150: Cupboard1Right
+    3300152: Cupboard1Right 1
+    3300154: Cupboard1Right 2
+    3300156: Cupboard1Right1
+    3300158: Cupboard1Top
+    3300160: Cupboard1Top 1
+    3300162: Cupboard1Top 2
+    3300164: Cupboard1Top1
+    3300166: GasCannisterV1
+    3300168: GasMask:GasCannisterV1
+    3300170: GasMask:GasMaskV1
+    3300172: GasMask:GasTubeV1
+    3300174: GasMaskV2
+    3300176: GasTubeV1
+    3300178: HouseDoor
+    3300180: HouseFloorMain2
+    3300182: HouseFloorMain4
+    3300184: HouseFloorMain5
+    3300186: HouseFloorMain6
+    3300188: HouseRoofLeft
+    3300190: HouseRoofRight
+    3300192: HouseRoomBeam
+    3300194: HouseRoomBeam2
+    3300196: HouseWallBack1
+    3300198: HouseWallBack2
+    3300200: HouseWallBack3
+    3300202: HouseWallBack6
+    3300204: HouseWallBack8
+    3300206: HouseWallBack9
+    3300208: HouseWallLeft
+    3300210: HouseWallRight
+    3300212: pCube1
+    3300214: pCube10
+    3300216: pCube11
+    3300218: pCube12
+    3300220: pCube13
+    3300222: pCube14
+    3300224: pCube15
+    3300226: pCube16
+    3300228: pCube17
+    3300230: pCube18
+    3300232: pCube19
+    3300234: pCube2
+    3300236: pCube24
+    3300238: pCube24 1
+    3300240: pCube25
+    3300242: pCube25 1
+    3300244: pCube3
+    3300246: pCube4
+    3300248: pCube5
+    3300250: pCube6
+    3300252: pCube8
+    3300254: pCube9
+    3300256: pCylinder1
+    3300258: pCylinder1 1
+    3300260: pCylinder2
+    3300262: pCylinder2 1
+    3300264: pCylinder3
+    3300266: pCylinder3 1
+    3300268: pCylinder4
+    3300270: pCylinder4 1
+    3300272: polySurface10
+    3300274: polySurface104
+    3300276: polySurface105
+    3300278: polySurface106
+    3300280: polySurface107
+    3300282: polySurface108
+    3300284: polySurface11
+    3300286: polySurface12
+    3300288: polySurface13
+    3300290: polySurface14
+    3300292: polySurface149
+    3300294: polySurface15
+    3300296: polySurface16
+    3300298: polySurface17
+    3300300: polySurface18
+    3300302: polySurface19
+    3300304: polySurface20
+    3300306: polySurface205
+    3300308: polySurface206
+    3300310: polySurface207
+    3300312: polySurface208
+    3300314: polySurface21
+    3300316: polySurface23
+    3300318: polySurface25
+    3300320: polySurface27
+    3300322: polySurface28
+    3300324: polySurface29
+    3300326: polySurface31
+    3300328: polySurface32
+    3300330: polySurface33
+    3300332: polySurface34
+    3300334: polySurface36
+    3300336: polySurface39
+    3300338: polySurface40
+    3300340: polySurface41
+    3300342: polySurface43
+    3300344: polySurface44
+    3300346: polySurface45
+    3300348: polySurface46
+    3300350: polySurface47
+    3300352: polySurface49
+    3300354: polySurface5
+    3300356: polySurface50
+    3300358: polySurface55
+    3300360: polySurface56
+    3300362: polySurface58
+    3300364: polySurface59
+    3300366: polySurface61
+    3300368: polySurface65
+    3300370: polySurface66
+    3300372: polySurface69
+    3300374: polySurface70
+    3300376: pSphere1
+    3300378: pSphere1 1
+    3300380: pSphere2
+    3300382: pSphere3
+    3300384: ShedWallBack
+    3300386: ShedWallBack1
+    3300388: ShedWallBack10
+    3300390: ShedWallBack11
+    3300392: ShedWallBack12
+    3300394: ShedWallBack3
+    3300396: ShedWallBack5
+    3300398: ShedWallBack6
+    3300400: ShedWallBack7
+    3300402: ShedWallFront1
+    3300404: ShedWallFront2
+    3300406: ShedWallFront3
+    3300408: ShedWallRight
+    3300410: Windows
+    3300412: Windows1
+    3300414: Windows2
+    3300416: WindowSillBottom
+    3300418: WindowSillBottom 1
+    3300420: WindowSillBottom 2
+    3300422: WindowSillLeft
+    3300424: WindowSillLeft 1
+    3300426: WindowSillLeft 2
+    3300428: WindowSillLeft 3
+    3300430: WindowSillLeft1
+    3300432: WindowSillRight
+    3300434: WindowSillRight 1
+    3300436: WindowSillRight 2
+    3300438: WindowSillRight 3
+    3300440: WindowSillRight1
+    3300442: WindowSillRight10
+    3300444: WindowSillRight11
+    3300446: WindowSillRight12
+    3300448: WindowSillRight13
+    3300450: WindowSillRight14
+    3300452: WindowSillRight15
+    3300454: WindowSillRight16
+    3300456: WindowSillRight17
+    3300458: WindowSillRight18
+    3300460: WindowSillRight19
+    3300462: WindowSillRight2
+    3300464: WindowSillRight20
+    3300466: WindowSillRight21
+    3300468: WindowSillRight22
+    3300470: WindowSillRight23
+    3300472: WindowSillRight24
+    3300474: WindowSillRight25
+    3300476: WindowSillRight26
+    3300478: WindowSillRight27
+    3300480: WindowSillRight28
+    3300482: WindowSillRight3
+    3300484: WindowSillRight4
+    3300486: WindowSillRight5
+    3300488: WindowSillRight6
+    3300490: WindowSillRight7
+    3300492: WindowSillRight8
+    3300494: WindowSillRight9
+    3300496: WindowSillTop
+    3300498: WindowSillTop 1
+    3300500: WindowSillTop 2
+    3300502: WindowSillTop 3
+    3300504: WindowSillTop1
+    4300000: HouseDoor
+    4300002: WindowSillLeft1
+    4300004: WindowSillTop1
+    4300006: WindowSillRight9
+    4300008: polySurface205
+    4300010: HouseWallBack1
+    4300012: HouseWallBack2
+    4300014: HouseWallBack3
+    4300016: HouseWallBack6
+    4300018: polySurface149
+    4300020: HouseWallBack8
+    4300022: HouseWallBack9
+    4300024: HouseWallRight
+    4300026: polySurface10
+    4300028: polySurface11
+    4300030: polySurface12
+    4300032: polySurface13
+    4300034: polySurface14
+    4300036: polySurface15
+    4300038: polySurface16
+    4300040: polySurface17
+    4300042: polySurface18
+    4300044: polySurface19
+    4300046: polySurface20
+    4300048: polySurface21
+    4300050: polySurface23
+    4300052: polySurface25
+    4300054: polySurface27
+    4300056: polySurface28
+    4300058: polySurface29
+    4300060: polySurface31
+    4300062: polySurface32
+    4300064: polySurface33
+    4300066: polySurface34
+    4300068: polySurface36
+    4300070: polySurface39
+    4300072: polySurface40
+    4300074: polySurface41
+    4300076: polySurface43
+    4300078: polySurface44
+    4300080: polySurface45
+    4300082: polySurface46
+    4300084: polySurface47
+    4300086: polySurface49
+    4300088: polySurface50
+    4300090: polySurface55
+    4300092: polySurface56
+    4300094: polySurface58
+    4300096: polySurface59
+    4300098: polySurface61
+    4300100: polySurface65
+    4300102: polySurface66
+    4300104: polySurface69
+    4300106: polySurface70
+    4300108: polySurface104
+    4300110: polySurface105
+    4300112: polySurface106
+    4300114: polySurface107
+    4300116: polySurface108
+    4300118: WindowSillTop
+    4300120: WindowSillRight
+    4300122: WindowSillLeft
+    4300124: WindowSillBottom
+    4300126: WindowSillTop
+    4300128: WindowSillRight
+    4300130: WindowSillLeft
+    4300132: HouseWallLeft
+    4300134: WindowSillBottom
+    4300136: WindowSillTop
+    4300138: WindowSillRight
+    4300140: WindowSillLeft
+    4300142: WindowSillBottom
+    4300144: WindowSillTop
+    4300146: WindowSillRight
+    4300148: WindowSillLeft
+    4300150: WindowSillRight1
+    4300152: WindowSillRight2
+    4300154: WindowSillRight3
+    4300156: WindowSillRight4
+    4300158: WindowSillRight5
+    4300160: WindowSillRight6
+    4300162: WindowSillRight7
+    4300164: WindowSillRight8
+    4300166: WindowSillRight10
+    4300168: WindowSillRight11
+    4300170: WindowSillRight12
+    4300172: WindowSillRight13
+    4300174: WindowSillRight14
+    4300176: WindowSillRight15
+    4300178: WindowSillRight16
+    4300180: WindowSillRight17
+    4300182: WindowSillRight18
+    4300184: WindowSillRight19
+    4300186: WindowSillRight20
+    4300188: WindowSillRight21
+    4300190: WindowSillRight22
+    4300192: WindowSillRight23
+    4300194: WindowSillRight24
+    4300196: WindowSillRight25
+    4300198: WindowSillRight26
+    4300200: WindowSillRight27
+    4300202: WindowSillRight28
+    4300204: ShedWallRight
+    4300206: ShedWallBack
+    4300208: ShedWallFront1
+    4300210: ShedWallFront2
+    4300212: ShedWallFront3
+    4300214: ShedWallBack1
+    4300216: ShedWallBack3
+    4300218: ShedWallBack5
+    4300220: ShedWallBack6
+    4300222: ShedWallBack7
+    4300224: ShedWallBack10
+    4300226: ShedWallBack11
+    4300228: ShedWallBack12
+    4300230: HouseRoomBeam2
+    4300232: polySurface5
+    4300234: polySurface206
+    4300236: polySurface207
+    4300238: polySurface208
+    4300240: HouseRoomBeam
+    4300242: HouseRoofRight
+    4300244: HouseRoofLeft
+    4300246: CellarDoor
+    4300248: CellarEntranceWallLeft
+    4300250: CellarEntranceCeiling
+    4300252: CellarEntranceLeft1
+    4300254: Windows
+    4300256: Windows1
+    4300258: Windows2
+    4300260: HouseFloorMain6
+    4300262: HouseFloorMain2
+    4300264: HouseFloorMain4
+    4300266: HouseFloorMain5
+    4300268: CellarStep3
+    4300270: CellarStep4
+    4300272: CellarStep5
+    4300274: CellarStep6
+    4300276: CellarStep7
+    4300278: CellarStep8
+    4300280: CellarStep9
+    4300282: CellarStep10
+    4300284: CellarStep11
+    4300286: CellarStep12
+    4300288: CellarStep13
+    4300290: CellarStep14
+    4300292: CellarStep15
+    4300294: CellarStep16
+    4300296: CellarStep17
+    4300298: CellarStep18
+    4300300: CellarStep19
+    4300302: CellarStep20
+    4300304: CellarStep21
+    4300306: CellarStep22
+    4300308: CellarStep23
+    4300310: CellarStep24
+    4300312: pCylinder2
+    4300314: pCylinder1
+    4300316: pCube24
+    4300318: pCube25
+    4300320: pCylinder3
+    4300322: pCylinder4
+    4300324: pCylinder2
+    4300326: pCylinder1
+    4300328: pCube24
+    4300330: pCube25
+    4300332: pCylinder3
+    4300334: pCylinder4
+    4300336: Cupboard1BaseShape
+    4300338: Cupboard1Right
+    4300340: Cupboard1Left
+    4300342: Cupboard1Back
+    4300344: Cupboard1Top
+    4300346: Cupboard1Bottom
+    4300348: Cupboard1Middle
+    4300350: pSphere3
+    4300352: Cupboard1Back9
+    4300354: Cupboard1BaseShape
+    4300356: Cupboard1Right
+    4300358: Cupboard1Left
+    4300360: Cupboard1Back
+    4300362: Cupboard1Top
+    4300364: Cupboard1Bottom
+    4300366: Cupboard1Middle
+    4300368: Cupboard1Back8
+    4300370: pSphere2
+    4300372: Cupboard1BaseShape
+    4300374: Cupboard1Right
+    4300376: Cupboard1Left
+    4300378: Cupboard1Back
+    4300380: Cupboard1Top
+    4300382: Cupboard1Bottom
+    4300384: Cupboard1Middle
+    4300386: Cupboard1Top1
+    4300388: Cupboard1Middle1
+    4300390: Cupboard1Bottom1
+    4300392: Cupboard1Left1
+    4300394: Cupboard1Right1
+    4300396: Cupboard1Back1
+    4300398: Cupboard1Back5
+    4300400: Cupboard1Back4
+    4300402: Cupboard1Back3
+    4300404: Cupboard1Back6
+    4300406: Cupboard1Back7
+    4300408: pSphere1
+    4300410: Cupboard1Back2
+    4300412: pSphere1
+    4300414: Cupboard1Back2
+    4300416: Candles:Candle1
+    4300418: Candles:Wick1
+    4300420: Candles:Wick1
+    4300422: Candles:Candle6
+    4300424: Candles:Wick1
+    4300426: Candles:Candle5
+    4300428: Candles:Candle1
+    4300430: Candles:Wick1
+    4300432: Candles:Candle1
+    4300434: Candles:Wick1
+    4300436: Candles:Candle1
+    4300438: Candles:Wick1
+    4300440: Candles:Wick1
+    4300442: Candles:Candle5
+    4300444: Candles:Candle1
+    4300446: Candles:Wick1
+    4300448: pCube14
+    4300450: pCube13
+    4300452: pCube16
+    4300454: pCube15
+    4300456: pCube19
+    4300458: pCube18
+    4300460: pCube17
+    4300462: GasMask:GasMaskV1
+    4300464: GasMask:GasTubeV1
+    4300466: GasMask:GasCannisterV1
+    4300468: Bed
+    4300470: Cloth2
+    4300472: GasTubeV1
+    4300474: GasCannisterV1
+    4300476: GasMaskV2
+    4300478: Cup6
+    4300480: Cup5
+    4300482: Cup4
+    4300484: pCube12
+    4300486: pCube11
+    4300488: pCube10
+    4300490: pCube9
+    4300492: pCube8
+    4300494: pCube6
+    4300496: pCube5
+    4300498: pCube4
+    4300500: pCube3
+    4300502: pCube2
+    4300504: pCube1
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

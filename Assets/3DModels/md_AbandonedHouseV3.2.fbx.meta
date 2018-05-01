@@ -1,0 +1,3733 @@
+fileFormatVersion: 2
+guid: fe60116a64d7f354e8e91bc1489f5bc1
+timeCreated: 1525169590
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Bed
+    100002: Bed 1
+    100004: Blade
+    100006: Blade 1
+    100008: Blade 2
+    100010: Blade 3
+    100012: Blade1
+    100014: Blade1 1
+    100016: BladeLeft
+    100018: BladeLeft 1
+    100020: Candles:Candle1
+    100022: Candles:Candle1 1
+    100024: Candles:Candle1 2
+    100026: Candles:Candle1 3
+    100028: Candles:Candle1 4
+    100030: Candles:Candle1 5
+    100032: Candles:Candle1 6
+    100034: Candles:Candle2
+    100036: Candles:Candle2 1
+    100038: Candles:Candle3
+    100040: Candles:Candle3 1
+    100042: Candles:Candle4
+    100044: Candles:Candle4 1
+    100046: Candles:Candle5
+    100048: Candles:Candle5 1
+    100050: Candles:Candle6
+    100052: Candles:CandleGroup
+    100054: Candles:Candles
+    100056: Candles:Candles1
+    100058: Candles:Extras
+    100060: Candles:Wick1
+    100062: Candles:Wick1 1
+    100064: Candles:Wick1 2
+    100066: Candles:Wick1 3
+    100068: Candles:Wick1 4
+    100070: Candles:Wick1 5
+    100072: Candles:Wick1 6
+    100074: Candles:Wick1 7
+    100076: CellarDoor
+    100078: CellarEntrance
+    100080: CellarEntranceCeiling
+    100082: CellarEntranceLeft1
+    100084: CellarEntranceWallLeft
+    100086: CellarStep10
+    100088: CellarStep11
+    100090: CellarStep12
+    100092: CellarStep13
+    100094: CellarStep14
+    100096: CellarStep15
+    100098: CellarStep16
+    100100: CellarStep17
+    100102: CellarStep18
+    100104: CellarStep19
+    100106: CellarStep20
+    100108: CellarStep21
+    100110: CellarStep22
+    100112: CellarStep23
+    100114: CellarStep24
+    100116: CellarStep3
+    100118: CellarStep4
+    100120: CellarStep5
+    100122: CellarStep6
+    100124: CellarStep7
+    100126: CellarStep8
+    100128: CellarStep9
+    100130: CellarSteps
+    100132: ChainLink1
+    100134: ChainLink1 1
+    100136: ChainLink1 2
+    100138: ChainLink10
+    100140: ChainLink10 1
+    100142: ChainLink10 2
+    100144: ChainLink11
+    100146: ChainLink11 1
+    100148: ChainLink11 2
+    100150: ChainLink12
+    100152: ChainLink12 1
+    100154: ChainLink12 2
+    100156: ChainLink13
+    100158: ChainLink13 1
+    100160: ChainLink13 2
+    100162: ChainLink14
+    100164: ChainLink14 1
+    100166: ChainLink14 2
+    100168: ChainLink15
+    100170: ChainLink15 1
+    100172: ChainLink15 2
+    100174: ChainLink16
+    100176: ChainLink16 1
+    100178: ChainLink16 2
+    100180: ChainLink17
+    100182: ChainLink17 1
+    100184: ChainLink17 2
+    100186: ChainLink18
+    100188: ChainLink18 1
+    100190: ChainLink18 2
+    100192: ChainLink19
+    100194: ChainLink19 1
+    100196: ChainLink19 2
+    100198: ChainLink2
+    100200: ChainLink2 1
+    100202: ChainLink2 2
+    100204: ChainLink20
+    100206: ChainLink20 1
+    100208: ChainLink20 2
+    100210: ChainLink21
+    100212: ChainLink21 1
+    100214: ChainLink21 2
+    100216: ChainLink22
+    100218: ChainLink22 1
+    100220: ChainLink22 2
+    100222: ChainLink23
+    100224: ChainLink23 1
+    100226: ChainLink23 2
+    100228: ChainLink24
+    100230: ChainLink24 1
+    100232: ChainLink24 2
+    100234: ChainLink25
+    100236: ChainLink25 1
+    100238: ChainLink25 2
+    100240: ChainLink26
+    100242: ChainLink26 1
+    100244: ChainLink26 2
+    100246: ChainLink27
+    100248: ChainLink27 1
+    100250: ChainLink27 2
+    100252: ChainLink28
+    100254: ChainLink28 1
+    100256: ChainLink28 2
+    100258: ChainLink29
+    100260: ChainLink29 1
+    100262: ChainLink29 2
+    100264: ChainLink3
+    100266: ChainLink3 1
+    100268: ChainLink3 2
+    100270: ChainLink30
+    100272: ChainLink30 1
+    100274: ChainLink30 2
+    100276: ChainLink31
+    100278: ChainLink31 1
+    100280: ChainLink31 2
+    100282: ChainLink32
+    100284: ChainLink32 1
+    100286: ChainLink32 2
+    100288: ChainLink33
+    100290: ChainLink33 1
+    100292: ChainLink33 2
+    100294: ChainLink34
+    100296: ChainLink34 1
+    100298: ChainLink34 2
+    100300: ChainLink35
+    100302: ChainLink35 1
+    100304: ChainLink35 2
+    100306: ChainLink36
+    100308: ChainLink36 1
+    100310: ChainLink36 2
+    100312: ChainLink37
+    100314: ChainLink37 1
+    100316: ChainLink37 2
+    100318: ChainLink38
+    100320: ChainLink38 1
+    100322: ChainLink38 2
+    100324: ChainLink39
+    100326: ChainLink39 1
+    100328: ChainLink39 2
+    100330: ChainLink4
+    100332: ChainLink4 1
+    100334: ChainLink4 2
+    100336: ChainLink40
+    100338: ChainLink40 1
+    100340: ChainLink40 2
+    100342: ChainLink41
+    100344: ChainLink41 1
+    100346: ChainLink41 2
+    100348: ChainLink42
+    100350: ChainLink42 1
+    100352: ChainLink42 2
+    100354: ChainLink43
+    100356: ChainLink43 1
+    100358: ChainLink43 2
+    100360: ChainLink44
+    100362: ChainLink44 1
+    100364: ChainLink44 2
+    100366: ChainLink45
+    100368: ChainLink45 1
+    100370: ChainLink45 2
+    100372: ChainLink46
+    100374: ChainLink46 1
+    100376: ChainLink46 2
+    100378: ChainLink47
+    100380: ChainLink47 1
+    100382: ChainLink47 2
+    100384: ChainLink48
+    100386: ChainLink48 1
+    100388: ChainLink48 2
+    100390: ChainLink49
+    100392: ChainLink49 1
+    100394: ChainLink49 2
+    100396: ChainLink5
+    100398: ChainLink5 1
+    100400: ChainLink5 2
+    100402: ChainLink50
+    100404: ChainLink50 1
+    100406: ChainLink50 2
+    100408: ChainLink51
+    100410: ChainLink51 1
+    100412: ChainLink51 2
+    100414: ChainLink52
+    100416: ChainLink52 1
+    100418: ChainLink52 2
+    100420: ChainLink53
+    100422: ChainLink53 1
+    100424: ChainLink53 2
+    100426: ChainLink54
+    100428: ChainLink54 1
+    100430: ChainLink54 2
+    100432: ChainLink55
+    100434: ChainLink55 1
+    100436: ChainLink55 2
+    100438: ChainLink6
+    100440: ChainLink6 1
+    100442: ChainLink6 2
+    100444: ChainLink7
+    100446: ChainLink7 1
+    100448: ChainLink7 2
+    100450: ChainLink8
+    100452: ChainLink8 1
+    100454: ChainLink8 2
+    100456: ChainLink9
+    100458: ChainLink9 1
+    100460: ChainLink9 2
+    100462: ChainLinks
+    100464: ChainLinks 1
+    100466: ChainLinks 2
+    100468: ChainLinks3
+    100470: ChainLinks3 1
+    100472: ChainLinks3 2
+    100474: Chair1
+    100476: Cloth2
+    100478: Cup4
+    100480: Cup5
+    100482: Cup6
+    100484: Cup7
+    100486: Cup8
+    100488: Cup9
+    100490: Cupboard10
+    100492: Cupboard1Back
+    100494: Cupboard1Back 1
+    100496: Cupboard1Back 2
+    100498: Cupboard1Back 3
+    100500: Cupboard1Back 4
+    100502: Cupboard1Back 5
+    100504: Cupboard1Back 6
+    100506: Cupboard1Back1
+    100508: Cupboard1Back2
+    100510: Cupboard1Back2 1
+    100512: Cupboard1Back3
+    100514: Cupboard1Back4
+    100516: Cupboard1Back5
+    100518: Cupboard1Back6
+    100520: Cupboard1Back7
+    100522: Cupboard1Back8
+    100524: Cupboard1Back8 1
+    100526: Cupboard1Back8 2
+    100528: Cupboard1Back8 3
+    100530: Cupboard1Back8 4
+    100532: Cupboard1Back9
+    100534: Cupboard1BaseShape
+    100536: Cupboard1BaseShape 1
+    100538: Cupboard1BaseShape 2
+    100540: Cupboard1BaseShape 3
+    100542: Cupboard1BaseShape 4
+    100544: Cupboard1BaseShape 5
+    100546: Cupboard1BaseShape 6
+    100548: Cupboard1Bottom
+    100550: Cupboard1Bottom 1
+    100552: Cupboard1Bottom 2
+    100554: Cupboard1Bottom 3
+    100556: Cupboard1Bottom 4
+    100558: Cupboard1Bottom 5
+    100560: Cupboard1Bottom 6
+    100562: Cupboard1Bottom1
+    100564: Cupboard1Left
+    100566: Cupboard1Left 1
+    100568: Cupboard1Left 2
+    100570: Cupboard1Left 3
+    100572: Cupboard1Left 4
+    100574: Cupboard1Left 5
+    100576: Cupboard1Left 6
+    100578: Cupboard1Left1
+    100580: Cupboard1Middle
+    100582: Cupboard1Middle 1
+    100584: Cupboard1Middle 2
+    100586: Cupboard1Middle 3
+    100588: Cupboard1Middle 4
+    100590: Cupboard1Middle 5
+    100592: Cupboard1Middle 6
+    100594: Cupboard1Middle1
+    100596: Cupboard1Right
+    100598: Cupboard1Right 1
+    100600: Cupboard1Right 2
+    100602: Cupboard1Right 3
+    100604: Cupboard1Right 4
+    100606: Cupboard1Right 5
+    100608: Cupboard1Right 6
+    100610: Cupboard1Right1
+    100612: Cupboard1Top
+    100614: Cupboard1Top 1
+    100616: Cupboard1Top 2
+    100618: Cupboard1Top 3
+    100620: Cupboard1Top 4
+    100622: Cupboard1Top 5
+    100624: Cupboard1Top 6
+    100626: Cupboard1Top1
+    100628: Cupboard4
+    100630: Cupboard5
+    100632: Cupboard6
+    100634: Cupboard7
+    100636: Cupboard8
+    100638: Cupboard9
+    100640: CupboardDoor1
+    100642: CupboardDoor2
+    100644: CupboardDoor2 1
+    100646: CupboardDoor2 2
+    100648: CupboardDoor2 3
+    100650: CupboardDoor2 4
+    100652: CupboardDoor3
+    100654: CupboardDoor4
+    100656: DoorFrame
+    100658: Extras
+    100660: FeltMat
+    100662: FeltMat 1
+    100664: GasCannisterV1
+    100666: GasMask:Extras
+    100668: GasMask:GasCannisterV1
+    100670: GasMask:GasMaskV1
+    100672: GasMask:GasTubeV1
+    100674: GasMaskV2
+    100676: GasTubeV1
+    100678: group2
+    100680: group4
+    100682: HandleLeft
+    100684: HandleLeft 1
+    100686: HandleLeft 2
+    100688: HandleLeft 3
+    100690: HandleLeft 4
+    100692: HandleLeft 5
+    100694: HandleLeft 6
+    100696: HandleLeft 7
+    100698: HandleLeft 8
+    100700: HandleLeft 9
+    100702: HandleRight
+    100704: HandleRight 1
+    100706: HandleRight 2
+    100708: HandleRight 3
+    100710: HandleRight 4
+    100712: HandleRight 5
+    100714: HandleRight 6
+    100716: HandleRight 7
+    100718: HandleRight 8
+    100720: HandleRight 9
+    100722: HangingObjects
+    100724: HangingObjects1
+    100726: HangingObjects2
+    100728: Holder
+    100730: Holder 1
+    100732: Holder 2
+    100734: Holder 3
+    100736: Hoop1
+    100738: Hoop1 1
+    100740: Hoop2
+    100742: Hoop2 1
+    100744: HouseDoor
+    100746: HouseFloor
+    100748: HouseFloorMain2
+    100750: HouseFloorMain4
+    100752: HouseFloorMain5
+    100754: HouseFloorMain6
+    100756: HouseObjects
+    100758: HouseRoof
+    100760: HouseRoofLeft
+    100762: HouseRoofLeft2
+    100764: HouseRoofRight
+    100766: HouseRoomBeam
+    100768: HouseRoomBeam2
+    100770: HouseRoomBeam3
+    100772: HouseWallBack
+    100774: HouseWallBack1
+    100776: HouseWallBack2
+    100778: HouseWallBack3
+    100780: HouseWallBack4
+    100782: HouseWallBack5
+    100784: HouseWallBack6
+    100786: HouseWallBack7
+    100788: HouseWallBack8
+    100790: HouseWallBack9
+    100792: HouseWallFront
+    100794: HouseWallLeft
+    100796: HouseWallRight
+    100798: HouseWallRight1
+    100800: HouseWalls
+    100802: InsideBody
+    100804: InsideBody 1
+    100806: InsideBody 2
+    100808: InsideBody 3
+    100810: Knife3
+    100812: Knife4
+    100814: KnifeBlade3
+    100816: KnifeBlade3 1
+    100818: KnifeHalt3
+    100820: KnifeHalt3 1
+    100822: KnifeHold3
+    100824: KnifeHold3 1
+    100826: Liquid
+    100828: Liquid 1
+    100830: Liquid 2
+    100832: Liquid 3
+    100834: Main
+    100836: Main 1
+    100838: MainBody
+    100840: MainBody 1
+    100842: MainBody 2
+    100844: MainBody 3
+    100846: MainTwist
+    100848: MainTwist 1
+    100850: //RootNode
+    100852: Nail13
+    100854: Nail13 1
+    100856: Nail13 2
+    100858: Needle
+    100860: Needle 1
+    100862: Needle 2
+    100864: Needle 3
+    100866: OldRoof
+    100868: pCube1
+    100870: pCube10
+    100872: pCube11
+    100874: pCube12
+    100876: pCube13
+    100878: pCube14
+    100880: pCube15
+    100882: pCube16
+    100884: pCube17
+    100886: pCube18
+    100888: pCube19
+    100890: pCube2
+    100892: pCube24
+    100894: pCube24 1
+    100896: pCube24 2
+    100898: pCube25
+    100900: pCube25 1
+    100902: pCube25 2
+    100904: pCube26
+    100906: pCube27
+    100908: pCube28
+    100910: pCube3
+    100912: pCube30
+    100914: pCube31
+    100916: pCube4
+    100918: pCube5
+    100920: pCube6
+    100922: pCube8
+    100924: pCube9
+    100926: pCylinder1
+    100928: pCylinder1 1
+    100930: pCylinder1 2
+    100932: pCylinder2
+    100934: pCylinder2 1
+    100936: pCylinder2 2
+    100938: pCylinder3
+    100940: pCylinder3 1
+    100942: pCylinder3 2
+    100944: pCylinder4
+    100946: pCylinder4 1
+    100948: pCylinder4 2
+    100950: Pick1
+    100952: Pick1 1
+    100954: Pick2
+    100956: Pick2 1
+    100958: PickTool
+    100960: PickTool 1
+    100962: polySurface10
+    100964: polySurface104
+    100966: polySurface105
+    100968: polySurface106
+    100970: polySurface107
+    100972: polySurface108
+    100974: polySurface11
+    100976: polySurface12
+    100978: polySurface13
+    100980: polySurface14
+    100982: polySurface149
+    100984: polySurface15
+    100986: polySurface16
+    100988: polySurface17
+    100990: polySurface18
+    100992: polySurface19
+    100994: polySurface20
+    100996: polySurface205
+    100998: polySurface206
+    101000: polySurface207
+    101002: polySurface208
+    101004: polySurface21
+    101006: polySurface23
+    101008: polySurface25
+    101010: polySurface27
+    101012: polySurface28
+    101014: polySurface29
+    101016: polySurface31
+    101018: polySurface32
+    101020: polySurface33
+    101022: polySurface34
+    101024: polySurface36
+    101026: polySurface39
+    101028: polySurface40
+    101030: polySurface41
+    101032: polySurface43
+    101034: polySurface44
+    101036: polySurface45
+    101038: polySurface46
+    101040: polySurface47
+    101042: polySurface49
+    101044: polySurface5
+    101046: polySurface50
+    101048: polySurface55
+    101050: polySurface56
+    101052: polySurface58
+    101054: polySurface59
+    101056: polySurface61
+    101058: polySurface65
+    101060: polySurface66
+    101062: polySurface69
+    101064: polySurface7
+    101066: polySurface70
+    101068: polySurface8
+    101070: pSphere1
+    101072: pSphere1 1
+    101074: pSphere2
+    101076: pSphere2 1
+    101078: pSphere2 2
+    101080: pSphere2 3
+    101082: pSphere2 4
+    101084: pSphere3
+    101086: Pusher
+    101088: Pusher 1
+    101090: Pusher 2
+    101092: Pusher 3
+    101094: Roof
+    101096: Roof2
+    101098: Scissor1
+    101100: Scissor1 1
+    101102: Scissor2
+    101104: Scissor2 1
+    101106: Scissor3
+    101108: Scissor3 1
+    101110: Scissor4
+    101112: Scissor4 1
+    101114: Scissor5
+    101116: Scissor5 1
+    101118: ScissorNut
+    101120: ScissorNut 1
+    101122: ScissorNut1
+    101124: ScissorNut1 1
+    101126: ScissorNut2
+    101128: ScissorNut2 1
+    101130: ScissorNut3
+    101132: ScissorNut3 1
+    101134: ScissorNut4
+    101136: ScissorNut4 1
+    101138: Scissors
+    101140: Scissors 1
+    101142: ShedWallBack
+    101144: ShedWallBack1
+    101146: ShedWallBack10
+    101148: ShedWallBack11
+    101150: ShedWallBack12
+    101152: ShedWallBack3
+    101154: ShedWallBack5
+    101156: ShedWallBack6
+    101158: ShedWallBack7
+    101160: ShedWallFront
+    101162: ShedWallFront1
+    101164: ShedWallFront2
+    101166: ShedWallFront3
+    101168: ShedWallRight
+    101170: ShedWalls
+    101172: SomeHelp:Blade
+    101174: SomeHelp:Blade 1
+    101176: SomeHelp:Blade1
+    101178: SomeHelp:BladeLeft
+    101180: SomeHelp:ChainLink1
+    101182: SomeHelp:ChainLink10
+    101184: SomeHelp:ChainLink11
+    101186: SomeHelp:ChainLink12
+    101188: SomeHelp:ChainLink13
+    101190: SomeHelp:ChainLink14
+    101192: SomeHelp:ChainLink15
+    101194: SomeHelp:ChainLink16
+    101196: SomeHelp:ChainLink17
+    101198: SomeHelp:ChainLink18
+    101200: SomeHelp:ChainLink19
+    101202: SomeHelp:ChainLink2
+    101204: SomeHelp:ChainLink20
+    101206: SomeHelp:ChainLink21
+    101208: SomeHelp:ChainLink22
+    101210: SomeHelp:ChainLink23
+    101212: SomeHelp:ChainLink24
+    101214: SomeHelp:ChainLink25
+    101216: SomeHelp:ChainLink26
+    101218: SomeHelp:ChainLink27
+    101220: SomeHelp:ChainLink28
+    101222: SomeHelp:ChainLink29
+    101224: SomeHelp:ChainLink3
+    101226: SomeHelp:ChainLink30
+    101228: SomeHelp:ChainLink31
+    101230: SomeHelp:ChainLink32
+    101232: SomeHelp:ChainLink33
+    101234: SomeHelp:ChainLink34
+    101236: SomeHelp:ChainLink35
+    101238: SomeHelp:ChainLink36
+    101240: SomeHelp:ChainLink37
+    101242: SomeHelp:ChainLink38
+    101244: SomeHelp:ChainLink39
+    101246: SomeHelp:ChainLink4
+    101248: SomeHelp:ChainLink40
+    101250: SomeHelp:ChainLink41
+    101252: SomeHelp:ChainLink42
+    101254: SomeHelp:ChainLink43
+    101256: SomeHelp:ChainLink44
+    101258: SomeHelp:ChainLink45
+    101260: SomeHelp:ChainLink46
+    101262: SomeHelp:ChainLink47
+    101264: SomeHelp:ChainLink48
+    101266: SomeHelp:ChainLink49
+    101268: SomeHelp:ChainLink5
+    101270: SomeHelp:ChainLink50
+    101272: SomeHelp:ChainLink51
+    101274: SomeHelp:ChainLink52
+    101276: SomeHelp:ChainLink53
+    101278: SomeHelp:ChainLink54
+    101280: SomeHelp:ChainLink55
+    101282: SomeHelp:ChainLink6
+    101284: SomeHelp:ChainLink7
+    101286: SomeHelp:ChainLink8
+    101288: SomeHelp:ChainLink9
+    101290: SomeHelp:ChainLinks
+    101292: SomeHelp:ChainLinks3
+    101294: SomeHelp:FeltMat
+    101296: SomeHelp:HandleLeft
+    101298: SomeHelp:HandleLeft 1
+    101300: SomeHelp:HandleLeft 2
+    101302: SomeHelp:HandleLeft 3
+    101304: SomeHelp:HandleLeft 4
+    101306: SomeHelp:HandleRight
+    101308: SomeHelp:HandleRight 1
+    101310: SomeHelp:HandleRight 2
+    101312: SomeHelp:HandleRight 3
+    101314: SomeHelp:HandleRight 4
+    101316: SomeHelp:HangingObjects
+    101318: SomeHelp:Holder
+    101320: SomeHelp:Holder 1
+    101322: SomeHelp:Hoop1
+    101324: SomeHelp:Hoop2
+    101326: SomeHelp:InsideBody
+    101328: SomeHelp:InsideBody 1
+    101330: SomeHelp:Liquid
+    101332: SomeHelp:Liquid 1
+    101334: SomeHelp:Main
+    101336: SomeHelp:MainBody
+    101338: SomeHelp:MainBody 1
+    101340: SomeHelp:MainTwist
+    101342: SomeHelp:Nail13
+    101344: SomeHelp:Needle
+    101346: SomeHelp:Needle 1
+    101348: SomeHelp:Pick1
+    101350: SomeHelp:Pick2
+    101352: SomeHelp:PickTool
+    101354: SomeHelp:Pusher
+    101356: SomeHelp:Pusher 1
+    101358: SomeHelp:Scissor1
+    101360: SomeHelp:Scissor2
+    101362: SomeHelp:Scissor3
+    101364: SomeHelp:Scissor4
+    101366: SomeHelp:Scissor5
+    101368: SomeHelp:ScissorNut
+    101370: SomeHelp:ScissorNut1
+    101372: SomeHelp:ScissorNut2
+    101374: SomeHelp:ScissorNut3
+    101376: SomeHelp:ScissorNut4
+    101378: SomeHelp:Scissors
+    101380: SomeHelp:Spike1
+    101382: SomeHelp:Spike2
+    101384: SomeHelp:SurgicalBox
+    101386: SomeHelp:SurgicalTools
+    101388: SomeHelp:Syringe1
+    101390: SomeHelp:Syringe2
+    101392: SomeHelp:Syringes
+    101394: SomeHelp:Tray
+    101396: SomeHelp:TrayBody
+    101398: SomeHelp:Tweezers
+    101400: SomeHelp:Tweezers1
+    101402: SomeHelp:Tweezers2
+    101404: SomeHelp:Tweezers3
+    101406: Spike1
+    101408: Spike1 1
+    101410: Spike2
+    101412: Spike2 1
+    101414: SurgicalBox
+    101416: SurgicalBox1
+    101418: SurgicalTools
+    101420: SurgicalTools 1
+    101422: Syringe1
+    101424: Syringe1 1
+    101426: Syringe2
+    101428: Syringe2 1
+    101430: Syringes
+    101432: Syringes 1
+    101434: Table
+    101436: transform10
+    101438: transform6
+    101440: transform9
+    101442: Tray
+    101444: Tray 1
+    101446: Tray 2
+    101448: Tray1
+    101450: Tray2
+    101452: TrayBody
+    101454: TrayBody 1
+    101456: Tweezers
+    101458: Tweezers 1
+    101460: Tweezers1
+    101462: Tweezers1 1
+    101464: Tweezers2
+    101466: Tweezers2 1
+    101468: Tweezers3
+    101470: Tweezers3 1
+    101472: Tweezers4
+    101474: Tweezers4 1
+    101476: Tweezers5
+    101478: Tweezers5 1
+    101480: WallBack
+    101482: WallLeft
+    101484: WallRight
+    101486: Windows
+    101488: Windows1
+    101490: Windows2
+    101492: WindowSill1
+    101494: WindowSill2
+    101496: WindowSill3
+    101498: WindowSill4
+    101500: WindowSillBottom
+    101502: WindowSillBottom 1
+    101504: WindowSillBottom 2
+    101506: WindowSillLeft
+    101508: WindowSillLeft 1
+    101510: WindowSillLeft 2
+    101512: WindowSillLeft 3
+    101514: WindowSillLeft1
+    101516: WindowSillRight
+    101518: WindowSillRight 1
+    101520: WindowSillRight 2
+    101522: WindowSillRight 3
+    101524: WindowSillRight1
+    101526: WindowSillRight10
+    101528: WindowSillRight11
+    101530: WindowSillRight12
+    101532: WindowSillRight13
+    101534: WindowSillRight14
+    101536: WindowSillRight15
+    101538: WindowSillRight16
+    101540: WindowSillRight17
+    101542: WindowSillRight18
+    101544: WindowSillRight19
+    101546: WindowSillRight2
+    101548: WindowSillRight20
+    101550: WindowSillRight21
+    101552: WindowSillRight22
+    101554: WindowSillRight23
+    101556: WindowSillRight24
+    101558: WindowSillRight25
+    101560: WindowSillRight26
+    101562: WindowSillRight27
+    101564: WindowSillRight28
+    101566: WindowSillRight29
+    101568: WindowSillRight3
+    101570: WindowSillRight30
+    101572: WindowSillRight4
+    101574: WindowSillRight5
+    101576: WindowSillRight6
+    101578: WindowSillRight7
+    101580: WindowSillRight8
+    101582: WindowSillRight9
+    101584: WindowSillTop
+    101586: WindowSillTop 1
+    101588: WindowSillTop 2
+    101590: WindowSillTop 3
+    101592: WindowSillTop1
+    101594: WoodPlanksHouse
+    101596: WoodPlanksHouse1
+    400000: Bed
+    400002: Bed 1
+    400004: Blade
+    400006: Blade 1
+    400008: Blade 2
+    400010: Blade 3
+    400012: Blade1
+    400014: Blade1 1
+    400016: BladeLeft
+    400018: BladeLeft 1
+    400020: Candles:Candle1
+    400022: Candles:Candle1 1
+    400024: Candles:Candle1 2
+    400026: Candles:Candle1 3
+    400028: Candles:Candle1 4
+    400030: Candles:Candle1 5
+    400032: Candles:Candle1 6
+    400034: Candles:Candle2
+    400036: Candles:Candle2 1
+    400038: Candles:Candle3
+    400040: Candles:Candle3 1
+    400042: Candles:Candle4
+    400044: Candles:Candle4 1
+    400046: Candles:Candle5
+    400048: Candles:Candle5 1
+    400050: Candles:Candle6
+    400052: Candles:CandleGroup
+    400054: Candles:Candles
+    400056: Candles:Candles1
+    400058: Candles:Extras
+    400060: Candles:Wick1
+    400062: Candles:Wick1 1
+    400064: Candles:Wick1 2
+    400066: Candles:Wick1 3
+    400068: Candles:Wick1 4
+    400070: Candles:Wick1 5
+    400072: Candles:Wick1 6
+    400074: Candles:Wick1 7
+    400076: CellarDoor
+    400078: CellarEntrance
+    400080: CellarEntranceCeiling
+    400082: CellarEntranceLeft1
+    400084: CellarEntranceWallLeft
+    400086: CellarStep10
+    400088: CellarStep11
+    400090: CellarStep12
+    400092: CellarStep13
+    400094: CellarStep14
+    400096: CellarStep15
+    400098: CellarStep16
+    400100: CellarStep17
+    400102: CellarStep18
+    400104: CellarStep19
+    400106: CellarStep20
+    400108: CellarStep21
+    400110: CellarStep22
+    400112: CellarStep23
+    400114: CellarStep24
+    400116: CellarStep3
+    400118: CellarStep4
+    400120: CellarStep5
+    400122: CellarStep6
+    400124: CellarStep7
+    400126: CellarStep8
+    400128: CellarStep9
+    400130: CellarSteps
+    400132: ChainLink1
+    400134: ChainLink1 1
+    400136: ChainLink1 2
+    400138: ChainLink10
+    400140: ChainLink10 1
+    400142: ChainLink10 2
+    400144: ChainLink11
+    400146: ChainLink11 1
+    400148: ChainLink11 2
+    400150: ChainLink12
+    400152: ChainLink12 1
+    400154: ChainLink12 2
+    400156: ChainLink13
+    400158: ChainLink13 1
+    400160: ChainLink13 2
+    400162: ChainLink14
+    400164: ChainLink14 1
+    400166: ChainLink14 2
+    400168: ChainLink15
+    400170: ChainLink15 1
+    400172: ChainLink15 2
+    400174: ChainLink16
+    400176: ChainLink16 1
+    400178: ChainLink16 2
+    400180: ChainLink17
+    400182: ChainLink17 1
+    400184: ChainLink17 2
+    400186: ChainLink18
+    400188: ChainLink18 1
+    400190: ChainLink18 2
+    400192: ChainLink19
+    400194: ChainLink19 1
+    400196: ChainLink19 2
+    400198: ChainLink2
+    400200: ChainLink2 1
+    400202: ChainLink2 2
+    400204: ChainLink20
+    400206: ChainLink20 1
+    400208: ChainLink20 2
+    400210: ChainLink21
+    400212: ChainLink21 1
+    400214: ChainLink21 2
+    400216: ChainLink22
+    400218: ChainLink22 1
+    400220: ChainLink22 2
+    400222: ChainLink23
+    400224: ChainLink23 1
+    400226: ChainLink23 2
+    400228: ChainLink24
+    400230: ChainLink24 1
+    400232: ChainLink24 2
+    400234: ChainLink25
+    400236: ChainLink25 1
+    400238: ChainLink25 2
+    400240: ChainLink26
+    400242: ChainLink26 1
+    400244: ChainLink26 2
+    400246: ChainLink27
+    400248: ChainLink27 1
+    400250: ChainLink27 2
+    400252: ChainLink28
+    400254: ChainLink28 1
+    400256: ChainLink28 2
+    400258: ChainLink29
+    400260: ChainLink29 1
+    400262: ChainLink29 2
+    400264: ChainLink3
+    400266: ChainLink3 1
+    400268: ChainLink3 2
+    400270: ChainLink30
+    400272: ChainLink30 1
+    400274: ChainLink30 2
+    400276: ChainLink31
+    400278: ChainLink31 1
+    400280: ChainLink31 2
+    400282: ChainLink32
+    400284: ChainLink32 1
+    400286: ChainLink32 2
+    400288: ChainLink33
+    400290: ChainLink33 1
+    400292: ChainLink33 2
+    400294: ChainLink34
+    400296: ChainLink34 1
+    400298: ChainLink34 2
+    400300: ChainLink35
+    400302: ChainLink35 1
+    400304: ChainLink35 2
+    400306: ChainLink36
+    400308: ChainLink36 1
+    400310: ChainLink36 2
+    400312: ChainLink37
+    400314: ChainLink37 1
+    400316: ChainLink37 2
+    400318: ChainLink38
+    400320: ChainLink38 1
+    400322: ChainLink38 2
+    400324: ChainLink39
+    400326: ChainLink39 1
+    400328: ChainLink39 2
+    400330: ChainLink4
+    400332: ChainLink4 1
+    400334: ChainLink4 2
+    400336: ChainLink40
+    400338: ChainLink40 1
+    400340: ChainLink40 2
+    400342: ChainLink41
+    400344: ChainLink41 1
+    400346: ChainLink41 2
+    400348: ChainLink42
+    400350: ChainLink42 1
+    400352: ChainLink42 2
+    400354: ChainLink43
+    400356: ChainLink43 1
+    400358: ChainLink43 2
+    400360: ChainLink44
+    400362: ChainLink44 1
+    400364: ChainLink44 2
+    400366: ChainLink45
+    400368: ChainLink45 1
+    400370: ChainLink45 2
+    400372: ChainLink46
+    400374: ChainLink46 1
+    400376: ChainLink46 2
+    400378: ChainLink47
+    400380: ChainLink47 1
+    400382: ChainLink47 2
+    400384: ChainLink48
+    400386: ChainLink48 1
+    400388: ChainLink48 2
+    400390: ChainLink49
+    400392: ChainLink49 1
+    400394: ChainLink49 2
+    400396: ChainLink5
+    400398: ChainLink5 1
+    400400: ChainLink5 2
+    400402: ChainLink50
+    400404: ChainLink50 1
+    400406: ChainLink50 2
+    400408: ChainLink51
+    400410: ChainLink51 1
+    400412: ChainLink51 2
+    400414: ChainLink52
+    400416: ChainLink52 1
+    400418: ChainLink52 2
+    400420: ChainLink53
+    400422: ChainLink53 1
+    400424: ChainLink53 2
+    400426: ChainLink54
+    400428: ChainLink54 1
+    400430: ChainLink54 2
+    400432: ChainLink55
+    400434: ChainLink55 1
+    400436: ChainLink55 2
+    400438: ChainLink6
+    400440: ChainLink6 1
+    400442: ChainLink6 2
+    400444: ChainLink7
+    400446: ChainLink7 1
+    400448: ChainLink7 2
+    400450: ChainLink8
+    400452: ChainLink8 1
+    400454: ChainLink8 2
+    400456: ChainLink9
+    400458: ChainLink9 1
+    400460: ChainLink9 2
+    400462: ChainLinks
+    400464: ChainLinks 1
+    400466: ChainLinks 2
+    400468: ChainLinks3
+    400470: ChainLinks3 1
+    400472: ChainLinks3 2
+    400474: Chair1
+    400476: Cloth2
+    400478: Cup4
+    400480: Cup5
+    400482: Cup6
+    400484: Cup7
+    400486: Cup8
+    400488: Cup9
+    400490: Cupboard10
+    400492: Cupboard1Back
+    400494: Cupboard1Back 1
+    400496: Cupboard1Back 2
+    400498: Cupboard1Back 3
+    400500: Cupboard1Back 4
+    400502: Cupboard1Back 5
+    400504: Cupboard1Back 6
+    400506: Cupboard1Back1
+    400508: Cupboard1Back2
+    400510: Cupboard1Back2 1
+    400512: Cupboard1Back3
+    400514: Cupboard1Back4
+    400516: Cupboard1Back5
+    400518: Cupboard1Back6
+    400520: Cupboard1Back7
+    400522: Cupboard1Back8
+    400524: Cupboard1Back8 1
+    400526: Cupboard1Back8 2
+    400528: Cupboard1Back8 3
+    400530: Cupboard1Back8 4
+    400532: Cupboard1Back9
+    400534: Cupboard1BaseShape
+    400536: Cupboard1BaseShape 1
+    400538: Cupboard1BaseShape 2
+    400540: Cupboard1BaseShape 3
+    400542: Cupboard1BaseShape 4
+    400544: Cupboard1BaseShape 5
+    400546: Cupboard1BaseShape 6
+    400548: Cupboard1Bottom
+    400550: Cupboard1Bottom 1
+    400552: Cupboard1Bottom 2
+    400554: Cupboard1Bottom 3
+    400556: Cupboard1Bottom 4
+    400558: Cupboard1Bottom 5
+    400560: Cupboard1Bottom 6
+    400562: Cupboard1Bottom1
+    400564: Cupboard1Left
+    400566: Cupboard1Left 1
+    400568: Cupboard1Left 2
+    400570: Cupboard1Left 3
+    400572: Cupboard1Left 4
+    400574: Cupboard1Left 5
+    400576: Cupboard1Left 6
+    400578: Cupboard1Left1
+    400580: Cupboard1Middle
+    400582: Cupboard1Middle 1
+    400584: Cupboard1Middle 2
+    400586: Cupboard1Middle 3
+    400588: Cupboard1Middle 4
+    400590: Cupboard1Middle 5
+    400592: Cupboard1Middle 6
+    400594: Cupboard1Middle1
+    400596: Cupboard1Right
+    400598: Cupboard1Right 1
+    400600: Cupboard1Right 2
+    400602: Cupboard1Right 3
+    400604: Cupboard1Right 4
+    400606: Cupboard1Right 5
+    400608: Cupboard1Right 6
+    400610: Cupboard1Right1
+    400612: Cupboard1Top
+    400614: Cupboard1Top 1
+    400616: Cupboard1Top 2
+    400618: Cupboard1Top 3
+    400620: Cupboard1Top 4
+    400622: Cupboard1Top 5
+    400624: Cupboard1Top 6
+    400626: Cupboard1Top1
+    400628: Cupboard4
+    400630: Cupboard5
+    400632: Cupboard6
+    400634: Cupboard7
+    400636: Cupboard8
+    400638: Cupboard9
+    400640: CupboardDoor1
+    400642: CupboardDoor2
+    400644: CupboardDoor2 1
+    400646: CupboardDoor2 2
+    400648: CupboardDoor2 3
+    400650: CupboardDoor2 4
+    400652: CupboardDoor3
+    400654: CupboardDoor4
+    400656: DoorFrame
+    400658: Extras
+    400660: FeltMat
+    400662: FeltMat 1
+    400664: GasCannisterV1
+    400666: GasMask:Extras
+    400668: GasMask:GasCannisterV1
+    400670: GasMask:GasMaskV1
+    400672: GasMask:GasTubeV1
+    400674: GasMaskV2
+    400676: GasTubeV1
+    400678: group2
+    400680: group4
+    400682: HandleLeft
+    400684: HandleLeft 1
+    400686: HandleLeft 2
+    400688: HandleLeft 3
+    400690: HandleLeft 4
+    400692: HandleLeft 5
+    400694: HandleLeft 6
+    400696: HandleLeft 7
+    400698: HandleLeft 8
+    400700: HandleLeft 9
+    400702: HandleRight
+    400704: HandleRight 1
+    400706: HandleRight 2
+    400708: HandleRight 3
+    400710: HandleRight 4
+    400712: HandleRight 5
+    400714: HandleRight 6
+    400716: HandleRight 7
+    400718: HandleRight 8
+    400720: HandleRight 9
+    400722: HangingObjects
+    400724: HangingObjects1
+    400726: HangingObjects2
+    400728: Holder
+    400730: Holder 1
+    400732: Holder 2
+    400734: Holder 3
+    400736: Hoop1
+    400738: Hoop1 1
+    400740: Hoop2
+    400742: Hoop2 1
+    400744: HouseDoor
+    400746: HouseFloor
+    400748: HouseFloorMain2
+    400750: HouseFloorMain4
+    400752: HouseFloorMain5
+    400754: HouseFloorMain6
+    400756: HouseObjects
+    400758: HouseRoof
+    400760: HouseRoofLeft
+    400762: HouseRoofLeft2
+    400764: HouseRoofRight
+    400766: HouseRoomBeam
+    400768: HouseRoomBeam2
+    400770: HouseRoomBeam3
+    400772: HouseWallBack
+    400774: HouseWallBack1
+    400776: HouseWallBack2
+    400778: HouseWallBack3
+    400780: HouseWallBack4
+    400782: HouseWallBack5
+    400784: HouseWallBack6
+    400786: HouseWallBack7
+    400788: HouseWallBack8
+    400790: HouseWallBack9
+    400792: HouseWallFront
+    400794: HouseWallLeft
+    400796: HouseWallRight
+    400798: HouseWallRight1
+    400800: HouseWalls
+    400802: InsideBody
+    400804: InsideBody 1
+    400806: InsideBody 2
+    400808: InsideBody 3
+    400810: Knife3
+    400812: Knife4
+    400814: KnifeBlade3
+    400816: KnifeBlade3 1
+    400818: KnifeHalt3
+    400820: KnifeHalt3 1
+    400822: KnifeHold3
+    400824: KnifeHold3 1
+    400826: Liquid
+    400828: Liquid 1
+    400830: Liquid 2
+    400832: Liquid 3
+    400834: Main
+    400836: Main 1
+    400838: MainBody
+    400840: MainBody 1
+    400842: MainBody 2
+    400844: MainBody 3
+    400846: MainTwist
+    400848: MainTwist 1
+    400850: //RootNode
+    400852: Nail13
+    400854: Nail13 1
+    400856: Nail13 2
+    400858: Needle
+    400860: Needle 1
+    400862: Needle 2
+    400864: Needle 3
+    400866: OldRoof
+    400868: pCube1
+    400870: pCube10
+    400872: pCube11
+    400874: pCube12
+    400876: pCube13
+    400878: pCube14
+    400880: pCube15
+    400882: pCube16
+    400884: pCube17
+    400886: pCube18
+    400888: pCube19
+    400890: pCube2
+    400892: pCube24
+    400894: pCube24 1
+    400896: pCube24 2
+    400898: pCube25
+    400900: pCube25 1
+    400902: pCube25 2
+    400904: pCube26
+    400906: pCube27
+    400908: pCube28
+    400910: pCube3
+    400912: pCube30
+    400914: pCube31
+    400916: pCube4
+    400918: pCube5
+    400920: pCube6
+    400922: pCube8
+    400924: pCube9
+    400926: pCylinder1
+    400928: pCylinder1 1
+    400930: pCylinder1 2
+    400932: pCylinder2
+    400934: pCylinder2 1
+    400936: pCylinder2 2
+    400938: pCylinder3
+    400940: pCylinder3 1
+    400942: pCylinder3 2
+    400944: pCylinder4
+    400946: pCylinder4 1
+    400948: pCylinder4 2
+    400950: Pick1
+    400952: Pick1 1
+    400954: Pick2
+    400956: Pick2 1
+    400958: PickTool
+    400960: PickTool 1
+    400962: polySurface10
+    400964: polySurface104
+    400966: polySurface105
+    400968: polySurface106
+    400970: polySurface107
+    400972: polySurface108
+    400974: polySurface11
+    400976: polySurface12
+    400978: polySurface13
+    400980: polySurface14
+    400982: polySurface149
+    400984: polySurface15
+    400986: polySurface16
+    400988: polySurface17
+    400990: polySurface18
+    400992: polySurface19
+    400994: polySurface20
+    400996: polySurface205
+    400998: polySurface206
+    401000: polySurface207
+    401002: polySurface208
+    401004: polySurface21
+    401006: polySurface23
+    401008: polySurface25
+    401010: polySurface27
+    401012: polySurface28
+    401014: polySurface29
+    401016: polySurface31
+    401018: polySurface32
+    401020: polySurface33
+    401022: polySurface34
+    401024: polySurface36
+    401026: polySurface39
+    401028: polySurface40
+    401030: polySurface41
+    401032: polySurface43
+    401034: polySurface44
+    401036: polySurface45
+    401038: polySurface46
+    401040: polySurface47
+    401042: polySurface49
+    401044: polySurface5
+    401046: polySurface50
+    401048: polySurface55
+    401050: polySurface56
+    401052: polySurface58
+    401054: polySurface59
+    401056: polySurface61
+    401058: polySurface65
+    401060: polySurface66
+    401062: polySurface69
+    401064: polySurface7
+    401066: polySurface70
+    401068: polySurface8
+    401070: pSphere1
+    401072: pSphere1 1
+    401074: pSphere2
+    401076: pSphere2 1
+    401078: pSphere2 2
+    401080: pSphere2 3
+    401082: pSphere2 4
+    401084: pSphere3
+    401086: Pusher
+    401088: Pusher 1
+    401090: Pusher 2
+    401092: Pusher 3
+    401094: Roof
+    401096: Roof2
+    401098: Scissor1
+    401100: Scissor1 1
+    401102: Scissor2
+    401104: Scissor2 1
+    401106: Scissor3
+    401108: Scissor3 1
+    401110: Scissor4
+    401112: Scissor4 1
+    401114: Scissor5
+    401116: Scissor5 1
+    401118: ScissorNut
+    401120: ScissorNut 1
+    401122: ScissorNut1
+    401124: ScissorNut1 1
+    401126: ScissorNut2
+    401128: ScissorNut2 1
+    401130: ScissorNut3
+    401132: ScissorNut3 1
+    401134: ScissorNut4
+    401136: ScissorNut4 1
+    401138: Scissors
+    401140: Scissors 1
+    401142: ShedWallBack
+    401144: ShedWallBack1
+    401146: ShedWallBack10
+    401148: ShedWallBack11
+    401150: ShedWallBack12
+    401152: ShedWallBack3
+    401154: ShedWallBack5
+    401156: ShedWallBack6
+    401158: ShedWallBack7
+    401160: ShedWallFront
+    401162: ShedWallFront1
+    401164: ShedWallFront2
+    401166: ShedWallFront3
+    401168: ShedWallRight
+    401170: ShedWalls
+    401172: SomeHelp:Blade
+    401174: SomeHelp:Blade 1
+    401176: SomeHelp:Blade1
+    401178: SomeHelp:BladeLeft
+    401180: SomeHelp:ChainLink1
+    401182: SomeHelp:ChainLink10
+    401184: SomeHelp:ChainLink11
+    401186: SomeHelp:ChainLink12
+    401188: SomeHelp:ChainLink13
+    401190: SomeHelp:ChainLink14
+    401192: SomeHelp:ChainLink15
+    401194: SomeHelp:ChainLink16
+    401196: SomeHelp:ChainLink17
+    401198: SomeHelp:ChainLink18
+    401200: SomeHelp:ChainLink19
+    401202: SomeHelp:ChainLink2
+    401204: SomeHelp:ChainLink20
+    401206: SomeHelp:ChainLink21
+    401208: SomeHelp:ChainLink22
+    401210: SomeHelp:ChainLink23
+    401212: SomeHelp:ChainLink24
+    401214: SomeHelp:ChainLink25
+    401216: SomeHelp:ChainLink26
+    401218: SomeHelp:ChainLink27
+    401220: SomeHelp:ChainLink28
+    401222: SomeHelp:ChainLink29
+    401224: SomeHelp:ChainLink3
+    401226: SomeHelp:ChainLink30
+    401228: SomeHelp:ChainLink31
+    401230: SomeHelp:ChainLink32
+    401232: SomeHelp:ChainLink33
+    401234: SomeHelp:ChainLink34
+    401236: SomeHelp:ChainLink35
+    401238: SomeHelp:ChainLink36
+    401240: SomeHelp:ChainLink37
+    401242: SomeHelp:ChainLink38
+    401244: SomeHelp:ChainLink39
+    401246: SomeHelp:ChainLink4
+    401248: SomeHelp:ChainLink40
+    401250: SomeHelp:ChainLink41
+    401252: SomeHelp:ChainLink42
+    401254: SomeHelp:ChainLink43
+    401256: SomeHelp:ChainLink44
+    401258: SomeHelp:ChainLink45
+    401260: SomeHelp:ChainLink46
+    401262: SomeHelp:ChainLink47
+    401264: SomeHelp:ChainLink48
+    401266: SomeHelp:ChainLink49
+    401268: SomeHelp:ChainLink5
+    401270: SomeHelp:ChainLink50
+    401272: SomeHelp:ChainLink51
+    401274: SomeHelp:ChainLink52
+    401276: SomeHelp:ChainLink53
+    401278: SomeHelp:ChainLink54
+    401280: SomeHelp:ChainLink55
+    401282: SomeHelp:ChainLink6
+    401284: SomeHelp:ChainLink7
+    401286: SomeHelp:ChainLink8
+    401288: SomeHelp:ChainLink9
+    401290: SomeHelp:ChainLinks
+    401292: SomeHelp:ChainLinks3
+    401294: SomeHelp:FeltMat
+    401296: SomeHelp:HandleLeft
+    401298: SomeHelp:HandleLeft 1
+    401300: SomeHelp:HandleLeft 2
+    401302: SomeHelp:HandleLeft 3
+    401304: SomeHelp:HandleLeft 4
+    401306: SomeHelp:HandleRight
+    401308: SomeHelp:HandleRight 1
+    401310: SomeHelp:HandleRight 2
+    401312: SomeHelp:HandleRight 3
+    401314: SomeHelp:HandleRight 4
+    401316: SomeHelp:HangingObjects
+    401318: SomeHelp:Holder
+    401320: SomeHelp:Holder 1
+    401322: SomeHelp:Hoop1
+    401324: SomeHelp:Hoop2
+    401326: SomeHelp:InsideBody
+    401328: SomeHelp:InsideBody 1
+    401330: SomeHelp:Liquid
+    401332: SomeHelp:Liquid 1
+    401334: SomeHelp:Main
+    401336: SomeHelp:MainBody
+    401338: SomeHelp:MainBody 1
+    401340: SomeHelp:MainTwist
+    401342: SomeHelp:Nail13
+    401344: SomeHelp:Needle
+    401346: SomeHelp:Needle 1
+    401348: SomeHelp:Pick1
+    401350: SomeHelp:Pick2
+    401352: SomeHelp:PickTool
+    401354: SomeHelp:Pusher
+    401356: SomeHelp:Pusher 1
+    401358: SomeHelp:Scissor1
+    401360: SomeHelp:Scissor2
+    401362: SomeHelp:Scissor3
+    401364: SomeHelp:Scissor4
+    401366: SomeHelp:Scissor5
+    401368: SomeHelp:ScissorNut
+    401370: SomeHelp:ScissorNut1
+    401372: SomeHelp:ScissorNut2
+    401374: SomeHelp:ScissorNut3
+    401376: SomeHelp:ScissorNut4
+    401378: SomeHelp:Scissors
+    401380: SomeHelp:Spike1
+    401382: SomeHelp:Spike2
+    401384: SomeHelp:SurgicalBox
+    401386: SomeHelp:SurgicalTools
+    401388: SomeHelp:Syringe1
+    401390: SomeHelp:Syringe2
+    401392: SomeHelp:Syringes
+    401394: SomeHelp:Tray
+    401396: SomeHelp:TrayBody
+    401398: SomeHelp:Tweezers
+    401400: SomeHelp:Tweezers1
+    401402: SomeHelp:Tweezers2
+    401404: SomeHelp:Tweezers3
+    401406: Spike1
+    401408: Spike1 1
+    401410: Spike2
+    401412: Spike2 1
+    401414: SurgicalBox
+    401416: SurgicalBox1
+    401418: SurgicalTools
+    401420: SurgicalTools 1
+    401422: Syringe1
+    401424: Syringe1 1
+    401426: Syringe2
+    401428: Syringe2 1
+    401430: Syringes
+    401432: Syringes 1
+    401434: Table
+    401436: transform10
+    401438: transform6
+    401440: transform9
+    401442: Tray
+    401444: Tray 1
+    401446: Tray 2
+    401448: Tray1
+    401450: Tray2
+    401452: TrayBody
+    401454: TrayBody 1
+    401456: Tweezers
+    401458: Tweezers 1
+    401460: Tweezers1
+    401462: Tweezers1 1
+    401464: Tweezers2
+    401466: Tweezers2 1
+    401468: Tweezers3
+    401470: Tweezers3 1
+    401472: Tweezers4
+    401474: Tweezers4 1
+    401476: Tweezers5
+    401478: Tweezers5 1
+    401480: WallBack
+    401482: WallLeft
+    401484: WallRight
+    401486: Windows
+    401488: Windows1
+    401490: Windows2
+    401492: WindowSill1
+    401494: WindowSill2
+    401496: WindowSill3
+    401498: WindowSill4
+    401500: WindowSillBottom
+    401502: WindowSillBottom 1
+    401504: WindowSillBottom 2
+    401506: WindowSillLeft
+    401508: WindowSillLeft 1
+    401510: WindowSillLeft 2
+    401512: WindowSillLeft 3
+    401514: WindowSillLeft1
+    401516: WindowSillRight
+    401518: WindowSillRight 1
+    401520: WindowSillRight 2
+    401522: WindowSillRight 3
+    401524: WindowSillRight1
+    401526: WindowSillRight10
+    401528: WindowSillRight11
+    401530: WindowSillRight12
+    401532: WindowSillRight13
+    401534: WindowSillRight14
+    401536: WindowSillRight15
+    401538: WindowSillRight16
+    401540: WindowSillRight17
+    401542: WindowSillRight18
+    401544: WindowSillRight19
+    401546: WindowSillRight2
+    401548: WindowSillRight20
+    401550: WindowSillRight21
+    401552: WindowSillRight22
+    401554: WindowSillRight23
+    401556: WindowSillRight24
+    401558: WindowSillRight25
+    401560: WindowSillRight26
+    401562: WindowSillRight27
+    401564: WindowSillRight28
+    401566: WindowSillRight29
+    401568: WindowSillRight3
+    401570: WindowSillRight30
+    401572: WindowSillRight4
+    401574: WindowSillRight5
+    401576: WindowSillRight6
+    401578: WindowSillRight7
+    401580: WindowSillRight8
+    401582: WindowSillRight9
+    401584: WindowSillTop
+    401586: WindowSillTop 1
+    401588: WindowSillTop 2
+    401590: WindowSillTop 3
+    401592: WindowSillTop1
+    401594: WoodPlanksHouse
+    401596: WoodPlanksHouse1
+    2100000: DoorTexture
+    2100002: WindowSill
+    2100004: Wood
+    2100006: ShedWoodMaterial
+    2100008: DownStairs
+    2100010: ShedWoodMaterial2
+    2100012: PlasterFloor
+    2100014: lambert14
+    2100016: RoofTexture
+    2100018: lambert1
+    2100020: lambert15
+    2100022: lambert17
+    2100024: lambert18
+    2100026: Floor2
+    2100028: MudFloor
+    2100030: Steps
+    2100032: SomeHelp_CleanMetalTexture
+    2100034: SomeHelp_Metal2
+    2100036: SomeHelp_Nail
+    2100038: SomeHelp_FeltTexture
+    2100040: SomeHelp_SyringeTexture
+    2100042: SomeHelp_lambert21
+    2100044: SomeHelp_lambert20
+    2100046: SomeHelp_SawHandle1
+    2100048: CupboardTexture
+    2100050: Candles_CandleWaxTexture1
+    2100052: Candles_lambert6
+    2100054: GasMask_lambert8
+    2100056: GasMask_blinn2
+    2100058: GasMask_blinn1
+    2100060: Cloth1
+    2100062: Cloth
+    2100064: SomeHelp_BlackLeather
+    2100066: ClothChange
+    2300000: Bed 1
+    2300002: Blade
+    2300004: Blade 1
+    2300006: Blade 2
+    2300008: Blade 3
+    2300010: Blade1
+    2300012: Blade1 1
+    2300014: BladeLeft
+    2300016: BladeLeft 1
+    2300018: Candles:Candle1 2
+    2300020: Candles:Candle1 3
+    2300022: Candles:Candle1 4
+    2300024: Candles:Candle1 5
+    2300026: Candles:Candle1 6
+    2300028: Candles:Candle5
+    2300030: Candles:Candle5 1
+    2300032: Candles:Candle6
+    2300034: Candles:Wick1
+    2300036: Candles:Wick1 1
+    2300038: Candles:Wick1 2
+    2300040: Candles:Wick1 3
+    2300042: Candles:Wick1 4
+    2300044: Candles:Wick1 5
+    2300046: Candles:Wick1 6
+    2300048: Candles:Wick1 7
+    2300050: CellarDoor
+    2300052: CellarEntranceCeiling
+    2300054: CellarEntranceLeft1
+    2300056: CellarEntranceWallLeft
+    2300058: CellarStep10
+    2300060: CellarStep11
+    2300062: CellarStep12
+    2300064: CellarStep13
+    2300066: CellarStep14
+    2300068: CellarStep15
+    2300070: CellarStep16
+    2300072: CellarStep17
+    2300074: CellarStep18
+    2300076: CellarStep19
+    2300078: CellarStep20
+    2300080: CellarStep21
+    2300082: CellarStep22
+    2300084: CellarStep23
+    2300086: CellarStep24
+    2300088: CellarStep3
+    2300090: CellarStep4
+    2300092: CellarStep5
+    2300094: CellarStep6
+    2300096: CellarStep7
+    2300098: CellarStep8
+    2300100: CellarStep9
+    2300102: ChainLink1
+    2300104: ChainLink1 1
+    2300106: ChainLink1 2
+    2300108: ChainLink10
+    2300110: ChainLink10 1
+    2300112: ChainLink10 2
+    2300114: ChainLink11
+    2300116: ChainLink11 1
+    2300118: ChainLink11 2
+    2300120: ChainLink12
+    2300122: ChainLink12 1
+    2300124: ChainLink12 2
+    2300126: ChainLink13
+    2300128: ChainLink13 1
+    2300130: ChainLink13 2
+    2300132: ChainLink14
+    2300134: ChainLink14 1
+    2300136: ChainLink14 2
+    2300138: ChainLink15
+    2300140: ChainLink15 1
+    2300142: ChainLink15 2
+    2300144: ChainLink16
+    2300146: ChainLink16 1
+    2300148: ChainLink16 2
+    2300150: ChainLink17
+    2300152: ChainLink17 1
+    2300154: ChainLink17 2
+    2300156: ChainLink18
+    2300158: ChainLink18 1
+    2300160: ChainLink18 2
+    2300162: ChainLink19
+    2300164: ChainLink19 1
+    2300166: ChainLink19 2
+    2300168: ChainLink2
+    2300170: ChainLink2 1
+    2300172: ChainLink2 2
+    2300174: ChainLink20
+    2300176: ChainLink20 1
+    2300178: ChainLink20 2
+    2300180: ChainLink21
+    2300182: ChainLink21 1
+    2300184: ChainLink21 2
+    2300186: ChainLink22
+    2300188: ChainLink22 1
+    2300190: ChainLink22 2
+    2300192: ChainLink23
+    2300194: ChainLink23 1
+    2300196: ChainLink23 2
+    2300198: ChainLink24
+    2300200: ChainLink24 1
+    2300202: ChainLink24 2
+    2300204: ChainLink25
+    2300206: ChainLink25 1
+    2300208: ChainLink25 2
+    2300210: ChainLink26
+    2300212: ChainLink26 1
+    2300214: ChainLink26 2
+    2300216: ChainLink27
+    2300218: ChainLink27 1
+    2300220: ChainLink27 2
+    2300222: ChainLink28
+    2300224: ChainLink28 1
+    2300226: ChainLink28 2
+    2300228: ChainLink29
+    2300230: ChainLink29 1
+    2300232: ChainLink29 2
+    2300234: ChainLink3
+    2300236: ChainLink3 1
+    2300238: ChainLink3 2
+    2300240: ChainLink30
+    2300242: ChainLink30 1
+    2300244: ChainLink30 2
+    2300246: ChainLink31
+    2300248: ChainLink31 1
+    2300250: ChainLink31 2
+    2300252: ChainLink32
+    2300254: ChainLink32 1
+    2300256: ChainLink32 2
+    2300258: ChainLink33
+    2300260: ChainLink33 1
+    2300262: ChainLink33 2
+    2300264: ChainLink34
+    2300266: ChainLink34 1
+    2300268: ChainLink34 2
+    2300270: ChainLink35
+    2300272: ChainLink35 1
+    2300274: ChainLink35 2
+    2300276: ChainLink36
+    2300278: ChainLink36 1
+    2300280: ChainLink36 2
+    2300282: ChainLink37
+    2300284: ChainLink37 1
+    2300286: ChainLink37 2
+    2300288: ChainLink38
+    2300290: ChainLink38 1
+    2300292: ChainLink38 2
+    2300294: ChainLink39
+    2300296: ChainLink39 1
+    2300298: ChainLink39 2
+    2300300: ChainLink4
+    2300302: ChainLink4 1
+    2300304: ChainLink4 2
+    2300306: ChainLink40
+    2300308: ChainLink40 1
+    2300310: ChainLink40 2
+    2300312: ChainLink41
+    2300314: ChainLink41 1
+    2300316: ChainLink41 2
+    2300318: ChainLink42
+    2300320: ChainLink42 1
+    2300322: ChainLink42 2
+    2300324: ChainLink43
+    2300326: ChainLink43 1
+    2300328: ChainLink43 2
+    2300330: ChainLink44
+    2300332: ChainLink44 1
+    2300334: ChainLink44 2
+    2300336: ChainLink45
+    2300338: ChainLink45 1
+    2300340: ChainLink45 2
+    2300342: ChainLink46
+    2300344: ChainLink46 1
+    2300346: ChainLink46 2
+    2300348: ChainLink47
+    2300350: ChainLink47 1
+    2300352: ChainLink47 2
+    2300354: ChainLink48
+    2300356: ChainLink48 1
+    2300358: ChainLink48 2
+    2300360: ChainLink49
+    2300362: ChainLink49 1
+    2300364: ChainLink49 2
+    2300366: ChainLink5
+    2300368: ChainLink5 1
+    2300370: ChainLink5 2
+    2300372: ChainLink50
+    2300374: ChainLink50 1
+    2300376: ChainLink50 2
+    2300378: ChainLink51
+    2300380: ChainLink51 1
+    2300382: ChainLink51 2
+    2300384: ChainLink52
+    2300386: ChainLink52 1
+    2300388: ChainLink52 2
+    2300390: ChainLink53
+    2300392: ChainLink53 1
+    2300394: ChainLink53 2
+    2300396: ChainLink54
+    2300398: ChainLink54 1
+    2300400: ChainLink54 2
+    2300402: ChainLink55
+    2300404: ChainLink55 1
+    2300406: ChainLink55 2
+    2300408: ChainLink6
+    2300410: ChainLink6 1
+    2300412: ChainLink6 2
+    2300414: ChainLink7
+    2300416: ChainLink7 1
+    2300418: ChainLink7 2
+    2300420: ChainLink8
+    2300422: ChainLink8 1
+    2300424: ChainLink8 2
+    2300426: ChainLink9
+    2300428: ChainLink9 1
+    2300430: ChainLink9 2
+    2300432: Cloth2
+    2300434: Cup4
+    2300436: Cup5
+    2300438: Cup6
+    2300440: Cup7
+    2300442: Cup8
+    2300444: Cup9
+    2300446: Cupboard1Back
+    2300448: Cupboard1Back 1
+    2300450: Cupboard1Back 2
+    2300452: Cupboard1Back 3
+    2300454: Cupboard1Back 4
+    2300456: Cupboard1Back 5
+    2300458: Cupboard1Back 6
+    2300460: Cupboard1Back1
+    2300462: Cupboard1Back2
+    2300464: Cupboard1Back2 1
+    2300466: Cupboard1Back3
+    2300468: Cupboard1Back4
+    2300470: Cupboard1Back5
+    2300472: Cupboard1Back6
+    2300474: Cupboard1Back7
+    2300476: Cupboard1Back8
+    2300478: Cupboard1Back8 1
+    2300480: Cupboard1Back8 2
+    2300482: Cupboard1Back8 3
+    2300484: Cupboard1Back8 4
+    2300486: Cupboard1Back9
+    2300488: Cupboard1BaseShape
+    2300490: Cupboard1BaseShape 1
+    2300492: Cupboard1BaseShape 2
+    2300494: Cupboard1BaseShape 3
+    2300496: Cupboard1BaseShape 4
+    2300498: Cupboard1BaseShape 5
+    2300500: Cupboard1BaseShape 6
+    2300502: Cupboard1Bottom
+    2300504: Cupboard1Bottom 1
+    2300506: Cupboard1Bottom 2
+    2300508: Cupboard1Bottom 3
+    2300510: Cupboard1Bottom 4
+    2300512: Cupboard1Bottom 5
+    2300514: Cupboard1Bottom 6
+    2300516: Cupboard1Bottom1
+    2300518: Cupboard1Left
+    2300520: Cupboard1Left 1
+    2300522: Cupboard1Left 2
+    2300524: Cupboard1Left 3
+    2300526: Cupboard1Left 4
+    2300528: Cupboard1Left 5
+    2300530: Cupboard1Left 6
+    2300532: Cupboard1Left1
+    2300534: Cupboard1Middle
+    2300536: Cupboard1Middle 1
+    2300538: Cupboard1Middle 2
+    2300540: Cupboard1Middle 3
+    2300542: Cupboard1Middle 4
+    2300544: Cupboard1Middle 5
+    2300546: Cupboard1Middle 6
+    2300548: Cupboard1Middle1
+    2300550: Cupboard1Right
+    2300552: Cupboard1Right 1
+    2300554: Cupboard1Right 2
+    2300556: Cupboard1Right 3
+    2300558: Cupboard1Right 4
+    2300560: Cupboard1Right 5
+    2300562: Cupboard1Right 6
+    2300564: Cupboard1Right1
+    2300566: Cupboard1Top
+    2300568: Cupboard1Top 1
+    2300570: Cupboard1Top 2
+    2300572: Cupboard1Top 3
+    2300574: Cupboard1Top 4
+    2300576: Cupboard1Top 5
+    2300578: Cupboard1Top 6
+    2300580: Cupboard1Top1
+    2300582: FeltMat
+    2300584: FeltMat 1
+    2300586: GasCannisterV1
+    2300588: GasMask:GasCannisterV1
+    2300590: GasMask:GasMaskV1
+    2300592: GasMask:GasTubeV1
+    2300594: GasMaskV2
+    2300596: GasTubeV1
+    2300598: HandleLeft
+    2300600: HandleLeft 1
+    2300602: HandleLeft 2
+    2300604: HandleLeft 3
+    2300606: HandleLeft 4
+    2300608: HandleLeft 5
+    2300610: HandleLeft 6
+    2300612: HandleLeft 7
+    2300614: HandleLeft 8
+    2300616: HandleLeft 9
+    2300618: HandleRight
+    2300620: HandleRight 1
+    2300622: HandleRight 2
+    2300624: HandleRight 3
+    2300626: HandleRight 4
+    2300628: HandleRight 5
+    2300630: HandleRight 6
+    2300632: HandleRight 7
+    2300634: HandleRight 8
+    2300636: HandleRight 9
+    2300638: Holder
+    2300640: Holder 1
+    2300642: Holder 2
+    2300644: Holder 3
+    2300646: Hoop1
+    2300648: Hoop1 1
+    2300650: Hoop2
+    2300652: Hoop2 1
+    2300654: HouseDoor
+    2300656: HouseFloorMain2
+    2300658: HouseFloorMain4
+    2300660: HouseFloorMain5
+    2300662: HouseFloorMain6
+    2300664: HouseRoofLeft
+    2300666: HouseRoofRight
+    2300668: HouseRoomBeam
+    2300670: HouseRoomBeam2
+    2300672: HouseWallBack1
+    2300674: HouseWallBack2
+    2300676: HouseWallBack3
+    2300678: HouseWallBack6
+    2300680: HouseWallBack8
+    2300682: HouseWallBack9
+    2300684: HouseWallLeft
+    2300686: HouseWallRight
+    2300688: InsideBody
+    2300690: InsideBody 1
+    2300692: InsideBody 2
+    2300694: InsideBody 3
+    2300696: KnifeBlade3
+    2300698: KnifeBlade3 1
+    2300700: KnifeHalt3
+    2300702: KnifeHalt3 1
+    2300704: KnifeHold3
+    2300706: KnifeHold3 1
+    2300708: Liquid
+    2300710: Liquid 1
+    2300712: Liquid 2
+    2300714: Liquid 3
+    2300716: Main
+    2300718: Main 1
+    2300720: MainBody
+    2300722: MainBody 1
+    2300724: MainBody 2
+    2300726: MainBody 3
+    2300728: MainTwist
+    2300730: MainTwist 1
+    2300732: Nail13
+    2300734: Nail13 1
+    2300736: Nail13 2
+    2300738: Needle
+    2300740: Needle 1
+    2300742: Needle 2
+    2300744: Needle 3
+    2300746: pCube1
+    2300748: pCube10
+    2300750: pCube11
+    2300752: pCube12
+    2300754: pCube13
+    2300756: pCube14
+    2300758: pCube15
+    2300760: pCube16
+    2300762: pCube17
+    2300764: pCube18
+    2300766: pCube19
+    2300768: pCube2
+    2300770: pCube24
+    2300772: pCube24 1
+    2300774: pCube24 2
+    2300776: pCube25
+    2300778: pCube25 1
+    2300780: pCube25 2
+    2300782: pCube26
+    2300784: pCube27
+    2300786: pCube28
+    2300788: pCube3
+    2300790: pCube30
+    2300792: pCube31
+    2300794: pCube4
+    2300796: pCube5
+    2300798: pCube6
+    2300800: pCube8
+    2300802: pCube9
+    2300804: pCylinder1
+    2300806: pCylinder1 1
+    2300808: pCylinder1 2
+    2300810: pCylinder2
+    2300812: pCylinder2 1
+    2300814: pCylinder2 2
+    2300816: pCylinder3
+    2300818: pCylinder3 1
+    2300820: pCylinder3 2
+    2300822: pCylinder4
+    2300824: pCylinder4 1
+    2300826: pCylinder4 2
+    2300828: Pick1
+    2300830: Pick1 1
+    2300832: Pick2
+    2300834: Pick2 1
+    2300836: polySurface10
+    2300838: polySurface104
+    2300840: polySurface105
+    2300842: polySurface106
+    2300844: polySurface107
+    2300846: polySurface108
+    2300848: polySurface11
+    2300850: polySurface12
+    2300852: polySurface13
+    2300854: polySurface14
+    2300856: polySurface149
+    2300858: polySurface15
+    2300860: polySurface16
+    2300862: polySurface17
+    2300864: polySurface18
+    2300866: polySurface19
+    2300868: polySurface20
+    2300870: polySurface205
+    2300872: polySurface206
+    2300874: polySurface207
+    2300876: polySurface208
+    2300878: polySurface21
+    2300880: polySurface23
+    2300882: polySurface25
+    2300884: polySurface27
+    2300886: polySurface28
+    2300888: polySurface29
+    2300890: polySurface31
+    2300892: polySurface32
+    2300894: polySurface33
+    2300896: polySurface34
+    2300898: polySurface36
+    2300900: polySurface39
+    2300902: polySurface40
+    2300904: polySurface41
+    2300906: polySurface43
+    2300908: polySurface44
+    2300910: polySurface45
+    2300912: polySurface46
+    2300914: polySurface47
+    2300916: polySurface49
+    2300918: polySurface5
+    2300920: polySurface50
+    2300922: polySurface55
+    2300924: polySurface56
+    2300926: polySurface58
+    2300928: polySurface59
+    2300930: polySurface61
+    2300932: polySurface65
+    2300934: polySurface66
+    2300936: polySurface69
+    2300938: polySurface70
+    2300940: pSphere1
+    2300942: pSphere1 1
+    2300944: pSphere2
+    2300946: pSphere2 1
+    2300948: pSphere2 2
+    2300950: pSphere2 3
+    2300952: pSphere2 4
+    2300954: pSphere3
+    2300956: Pusher
+    2300958: Pusher 1
+    2300960: Pusher 2
+    2300962: Pusher 3
+    2300964: ScissorNut
+    2300966: ScissorNut 1
+    2300968: ScissorNut1
+    2300970: ScissorNut1 1
+    2300972: ScissorNut2
+    2300974: ScissorNut2 1
+    2300976: ScissorNut3
+    2300978: ScissorNut3 1
+    2300980: ScissorNut4
+    2300982: ScissorNut4 1
+    2300984: ShedWallBack
+    2300986: ShedWallBack1
+    2300988: ShedWallBack10
+    2300990: ShedWallBack11
+    2300992: ShedWallBack12
+    2300994: ShedWallBack3
+    2300996: ShedWallBack5
+    2300998: ShedWallBack6
+    2301000: ShedWallBack7
+    2301002: ShedWallFront1
+    2301004: ShedWallFront2
+    2301006: ShedWallFront3
+    2301008: ShedWallRight
+    2301010: SomeHelp:Blade
+    2301012: SomeHelp:Blade 1
+    2301014: SomeHelp:Blade1
+    2301016: SomeHelp:BladeLeft
+    2301018: SomeHelp:ChainLink1
+    2301020: SomeHelp:ChainLink10
+    2301022: SomeHelp:ChainLink11
+    2301024: SomeHelp:ChainLink12
+    2301026: SomeHelp:ChainLink13
+    2301028: SomeHelp:ChainLink14
+    2301030: SomeHelp:ChainLink15
+    2301032: SomeHelp:ChainLink16
+    2301034: SomeHelp:ChainLink17
+    2301036: SomeHelp:ChainLink18
+    2301038: SomeHelp:ChainLink19
+    2301040: SomeHelp:ChainLink2
+    2301042: SomeHelp:ChainLink20
+    2301044: SomeHelp:ChainLink21
+    2301046: SomeHelp:ChainLink22
+    2301048: SomeHelp:ChainLink23
+    2301050: SomeHelp:ChainLink24
+    2301052: SomeHelp:ChainLink25
+    2301054: SomeHelp:ChainLink26
+    2301056: SomeHelp:ChainLink27
+    2301058: SomeHelp:ChainLink28
+    2301060: SomeHelp:ChainLink29
+    2301062: SomeHelp:ChainLink3
+    2301064: SomeHelp:ChainLink30
+    2301066: SomeHelp:ChainLink31
+    2301068: SomeHelp:ChainLink32
+    2301070: SomeHelp:ChainLink33
+    2301072: SomeHelp:ChainLink34
+    2301074: SomeHelp:ChainLink35
+    2301076: SomeHelp:ChainLink36
+    2301078: SomeHelp:ChainLink37
+    2301080: SomeHelp:ChainLink38
+    2301082: SomeHelp:ChainLink39
+    2301084: SomeHelp:ChainLink4
+    2301086: SomeHelp:ChainLink40
+    2301088: SomeHelp:ChainLink41
+    2301090: SomeHelp:ChainLink42
+    2301092: SomeHelp:ChainLink43
+    2301094: SomeHelp:ChainLink44
+    2301096: SomeHelp:ChainLink45
+    2301098: SomeHelp:ChainLink46
+    2301100: SomeHelp:ChainLink47
+    2301102: SomeHelp:ChainLink48
+    2301104: SomeHelp:ChainLink49
+    2301106: SomeHelp:ChainLink5
+    2301108: SomeHelp:ChainLink50
+    2301110: SomeHelp:ChainLink51
+    2301112: SomeHelp:ChainLink52
+    2301114: SomeHelp:ChainLink53
+    2301116: SomeHelp:ChainLink54
+    2301118: SomeHelp:ChainLink55
+    2301120: SomeHelp:ChainLink6
+    2301122: SomeHelp:ChainLink7
+    2301124: SomeHelp:ChainLink8
+    2301126: SomeHelp:ChainLink9
+    2301128: SomeHelp:FeltMat
+    2301130: SomeHelp:HandleLeft
+    2301132: SomeHelp:HandleLeft 1
+    2301134: SomeHelp:HandleLeft 2
+    2301136: SomeHelp:HandleLeft 3
+    2301138: SomeHelp:HandleLeft 4
+    2301140: SomeHelp:HandleRight
+    2301142: SomeHelp:HandleRight 1
+    2301144: SomeHelp:HandleRight 2
+    2301146: SomeHelp:HandleRight 3
+    2301148: SomeHelp:HandleRight 4
+    2301150: SomeHelp:Holder
+    2301152: SomeHelp:Holder 1
+    2301154: SomeHelp:Hoop1
+    2301156: SomeHelp:Hoop2
+    2301158: SomeHelp:InsideBody
+    2301160: SomeHelp:InsideBody 1
+    2301162: SomeHelp:Liquid
+    2301164: SomeHelp:Liquid 1
+    2301166: SomeHelp:Main
+    2301168: SomeHelp:MainBody
+    2301170: SomeHelp:MainBody 1
+    2301172: SomeHelp:MainTwist
+    2301174: SomeHelp:Nail13
+    2301176: SomeHelp:Needle
+    2301178: SomeHelp:Needle 1
+    2301180: SomeHelp:Pick1
+    2301182: SomeHelp:Pick2
+    2301184: SomeHelp:Pusher
+    2301186: SomeHelp:Pusher 1
+    2301188: SomeHelp:ScissorNut
+    2301190: SomeHelp:ScissorNut1
+    2301192: SomeHelp:ScissorNut2
+    2301194: SomeHelp:ScissorNut3
+    2301196: SomeHelp:ScissorNut4
+    2301198: SomeHelp:Spike1
+    2301200: SomeHelp:Spike2
+    2301202: SomeHelp:TrayBody
+    2301204: SomeHelp:Tweezers1
+    2301206: SomeHelp:Tweezers2
+    2301208: SomeHelp:Tweezers3
+    2301210: Spike1
+    2301212: Spike1 1
+    2301214: Spike2
+    2301216: Spike2 1
+    2301218: TrayBody
+    2301220: TrayBody 1
+    2301222: Tweezers1
+    2301224: Tweezers1 1
+    2301226: Tweezers2
+    2301228: Tweezers2 1
+    2301230: Tweezers3
+    2301232: Tweezers3 1
+    2301234: Tweezers4
+    2301236: Tweezers4 1
+    2301238: Tweezers5
+    2301240: Tweezers5 1
+    2301242: Windows
+    2301244: Windows1
+    2301246: Windows2
+    2301248: WindowSillBottom
+    2301250: WindowSillBottom 1
+    2301252: WindowSillBottom 2
+    2301254: WindowSillLeft
+    2301256: WindowSillLeft 1
+    2301258: WindowSillLeft 2
+    2301260: WindowSillLeft 3
+    2301262: WindowSillLeft1
+    2301264: WindowSillRight
+    2301266: WindowSillRight 1
+    2301268: WindowSillRight 2
+    2301270: WindowSillRight 3
+    2301272: WindowSillRight1
+    2301274: WindowSillRight10
+    2301276: WindowSillRight11
+    2301278: WindowSillRight12
+    2301280: WindowSillRight13
+    2301282: WindowSillRight14
+    2301284: WindowSillRight15
+    2301286: WindowSillRight16
+    2301288: WindowSillRight17
+    2301290: WindowSillRight18
+    2301292: WindowSillRight19
+    2301294: WindowSillRight2
+    2301296: WindowSillRight20
+    2301298: WindowSillRight21
+    2301300: WindowSillRight22
+    2301302: WindowSillRight23
+    2301304: WindowSillRight24
+    2301306: WindowSillRight25
+    2301308: WindowSillRight26
+    2301310: WindowSillRight27
+    2301312: WindowSillRight28
+    2301314: WindowSillRight29
+    2301316: WindowSillRight3
+    2301318: WindowSillRight30
+    2301320: WindowSillRight4
+    2301322: WindowSillRight5
+    2301324: WindowSillRight6
+    2301326: WindowSillRight7
+    2301328: WindowSillRight8
+    2301330: WindowSillRight9
+    2301332: WindowSillTop
+    2301334: WindowSillTop 1
+    2301336: WindowSillTop 2
+    2301338: WindowSillTop 3
+    2301340: WindowSillTop1
+    3300000: Bed 1
+    3300002: Blade
+    3300004: Blade 1
+    3300006: Blade 2
+    3300008: Blade 3
+    3300010: Blade1
+    3300012: Blade1 1
+    3300014: BladeLeft
+    3300016: BladeLeft 1
+    3300018: Candles:Candle1 2
+    3300020: Candles:Candle1 3
+    3300022: Candles:Candle1 4
+    3300024: Candles:Candle1 5
+    3300026: Candles:Candle1 6
+    3300028: Candles:Candle5
+    3300030: Candles:Candle5 1
+    3300032: Candles:Candle6
+    3300034: Candles:Wick1
+    3300036: Candles:Wick1 1
+    3300038: Candles:Wick1 2
+    3300040: Candles:Wick1 3
+    3300042: Candles:Wick1 4
+    3300044: Candles:Wick1 5
+    3300046: Candles:Wick1 6
+    3300048: Candles:Wick1 7
+    3300050: CellarDoor
+    3300052: CellarEntranceCeiling
+    3300054: CellarEntranceLeft1
+    3300056: CellarEntranceWallLeft
+    3300058: CellarStep10
+    3300060: CellarStep11
+    3300062: CellarStep12
+    3300064: CellarStep13
+    3300066: CellarStep14
+    3300068: CellarStep15
+    3300070: CellarStep16
+    3300072: CellarStep17
+    3300074: CellarStep18
+    3300076: CellarStep19
+    3300078: CellarStep20
+    3300080: CellarStep21
+    3300082: CellarStep22
+    3300084: CellarStep23
+    3300086: CellarStep24
+    3300088: CellarStep3
+    3300090: CellarStep4
+    3300092: CellarStep5
+    3300094: CellarStep6
+    3300096: CellarStep7
+    3300098: CellarStep8
+    3300100: CellarStep9
+    3300102: ChainLink1
+    3300104: ChainLink1 1
+    3300106: ChainLink1 2
+    3300108: ChainLink10
+    3300110: ChainLink10 1
+    3300112: ChainLink10 2
+    3300114: ChainLink11
+    3300116: ChainLink11 1
+    3300118: ChainLink11 2
+    3300120: ChainLink12
+    3300122: ChainLink12 1
+    3300124: ChainLink12 2
+    3300126: ChainLink13
+    3300128: ChainLink13 1
+    3300130: ChainLink13 2
+    3300132: ChainLink14
+    3300134: ChainLink14 1
+    3300136: ChainLink14 2
+    3300138: ChainLink15
+    3300140: ChainLink15 1
+    3300142: ChainLink15 2
+    3300144: ChainLink16
+    3300146: ChainLink16 1
+    3300148: ChainLink16 2
+    3300150: ChainLink17
+    3300152: ChainLink17 1
+    3300154: ChainLink17 2
+    3300156: ChainLink18
+    3300158: ChainLink18 1
+    3300160: ChainLink18 2
+    3300162: ChainLink19
+    3300164: ChainLink19 1
+    3300166: ChainLink19 2
+    3300168: ChainLink2
+    3300170: ChainLink2 1
+    3300172: ChainLink2 2
+    3300174: ChainLink20
+    3300176: ChainLink20 1
+    3300178: ChainLink20 2
+    3300180: ChainLink21
+    3300182: ChainLink21 1
+    3300184: ChainLink21 2
+    3300186: ChainLink22
+    3300188: ChainLink22 1
+    3300190: ChainLink22 2
+    3300192: ChainLink23
+    3300194: ChainLink23 1
+    3300196: ChainLink23 2
+    3300198: ChainLink24
+    3300200: ChainLink24 1
+    3300202: ChainLink24 2
+    3300204: ChainLink25
+    3300206: ChainLink25 1
+    3300208: ChainLink25 2
+    3300210: ChainLink26
+    3300212: ChainLink26 1
+    3300214: ChainLink26 2
+    3300216: ChainLink27
+    3300218: ChainLink27 1
+    3300220: ChainLink27 2
+    3300222: ChainLink28
+    3300224: ChainLink28 1
+    3300226: ChainLink28 2
+    3300228: ChainLink29
+    3300230: ChainLink29 1
+    3300232: ChainLink29 2
+    3300234: ChainLink3
+    3300236: ChainLink3 1
+    3300238: ChainLink3 2
+    3300240: ChainLink30
+    3300242: ChainLink30 1
+    3300244: ChainLink30 2
+    3300246: ChainLink31
+    3300248: ChainLink31 1
+    3300250: ChainLink31 2
+    3300252: ChainLink32
+    3300254: ChainLink32 1
+    3300256: ChainLink32 2
+    3300258: ChainLink33
+    3300260: ChainLink33 1
+    3300262: ChainLink33 2
+    3300264: ChainLink34
+    3300266: ChainLink34 1
+    3300268: ChainLink34 2
+    3300270: ChainLink35
+    3300272: ChainLink35 1
+    3300274: ChainLink35 2
+    3300276: ChainLink36
+    3300278: ChainLink36 1
+    3300280: ChainLink36 2
+    3300282: ChainLink37
+    3300284: ChainLink37 1
+    3300286: ChainLink37 2
+    3300288: ChainLink38
+    3300290: ChainLink38 1
+    3300292: ChainLink38 2
+    3300294: ChainLink39
+    3300296: ChainLink39 1
+    3300298: ChainLink39 2
+    3300300: ChainLink4
+    3300302: ChainLink4 1
+    3300304: ChainLink4 2
+    3300306: ChainLink40
+    3300308: ChainLink40 1
+    3300310: ChainLink40 2
+    3300312: ChainLink41
+    3300314: ChainLink41 1
+    3300316: ChainLink41 2
+    3300318: ChainLink42
+    3300320: ChainLink42 1
+    3300322: ChainLink42 2
+    3300324: ChainLink43
+    3300326: ChainLink43 1
+    3300328: ChainLink43 2
+    3300330: ChainLink44
+    3300332: ChainLink44 1
+    3300334: ChainLink44 2
+    3300336: ChainLink45
+    3300338: ChainLink45 1
+    3300340: ChainLink45 2
+    3300342: ChainLink46
+    3300344: ChainLink46 1
+    3300346: ChainLink46 2
+    3300348: ChainLink47
+    3300350: ChainLink47 1
+    3300352: ChainLink47 2
+    3300354: ChainLink48
+    3300356: ChainLink48 1
+    3300358: ChainLink48 2
+    3300360: ChainLink49
+    3300362: ChainLink49 1
+    3300364: ChainLink49 2
+    3300366: ChainLink5
+    3300368: ChainLink5 1
+    3300370: ChainLink5 2
+    3300372: ChainLink50
+    3300374: ChainLink50 1
+    3300376: ChainLink50 2
+    3300378: ChainLink51
+    3300380: ChainLink51 1
+    3300382: ChainLink51 2
+    3300384: ChainLink52
+    3300386: ChainLink52 1
+    3300388: ChainLink52 2
+    3300390: ChainLink53
+    3300392: ChainLink53 1
+    3300394: ChainLink53 2
+    3300396: ChainLink54
+    3300398: ChainLink54 1
+    3300400: ChainLink54 2
+    3300402: ChainLink55
+    3300404: ChainLink55 1
+    3300406: ChainLink55 2
+    3300408: ChainLink6
+    3300410: ChainLink6 1
+    3300412: ChainLink6 2
+    3300414: ChainLink7
+    3300416: ChainLink7 1
+    3300418: ChainLink7 2
+    3300420: ChainLink8
+    3300422: ChainLink8 1
+    3300424: ChainLink8 2
+    3300426: ChainLink9
+    3300428: ChainLink9 1
+    3300430: ChainLink9 2
+    3300432: Cloth2
+    3300434: Cup4
+    3300436: Cup5
+    3300438: Cup6
+    3300440: Cup7
+    3300442: Cup8
+    3300444: Cup9
+    3300446: Cupboard1Back
+    3300448: Cupboard1Back 1
+    3300450: Cupboard1Back 2
+    3300452: Cupboard1Back 3
+    3300454: Cupboard1Back 4
+    3300456: Cupboard1Back 5
+    3300458: Cupboard1Back 6
+    3300460: Cupboard1Back1
+    3300462: Cupboard1Back2
+    3300464: Cupboard1Back2 1
+    3300466: Cupboard1Back3
+    3300468: Cupboard1Back4
+    3300470: Cupboard1Back5
+    3300472: Cupboard1Back6
+    3300474: Cupboard1Back7
+    3300476: Cupboard1Back8
+    3300478: Cupboard1Back8 1
+    3300480: Cupboard1Back8 2
+    3300482: Cupboard1Back8 3
+    3300484: Cupboard1Back8 4
+    3300486: Cupboard1Back9
+    3300488: Cupboard1BaseShape
+    3300490: Cupboard1BaseShape 1
+    3300492: Cupboard1BaseShape 2
+    3300494: Cupboard1BaseShape 3
+    3300496: Cupboard1BaseShape 4
+    3300498: Cupboard1BaseShape 5
+    3300500: Cupboard1BaseShape 6
+    3300502: Cupboard1Bottom
+    3300504: Cupboard1Bottom 1
+    3300506: Cupboard1Bottom 2
+    3300508: Cupboard1Bottom 3
+    3300510: Cupboard1Bottom 4
+    3300512: Cupboard1Bottom 5
+    3300514: Cupboard1Bottom 6
+    3300516: Cupboard1Bottom1
+    3300518: Cupboard1Left
+    3300520: Cupboard1Left 1
+    3300522: Cupboard1Left 2
+    3300524: Cupboard1Left 3
+    3300526: Cupboard1Left 4
+    3300528: Cupboard1Left 5
+    3300530: Cupboard1Left 6
+    3300532: Cupboard1Left1
+    3300534: Cupboard1Middle
+    3300536: Cupboard1Middle 1
+    3300538: Cupboard1Middle 2
+    3300540: Cupboard1Middle 3
+    3300542: Cupboard1Middle 4
+    3300544: Cupboard1Middle 5
+    3300546: Cupboard1Middle 6
+    3300548: Cupboard1Middle1
+    3300550: Cupboard1Right
+    3300552: Cupboard1Right 1
+    3300554: Cupboard1Right 2
+    3300556: Cupboard1Right 3
+    3300558: Cupboard1Right 4
+    3300560: Cupboard1Right 5
+    3300562: Cupboard1Right 6
+    3300564: Cupboard1Right1
+    3300566: Cupboard1Top
+    3300568: Cupboard1Top 1
+    3300570: Cupboard1Top 2
+    3300572: Cupboard1Top 3
+    3300574: Cupboard1Top 4
+    3300576: Cupboard1Top 5
+    3300578: Cupboard1Top 6
+    3300580: Cupboard1Top1
+    3300582: FeltMat
+    3300584: FeltMat 1
+    3300586: GasCannisterV1
+    3300588: GasMask:GasCannisterV1
+    3300590: GasMask:GasMaskV1
+    3300592: GasMask:GasTubeV1
+    3300594: GasMaskV2
+    3300596: GasTubeV1
+    3300598: HandleLeft
+    3300600: HandleLeft 1
+    3300602: HandleLeft 2
+    3300604: HandleLeft 3
+    3300606: HandleLeft 4
+    3300608: HandleLeft 5
+    3300610: HandleLeft 6
+    3300612: HandleLeft 7
+    3300614: HandleLeft 8
+    3300616: HandleLeft 9
+    3300618: HandleRight
+    3300620: HandleRight 1
+    3300622: HandleRight 2
+    3300624: HandleRight 3
+    3300626: HandleRight 4
+    3300628: HandleRight 5
+    3300630: HandleRight 6
+    3300632: HandleRight 7
+    3300634: HandleRight 8
+    3300636: HandleRight 9
+    3300638: Holder
+    3300640: Holder 1
+    3300642: Holder 2
+    3300644: Holder 3
+    3300646: Hoop1
+    3300648: Hoop1 1
+    3300650: Hoop2
+    3300652: Hoop2 1
+    3300654: HouseDoor
+    3300656: HouseFloorMain2
+    3300658: HouseFloorMain4
+    3300660: HouseFloorMain5
+    3300662: HouseFloorMain6
+    3300664: HouseRoofLeft
+    3300666: HouseRoofRight
+    3300668: HouseRoomBeam
+    3300670: HouseRoomBeam2
+    3300672: HouseWallBack1
+    3300674: HouseWallBack2
+    3300676: HouseWallBack3
+    3300678: HouseWallBack6
+    3300680: HouseWallBack8
+    3300682: HouseWallBack9
+    3300684: HouseWallLeft
+    3300686: HouseWallRight
+    3300688: InsideBody
+    3300690: InsideBody 1
+    3300692: InsideBody 2
+    3300694: InsideBody 3
+    3300696: KnifeBlade3
+    3300698: KnifeBlade3 1
+    3300700: KnifeHalt3
+    3300702: KnifeHalt3 1
+    3300704: KnifeHold3
+    3300706: KnifeHold3 1
+    3300708: Liquid
+    3300710: Liquid 1
+    3300712: Liquid 2
+    3300714: Liquid 3
+    3300716: Main
+    3300718: Main 1
+    3300720: MainBody
+    3300722: MainBody 1
+    3300724: MainBody 2
+    3300726: MainBody 3
+    3300728: MainTwist
+    3300730: MainTwist 1
+    3300732: Nail13
+    3300734: Nail13 1
+    3300736: Nail13 2
+    3300738: Needle
+    3300740: Needle 1
+    3300742: Needle 2
+    3300744: Needle 3
+    3300746: pCube1
+    3300748: pCube10
+    3300750: pCube11
+    3300752: pCube12
+    3300754: pCube13
+    3300756: pCube14
+    3300758: pCube15
+    3300760: pCube16
+    3300762: pCube17
+    3300764: pCube18
+    3300766: pCube19
+    3300768: pCube2
+    3300770: pCube24
+    3300772: pCube24 1
+    3300774: pCube24 2
+    3300776: pCube25
+    3300778: pCube25 1
+    3300780: pCube25 2
+    3300782: pCube26
+    3300784: pCube27
+    3300786: pCube28
+    3300788: pCube3
+    3300790: pCube30
+    3300792: pCube31
+    3300794: pCube4
+    3300796: pCube5
+    3300798: pCube6
+    3300800: pCube8
+    3300802: pCube9
+    3300804: pCylinder1
+    3300806: pCylinder1 1
+    3300808: pCylinder1 2
+    3300810: pCylinder2
+    3300812: pCylinder2 1
+    3300814: pCylinder2 2
+    3300816: pCylinder3
+    3300818: pCylinder3 1
+    3300820: pCylinder3 2
+    3300822: pCylinder4
+    3300824: pCylinder4 1
+    3300826: pCylinder4 2
+    3300828: Pick1
+    3300830: Pick1 1
+    3300832: Pick2
+    3300834: Pick2 1
+    3300836: polySurface10
+    3300838: polySurface104
+    3300840: polySurface105
+    3300842: polySurface106
+    3300844: polySurface107
+    3300846: polySurface108
+    3300848: polySurface11
+    3300850: polySurface12
+    3300852: polySurface13
+    3300854: polySurface14
+    3300856: polySurface149
+    3300858: polySurface15
+    3300860: polySurface16
+    3300862: polySurface17
+    3300864: polySurface18
+    3300866: polySurface19
+    3300868: polySurface20
+    3300870: polySurface205
+    3300872: polySurface206
+    3300874: polySurface207
+    3300876: polySurface208
+    3300878: polySurface21
+    3300880: polySurface23
+    3300882: polySurface25
+    3300884: polySurface27
+    3300886: polySurface28
+    3300888: polySurface29
+    3300890: polySurface31
+    3300892: polySurface32
+    3300894: polySurface33
+    3300896: polySurface34
+    3300898: polySurface36
+    3300900: polySurface39
+    3300902: polySurface40
+    3300904: polySurface41
+    3300906: polySurface43
+    3300908: polySurface44
+    3300910: polySurface45
+    3300912: polySurface46
+    3300914: polySurface47
+    3300916: polySurface49
+    3300918: polySurface5
+    3300920: polySurface50
+    3300922: polySurface55
+    3300924: polySurface56
+    3300926: polySurface58
+    3300928: polySurface59
+    3300930: polySurface61
+    3300932: polySurface65
+    3300934: polySurface66
+    3300936: polySurface69
+    3300938: polySurface70
+    3300940: pSphere1
+    3300942: pSphere1 1
+    3300944: pSphere2
+    3300946: pSphere2 1
+    3300948: pSphere2 2
+    3300950: pSphere2 3
+    3300952: pSphere2 4
+    3300954: pSphere3
+    3300956: Pusher
+    3300958: Pusher 1
+    3300960: Pusher 2
+    3300962: Pusher 3
+    3300964: ScissorNut
+    3300966: ScissorNut 1
+    3300968: ScissorNut1
+    3300970: ScissorNut1 1
+    3300972: ScissorNut2
+    3300974: ScissorNut2 1
+    3300976: ScissorNut3
+    3300978: ScissorNut3 1
+    3300980: ScissorNut4
+    3300982: ScissorNut4 1
+    3300984: ShedWallBack
+    3300986: ShedWallBack1
+    3300988: ShedWallBack10
+    3300990: ShedWallBack11
+    3300992: ShedWallBack12
+    3300994: ShedWallBack3
+    3300996: ShedWallBack5
+    3300998: ShedWallBack6
+    3301000: ShedWallBack7
+    3301002: ShedWallFront1
+    3301004: ShedWallFront2
+    3301006: ShedWallFront3
+    3301008: ShedWallRight
+    3301010: SomeHelp:Blade
+    3301012: SomeHelp:Blade 1
+    3301014: SomeHelp:Blade1
+    3301016: SomeHelp:BladeLeft
+    3301018: SomeHelp:ChainLink1
+    3301020: SomeHelp:ChainLink10
+    3301022: SomeHelp:ChainLink11
+    3301024: SomeHelp:ChainLink12
+    3301026: SomeHelp:ChainLink13
+    3301028: SomeHelp:ChainLink14
+    3301030: SomeHelp:ChainLink15
+    3301032: SomeHelp:ChainLink16
+    3301034: SomeHelp:ChainLink17
+    3301036: SomeHelp:ChainLink18
+    3301038: SomeHelp:ChainLink19
+    3301040: SomeHelp:ChainLink2
+    3301042: SomeHelp:ChainLink20
+    3301044: SomeHelp:ChainLink21
+    3301046: SomeHelp:ChainLink22
+    3301048: SomeHelp:ChainLink23
+    3301050: SomeHelp:ChainLink24
+    3301052: SomeHelp:ChainLink25
+    3301054: SomeHelp:ChainLink26
+    3301056: SomeHelp:ChainLink27
+    3301058: SomeHelp:ChainLink28
+    3301060: SomeHelp:ChainLink29
+    3301062: SomeHelp:ChainLink3
+    3301064: SomeHelp:ChainLink30
+    3301066: SomeHelp:ChainLink31
+    3301068: SomeHelp:ChainLink32
+    3301070: SomeHelp:ChainLink33
+    3301072: SomeHelp:ChainLink34
+    3301074: SomeHelp:ChainLink35
+    3301076: SomeHelp:ChainLink36
+    3301078: SomeHelp:ChainLink37
+    3301080: SomeHelp:ChainLink38
+    3301082: SomeHelp:ChainLink39
+    3301084: SomeHelp:ChainLink4
+    3301086: SomeHelp:ChainLink40
+    3301088: SomeHelp:ChainLink41
+    3301090: SomeHelp:ChainLink42
+    3301092: SomeHelp:ChainLink43
+    3301094: SomeHelp:ChainLink44
+    3301096: SomeHelp:ChainLink45
+    3301098: SomeHelp:ChainLink46
+    3301100: SomeHelp:ChainLink47
+    3301102: SomeHelp:ChainLink48
+    3301104: SomeHelp:ChainLink49
+    3301106: SomeHelp:ChainLink5
+    3301108: SomeHelp:ChainLink50
+    3301110: SomeHelp:ChainLink51
+    3301112: SomeHelp:ChainLink52
+    3301114: SomeHelp:ChainLink53
+    3301116: SomeHelp:ChainLink54
+    3301118: SomeHelp:ChainLink55
+    3301120: SomeHelp:ChainLink6
+    3301122: SomeHelp:ChainLink7
+    3301124: SomeHelp:ChainLink8
+    3301126: SomeHelp:ChainLink9
+    3301128: SomeHelp:FeltMat
+    3301130: SomeHelp:HandleLeft
+    3301132: SomeHelp:HandleLeft 1
+    3301134: SomeHelp:HandleLeft 2
+    3301136: SomeHelp:HandleLeft 3
+    3301138: SomeHelp:HandleLeft 4
+    3301140: SomeHelp:HandleRight
+    3301142: SomeHelp:HandleRight 1
+    3301144: SomeHelp:HandleRight 2
+    3301146: SomeHelp:HandleRight 3
+    3301148: SomeHelp:HandleRight 4
+    3301150: SomeHelp:Holder
+    3301152: SomeHelp:Holder 1
+    3301154: SomeHelp:Hoop1
+    3301156: SomeHelp:Hoop2
+    3301158: SomeHelp:InsideBody
+    3301160: SomeHelp:InsideBody 1
+    3301162: SomeHelp:Liquid
+    3301164: SomeHelp:Liquid 1
+    3301166: SomeHelp:Main
+    3301168: SomeHelp:MainBody
+    3301170: SomeHelp:MainBody 1
+    3301172: SomeHelp:MainTwist
+    3301174: SomeHelp:Nail13
+    3301176: SomeHelp:Needle
+    3301178: SomeHelp:Needle 1
+    3301180: SomeHelp:Pick1
+    3301182: SomeHelp:Pick2
+    3301184: SomeHelp:Pusher
+    3301186: SomeHelp:Pusher 1
+    3301188: SomeHelp:ScissorNut
+    3301190: SomeHelp:ScissorNut1
+    3301192: SomeHelp:ScissorNut2
+    3301194: SomeHelp:ScissorNut3
+    3301196: SomeHelp:ScissorNut4
+    3301198: SomeHelp:Spike1
+    3301200: SomeHelp:Spike2
+    3301202: SomeHelp:TrayBody
+    3301204: SomeHelp:Tweezers1
+    3301206: SomeHelp:Tweezers2
+    3301208: SomeHelp:Tweezers3
+    3301210: Spike1
+    3301212: Spike1 1
+    3301214: Spike2
+    3301216: Spike2 1
+    3301218: TrayBody
+    3301220: TrayBody 1
+    3301222: Tweezers1
+    3301224: Tweezers1 1
+    3301226: Tweezers2
+    3301228: Tweezers2 1
+    3301230: Tweezers3
+    3301232: Tweezers3 1
+    3301234: Tweezers4
+    3301236: Tweezers4 1
+    3301238: Tweezers5
+    3301240: Tweezers5 1
+    3301242: Windows
+    3301244: Windows1
+    3301246: Windows2
+    3301248: WindowSillBottom
+    3301250: WindowSillBottom 1
+    3301252: WindowSillBottom 2
+    3301254: WindowSillLeft
+    3301256: WindowSillLeft 1
+    3301258: WindowSillLeft 2
+    3301260: WindowSillLeft 3
+    3301262: WindowSillLeft1
+    3301264: WindowSillRight
+    3301266: WindowSillRight 1
+    3301268: WindowSillRight 2
+    3301270: WindowSillRight 3
+    3301272: WindowSillRight1
+    3301274: WindowSillRight10
+    3301276: WindowSillRight11
+    3301278: WindowSillRight12
+    3301280: WindowSillRight13
+    3301282: WindowSillRight14
+    3301284: WindowSillRight15
+    3301286: WindowSillRight16
+    3301288: WindowSillRight17
+    3301290: WindowSillRight18
+    3301292: WindowSillRight19
+    3301294: WindowSillRight2
+    3301296: WindowSillRight20
+    3301298: WindowSillRight21
+    3301300: WindowSillRight22
+    3301302: WindowSillRight23
+    3301304: WindowSillRight24
+    3301306: WindowSillRight25
+    3301308: WindowSillRight26
+    3301310: WindowSillRight27
+    3301312: WindowSillRight28
+    3301314: WindowSillRight29
+    3301316: WindowSillRight3
+    3301318: WindowSillRight30
+    3301320: WindowSillRight4
+    3301322: WindowSillRight5
+    3301324: WindowSillRight6
+    3301326: WindowSillRight7
+    3301328: WindowSillRight8
+    3301330: WindowSillRight9
+    3301332: WindowSillTop
+    3301334: WindowSillTop 1
+    3301336: WindowSillTop 2
+    3301338: WindowSillTop 3
+    3301340: WindowSillTop1
+    4300000: HouseDoor
+    4300002: WindowSillLeft1
+    4300004: WindowSillTop1
+    4300006: WindowSillRight9
+    4300008: polySurface205
+    4300010: HouseWallBack1
+    4300012: HouseWallBack2
+    4300014: HouseWallBack3
+    4300016: HouseWallBack6
+    4300018: polySurface149
+    4300020: HouseWallBack8
+    4300022: HouseWallBack9
+    4300024: HouseWallRight
+    4300026: polySurface10
+    4300028: polySurface11
+    4300030: polySurface12
+    4300032: polySurface13
+    4300034: polySurface14
+    4300036: polySurface15
+    4300038: polySurface16
+    4300040: polySurface17
+    4300042: polySurface18
+    4300044: polySurface19
+    4300046: polySurface20
+    4300048: polySurface21
+    4300050: polySurface23
+    4300052: polySurface25
+    4300054: polySurface27
+    4300056: polySurface28
+    4300058: polySurface29
+    4300060: polySurface31
+    4300062: polySurface32
+    4300064: polySurface33
+    4300066: polySurface34
+    4300068: polySurface36
+    4300070: polySurface39
+    4300072: polySurface40
+    4300074: polySurface41
+    4300076: polySurface43
+    4300078: polySurface44
+    4300080: polySurface45
+    4300082: polySurface46
+    4300084: polySurface47
+    4300086: polySurface49
+    4300088: polySurface50
+    4300090: polySurface55
+    4300092: polySurface56
+    4300094: polySurface58
+    4300096: polySurface59
+    4300098: polySurface61
+    4300100: polySurface65
+    4300102: polySurface66
+    4300104: polySurface69
+    4300106: polySurface70
+    4300108: polySurface104
+    4300110: polySurface105
+    4300112: polySurface106
+    4300114: polySurface107
+    4300116: polySurface108
+    4300118: WindowSillTop
+    4300120: WindowSillRight
+    4300122: WindowSillLeft
+    4300124: WindowSillBottom
+    4300126: WindowSillTop
+    4300128: WindowSillRight
+    4300130: WindowSillLeft
+    4300132: HouseWallLeft
+    4300134: WindowSillBottom
+    4300136: WindowSillTop
+    4300138: WindowSillRight
+    4300140: WindowSillLeft
+    4300142: WindowSillBottom
+    4300144: WindowSillTop
+    4300146: WindowSillRight
+    4300148: WindowSillLeft
+    4300150: WindowSillRight1
+    4300152: WindowSillRight2
+    4300154: WindowSillRight3
+    4300156: WindowSillRight4
+    4300158: WindowSillRight5
+    4300160: WindowSillRight6
+    4300162: WindowSillRight7
+    4300164: WindowSillRight8
+    4300166: WindowSillRight10
+    4300168: WindowSillRight11
+    4300170: WindowSillRight12
+    4300172: WindowSillRight13
+    4300174: WindowSillRight14
+    4300176: WindowSillRight15
+    4300178: WindowSillRight16
+    4300180: WindowSillRight17
+    4300182: WindowSillRight18
+    4300184: WindowSillRight19
+    4300186: WindowSillRight20
+    4300188: WindowSillRight21
+    4300190: WindowSillRight22
+    4300192: WindowSillRight23
+    4300194: WindowSillRight24
+    4300196: WindowSillRight25
+    4300198: WindowSillRight26
+    4300200: WindowSillRight27
+    4300202: WindowSillRight28
+    4300204: WindowSillRight29
+    4300206: WindowSillRight30
+    4300208: ShedWallRight
+    4300210: ShedWallBack
+    4300212: ShedWallFront1
+    4300214: ShedWallFront2
+    4300216: ShedWallFront3
+    4300218: ShedWallBack1
+    4300220: ShedWallBack3
+    4300222: ShedWallBack5
+    4300224: ShedWallBack6
+    4300226: ShedWallBack7
+    4300228: ShedWallBack10
+    4300230: ShedWallBack11
+    4300232: ShedWallBack12
+    4300234: HouseRoomBeam2
+    4300236: polySurface5
+    4300238: polySurface206
+    4300240: polySurface207
+    4300242: polySurface208
+    4300244: HouseRoomBeam
+    4300246: HouseRoofRight
+    4300248: HouseRoofLeft
+    4300250: CellarDoor
+    4300252: CellarEntranceWallLeft
+    4300254: CellarEntranceCeiling
+    4300256: CellarEntranceLeft1
+    4300258: Windows
+    4300260: Windows1
+    4300262: Windows2
+    4300264: HouseFloorMain6
+    4300266: HouseFloorMain2
+    4300268: HouseFloorMain4
+    4300270: HouseFloorMain5
+    4300272: CellarStep3
+    4300274: CellarStep4
+    4300276: CellarStep5
+    4300278: CellarStep6
+    4300280: CellarStep7
+    4300282: CellarStep8
+    4300284: CellarStep9
+    4300286: CellarStep10
+    4300288: CellarStep11
+    4300290: CellarStep12
+    4300292: CellarStep13
+    4300294: CellarStep14
+    4300296: CellarStep15
+    4300298: CellarStep16
+    4300300: CellarStep17
+    4300302: CellarStep18
+    4300304: CellarStep19
+    4300306: CellarStep20
+    4300308: CellarStep21
+    4300310: CellarStep22
+    4300312: CellarStep23
+    4300314: CellarStep24
+    4300316: pCylinder2
+    4300318: pCylinder1
+    4300320: pCube24
+    4300322: pCube25
+    4300324: pCylinder3
+    4300326: pCylinder4
+    4300328: pCylinder2
+    4300330: pCylinder1
+    4300332: pCube24
+    4300334: pCube25
+    4300336: pCylinder3
+    4300338: pCylinder4
+    4300340: pCube27
+    4300342: pCube28
+    4300344: pCube30
+    4300346: pCube31
+    4300348: SomeHelp:ChainLink1
+    4300350: SomeHelp:ChainLink2
+    4300352: SomeHelp:ChainLink3
+    4300354: SomeHelp:ChainLink4
+    4300356: SomeHelp:ChainLink5
+    4300358: SomeHelp:ChainLink6
+    4300360: SomeHelp:ChainLink7
+    4300362: SomeHelp:ChainLink8
+    4300364: SomeHelp:ChainLink9
+    4300366: SomeHelp:ChainLink10
+    4300368: SomeHelp:ChainLink11
+    4300370: SomeHelp:ChainLink12
+    4300372: SomeHelp:ChainLink13
+    4300374: SomeHelp:ChainLink14
+    4300376: SomeHelp:ChainLink15
+    4300378: SomeHelp:ChainLink16
+    4300380: SomeHelp:ChainLink17
+    4300382: SomeHelp:ChainLink18
+    4300384: SomeHelp:ChainLink19
+    4300386: SomeHelp:ChainLink20
+    4300388: SomeHelp:ChainLink21
+    4300390: SomeHelp:ChainLink22
+    4300392: SomeHelp:ChainLink23
+    4300394: SomeHelp:ChainLink24
+    4300396: SomeHelp:ChainLink25
+    4300398: SomeHelp:ChainLink26
+    4300400: SomeHelp:ChainLink27
+    4300402: SomeHelp:ChainLink28
+    4300404: SomeHelp:ChainLink29
+    4300406: SomeHelp:ChainLink30
+    4300408: SomeHelp:ChainLink31
+    4300410: SomeHelp:ChainLink32
+    4300412: SomeHelp:ChainLink33
+    4300414: SomeHelp:ChainLink34
+    4300416: SomeHelp:ChainLink35
+    4300418: SomeHelp:ChainLink36
+    4300420: SomeHelp:ChainLink37
+    4300422: SomeHelp:ChainLink38
+    4300424: SomeHelp:ChainLink39
+    4300426: SomeHelp:ChainLink40
+    4300428: SomeHelp:ChainLink41
+    4300430: SomeHelp:ChainLink42
+    4300432: SomeHelp:ChainLink43
+    4300434: SomeHelp:ChainLink44
+    4300436: SomeHelp:ChainLink45
+    4300438: SomeHelp:ChainLink46
+    4300440: SomeHelp:ChainLink47
+    4300442: SomeHelp:ChainLink48
+    4300444: SomeHelp:ChainLink49
+    4300446: SomeHelp:ChainLink50
+    4300448: SomeHelp:ChainLink51
+    4300450: SomeHelp:Nail13
+    4300452: SomeHelp:ChainLink52
+    4300454: SomeHelp:ChainLink53
+    4300456: SomeHelp:ChainLink54
+    4300458: SomeHelp:ChainLink55
+    4300460: ChainLink1
+    4300462: ChainLink2
+    4300464: ChainLink3
+    4300466: ChainLink4
+    4300468: ChainLink5
+    4300470: ChainLink6
+    4300472: ChainLink7
+    4300474: ChainLink8
+    4300476: ChainLink9
+    4300478: ChainLink10
+    4300480: ChainLink11
+    4300482: ChainLink12
+    4300484: ChainLink13
+    4300486: ChainLink14
+    4300488: ChainLink15
+    4300490: ChainLink16
+    4300492: ChainLink17
+    4300494: ChainLink18
+    4300496: ChainLink19
+    4300498: ChainLink20
+    4300500: ChainLink21
+    4300502: ChainLink22
+    4300504: ChainLink23
+    4300506: ChainLink24
+    4300508: ChainLink25
+    4300510: ChainLink26
+    4300512: ChainLink27
+    4300514: ChainLink28
+    4300516: ChainLink29
+    4300518: ChainLink30
+    4300520: ChainLink31
+    4300522: ChainLink32
+    4300524: ChainLink33
+    4300526: ChainLink34
+    4300528: ChainLink35
+    4300530: ChainLink36
+    4300532: ChainLink37
+    4300534: ChainLink38
+    4300536: ChainLink39
+    4300538: ChainLink40
+    4300540: ChainLink41
+    4300542: ChainLink42
+    4300544: ChainLink43
+    4300546: ChainLink44
+    4300548: ChainLink45
+    4300550: ChainLink46
+    4300552: ChainLink47
+    4300554: ChainLink48
+    4300556: ChainLink49
+    4300558: ChainLink50
+    4300560: ChainLink51
+    4300562: Nail13
+    4300564: ChainLink52
+    4300566: ChainLink53
+    4300568: ChainLink54
+    4300570: ChainLink55
+    4300572: ChainLink1
+    4300574: ChainLink2
+    4300576: ChainLink3
+    4300578: ChainLink4
+    4300580: ChainLink5
+    4300582: ChainLink6
+    4300584: ChainLink7
+    4300586: ChainLink8
+    4300588: ChainLink9
+    4300590: ChainLink10
+    4300592: ChainLink11
+    4300594: ChainLink12
+    4300596: ChainLink13
+    4300598: ChainLink14
+    4300600: ChainLink15
+    4300602: ChainLink16
+    4300604: ChainLink17
+    4300606: ChainLink18
+    4300608: ChainLink19
+    4300610: ChainLink20
+    4300612: ChainLink21
+    4300614: ChainLink22
+    4300616: ChainLink23
+    4300618: ChainLink24
+    4300620: ChainLink25
+    4300622: ChainLink26
+    4300624: ChainLink27
+    4300626: ChainLink28
+    4300628: ChainLink29
+    4300630: ChainLink30
+    4300632: ChainLink31
+    4300634: ChainLink32
+    4300636: ChainLink33
+    4300638: ChainLink34
+    4300640: ChainLink35
+    4300642: ChainLink36
+    4300644: ChainLink37
+    4300646: ChainLink38
+    4300648: ChainLink39
+    4300650: ChainLink40
+    4300652: ChainLink41
+    4300654: ChainLink42
+    4300656: ChainLink43
+    4300658: ChainLink44
+    4300660: ChainLink45
+    4300662: ChainLink46
+    4300664: ChainLink47
+    4300666: ChainLink48
+    4300668: ChainLink49
+    4300670: ChainLink50
+    4300672: ChainLink51
+    4300674: Nail13
+    4300676: ChainLink52
+    4300678: ChainLink53
+    4300680: ChainLink54
+    4300682: ChainLink55
+    4300684: ChainLink1
+    4300686: ChainLink2
+    4300688: ChainLink3
+    4300690: ChainLink4
+    4300692: ChainLink5
+    4300694: ChainLink6
+    4300696: ChainLink7
+    4300698: ChainLink8
+    4300700: ChainLink9
+    4300702: ChainLink10
+    4300704: ChainLink11
+    4300706: ChainLink12
+    4300708: ChainLink13
+    4300710: ChainLink14
+    4300712: ChainLink15
+    4300714: ChainLink16
+    4300716: ChainLink17
+    4300718: ChainLink18
+    4300720: ChainLink19
+    4300722: ChainLink20
+    4300724: ChainLink21
+    4300726: ChainLink22
+    4300728: ChainLink23
+    4300730: ChainLink24
+    4300732: ChainLink25
+    4300734: ChainLink26
+    4300736: ChainLink27
+    4300738: ChainLink28
+    4300740: ChainLink29
+    4300742: ChainLink30
+    4300744: ChainLink31
+    4300746: ChainLink32
+    4300748: ChainLink33
+    4300750: ChainLink34
+    4300752: ChainLink35
+    4300754: ChainLink36
+    4300756: ChainLink37
+    4300758: ChainLink38
+    4300760: ChainLink39
+    4300762: ChainLink40
+    4300764: ChainLink41
+    4300766: ChainLink42
+    4300768: ChainLink43
+    4300770: ChainLink44
+    4300772: ChainLink45
+    4300774: ChainLink46
+    4300776: ChainLink47
+    4300778: ChainLink48
+    4300780: ChainLink49
+    4300782: ChainLink50
+    4300784: ChainLink51
+    4300786: Nail13
+    4300788: ChainLink52
+    4300790: ChainLink53
+    4300792: ChainLink54
+    4300794: ChainLink55
+    4300796: pCylinder2
+    4300798: pCylinder1
+    4300800: pCube24
+    4300802: pCube25
+    4300804: pCylinder3
+    4300806: pCylinder4
+    4300808: SomeHelp:TrayBody
+    4300810: SomeHelp:FeltMat
+    4300812: SomeHelp:Pick1
+    4300814: SomeHelp:Pick2
+    4300816: SomeHelp:Main
+    4300818: SomeHelp:MainTwist
+    4300820: SomeHelp:Tweezers3
+    4300822: SomeHelp:Tweezers1
+    4300824: SomeHelp:Tweezers2
+    4300826: SomeHelp:HandleRight
+    4300828: SomeHelp:Blade1
+    4300830: SomeHelp:HandleLeft
+    4300832: SomeHelp:Hoop1
+    4300834: SomeHelp:Hoop2
+    4300836: SomeHelp:ScissorNut
+    4300838: SomeHelp:HandleLeft
+    4300840: SomeHelp:Blade
+    4300842: SomeHelp:HandleRight
+    4300844: SomeHelp:ScissorNut1
+    4300846: SomeHelp:HandleLeft
+    4300848: SomeHelp:HandleRight
+    4300850: SomeHelp:BladeLeft
+    4300852: SomeHelp:ScissorNut2
+    4300854: SomeHelp:HandleLeft
+    4300856: SomeHelp:HandleRight
+    4300858: SomeHelp:Spike1
+    4300860: SomeHelp:Spike2
+    4300862: SomeHelp:ScissorNut3
+    4300864: SomeHelp:HandleLeft
+    4300866: SomeHelp:Blade
+    4300868: SomeHelp:HandleRight
+    4300870: SomeHelp:ScissorNut4
+    4300872: SomeHelp:Holder
+    4300874: SomeHelp:Needle
+    4300876: SomeHelp:MainBody
+    4300878: SomeHelp:Pusher
+    4300880: SomeHelp:InsideBody
+    4300882: SomeHelp:Liquid
+    4300884: SomeHelp:Holder
+    4300886: SomeHelp:Needle
+    4300888: SomeHelp:MainBody
+    4300890: SomeHelp:Pusher
+    4300892: SomeHelp:InsideBody
+    4300894: SomeHelp:Liquid
+    4300896: KnifeBlade3
+    4300898: KnifeHalt3
+    4300900: KnifeHold3
+    4300902: TrayBody
+    4300904: FeltMat
+    4300906: Pick1
+    4300908: Pick2
+    4300910: Main
+    4300912: MainTwist
+    4300914: Tweezers3
+    4300916: Tweezers1
+    4300918: Tweezers2
+    4300920: Tweezers4
+    4300922: Tweezers5
+    4300924: HandleRight
+    4300926: Blade1
+    4300928: HandleLeft
+    4300930: Hoop1
+    4300932: Hoop2
+    4300934: ScissorNut
+    4300936: HandleLeft
+    4300938: Blade
+    4300940: HandleRight
+    4300942: ScissorNut1
+    4300944: HandleLeft
+    4300946: HandleRight
+    4300948: BladeLeft
+    4300950: ScissorNut2
+    4300952: HandleLeft
+    4300954: HandleRight
+    4300956: Spike1
+    4300958: Spike2
+    4300960: ScissorNut3
+    4300962: HandleLeft
+    4300964: Blade
+    4300966: HandleRight
+    4300968: ScissorNut4
+    4300970: Holder
+    4300972: Needle
+    4300974: MainBody
+    4300976: Pusher
+    4300978: InsideBody
+    4300980: Liquid
+    4300982: Holder
+    4300984: Needle
+    4300986: MainBody
+    4300988: Pusher
+    4300990: InsideBody
+    4300992: Liquid
+    4300994: TrayBody
+    4300996: FeltMat
+    4300998: Pick1
+    4301000: Pick2
+    4301002: Main
+    4301004: MainTwist
+    4301006: Tweezers3
+    4301008: Tweezers1
+    4301010: Tweezers2
+    4301012: Tweezers4
+    4301014: Tweezers5
+    4301016: HandleRight
+    4301018: Blade1
+    4301020: HandleLeft
+    4301022: Hoop1
+    4301024: Hoop2
+    4301026: ScissorNut
+    4301028: HandleLeft
+    4301030: Blade
+    4301032: HandleRight
+    4301034: ScissorNut1
+    4301036: HandleLeft
+    4301038: HandleRight
+    4301040: BladeLeft
+    4301042: ScissorNut2
+    4301044: HandleLeft
+    4301046: HandleRight
+    4301048: Spike1
+    4301050: Spike2
+    4301052: ScissorNut3
+    4301054: HandleLeft
+    4301056: Blade
+    4301058: HandleRight
+    4301060: ScissorNut4
+    4301062: Holder
+    4301064: Needle
+    4301066: MainBody
+    4301068: Pusher
+    4301070: InsideBody
+    4301072: Liquid
+    4301074: Holder
+    4301076: Needle
+    4301078: MainBody
+    4301080: Pusher
+    4301082: InsideBody
+    4301084: Liquid
+    4301086: KnifeBlade3
+    4301088: KnifeHalt3
+    4301090: KnifeHold3
+    4301092: Cupboard1BaseShape
+    4301094: Cupboard1Right
+    4301096: Cupboard1Left
+    4301098: Cupboard1Back
+    4301100: Cupboard1Top
+    4301102: Cupboard1Bottom
+    4301104: Cupboard1Middle
+    4301106: pSphere3
+    4301108: Cupboard1Back9
+    4301110: Cupboard1BaseShape
+    4301112: Cupboard1Right
+    4301114: Cupboard1Left
+    4301116: Cupboard1Back
+    4301118: Cupboard1Top
+    4301120: Cupboard1Bottom
+    4301122: Cupboard1Middle
+    4301124: Cupboard1Back8
+    4301126: pSphere2
+    4301128: Cupboard1BaseShape
+    4301130: Cupboard1Right
+    4301132: Cupboard1Left
+    4301134: Cupboard1Back
+    4301136: Cupboard1Top
+    4301138: Cupboard1Bottom
+    4301140: Cupboard1Middle
+    4301142: Cupboard1Top1
+    4301144: Cupboard1Middle1
+    4301146: Cupboard1Bottom1
+    4301148: Cupboard1Left1
+    4301150: Cupboard1Right1
+    4301152: Cupboard1Back1
+    4301154: Cupboard1Back5
+    4301156: Cupboard1Back4
+    4301158: Cupboard1Back3
+    4301160: Cupboard1Back6
+    4301162: Cupboard1Back7
+    4301164: pSphere1
+    4301166: Cupboard1Back2
+    4301168: pSphere1
+    4301170: Cupboard1Back2
+    4301172: Candles:Candle1
+    4301174: Candles:Wick1
+    4301176: Candles:Wick1
+    4301178: Candles:Candle6
+    4301180: Candles:Wick1
+    4301182: Candles:Candle5
+    4301184: Candles:Candle1
+    4301186: Candles:Wick1
+    4301188: Candles:Candle1
+    4301190: Candles:Wick1
+    4301192: Candles:Candle1
+    4301194: Candles:Wick1
+    4301196: Candles:Wick1
+    4301198: Candles:Candle5
+    4301200: Candles:Candle1
+    4301202: Candles:Wick1
+    4301204: pCube14
+    4301206: pCube13
+    4301208: pCube16
+    4301210: pCube15
+    4301212: pCube19
+    4301214: pCube18
+    4301216: pCube17
+    4301218: GasMask:GasMaskV1
+    4301220: GasMask:GasTubeV1
+    4301222: GasMask:GasCannisterV1
+    4301224: Bed
+    4301226: Cloth2
+    4301228: GasTubeV1
+    4301230: GasCannisterV1
+    4301232: GasMaskV2
+    4301234: Cup6
+    4301236: Cup5
+    4301238: Cup4
+    4301240: pCube12
+    4301242: pCube11
+    4301244: pCube10
+    4301246: pCube9
+    4301248: pCube8
+    4301250: pCube6
+    4301252: pCube5
+    4301254: pCube4
+    4301256: pCube3
+    4301258: pCube2
+    4301260: pCube1
+    4301262: Cup7
+    4301264: Cup8
+    4301266: Cup9
+    4301268: pCube26
+    4301270: Cupboard1BaseShape
+    4301272: Cupboard1Right
+    4301274: Cupboard1Left
+    4301276: Cupboard1Back
+    4301278: Cupboard1Top
+    4301280: Cupboard1Bottom
+    4301282: Cupboard1Middle
+    4301284: Cupboard1Back8
+    4301286: pSphere2
+    4301288: Cupboard1BaseShape
+    4301290: Cupboard1Right
+    4301292: Cupboard1Left
+    4301294: Cupboard1Back
+    4301296: Cupboard1Top
+    4301298: Cupboard1Bottom
+    4301300: Cupboard1Middle
+    4301302: Cupboard1Back8
+    4301304: pSphere2
+    4301306: Cupboard1BaseShape
+    4301308: Cupboard1Right
+    4301310: Cupboard1Left
+    4301312: Cupboard1Back
+    4301314: Cupboard1Top
+    4301316: Cupboard1Bottom
+    4301318: Cupboard1Middle
+    4301320: Cupboard1Back8
+    4301322: pSphere2
+    4301324: Cupboard1BaseShape
+    4301326: Cupboard1Right
+    4301328: Cupboard1Left
+    4301330: Cupboard1Back
+    4301332: Cupboard1Top
+    4301334: Cupboard1Bottom
+    4301336: Cupboard1Middle
+    4301338: Cupboard1Back8
+    4301340: pSphere2
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

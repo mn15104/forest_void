@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 114075533892405546}
   - component: {fileID: 65890355204286680}
   - component: {fileID: 114017430683187914}
+  - component: {fileID: 114583803578632750}
   m_Layer: 5
   m_Name: FenceText
   m_TagString: Untagged
@@ -497,13 +498,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914663506303954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.64, y: -1.41, z: 33.55}
+  m_LocalRotation: {x: -0, y: 0.061226174, z: -0, w: 0.99812394}
+  m_LocalPosition: {x: 38.29, y: -1.41, z: 37.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4187380462585822}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 7.0200005, z: 0}
 --- !u!4 &4660156256131714
 Transform:
   m_ObjectHideFlags: 1
@@ -713,8 +714,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1056.477, y: 1644.4065, z: 25.674757}
-  m_Center: {x: 116.251915, y: -800.03253, z: -3.9544063}
+  m_Size: {x: 3142.1655, y: 1811.6458, z: 29.730736}
+  m_Center: {x: 100.236664, y: -716.41125, z: -7.058239}
 --- !u!65 &65880233791476908
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -737,8 +738,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3419.4336, y: 873.61743, z: 21.140932}
-  m_Center: {x: 549.7338, y: -414.63785, z: -9.581696}
+  m_Size: {x: 4184.648, y: 873.61743, z: 21.14094}
+  m_Center: {x: 427.87582, y: -414.63785, z: -9.578987}
 --- !u!114 &114008686948853470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -815,7 +816,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'A Key
+  m_Text: 'Blue key
 
 '
 --- !u!114 &114044874665279128
@@ -850,7 +851,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'A Key
+  m_Text: 'Green key
 
 '
 --- !u!114 &114045011385019138
@@ -934,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 088efee4f0c232c4b821cd901eca9b38, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1025,7 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa823e9f71915646adc6fc03087e86e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textType: 1
+  textType: 2
   amplitude: 0
   floatSpeed: 0
   key: {fileID: 0}
@@ -1341,7 +1342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'A Key
+  m_Text: 'Yellow key
 
 '
 --- !u!114 &114532896553151776
@@ -1427,6 +1428,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114583803578632750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569572178267286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaae9eab9cc52f6439f42ffddb7cd63e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114595075282897136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1586,6 +1598,8 @@ MonoBehaviour:
   player: {fileID: 0}
   monster: {fileID: 0}
   playerSpawnPoint: {fileID: 1914663506303954}
+  introBox: {fileID: 0}
+  subtitles: {fileID: 0}
   StoryMode: 0
 --- !u!114 &114797707602564196
 MonoBehaviour:

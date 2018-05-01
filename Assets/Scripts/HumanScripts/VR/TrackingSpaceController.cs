@@ -30,7 +30,7 @@ public class TrackingSpaceController : MonoBehaviour {
     {
         float elapsedTime = 0f;
         var neededRotation = Quaternion.LookRotation(ToBeLookedAt.position - transform.position);
-        while((neededRotation != transform.rotation) && elapsedTime < 5f)
+        while((neededRotation != transform.rotation) && elapsedTime < 0.9f)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, neededRotation, Time.deltaTime * CurrentRotateTime);
             elapsedTime += Time.deltaTime;
