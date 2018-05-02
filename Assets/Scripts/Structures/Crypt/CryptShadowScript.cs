@@ -6,6 +6,7 @@ public class CryptShadowScript: MonoBehaviour {
 
     protected EventManager eventManager;
     public GameObject cryptShadow;
+    public GameObject DisableKeyTrigger;
 
     private void Awake()
     {
@@ -22,6 +23,8 @@ public class CryptShadowScript: MonoBehaviour {
 
     void activateCryptShadow(bool PickedKey)
     {
+
+        DisableKeyTrigger.SetActive(false);
         cryptShadow.SetActive(true);
         //GetComponentInChildren<MeshRenderer>().enabled = false;
 

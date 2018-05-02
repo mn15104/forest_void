@@ -34,7 +34,7 @@ public class CryptWallController : MonoBehaviour {
                 //}
             }
         }
-        key.transform.position = outsideLocation;
+        //key.transform.position = outsideLocation;
     }
 
     private void TurnWallsOn()
@@ -51,7 +51,7 @@ public class CryptWallController : MonoBehaviour {
                 //}
             }
         }
-        key.transform.position = plinthLocation;
+        //key.transform.position = plinthLocation;
     }
 
     private void OnTriggerEnter(Collider other)
