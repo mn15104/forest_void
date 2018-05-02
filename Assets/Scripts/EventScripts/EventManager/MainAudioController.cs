@@ -79,8 +79,9 @@ public class MainAudioController : MonoBehaviour {
                 StartCoroutine(FadeOutAudioSource(m_Aud_2, 0.0f, m_FadeSpeed));
             }
         }
-        else if (monsterAI.GetMonsterState() == MonsterState.APPROACH && !m_Aud_1.isPlaying || !m_Aud_2.isPlaying)
+        else if (currentAudioStage != EventManager.Stage.Intro && monsterAI.GetMonsterState() == MonsterState.APPROACH && (!m_Aud_1.isPlaying || !m_Aud_2.isPlaying))
         {
+            Debug.Log("Fuck");
             TransitionClip(m_Stage3Clip);
         }
         else
@@ -91,6 +92,7 @@ public class MainAudioController : MonoBehaviour {
 
     void StageAudio(EventManager.Stage stage)
     {
+        Debug.Log(stage);
         //Debug.Log("Stage Audio changing to " + stage);
         switch (stage)
         {

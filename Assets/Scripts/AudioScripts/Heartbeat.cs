@@ -48,7 +48,7 @@ public class Heartbeat : MonoBehaviour
                     m_Heartbeat = float.Parse((System.Text.Encoding.UTF8.GetString(results)));
                     Debug.Log("Heartbeat is: " + m_Heartbeat);
                 }
-            }
+            } 
         }
     }
 
