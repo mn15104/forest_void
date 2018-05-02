@@ -33,19 +33,21 @@ public class HouseEndingScript : MonoBehaviour {
     {
 
 
-
-        if (!PlayedMusic && !triggered)
+        if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
+            if (!PlayedMusic && !triggered)
+            {
 
-            
-            EndingAnimation.GetComponent<Animator>().enabled = true;
 
-            soundDistresses.SetActive(true);
-            nextTrigger.GetComponent<BoxCollider>().enabled = true;
-            triggered = true;
-            PlayedMusic = true;
-            //NextTrigger.SetActive(true);
+                EndingAnimation.GetComponent<Animator>().enabled = true;
 
+                soundDistresses.SetActive(true);
+                nextTrigger.GetComponent<BoxCollider>().enabled = true;
+                triggered = true;
+                PlayedMusic = true;
+                //NextTrigger.SetActive(true);
+
+            }
         }
     }
 }

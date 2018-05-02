@@ -92,7 +92,7 @@ public class RetreiveKey : OVRGrabber
 
     protected override void CheckForGrabOrRelease(float prevFlex)
     {
-        if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin))
+        if ((m_prevFlex >= grabBegin) && (prevFlex < grabBegin) && !inGeneratorZone)
         {
             //if (inGeneratorZone && CheckHandInPocket() && human.GetComponent<Inventory>().inventorySize() > 0)
             //{
@@ -108,12 +108,33 @@ public class RetreiveKey : OVRGrabber
            
             GrabBegin();
         }
-        else if ((m_prevFlex <= grabEnd) && (prevFlex > grabEnd))
+        else if ((m_prevFlex <= grabEnd) && (prevFlex > grabEnd) )
         {
             base.GrabEnd();
         }
 
     }
+
+    public IEnumerator InsertionAnimation(GameObject key)
+    {
+
+        float speed = 0.7f;
+        Vector3 finalKeyPosition = new Vector3(key.GetComponent<KeyGrabbable>().target.transform.position.x, key.GetComponent<KeyGrabbable>().target.transform.position.y, key.GetComponent<KeyGrabbable>().target.transform.position.z);
+        Debug.Log("inserted key");
+        while (Vector3.Distance(transform.position, finalKeyPosition) > 0.0001f)
+        {
+            float step = speed * Time.deltaTime;
+            key.transform.position = Vector3.MoveTowards(key.transform.position, finalKeyPosition, step);
+            Debug.Log("Stuck in loop");
+            yield return 1;
+
+        }
+
+        //Wait to do rotation
+        //yield return new WaitForSeconds(0.5f);
+        //eventManager.NotifyKeyInserted.Notify(true);
+    }
+
 
     void KeyAppearAndInsert()
     {
@@ -133,14 +154,13 @@ public class RetreiveKey : OVRGrabber
             human.GetComponent<Inventory>().removeKeyFromInventory(key);
             //Animate insertion;
             key.GetComponent<KeyGrabbable>().light.GetComponent<Light>().enabled = true;
-            StartCoroutine(key.GetComponent<KeyGrabbable>().InsertionAnimation());
-            key.GetComponent<KeyGrabbable>().hasBeenInserted = false;
+            eventManager.NotifyKeyInserted.Notify(true);
+           
+            StartCoroutine(InsertionAnimation(key));
+            Destroy(key.GetComponent<KeyGrabbable>());
+            //key.GetComponent<KeyGrabbable>().hasBeenInserted = false;
         }
     }
-
-
-
-
 
     bool CheckHandInPocket()
     {
@@ -226,10 +246,10 @@ public class RetreiveKey : OVRGrabber
                 StartCoroutine(AddKeyToInventory(m_grabbedObj));
 
             }
-   
+ 
             m_lastPos = transform.position;
             m_lastRot = transform.rotation;
-    
+            /*
             //When key is grabbed, m_grabbedObj is set to null
             if(m_grabbedObj != null)
             {
@@ -274,6 +294,7 @@ public class RetreiveKey : OVRGrabber
                     m_grabbedObj.transform.parent = transform;
                 }
             }
+            */
         }
     }
 

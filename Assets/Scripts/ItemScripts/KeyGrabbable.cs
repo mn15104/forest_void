@@ -39,7 +39,7 @@ public class KeyGrabbable : OVRGrabbable {
         rb.angularVelocity = new Vector3(0, 0, 0);
         m_grabbedBy = null;
         m_grabbedCollider = null;
-        checkInserted(); 
+        //checkInserted(); 
     }
 
     public void checkInserted()
@@ -54,7 +54,7 @@ public class KeyGrabbable : OVRGrabbable {
         }
        
     }
-
+    /*
     public IEnumerator InsertionAnimation()
     {
         Vector3 finalKeyPosition = new Vector3(target.transform.position.x, target.transform.position.y , target.transform.position.z);
@@ -73,7 +73,7 @@ public class KeyGrabbable : OVRGrabbable {
         eventManager.NotifyKeyInserted.Notify(true);
 
 
-        /*
+        
         Quaternion startingRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(-180,0,0);
         float originalRotationTime = 0.3f;
@@ -84,11 +84,12 @@ public class KeyGrabbable : OVRGrabbable {
             transform.rotation = Quaternion.Slerp(startingRotation, targetRotation, currentTime/originalRotationTime);
             yield return new WaitForEndOfFrame();
         }
-        */
+        
     }
+    */
 
     void Update () {
-        if (hasBeenInserted)
+        /*if (hasBeenInserted)
         {
             human.GetComponent<Inventory>().removeKeyFromInventory(gameObject);
             //Animate insertion;
@@ -97,7 +98,7 @@ public class KeyGrabbable : OVRGrabbable {
             hasBeenInserted = false;
 
         }
-
+        */
     }
 
 

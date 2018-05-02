@@ -181,11 +181,14 @@ public class HouseCellarScript : MonoBehaviour
     {
 
 
-
-        if (!triggered)
+        if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            triggered = true;
+            if (!triggered)
+            {
+                triggered = true;
+            }
         }
+        
     }
 
 

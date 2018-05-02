@@ -25,19 +25,22 @@ public class HouseTrigger1Script : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-       
 
-        
-        if (!PlayedMusic && !triggered)
+
+        if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            
-            doorSound.Play();
-            DoorClosed.GetComponent<Animator>().enabled = true;
+            if (!PlayedMusic && !triggered)
+            {
 
-            triggered = true;
-            PlayedMusic = true;
-            NextTrigger.GetComponent<BoxCollider>().enabled = true;
+                doorSound.Play();
+                DoorClosed.GetComponent<Animator>().enabled = true;
 
+                triggered = true;
+                PlayedMusic = true;
+                NextTrigger.GetComponent<BoxCollider>().enabled = true;
+
+            }
         }
+            
     }
 }

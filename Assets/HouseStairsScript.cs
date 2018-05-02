@@ -93,13 +93,16 @@ public class HouseStairsScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-
-
-        if (!triggered)
+        if (other == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-           
-            triggered = true;
+            if (!triggered)
+            {
+
+                triggered = true;
+            }
         }
+
+           
     }
 
 
