@@ -96,7 +96,7 @@ public class EventManager : MonoBehaviour
         if (StoryMode)
         {
             player.transform.position = introBoxTeleportPoint.position;
-            // player.transform.rotation = playerSpawnPoint.transform.rotation;
+            //player.transform.rotation = introBoxTeleportPoint.rotation;
         }
 
     }

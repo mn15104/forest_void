@@ -16,7 +16,7 @@ public class MainAudioController : MonoBehaviour {
     public AudioClip m_Stage3Clip;
     public AudioClip m_GameOverClip;
     public AudioClip[] m_IntenseNoises;
-    private bool monsterStateInterrupt = false;
+    public bool monsterStateInterrupt = false;
     public float m_MaxVolume = 0.3f;
     public float m_MaxWindVolume = 0.5f;
     public float m_FadeSpeed = 0.3f;
@@ -91,7 +91,7 @@ public class MainAudioController : MonoBehaviour {
 
     void StageAudio(EventManager.Stage stage)
     {
-        Debug.Log("Stage Audio changing to " + stage);
+        //Debug.Log("Stage Audio changing to " + stage);
         switch (stage)
         {
             case EventManager.Stage.Intro:

@@ -128,10 +128,12 @@ public partial class MonsterAI : MonoBehaviour
     }
     private void Start()
     {
+        Debug.Log("Hello");
         if (!player) Debug.Log("PLAYER NULL");
         destinationPosition = player.transform.position;
         m_OriginalFogDensity = RenderSettings.fogDensity;
         m_MonsterStateMachine = MonsterAIState.newInstance(this);
+        Debug.Log("here: " + m_MonsterStateMachine);
     }
 
     void Update()

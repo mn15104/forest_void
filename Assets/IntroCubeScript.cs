@@ -14,6 +14,7 @@ public class IntroCubeScript : MonoBehaviour {
     private bool fadedOut;
     Color cameraColor;
     float power;
+    float volume;
     float fogIntensity;
     float timeStart;
     float textTimeStart;
@@ -23,7 +24,7 @@ public class IntroCubeScript : MonoBehaviour {
     public GameObject flashlight;
     public Camera cameraLeft;
     public Camera cameraRight;
-    public GameObject audioController;
+    public MainAudioController audioController;
     public GameObject subtitles;
     public Text subtitleText;
 
@@ -34,7 +35,7 @@ public class IntroCubeScript : MonoBehaviour {
         fadedOut = false;
         timeStart = 0;
         textTimeStart = 0;
-        audioController.SetActive(false);
+        //audioController.m_Aud_1.volume = 0f;
         eventManager = FindObjectOfType<EventManager>();
         player = eventManager.player;
         spawnPoint = eventManager.playerSpawnPoint;
@@ -64,7 +65,7 @@ public class IntroCubeScript : MonoBehaviour {
             TeleportPlayer();
             player.GetComponent<OVRPlayerController>().Acceleration = 0.1f;
             flashlight.SetActive(true);
-            audioController.SetActive(true);
+            //audioController.SetActive(true);
 
 
             //cameraLeft.nearClipPlane = 0.3f;
@@ -80,6 +81,7 @@ public class IntroCubeScript : MonoBehaviour {
             fogIntensity = Mathf.Lerp(1.0f, 0.25f, timeStart);
             cameraColor = Color.Lerp(Color.black, previousColour, timeStart);
             power = Mathf.Lerp(0.3f, 20.0f, timeStart);
+            //volume = Mathf.Lerp(0.0f, 0.f, timeStart);
             textColor = Color.Lerp(subtitleText.color, Color.clear, textTimeStart);
 
             timeStart += Time.deltaTime * 0.2f;
@@ -92,8 +94,9 @@ public class IntroCubeScript : MonoBehaviour {
             RenderSettings.fogColor = cameraColor;
             subtitleText.color = textColor;
             RenderSettings.fogDensity = fogIntensity;
+            //audioController.m_Aud_1.volume = volume;
 
-            Debug.Log(RenderSettings.fogDensity);
+            //Debug.Log(RenderSettings.fogDensity);
             if (fogIntensity < 0.26 && cameraColor == previousColour)
             {
                 subtitles.SetActive(false);
@@ -107,6 +110,7 @@ public class IntroCubeScript : MonoBehaviour {
     void TeleportPlayer()
     {
        player.transform.position = spawnPoint.transform.position;
+       player.transform.rotation = spawnPoint.transform.rotation;
     }
 
     void lerpFar()
