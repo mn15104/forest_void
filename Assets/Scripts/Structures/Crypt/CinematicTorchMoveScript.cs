@@ -17,6 +17,7 @@ public class CinematicTorchMoveScript : MonoBehaviour {
     public List<Light> CandleLights;
     public List<GameObject> Candles;
     private bool EventFinished;
+    protected EventManager eventManager;
 
 
     // Use this for initialization
@@ -26,7 +27,13 @@ public class CinematicTorchMoveScript : MonoBehaviour {
         foo = 0f;
         EventFinished = false;
         torch.SetActive(false);
-	}
+        eventManager = FindObjectOfType<EventManager>();
+        foreach (GameObject Candle in Candles)
+        {
+            Candle.GetComponent<MeshRenderer>().enabled = true;
+            //Candle.intensity = 0f;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,20 +47,20 @@ public class CinematicTorchMoveScript : MonoBehaviour {
         if (foo >= maxTime && !EventFinished)
         {
             
-        foreach (Light CandleLight in CandleLights)
-        {
-            CandleLight.GetComponent<LightFlicker>().enabled = false;
-            CandleLight.intensity = 0f;      
-        }
-        foreach (GameObject Candle in Candles)
-        {
-            Candle.GetComponent<MeshRenderer>().enabled = false;
-            //Candle.intensity = 0f;
-        }
+            foreach (Light CandleLight in CandleLights)
+            {
+                CandleLight.GetComponent<LightFlicker>().enabled = false;
+                CandleLight.intensity = 0f;      
+            }
+            foreach (GameObject Candle in Candles)
+            {
+                Candle.GetComponent<MeshRenderer>().enabled = false;
+                //Candle.intensity = 0f;
+            }
 
             torch.SetActive(false);
-        monster.SetActive(false);
-        EventFinished = true;
+            monster.SetActive(false);
+            EventFinished = true;
         }
 
 
@@ -61,14 +68,19 @@ public class CinematicTorchMoveScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+
+
+
         triggeredTime = Time.time;
-        
-        triggered = true;
-        if (!PlayedMusic)
+        if(other == eventManager.player.GetComponent<Collider>())
         {
-            torch.SetActive(true);
-            jumpScare.Play();
-            PlayedMusic = true;
+            triggered = true;
+            if (!PlayedMusic)
+            {
+                torch.SetActive(true);
+                jumpScare.Play();
+                PlayedMusic = true;
+            }
         }
     }
 
