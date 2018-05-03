@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+//using UnityStandardAssets.CrossPlatformInput;
 
 public class HumanCamera : MonoBehaviour
 {
@@ -22,6 +22,7 @@ public class HumanCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         //Vector3 move = new Vector3(1, 0, 1);
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
@@ -38,5 +39,6 @@ public class HumanCamera : MonoBehaviour
         //Rotate camera about x axis
         if (y > 0 && transform.forward.y < maxRotateUp || y < 0 && transform.forward.y > maxRotateDown)
             transform.Rotate(Vector3.right, -y * m_rotateSpeed);
+        */
     }
 }

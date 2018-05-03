@@ -145,6 +145,7 @@ public partial class MonsterAI : MonoBehaviour
         eventManager = FindObjectOfType<EventManager>();
         Debug.Log("here: " + m_MonsterStateMachine);
         flashlight = player.GetComponentInChildren<Flashlight>();
+        Debug.Log("flashlight: " + flashlight);
     }
 
     void Update()
@@ -308,16 +309,18 @@ public partial class MonsterAI : MonoBehaviour
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
-                StartCoroutine(flashlightFlicker());
-                if (flickerDone)
-                {
+                //StartCoroutine(flashlightFlicker());
+
+                //if (flickerDone)
+                //{
+                   
                     flashlight.SetDisableFlashlight(true);
                     flashlight.ForceSwitchFlashlight(false);
                     RenderSettings.fogMode = FogMode.ExponentialSquared;
                     RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
                     stage2_playerTorchOn1 = true;
                     StartCoroutine(Stage2_ToggleCoroutine0(3.25f));
-                }
+                //}
             }
         }
         else if (!stage2_playerTorchOff && stage2_coroutine0_finished)
@@ -370,7 +373,7 @@ public partial class MonsterAI : MonoBehaviour
             stage2_playerTorchOff2 = true;
         }
     }
-
+    /*
     IEnumerator flashlightFlicker()
     {
         flashlight.Switch(gameObject);
@@ -387,6 +390,7 @@ public partial class MonsterAI : MonoBehaviour
         flickerDone = true;
 
     }
+    */
     IEnumerator Stage2_ToggleCoroutine0(float time)
     {
         yield return new WaitForSeconds(time);
