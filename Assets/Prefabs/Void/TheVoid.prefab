@@ -5458,7 +5458,7 @@ MonoBehaviour:
   m_BreathingBehind: {fileID: 8300000, guid: b77d8af86a104124aa9c9dfbc7645a9d, type: 3}
   m_GasLoop: {fileID: 8300000, guid: 5b9105783f881be4280f5bd170821020, type: 3}
   m_Jumpscare_Stage2: {fileID: 8300000, guid: 36ce1e2edc41dad4ebcc03859cb10e45, type: 3}
-  m_Jumpscare_Stage3: {fileID: 8300000, guid: 345b437366955b341885253446ca19bd, type: 3}
+  m_Jumpscare_Stage3: {fileID: 8300000, guid: a6abd702098e0d4458355da1ab0a4ced, type: 3}
 --- !u!114 &114287171952641212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5477,19 +5477,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033277563816748}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb381aefbb6b0e34bb25216f5b2a21fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debugState: 9
-  currentStage: 3
+  currentStage: 0
   player: {fileID: 0}
   soundDetectionPercentage: 0.2
   lightDetectionPercentage: 0.2
+  WaitedGameOver: 0
   Stage1_TeleportInterval: 15
-  Stage1_AppearInterval: 2
-  Stage1_AppearDistance: 20
+  Stage1_AppearInterval: 0.5
+  Stage1_AppearDistance: 19
   Stage1_FadeOutTime: 0.1
   stage2_playerTorchOn1: 0
   stage2_playerTorchOff: 0

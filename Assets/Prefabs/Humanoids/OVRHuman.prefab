@@ -235,7 +235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1232953492950874
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +277,8 @@ GameObject:
   - component: {fileID: 20928459445678846}
   - component: {fileID: 114821338396786502}
   - component: {fileID: 114114907666101888}
+  - component: {fileID: 114620940451790834}
+  - component: {fileID: 114500283724708128}
   m_Layer: 0
   m_Name: RightEyeAnchor
   m_TagString: MainCamera
@@ -489,6 +491,8 @@ GameObject:
   - component: {fileID: 20940344777547442}
   - component: {fileID: 114081261657793184}
   - component: {fileID: 114412549389097628}
+  - component: {fileID: 114795208032028788}
+  - component: {fileID: 114044201820121722}
   m_Layer: 0
   m_Name: LeftEyeAnchor
   m_TagString: MainCamera
@@ -1032,7 +1036,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001860840367018}
   m_LocalRotation: {x: -0, y: 0.3053824, z: -0, w: 0.9522298}
-  m_LocalPosition: {x: 542.111, y: 75.15, z: 852.613}
+  m_LocalPosition: {x: 610.5, y: 76.93, z: 835.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4743603651390370}
@@ -2784,6 +2788,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: c7b2b56d9d8f29f4ba2550f2d91927ea, type: 2}
+--- !u!114 &114044201820121722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537861909396076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2b91a7568dc90489606582d295dcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glitchEffect: {fileID: 114795208032028788}
+  glitchChangeSpeed: 0.5
+  startingGlitching: 0
 --- !u!114 &114065146381275230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2937,7 +2955,7 @@ MonoBehaviour:
   sixthClip: 16.1
   seventhClip: 17.9
   seventh2Clip: 19.8
-  eighthClip: 24
+  eighthClip: 23.7
   ninthClip: 25.5
   tenthClip: 26.5
   tenth2Clip: 27.5
@@ -3172,6 +3190,20 @@ MonoBehaviour:
   m_BeatA: {fileID: 8300000, guid: e1c0d627d5bdf054e8490db46df4799d, type: 3}
   m_BeatB: {fileID: 8300000, guid: 586b708e41cc76946907c1ff1c0738bf, type: 3}
   m_HeartbeatAudioSrc: {fileID: 82878423810772440}
+--- !u!114 &114500283724708128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264044803210140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2b91a7568dc90489606582d295dcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glitchEffect: {fileID: 114620940451790834}
+  glitchChangeSpeed: 1
+  startingGlitching: 0
 --- !u!114 &114503735650843712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3296,6 +3328,22 @@ MonoBehaviour:
   m_FlashlightAudio: {fileID: 82717715621657190}
   m_FlashlightOn: {fileID: 8300000, guid: 98a6cbf016b41f546b5b0e016c699cc4, type: 3}
   m_FlashlightOff: {fileID: 8300000, guid: d4f40da02c8b49e418ba08e9454df881, type: 3}
+--- !u!114 &114620940451790834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264044803210140}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04712e4abc80e964bad8c0f3b48b97b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 1267041dcf94b544584e9bf3063c9206, type: 3}
+  displacementMap: {fileID: 2800000, guid: 8ef0997c92d26cd4287885cbd899df80, type: 3}
+  intensity: 0
+  flipIntensity: 0
+  colorIntensity: 0
 --- !u!114 &114698698475406452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3308,6 +3356,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerMask: 1
+--- !u!114 &114795208032028788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537861909396076}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04712e4abc80e964bad8c0f3b48b97b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 1267041dcf94b544584e9bf3063c9206, type: 3}
+  displacementMap: {fileID: 2800000, guid: 8ef0997c92d26cd4287885cbd899df80, type: 3}
+  intensity: 0
+  flipIntensity: 0
+  colorIntensity: 0
 --- !u!114 &114806014401580974
 MonoBehaviour:
   m_ObjectHideFlags: 1

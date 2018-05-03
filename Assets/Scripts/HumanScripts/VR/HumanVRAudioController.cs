@@ -228,9 +228,9 @@ public class HumanVRAudioController : MonoBehaviour
         UpdateHumanMotion();
 
         Vector3 newPosition = transform.root.position;
-        horizontalSpeed = Mathf.Abs(( new Vector2(previousPosition.x, previousPosition.z) - new Vector2(newPosition.x, newPosition.z)).magnitude)/Time.deltaTime;
+        horizontalSpeed = Mathf.Abs((new Vector2(previousPosition.x, previousPosition.z) - new Vector2(newPosition.x, newPosition.z)).magnitude) / Time.deltaTime;
         //Debug.Log(horizontalSpeed);
-        if (horizontalSpeed < (walkingVelocityTrigger ))
+        if (horizontalSpeed < (walkingVelocityTrigger))
         {
             HumanMotion.volume = 0f;
         }
@@ -267,17 +267,24 @@ public class HumanVRAudioController : MonoBehaviour
 
         int mapX = (int)(((worldPos.x - terrainPos.x) / terrainData.size.x) * terrainData.alphamapWidth);
         int mapZ = (int)(((worldPos.z - terrainPos.z) / terrainData.size.z) * terrainData.alphamapHeight);
-
-        float[,,] splatmapData = terrainData.GetAlphamaps(mapX, mapZ, 1, 1);
-
-        float[] cellMix = new float[splatmapData.GetUpperBound(2) + 1];
-        for (int n = 0; n < cellMix.Length; ++n)
+        try
         {
-            cellMix[n] = splatmapData[0, 0, n];
-        }
+            float[,,] splatmapData = terrainData.GetAlphamaps(mapX, mapZ, 1, 1);
+            float[] cellMix = new float[splatmapData.GetUpperBound(2) + 1];
+            for (int n = 0; n < cellMix.Length; ++n)
+            {
+                cellMix[n] = splatmapData[0, 0, n];
+            }
+            return cellMix;
 
-        return cellMix;
+        }
+        catch
+        {
+            return null;
+        }
     }
+
+       
 
     int GetMainTexture(Vector3 worldPos)
     {
