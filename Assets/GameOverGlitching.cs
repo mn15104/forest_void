@@ -19,7 +19,7 @@ public class GameOverGlitching : MonoBehaviour {
 		if (startingGlitching)
         {
             glitchEffect.enabled = true;
-            var lerpAmount = Mathf.Lerp(glitchEffect.intensity, 1.0f, Time.deltaTime * glitchChangeSpeed);
+            var lerpAmount = Mathf.Lerp(glitchEffect.intensity, 0.65f, Time.deltaTime * glitchChangeSpeed);
             glitchEffect.intensity = lerpAmount;
             glitchEffect.flipIntensity = lerpAmount;
             glitchEffect.colorIntensity = lerpAmount;

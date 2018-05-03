@@ -75,6 +75,8 @@ public partial class MonsterAI : MonoBehaviour
     private bool firstAppeared = false;
 
     private float lerpAmount;
+    Flashlight flashlight;
+    private bool flickerDone;
 
     /*------------------ STANDARD Functions --------------------*/
 
@@ -142,6 +144,7 @@ public partial class MonsterAI : MonoBehaviour
         m_MonsterStateMachine = MonsterAIState.newInstance(this);
         eventManager = FindObjectOfType<EventManager>();
         Debug.Log("here: " + m_MonsterStateMachine);
+        flashlight = player.GetComponentInChildren<Flashlight>();
     }
 
     void Update()
@@ -301,18 +304,20 @@ public partial class MonsterAI : MonoBehaviour
     public bool stage2_coroutine2_finished = false;
     public void UpdateStage2()
     {
-        Flashlight flashlight = player.GetComponentInChildren<Flashlight>();
-       
         if (!stage2_playerTorchOn1)
         {
             if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
-                flashlight.SetDisableFlashlight(true);
-                flashlight.ForceSwitchFlashlight(false);
-                RenderSettings.fogMode = FogMode.ExponentialSquared;
-                RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
-                stage2_playerTorchOn1 = true;
-                StartCoroutine(Stage2_ToggleCoroutine0(4f));
+                StartCoroutine(flashlightFlicker());
+                if (flickerDone)
+                {
+                    flashlight.SetDisableFlashlight(true);
+                    flashlight.ForceSwitchFlashlight(false);
+                    RenderSettings.fogMode = FogMode.ExponentialSquared;
+                    RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
+                    stage2_playerTorchOn1 = true;
+                    StartCoroutine(Stage2_ToggleCoroutine0(3.25f));
+                }
             }
         }
         else if (!stage2_playerTorchOff && stage2_coroutine0_finished)
@@ -323,7 +328,7 @@ public partial class MonsterAI : MonoBehaviour
             {
                 if (-30 < verticalCamRotation && verticalCamRotation < 10)
                 {
-                    TeleportVoidInfrontHuman(3f);
+                    TeleportVoidInfrontHuman(2.5f);
                     flashlight.ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
@@ -335,7 +340,7 @@ public partial class MonsterAI : MonoBehaviour
             {
                 if (90 >= verticalCamRotation && 70 < verticalCamRotation)
                 {
-                    TeleportVoidInfrontHuman(3f);
+                    TeleportVoidInfrontHuman(2.5f);
                     flashlight.ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
@@ -352,7 +357,7 @@ public partial class MonsterAI : MonoBehaviour
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
             stage2_playerTorchOn2 = true;
-            StartCoroutine(Stage2_ToggleCoroutine2(5f));
+            StartCoroutine(Stage2_ToggleCoroutine2(1.5f));
         }
         else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2 && stage2_coroutine2_finished)
         {
@@ -364,6 +369,23 @@ public partial class MonsterAI : MonoBehaviour
             RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
             stage2_playerTorchOff2 = true;
         }
+    }
+
+    IEnumerator flashlightFlicker()
+    {
+        flashlight.Switch(gameObject);
+        yield return new WaitForSeconds(0.1f);
+        flashlight.Switch(gameObject);
+        yield return new WaitForSeconds(0.2f);
+        flashlight.Switch(gameObject);
+        yield return new WaitForSeconds(0.18f);
+        flashlight.Switch(gameObject);
+        yield return new WaitForSeconds(0.13f);
+        flashlight.Switch(gameObject);
+        yield return new WaitForSeconds(0.1f);
+        flashlight.Switch(gameObject);
+        flickerDone = true;
+
     }
     IEnumerator Stage2_ToggleCoroutine0(float time)
     {

@@ -14,6 +14,8 @@ public class Flashlight : MonoBehaviour {
     public AudioSource m_FlashlightAudio;
     public AudioClip m_FlashlightOn;
     public AudioClip m_FlashlightOff;
+   // private bool flickerDone;
+
     private void Awake()
     {
         eventManager = FindObjectOfType<EventManager>();
@@ -39,6 +41,7 @@ public class Flashlight : MonoBehaviour {
         m_FlashlightAudio.loop = false;
         m_FlashlightAudio.volume = 1f;
         StartCoroutine(StartRandomFlicker());
+        //flickerDone = false;
     }
     private void Update()
     {
@@ -81,6 +84,11 @@ public class Flashlight : MonoBehaviour {
             {
                 m_FlashLightActiveBeforeCrypt = true;
                 Switch(gameObject);
+                //StartCoroutine(flashlightFlicker());
+                //if (flickerDone)
+                //{
+
+                //}
             }
             insideCrypt = true;
         }
@@ -92,6 +100,7 @@ public class Flashlight : MonoBehaviour {
         if (gameObject.GetComponent<StructureZone>().location != EventManager.Location.Forest)
         {
             insideCrypt = false;
+           // flickerDone = false;
             if (m_FlashLightActiveBeforeCrypt)
             {
                 Switch(gameObject);
@@ -100,6 +109,22 @@ public class Flashlight : MonoBehaviour {
         }
         
     }
+
+    //IEnumerator flashlightFlicker()
+    //{
+    //    Switch(gameObject);
+    //    yield return new WaitForSeconds(0.1f);
+    //    Switch(gameObject);
+    //    yield return new WaitForSeconds(0.2f);
+    //    Switch(gameObject);
+    //    yield return new WaitForSeconds(0.18f);
+    //    Switch(gameObject);
+    //    yield return new WaitForSeconds(0.13f);
+    //    Switch(gameObject);
+    //    yield return new WaitForSeconds(0.1f);
+    //    Switch(gameObject);
+    //    flickerDone = true;
+    //}
 
     public void Switch(GameObject t)
     {
