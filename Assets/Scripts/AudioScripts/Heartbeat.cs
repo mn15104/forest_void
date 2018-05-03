@@ -32,7 +32,7 @@ public class Heartbeat : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            using (UnityWebRequest webaddress = UnityWebRequest.Get("http://192.168.1.5:5000"))
+            using (UnityWebRequest webaddress = UnityWebRequest.Get("http://192.168.1.3:5000"))
             {
                 yield return webaddress.SendWebRequest();
 
@@ -45,7 +45,14 @@ public class Heartbeat : MonoBehaviour
                     Debug.Log("Data Receieved");
                     byte[] results = webaddress.downloadHandler.data;
                     Debug.Log("Printing data");
-                    m_Heartbeat = float.Parse((System.Text.Encoding.UTF8.GetString(results)));
+                    if (float.Parse((System.Text.Encoding.UTF8.GetString(results))) > 60)
+                    {
+                        m_Heartbeat = float.Parse((System.Text.Encoding.UTF8.GetString(results)));
+                    }
+                    else
+                    {
+                        m_Heartbeat = 65;
+                    }
                     Debug.Log("Heartbeat is: " + m_Heartbeat);
                 }
             } 
