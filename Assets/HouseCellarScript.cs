@@ -171,7 +171,9 @@ public class HouseCellarScript : MonoBehaviour
         }
         if ((triggered && fadedOut) && (cellarCurrentTime > cellarStartTime + 22.5) && !thirdBool)
         {
-            eventManager.GameOver(cameraLeft, cameraRight);
+            eventManager.cameraLeft.GetComponent<GameOverGlitching>().startGlitching();
+            eventManager.cameraRight.GetComponent<GameOverGlitching>().startGlitching();
+            eventManager.GameOver();
             thirdBool = true;
         }
     }

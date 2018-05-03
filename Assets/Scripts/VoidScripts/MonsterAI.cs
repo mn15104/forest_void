@@ -35,6 +35,7 @@ public partial class MonsterAI : MonoBehaviour
 
     //Main Component Variables
     private MonsterState currentState;
+    private EventManager eventManager;
     public MonsterState debugState;
     public EventManager.Stage currentStage = EventManager.Stage.Intro;
     public GameObject player;
@@ -69,6 +70,12 @@ public partial class MonsterAI : MonoBehaviour
     private float m_OriginalFogDensity;
     private bool follow_finished = false;
     private bool humanTorchOn = false;
+    public bool WaitedGameOver = false;
+    private float timerMonster;
+    private bool firstAppeared = false;
+
+    private float lerpAmount;
+
     /*------------------ STANDARD Functions --------------------*/
 
     private void OnEnable()
@@ -133,6 +140,7 @@ public partial class MonsterAI : MonoBehaviour
         destinationPosition = player.transform.position;
         m_OriginalFogDensity = RenderSettings.fogDensity;
         m_MonsterStateMachine = MonsterAIState.newInstance(this);
+        eventManager = FindObjectOfType<EventManager>();
         Debug.Log("here: " + m_MonsterStateMachine);
     }
 
@@ -179,6 +187,14 @@ public partial class MonsterAI : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         m_MonsterStateMachine.SetState(state);
     }
+
+    public IEnumerator WaitGameOver(float delayTime)
+    {
+        Debug.Log("Waiting for game over");
+        yield return new WaitForSeconds(delayTime);
+        WaitedGameOver = true;
+    }
+
     public void SetState(MonsterState state_)
     {
         m_MonsterStateMachine.SetState(state_);
@@ -386,7 +402,7 @@ public partial class MonsterAI : MonoBehaviour
         {
             if (distanceToHuman > 1.5f)
             {
-                TeleportVoidBehindHuman(1f);
+                TeleportVoidBehindHuman(1.4f);
                 Stage3_playerWalking = true;
             }
 
@@ -399,10 +415,39 @@ public partial class MonsterAI : MonoBehaviour
                 if (angleBetween < player.GetComponentInChildren<Camera>().fieldOfView / 1.45f)
                 {
                     Stage3_Appeared = true;
-                    StartCoroutine(DelayStateChange(MonsterState.APPROACH, 2f));
+                    StartCoroutine(GameOver());
+                    //if(!firstAppeared)
+                    //{
+                    //    firstAppeared = true;
+                    //    timerMonster = 0f;
+                    //}
+                    //if(firstAppeared)
+                    //{
+                    //    timerMonster += Time.deltaTime;
+                    //    Debug.Log(timerMonster);
+                    //}
+                    //if(firstAppeared && timerMonster > 0.5f)
+                    //{
+                        
+                    //}
                 }
             }
         }
+    }
+
+    IEnumerator GameOver()
+    {
+        lerpAmount = Mathf.Lerp(20.0f, 0.3f, Time.deltaTime * 10f);
+
+        yield return new WaitForSeconds(0.5f);
+        eventManager.cameraLeft.GetComponent<GameOverGlitching>().startGlitching();
+        eventManager.cameraRight.GetComponent<GameOverGlitching>().startGlitching();
+        eventManager.cameraRight.farClipPlane = lerpAmount;
+        eventManager.cameraLeft.farClipPlane = lerpAmount;
+        yield return new WaitForSeconds(1.2f);
+        eventManager.cameraLeft.GetComponent<GameOverGlitching>().endGlitching();
+        eventManager.cameraRight.GetComponent<GameOverGlitching>().endGlitching();
+        eventManager.GameOver();
     }
 
     /*------------------ UTILITY Functions --------------------*/

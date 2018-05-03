@@ -64,6 +64,8 @@ public class EventManager : MonoBehaviour
     private int numKeyInserted;
 
     public GameObject player;
+    public Camera cameraLeft;
+    public Camera cameraRight;
     public GameObject monster;
     public GameObject playerSpawnPoint;
     private Transform introBoxTeleportPoint;
@@ -101,7 +103,7 @@ public class EventManager : MonoBehaviour
 
     }
 
-    public void GameOver(Camera cameraLeft, Camera cameraRight)
+    public void GameOver()
     {
         cameraLeft.farClipPlane = 0.3f;
         cameraRight.farClipPlane = 0.3f;
