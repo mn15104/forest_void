@@ -19,6 +19,7 @@ AudioMixerController:
   - guids:
     - aff2b5df3cfae474195e8f32e87101e7
     - 1a95c4170b340814a8a68a5be2a90a8f
+    - 3e8fe00f9d7ab7644befb56b1268505a
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -32,6 +33,7 @@ AudioMixerGroupController:
   m_GroupID: aff2b5df3cfae474195e8f32e87101e7
   m_Children:
   - {fileID: 243857490265004420}
+  - {fileID: 243633382438545080}
   m_Volume: 75b87b37fd90034429460b4ac60780a5
   m_Pitch: 6919b9c3f96e44747a0e0aa6e217e370
   m_Effects:
@@ -62,8 +64,26 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 4778d4ee897b1a64cb34acf6f87b20fa
   m_FloatValues:
+    42508a5241e37fc4c80d88a73320b50a: 5.1526933
     e8841f19bfbdf484aaeaed0b2a7e1d4a: 9.7
   m_TransitionOverrides: {}
+--- !u!243 &243633382438545080
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: CryptJumpscare
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 3e8fe00f9d7ab7644befb56b1268505a
+  m_Children: []
+  m_Volume: 42508a5241e37fc4c80d88a73320b50a
+  m_Pitch: 4ecfc69bd3238f24ab16056e6e501ecc
+  m_Effects:
+  - {fileID: 244496295741267350}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &243857490265004420
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -81,6 +101,19 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &244496295741267350
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: ef05e8413c4a10e45bfa7d5d36270f6f
+  m_EffectName: Attenuation
+  m_MixLevel: 8d61780cad1fd0f41870ee83b77a8432
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &244665430062680616
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

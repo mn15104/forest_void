@@ -75,7 +75,7 @@ public partial class MonsterAI : MonoBehaviour
     private bool firstAppeared = false;
 
     private float lerpAmount;
-    Flashlight flashlight;
+    public GameObject flashlight;
     private bool flickerDone;
 
     /*------------------ STANDARD Functions --------------------*/
@@ -138,13 +138,12 @@ public partial class MonsterAI : MonoBehaviour
     private void Start()
     {
         Debug.Log("Hello");
-        if (!player) Debug.Log("PLAYER NULL");
+        if (!player) player = FindObjectOfType<OVRPlayerController>().gameObject;
         destinationPosition = player.transform.position;
         m_OriginalFogDensity = RenderSettings.fogDensity;
         m_MonsterStateMachine = MonsterAIState.newInstance(this);
         eventManager = FindObjectOfType<EventManager>();
         Debug.Log("here: " + m_MonsterStateMachine);
-        flashlight = player.GetComponentInChildren<Flashlight>();
         Debug.Log("flashlight: " + flashlight);
     }
 
@@ -307,15 +306,15 @@ public partial class MonsterAI : MonoBehaviour
     {
         if (!stage2_playerTorchOn1)
         {
-            if (player.GetComponentInChildren<Flashlight>().m_FlashlightActive)
+            if (flashlight.GetComponentInChildren<Flashlight>().m_FlashlightActive)
             {
                 //StartCoroutine(flashlightFlicker());
 
                 //if (flickerDone)
                 //{
-                   
-                    flashlight.SetDisableFlashlight(true);
-                    flashlight.ForceSwitchFlashlight(false);
+
+                flashlight.GetComponentInChildren<Flashlight>().SetDisableFlashlight(true);
+                flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(false);
                     RenderSettings.fogMode = FogMode.ExponentialSquared;
                     RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
                     stage2_playerTorchOn1 = true;
@@ -332,7 +331,7 @@ public partial class MonsterAI : MonoBehaviour
                 if (-30 < verticalCamRotation && verticalCamRotation < 10)
                 {
                     TeleportVoidInfrontHuman(2.5f);
-                    flashlight.ForceSwitchFlashlight(true);
+                    flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                     stage2_playerTorchOff = true;
@@ -344,7 +343,7 @@ public partial class MonsterAI : MonoBehaviour
                 if (90 >= verticalCamRotation && 70 < verticalCamRotation)
                 {
                     TeleportVoidInfrontHuman(2.5f);
-                    flashlight.ForceSwitchFlashlight(true);
+                    flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                     stage2_playerTorchOff = true;
@@ -354,7 +353,7 @@ public partial class MonsterAI : MonoBehaviour
         }
         else if (!stage2_playerTorchOn2 && stage2_coroutine1_finished)
         {
-            flashlight.ForceSwitchFlashlight(false);
+            flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(false);
             GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             GetComponentInChildren<MeshRenderer>().enabled = false;
             RenderSettings.fogMode = FogMode.ExponentialSquared;
@@ -365,9 +364,9 @@ public partial class MonsterAI : MonoBehaviour
         else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2 && stage2_coroutine2_finished)
         {
             m_MonsterStateMachine.SetState(MonsterState.STAGE_COMPLETE);
-            flashlight.ForceSwitchFlashlight(true);
-            player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
-            player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
+            flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(true);
+            flashlight.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
+            flashlight.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
             RenderSettings.fogMode = FogMode.Exponential;
             RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
             stage2_playerTorchOff2 = true;
@@ -780,8 +779,8 @@ public partial class MonsterAI : MonoBehaviour
         stage2_coroutine2_finished = false;
         Stage3_Appeared = false;
         follow_finished = false;
-        player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
-        player.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
+        flashlight.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
+        flashlight.GetComponentInChildren<Flashlight>().SetDisableFlicker(false);
         timer_Stage3Active = 0f;
     }
 

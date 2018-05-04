@@ -5488,6 +5488,7 @@ MonoBehaviour:
   soundDetectionPercentage: 0.2
   lightDetectionPercentage: 0.2
   WaitedGameOver: 0
+  flashlight: {fileID: 0}
   Stage1_TeleportInterval: 15
   Stage1_AppearInterval: 0.5
   Stage1_AppearDistance: 19

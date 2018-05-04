@@ -19,9 +19,9 @@ public partial class MonsterAI
         }
         public void SetState(MonsterState state)
         {
-            if (m_MonsterAI.player.GetComponentInChildren<Flashlight>().GetDisableFlashlight())
+            if (m_MonsterAI.flashlight.GetComponentInChildren<Flashlight>().GetDisableFlashlight())
             {
-                m_MonsterAI.player.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
+                m_MonsterAI.flashlight.GetComponentInChildren<Flashlight>().SetDisableFlashlight(false);
             }
             // Reset opaque
             if (m_MonsterAI.GetComponentInChildren<SkinnedMeshRenderer>().material.GetFloat("_Mode") != 0)
