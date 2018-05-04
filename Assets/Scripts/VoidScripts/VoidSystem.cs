@@ -12,7 +12,7 @@ public class VoidSystem : MonoBehaviour
     public float m_MonsterGameTimer = 0f;
     private EventManager m_eventManager;
     private List<Vector3> m_SpawnPositions = new List<Vector3>();
-    private float[] m_DelayTimeToActive = { 40f, 100f, 200f, 405f };
+    private float[] m_DelayTimeToActive = { 40f, 200f, 400f, 600f };
     private EventManager.Stage m_MonsterStage;
     public NotifyEvent<EventManager.Stage> NotifyStage = new NotifyEvent<EventManager.Stage>();
     private bool debugResettingStage = false;
