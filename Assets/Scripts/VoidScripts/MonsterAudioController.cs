@@ -428,7 +428,6 @@ public class MonsterAudioController : MonoBehaviour
     {
         Vector3 vel = m_Monster.GetComponent<Rigidbody>().velocity;
         m_MonsterSpeed = new Vector2(vel.x, vel.z).magnitude;
-        Debug.Log(MonsterSFX2AudioSrc.clip);
         ////////////////////////////////////////////////////////////////////////////////////////
         UpdateMonsterMotion();
         UpdateMonsterAudioState();

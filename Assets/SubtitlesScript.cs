@@ -24,13 +24,13 @@ public class SubtitlesScript : MonoBehaviour {
     private float subtitleTimer = 0f;
 
     public Text mytext;
-    
+
     // Use this for initialization
-	void Start () {
+    void Start() {
         distressCall = GetComponentInChildren<AudioSource>();
         StartCoroutine(distressSubtitles());
     }
-	
+
     IEnumerator distressSubtitles()
     {
         yield return new WaitForSeconds(2.5f);
@@ -38,6 +38,13 @@ public class SubtitlesScript : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         startclip = true;
 
+    }
+
+    IEnumerator fadeSubtitles()
+    {
+        yield return new WaitForSeconds(0.5f);
+        FindObjectOfType<IntroCubeScript>().SubtitlesFinish();
+            //introCube.SubtitlesFinish();
     }
 
     // Update is called once per frame
@@ -49,6 +56,7 @@ public class SubtitlesScript : MonoBehaviour {
             if (subtitleTimer > finalClip)
             {
                 mytext.text = "Log no. 259 \nMessage received: 21:53 04.06.2015 \nReported: Missing persons \n Assigned: 13:53 05.06.2015 \nSerial Code: IGNM462HGH ";
+                StartCoroutine(fadeSubtitles());
             }
 
             else if (subtitleTimer > tenth2Clip)

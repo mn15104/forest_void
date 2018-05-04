@@ -19,6 +19,7 @@ public class IntroCubeScript : MonoBehaviour {
     float timeStart;
     float textTimeStart;
     private Color previousColour;
+    private bool subtitlesFinished = false;
     private Color textColor;
 
     public GameObject flashlight;
@@ -55,12 +56,17 @@ public class IntroCubeScript : MonoBehaviour {
 
     }
 
+    public void SubtitlesFinish()
+    {
+        subtitlesFinished = true;
+    }
+
     private void Update()
     {
 
         float distressTime = Time.time;
         //if (!(distressCall.isPlaying) && !teleported)
-        if (distressTime > 31f && !teleported)
+        if (subtitlesFinished && !teleported)
         {
             TeleportPlayer();
             player.GetComponent<OVRPlayerController>().Acceleration = 0.1f;

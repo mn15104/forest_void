@@ -123,7 +123,6 @@ public class EventManager : MonoBehaviour
             debugForceStageChange = true;
             ForceStageChange();
         }
-        Debug.Log("Number of keys" + numKeyInserted); 
 
     }
 
