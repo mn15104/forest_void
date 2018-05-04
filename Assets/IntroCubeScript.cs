@@ -39,8 +39,8 @@ public class IntroCubeScript : MonoBehaviour {
         eventManager = FindObjectOfType<EventManager>();
         player = eventManager.player;
         spawnPoint = eventManager.playerSpawnPoint;
-        distressCall = GetComponentInChildren<AudioSource>();
-        distressCall.Play(44100 * delayTime);
+        //distressCall = GetComponentInChildren<AudioSource>();
+        //distressCall.Play(44100 * delayTime);
         player.GetComponent<OVRPlayerController>().Acceleration = 0;
         flashlight.SetActive(false);
         subtitleText = subtitles.GetComponentInChildren<Text>();
