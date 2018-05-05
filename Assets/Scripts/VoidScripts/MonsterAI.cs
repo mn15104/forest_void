@@ -318,7 +318,7 @@ public partial class MonsterAI : MonoBehaviour
                     RenderSettings.fogMode = FogMode.ExponentialSquared;
                     RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
                     stage2_playerTorchOn1 = true;
-                    StartCoroutine(Stage2_ToggleCoroutine0(3.25f));
+                    StartCoroutine(Stage2_ToggleCoroutine0(3.25f));//3.25
                 //}
             }
         }
@@ -330,24 +330,24 @@ public partial class MonsterAI : MonoBehaviour
             {
                 if (-30 < verticalCamRotation && verticalCamRotation < 10)
                 {
-                    TeleportVoidInfrontHuman(2.5f);
+                    TeleportVoidInfrontHuman(2.5f);//2.5
                     flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                     stage2_playerTorchOff = true;
-                    StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
+                    StartCoroutine(Stage2_ToggleCoroutine1(0.5f));
                 }
             }
             else
             {
                 if (90 >= verticalCamRotation && 70 < verticalCamRotation)
                 {
-                    TeleportVoidInfrontHuman(2.5f);
+                    TeleportVoidInfrontHuman(12.5f);//2.5
                     flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
                     stage2_playerTorchOff = true;
-                    StartCoroutine(Stage2_ToggleCoroutine1(0.2f));
+                    StartCoroutine(Stage2_ToggleCoroutine1(0.5f));
                 }
             }
         }
@@ -359,7 +359,7 @@ public partial class MonsterAI : MonoBehaviour
             RenderSettings.fogMode = FogMode.ExponentialSquared;
             RenderSettings.fogDensity = RenderSettings.fogDensity * 5f;
             stage2_playerTorchOn2 = true;
-            StartCoroutine(Stage2_ToggleCoroutine2(1.5f));
+            StartCoroutine(Stage2_ToggleCoroutine2(1.5f));//1.5
         }
         else if (!stage2_playerTorchOff2 && stage2_playerTorchOn2 && stage2_coroutine2_finished)
         {
@@ -425,7 +425,7 @@ public partial class MonsterAI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2.2f);
         if (!Stage3_Appeared)
         {
-            if (distanceToHuman > 1.5f)
+            if (distanceToHuman > 1.5f || distanceToHuman < 0.5f)
             {
                 TeleportVoidBehindHuman(1.4f);
                 Stage3_playerWalking = true;
