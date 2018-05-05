@@ -45,7 +45,15 @@ public class Heartbeat : MonoBehaviour
                     Debug.Log("Data Receieved");
                     byte[] results = webaddress.downloadHandler.data;
                     Debug.Log("Printing data");
-                    m_Heartbeat = float.Parse((System.Text.Encoding.UTF8.GetString(results)));
+                    float parsedHeartBeat = float.Parse((System.Text.Encoding.UTF8.GetString(results)));
+                    if (parsedHeartBeat > 130)
+                    {
+                        m_Heartbeat = 130;
+                    }
+                    if(parsedHeartBeat < 60)
+                    {
+                        m_Heartbeat = 60;
+                    }
                     Debug.Log("Heartbeat is: " + m_Heartbeat);
                 }
             } 

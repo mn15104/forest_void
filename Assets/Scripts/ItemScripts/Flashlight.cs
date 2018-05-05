@@ -76,6 +76,7 @@ public class Flashlight : MonoBehaviour {
             yield return null;
         }
     }
+
     void CryptTorchLightOff(GameObject gameObject)
     {
         if(gameObject.GetComponent<StructureZone>().location == EventManager.Location.Crypt)
@@ -90,23 +91,31 @@ public class Flashlight : MonoBehaviour {
 
                 //}
             }
+            else
+            {
+                m_FlashLightActiveBeforeCrypt = false;
+            }
             insideCrypt = true;
         }
+
+        Debug.Log("Inside Crypt:" + insideCrypt);
     }
 
     void CryptTorchLightOn(GameObject gameObject)
     {
 
-        if (gameObject.GetComponent<StructureZone>().location != EventManager.Location.Forest)
-        {
-            insideCrypt = false;
+        //if (gameObject.GetComponent<StructureZone>().location != EventManager.Location.Forest)
+        //{
+        insideCrypt = false;
            // flickerDone = false;
-            if (m_FlashLightActiveBeforeCrypt)
-            {
-                Switch(gameObject);
-            }
+         if (m_FlashLightActiveBeforeCrypt)
+         {
+            Switch(gameObject);
+          }
 
-        }
+        Debug.Log("Inside Crypt:" + insideCrypt);
+
+        //}
         
     }
 
