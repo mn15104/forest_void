@@ -609,8 +609,7 @@ PlayerSettings:
     iOS: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
-  apiCompatibilityLevelPerPlatform:
-    Standalone: 1
+  apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: VRStandardAssets

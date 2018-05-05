@@ -146,7 +146,7 @@ public class RetreiveKey : OVRGrabber
         key.transform.Rotate(new Vector3(90, 90, 0));
         key.GetComponent<BoxCollider>().center = new Vector3(0.001272247f, 0.001169248f, -0.00668247f);
         key.GetComponent<BoxCollider>().size = new Vector3(0.202461f, 0.027565f, 0.1165298f);
-
+        key.GetComponent<Rigidbody>().useGravity = true;
         key.GetComponent<KeyGrabbable>().checkInserted();
         if (key.GetComponent<KeyGrabbable>().hasBeenInserted)
         {
@@ -176,7 +176,7 @@ public class RetreiveKey : OVRGrabber
         
         if (m_grabbedObj != null)
         {
-
+            GetComponent<OculusHaptics>().Vibrate(VibrationForce.Hard);
             m_grabbedObj.gameObject.SetActive(false);
             GrabbableRelease(Vector3.zero, Vector3.zero);
             human.GetComponent<Inventory>().addKeyToInventory(m_grabbedObj.gameObject);

@@ -242,8 +242,8 @@ public partial class MonsterAI : MonoBehaviour
     /////////////// STAGE 1 ///////////////
 
     public float Stage1_TeleportInterval = 3f;
-    public float Stage1_AppearInterval = 2f;
-    public float Stage1_AppearDistance = 17f;
+    public float Stage1_AppearInterval = 0.5f;
+    public float Stage1_AppearDistance = 20f;
     public float Stage1_FadeOutTime = 0.1f;
     private int Stage1_appearCount = 0;
     public const int Stage1_maxAppears = 10;
@@ -330,7 +330,7 @@ public partial class MonsterAI : MonoBehaviour
             {
                 if (-30 < verticalCamRotation && verticalCamRotation < 10)
                 {
-                    TeleportVoidInfrontHuman(2.5f);//2.5
+                    TeleportVoidInfrontHuman(10.5f);//2.5
                     flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;
@@ -342,7 +342,7 @@ public partial class MonsterAI : MonoBehaviour
             {
                 if (90 >= verticalCamRotation && 70 < verticalCamRotation)
                 {
-                    TeleportVoidInfrontHuman(12.5f);//2.5
+                    TeleportVoidInfrontHuman(10.5f);//2.5
                     flashlight.GetComponentInChildren<Flashlight>().ForceSwitchFlashlight(true);
                     RenderSettings.fogMode = FogMode.Exponential;
                     RenderSettings.fogDensity = RenderSettings.fogDensity / 5f;

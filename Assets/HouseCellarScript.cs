@@ -50,14 +50,26 @@ public class HouseCellarScript : MonoBehaviour
     private bool flashlightTrickery3;
     private bool flashlightTrickery4;
     private bool flashlightTrickery5;
+
+    private bool viv1;
+    private bool viv2;
+    private bool viv3;
+    private bool viv4;
+    private bool viv5;
+    private bool viv6;
+    private bool viv7;
+    private bool viv8;
+
     private float flashlightStartTime;
     private float flashlightCurrentTime;
+    private bool vivving;
 
     private float cellarStartTime;
     private float cellarCurrentTime;
     // Use this for initialization
     void Start()
     {
+        vivving = false;
         disabled = false;
         subsOn = false;
         triggered = false;
@@ -82,6 +94,16 @@ public class HouseCellarScript : MonoBehaviour
         flashlightTrickery3 = false;
         flashlightTrickery4 = false;
         flashlightTrickery5 = false;
+
+        viv1 = true;
+        viv2 = true;
+        viv3 = true;
+        viv4 = true;
+        viv5 = true;
+        viv6 = true;
+        viv7 = true;
+        viv8 = true;
+
         flashlightStartTime = 10000f;
 
         cameraLeft.nearClipPlane = 0.01f;
@@ -98,8 +120,15 @@ public class HouseCellarScript : MonoBehaviour
 
     private void Update()
     {
-        
 
+        if (vivving)
+        {
+            OculusHaptics[] OculusHapticsComponent;
+            OculusHapticsComponent = player.GetComponentsInChildren<OculusHaptics>();
+            OculusHapticsComponent[0].Vibrate(VibrationForce.Hard);
+            OculusHapticsComponent[1].Vibrate(VibrationForce.Hard);
+
+        }
 
 
         cellarCurrentTime = Time.time;
@@ -112,7 +141,7 @@ public class HouseCellarScript : MonoBehaviour
             DeathAudio.Play();
             disabled = true;
 
-    
+
         }
 
 
@@ -133,6 +162,9 @@ public class HouseCellarScript : MonoBehaviour
         }
         if ( (triggered && !fadedOut) && (cellarCurrentTime > cellarStartTime + 4.0) )
         {
+            //Debug.Log("time: " + cellarCurrentTime);
+            //Debug.Log("viv: " + vivving);
+            //vivving = true;
             //trackingController.VRLookAT(LookBack.transform, 0.75f);
             Debug.Log("fading");
             fogIntensity = Mathf.Lerp(0.25f, 1f, timeStart);
@@ -176,6 +208,41 @@ public class HouseCellarScript : MonoBehaviour
             eventManager.GameOver();
             thirdBool = true;
         }
+
+        if ( (cellarCurrentTime > cellarStartTime + 16.4f) && viv1)
+        {
+            vivving = true;
+            viv1 = false;
+        }
+        if ((cellarCurrentTime > cellarStartTime + 16.8f) && viv2)
+        {
+            vivving = false;
+            viv2 = false;
+        }
+        if ((cellarCurrentTime > cellarStartTime + 17.5f) && viv3)
+        {
+            vivving = true;
+            viv3 = false;
+        }
+        if ((cellarCurrentTime > cellarStartTime + 18f) && viv4)
+        {
+            vivving = false;
+            viv4 = false;
+        }
+        if ((cellarCurrentTime > cellarStartTime + 19.7f) && viv5)
+        {
+            vivving = true;
+            viv5 = false;
+        }
+        if ((cellarCurrentTime > cellarStartTime + 21f) && viv6)
+        {
+            vivving = false;
+            viv6 = false;
+        }
+
+
+
+
     }
 
 
