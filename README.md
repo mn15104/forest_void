@@ -1,9 +1,4 @@
-FOREST VOID
------------
-A spoopy horror game made by spoopy individuals.
+FOREST VOID - University Of Bristol
+-----------------------------------
 
-Check the wiki for any problems
-
-Check the trello for any todos
-
-Check your life for any problems
+A VR Horror Game developed in Unity, using Oculus Rift V1, Oculus Touch, and a Bluetooth Low Energy (BLE) heart rate monitor.
